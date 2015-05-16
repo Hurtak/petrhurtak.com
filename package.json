@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "",
   "main": "gulpfile.js",
-  "dependencies": {},
+  "dependencies": {
+    "express": "4.12.3"
+  },
   "devDependencies": {
     "browser-sync": "2.5.3",
     "del": "1.1.1",
@@ -22,6 +24,7 @@
     "gulp-rev-replace": "0.4.0",
     "gulp-uglify": "1.2.0",
     "gulp-useref": "1.1.2",
+    "less": "2.5.0",
     "normalize.css": "3.0.3"
   },
   "repository": {

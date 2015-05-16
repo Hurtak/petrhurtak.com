@@ -1,10 +1,14 @@
 'use strict';
 
-var http = require('http');
+var express = require('express');
+var app = express();
 
-http.createServer(function(request, response) {
-  response.writeHead(200, {'Content-Type': 'text/plain'});
-  response.end('Hello World\n');
-}).listen(8888);
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
 
-console.log('Server running at http://127.0.0.1:8888/');
+var server = app.listen(3000, function () {
+
+  console.log('Example app started.');
+
+});

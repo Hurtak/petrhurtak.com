@@ -4,6 +4,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var ejs = require('ejs');
 
 var basePath = '../';
 var paths = {
@@ -14,13 +15,14 @@ var paths = {
 };
 
 app.set('view engine', 'ejs');
+app.engine('html', ejs.renderFile);
 
 app.use('/js', express.static(paths.js));
 app.use('/css', express.static(paths.css));
 app.use('/node_modules', express.static(paths.nodeModules));
 
 app.get('/', function(req, res) {
-    res.render(path.join(paths.templ, 'index'), {title: 'The index page!'});
+    res.render(path.join(paths.templ, 'index.html'), {title: 'The index page!'});
 });
 
 var server = app.listen(8000, function() {

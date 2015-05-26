@@ -33,13 +33,12 @@ app.use('/node_modules', express.static(paths.nodeModules));
 
 app.get('/', function(req, res) {
 
-    db.query('SELECT content FROM articles LIMIT 1', function(err, rows, fields) {
+    db.query('SELECT * FROM articles ORDER BY publication_date DESC LIMIT 10', function(err, rows, fields) {
         if (err) throw err;
-        var article = rows[0].content;
 
         var template = {
             title: 'some title',
-            article: article
+            articles: rows
         };
 
         res.render(path.join(paths.templ, 'index.html'), template);

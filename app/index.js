@@ -33,7 +33,8 @@ app.use('/node_modules', express.static(paths.nodeModules));
 
 app.get('/', function(req, res) {
 
-    db.query('SELECT * FROM articles ORDER BY publication_date DESC LIMIT 10', function(err, rows, fields) {
+    db.query('SELECT * FROM articles WHERE visible = 1 ORDER BY publication_date DESC LIMIT 10',
+    function(err, rows, fields) {
         if (err) throw err;
 
         var template = {

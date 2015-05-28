@@ -16,19 +16,28 @@ var db = mysql.createConnection({
     password: ''
 });
 
-var basePath = '../';
+var appDir = __dirname + '/';
+
 var paths = {
-    templ: path.join(__dirname, basePath, 'templ'),
-    js: path.join(__dirname, basePath, 'js'),
-    css: path.join(__dirname, basePath, 'css'),
-    nodeModules: path.join(__dirname, basePath, '../node_modules')
+    nodeModules: '../node_modules',
+    public: 'public',
+    fonts: 'public/fonts',
+    images: 'public/images',
+    scripts: 'public/scripts',
+    styles: 'public/styles',
+    templates: 'templates',
+    articles: 'articles'
 };
+
+for (var key in paths) {
+    paths[key] = path.join(appDir, paths[key]);
+}
 
 app.set('view engine', 'ejs');
 app.engine('html', ejs.renderFile);
 
-app.use('/js', express.static(paths.js));
-app.use('/css', express.static(paths.css));
+app.use('/js', express.static(paths.scripts));
+app.use('/css', express.static(paths.styles));
 app.use('/node_modules', express.static(paths.nodeModules));
 
 app.get('/', function(req, res) {
@@ -42,7 +51,7 @@ app.get('/', function(req, res) {
             articles: rows
         };
 
-        res.render(path.join(paths.templ, 'index.html'), template);
+        res.render(path.join(paths.templates, 'index.html'), template);
     });
 
 });

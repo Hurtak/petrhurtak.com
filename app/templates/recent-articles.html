@@ -1,0 +1,10 @@
+{% for article in articles %}
+    <article>
+        <h2>
+            {{ article.title }}
+        </h2>
+        <p>
+        {% include article.includePath %}
+        </p>
+    </article>
+{% endfor %}

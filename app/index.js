@@ -6,7 +6,7 @@ var app = express();
 
 var path = require('path');
 
-var ejs = require('ejs');
+var swig = require('swig');
 
 var mysql = require('mysql');
 var db = mysql.createConnection({
@@ -33,12 +33,12 @@ for (var key in paths) {
     paths[key] = path.join(appDir, paths[key]);
 }
 
-app.set('view engine', 'ejs');
-app.engine('html', ejs.renderFile);
+app.engine('html', swig.renderFile);
+app.set('view engine', 'html');
+app.set('views', paths.templates);
 
-app.use('/js', express.static(paths.scripts));
-app.use('/css', express.static(paths.styles));
 app.use('/node_modules', express.static(paths.nodeModules));
+app.use('/', express.static(paths.public));
 
 app.get('/', function(req, res) {
 
@@ -47,11 +47,21 @@ app.get('/', function(req, res) {
         if (err) throw err;
 
         var template = {
-            title: 'some title',
-            articles: rows
+            title: 'Všechny články',
+            articles: rows,
+        };
+
+        for (var i = 0; i < template.articles.length; i++) {
+            var article = template.articles
+            var id = String(article[i].id);
+            while (id.length < 4) {
+                id = '0' + id;
+            }
+            article[i].includePath = path.join(paths.articles, id + '-' + article[i].url, 'article.html');
         };
 
         res.render(path.join(paths.templates, 'index.html'), template);
+
     });
 
 });

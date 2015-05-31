@@ -48,17 +48,17 @@ app.get('/', function(req, res) {
 
         var template = {
             title: 'Všechny články',
-            articles: rows,
+            articles: rows
         };
 
         for (var i = 0; i < template.articles.length; i++) {
-            var article = template.articles
+            var article = template.articles;
             var id = String(article[i].id);
             while (id.length < 4) {
                 id = '0' + id;
             }
             article[i].includePath = path.join(paths.articles, id + '-' + article[i].url, 'article.html');
-        };
+        }
 
         res.render(path.join(paths.templates, 'index.html'), template);
 

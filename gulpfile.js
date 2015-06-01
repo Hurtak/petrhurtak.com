@@ -170,8 +170,9 @@ gulp.task('dev', function() {
 
     // watch for changes
 
-    // gulp.watch(paths.app.scripts, ['lint', browserSync.reload]);
-    gulp.watch(paths.app.public, browserSync.reload);
-    // gulp.watch('app/*.js', browserSync.reload);
+    gulp.watch('app/**/*.{js,html,less}', function() {
+        $.developServer.restart();
+        browserSync.reload();
+    });
 
 });

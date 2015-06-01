@@ -5,6 +5,7 @@ var express = require('express');
 var app = express();
 
 var path = require('path');
+var fs = require('fs');
 
 var swig = require('swig');
 
@@ -16,7 +17,7 @@ var db = mysql.createConnection({
     password: ''
 });
 
-var appDir = __dirname + '/';
+var appDir = __dirname;
 
 var paths = {
     nodeModules: '../node_modules',
@@ -39,6 +40,18 @@ app.set('views', paths.templates);
 
 app.use('/node_modules', express.static(paths.nodeModules));
 app.use('/', express.static(paths.public));
+
+app.get('/test', function(req, res) {
+    var data = JSON.parse(fs.readFileSync('app/article/metadata.json', 'utf8'));
+    var article = fs.readFileSync('app/article/article.html', 'utf8');
+
+    res.render(path.join(paths.templates, 'article.html'), {
+        title: data.title,
+        date: data.publication_date,
+        article: article
+    });
+
+});
 
 app.get('/', function(req, res) {
 

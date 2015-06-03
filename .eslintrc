@@ -7,6 +7,7 @@
 
     // Best Practices
     "block-scoped-var": 0, // treat var statements as if they were block scoped (off by default)
+    "curly": [2, "multi"] // specify curly brace conventions for all control statements
     "guard-for-in": 0, // make sure for-in loops have an if statement (off by default)
     "no-else-return": 1, // disallow else after a return in an if (off by default)
     "no-eq-null": 2, // disallow comparisons to null without a type-checking operator (off by default)

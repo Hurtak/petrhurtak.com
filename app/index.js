@@ -1,6 +1,10 @@
 /* eslint-disable strict */
 'use strict';
 
+var pe = require('pretty-error').start();
+pe.skipNodeFiles(); // this will skip events.js and http.js and similar core node files
+pe.skipPackage('express'); // this will skip all the trace lines about express` core and sub-modules
+
 var express = require('express');
 var app = express();
 

@@ -43,7 +43,6 @@ app.use('/', express.static(paths.public));
 
 // article images
 app.get('/articles/*/images/*.png', function(req, res) {
-    console.log('req.originalUrl ' , req.originalUrl);
     res.sendFile(path.join(appDir, req.originalUrl));
 });
 
@@ -51,7 +50,6 @@ app.get('/articles/*/images/*.png', function(req, res) {
 app.get('/:article/debug', function(req, res) {
     var articleName = req.params.article;
     var articlePath = path.join(paths.articles, articleName)
-    console.log('articlePath ' , articlePath);
 
     var data = JSON.parse(fs.readFileSync(articlePath + '/article.json', 'utf8'));
     var article = fs.readFileSync(articlePath + '/article.html', 'utf8');
@@ -99,13 +97,17 @@ app.get('/:article', function(req, res) {
         function(err, rows, fields) {
             if (err) throw err;
 
-            var template = {
-                title: rows[0].title,
-                data: rows[0].publication_date,
-                article: rows[0].content
-            };
+            if (!rows.length) {
+                res.render(path.join(paths.templates, '404.html'));
+            } else {
+                var template = {
+                    title: rows[0].title,
+                    data: rows[0].publication_date,
+                    article: rows[0].content
+                };
 
-            res.render(path.join(paths.templates, 'article.html'), template);
+                res.render(path.join(paths.templates, 'article.html'), template);
+            }
         }
     );
 });

@@ -23,20 +23,7 @@ var db = mysql.createConnection({
 
 var appDir = __dirname;
 
-var paths = {
-    nodeModules: '../node_modules',
-    articles: 'articles',
-    public: 'public',
-    fonts: 'public/fonts',
-    images: 'public/images',
-    scripts: 'public/scripts',
-    styles: 'public/styles',
-    templates: 'templates'
-};
-
-for (var key in paths) {
-    paths[key] = path.join(appDir, paths[key]);
-}
+var paths = require('./paths.js');
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');

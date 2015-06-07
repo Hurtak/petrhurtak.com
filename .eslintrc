@@ -18,7 +18,7 @@
     "wrap-iife": [2, "inside"], // require immediate function invocation to be wrapped in parentheses (off by default)
 
     // Strict Mode
-    "strict": [2], // controls location of Use Strict Directives
+    "strict": 2, // controls location of Use Strict Directives
 
     // Variables
     "no-undef": 0, // disallow use of undeclared variables unless mentioned in a /*global */ block
@@ -82,7 +82,7 @@
     "jsx": false, // enable JSX
   },
   "env": {
-    "browser": true,   // browser global variables
+    "browser": false,   // browser global variables
     "es6": false,       // enable all ECMAScript 6 features except for modules
     "node": true,       // Node.js global variables and Node.js-specific rules
     "amd": false,       // defines require() and define() as global variables as per the amd spec

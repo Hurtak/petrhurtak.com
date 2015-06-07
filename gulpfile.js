@@ -1,23 +1,34 @@
 /* eslint-disable strict, global-strict */
 'use strict';
 
-var pe = require('pretty-error').start();
-pe.skipNodeFiles(); // this will skip events.js and http.js and similar core node files
-pe.skipPackage('express', 'gulp'); // this will skip all the trace lines about express` core and sub-modules
-
 var gulp = require('gulp');
 
 var $ = require('gulp-load-plugins')();
-
 var browserSync = require('browser-sync');
-var runSequence = require('run-sequence');
 var del = require('del');
 
 // Paths
 var appPath = 'app';
 var distPath = 'dist';
 
-var paths = require('./app/server/paths.js');
+var paths = {
+    app: {
+        public: appPath + '/public/**/*',
+        templates: appPath + '/**/*.{html,htm}',
+        scripts: appPath + '/public/scripts/**/*.js',
+        styles: appPath + '/public/styles/**/*.css',
+        images: appPath + '/public/img/**/*',
+        fonts: appPath + '/public/fonts/*.{eot,svg,ttf,woff}',
+        icons: appPath + '/public/icons/*',
+        audio: appPath + '/public/audio/*'
+    },
+    dist: {
+        fonts: distPath + '/fonts',
+        icons: distPath + '/icons',
+        audio: distPath + '/audio',
+        imgages: distPath + '/img'
+    }
+};
 
 // Options
 
@@ -47,21 +58,16 @@ var options = {
 // linters
 
 gulp.task('lint', function() {
-    return gulp.src([
-        paths.app.scripts + '/**',
-        paths.app.server + '/**',
-        paths.gulpfile
-    ])
+    return gulp.src('app/**/*.js')
         .pipe($.eslint())
         .pipe($.eslint.format());
-        // .pipe($.eslint.failOnError());
 });
 
-// clear
+// clean
 
-gulp.task('clear', function() {
-    return del([
-        paths.distDirectory + '/*'
+gulp.task('clean', function() {
+    del([
+        distPath + '/*'
     ]);
 });
 
@@ -80,86 +86,65 @@ gulp.task('compile', function() {
         .pipe($.useref())
         .pipe($.revReplace())
         .pipe($.if('*.html', $.htmlmin(options.htmlmin)))
-        .pipe(gulp.dest(paths.distDirectory));
+        .pipe(gulp.dest(distPath));
 });
 
-gulp.task('scripts', function() {
-    return gulp.src(paths.app.scripts + '/**')
-        // .pipe($.imagemin(options.imagemin))
-        .pipe(gulp.dest(paths.dist.scripts));
-});
-
-gulp.task('styles', function() {
-    return gulp.src(paths.app.styles + '/**')
-        // .pipe($.imagemin(options.imagemin))
-        .pipe(gulp.dest(paths.dist.styles));
-});
-
-// Images
-
-gulp.task('images', ['images:public', 'images:articles']);
-
-gulp.task('images:public', function() {
-    var src = [
-        paths.app.images + '/**'
-    ];
-
-    return gulp.src(src)
-        // .pipe($.imagemin(options.imagemin))
-        .pipe(gulp.dest(paths.dist.images));
-});
-
-gulp.task('images:articles', function() {
-    var src = [
-        paths.app.articles + '/*/article.png',
-        paths.app.articles + '/*/images/*.{png,jpg,jpeg,gif,bmp}'
-    ];
-
-    return gulp.src(src)
-        // .pipe($.imagemin(options.imagemin))
-        .pipe(gulp.dest(paths.dist.articles));
-});
-
-// Templates
-
-gulp.task('templates', ['templates:server', 'templates:articles']);
-
-gulp.task('templates:server', function() {
-    var src = [
-        paths.app.templates + '/**'
-    ];
-
-    return gulp.src(src)
-        .pipe(gulp.dest(paths.dist.templates));
-});
-
-gulp.task('templates:articles', function() {
-    var src = [
-        paths.app.articles + '/*/article.{html,json}'
-    ];
-
-    return gulp.src(src)
-        .pipe(gulp.dest(paths.dist.articles));
+gulp.task('img', function() {
+    return gulp.src(paths.app.img)
+            // .pipe($.imagemin(options.imagemin))
+            .pipe(gulp.dest(paths.dist.img));
 });
 
 gulp.task('fonts', function() {
-    return gulp.src(paths.app.fonts + '/**')
+    return gulp.src(paths.app.fonts)
         // .pipe($.flatten())
         .pipe(gulp.dest(paths.dist.fonts));
 });
 
 gulp.task('icons', function() {
-    return gulp.src(paths.app.icons + '/**')
+    return gulp.src(paths.app.icons)
         .pipe(gulp.dest(paths.dist.icons));
+});
+
+// Browser sync
+
+gulp.task('browser-sync', function() {
+    return browserSync({
+        server: {
+            baseDir: distPath,
+            index: 'index.html'
+        },
+        browser: 'chrome'
+    });
+});
+
+gulp.task('browser-sync-dev', function() {
+    return browserSync({
+        server: {
+            baseDir: appPath,
+            index: 'index.js'
+        },
+        browser: 'chrome'
+    });
+});
+
+// run server
+gulp.task('server:start', function() {
+    $.developServer.listen({path: 'app/index.js'});
+});
+
+// restart server
+gulp.task('server:restart', function() {
+    $.developServer.restart();
 });
 
 // Main gulp tasks
 
 // builds all files and runs from dist directory
-// gulp.task('default', ['lintjs', 'compile', 'img', 'fonts', 'icons', 'audio', 'browser-sync']);
+gulp.task('default', ['lintjs', 'compile', 'img', 'fonts', 'icons', 'audio', 'browser-sync']);
 
 // skips building phase and runs from dist directory
-// gulp.task('run', ['browser-sync']);
+gulp.task('run', ['browser-sync']);
 
 // runs from app directory
 gulp.task('dev', function() {
@@ -175,25 +160,19 @@ gulp.task('dev', function() {
         port: 8080,
         https: false,
         ghostMode: {
-            clicks: false,
-            forms: false,
-            scroll: false
+            clicks: true,
+            forms: true,
+            scroll: true
         },
         notify: false, // The small pop-over notifications in the browser are not always needed/wanted.
         open: false // Decide which URL to open automatically when Browsersync starts. Defaults to "local" if none set. Can be true, local, external, ui, ui-external, tunnel or false
     });
 
     // watch for changes
+
     gulp.watch('app/**/*.{js,html,less}', function() {
         $.developServer.restart();
         browserSync.reload();
     });
 
-});
-
-gulp.task('dist', function() {
-    runSequence(
-        ['clear', 'lint'],
-        ['scripts', 'styles', 'fonts', 'icons', 'images']
-     );
 });

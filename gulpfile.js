@@ -13,15 +13,30 @@ var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
 var del = require('del');
 
-// Paths
-var appPath = 'app';
-var distPath = 'dist';
-
 var paths = require('./app/server/paths.js');
 
 // Options
 
 var options = {
+    server: {
+        path: paths.app.server + '/server.js',
+        env: {
+            NODE_ENV: 'development'
+        }
+        // , execArgv: ['--harmony']
+    },
+    browserSync: {
+        proxy: 'http://localhost:3000', // where server is running
+        port: 8000, // where browser sync is running
+        // https: false,
+        // ghostMode: {
+        //     clicks: false,
+        //     forms: false,
+        //     scroll: false
+        // },
+        notify: false, // The small pop-over notifications in the browser are not always needed/wanted.
+        open: false // Decide which URL to open automatically when Browsersync starts. Defaults to "local" if none set. Can be true, local, external, ui, ui-external, tunnel or false
+    },
     autoprefixer: {
         browsers: [
             '> 2%',
@@ -155,40 +170,26 @@ gulp.task('icons', function() {
 
 // Main gulp tasks
 
-// builds all files and runs from dist directory
-// gulp.task('default', ['lintjs', 'compile', 'img', 'fonts', 'icons', 'audio', 'browser-sync']);
-
-// skips building phase and runs from dist directory
-// gulp.task('run', ['browser-sync']);
-
-// runs from app directory
-gulp.task('dev', function() {
-    $.developServer.listen({
-        path: 'app/index.js',
-        env: {
-            NODE_ENV: 'development'
-        }
+gulp.task('server:start', function() {
+    $.developServer.listen(options.server, function(error) {
+        if (error) throw error;
+        browserSync(options.browserSync);
     });
+});
 
-    browserSync.init({
-        proxy: 'localhost:8000',
-        port: 8080,
-        https: false,
-        ghostMode: {
-            clicks: false,
-            forms: false,
-            scroll: false
-        },
-        notify: false, // The small pop-over notifications in the browser are not always needed/wanted.
-        open: false // Decide which URL to open automatically when Browsersync starts. Defaults to "local" if none set. Can be true, local, external, ui, ui-external, tunnel or false
-    });
-
-    // watch for changes
-    gulp.watch('app/**/*.{js,html,less}', function() {
-        $.developServer.restart();
+// If server scripts change, restart the server and then browser-reload.
+gulp.task('server:restart', function() {
+    $.developServer.restart(function(error) {
+        if (error) throw error;
         browserSync.reload();
     });
+});
 
+// runs from app directory
+gulp.task('dev', ['server:start'], function() {
+    gulp.watch([
+        paths.appDirectory + '/**'
+    ], ['server:restart']);
 });
 
 gulp.task('dist', function() {

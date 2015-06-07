@@ -29,7 +29,8 @@
     "gulp-useref": "1.1.2",
     "less": "2.5.0",
     "normalize.css": "3.0.3",
-    "pretty-error": "1.1.2"
+    "pretty-error": "1.1.2",
+    "run-sequence": "1.1.0"
   },
   "repository": {
     "type": "git",

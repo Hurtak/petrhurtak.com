@@ -11,7 +11,9 @@ var $ = require('gulp-load-plugins')();
 
 var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
+
 var del = require('del');
+var path = require('path');
 
 var paths = require('./app/server/paths.js');
 
@@ -19,22 +21,22 @@ var paths = require('./app/server/paths.js');
 
 var options = {
     server: {
-        path: paths.app.server + '/server.js',
+        path: path.join(paths.app.server, 'server.js'),
         env: {
             NODE_ENV: 'development'
         }
         // , execArgv: ['--harmony']
     },
     browserSync: {
-        proxy: 'http://localhost:3000', // where server is running
-        port: 8000, // where browser sync is running
+        proxy: 'http://localhost:8000', // where server is running
+        port: 3000, // where browser sync is running
         // https: false,
         // ghostMode: {
         //     clicks: false,
         //     forms: false,
         //     scroll: false
         // },
-        notify: false, // The small pop-over notifications in the browser are not always needed/wanted.
+        notify: true, // The small pop-over notifications in the browser are not always needed/wanted.
         open: false // Decide which URL to open automatically when Browsersync starts. Defaults to "local" if none set. Can be true, local, external, ui, ui-external, tunnel or false
     },
     autoprefixer: {
@@ -187,14 +189,18 @@ gulp.task('server:restart', function() {
 
 // runs from app directory
 gulp.task('dev', ['server:start'], function() {
-    gulp.watch([
+    $.watch([
         paths.appDirectory + '/**'
-    ], ['server:restart']);
+    ], function() {
+        runSequence(
+            ['server:restart']
+        );
+    });
 });
 
 gulp.task('dist', function() {
     runSequence(
         ['clear', 'lint'],
         ['scripts', 'styles', 'fonts', 'icons', 'images']
-     );
+    );
 });

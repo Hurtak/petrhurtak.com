@@ -174,7 +174,7 @@ gulp.task('icons', function() {
 
 gulp.task('server:start', function() {
     $.developServer.listen(options.server, function(error) {
-        if (error) throw error;
+        if (error) return;
         browserSync(options.browserSync);
     });
 });
@@ -182,7 +182,7 @@ gulp.task('server:start', function() {
 // If server scripts change, restart the server and then browser-reload.
 gulp.task('server:restart', function() {
     $.developServer.restart(function(error) {
-        if (error) throw error;
+        if (error) return;
         browserSync.reload();
     });
 });

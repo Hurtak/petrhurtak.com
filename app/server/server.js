@@ -37,10 +37,6 @@ app.get('/articles/*/*/*/images/*.png', function(req, res) {
     res.sendFile(path.join(paths.appDirectory, req.originalUrl));
 });
 
-app.get('/debug', function(req, res) {
-    res.send('test');
-});
-
 var findPathToArticleDirectoryByArticleName = function(directory, articleName, searchedDepth, currentDepth) {
     currentDepth = currentDepth || 0;
 
@@ -64,6 +60,31 @@ var findPathToArticleDirectoryByArticleName = function(directory, articleName, s
 
     return false;
 };
+
+var getArticlesMetadata = function(directory, filename, gatheredMetadata) {
+    gatheredMetadata = gatheredMetadata || [];
+
+    var list = fs.readdirSync(directory);
+    for (var i = 0; i < list.length; i++) {
+        var filePath = path.join(directory, list[i]);
+        var isDirectory = fs.statSync(filePath).isDirectory();
+
+        if (isDirectory) {
+            gatheredMetadata = getArticlesMetadata(filePath, filename, gatheredMetadata);
+        } else if (list[i] === filename) {
+            gatheredMetadata.push(JSON.parse(fs.readFileSync(filePath, 'utf8')));
+        }
+    }
+
+    return gatheredMetadata;
+};
+
+
+app.get('/debug', function(req, res) {
+    var metadata = getArticlesMetadata(paths.app.articles, 'metadata.json');
+    console.log('metadata ' , JSON.stringify(metadata, null, 2));
+    res.send('test');
+});
 
 // display article from fisle system instead from database
 app.get('/debug/:article', function(req, res) {

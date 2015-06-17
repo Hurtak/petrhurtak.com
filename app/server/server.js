@@ -79,14 +79,37 @@ var getArticlesMetadata = function(directory, filename, gatheredMetadata) {
     return gatheredMetadata;
 };
 
+var sortObjectBy = function(object, sortBy, ascendant) {
+    object.sort(function(a, b) {
+        if (a[sortBy] < b[sortBy]) {
+            return ascendant ? -1 : 1;
+        } else if (a[sortBy] > b[sortBy]) {
+            return ascendant ? 1 : -1;
+        }
+        return 0;
+    });
+};
 
 app.get('/debug', function(req, res) {
+    // get all metadata.json files
     var metadata = getArticlesMetadata(paths.app.articles, 'metadata.json');
-    console.log('metadata ' , JSON.stringify(metadata, null, 2));
-    res.send('test');
+
+    // remove articles with visibility == 0
+    for (var article in metadata) {
+        if (!metadata[article].visible) {
+            delete metadata[article];
+        }
+    }
+
+    // sort articles by publication_date descendant
+    sortObjectBy(metadata, 'publication_date');
+
+    res.render(path.join(paths.app.templates, 'index.html'), {
+        articles: metadata
+    });
 });
 
-// display article from fisle system instead from database
+// display article from file system instead from database
 app.get('/debug/:article', function(req, res) {
     var articleName = req.params.article;
 

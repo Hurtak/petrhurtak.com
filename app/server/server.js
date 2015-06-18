@@ -21,8 +21,6 @@ var db = mysql.createConnection({
     password: ''
 });
 
-var appDir = __dirname;
-
 var paths = require('./paths.js');
 
 app.engine('html', swig.renderFile);
@@ -149,27 +147,31 @@ app.get('/', function(req, res) {
 
 // article
 app.get('/:article', function(req, res) {
-    // db.query([
-    //     'SELECT title, url, publication_date, content',
-    //     'FROM articles',
-    //     'WHERE visible = 1',
-    //         'AND url = ?'
-    // ].join(' '),
-    // [req.params.article],
-    // function(err, rows, fields) {
-    //     if (err) throw err;
+    var query = [
+        'SELECT articles.id, title, publication_date, content',
+        'FROM articles',
+        'LEFT JOIN articles_content',
+        'ON articles.id = articles_content.article_id',
+        'WHERE visible = 1',
+        'AND url = ?'
+    ].join(' ');
 
-    //     if (!rows.length) {
-    //         res.render(path.join(paths.app.templates, '404.html'));
-        //         var template = {
-        //             title: rows[0].title,
-        //             data: r else {ows[0].publication_date,
-        //             article: fs.readFileSync(paths.app.articles + '', 'utf8')
-        //         };
+    db.query(query, [req.params.article], function(err, rows, fields) {
+        if (err) throw err;
 
-        //         res.render(path.join(paths.app.templates, 'article.html'), template);
-        //     }
-        // });
+        if (!rows.length) {
+            res.render(path.join(paths.app.templates, '404.html'));
+        } else {
+            var template = {
+                title: rows[0].title,
+                date: rows[0].publication_date,
+                article: rows[0].content
+            };
+
+            res.render(path.join(paths.app.templates, 'article.html'), template);
+        }
+    });
+
 });
 
 var port = 8000;

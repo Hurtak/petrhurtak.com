@@ -84,7 +84,6 @@ app.get('/', function(req, res) {
         res.render(
             path.join(paths.app.templates, 'index.html'),
             {
-                title: 'Všechny články',
                 articles: rows
             }
         );
@@ -96,27 +95,51 @@ app.get('/', function(req, res) {
 // article
 app.get('/:article', function(req, res) {
     var query = [
-        'SELECT id, title, directory, publication_date',
+        'SELECT id,',
+            'title,',
+            'publication_date,',
+            'url,',
+            'YEAR(publication_date) AS year,',
+            'LPAD(MONTH(publication_date), 2, 0) AS month',
         'FROM articles',
         'WHERE visible = 1',
         'AND url = ?'
     ].join(' ');
+
     db.query(query, [req.params.article], function(err, rows, fields) {
         if (err) throw err;
 
         if (!rows.length) {
+            // TODO: function for displaying 404
             res.render(path.join(paths.app.templates, '404.html'));
         } else {
-            var template = {
-                title: rows[0].title,
-                date: rows[0].publication_date,
-                article: fs.readFileSync(path.join(paths.app.articles, rows[0].directory, 'article.html'), 'utf8')
-            };
+            var articlePath = path.join(
+                paths.app.articles,
+                String(rows[0].year),
+                String(rows[0].month),
+                rows[0].url,
+                'article.html'
+            );
 
-            res.render(path.join(paths.app.templates, 'article.html'), template);
+            fs.readFile(articlePath, function(err, data) {
+                if (err) {
+                    // TODO: this should not happen, make a log
+                    res.render(path.join(paths.app.templates, '404.html'));
+                    return;
+                }
+
+                var template = {
+                    title: rows[0].title,
+                    date: rows[0].publication_date,
+                    article: fs.readFileSync(articlePath, 'utf8')
+                };
+
+                console.log(template.article);
+
+                res.render(path.join(paths.app.templates, 'article.html'), template);
+            });
         }
     });
-
 });
 
 var port = 8000;

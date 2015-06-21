@@ -1,3 +1,6 @@
+// directory name je url
+// když nebude sedět 'publication_date' s yyyy directory a mm directory, thow error
+
 /* eslint-disable strict */
 'use strict';
 
@@ -12,67 +15,78 @@ var db = mysql.createConnection({
     password: ''
 });
 
-var appDir = __dirname + '/';
+var paths = require('../paths.js');
+var articles = require(path.join(paths.app.server, 'articles.js'));
 
-var paths = {
-    nodeModules: '../node_modules',
-    public: 'public',
-    fonts: 'public/fonts',
-    images: 'public/images',
-    scripts: 'public/scripts',
-    styles: 'public/styles',
-    templates: 'templates',
-    articles: 'articles'
-};
-
-for (var key in paths) {
-    paths[key] = path.join(appDir, paths[key]);
-}
-
-var articlesDirectories = fs.readdirSync(paths.articles);
-
-var articles = [];
+var requiredFiles = ['article.html', 'metadata.json', 'thumbnail.png'];
+var articlesDirectories = articles.getArticlesDirectories(paths.app.articles, 2);
 
 for (var i = 0; i < articlesDirectories.length; i++) {
-    articles[i] = {};
-    articles[i].dir = path.join(paths.articles, articlesDirectories[i]);
+    var metadataFilePath = path.join(articlesDirectories[i], 'metadata.json');
 
-    var directoryData = articlesDirectories[i].split('-');
-    articles[i].id = directoryData[0].replace(/^0+/, '');
+    (function(i) {
+        fs.readFile(metadataFilePath, 'utf-8', function(err, data) {
+            if (err) throw err;
 
-    directoryData.shift();
-    articles[i].url = directoryData.join('-');
+            data = JSON.parse(data);
 
-    var articleData = JSON.parse(fs.readFileSync(articles[i].dir + '/data.json', 'utf8'));
-    for (key in articleData) {
-        articles[i][key] = articleData[key]
-    }
+            var publicationDate = new Date(data.publication_date);
+            var publicationYear = publicationDate.getFullYear();
+            var publicationMonth = publicationDate.getMonth() + 1;
 
-};
+            var directoryDate = articlesDirectories[i].split(path.sep);
+            var directoryYear = directoryDate[directoryDate.length - 3];
+            var directoryMonth = directoryDate[directoryDate.length - 2];
 
-// delete articles from DB
-db.query('DELETE FROM articles', function(err, result) {
-    if (err) throw err;
-
-    for (var i = 0; i < articles.length; i++) {
-        db.query(
-            'INSERT INTO articles (id, title, preview, url, publication_date, last_update, visible) VALUES (?, ?, ?, ?, ?, ?, ?)',
-            [
-                articles[i].id,
-                articles[i].title,
-                articles[i].preview,
-                articles[i].url,
-                articles[i].publication_date,
-                articles[i].last_update,
-                articles[i].visible
-            ],
-            function(err, result) {
-                if (err) throw err;
-
-                console.log('article [' + result.insertId + '] succesfully inserted into db.')
+            if (publicationYear != directoryYear || publicationMonth != directoryMonth) {
+                throw new Error('publication_date in metadata.json is dirrefent from year or month directory ' + metadataFilePath);
             }
-        );
-    };
 
-});
+            // http://stackoverflow.com/questions/15383852/sql-if-exists-update-else-insert-into
+
+            // INSERT INTO articles
+            //     (title, preview, url, publication_date, last_update, visible)
+            // VALUES
+            //     (?, ?, ?, ?, ?, ?)
+            // ON DUPLICATE KEY UPDATE
+            //     title = VALUES(title),
+            //     preview = VALUES(preview),
+            //     publication_date = VALUES(publication_date),
+            //     last_update = VALUES(last_update),
+            //     visible = VALUES(visible)
+
+
+        });
+    })(i);
+
+
+}
+
+
+// // delete articles from DB
+// db.query('DELETE FROM articles', function(err, result) {
+//     if (err) throw err;
+
+//     var query = [
+//         'INSERT INTO articles (id, title, preview, url, publication_date, last_update, visible)',
+//         'VALUES (?, ?, ?, ?, ?, ?, ?)'
+//     ].join(' ');
+
+//     for (var i = 0; i < articles.length; i++) {
+//         db.query(query, [
+//             articles[i].id,
+//             articles[i].title,
+//             articles[i].preview,
+//             articles[i].url,
+//             articles[i].publication_date,
+//             articles[i].last_update,
+//             articles[i].visible
+//         ], function(err, result) {
+//             if (err) throw err;
+
+//             console.log('article [' + result.insertId + '] succesfully inserted into db.')
+//         });
+//     };
+
+// });
 

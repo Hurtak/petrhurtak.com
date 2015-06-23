@@ -65,7 +65,13 @@ app.get('/debug/:article', function(req, res) {
         res.render(path.join(paths.app.templates, '404.html'));
     } else {
         var data = JSON.parse(fs.readFileSync(articlePath + '/metadata.json', 'utf8'));
-        var article = fs.readFileSync(articlePath + '/article.html', 'utf8');
+
+        var article = swig.compileFile(path.join(articlePath, 'article.html'));
+
+        articlePath = articlePath
+            .replace(paths.appDirectory, '')
+            .split(path.sep).join('/');
+        article = article({articlePath: articlePath + '/'});
 
         res.render(path.join(paths.app.templates, 'article.html'), {
             title: data.title,
@@ -118,26 +124,28 @@ app.get('/:article', function(req, res) {
                 paths.app.articles,
                 String(rows[0].year),
                 String(rows[0].month),
-                rows[0].url,
-                'article.html'
+                rows[0].url
             );
 
-            fs.readFile(articlePath, function(err, data) {
+            fs.readFile(path.join(articlePath, 'article.html'), function(err, data) {
                 if (err) {
                     // TODO: this should not happen, make a log
                     res.render(path.join(paths.app.templates, '404.html'));
                     return;
                 }
 
-                var template = {
+                var article = swig.compileFile(path.join(articlePath, 'article.html'));
+
+                articlePath = articlePath
+                    .replace(paths.appDirectory, '')
+                    .split(path.sep).join('/');
+                article = article({articlePath: articlePath + '/'});
+
+                res.render(path.join(paths.app.templates, 'article.html'), {
                     title: rows[0].title,
                     date: rows[0].publication_date,
-                    article: fs.readFileSync(articlePath, 'utf8')
-                };
-
-                console.log(template.article);
-
-                res.render(path.join(paths.app.templates, 'article.html'), template);
+                    article: article
+                });
             });
         }
     });

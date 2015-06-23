@@ -25,8 +25,9 @@ var findPathToArticleDirectoryByArticleName = function(directory, articleName, s
     return false;
 };
 
-var getArticlesMetadata = function(directory, filename, gatheredMetadata) {
+var getArticlesMetadata = function(directory, filename, gatheredMetadata, baseDirectory) {
     gatheredMetadata = gatheredMetadata || [];
+    baseDirectory = baseDirectory || directory;
 
     var list = fs.readdirSync(directory);
     for (var i = 0; i < list.length; i++) {
@@ -34,9 +35,17 @@ var getArticlesMetadata = function(directory, filename, gatheredMetadata) {
         var isDirectory = fs.statSync(filePath).isDirectory();
 
         if (isDirectory) {
-            gatheredMetadata = getArticlesMetadata(filePath, filename, gatheredMetadata);
+            gatheredMetadata = getArticlesMetadata(filePath, filename, gatheredMetadata, baseDirectory);
         } else if (list[i] === filename) {
-            gatheredMetadata.push(JSON.parse(fs.readFileSync(filePath, 'utf8')));
+            var articleDirectory = filePath // path to article relative to baseDirectory
+                .replace(filename, '')
+                .replace(baseDirectory, '')
+
+            var metadata = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            metadata.directory = articleDirectory;
+            metadata.url = stripSlashes(articleDirectory).split(path.sep);
+            metadata.url = metadata.url[metadata.url.length - 1]
+            gatheredMetadata.push(metadata);
         }
     }
 
@@ -75,6 +84,18 @@ var sortObjectBy = function(object, sortBy, ascendant) {
         }
         return 0;
     });
+};
+
+// TODO: this should not be in this file
+var stripSlashes = function(string) {
+    if (string[0] === path.sep) {
+        string = string.substr(1);
+    }
+    if (string[string.length - 1] === path.sep) {
+        string = string.slice(0, -1);
+    }
+
+    return string;
 };
 
 module.exports = {

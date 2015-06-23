@@ -51,7 +51,8 @@ app.get('/debug', function(req, res) {
     articles.sortObjectBy(metadata, 'publication_date');
 
     res.render(path.join(paths.app.templates, 'index.html'), {
-        articles: metadata
+        articles: metadata,
+        debugUrlPrefix: 'debug/'
     });
 });
 

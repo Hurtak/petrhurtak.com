@@ -1,6 +1,3 @@
-// directory name je url
-// když nebude sedět 'publication_date' s yyyy directory a mm directory, thow error
-
 /* eslint-disable strict */
 'use strict';
 
@@ -18,13 +15,15 @@ var db = mysql.createConnection({
 var paths = require('../paths.js');
 var articles = require(path.join(paths.app.server, 'articles.js'));
 
-var requiredFiles = ['article.html', 'metadata.json', 'thumbnail.png'];
 var articlesDirectories = articles.getArticlesDirectories(paths.app.articles, 2);
 
-for (var i = 0; i < articlesDirectories.length; i++) {
-    var metadataFilePath = path.join(articlesDirectories[i], 'metadata.json');
+var urls = [];
 
+for (var i = 0; i < articlesDirectories.length; i++) {
     (function(i) {
+        var articleName = articlesDirectories[i].split(path.sep).reverse()[0];
+        var metadataFilePath = path.join(articlesDirectories[i], 'metadata.json');
+
         fs.readFile(metadataFilePath, 'utf-8', function(err, data) {
             if (err) throw err;
 
@@ -42,51 +41,47 @@ for (var i = 0; i < articlesDirectories.length; i++) {
                 throw new Error('publication_date in metadata.json is dirrefent from year or month directory ' + metadataFilePath);
             }
 
-            // http://stackoverflow.com/questions/15383852/sql-if-exists-update-else-insert-into
+            var query = [
+                'INSERT INTO articles',
+                    '(title, preview, url, publication_date, last_update, visible)',
+                'VALUES',
+                    '(?, ?, ?, ?, ?, ?)',
+                'ON DUPLICATE KEY UPDATE',
+                    'title = VALUES(title),',
+                    'preview = VALUES(preview),',
+                    'publication_date = VALUES(publication_date),',
+                    'last_update = VALUES(last_update),',
+                    'visible = VALUES(visible)'
+            ].join(' ');
 
-            // INSERT INTO articles
-            //     (title, preview, url, publication_date, last_update, visible)
-            // VALUES
-            //     (?, ?, ?, ?, ?, ?)
-            // ON DUPLICATE KEY UPDATE
-            //     title = VALUES(title),
-            //     preview = VALUES(preview),
-            //     publication_date = VALUES(publication_date),
-            //     last_update = VALUES(last_update),
-            //     visible = VALUES(visible)
+            var url = [directoryYear, directoryMonth, articleName].join('/');
+            urls.push(url);
 
+            var dbData = [
+                data.title,
+                data.preview,
+                url,
+                data.publication_date,
+                data.last_update,
+                data.visible
+            ];
 
+            db.query(query, dbData, function(err, result) {
+                if (err) throw err;
+                console.log('article "' + articleName + '" succesfully inserted into db.');
+
+                if (i === articlesDirectories.length - 1) {
+                    var deleteQuery = [
+                        'DELETE FROM articles',
+                        'WHERE url NOT IN (\'' + urls.join('\', \'') + '\')'
+                    ].join(' ');
+
+                    db.query(deleteQuery, function(err, result) {
+                        if (err) throw err;
+                        console.log('article "' + articleName + '" succesfully inserted into db.');
+                    });
+                }
+            });
         });
     })(i);
-
-
 }
-
-
-// // delete articles from DB
-// db.query('DELETE FROM articles', function(err, result) {
-//     if (err) throw err;
-
-//     var query = [
-//         'INSERT INTO articles (id, title, preview, url, publication_date, last_update, visible)',
-//         'VALUES (?, ?, ?, ?, ?, ?, ?)'
-//     ].join(' ');
-
-//     for (var i = 0; i < articles.length; i++) {
-//         db.query(query, [
-//             articles[i].id,
-//             articles[i].title,
-//             articles[i].preview,
-//             articles[i].url,
-//             articles[i].publication_date,
-//             articles[i].last_update,
-//             articles[i].visible
-//         ], function(err, result) {
-//             if (err) throw err;
-
-//             console.log('article [' + result.insertId + '] succesfully inserted into db.')
-//         });
-//     };
-
-// });
-

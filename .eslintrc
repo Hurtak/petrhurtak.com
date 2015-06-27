@@ -34,9 +34,9 @@
     "comma-style": [1, "last"], // enforce one true comma style (off by default)
     "consistent-this": [1, "_this"], // enforces consistent naming when capturing the current execution context (off by default)
     "comma-spacing": [2, {"before": false, "after": true}], // enforce spacing before and after comma
-    "func-style": [1, "epression"], // enforces use of function declarations or expressions (off by default)
+    "func-style": [1, "expression"], // enforces use of function declarations or expressions (off by default)
     "max-nested-callbacks": [1, 2], // specify the maximum depth callbacks can be nested (off by default)
-    "no-lonely-if": [1, "tab"], // disallow if as the only statement in an else block (off by default)
+    "no-lonely-if": 1, // disallow if as the only statement in an else block (off by default)
     "no-multiple-empty-lines": [1, {"max": 2}], // disallow multiple empty lines (off by default)
     "no-nested-ternary": 1, // disallow nested ternary expressions (off by default)
     "one-var": [1, "never"], // allow just one var statement per function (off by default)

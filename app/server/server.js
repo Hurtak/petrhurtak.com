@@ -66,17 +66,28 @@ app.get('/debug/:article', function(req, res) {
     } else {
         var data = JSON.parse(fs.readFileSync(articlePath + '/metadata.json', 'utf8'));
 
-        var article = swig.compileFile(path.join(articlePath, 'article.html'));
+        var commonmark = require('commonmark');
 
-        articlePath = articlePath
-            .replace(paths.appDirectory, '')
-            .split(path.sep).join('/');
-        article = article({articlePath: articlePath + '/'});
+        var articleFile = fs.readFileSync(path.join(articlePath, 'article.html'), 'utf8');
+
+        var reader = new commonmark.Parser();
+        var writer = new commonmark.HtmlRenderer();
+        var parsed = reader.parse(articleFile); // parsed is a 'Node' tree
+        // transform parsed if you like...
+        var result = writer.render(parsed); // result is a String
+        console.log('result ' , result);
+
+        // var article = swig.compileFile(articleFile);
+
+        // articlePath = articlePath
+        //     .replace(paths.appDirectory, '')
+        //     .split(path.sep).join('/');
+        // article = article({articlePath: articlePath + '/'});
 
         res.render(path.join(paths.app.templates, 'article.html'), {
             title: data.title,
             date: data.publication_date,
-            article: article
+            article: result
         });
     }
 });

@@ -9,6 +9,7 @@ var express = require('express');
 var app = express();
 
 var path = require('path');
+var url = require('url');
 var fs = require('fs');
 
 var swig = require('swig');
@@ -66,23 +67,32 @@ app.get('/debug/:article', function(req, res) {
     } else {
         var data = JSON.parse(fs.readFileSync(articlePath + '/metadata.json', 'utf8'));
 
+        var articleContent = fs.readFileSync(path.join(articlePath, 'article.md'), 'utf8');
+
+        articlePath = articlePath
+            .replace(paths.appDirectory, '')
+            .split(path.sep).join('/');
+        articlePath += '/';
+
+        articleContent = articleContent.replace(
+            /(^.*!\[.*?\]\()(\.\/.*?)(\).*$)/gm,
+            function(whole, first, second, third) {
+                return first + url.resolve(articlePath, second) + third;
+            }
+        );
+
         var commonmark = require('commonmark');
+        commonmark.render = function(markdown) {
+            var reader = new commonmark.Parser();
+            var writer = new commonmark.HtmlRenderer();
 
-        var articleFile = fs.readFileSync(path.join(articlePath, 'article.html'), 'utf8');
+            var parsedMarkdown = new commonmark.Parser().parse(markdown); // Node tree
 
-        var reader = new commonmark.Parser();
-        var writer = new commonmark.HtmlRenderer();
-        var parsed = reader.parse(articleFile); // parsed is a 'Node' tree
-        // transform parsed if you like...
-        var result = writer.render(parsed); // result is a String
-        console.log('result ' , result);
+            return writer.render(parsedMarkdown); // result is a String
+        };
 
-        // var article = swig.compileFile(articleFile);
+        var result = commonmark.render(articleContent);
 
-        // articlePath = articlePath
-        //     .replace(paths.appDirectory, '')
-        //     .split(path.sep).join('/');
-        // article = article({articlePath: articlePath + '/'});
 
         res.render(path.join(paths.app.templates, 'article.html'), {
             title: data.title,
@@ -138,14 +148,14 @@ app.get('/:article', function(req, res) {
                 rows[0].url
             );
 
-            fs.readFile(path.join(articlePath, 'article.html'), function(err, data) {
+            fs.readFile(path.join(articlePath, 'article.md'), function(err, data) {
                 if (err) {
                     // TODO: this should not happen, make a log
                     res.render(path.join(paths.app.templates, '404.html'));
                     return;
                 }
 
-                var article = swig.compileFile(path.join(articlePath, 'article.html'));
+                var article = swig.compileFile(path.join(articlePath, 'article.md'));
 
                 articlePath = articlePath
                     .replace(paths.appDirectory, '')

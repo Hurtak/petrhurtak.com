@@ -1,29 +1,27 @@
-'use strict'; // TODO: ??
-
 // TODO: its already called in gulp file, why do i need to call it twice??
-var pe = require('pretty-error').start();
+const pe = require('pretty-error').start();
 pe.skipNodeFiles(); // this will skip events.js and http.js and similar core node files
 pe.skipPackage('express'); // this will skip all the trace lines about express` core and sub-
 
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-var path = require('path');
-var url = require('url');
-var fs = require('fs');
+const path = require('path');
+const url = require('url');
+const fs = require('fs');
 
-var swig = require('swig');
+const swig = require('swig');
 
-var mysql = require('mysql');
-var db = mysql.createConnection({
+const mysql = require('mysql');
+const db = mysql.createConnection({
     host: 'localhost',
     database: 'hurtak_blog',
     user: 'root',
     password: ''
 });
 
-var paths = require('./paths.js');
-var articles = require('./articles.js');
+import * as paths from './paths.js';
+import * as articles from './articles.js';
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
@@ -39,10 +37,10 @@ app.get('/articles/*/*/*/images/*.png', function(req, res) {
 
 app.get('/debug', function(req, res) {
     // get all metadata.json files
-    var metadata = articles.getArticlesMetadata(paths.app.articles, 'metadata.json');
+    let metadata = articles.getArticlesMetadata(paths.app.articles, 'metadata.json');
 
     // remove articles with visibility == 0
-    for (var article in metadata) {
+    for (let article in metadata) {
         if (!metadata[article].visible) {
             delete metadata[article];
         }
@@ -59,15 +57,15 @@ app.get('/debug', function(req, res) {
 
 // display article from file system instead from database
 app.get('/debug/:article', function(req, res) {
-    var articleName = req.params.article;
+    let articleName = req.params.article;
 
-    var articlePath = articles.findPathToArticleDirectoryByArticleName(paths.app.articles, articleName, 2);
+    let articlePath = articles.findPathToArticleDirectoryByArticleName(paths.app.articles, articleName, 2);
     if (!articlePath) {
         res.render(path.join(paths.app.templates, '404.html'));
     } else {
-        var data = JSON.parse(fs.readFileSync(articlePath + '/metadata.json', 'utf8'));
+        let data = JSON.parse(fs.readFileSync(articlePath + '/metadata.json', 'utf8'));
 
-        var articleContent = fs.readFileSync(path.join(articlePath, 'article.md'), 'utf8');
+        let articleContent = fs.readFileSync(path.join(articlePath, 'article.md'), 'utf8');
 
         articlePath = articlePath
             .replace(paths.appDirectory, '')
@@ -81,17 +79,17 @@ app.get('/debug/:article', function(req, res) {
             }
         );
 
-        var commonmark = require('commonmark');
+        let commonmark = require('commonmark');
         commonmark.render = function(markdown) {
-            var reader = new commonmark.Parser();
-            var writer = new commonmark.HtmlRenderer();
+            let reader = new commonmark.Parser();
+            let writer = new commonmark.HtmlRenderer();
 
-            var parsedMarkdown = new commonmark.Parser().parse(markdown); // Node tree
+            let parsedMarkdown = new commonmark.Parser().parse(markdown); // Node tree
 
             return writer.render(parsedMarkdown); // result is a String
         };
 
-        var result = commonmark.render(articleContent);
+        let result = commonmark.render(articleContent);
 
 
         res.render(path.join(paths.app.templates, 'article.html'), {
@@ -122,17 +120,16 @@ app.get('/', function(req, res) {
 
 // article
 app.get('/:article', function(req, res) {
-    var query = [
-        'SELECT id,',
-            'title,',
-            'publication_date,',
-            'url,',
-            'YEAR(publication_date) AS year,',
-            'LPAD(MONTH(publication_date), 2, 0) AS month',
-        'FROM articles',
-        'WHERE visible = 1',
-        'AND url = ?'
-    ].join(' ');
+    let query = `
+        SELECT id,
+            title,
+            publication_date,
+            url,
+            YEAR(publication_date) AS year,
+            LPAD(MONTH(publication_date), 2, 0) AS month
+        FROM articles
+        WHERE visible = 1
+        AND url = ?`;
 
     db.query(query, [req.params.article], function(err, rows, fields) {
         if (err) throw err;
@@ -141,7 +138,7 @@ app.get('/:article', function(req, res) {
             // TODO: function for displaying 404
             res.render(path.join(paths.app.templates, '404.html'));
         } else {
-            var articlePath = path.join(
+            let articlePath = path.join(
                 paths.app.articles,
                 String(rows[0].year),
                 String(rows[0].month),
@@ -155,7 +152,7 @@ app.get('/:article', function(req, res) {
                     return;
                 }
 
-                var article = swig.compileFile(path.join(articlePath, 'article.md'));
+                let article = swig.compileFile(path.join(articlePath, 'article.md'));
 
                 articlePath = articlePath
                     .replace(paths.appDirectory, '')
@@ -172,7 +169,7 @@ app.get('/:article', function(req, res) {
     });
 });
 
-var port = 8000;
-var server = app.listen(port, function() {
+let port = 8000;
+let server = app.listen(port, function() {
 
 });

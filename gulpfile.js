@@ -21,7 +21,7 @@ var paths = require('./app/server/paths.js');
 
 var options = {
     server: {
-        path: path.join(paths.app.server, 'server.js'),
+        path: path.join(paths.app.server, 'index.js'),
         env: {
             NODE_ENV: 'development'
         }

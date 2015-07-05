@@ -1,25 +1,24 @@
-/* eslint-disable strict, global-strict */
-'use strict';
-
-var pe = require('pretty-error').start();
+const pe = require('pretty-error').start();
 pe.skipNodeFiles(); // this will skip events.js and http.js and similar core node files
 pe.skipPackage('express', 'gulp'); // this will skip all the trace lines about express` core and sub-modules
 
-var gulp = require('gulp');
+import gulp from 'gulp';
 
-var $ = require('gulp-load-plugins')();
+// const $ = require('gulp-load-plugins')();
+import gulpLoadPlugins from 'gulp-load-plugins';
+const $ = gulpLoadPlugins();
 
-var browserSync = require('browser-sync');
-var runSequence = require('run-sequence');
+import browserSync from 'browser-sync';
+import runSequence from 'run-sequence';
 
-var del = require('del');
-var path = require('path');
+import del from 'del';
+import path from 'path';
 
-var paths = require('./app/server/paths.js');
+import paths from './app/server/paths.js';
 
 // Options
 
-var options = {
+const options = {
     server: {
         path: path.join(paths.app.server, 'index.js'),
         env: {
@@ -63,12 +62,12 @@ var options = {
 
 // linters
 
-gulp.task('lint', function() {
+gulp.task('lint', () => {
     return gulp.src([
-        paths.app.scripts + '/**',
-        paths.app.server + '/**',
-        paths.gulpfile
-    ])
+            paths.app.scripts + '/**',
+            paths.app.server + '/**',
+            paths.gulpfile
+        ])
         .pipe($.eslint())
         .pipe($.eslint.format());
         // .pipe($.eslint.failOnError());
@@ -76,7 +75,7 @@ gulp.task('lint', function() {
 
 // clear
 
-gulp.task('clear', function() {
+gulp.task('clear', () => {
     return del([
         paths.distDirectory + '/*'
     ]);
@@ -84,8 +83,8 @@ gulp.task('clear', function() {
 
 // compile
 
-gulp.task('compile', function() {
-    var assets = $.useref.assets();
+gulp.task('compile', () => {
+    let assets = $.useref.assets();
 
     return gulp.src(paths.app.html)
         .pipe(assets)
@@ -100,13 +99,13 @@ gulp.task('compile', function() {
         .pipe(gulp.dest(paths.distDirectory));
 });
 
-gulp.task('scripts', function() {
+gulp.task('scripts', () => {
     return gulp.src(paths.app.scripts + '/**')
         // .pipe($.imagemin(options.imagemin))
         .pipe(gulp.dest(paths.dist.scripts));
 });
 
-gulp.task('styles', function() {
+gulp.task('styles', () => {
     return gulp.src(paths.app.styles + '/**')
         // .pipe($.imagemin(options.imagemin))
         .pipe(gulp.dest(paths.dist.styles));
@@ -116,8 +115,8 @@ gulp.task('styles', function() {
 
 gulp.task('images', ['images:public', 'images:articles']);
 
-gulp.task('images:public', function() {
-    var src = [
+gulp.task('images:public', () => {
+    let src = [
         paths.app.images + '/**'
     ];
 
@@ -126,8 +125,8 @@ gulp.task('images:public', function() {
         .pipe(gulp.dest(paths.dist.images));
 });
 
-gulp.task('images:articles', function() {
-    var src = [
+gulp.task('images:articles', () => {
+    let src = [
         paths.app.articles + '/*/article.png',
         paths.app.articles + '/*/images/*.{png,jpg,jpeg,gif,bmp}'
     ];
@@ -141,8 +140,8 @@ gulp.task('images:articles', function() {
 
 gulp.task('templates', ['templates:server', 'templates:articles']);
 
-gulp.task('templates:server', function() {
-    var src = [
+gulp.task('templates:server', () => {
+    let src = [
         paths.app.templates + '/**'
     ];
 
@@ -150,8 +149,8 @@ gulp.task('templates:server', function() {
         .pipe(gulp.dest(paths.dist.templates));
 });
 
-gulp.task('templates:articles', function() {
-    var src = [
+gulp.task('templates:articles', () => {
+    let src = [
         paths.app.articles + '/*/article.{html,json}'
     ];
 
@@ -159,46 +158,46 @@ gulp.task('templates:articles', function() {
         .pipe(gulp.dest(paths.dist.articles));
 });
 
-gulp.task('fonts', function() {
+gulp.task('fonts', () => {
     return gulp.src(paths.app.fonts + '/**')
         // .pipe($.flatten())
         .pipe(gulp.dest(paths.dist.fonts));
 });
 
-gulp.task('icons', function() {
+gulp.task('icons', () => {
     return gulp.src(paths.app.icons + '/**')
         .pipe(gulp.dest(paths.dist.icons));
 });
 
 // Main gulp tasks
 
-gulp.task('server:start', function() {
-    $.developServer.listen(options.server, function(error) {
+gulp.task('server:start', () => {
+    $.developServer.listen(options.server, (error) => {
         if (error) return;
         browserSync(options.browserSync);
     });
 });
 
 // If server scripts change, restart the server and then browser-reload.
-gulp.task('server:restart', function() {
-    $.developServer.restart(function(error) {
+gulp.task('server:restart', () => {
+    $.developServer.restart((error) => {
         if (error) return;
         browserSync.reload();
     });
 });
 
 // runs from app directory
-gulp.task('dev', ['server:start'], function() {
+gulp.task('dev', ['server:start'], () => {
     $.watch([
         paths.appDirectory + '/**'
-    ], function() {
+    ], () => {
         runSequence(
             ['server:restart']
         );
     });
 });
 
-gulp.task('dist', function() {
+gulp.task('dist', () => {
     runSequence(
         ['clear', 'lint'],
         ['scripts', 'styles', 'fonts', 'icons', 'images']

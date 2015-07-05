@@ -84,7 +84,7 @@ app.get('/debug/:article', function(req, res) {
             let reader = new commonmark.Parser();
             let writer = new commonmark.HtmlRenderer();
 
-            let parsedMarkdown = new commonmark.Parser().parse(markdown); // Node tree
+            let parsedMarkdown = reader.parse(markdown); // Node tree
 
             return writer.render(parsedMarkdown); // result is a String
         };
@@ -102,9 +102,8 @@ app.get('/debug/:article', function(req, res) {
 
 // main page
 app.get('/', function(req, res) {
-
     db.query('SELECT * FROM articles WHERE visible = 1 ORDER BY publication_date DESC LIMIT 10',
-    function(err, rows, fields) {
+    function(err, rows) {
         if (err) throw err;
 
         res.render(
@@ -113,9 +112,7 @@ app.get('/', function(req, res) {
                 articles: rows
             }
         );
-
     });
-
 });
 
 // article

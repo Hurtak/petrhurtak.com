@@ -1,14 +1,14 @@
-var fs = require('fs');
-var path = require('path');
+let fs = require('fs');
+let path = require('path');
 
-var findPathToArticleDirectoryByArticleName = function(directory, articleName, searchedDepth, currentDepth) {
+let findPathToArticleDirectoryByArticleName = function(directory, articleName, searchedDepth, currentDepth) {
     currentDepth = currentDepth || 0;
 
-    var list = fs.readdirSync(directory);
+    let list = fs.readdirSync(directory);
 
-    for (var i = 0; i < list.length; i++) {
-        var filePath = path.join(directory, list[i]);
-        var isDirectory = fs.statSync(filePath).isDirectory();
+    for (let i = 0; i < list.length; i++) {
+        let filePath = path.join(directory, list[i]);
+        let isDirectory = fs.statSync(filePath).isDirectory();
 
         if (!isDirectory) continue;
 
@@ -18,30 +18,30 @@ var findPathToArticleDirectoryByArticleName = function(directory, articleName, s
 
         if (currentDepth >= searchedDepth) continue;
 
-        var result = findPathToArticleDirectoryByArticleName(filePath, articleName, searchedDepth, currentDepth + 1);
+        let result = findPathToArticleDirectoryByArticleName(filePath, articleName, searchedDepth, currentDepth + 1);
         if (result) return result;
     }
 
     return false;
 };
 
-var getArticlesMetadata = function(directory, filename, gatheredMetadata, baseDirectory) {
+let getArticlesMetadata = function(directory, filename, gatheredMetadata, baseDirectory) {
     gatheredMetadata = gatheredMetadata || [];
     baseDirectory = baseDirectory || directory;
 
-    var list = fs.readdirSync(directory);
-    for (var i = 0; i < list.length; i++) {
-        var filePath = path.join(directory, list[i]);
-        var isDirectory = fs.statSync(filePath).isDirectory();
+    let list = fs.readdirSync(directory);
+    for (let i = 0; i < list.length; i++) {
+        let filePath = path.join(directory, list[i]);
+        let isDirectory = fs.statSync(filePath).isDirectory();
 
         if (isDirectory) {
             gatheredMetadata = getArticlesMetadata(filePath, filename, gatheredMetadata, baseDirectory);
         } else if (list[i] === filename) {
-            var articleDirectory = filePath // path to article relative to baseDirectory
+            let articleDirectory = filePath // path to article relative to baseDirectory
                 .replace(filename, '')
                 .replace(baseDirectory, '')
 
-            var metadata = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            let metadata = JSON.parse(fs.readFileSync(filePath, 'utf8'));
             metadata.directory = articleDirectory;
             metadata.url = stripSlashes(articleDirectory).split(path.sep);
             metadata.url = metadata.url[metadata.url.length - 1]
@@ -52,15 +52,15 @@ var getArticlesMetadata = function(directory, filename, gatheredMetadata, baseDi
     return gatheredMetadata;
 };
 
-var getArticlesDirectories = function(directory, searchedDepth, currentDepth, articlesList) {
+let getArticlesDirectories = function(directory, searchedDepth, currentDepth, articlesList) {
     currentDepth = currentDepth || 0;
     articlesList = articlesList || [];
 
-    var list = fs.readdirSync(directory);
+    let list = fs.readdirSync(directory);
 
-    for (var i = 0; i < list.length; i++) {
-        var filePath = path.join(directory, list[i]);
-        var isDirectory = fs.statSync(filePath).isDirectory();
+    for (let i = 0; i < list.length; i++) {
+        let filePath = path.join(directory, list[i]);
+        let isDirectory = fs.statSync(filePath).isDirectory();
 
         if (!isDirectory) continue;
 
@@ -75,7 +75,7 @@ var getArticlesDirectories = function(directory, searchedDepth, currentDepth, ar
 };
 
 // TODO: this should not be in this file
-var sortObjectBy = function(object, sortBy, ascendant) {
+let sortObjectBy = function(object, sortBy, ascendant) {
     object.sort(function(a, b) {
         if (a[sortBy] < b[sortBy]) {
             return ascendant ? -1 : 1;
@@ -87,7 +87,7 @@ var sortObjectBy = function(object, sortBy, ascendant) {
 };
 
 // TODO: this should not be in this file
-var stripSlashes = function(string) {
+let stripSlashes = function(string) {
     if (string[0] === path.sep) {
         string = string.substr(1);
     }

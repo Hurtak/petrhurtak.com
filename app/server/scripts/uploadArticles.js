@@ -1,47 +1,47 @@
 /* eslint-disable strict */
 'use strict';
 
-var path = require('path');
-var fs = require('fs');
+const path = require('path');
+const fs = require('fs');
 
-var mysql = require('mysql');
-var db = mysql.createConnection({
+const mysql = require('mysql');
+const db = mysql.createConnection({
     host: 'localhost',
     database: 'hurtak_blog',
     user: 'root',
     password: ''
 });
 
-var paths = require('../paths.js');
-var articles = require(path.join(paths.app.server, 'articles.js'));
+const paths = require('../paths.js');
+const articles = require(path.join(paths.app.server, 'articles.js'));
 
-var articlesDirectories = articles.getArticlesDirectories(paths.app.articles, 2);
+const articlesDirectories = articles.getArticlesDirectories(paths.app.articles, 2);
 
-var urls = [];
+let urls = [];
 
-for (var i = 0; i < articlesDirectories.length; i++) {
+for (let i = 0; i < articlesDirectories.length; i++) {
     (function(i) {
-        var articleName = articlesDirectories[i].split(path.sep).reverse()[0];
-        var metadataFilePath = path.join(articlesDirectories[i], 'metadata.json');
+        let articleName = articlesDirectories[i].split(path.sep).reverse()[0];
+        let metadataFilePath = path.join(articlesDirectories[i], 'metadata.json');
 
         fs.readFile(metadataFilePath, 'utf-8', function(err, data) {
             if (err) throw err;
 
             data = JSON.parse(data);
 
-            var publicationDate = new Date(data.publication_date);
-            var publicationYear = publicationDate.getFullYear();
-            var publicationMonth = publicationDate.getMonth() + 1;
+            let publicationDate = new Date(data.publication_date);
+            let publicationYear = publicationDate.getFullYear();
+            let publicationMonth = publicationDate.getMonth() + 1;
 
-            var directoryDate = articlesDirectories[i].split(path.sep);
-            var directoryYear = directoryDate[directoryDate.length - 3];
-            var directoryMonth = directoryDate[directoryDate.length - 2];
+            let directoryDate = articlesDirectories[i].split(path.sep);
+            let directoryYear = directoryDate[directoryDate.length - 3];
+            let directoryMonth = directoryDate[directoryDate.length - 2];
 
             if (publicationYear != directoryYear || publicationMonth != directoryMonth) {
                 throw new Error('publication_date in metadata.json is dirrefent from year or month directory ' + metadataFilePath);
             }
 
-            var query = [
+            let query = [
                 'INSERT INTO articles',
                     '(title, preview, url, publication_date, last_update, visible)',
                 'VALUES',
@@ -54,10 +54,10 @@ for (var i = 0; i < articlesDirectories.length; i++) {
                     'visible = VALUES(visible)'
             ].join(' ');
 
-            var url = [directoryYear, directoryMonth, articleName].join('/');
+            let url = [directoryYear, directoryMonth, articleName].join('/');
             urls.push(url);
 
-            var dbData = [
+            let dbData = [
                 data.title,
                 data.preview,
                 url,
@@ -71,7 +71,7 @@ for (var i = 0; i < articlesDirectories.length; i++) {
                 console.log('article "' + articleName + '" succesfully inserted into db.');
 
                 if (i === articlesDirectories.length - 1) {
-                    var deleteQuery = [
+                    let deleteQuery = [
                         'DELETE FROM articles',
                         'WHERE url NOT IN (\'' + urls.join('\', \'') + '\')'
                     ].join(' ');

@@ -1,7 +1,3 @@
-const pe = require('pretty-error').start();
-pe.skipNodeFiles(); // this will skip events.js and http.js and similar core node files
-pe.skipPackage('express', 'gulp'); // this will skip all the trace lines about express` core and sub-modules
-
 import gulp from 'gulp';
 
 // const $ = require('gulp-load-plugins')();

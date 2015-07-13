@@ -1,8 +1,3 @@
-// TODO: its already called in gulp file, why do i need to call it twice??
-const pe = require('pretty-error').start();
-pe.skipNodeFiles(); // this will skip events.js and http.js and similar core node files
-pe.skipPackage('express'); // this will skip all the trace lines about express` core and sub-
-
 const express = require('express');
 const app = express();
 
@@ -37,7 +32,7 @@ app.get('/articles/*/*/*/images/*.png', function(req, res) {
 
 app.get('/debug', function(req, res) {
     // get all metadata.json files
-    let metadata = articles.getArticlesMetadata(paths.app.articles, 'metadata.json');
+    let metadata = articles.getArticlesMetadata(paths.app.articles, 'article.md');
 
     // remove articles with visibility == 0
     for (let article in metadata) {

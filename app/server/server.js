@@ -79,18 +79,8 @@ app.get('/debug/:article', function(req, res) {
             }
         );
 
-        let commonmark = require('commonmark');
-        commonmark.render = function(markdown) {
-            let reader = new commonmark.Parser();
-            let writer = new commonmark.HtmlRenderer();
-
-            let parsedMarkdown = reader.parse(markdown); // Node tree
-
-            return writer.render(parsedMarkdown); // result is a String
-        };
-
-        let result = commonmark.render(articleContent);
-
+        let md = require('markdown-it')();
+        let result = md.render(articleContent);
 
         res.render(path.join(paths.app.templates, 'article.html'), {
             title: data.title,

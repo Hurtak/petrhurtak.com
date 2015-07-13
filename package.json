@@ -10,8 +10,7 @@
   },
   "devDependencies": {
     "babel": "5.6.14",
-    "browser-sync": "2.7.12",
-    "commonmark": "0.20.0",
+    "browser-sync": "2.7.13",
     "del": "1.2.0",
     "eslint-config-airbnb": "0.0.6",
     "gulp": "3.9.0",
@@ -31,6 +30,7 @@
     "gulp-useref": "1.2.0",
     "gulp-watch": "4.2.4",
     "less": "2.5.1",
+    "markdown-it": "4.3.0",
     "normalize.css": "3.0.3",
     "pretty-error": "1.1.2",
     "run-sequence": "1.1.1"

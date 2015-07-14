@@ -182,6 +182,10 @@ gulp.task('server:restart', () => {
     });
 });
 
+gulp.task('upload', () => {
+    require('./app/server/scripts/uploadArticles');
+});
+
 // runs from app directory
 gulp.task('dev', ['server:start'], () => {
     $.watch([

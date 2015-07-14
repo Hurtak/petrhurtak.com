@@ -1,6 +1,8 @@
 let fs = require('fs');
 let path = require('path');
 
+let frontMatter = require('front-matter')
+
 let findPathToArticleDirectoryByArticleName = function(directory, articleName, searchedDepth, currentDepth) {
     currentDepth = currentDepth || 0;
 
@@ -41,7 +43,8 @@ let getArticlesMetadata = function(directory, filename, gatheredMetadata, baseDi
                 .replace(filename, '')
                 .replace(baseDirectory, '')
 
-            let metadata = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            let metadata = frontMatter(fs.readFileSync(filePath, 'utf8')).attributes;
+
             metadata.directory = articleDirectory;
             metadata.url = stripSlashes(articleDirectory).split(path.sep);
             metadata.url = metadata.url[metadata.url.length - 1]

@@ -7,6 +7,9 @@ const fs = require('fs');
 
 const swig = require('swig');
 
+const markdown = require('markdown-it')();
+const frontMatter = require('front-matter');
+
 const mysql = require('mysql');
 const db = mysql.createConnection({
     host: 'localhost',
@@ -58,9 +61,10 @@ app.get('/debug/:article', function(req, res) {
     if (!articlePath) {
         res.render(path.join(paths.app.templates, '404.html'));
     } else {
-        let data = JSON.parse(fs.readFileSync(articlePath + '/metadata.json', 'utf8'));
+        let data = frontMatter(fs.readFileSync(articlePath + '/article.md', 'utf8'));
+        let metadata = data.attributes;
 
-        let articleContent = fs.readFileSync(path.join(articlePath, 'article.md'), 'utf8');
+        let articleContent = data.body;
 
         articlePath = articlePath
             .replace(paths.appDirectory, '')
@@ -74,12 +78,11 @@ app.get('/debug/:article', function(req, res) {
             }
         );
 
-        let md = require('markdown-it')();
-        let result = md.render(articleContent);
+        let result = markdown.render(articleContent);
 
         res.render(path.join(paths.app.templates, 'article.html'), {
-            title: data.title,
-            date: data.publication_date,
+            title: metadata.title,
+            date: metadata.publication_date,
             article: result
         });
     }
@@ -139,7 +142,10 @@ app.get('/:article', function(req, res) {
                 articlePath = articlePath
                     .replace(paths.appDirectory, '')
                     .split(path.sep).join('/');
-                article = article({articlePath: articlePath + '/'});
+
+                article = article({
+                    articlePath: articlePath + '/'
+                });
 
                 res.render(path.join(paths.app.templates, 'article.html'), {
                     title: rows[0].title,

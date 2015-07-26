@@ -1,6 +1,3 @@
-
-var conf = {
+export default conf = {
 
 };
-
-module.exports conf;

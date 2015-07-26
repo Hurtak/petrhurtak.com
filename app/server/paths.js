@@ -1,8 +1,18 @@
-var path = require('path');
+import path from 'path';
 
-var rootDirectory = path.join(__dirname, '../../');
+function joinPathsInObject(object, rootDirectory) {
+    for (let key in object) {
+        if (typeof object[key] === 'object') {
+            joinPathsInObject(object[key], rootDirectory);
+        } else {
+            object[key] = path.join(rootDirectory, object[key]);
+        }
+    }
+}
 
-var paths = { // paths relative to root directory
+const rootDirectory = path.join(__dirname, '../../');
+
+const paths = { // paths relative to root directory
     appDirectory: './app',
     app: {
         articles: './app/articles',
@@ -33,16 +43,6 @@ var paths = { // paths relative to root directory
     gulpfile: './gulpfile.js'
 };
 
-function joinPathsInObject(object, rootDirectory) {
-    for (var key in object) {
-        if (typeof object[key] === 'object') {
-            joinPathsInObject(object[key], rootDirectory);
-        } else {
-            object[key] = path.join(rootDirectory, object[key]);
-        }
-    }
-}
-
 joinPathsInObject(paths, rootDirectory);
 
-module.exports = paths;
+export default paths;

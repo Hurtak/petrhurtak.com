@@ -1,7 +1,7 @@
-let fs = require('fs');
-let path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-let frontMatter = require('front-matter')
+import frontMatter from 'front-matter';
 
 let findPathToArticleDirectoryByArticleName = function(directory, articleName, searchedDepth, currentDepth) {
     currentDepth = currentDepth || 0;
@@ -101,9 +101,9 @@ let stripSlashes = function(string) {
     return string;
 };
 
-module.exports = {
-    findPathToArticleDirectoryByArticleName: findPathToArticleDirectoryByArticleName,
-    getArticlesMetadata: getArticlesMetadata,
-    getArticlesDirectories: getArticlesDirectories,
-    sortObjectBy: sortObjectBy
+export {
+    findPathToArticleDirectoryByArticleName,
+    getArticlesMetadata,
+    getArticlesDirectories,
+    sortObjectBy
 };

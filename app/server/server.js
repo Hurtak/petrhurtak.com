@@ -1,16 +1,17 @@
-const express = require('express');
+import express from 'express';
 const app = express();
 
-const path = require('path');
-const url = require('url');
-const fs = require('fs');
+import path from 'path';
+import url from 'url';
+import fs from 'fs';
 
-const swig = require('swig');
+import swig from 'swig';
 
-const markdown = require('markdown-it')();
-const frontMatter = require('front-matter');
+import markdownIt from 'markdown-it';
+const markdown = markdownIt()
+import frontMatter from 'front-matter';
 
-const mysql = require('mysql');
+import mysql from 'mysql';
 const db = mysql.createConnection({
     host: 'localhost',
     database: 'hurtak_blog',
@@ -90,29 +91,33 @@ app.get('/debug/:article', function(req, res) {
 
 // main page
 app.get('/', function(req, res) {
-    db.query('SELECT * FROM articles WHERE visible = 1 ORDER BY publication_date DESC LIMIT 10',
+    db.query(`
+        SELECT *
+        FROM articles
+        WHERE visible = 1
+        ORDER BY publication_date
+        DESC LIMIT 10`,
     function(err, rows) {
         if (err) throw err;
 
         res.render(
             path.join(paths.app.templates, 'index.html'),
-            {
-                articles: rows
-            }
+            {articles: rows}
         );
     });
 });
 
 // article
 app.get('/:article', function(req, res) {
-    let query = `
+    const query = `
         SELECT id,
             title,
             publication_date,
             url,
-            YEAR(publication_date) AS year,
-            LPAD(MONTH(publication_date), 2, 0) AS month
+            content
         FROM articles
+        LEFT JOIN articles_content
+            ON articles.id = articles_content.article_id
         WHERE visible = 1
         AND url = ?`;
 
@@ -123,41 +128,16 @@ app.get('/:article', function(req, res) {
             // TODO: function for displaying 404
             res.render(path.join(paths.app.templates, '404.html'));
         } else {
-            let articlePath = path.join(
-                paths.app.articles,
-                String(rows[0].year),
-                String(rows[0].month),
-                rows[0].url
-            );
-
-            fs.readFile(path.join(articlePath, 'article.md'), function(err, data) {
-                if (err) {
-                    // TODO: this should not happen, make a log
-                    res.render(path.join(paths.app.templates, '404.html'));
-                    return;
-                }
-
-                let article = swig.compileFile(path.join(articlePath, 'article.md'));
-
-                articlePath = articlePath
-                    .replace(paths.appDirectory, '')
-                    .split(path.sep).join('/');
-
-                article = article({
-                    articlePath: articlePath + '/'
-                });
-
-                res.render(path.join(paths.app.templates, 'article.html'), {
-                    title: rows[0].title,
-                    date: rows[0].publication_date,
-                    article: article
-                });
+            res.render(path.join(paths.app.templates, 'article.html'), {
+                title: rows[0].title,
+                date: rows[0].publication_date,
+                article: rows[0].content
             });
         }
     });
 });
 
-let port = 8000;
-let server = app.listen(port, function() {
+const port = 8000;
+const server = app.listen(port, function() {
 
 });

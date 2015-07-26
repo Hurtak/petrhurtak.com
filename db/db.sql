@@ -11,6 +11,7 @@ CREATE TABLE `articles` (
   `title` varchar(50) COLLATE utf8_czech_ci NOT NULL,
   `description` varchar(250) COLLATE utf8_czech_ci NOT NULL,
   `url` varchar(50) COLLATE utf8_czech_ci NOT NULL,
+  `directory` varchar(50) COLLATE utf8_czech_ci NOT NULL,
   `publication_date` datetime NOT NULL,
   `last_update` datetime NOT NULL,
   `visible` tinyint(1) NOT NULL DEFAULT '0',
@@ -42,4 +43,4 @@ CREATE TABLE `fulltext` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 
--- 2015-07-14 20:57:47
+-- 2015-07-26 19:36:41

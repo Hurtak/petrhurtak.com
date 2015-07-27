@@ -1,10 +1,8 @@
-/* eslint-disable strict */
-'use strict';
+import path from 'path';
+import url from 'url';
+import fs from 'fs';
 
-const path = require('path');
-const fs = require('fs');
-
-const mysql = require('mysql');
+import mysql from 'mysql';
 const db = mysql.createConnection({
     host: 'localhost',
     database: 'hurtak_blog',
@@ -12,8 +10,12 @@ const db = mysql.createConnection({
     password: ''
 });
 
-const paths = require('../paths.js');
+import paths from '../paths.js';
 const articles = require(path.join(paths.app.server, 'articles.js'));
+
+import markdownIt  from 'markdown-it';
+const markdown = markdownIt();
+import frontMatter from 'front-matter';
 
 const articlesDirectories = articles.getArticlesDirectories(paths.app.articles, 2);
 
@@ -22,14 +24,16 @@ let urls = [];
 for (let i = 0; i < articlesDirectories.length; i++) {
     (function(i) {
         let articleName = articlesDirectories[i].split(path.sep).reverse()[0];
-        let metadataFilePath = path.join(articlesDirectories[i], 'metadata.json');
+        let metadataFilePath = path.join(articlesDirectories[i], 'article.md');
 
         fs.readFile(metadataFilePath, 'utf-8', function(err, data) {
             if (err) throw err;
 
-            data = JSON.parse(data);
+            data = frontMatter(data);
+            const metadata = data.attributes;
+            let articleContent = data.body;
 
-            let publicationDate = new Date(data.publication_date);
+            let publicationDate = new Date(metadata.publication_date);
             let publicationYear = publicationDate.getFullYear();
             let publicationMonth = publicationDate.getMonth() + 1;
 
@@ -38,49 +42,83 @@ for (let i = 0; i < articlesDirectories.length; i++) {
             let directoryMonth = directoryDate[directoryDate.length - 2];
 
             if (publicationYear != directoryYear || publicationMonth != directoryMonth) {
-                throw new Error('publication_date in metadata.json is dirrefent from year or month directory ' + metadataFilePath);
+                throw new Error('publication_date in article.md yaml header is dirrerent from year or month directory ' + metadataFilePath);
             }
 
-            let query = [
-                'INSERT INTO articles',
-                    '(title, preview, url, publication_date, last_update, visible)',
-                'VALUES',
-                    '(?, ?, ?, ?, ?, ?)',
-                'ON DUPLICATE KEY UPDATE',
-                    'title = VALUES(title),',
-                    'preview = VALUES(preview),',
-                    'publication_date = VALUES(publication_date),',
-                    'last_update = VALUES(last_update),',
-                    'visible = VALUES(visible)'
-            ].join(' ');
+            const query = `
+                INSERT INTO articles
+                    (title, description, url, directory, publication_date, last_update, visible)
+                VALUES
+                    (?, ?, ?, ?, ?, ?, ?)
+                ON DUPLICATE KEY UPDATE
+                    title = VALUES(title),
+                    description = VALUES(description),
+                    url = VALUES(url),
+                    directory = VALUES(directory),
+                    publication_date = VALUES(publication_date),
+                    last_update = VALUES(last_update),
+                    visible = VALUES(visible)`;
 
-            let url = [directoryYear, directoryMonth, articleName].join('/');
-            urls.push(url);
+            urls.push(articleName);
 
             let dbData = [
-                data.title,
-                data.preview,
-                url,
-                data.publication_date,
-                data.last_update,
-                data.visible
+                metadata.title,
+                metadata.description,
+                articleName,
+                directoryYear + '/' +  directoryMonth,
+                metadata.publication_date,
+                metadata.last_update,
+                metadata.visible
             ];
 
             db.query(query, dbData, function(err, result) {
                 if (err) throw err;
-                console.log('article "' + articleName + '" succesfully inserted into db.');
+                console.log('article "' + articleName + '" metadata succesfully inserted into db.');
 
-                if (i === articlesDirectories.length - 1) {
-                    let deleteQuery = [
-                        'DELETE FROM articles',
-                        'WHERE url NOT IN (\'' + urls.join('\', \'') + '\')'
-                    ].join(' ');
+                let query = `
+                    INSERT INTO articles_content
+                        (article_id, content)
+                    VALUES
+                        (?, ?)
+                    ON DUPLICATE KEY UPDATE
+                        article_id = VALUES(article_id),
+                        content = VALUES(content)`;
 
-                    db.query(deleteQuery, function(err, result) {
-                        if (err) throw err;
-                        console.log('article "' + articleName + '" succesfully inserted into db.');
-                    });
-                }
+                let articlePath = articlesDirectories[i]
+                    .replace(paths.appDirectory, '')
+                    .split(path.sep).join('/');
+                articlePath += '/';
+
+                articleContent = articleContent.replace(
+                    /(^.*!\[.*?\]\()(\.\/.*?)(\).*$)/gm,
+                    function(whole, first, second, third) {
+                        return first + url.resolve(articlePath, second) + third;
+                    }
+                );
+
+                let dbData = [
+                    result.insertId,
+                    articleContent
+                ];
+                console.log('dbData ' , dbData);
+
+                db.query(query, dbData, function(err, result) {
+                    if (err) throw err;
+                    console.log('article "' + articleName + '" content succesfully inserted into db.');
+
+                    if (i === articlesDirectories.length - 1) {
+                        var urlsJoin = urls.join('\', \'');
+                        console.log('urlsJoin ' , urlsJoin);
+                        let deleteQuery = `
+                            DELETE FROM articles
+                            WHERE url NOT IN ('${ urlsJoin }')`;
+
+                        db.query(deleteQuery, function(err, result) {
+                            if (err) throw err;
+                            console.log('article "' + articleName + '" deleted from db.');
+                        });
+                    }
+                });
             });
         });
     })(i);

@@ -90,21 +90,30 @@ app.get('/debug/:article', function(req, res) {
 });
 
 // main page
-app.get('/', function(req, res) {
-    db.query(`
-        SELECT *
-        FROM articles
-        WHERE visible = 1
-        ORDER BY publication_date
-        DESC LIMIT 10`,
-    function(err, rows) {
-        if (err) throw err;
+app.get('/', async function(req, res) {
+    function getAtricles() {
+        return new Promise(function(resolve, reject) {
+            db.query(`
+                SELECT *
+                FROM articles
+                WHERE visible = 1
+                ORDER BY publication_date
+                DESC LIMIT 10`,
+                function(err, rows) {
+                    if (err) reject(err);
 
-        res.render(
-            path.join(paths.app.templates, 'index.html'),
-            {articles: rows}
-        );
-    });
+                    resolve(rows);
+                }
+            );
+        });
+    }
+
+    let articles = await getAtricles();
+
+    res.render(
+        path.join(paths.app.templates, 'index.html'),
+        {articles: articles}
+    );
 });
 
 // article
@@ -137,7 +146,6 @@ app.get('/:article', function(req, res) {
     });
 });
 
-const port = 8000;
-const server = app.listen(port, function() {
+const server = app.listen(8000, function() {
 
 });

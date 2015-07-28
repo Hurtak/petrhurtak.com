@@ -17,7 +17,7 @@ import markdownIt  from 'markdown-it';
 const markdown = markdownIt();
 import frontMatter from 'front-matter';
 
-const articlesDirectories = articles.getArticlesDirectories(paths.app.articles, 2);
+const articlesDirectories = articles.getArticlesDirectories(paths.articles, 2);
 
 let urls = [];
 

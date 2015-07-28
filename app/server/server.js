@@ -28,7 +28,7 @@ app.get('/articles/*/*/*/images/*.png', function(req, res) {
 
 app.get('/debug', function(req, res) {
     // get all metadata.json files
-    let metadata = articles.getArticlesMetadata(paths.app.articles, 'article.md');
+    let metadata = articles.getArticlesMetadata(paths.articles, 'article.md');
 
     // remove articles with visibility == 0
     for (let article in metadata) {
@@ -50,7 +50,7 @@ app.get('/debug', function(req, res) {
 app.get('/debug/:article', function(req, res) {
     let articleName = req.params.article;
 
-    let articlePath = articles.findPathToArticleDirectoryByArticleName(paths.app.articles, articleName, 2);
+    let articlePath = articles.findPathToArticleDirectoryByArticleName(paths.articles, articleName, 2);
     if (!articlePath) {
         res.render(path.join(paths.app.templates, '404.html'));
     } else {

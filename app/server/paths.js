@@ -13,9 +13,12 @@ function joinPathsInObject(object, rootDirectory) {
 const rootDirectory = path.join(__dirname, '../../');
 
 const paths = { // paths relative to root directory
+    articles: './articles',
+    nodeModules: './node_modules',
+    gulpfile: './gulpfile.js',
+
     appDirectory: './app',
     app: {
-        articles: './app/articles',
         server: './app/server',
         public: './app/public',
             fonts: './app/public/fonts',
@@ -28,7 +31,6 @@ const paths = { // paths relative to root directory
 
     distDirectory: './dist',
     dist: {
-        articles: './dist/articles',
         server: './dist/server',
         public: './dist/public',
             fonts: './dist/public/fonts',
@@ -38,9 +40,6 @@ const paths = { // paths relative to root directory
             styles: './dist/public/styles',
         templates: './dist/templates'
     },
-
-    nodeModules: './node_modules',
-    gulpfile: './gulpfile.js'
 };
 
 joinPathsInObject(paths, rootDirectory);

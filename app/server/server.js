@@ -84,7 +84,7 @@ app.get('/debug/:article', function(req, res) {
 
 // main page
 app.get('/', async function(req, res) {
-    let articles = await database.getAtricles();
+    const articles = await database.getAtricles();
 
     res.render(
         path.join(paths.app.templates, 'index.html'),
@@ -94,7 +94,7 @@ app.get('/', async function(req, res) {
 
 // article
 app.get('/:article', async function(req, res) {
-    let article = await database.getAtricle(req.params.article);
+    const article = await database.getAtricle(req.params.article);
 
     if (article) {
         res.render(path.join(paths.app.templates, 'article.html'), {

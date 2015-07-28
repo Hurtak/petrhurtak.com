@@ -7,14 +7,14 @@ const db = mysql.createConnection({
     password: ''
 });
 
-function dbPromiseFactory(queryString, parameters) {
+function dbPromiseFactory(queryString, parameters = [], returnOneResults = false) {
     parameters = Array.isArray(parameters) ? parameters : [parameters];
 
     return new Promise(function(resolve, reject) {
         db.query(queryString, parameters, function(err, rows) {
             if (err) { reject(err); }
 
-            var result = rows.length > 1 ? rows : rows[0];
+            const result = returnOneResults && rows.length ? rows[0] : rows;
             resolve(result);
         });
     });
@@ -22,7 +22,9 @@ function dbPromiseFactory(queryString, parameters) {
 
 export function getAtricles() {
     const query = `
-        SELECT *
+        SELECT url,
+            title,
+            description
         FROM articles
         WHERE visible = 1
         ORDER BY publication_date
@@ -46,5 +48,5 @@ export function getAtricle(article) {
         AND url = ?
     `;
 
-    return dbPromiseFactory(query, article);
+    return dbPromiseFactory(query, article, true);
 }

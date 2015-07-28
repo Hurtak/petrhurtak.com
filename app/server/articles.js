@@ -3,20 +3,16 @@ import path from 'path';
 
 import frontMatter from 'front-matter';
 
-let findPathToArticleDirectoryByArticleName = function(directory, articleName, searchedDepth, currentDepth) {
-    currentDepth = currentDepth || 0;
-
+export function findPathToArticleDirectoryByArticleName(directory, articleName, searchedDepth, currentDepth = 0) {
     let list = fs.readdirSync(directory);
 
-    for (let i = 0; i < list.length; i++) {
-        let filePath = path.join(directory, list[i]);
+    for (let file of list) {
+        let filePath = path.join(directory, file);
         let isDirectory = fs.statSync(filePath).isDirectory();
 
         if (!isDirectory) continue;
 
-        if (currentDepth === searchedDepth && list[i] === articleName) {
-            return filePath;
-        }
+        if (currentDepth === searchedDepth && file === articleName) return filePath;
 
         if (currentDepth >= searchedDepth) continue;
 
@@ -25,20 +21,17 @@ let findPathToArticleDirectoryByArticleName = function(directory, articleName, s
     }
 
     return false;
-};
+}
 
-let getArticlesMetadata = function(directory, filename, gatheredMetadata, baseDirectory) {
-    gatheredMetadata = gatheredMetadata || [];
-    baseDirectory = baseDirectory || directory;
-
-    let list = fs.readdirSync(directory);
-    for (let i = 0; i < list.length; i++) {
-        let filePath = path.join(directory, list[i]);
-        let isDirectory = fs.statSync(filePath).isDirectory();
+export function getArticlesMetadata(directory, filename, gatheredMetadata = [], baseDirectory = directory) {
+    const list = fs.readdirSync(directory);
+    for (const file of list) {
+        const filePath = path.join(directory, file);
+        const isDirectory = fs.statSync(filePath).isDirectory();
 
         if (isDirectory) {
             gatheredMetadata = getArticlesMetadata(filePath, filename, gatheredMetadata, baseDirectory);
-        } else if (list[i] === filename) {
+        } else if (file === filename) {
             let articleDirectory = filePath // path to article relative to baseDirectory
                 .replace(filename, '')
                 .replace(baseDirectory, '')
@@ -53,16 +46,13 @@ let getArticlesMetadata = function(directory, filename, gatheredMetadata, baseDi
     }
 
     return gatheredMetadata;
-};
+}
 
-let getArticlesDirectories = function(directory, searchedDepth, currentDepth, articlesList) {
-    currentDepth = currentDepth || 0;
-    articlesList = articlesList || [];
+export function getArticlesDirectories(directory, searchedDepth, currentDepth = 0, articlesList = []) {
+    const list = fs.readdirSync(directory);
 
-    let list = fs.readdirSync(directory);
-
-    for (let i = 0; i < list.length; i++) {
-        let filePath = path.join(directory, list[i]);
+    for (let file of list) {
+        let filePath = path.join(directory, file);
         let isDirectory = fs.statSync(filePath).isDirectory();
 
         if (!isDirectory) continue;
@@ -75,10 +65,10 @@ let getArticlesDirectories = function(directory, searchedDepth, currentDepth, ar
     }
 
     return articlesList;
-};
+}
 
 // TODO: this should not be in this file
-let sortObjectBy = function(object, sortBy, ascendant) {
+export function sortObjectBy(object, sortBy, ascendant) {
     object.sort(function(a, b) {
         if (a[sortBy] < b[sortBy]) {
             return ascendant ? -1 : 1;
@@ -87,10 +77,10 @@ let sortObjectBy = function(object, sortBy, ascendant) {
         }
         return 0;
     });
-};
+}
 
 // TODO: this should not be in this file
-let stripSlashes = function(string) {
+function stripSlashes(string) {
     if (string[0] === path.sep) {
         string = string.substr(1);
     }
@@ -99,11 +89,4 @@ let stripSlashes = function(string) {
     }
 
     return string;
-};
-
-export {
-    findPathToArticleDirectoryByArticleName,
-    getArticlesMetadata,
-    getArticlesDirectories,
-    sortObjectBy
-};
+}

@@ -8,19 +8,11 @@ import fs from 'fs';
 import swig from 'swig';
 
 import markdownIt from 'markdown-it';
-const markdown = markdownIt()
 import frontMatter from 'front-matter';
-
-import mysql from 'mysql';
-const db = mysql.createConnection({
-    host: 'localhost',
-    database: 'hurtak_blog',
-    user: 'root',
-    password: ''
-});
 
 import * as paths from './paths.js';
 import * as articles from './articles.js';
+import * as database from './database.js';
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
@@ -79,7 +71,8 @@ app.get('/debug/:article', function(req, res) {
             }
         );
 
-        let result = markdown.render(articleContent);
+        const markdown = markdownIt();
+        const result = markdown.render(articleContent);
 
         res.render(path.join(paths.app.templates, 'article.html'), {
             title: metadata.title,
@@ -91,24 +84,7 @@ app.get('/debug/:article', function(req, res) {
 
 // main page
 app.get('/', async function(req, res) {
-    function getAtricles() {
-        return new Promise(function(resolve, reject) {
-            db.query(`
-                SELECT *
-                FROM articles
-                WHERE visible = 1
-                ORDER BY publication_date
-                DESC LIMIT 10`,
-                function(err, rows) {
-                    if (err) reject(err);
-
-                    resolve(rows);
-                }
-            );
-        });
-    }
-
-    let articles = await getAtricles();
+    let articles = await database.getAtricles();
 
     res.render(
         path.join(paths.app.templates, 'index.html'),
@@ -117,35 +93,19 @@ app.get('/', async function(req, res) {
 });
 
 // article
-app.get('/:article', function(req, res) {
-    const query = `
-        SELECT id,
-            title,
-            publication_date,
-            url,
-            content
-        FROM articles
-        LEFT JOIN articles_content
-            ON articles.id = articles_content.article_id
-        WHERE visible = 1
-        AND url = ?`;
+app.get('/:article', async function(req, res) {
+    let article = await database.getAtricle(req.params.article);
 
-    db.query(query, [req.params.article], function(err, rows, fields) {
-        if (err) throw err;
-
-        if (!rows.length) {
-            // TODO: function for displaying 404
-            res.render(path.join(paths.app.templates, '404.html'));
-        } else {
-            res.render(path.join(paths.app.templates, 'article.html'), {
-                title: rows[0].title,
-                date: rows[0].publication_date,
-                article: rows[0].content
-            });
-        }
-    });
+    if (article) {
+        res.render(path.join(paths.app.templates, 'article.html'), {
+            title: article.title,
+            date: article.publication_date,
+            article: article.content
+        });
+    } else {
+        // TODO: function for displaying 404
+        res.render(path.join(paths.app.templates, '404.html'));
+    }
 });
 
-const server = app.listen(8000, function() {
-
-});
+const server = app.listen(8000, function() {});

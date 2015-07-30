@@ -79,7 +79,7 @@ export function parseArticle(articlePath) {
     let article = data.body;
 
     const articleDirectory =
-        '/'
+        '/articles/'
         + articlePath
             .replace(paths.articles, '') // c:\some\path\rootdir\article.md -> rootdir\article.md
             .split(path.sep)
@@ -90,9 +90,7 @@ export function parseArticle(articlePath) {
 
     article = article.replace(
         /(^.*!\[.*?\]\()(\.\/.*?)(\).*$)/gm,
-        (whole, first, second, third) => {
-            return first + url.resolve(articleDirectory, second) + third;
-        }
+        (whole, first, second, third) => first + url.resolve(articleDirectory, second) + third
     );
 
     return {

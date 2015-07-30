@@ -18,11 +18,9 @@ app.set('views', paths.app.templates);
 
 app.use('/', express.static(paths.app.public));
 app.use('/node_modules', express.static(paths.nodeModules));
-app.get('/articles/*/*/*/images/*.png', (req, res) => {
-    // article images
-    // FIXME
-    res.sendFile(path.join(paths.appDirectory, req.originalUrl));
-});
+app.get('/articles/*/*/*/images/*.png', (req, res) => // article images
+    res.sendFile(path.join(paths.root, req.originalUrl))
+);
 
 // dynamic pages
 

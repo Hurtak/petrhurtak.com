@@ -78,9 +78,14 @@ export function parseArticle(articlePath) {
     let metadata = data.attributes;
     let article = data.body;
 
-    const articleDirectory = articlePath
-        .replace(paths.appDirectory, '')
-        .split(path.sep).join('/')
+    const articleDirectory =
+        '/'
+        + articlePath
+            .replace(paths.articles, '') // c:\some\path\rootdir\article.md -> rootdir\article.md
+            .split(path.sep)
+            .filter(value => value) // remove empty values (\some\path creates ['', 'some', 'path'])
+            .filter((value, index, array) => index !== array.length - 1) // remove filename rootdir\article.md - > rootdir
+            .join('/') // use '/' instead of path.sep, because that's what we are using in templates
         + '/';
 
     article = article.replace(

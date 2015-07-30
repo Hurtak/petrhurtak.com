@@ -58,7 +58,7 @@ export function debugArticle(req, res) {
     if (!articlePath) {
         res.render(path.join(paths.app.templates, '404.html'));
     } else {
-        const article = articles.parseArticle(articlePath + '/article.md');
+        const article = articles.parseArticle(path.join(articlePath, 'article.md'));
 
         res.render(path.join(paths.app.templates, 'article.html'), {
             title: article.metadata.title,

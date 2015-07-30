@@ -14,8 +14,10 @@ function dbPromiseFactory(queryString, parameters = [], returnOneResults = false
         db.query(queryString, parameters, (err, rows) => {
             if (err) { reject(err); }
 
-            const result = returnOneResults && rows && rows.length ? rows[0] : rows;
-            resolve(result);
+            if (returnOneResults) {
+                resolve(rows.length ? rows[0] : null);
+            }
+            resolve(rows);
         });
     });
 }

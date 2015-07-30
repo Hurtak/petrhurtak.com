@@ -44,7 +44,6 @@ export async function article(req, res) {
 export function debug(req, res) {
     // get all metadata.json files
     let metadata = articles.getArticlesMetadata(paths.articles, 'article.md');
-    console.log('metadata ', metadata);
 
     // remove articles with visibility == 0
     for (let article in metadata) {

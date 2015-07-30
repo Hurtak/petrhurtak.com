@@ -39,7 +39,7 @@ const paths = { // paths relative to root directory
             scripts: './dist/public/scripts',
             styles: './dist/public/styles',
         templates: './dist/templates'
-    },
+    }
 };
 
 joinPathsInObject(paths, rootDirectory);

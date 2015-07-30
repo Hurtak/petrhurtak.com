@@ -1,6 +1,4 @@
 import path from 'path';
-import url from 'url';
-import fs from 'fs';
 
 import express from 'express';
 import swig from 'swig';
@@ -36,4 +34,4 @@ app.get('/debug/:article', pages.debugArticle);
 
 // start server
 
-const server = app.listen(8000, () => {});
+app.listen(8000, () => {});

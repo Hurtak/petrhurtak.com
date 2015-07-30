@@ -34,13 +34,13 @@ export function getArticlesMetadata(directory, filename, gatheredMetadata = [], 
         } else if (file === filename) {
             let articleDirectory = filePath // path to article relative to baseDirectory
                 .replace(filename, '')
-                .replace(baseDirectory, '')
+                .replace(baseDirectory, '');
 
             let metadata = frontMatter(fs.readFileSync(filePath, 'utf8')).attributes;
 
             metadata.directory = articleDirectory;
             metadata.url = stripSlashes(articleDirectory).split(path.sep);
-            metadata.url = metadata.url[metadata.url.length - 1]
+            metadata.url = metadata.url[metadata.url.length - 1];
             gatheredMetadata.push(metadata);
         }
     }
@@ -69,7 +69,7 @@ export function getArticlesDirectories(directory, searchedDepth, currentDepth = 
 
 // TODO: this should not be in this file
 export function sortObjectBy(object, sortBy, ascendant) {
-    object.sort(function(a, b) {
+    object.sort((a, b) => {
         if (a[sortBy] < b[sortBy]) {
             return ascendant ? -1 : 1;
         } else if (a[sortBy] > b[sortBy]) {

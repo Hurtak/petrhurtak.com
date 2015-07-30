@@ -8,7 +8,6 @@ import frontMatter from 'front-matter';
 import * as articles from './articles.js';
 import * as database from './database.js';
 import * as paths from './paths.js';
-import * as pages from './pages.js';
 
 export async function index(req, res) {
     try {
@@ -45,7 +44,7 @@ export async function article(req, res) {
 export function debug(req, res) {
     // get all metadata.json files
     let metadata = articles.getArticlesMetadata(paths.articles, 'article.md');
-    console.log('metadata ' , metadata);
+    console.log('metadata ', metadata);
 
     // remove articles with visibility == 0
     for (let article in metadata) {
@@ -82,7 +81,7 @@ export function debugArticle(req, res) {
 
         articleContent = articleContent.replace(
             /(^.*!\[.*?\]\()(\.\/.*?)(\).*$)/gm,
-            function(whole, first, second, third) {
+            (whole, first, second, third) => {
                 return first + url.resolve(articlePath, second) + third;
             }
         );

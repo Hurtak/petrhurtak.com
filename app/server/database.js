@@ -10,8 +10,8 @@ const db = mysql.createConnection({
 function dbPromiseFactory(queryString, parameters = [], returnOneResults = false) {
     parameters = Array.isArray(parameters) ? parameters : [parameters];
 
-    return new Promise(function(resolve, reject) {
-        db.query(queryString, parameters, function(err, rows) {
+    return new Promise((resolve, reject) => {
+        db.query(queryString, parameters, (err, rows) => {
             if (err) { reject(err); }
 
             const result = returnOneResults && rows && rows.length ? rows[0] : rows;

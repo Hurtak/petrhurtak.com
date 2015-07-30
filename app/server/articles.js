@@ -1,9 +1,13 @@
 import fs from 'fs';
+import url from 'url';
 import path from 'path';
 
 import frontMatter from 'front-matter';
+import markdownIt from 'markdown-it';
 
-export function findPathToArticleDirectoryByArticleName(directory, articleName, searchedDepth, currentDepth = 0) {
+import * as paths from './paths.js';
+
+export function findPathToArticle(directory, articleName, searchedDepth, currentDepth = 0) {
     let list = fs.readdirSync(directory);
 
     for (let file of list) {
@@ -16,7 +20,7 @@ export function findPathToArticleDirectoryByArticleName(directory, articleName, 
 
         if (currentDepth >= searchedDepth) continue;
 
-        let result = findPathToArticleDirectoryByArticleName(filePath, articleName, searchedDepth, currentDepth + 1);
+        let result = findPathToArticle(filePath, articleName, searchedDepth, currentDepth + 1);
         if (result) return result;
     }
 
@@ -65,6 +69,31 @@ export function getArticlesDirectories(directory, searchedDepth, currentDepth = 
     }
 
     return articlesList;
+}
+
+export function parseArticle(articlePath) {
+    let data = fs.readFileSync(articlePath, 'utf8');
+    data = frontMatter(data);
+
+    let metadata = data.attributes;
+    let article = data.body;
+
+    const articleDirectory = articlePath
+        .replace(paths.appDirectory, '')
+        .split(path.sep).join('/')
+        + '/';
+
+    article = article.replace(
+        /(^.*!\[.*?\]\()(\.\/.*?)(\).*$)/gm,
+        (whole, first, second, third) => {
+            return first + url.resolve(articleDirectory, second) + third;
+        }
+    );
+
+    return {
+        metadata: metadata,
+        html: markdownIt().render(article)
+    }
 }
 
 // TODO: this should not be in this file

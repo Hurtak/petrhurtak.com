@@ -10,6 +10,23 @@ import paths from '../paths.js';
 import * as articles from '../articles.js';
 import * as database from '../database.js';
 
+function isDirrectoryNameCorrect(metadataDate, directoryName, metadataFilePath) {
+    let publicationDate = new Date(metadataDate);
+    let publicationYear = publicationDate.getFullYear();
+    let publicationMonth = publicationDate.getMonth() + 1;
+
+    let directoryDate = directoryName.split(path.sep);
+    let directoryYear = directoryDate[directoryDate.length - 3];
+    let directoryMonth = directoryDate[directoryDate.length - 2];
+
+    if (publicationYear != directoryYear || publicationMonth != directoryMonth) {
+        console.error(`publication_date in article.md yaml header is dirrerent from year or month directory ${ metadataFilePath }`);
+        return false;
+    }
+
+    return true;
+};
+
 export default async function uploadArticles() {
     let urls = [];
 
@@ -18,23 +35,14 @@ export default async function uploadArticles() {
     for (let article of articlesDirectories) {
         let articleName = article.split(path.sep).reverse()[0];
 
-        let data = fs.readFileSync(path.join(article, 'article.md'), 'utf-8');
+        const metadataFilePath = path.join(article, 'article.md');
+        let data = fs.readFileSync(metadataFilePath, 'utf-8');
         data = frontMatter(data);
 
         const metadata = data.attributes;
         let articleContent = data.body;
 
-        let publicationDate = new Date(metadata.publication_date);
-        let publicationYear = publicationDate.getFullYear();
-        let publicationMonth = publicationDate.getMonth() + 1;
-
-        let directoryDate = article.split(path.sep);
-        let directoryYear = directoryDate[directoryDate.length - 3];
-        let directoryMonth = directoryDate[directoryDate.length - 2];
-
-        if (publicationYear != directoryYear || publicationMonth != directoryMonth) {
-            throw new Error('publication_date in article.md yaml header is dirrerent from year or month directory ' + metadataFilePath);
-        }
+        if (!isDirrectoryNameCorrect(metadata.publication_date, article, metadataFilePath)) return;
 
         urls.push(articleName);
 

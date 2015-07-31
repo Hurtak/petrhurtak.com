@@ -14,17 +14,20 @@ function dbPromiseFactory(queryString, parameters = [], returnOneResults = false
 
     return new Promise((resolve, reject) => {
         db.query(queryString, parameters, (err, rows) => {
-            if (err) { reject(err); }
+            if (err) {
+                reject(err);
+            }
 
             if (returnOneResults) {
                 resolve(rows.length ? rows[0] : null);
             }
+
             resolve(rows);
         });
     });
 }
 
-// articles function
+// articles functions
 
 export function getAtricles() {
     const query = `

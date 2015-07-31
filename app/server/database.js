@@ -7,6 +7,8 @@ const db = mysql.createConnection({
     password: ''
 });
 
+// factory function
+
 function dbPromiseFactory(queryString, parameters = [], returnOneResults = false) {
     parameters = Array.isArray(parameters) ? parameters : [parameters];
 
@@ -21,6 +23,8 @@ function dbPromiseFactory(queryString, parameters = [], returnOneResults = false
         });
     });
 }
+
+// articles function
 
 export function getAtricles() {
     const query = `
@@ -51,4 +55,48 @@ export function getAtricle(article) {
     `;
 
     return dbPromiseFactory(query, article, true);
+}
+
+// upload articles script
+
+export function saveArticles(params) {
+    const query = `
+        INSERT INTO articles
+            (title, description, url, directory, publication_date, last_update, visible)
+        VALUES
+            (?, ?, ?, ?, ?, ?, ?)
+        ON DUPLICATE KEY UPDATE
+            title = VALUES(title),
+            description = VALUES(description),
+            url = VALUES(url),
+            directory = VALUES(directory),
+            publication_date = VALUES(publication_date),
+            last_update = VALUES(last_update),
+            visible = VALUES(visible)
+    `;
+
+    return dbPromiseFactory(query, params);
+}
+
+export function saveArticleContent(params) {
+    const query = `
+        INSERT INTO articles_content
+            (article_id, content)
+        VALUES
+            (?, ?)
+        ON DUPLICATE KEY UPDATE
+            article_id = VALUES(article_id),
+            content = VALUES(content)
+    `;
+
+    return dbPromiseFactory(query, params);
+}
+
+export function deleteArticles(urlsJoin) {
+    const query = `
+        DELETE FROM articles
+        WHERE url NOT IN ('${ urlsJoin }')
+    `;
+
+    return dbPromiseFactory(query);
 }

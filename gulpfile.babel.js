@@ -1,6 +1,5 @@
 import gulp from 'gulp';
 
-// const $ = require('gulp-load-plugins')();
 import gulpLoadPlugins from 'gulp-load-plugins';
 const $ = gulpLoadPlugins();
 
@@ -11,6 +10,7 @@ import del from 'del';
 import path from 'path';
 
 import paths from './app/server/paths.js';
+import uploadArticles from './app/server/scripts/index.js';
 
 // Options
 
@@ -182,9 +182,7 @@ gulp.task('server:restart', () => {
     });
 });
 
-gulp.task('upload', () => {
-    require('./app/server/scripts/uploadArticles');
-});
+gulp.task('upload', uploadArticles);
 
 // runs from app directory
 gulp.task('dev', ['server:start'], () => {

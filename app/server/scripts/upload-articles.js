@@ -11,11 +11,11 @@ import * as articles from '../articles.js';
 import * as database from '../database.js';
 
 export default async function uploadArticles() {
-    const articlesDirectories = articles.getArticlesDirectories(paths.articles, 2);
-
     let urls = [];
 
-    articlesDirectories.forEach((article) => {
+    const articlesDirectories = articles.getArticlesDirectories(paths.articles, 2);
+
+    for (let article of articlesDirectories) {
         let articleName = article.split(path.sep).reverse()[0];
 
         let data = fs.readFileSync(path.join(article, 'article.md'), 'utf-8');
@@ -73,7 +73,7 @@ export default async function uploadArticles() {
 
         console.log('article "' + articleName + '" content succesfully inserted into db.');
 
-    });
+    };
 
     var urlsJoin = urls.join('\', \'');
 

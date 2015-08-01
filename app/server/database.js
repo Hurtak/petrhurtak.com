@@ -62,34 +62,33 @@ export function getAtricle(article) {
 
 // upload articles script
 
-export function saveArticles(params) {
+export function saveArticle(params) {
     const query = `
+--        SET autocommit = 0;
+--        START TRANSACTION;
+
         INSERT INTO articles
             (title, description, url, directory, publication_date, last_update, visible)
         VALUES
             (?, ?, ?, ?, ?, ?, ?)
-        ON DUPLICATE KEY UPDATE
-            title = VALUES(title),
-            description = VALUES(description),
-            url = VALUES(url),
-            directory = VALUES(directory),
-            publication_date = VALUES(publication_date),
-            last_update = VALUES(last_update),
-            visible = VALUES(visible)
-    `;
+--        ON DUPLICATE KEY UPDATE
+--            title = VALUES(title),
+--            description = VALUES(description),
+--            url = VALUES(url),
+--            directory = VALUES(directory),
+--            publication_date = VALUES(publication_date),
+--            last_update = VALUES(last_update),
+--            visible = VALUES(visible);
 
-    return dbPromiseFactory(query, params);
-}
+--        INSERT INTO articles_content
+--            (article_id, content)
+--        VALUES
+--            (LAST_INSERT_ID(), ?)
+--        ON DUPLICATE KEY UPDATE
+--            article_id = VALUES(article_id),
+--            content = VALUES(content);
 
-export function saveArticleContent(params) {
-    const query = `
-        INSERT INTO articles_content
-            (article_id, content)
-        VALUES
-            (?, ?)
-        ON DUPLICATE KEY UPDATE
-            article_id = VALUES(article_id),
-            content = VALUES(content)
+--        COMMIT;
     `;
 
     return dbPromiseFactory(query, params);

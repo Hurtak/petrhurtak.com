@@ -10,77 +10,67 @@ import paths from '../paths.js';
 import * as articles from '../articles.js';
 import * as database from '../database.js';
 
-function isDirrectoryNameCorrect(metadataDate, directoryName, metadataFilePath) {
-    let publicationDate = new Date(metadataDate);
-    let publicationYear = publicationDate.getFullYear();
-    let publicationMonth = publicationDate.getMonth() + 1;
+function getDirectoryDate(directoryPath) {
+    return directoryPath
+        .split(path.sep)
+        .filter(dir => dir == Number(dir))
+}
 
-    let directoryDate = directoryName.split(path.sep);
-    let directoryYear = directoryDate[directoryDate.length - 3];
-    let directoryMonth = directoryDate[directoryDate.length - 2];
+function isDirrectoryNameCorrect(metadataDate, directoryName) {
+    const publicationDate = new Date(metadataDate);
+    const publicationYear = publicationDate.getFullYear();
+    const publicationMonth = publicationDate.getMonth() + 1;
+
+    const directoryDate = getDirectoryDate(directoryName);
+    const directoryYear = directoryDate[0];
+    const directoryMonth = directoryDate[1];
 
     if (publicationYear != directoryYear || publicationMonth != directoryMonth) {
-        console.error(`publication_date in article.md yaml header is dirrerent from year or month directory ${ metadataFilePath }`);
+        console.error(`publication_date in article.md yaml header is different from year or month directory ${ directoryName }`);
         return false;
     }
 
     return true;
-};
+}
 
 export default async function uploadArticles() {
     let urls = [];
-
     const articlesDirectories = articles.getArticlesDirectories(paths.articles, 2);
 
-    for (let article of articlesDirectories) {
-        let articleName = article.split(path.sep).reverse()[0];
+    for (let articleDirectory of articlesDirectories) {
+        const articleUrl = articleDirectory.split(path.sep).reverse()[0];
 
-        const metadataFilePath = path.join(article, 'article.md');
-        let data = fs.readFileSync(metadataFilePath, 'utf-8');
-        data = frontMatter(data);
+        const data = articles.parseArticle(path.join(articleDirectory, 'article.md'));
+        const metadata = data.metadata;
+        const articleContent = data.html;
 
-        const metadata = data.attributes;
-        let articleContent = data.body;
+        if (!isDirrectoryNameCorrect(metadata.publication_date, articleDirectory)) {
+            return;
+        }
 
-        if (!isDirrectoryNameCorrect(metadata.publication_date, article, metadataFilePath)) return;
+        urls.push(articleUrl);
 
-        urls.push(articleName);
+        let directoryNameDb = getDirectoryDate(articleDirectory).join('/');
 
         let dbData = [
             metadata.title,
             metadata.description,
-            articleName,
-            directoryYear + '/' +  directoryMonth,
+            articleUrl,
+            directoryNameDb,
             metadata.publication_date,
             metadata.last_update,
-            metadata.visible
-        ];
-
-        await database.saveArticles(dbData);
-
-        console.log('article "' + articleName + '" metadata succesfully inserted into db.');
-
-        let articlePath = article
-            .replace(paths.appDirectory, '')
-            .split(path.sep).join('/');
-        articlePath += '/';
-
-        articleContent = articleContent.replace(
-            /(^.*!\[.*?\]\()(\.\/.*?)(\).*$)/gm,
-            function(whole, first, second, third) {
-                return first + url.resolve(articlePath, second) + third;
-            }
-        );
-
-        dbData = [
-            result.insertId,
+            metadata.visible,
             articleContent
         ];
 
-        await database.saveArticleContent(dbData);
+        try {
+            await database.saveArticle(dbData);
+        } catch (e) {
 
-        console.log('article "' + articleName + '" content succesfully inserted into db.');
+        console.log('e ' , e);
+        }
 
+        console.log('article "' + articleUrl + '" succesfully inserted into db.');
     };
 
     var urlsJoin = urls.join('\', \'');

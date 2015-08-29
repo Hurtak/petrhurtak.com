@@ -6,9 +6,9 @@ import markdownIt  from 'markdown-it';
 const markdown = markdownIt();
 import frontMatter from 'front-matter';
 
-import paths from '../paths.js';
-import * as articles from '../articles.js';
-import * as database from '../database.js';
+import paths from '../server/paths.js';
+import * as articles from '../server/articles.js';
+import * as database from '../server/database.js';
 
 function getDirectoryDate(directoryPath) {
     return directoryPath

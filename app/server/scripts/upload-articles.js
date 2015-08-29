@@ -16,7 +16,7 @@ function getDirectoryDate(directoryPath) {
         .filter(dir => dir == Number(dir))
 }
 
-function isDirrectoryNameCorrect(metadataDate, directoryName) {
+function isDirectoryNameCorrect(metadataDate, directoryName) {
     const publicationDate = new Date(metadataDate);
     const publicationYear = publicationDate.getFullYear();
     const publicationMonth = publicationDate.getMonth() + 1;
@@ -44,7 +44,7 @@ export default async function uploadArticles() {
         const metadata = data.metadata;
         const articleContent = data.html;
 
-        if (!isDirrectoryNameCorrect(metadata.publication_date, articleDirectory)) {
+        if (!isDirectoryNameCorrect(metadata.publication_date, articleDirectory)) {
             return;
         }
 
@@ -66,8 +66,7 @@ export default async function uploadArticles() {
         try {
             await database.saveArticle(dbData);
         } catch (e) {
-
-        console.log('e ' , e);
+            console.log('e ' , e);
         }
 
         console.log('article "' + articleUrl + '" succesfully inserted into db.');
@@ -75,9 +74,12 @@ export default async function uploadArticles() {
 
     var urlsJoin = urls.join('\', \'');
 
-    await database.deleteArticles(urlsJoin);
+    var deleteArticles = await database.deleteArticles(urlsJoin);
+    if (deleteArticles.affectedRows > 0) {
+        console.log(`${ deleteArticles.affectedRows } articles, which were not in articles directory, deleted from db.`);
+    };
 
-    console.log('articles not in FS deleted from db.');
+    process.exit();
 }
 
 uploadArticles();

@@ -71,14 +71,14 @@ export function saveArticle(params) {
             (title, description, url, directory, publication_date, last_update, visible)
         VALUES
             (?, ?, ?, ?, ?, ?, ?)
---        ON DUPLICATE KEY UPDATE
---            title = VALUES(title),
---            description = VALUES(description),
---            url = VALUES(url),
---            directory = VALUES(directory),
---            publication_date = VALUES(publication_date),
---            last_update = VALUES(last_update),
---            visible = VALUES(visible);
+        ON DUPLICATE KEY UPDATE
+            title = VALUES(title),
+            description = VALUES(description),
+            url = VALUES(url),
+            directory = VALUES(directory),
+            publication_date = VALUES(publication_date),
+            last_update = VALUES(last_update),
+            visible = VALUES(visible);
 
 --        INSERT INTO articles_content
 --            (article_id, content)

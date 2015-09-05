@@ -10,7 +10,6 @@ import del from 'del';
 import path from 'path';
 
 import paths from './app/server/paths.js';
-import uploadArticles from './app/server/scripts/index.js';
 
 // Options
 
@@ -56,9 +55,40 @@ const options = {
     }
 };
 
+var compileJs = function(origin, destination) {
+    return gulp.src([].concat(origin))
+        .pipe($.sourcemaps.init())
+        .pipe($.babel({ optional: [
+            'runtime',
+            'es7.asyncFunctions'
+        ] }))
+        .pipe($.sourcemaps.write('.'))
+        .pipe(gulp.dest(destination));
+}
+
+var ttt = function(origin, destination) {
+    return gulp.src([].concat(origin))
+        .pipe(gulp.dest(destination));
+}
+
+// Main tasks
+
+gulp.task('xxx', () => {
+    runSequence(
+        ['clear:dist', 'lint:js'],
+        ['compile:server', 'compile:scripts', 'templ', 'public']
+        // ['scripts', 'styles', 'fonts', 'icons', 'images']
+    );
+});
+
+gulp.task('compile:server', () => compileJs(paths.app.server + '/**', paths.dist.server));
+gulp.task('compile:scripts', () => compileJs('./app/scripts/**', './dist/scripts'));
+gulp.task('templ', () => ttt('./app/templates/**', './dist/templates'));
+gulp.task('public', () => ttt('./app/public/**', './dist/public'));
+
 // linters
 
-gulp.task('lint', () => {
+gulp.task('lint:js', () => {
     return gulp.src([
             paths.app.scripts + '/**',
             paths.app.server + '/**',
@@ -71,7 +101,7 @@ gulp.task('lint', () => {
 
 // clear
 
-gulp.task('clear', () => {
+gulp.task('clear:dist', () => {
     return del([
         paths.distDirectory + '/*'
     ]);
@@ -145,26 +175,6 @@ gulp.task('templates:server', () => {
         .pipe(gulp.dest(paths.dist.templates));
 });
 
-gulp.task('templates:articles', () => {
-    let src = [
-        paths.app.articles + '/*/article.{html,json}'
-    ];
-
-    return gulp.src(src)
-        .pipe(gulp.dest(paths.dist.articles));
-});
-
-gulp.task('fonts', () => {
-    return gulp.src(paths.app.fonts + '/**')
-        // .pipe($.flatten())
-        .pipe(gulp.dest(paths.dist.fonts));
-});
-
-gulp.task('icons', () => {
-    return gulp.src(paths.app.icons + '/**')
-        .pipe(gulp.dest(paths.dist.icons));
-});
-
 // Main gulp tasks
 
 gulp.task('server:start', () => {
@@ -182,8 +192,6 @@ gulp.task('server:restart', () => {
     });
 });
 
-gulp.task('upload', uploadArticles);
-
 // runs from app directory
 gulp.task('dev', ['server:start'], () => {
     $.watch([
@@ -193,11 +201,4 @@ gulp.task('dev', ['server:start'], () => {
             ['server:restart']
         );
     });
-});
-
-gulp.task('dist', () => {
-    runSequence(
-        ['clear', 'lint'],
-        ['scripts', 'styles', 'fonts', 'icons', 'images']
-    );
 });

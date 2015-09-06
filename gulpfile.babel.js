@@ -77,7 +77,6 @@ gulp.task('xxx', () => {
     runSequence(
         ['clear:dist', 'lint:js'],
         ['compile:server', 'compile:scripts', 'templ', 'public']
-        // ['scripts', 'styles', 'fonts', 'icons', 'images']
     );
 });
 

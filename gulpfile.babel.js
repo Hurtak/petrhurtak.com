@@ -66,7 +66,7 @@ var compileJs = function(origin, destination) {
         .pipe(gulp.dest(destination));
 }
 
-var ttt = function(origin, destination) {
+var copy = function(origin, destination) {
     return gulp.src([].concat(origin))
         .pipe(gulp.dest(destination));
 }
@@ -75,15 +75,27 @@ var ttt = function(origin, destination) {
 
 gulp.task('xxx', () => {
     runSequence(
-        ['clear:dist', 'lint:js'],
+        ['clear', 'lint:js'],
         ['compile:server', 'compile:scripts', 'templ', 'public']
     );
 });
 
 gulp.task('compile:server', () => compileJs(paths.app.server + '/**', paths.dist.server));
 gulp.task('compile:scripts', () => compileJs('./app/scripts/**', './dist/scripts'));
-gulp.task('templ', () => ttt('./app/templates/**', './dist/templates'));
-gulp.task('public', () => ttt('./app/public/**', './dist/public'));
+gulp.task('templ', () => copy('./app/templates/**', './dist/templates'));
+gulp.task('public', () => copy('./app/public/**', './dist/public'));
+
+gulp.task('compile:styles', function() {
+        let assets = $.useref.assets();
+
+        return gulp.src('./app/templates/styles.html')
+            .pipe(assets)
+            .pipe($.debug())
+            .pipe($.if('*.css', $.less()))
+            .pipe(assets.restore())
+            .pipe($.useref())
+            .pipe(gulp.dest('./dist/templates'));
+});
 
 // linters
 
@@ -100,7 +112,7 @@ gulp.task('lint:js', () => {
 
 // clear
 
-gulp.task('clear:dist', () => {
+gulp.task('clear', () => {
     return del([
         paths.distDirectory + '/*'
     ]);
@@ -159,19 +171,6 @@ gulp.task('images:articles', () => {
     return gulp.src(src)
         // .pipe($.imagemin(options.imagemin))
         .pipe(gulp.dest(paths.dist.articles));
-});
-
-// Templates
-
-gulp.task('templates', ['templates:server', 'templates:articles']);
-
-gulp.task('templates:server', () => {
-    let src = [
-        paths.app.templates + '/**'
-    ];
-
-    return gulp.src(src)
-        .pipe(gulp.dest(paths.dist.templates));
 });
 
 // Main gulp tasks

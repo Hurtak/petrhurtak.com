@@ -44,7 +44,8 @@ const options = {
     },
     htmlmin: {
         removeComments: true,
-        collapseWhitespace: true
+        collapseWhitespace: true,
+        preserveLineBreaks: true
     },
     imagemin: {
         progressive: true,
@@ -86,15 +87,18 @@ gulp.task('templ', () => copy('./app/templates/**', './dist/templates'));
 gulp.task('public', () => copy('./app/public/**', './dist/public'));
 
 gulp.task('compile:styles', function() {
-        let assets = $.useref.assets();
-
-        return gulp.src('./app/templates/styles.html')
-            .pipe(assets)
-            .pipe($.debug())
-            .pipe($.if('*.css', $.less()))
-            .pipe(assets.restore())
-            .pipe($.useref())
-            .pipe(gulp.dest('./dist/templates'));
+    let assets = $.useref.assets();
+var less = require('gulp-less');
+    return gulp.src('./app/templates/styles.html')
+        .pipe(assets)
+        .pipe($.if('*.css', less()))
+        .pipe($.rev()) // adds hash to the end of filename (eg.: styles.css -> styles-971a5eb6.css)
+        .pipe(assets.restore())
+        .pipe($.useref())
+        .pipe($.revReplace())
+        .pipe($.size())
+        .pipe($.if('*.html', $.htmlmin(options.htmlmin)))
+        .pipe(gulp.dest('./dist/templates'));
 });
 
 // linters
@@ -118,23 +122,23 @@ gulp.task('clear', () => {
     ]);
 });
 
-// compile
+// // compile
 
-gulp.task('compile', () => {
-    let assets = $.useref.assets();
+// gulp.task('compile', () => {
+//     let assets = $.useref.assets();
 
-    return gulp.src(paths.app.html)
-        .pipe(assets)
-        .pipe($.if('*.js', $.uglify()))
-        .pipe($.if('*.css', $.autoprefixer(options.autoprefixer)))
-        .pipe($.if('*.css', $.csso()))
-        .pipe($.rev())
-        .pipe(assets.restore())
-        .pipe($.useref())
-        .pipe($.revReplace())
-        .pipe($.if('*.html', $.htmlmin(options.htmlmin)))
-        .pipe(gulp.dest(paths.distDirectory));
-});
+//     return gulp.src(paths.app.html)
+//         .pipe(assets)
+//         .pipe($.if('*.js', $.uglify()))
+//         .pipe($.if('*.css', $.autoprefixer(options.autoprefixer)))
+//         .pipe($.if('*.css', $.csso()))
+//         .pipe($.rev())
+//         .pipe(assets.restore())
+//         .pipe($.useref())
+//         .pipe($.revReplace())
+//         .pipe($.if('*.html', $.htmlmin(options.htmlmin)))
+//         .pipe(gulp.dest(paths.distDirectory));
+// });
 
 gulp.task('scripts', () => {
     return gulp.src(paths.app.scripts + '/**')

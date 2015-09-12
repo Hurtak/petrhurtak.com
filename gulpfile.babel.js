@@ -140,43 +140,6 @@ gulp.task('clear', () => {
 //         .pipe(gulp.dest(paths.distDirectory));
 // });
 
-gulp.task('scripts', () => {
-    return gulp.src(paths.app.scripts + '/**')
-        // .pipe($.imagemin(options.imagemin))
-        .pipe(gulp.dest(paths.dist.scripts));
-});
-
-gulp.task('styles', () => {
-    return gulp.src(paths.app.styles + '/**')
-        // .pipe($.imagemin(options.imagemin))
-        .pipe(gulp.dest(paths.dist.styles));
-});
-
-// Images
-
-gulp.task('images', ['images:public', 'images:articles']);
-
-gulp.task('images:public', () => {
-    let src = [
-        paths.app.images + '/**'
-    ];
-
-    return gulp.src(src)
-        // .pipe($.imagemin(options.imagemin))
-        .pipe(gulp.dest(paths.dist.images));
-});
-
-gulp.task('images:articles', () => {
-    let src = [
-        paths.app.articles + '/*/article.png',
-        paths.app.articles + '/*/images/*.{png,jpg,jpeg,gif,bmp}'
-    ];
-
-    return gulp.src(src)
-        // .pipe($.imagemin(options.imagemin))
-        .pipe(gulp.dest(paths.dist.articles));
-});
-
 // Main gulp tasks
 
 gulp.task('server:start', () => {

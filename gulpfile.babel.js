@@ -100,16 +100,21 @@ gulp.task('server:start', () => {
     });
 });
 
+gulp.task('server:restart', () => {
+    $.developServer.listen(options.server, error => {
+        if (error) return;
+        $.livereload();
+    });
+});
+
 gulp.task('watch', () => {
-    const watch = ['./app/**'];
     $.livereload.listen();
 
-    $.watch(watch, () => {
-        $.developServer.restart(error => {
-            if (error) return;
-            $.livereload();
-        });
+    $.watch(['./articles/**'], () => {
+        console.log('change');
+        $.livereload.reload();
     });
+
 });
 
 function compileBabelJs(origin, destination) {

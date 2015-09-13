@@ -7,31 +7,22 @@ import browserSync from 'browser-sync';
 import runSequence from 'run-sequence';
 
 import del from 'del';
-import path from 'path';
-
-import paths from './app/server/paths.js';
 
 // Options
 
 const options = {
+    babel: {
+        optional: [
+            'runtime',
+            'es7.asyncFunctions'
+        ]
+    },
     server: {
-        path: path.join(paths.app.server, 'index.js'),
+        path: './app/server/index.js',
         env: {
             NODE_ENV: 'development'
         }
         // , execArgv: ['--harmony']
-    },
-    browserSync: {
-        proxy: 'http://localhost:8000', // where server is running
-        port: 3000, // where browser sync is running
-        // https: false,
-        // ghostMode: {
-        //     clicks: false,
-        //     forms: false,
-        //     scroll: false
-        // },
-        notify: true, // The small pop-over notifications in the browser are not always needed/wanted.
-        open: false // Decide which URL to open automatically when Browsersync starts. Defaults to "local" if none set. Can be true, local, external, ui, ui-external, tunnel or false
     },
     autoprefixer: {
         browsers: [
@@ -56,48 +47,37 @@ const options = {
     }
 };
 
-var compileJs = function(origin, destination) {
-    return gulp.src([].concat(origin))
-        .pipe($.sourcemaps.init())
-        .pipe($.babel({ optional: [
-            'runtime',
-            'es7.asyncFunctions'
-        ] }))
-        .pipe($.sourcemaps.write('.'))
-        .pipe(gulp.dest(destination));
-}
-
-var copy = function(origin, destination) {
-    return gulp.src([].concat(origin))
-        .pipe(gulp.dest(destination));
-}
-
 // Main tasks
 
-gulp.task('xxx', () => {
+gulp.task('dev', () => {
     runSequence(
-        ['clear', 'lint:js'],
-        ['compile:server', 'compile:scripts', 'templ', 'public']
+        ['clear:dist', 'lint:js'],
+        ['compile:client', 'compile:server', 'compile:scripts', 'images', 'fonts'],
+        ['watch:js']
     );
 });
 
-gulp.task('compile:server', () => compileJs(paths.app.server + '/**', paths.dist.server));
-gulp.task('compile:scripts', () => compileJs('./app/scripts/**', './dist/scripts'));
-gulp.task('templ', () => copy('./app/templates/**', './dist/templates'));
-gulp.task('public', () => copy('./app/public/**', './dist/public'));
+gulp.task('clear:dist', () => del('./dist/**'));
+gulp.task('compile:server', () => compileBabelJs('./app/server/**', './dist/server'));
+gulp.task('compile:scripts', () => compileBabelJs('./app/scripts/**', './dist/scripts'));
+gulp.task('images', () => copy('./app/public/images/**', './dist/public/images'));
+gulp.task('fonts', () => copy('./app/public/fonts/**', './dist/public/fonts'));
 
-gulp.task('compile:styles', function() {
+gulp.task('compile:client', function() {
     let assets = $.useref.assets();
-var less = require('gulp-less');
-    return gulp.src('./app/templates/styles.html')
+    var less = require('gulp-less'); // TODO: $.less doesn't work for some reason
+    return gulp.src('./app/templates/**/*.html')
         .pipe(assets)
         .pipe($.if('*.css', less()))
-        .pipe($.rev()) // adds hash to the end of filename (eg.: styles.css -> styles-971a5eb6.css)
+        .pipe($.if('*.css', $.size({title: 'css'})))
+        .pipe($.if('*.js', $.size({title: 'js'})))
+        .pipe($.rev()) // adds hash to the end of filename (styles.css -> styles-971a5eb6.css)
         .pipe(assets.restore())
         .pipe($.useref())
-        .pipe($.revReplace())
-        .pipe($.size())
+        // .pipe($.revReplace())
         .pipe($.if('*.html', $.htmlmin(options.htmlmin)))
+        .pipe($.if('*.html', $.size({title: 'html'})))
+        .pipe($.size())
         .pipe(gulp.dest('./dist/templates'));
 });
 
@@ -105,65 +85,44 @@ var less = require('gulp-less');
 
 gulp.task('lint:js', () => {
     return gulp.src([
-            paths.app.scripts + '/**',
-            paths.app.server + '/**',
-            paths.gulpfile
+            './app/scripts/**',
+            './app/server/**',
+            './gulpfile.babel.js'
         ])
         .pipe($.eslint())
         .pipe($.eslint.format());
         // .pipe($.eslint.failOnError());
 });
 
-// clear
-
-gulp.task('clear', () => {
-    return del([
-        paths.distDirectory + '/*'
-    ]);
-});
-
-// // compile
-
-// gulp.task('compile', () => {
-//     let assets = $.useref.assets();
-
-//     return gulp.src(paths.app.html)
-//         .pipe(assets)
-//         .pipe($.if('*.js', $.uglify()))
-//         .pipe($.if('*.css', $.autoprefixer(options.autoprefixer)))
-//         .pipe($.if('*.css', $.csso()))
-//         .pipe($.rev())
-//         .pipe(assets.restore())
-//         .pipe($.useref())
-//         .pipe($.revReplace())
-//         .pipe($.if('*.html', $.htmlmin(options.htmlmin)))
-//         .pipe(gulp.dest(paths.distDirectory));
-// });
-
-// Main gulp tasks
-
 gulp.task('server:start', () => {
-    $.developServer.listen(options.server, (error) => {
+    $.developServer.listen(options.server, error => {
         if (error) return;
-        browserSync(options.browserSync);
     });
 });
 
-// If server scripts change, restart the server and then browser-reload.
-gulp.task('server:restart', () => {
-    $.developServer.restart((error) => {
-        if (error) return;
-        browserSync.reload();
-    });
-});
-
-// runs from app directory
-gulp.task('dev', ['server:start'], () => {
-    $.watch([
+gulp.task('watch', ['server:start'], () => {
+    $.livereload.listen();
+    const watch = [
         paths.appDirectory + '/**'
-    ], () => {
-        runSequence(
-            ['server:restart']
-        );
+    ];
+
+    $.watch(watch, () => {
+        $.developServer.restart(error => {
+            if (error) return;
+            $.livereload();
+        });
     });
 });
+
+function compileBabelJs(origin, destination) {
+    return gulp.src([].concat(origin))
+        .pipe($.sourcemaps.init())
+        .pipe($.babel(options.babel))
+        .pipe($.sourcemaps.write('.'))
+        .pipe(gulp.dest(destination));
+}
+
+function copy(origin, destination) {
+    return gulp.src([].concat(origin))
+        .pipe(gulp.dest(destination));
+}

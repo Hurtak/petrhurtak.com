@@ -31,6 +31,4 @@ app.get('/:article', pages.article);  // display articles from database
 
 // start server
 
-console.log('starting server at :8000');
-app.listen(8000, () => console.log('server started'));
-
+app.listen(8000, () => console.log('server started at port 8000'));

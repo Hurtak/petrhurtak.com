@@ -18,10 +18,8 @@ const options = {
         ]
     },
     server: {
-        path: './app/server/index.js',
-        env: {
-            NODE_ENV: 'development'
-        }
+        path: './dist/server/index.js',
+        // env: { NODE_ENV: 'development' }
         // , execArgv: ['--harmony']
     },
     autoprefixer: {
@@ -53,7 +51,8 @@ gulp.task('dev', () => {
     runSequence(
         ['clear:dist', 'lint:js'],
         ['compile:client', 'compile:server', 'compile:scripts', 'images', 'fonts'],
-        ['watch:js']
+        ['server:start'],
+        ['watch']
     );
 });
 
@@ -64,8 +63,9 @@ gulp.task('images', () => copy('./app/public/images/**', './dist/public/images')
 gulp.task('fonts', () => copy('./app/public/fonts/**', './dist/public/fonts'));
 
 gulp.task('compile:client', function() {
-    let assets = $.useref.assets();
-    var less = require('gulp-less'); // TODO: $.less doesn't work for some reason
+    const assets = $.useref.assets();
+    const less = require('gulp-less'); // TODO: $.less doesn't work for some reason
+
     return gulp.src('./app/templates/**/*.html')
         .pipe(assets)
         .pipe($.if('*.css', less()))
@@ -100,11 +100,9 @@ gulp.task('server:start', () => {
     });
 });
 
-gulp.task('watch', ['server:start'], () => {
+gulp.task('watch', () => {
+    const watch = ['./app/**'];
     $.livereload.listen();
-    const watch = [
-        paths.appDirectory + '/**'
-    ];
 
     $.watch(watch, () => {
         $.developServer.restart(error => {

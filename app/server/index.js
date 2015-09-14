@@ -3,7 +3,7 @@ import path from 'path';
 import express from 'express';
 import swig from 'swig';
 
-import * as paths from './paths.js';
+import paths from './paths.js';
 import * as pages from './pages.js';
 
 const app = express();
@@ -12,11 +12,11 @@ const app = express();
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
-app.set('views', paths.app.templates);
+app.set('views', paths.templates);
 
 // static files
 
-app.use('/', express.static(paths.app.public));
+app.use('/', express.static(paths.public));
 app.use('/node_modules', express.static(paths.nodeModules));
 app.get('/articles/*/*/*/images/*.png', (req, res) => // article images
     res.sendFile(path.join(paths.root, req.originalUrl))

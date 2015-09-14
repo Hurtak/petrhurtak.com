@@ -10,37 +10,22 @@ function joinPathsInObject(object, rootDirectory) {
     }
 }
 
-const rootDirectory = path.join(__dirname, '../../');
+const rootDirectory = path.join(__dirname, '../');
 
 const paths = { // paths relative to root directory
     root: './',
-    articles: './articles',
-    nodeModules: './node_modules',
-    gulpfile: './gulpfile.js',
 
-    appDirectory: './app',
-    app: {
-        server: './app/server',
-        public: './app/public',
-            fonts: './app/public/fonts',
-            icons: './app/public/icons',
-            images: './app/public/images',
-            scripts: './app/public/scripts',
-            styles: './app/public/styles',
-        templates: './app/templates'
-    },
+    articles: '../articles',
+    nodeModules: '../node_modules',
 
-    distDirectory: './dist',
-    dist: {
-        server: './dist/server',
-        public: './dist/public',
-            fonts: './dist/public/fonts',
-            icons: './dist/public/icons',
-            images: './dist/public/images',
-            scripts: './dist/public/scripts',
-            styles: './dist/public/styles',
-        templates: './dist/templates'
-    }
+    server:    './server',
+    public:    './public',
+    fonts:     './public/fonts',
+    icons:     './public/icons',
+    images:    './public/images',
+    scripts:   './public/scripts',
+    styles:    './public/styles',
+    templates: './templates'
 };
 
 joinPathsInObject(paths, rootDirectory);

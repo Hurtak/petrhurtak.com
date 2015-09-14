@@ -8,9 +8,9 @@ import runSequence from 'run-sequence';
 
 import del from 'del';
 
-// Options
+// Config
 
-const options = {
+const config = {
     babel: {
         optional: [
             'runtime',
@@ -51,8 +51,8 @@ gulp.task('dev', () => {
     runSequence(
         ['clear:dist', 'lint:js'],
         ['compile:client', 'compile:server', 'compile:scripts', 'images', 'fonts'],
-        ['server:start'],
-        ['watch']
+        ['server:start', 'livereload:listen'],
+        ['watch:client', 'watch:server', 'watch:scripts', 'watch:articles']
     );
 });
 
@@ -75,13 +75,18 @@ gulp.task('compile:client', function() {
         .pipe(assets.restore())
         .pipe($.useref())
         // .pipe($.revReplace())
-        .pipe($.if('*.html', $.htmlmin(options.htmlmin)))
+        .pipe($.if('*.html', $.htmlmin(config.htmlmin)))
         .pipe($.if('*.html', $.size({title: 'html'})))
         .pipe($.size())
         .pipe(gulp.dest('./dist/templates'));
 });
 
-// linters
+gulp.task('watch:server', watch('./app/server', 'compile:server')); // TODO: restart server
+gulp.task('watch:client', watch('./app/public/**', 'compile:client'));
+gulp.task('watch:scripts', watch('./app/script/**', 'compile:scripts'));
+gulp.task('watch:articles', watch('./articles/**'));
+
+// Other tasks
 
 gulp.task('lint:js', () => {
     return gulp.src([
@@ -94,33 +99,33 @@ gulp.task('lint:js', () => {
         // .pipe($.eslint.failOnError());
 });
 
-gulp.task('server:start', () => {
-    $.developServer.listen(options.server, error => {
-        if (error) return;
+gulp.task('server:start', (cb) => {
+    $.developServer.listen(config.server, error => {
+        if (error) { console.log(error); return; }
+        cb();
     });
 });
 
-gulp.task('server:restart', () => {
-    $.developServer.listen(options.server, error => {
-        if (error) return;
-        $.livereload();
-    });
-});
-
-gulp.task('watch', () => {
+gulp.task('livereload:listen', (cb) => {
     $.livereload.listen();
-
-    $.watch(['./articles/**'], () => {
-        console.log('change');
-        $.livereload.reload();
-    });
-
+    cb();
 });
+
+gulp.task('livereload:reload', (cb) => {
+    $.livereload.reload();
+    cb();
+});
+
+// Helper functions
+
+function watch(target, ...tasks) {
+    $.watch([target], () => runSequence(...tasks, 'livereload:reload'));
+}
 
 function compileBabelJs(origin, destination) {
     return gulp.src([].concat(origin))
         .pipe($.sourcemaps.init())
-        .pipe($.babel(options.babel))
+        .pipe($.babel(config.babel))
         .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest(destination));
 }

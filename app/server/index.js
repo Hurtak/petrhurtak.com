@@ -16,11 +16,10 @@ app.set('views', paths.templates);
 
 // static files
 
-app.use('/', express.static(paths.public));
-app.use('/node_modules', express.static(paths.nodeModules));
-app.get('/articles/*/*/*/images/*.png', (req, res) => // article images
-    res.sendFile(path.join(paths.root, req.originalUrl))
-);
+app.use('/public', express.static(paths.public));
+app.get('/articles/*/*/*/images/*.png', (req, res) => {// article images
+    res.sendFile(path.join(paths.root, req.originalUrl));
+});
 
 // dynamic pages
 

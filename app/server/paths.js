@@ -10,10 +10,10 @@ function joinPathsInObject(object, rootDirectory) {
     }
 }
 
-const rootDirectory = path.join(__dirname, '../');
+const appDirectory = path.join(__dirname, '../');
 
-const paths = { // paths relative to root directory
-    root: './',
+const paths = { // paths relative to app directory
+    root: '../',
 
     articles: '../articles',
     nodeModules: '../node_modules',
@@ -28,6 +28,6 @@ const paths = { // paths relative to root directory
     templates: './templates'
 };
 
-joinPathsInObject(paths, rootDirectory);
+joinPathsInObject(paths, appDirectory);
 
 export default paths;

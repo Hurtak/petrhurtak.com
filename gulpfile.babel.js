@@ -81,8 +81,8 @@ gulp.task('compile:client', function() {
         .pipe(gulp.dest('./dist/templates'));
 });
 
-gulp.task('watch:server', watch('./app/server', 'compile:server')); // TODO: restart server
-gulp.task('watch:client', watch('./app/public/**', 'compile:client'));
+gulp.task('watch:server', watch('./app/server', 'compile:server'));
+gulp.task('watch:client', watch(['./app/public/**', './app/templates/**'], 'compile:client'));
 gulp.task('watch:scripts', watch('./app/script/**', 'compile:scripts'));
 gulp.task('watch:articles', watch('./articles/**'));
 
@@ -118,8 +118,8 @@ gulp.task('livereload:reload', (cb) => {
 
 // Helper functions
 
-function watch(target, ...tasks) {
-    $.watch([target], () => runSequence(...tasks, 'livereload:reload'));
+function watch(target, tasks) {
+    $.watch([].concat(target), () => runSequence(tasks, 'livereload:reload'));
 }
 
 function compileBabelJs(origin, destination) {

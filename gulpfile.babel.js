@@ -23,7 +23,7 @@ const config = {
     },
     revReplace: {
         modifyReved: function(filename) {
-            while (filename.startsWith('../')) { filename = filename.substr(3); }
+            while (filename.startsWith('../')) { filename = '/' + filename.substr(3); }
             return filename
         }
     },

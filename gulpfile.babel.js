@@ -3,7 +3,6 @@ import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 const $ = gulpLoadPlugins();
 
-import browserSync from 'browser-sync';
 import runSequence from 'run-sequence';
 
 import del from 'del';
@@ -21,6 +20,12 @@ const config = {
         path: './dist/server/index.js',
         // env: { NODE_ENV: 'development' }
         // , execArgv: ['--harmony']
+    },
+    revReplace: {
+        modifyReved: function(filename) {
+            while (filename.startsWith('../')) { filename = filename.substr(3); }
+            return filename
+        }
     },
     autoprefixer: {
         browsers: [
@@ -74,7 +79,7 @@ gulp.task('compile:client', function() {
         .pipe($.rev()) // adds hash to the end of filename (styles.css -> styles-971a5eb6.css)
         .pipe(assets.restore())
         .pipe($.useref())
-        // .pipe($.revReplace())
+        .pipe($.revReplace(config.revReplace))
         .pipe($.if('*.html', $.htmlmin(config.htmlmin)))
         .pipe($.if('*.html', $.size({title: 'html'})))
         .pipe($.size())

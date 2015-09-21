@@ -86,46 +86,33 @@ gulp.task('compile:client', function() {
         .pipe(gulp.dest('./dist/templates'));
 });
 
-gulp.task('watch:server', watch('./app/server/**', 'compile:server', 'server:restart'));
-gulp.task('watch:client', watch(['./app/public/**', './app/templates/**'], 'compile:client'));
-gulp.task('watch:scripts', watch('./app/script/**', 'compile:scripts'));
-gulp.task('watch:articles', watch('./articles/**'));
-
-// Other tasks
-
 gulp.task('lint:js', () => {
-    return gulp.src([
-            './app/scripts/**',
-            './app/server/**',
-            './gulpfile.babel.js'
-        ])
+    return gulp.src([ './app/scripts/**', './app/server/**', './gulpfile.babel.js' ])
         .pipe($.eslint())
         .pipe($.eslint.format());
         // .pipe($.eslint.failOnError());
 });
 
+gulp.task('clear:dist', () => del('./dist/**'));
+gulp.task('compile:server', () => compileBabelJs('./app/server/**', './dist/server'));
+gulp.task('compile:scripts', () => compileBabelJs('./app/scripts/**', './dist/scripts'));
+gulp.task('images', () => copy('./app/public/images/**', './dist/public/images'));
+gulp.task('fonts', () => copy('./app/public/fonts/**', './dist/public/fonts'));
+gulp.task('livereload:listen', (cb) => { $.livereload.listen(); cb(); });
+gulp.task('livereload:reload', (cb) => { $.livereload.reload(); cb(); });
+gulp.task('watch:server', watch('./app/server/**', 'compile:server', 'server:restart'));
+gulp.task('watch:client', watch(['./app/public/**', './app/templates/**'], 'compile:client'));
+gulp.task('watch:scripts', watch('./app/script/**', 'compile:scripts'));
+gulp.task('watch:articles', watch('./articles/**'));
 gulp.task('server:start', (cb) => {
     $.developServer.listen(config.server, error => {
-        if (error) { console.log(error); return; }
-        cb();
+        if (error) { console.log(error) } else { cb(); }
     });
 });
-
 gulp.task('server:restart', (cb) => {
     $.developServer.restart(error => {
-        if (error) { console.log(error); return; }
-        cb();
+        if (error) { console.log(error) } else { cb(); }
     });
-});
-
-gulp.task('livereload:listen', (cb) => {
-    $.livereload.listen();
-    cb();
-});
-
-gulp.task('livereload:reload', (cb) => {
-    $.livereload.reload();
-    cb();
 });
 
 // Helper functions

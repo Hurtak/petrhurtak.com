@@ -4,7 +4,6 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 const $ = gulpLoadPlugins();
 
 import runSequence from 'run-sequence';
-
 import del from 'del';
 
 // Config
@@ -61,11 +60,18 @@ gulp.task('dev', () => {
     );
 });
 
-gulp.task('clear:dist', () => del('./dist/**'));
-gulp.task('compile:server', () => compileBabelJs('./app/server/**', './dist/server'));
-gulp.task('compile:scripts', () => compileBabelJs('./app/scripts/**', './dist/scripts'));
-gulp.task('images', () => copy('./app/public/images/**', './dist/public/images'));
-gulp.task('fonts', () => copy('./app/public/fonts/**', './dist/public/fonts'));
+gulp.task('database', () => {
+    runSequence(
+        ['compile:scripts', 'compile:server'],
+        ['scripts:run']
+    );
+});
+
+gulp.task('scripts:run', () => {
+    require('./dist/scripts/upload-articles.js')();
+});
+
+// Other tasks
 
 gulp.task('compile:client', function() {
     const assets = $.useref.assets();

@@ -4,7 +4,8 @@ const db = mysql.createConnection({
     host: 'localhost',
     database: 'hurtak_blog',
     user: 'root',
-    password: ''
+    password: '',
+    multipleStatements: true
 });
 
 // factory function
@@ -62,33 +63,42 @@ export function getAtricle(article) {
 
 // upload articles script
 
-export function saveArticle(params) {
-    const query = `
---        SET autocommit = 0;
---        START TRANSACTION;
+export function getIdByArticleUrl(articleUrl) {
+    const query = `SELECT id FROM articles WHERE url = ?`;
+    return dbPromiseFactory(query, articleUrl, true);
+}
 
+export function insertArticle(params) {
+    const query = `
         INSERT INTO articles
             (title, description, url, directory, publication_date, last_update, visible)
         VALUES
-            (?, ?, ?, ?, ?, ?, ?)
-        ON DUPLICATE KEY UPDATE
-            title = VALUES(title),
-            description = VALUES(description),
-            url = VALUES(url),
-            directory = VALUES(directory),
-            publication_date = VALUES(publication_date),
-            last_update = VALUES(last_update),
-            visible = VALUES(visible);
+            (?, ?, ?, ?, ?, ?, ?);
 
---        INSERT INTO articles_content
---            (article_id, content)
---        VALUES
---            (LAST_INSERT_ID(), ?)
---        ON DUPLICATE KEY UPDATE
---            article_id = VALUES(article_id),
---            content = VALUES(content);
+        INSERT INTO articles_content
+            (article_id, content)
+        VALUES
+            (LAST_INSERT_ID(), ?);
+    `;
 
---        COMMIT;
+    return dbPromiseFactory(query, params);
+}
+
+export function updateArticle(params) {
+    const query = `
+        UPDATE articles
+        SET title = ?,
+            description = ?,
+            url = ?,
+            directory = ?,
+            publication_date = ?,
+            last_update = ?,
+            visible = ?
+        WHERE id = ?;
+
+        UPDATE articles_content
+        SET content = ?
+        WHERE article_id = ?;
     `;
 
     return dbPromiseFactory(query, params);

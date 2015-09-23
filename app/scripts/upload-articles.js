@@ -52,27 +52,46 @@ export default async function uploadArticles() {
 
         let directoryNameDb = getDirectoryDate(articleDirectory).join('/');
 
-        let dbData = [
-            metadata.title,
-            metadata.description,
-            articleUrl,
-            directoryNameDb,
-            metadata.publication_date,
-            metadata.last_update,
-            metadata.visible,
-            articleContent
-        ];
-
         try {
-            await database.saveArticle(dbData);
+            var articleId = await database.getIdByArticleUrl(articleUrl);
+            if (articleId === null) {
+                let dbData = [
+                    metadata.title,
+                    metadata.description,
+                    articleUrl,
+                    directoryNameDb,
+                    metadata.publication_date,
+                    metadata.last_update,
+                    metadata.visible,
+                    articleContent
+                ];
+                await database.insertArticle(dbData);
+                console.log('article "' + articleUrl + '" succesfully inserted into db.');
+            } else {
+                let dbData = [
+                    metadata.title,
+                    metadata.description,
+                    articleUrl,
+                    directoryNameDb,
+                    metadata.publication_date,
+                    metadata.last_update,
+                    metadata.visible,
+                    articleId.id,
+                    articleContent,
+                    articleId.id
+                ];
+                console.log('dbData ' , dbData);
+
+                await database.updateArticle(articleUrl);
+                console.log('article "' + articleUrl + '" succesfully updated in db.');
+            }
         } catch (e) {
             console.log('e ' , e);
         }
 
-        console.log('article "' + articleUrl + '" succesfully inserted into db.');
     };
 
-    var urlsJoin = urls.join('\', \'');
+    const urlsJoin = urls.join('\', \'');
 
     var deleteArticles = await database.deleteArticles(urlsJoin);
     if (deleteArticles.affectedRows > 0) {
@@ -81,5 +100,3 @@ export default async function uploadArticles() {
 
     process.exit();
 }
-
-uploadArticles();

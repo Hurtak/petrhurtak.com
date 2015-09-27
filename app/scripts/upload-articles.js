@@ -1,10 +1,4 @@
 import path from 'path';
-import url from 'url';
-import fs from 'fs';
-
-import markdownIt  from 'markdown-it';
-const markdown = markdownIt();
-import frontMatter from 'front-matter';
 
 import paths from '../server/paths.js';
 import * as articles from '../server/articles.js';
@@ -34,7 +28,7 @@ function isDirectoryNameCorrect(metadataDate, directoryName) {
 }
 
 export default async function uploadArticles() {
-    let urls = [];
+    let allArticlesUrls = [];
     const articlesDirectories = articles.getArticlesDirectories(paths.articles, 2);
 
     for (let articleDirectory of articlesDirectories) {
@@ -48,53 +42,42 @@ export default async function uploadArticles() {
             return;
         }
 
-        urls.push(articleUrl);
+        allArticlesUrls.push(articleUrl);
 
         let directoryNameDb = getDirectoryDate(articleDirectory).join('/');
 
-        try {
-            var articleId = await database.getIdByArticleUrl(articleUrl);
-            if (articleId === null) {
-                let dbData = [
-                    metadata.title,
-                    metadata.description,
-                    articleUrl,
-                    directoryNameDb,
-                    metadata.publication_date,
-                    metadata.last_update,
-                    metadata.visible,
-                    articleContent
-                ];
-                await database.insertArticle(dbData);
-                console.log('article "' + articleUrl + '" succesfully inserted into db.');
-            } else {
-                let dbData = [
-                    metadata.title,
-                    metadata.description,
-                    articleUrl,
-                    directoryNameDb,
-                    metadata.publication_date,
-                    metadata.last_update,
-                    metadata.visible,
-                    articleId.id,
-                    articleContent,
-                    articleId.id
-                ];
-                console.log('dbData ' , dbData);
+        let dbData = [
+            metadata.title,
+            metadata.description,
+            articleUrl,
+            directoryNameDb,
+            metadata.publication_date,
+            metadata.last_update,
+            metadata.visible
+        ];
 
-                await database.updateArticle(articleUrl);
-                console.log('article "' + articleUrl + '" succesfully updated in db.');
-            }
-        } catch (e) {
-            console.log('e ' , e);
+        const articleId = await database.getIdByArticleUrl(articleUrl);
+
+        if (articleId === null) { // new article which is not in db
+            let dbResponse = await database.insertArticleMetadata(dbData);
+            console.log('article "' + articleUrl + '" inserted into db [metadata].');
+
+            let insertId = dbResponse.insertId;
+            await database.insertArticleContent([insertId, articleContent]);
+            console.log('article "' + articleUrl + '" inserted into db [content].');
+        } else {
+            await database.updateArticleMetadata(dbData.concat(articleId.id));
+            console.log('article "' + articleUrl + '" updated in db [metadata].');
+
+            await database.updateArticleContent([articleContent, articleId.id]);
+            console.log('article "' + articleUrl + '" updated in db [content].');
         }
-
     };
 
-    const urlsJoin = urls.join('\', \'');
+    // delete all articles except the ones in article directory
+    var deletedArticles = await database.deleteArticles(allArticlesUrls);
 
-    var deleteArticles = await database.deleteArticles(urlsJoin);
-    if (deleteArticles.affectedRows > 0) {
+    if (deletedArticles.affectedRows > 0) {
         console.log(`${ deleteArticles.affectedRows } articles, which were not in articles directory, deleted from db.`);
     };
 

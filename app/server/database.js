@@ -68,23 +68,29 @@ export function getIdByArticleUrl(articleUrl) {
     return dbPromiseFactory(query, articleUrl, true);
 }
 
-export function insertArticle(params) {
+export function insertArticleMetadata(params) {
     const query = `
         INSERT INTO articles
             (title, description, url, directory, publication_date, last_update, visible)
         VALUES
-            (?, ?, ?, ?, ?, ?, ?);
-
-        INSERT INTO articles_content
-            (article_id, content)
-        VALUES
-            (LAST_INSERT_ID(), ?);
+            (?, ?, ?, ?, ?, ?, ?)
     `;
 
     return dbPromiseFactory(query, params);
 }
 
-export function updateArticle(params) {
+export function insertArticleContent(params) {
+    const query = `
+        INSERT INTO articles_content
+            (article_id, content)
+        VALUES
+            (?, ?)
+    `;
+
+    return dbPromiseFactory(query, params);
+}
+
+export function updateArticleMetadata(params) {
     const query = `
         UPDATE articles
         SET title = ?,
@@ -94,21 +100,28 @@ export function updateArticle(params) {
             publication_date = ?,
             last_update = ?,
             visible = ?
-        WHERE id = ?;
-
-        UPDATE articles_content
-        SET content = ?
-        WHERE article_id = ?;
+        WHERE id = ?
     `;
 
     return dbPromiseFactory(query, params);
 }
 
-export function deleteArticles(urlsJoin) {
+export function updateArticleContent(params) {
+    const query = `
+        UPDATE articles_content
+        SET content = ?
+        WHERE article_id = ?
+    `;
+
+    return dbPromiseFactory(query, params);
+}
+
+export function deleteArticles(urls) {
+    urls = urls.join('\', \'');
     const query = `
         DELETE FROM articles
-        WHERE url NOT IN ('${ urlsJoin }')
-    `;
+        WHERE url NOT IN ('${ urls }')
+    `; // TODO: fix SQL injection
 
     return dbPromiseFactory(query);
 }

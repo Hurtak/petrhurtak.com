@@ -4,7 +4,7 @@ import express from 'express';
 import swig from 'swig';
 
 import paths from './paths.js';
-import * as pages from './pages.js';
+import * as routes from './routes.js';
 
 const app = express();
 
@@ -23,10 +23,10 @@ app.get('/articles/*/*/*/images/*.png', (req, res) => {// article images
 
 // dynamic pages
 
-app.get('/', pages.index);
-app.get('/debug', pages.debug);
-app.get('/debug/:article', pages.debugArticle); // display articles from file system
-app.get('/:article', pages.article);  // display articles from database
+app.get('/', routes.index);
+app.get('/debug', routes.debug);
+app.get('/debug/:article', routes.debugArticle); // display articles from file system
+app.get('/:article', routes.article);  // display articles from database
 
 // start server
 

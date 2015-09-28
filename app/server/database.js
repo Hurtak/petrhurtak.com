@@ -11,6 +11,7 @@ function dbPromiseFactory(queryString, parameters = [], returnOneResults = false
     return new Promise((resolve, reject) => {
         db.query(queryString, parameters, (err, rows) => {
             if (err) {
+                console.log('err ' , err);
                 reject(err);
             }
 

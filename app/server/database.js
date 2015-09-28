@@ -1,12 +1,7 @@
 import mysql from 'mysql';
+import config from '../config/config.js';
 
-const db = mysql.createConnection({
-    host: 'localhost',
-    database: 'hurtak_blog',
-    user: 'root',
-    password: '',
-    multipleStatements: true
-});
+const db = mysql.createConnection(config.database);
 
 // factory function
 

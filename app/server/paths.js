@@ -18,13 +18,14 @@ const paths = { // paths relative to app directory
     articles: '../articles',
     nodeModules: '../node_modules',
 
+    config:    './config',
     server:    './server',
     public:    './public',
-    fonts:     './public/fonts',
-    icons:     './public/icons',
-    images:    './public/images',
-    scripts:   './public/scripts',
-    styles:    './public/styles',
+        fonts:     './public/fonts',
+        icons:     './public/icons',
+        images:    './public/images',
+        scripts:   './public/scripts',
+        styles:    './public/styles',
     templates: './templates'
 };
 

@@ -22,8 +22,7 @@ const config = {
         ]
     },
     server: {
-        path: './dist/server/index.js',
-        // env: { NODE_ENV: 'development' }
+        path: './dist/server/index.js'
         // , execArgv: ['--harmony']
     },
     revReplace: {
@@ -59,16 +58,33 @@ const config = {
 
 gulp.task('dev', () => {
     runSequence(
-        ['clear:dist', 'lint:js'],
-        ['compile:client', 'compile:server', 'compile:scripts', 'images', 'fonts'],
+        ['clear:dist', 'lint:js', 'enviroment:development'],
+        ['compile:client', 'compile:server', 'compile:config', 'images', 'fonts'],
         ['server:start', 'livereload:listen'],
-        ['watch:client', 'watch:server', 'watch:scripts', 'watch:articles']
+        ['watch:client', 'watch:server', 'watch:articles']
+    );
+});
+
+gulp.task('production', () => {
+    runSequence(
+        ['clear:dist', 'enviroment:production'],
+        ['compile:client', 'compile:server', 'compile:config', 'images', 'fonts'],
+        ['server:start']
     );
 });
 
 gulp.task('database', () => {
     runSequence(
-        ['compile:scripts', 'compile:server'],
+        ['clear:dist', 'enviroment:development'],
+        ['compile:server', 'compile:config', 'compile:scripts'],
+        ['scripts:run']
+    );
+});
+
+gulp.task('database:upload', () => {
+    runSequence(
+        ['clear:dist', 'enviroment:production'],
+        ['compile:server', 'compile:config', 'compile:scripts'],
         ['scripts:run']
     );
 });
@@ -108,24 +124,29 @@ gulp.task('lint:js', () => {
 gulp.task('clear:dist', () => del('./dist/**'));
 gulp.task('compile:server', () => compileBabelJs('./app/server/**', './dist/server'));
 gulp.task('compile:scripts', () => compileBabelJs('./app/scripts/**', './dist/scripts'));
+gulp.task('compile:config', () => compileBabelJs('./app/config/**', './dist/config'));
 gulp.task('images', () => copy('./app/public/images/**', './dist/public/images'));
 gulp.task('fonts', () => copy('./app/public/fonts/**', './dist/public/fonts'));
 gulp.task('livereload:listen', (cb) => { $.livereload.listen(); cb(); });
 gulp.task('livereload:reload', (cb) => { $.livereload.reload(); cb(); });
 gulp.task('watch:server', watch('./app/server/**', 'compile:server', 'server:restart'));
 gulp.task('watch:client', watch(['./app/public/**', './app/templates/**'], 'compile:client'));
-gulp.task('watch:scripts', watch('./app/script/**', 'compile:scripts'));
 gulp.task('watch:articles', watch('./articles/**'));
+
 gulp.task('server:start', (cb) => {
     $.developServer.listen(config.server, error => {
         if (error) { console.log(error) } else { cb(); }
     });
 });
+
 gulp.task('server:restart', (cb) => {
     $.developServer.restart(error => {
         if (error) { console.log(error) } else { cb(); }
     });
 });
+
+gulp.task('enviroment:production', () => { $.env({vars: { NODE_ENV: 'production' }}); });
+gulp.task('enviroment:development', () => { $.env({vars: { NODE_ENV: 'development' }}); });
 
 // Helper functions
 

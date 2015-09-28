@@ -39,6 +39,7 @@
     "less": "2.5.1",
     "markdown-it": "4.3.0",
     "normalize.css": "3.0.3",
+    "pretty-error": "^1.2.0",
     "run-sequence": "1.1.1"
   },
   "repository": {

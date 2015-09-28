@@ -1,3 +1,9 @@
+import prettyError from 'pretty-error';
+var error = new prettyError();
+error.skipNodeFiles();
+error.skipPackage('gulp', 'express', 'babel', 'babel-core', 'run-sequence');
+error.start();
+
 import gulp from 'gulp';
 
 import gulpLoadPlugins from 'gulp-load-plugins';

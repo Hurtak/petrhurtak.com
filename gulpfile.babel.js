@@ -68,12 +68,11 @@ gulp.task('dev', () => {
 gulp.task('production', () => {
     runSequence(
         ['clear:dist', 'enviroment:production'],
-        ['compile:client', 'compile:server', 'compile:config', 'images', 'fonts'],
-        ['server:start']
+        ['compile:client', 'compile:server', 'compile:config', 'images', 'fonts']
     );
 });
 
-gulp.task('database', () => {
+gulp.task('database:dev', () => {
     runSequence(
         ['clear:dist', 'enviroment:development'],
         ['compile:server', 'compile:config', 'compile:scripts'],
@@ -81,7 +80,7 @@ gulp.task('database', () => {
     );
 });
 
-gulp.task('database:upload', () => {
+gulp.task('database:production', () => {
     runSequence(
         ['clear:dist', 'enviroment:production'],
         ['compile:server', 'compile:config', 'compile:scripts'],

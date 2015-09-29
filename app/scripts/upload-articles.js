@@ -7,7 +7,7 @@ import * as database from '../server/database.js';
 function getDirectoryDate(directoryPath) {
     return directoryPath
         .split(path.sep)
-        .filter(dir => dir == Number(dir))
+        .filter(dir => dir && dir == Number(dir))
 }
 
 function isDirectoryNameCorrect(metadataDate, directoryName) {
@@ -30,6 +30,7 @@ function isDirectoryNameCorrect(metadataDate, directoryName) {
 export default async function uploadArticles() {
     let allArticlesUrls = [];
     const articlesDirectories = articles.getArticlesDirectories(paths.articles, 2);
+    articlesDirectories.reverse();
 
     for (let articleDirectory of articlesDirectories) {
         const articleUrl = articleDirectory.split(path.sep).reverse()[0];
@@ -60,17 +61,12 @@ export default async function uploadArticles() {
 
         if (articleId === null) { // new article which is not in db
             let dbResponse = await database.insertArticleMetadata(dbData);
-            console.log('article "' + articleUrl + '" inserted into db [metadata].');
-
-            let insertId = dbResponse.insertId;
-            await database.insertArticleContent([insertId, articleContent]);
-            console.log('article "' + articleUrl + '" inserted into db [content].');
+            await database.insertArticleContent([dbResponse.insertId, articleContent]);
+            console.log(`${ metadata.publication_date.toLocaleDateString('cs') } article ${ articleUrl } INSERTED.`);
         } else {
             await database.updateArticleMetadata(dbData.concat(articleId.id));
-            console.log('article "' + articleUrl + '" updated in db [metadata].');
-
             await database.updateArticleContent([articleContent, articleId.id]);
-            console.log('article "' + articleUrl + '" updated in db [content].');
+            console.log(`${ metadata.publication_date.toLocaleDateString('cs') } article ${ articleUrl } updated.`);
         }
     };
 

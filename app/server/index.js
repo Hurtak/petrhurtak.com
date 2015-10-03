@@ -17,7 +17,7 @@ app.set('views', paths.templates);
 // static files
 
 app.use('/public', express.static(paths.public));
-app.get('/articles/*/*/*/images/*.png', (req, res) => {// article images
+app.get('/articles/*/*/*/images/*.png', (req, res) => {
     res.sendFile(path.join(paths.root, req.originalUrl));
 });
 
@@ -25,8 +25,10 @@ app.get('/articles/*/*/*/images/*.png', (req, res) => {// article images
 
 app.get('/', routes.index);
 app.get('/debug', routes.debug);
-app.get('/debug/:article', routes.debugArticle); // display articles from file system
-app.get('/:article', routes.article);  // display articles from database
+// display articles from file system
+app.get('/debug/:article', routes.debugArticle);
+// display articles from database
+app.get('/:article', routes.article);
 
 // start server
 

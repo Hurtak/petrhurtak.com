@@ -1,5 +1,3 @@
-import fs from 'fs';
-import url from 'url';
 import path from 'path';
 
 import * as articles from './articles.js';
@@ -8,13 +6,13 @@ import paths from './paths.js';
 
 export async function index(req, res) {
     try {
-        const articles = await database.getAtricles();
+        const databaseArticles = await database.getAtricles();
 
         res.render(
             path.join(paths.templates, 'index.html'),
-            {articles: articles}
+            {articles: databaseArticles}
         );
-    } catch(e) {
+    } catch (e) {
         console.log(e);
     }
 }
@@ -33,7 +31,7 @@ export async function article(req, res) {
             // TODO: function for displaying 404
             res.render(path.join(paths.templates, '404.html'));
         }
-    } catch(e) {
+    } catch (e) {
         console.log(e);
     }
 }
@@ -58,12 +56,12 @@ export function debugArticle(req, res) {
     if (!articlePath) {
         res.render(path.join(paths.templates, '404.html'));
     } else {
-        const article = articles.parseArticle(path.join(articlePath, 'article.md'));
+        const fsArticle = articles.parseArticle(path.join(articlePath, 'article.md'));
 
         res.render(path.join(paths.templates, 'article.html'), {
-            title: article.metadata.title,
-            date: article.metadata.publication_date,
-            article: article.html
+            title: fsArticle.metadata.title,
+            date: fsArticle.metadata.publication_date,
+            article: fsArticle.html
         });
     }
 }

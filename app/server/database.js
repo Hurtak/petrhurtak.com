@@ -5,13 +5,13 @@ const db = mysql.createConnection(config.database);
 
 // factory function
 
-function dbPromiseFactory(queryString, parameters = [], returnOneResults = false) {
-    parameters = Array.isArray(parameters) ? parameters : [parameters];
+function dbPromiseFactory(queryString, params = [], returnOneResults = false) {
+    params = Array.isArray(params) ? params : [params];
 
     return new Promise((resolve, reject) => {
-        db.query(queryString, parameters, (err, rows) => {
+        db.query(queryString, params, (err, rows) => {
             if (err) {
-                console.log('err ' , err);
+                console.log('err ', err);
                 reject(err);
             }
 

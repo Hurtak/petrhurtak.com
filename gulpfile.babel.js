@@ -1,5 +1,5 @@
-import prettyError from 'pretty-error';
-var error = new prettyError();
+import PrettyError from 'pretty-error';
+var error = new PrettyError();
 error.skipNodeFiles();
 error.skipPackage('gulp', 'express', 'babel', 'babel-core', 'run-sequence');
 error.start();
@@ -23,12 +23,11 @@ const config = {
     },
     server: {
         path: './dist/server/index.js'
-        // , execArgv: ['--harmony']
     },
     revReplace: {
         modifyReved: function(filename) {
             while (filename.startsWith('../')) { filename = '/' + filename.substr(3); }
-            return filename
+            return filename;
         }
     },
     autoprefixer: {
@@ -94,7 +93,7 @@ gulp.task('scripts:run', () => {
 
 // Other tasks
 
-gulp.task('compile:client', function() {
+gulp.task('compile:client', () => {
     const assets = $.useref.assets();
     const less = require('gulp-less'); // TODO: $.less doesn't work for some reason
 
@@ -134,13 +133,13 @@ gulp.task('watch:articles', watch('./articles/**'));
 
 gulp.task('server:start', (cb) => {
     $.developServer.listen(config.server, error => {
-        if (error) { console.log(error) } else { cb(); }
+        if (error) { console.log(error); } else { cb(); }
     });
 });
 
 gulp.task('server:restart', (cb) => {
     $.developServer.restart(error => {
-        if (error) { console.log(error) } else { cb(); }
+        if (error) { console.log(error); } else { cb(); }
     });
 });
 

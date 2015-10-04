@@ -18,16 +18,14 @@ app.set('views', paths.templates);
 
 app.use('/public', express.static(paths.public));
 app.get('/articles/*/*/*/images/*.png', (req, res) => {
-    res.sendFile(path.join(paths.root, req.originalUrl));
+	res.sendFile(path.join(paths.root, req.originalUrl));
 });
 
 // dynamic pages
 
 app.get('/', routes.index);
 app.get('/debug', routes.debug);
-// display articles from file system
 app.get('/debug/:article', routes.debugArticle);
-// display articles from database
 app.get('/:article', routes.article);
 
 // start server

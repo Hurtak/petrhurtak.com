@@ -1,12 +1,32 @@
-{% for article in articles %}
-	<article>
-		<h2>
-			<a href="/{{ debugUrlPrefix }}{{ article.url }}">
-				{{ article.title }}
-			</a>
-		</h2>
-		<p>
-			{{ article.description }}
-		</p>
-	</article>
-{% endfor %}
+<main class="content">
+
+	{% for article in articles %}
+		<article class="article-preview">
+
+			<div class="article-preview__left">
+				<img src="">
+			</div>
+
+			<div class="article-preview__right">
+				<h2 class="article-peview__title">
+					<a href="/{{ debugUrlPrefix }}{{ article.url }}">
+						{{ article.title }}
+					</a>
+				</h2>
+				<time datetime="{{ article.last_update | date('Y-m-d H:i') }}">
+					{{ article.last_update | date('d.m.Y') }}
+				</time>
+				<p class="article-peview__text">
+					{{ article.description }} awd awawdawlorem	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+
+		</article>
+	{% endfor %}
+
+</main>

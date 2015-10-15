@@ -1,6 +1,53 @@
 @import (inline) '../../../node_modules/normalize.css/normalize.css';
 
-h1 {
-	color: blue;
-	text-decoration: underline;
+html,
+body {
+  height: 100%;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
+.page {
+  max-width: 800px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.content {
+
+}
+
+.article-preview {
+	@left-box-width: 300px;
+
+	border: 1px solid red;
+	overflow: hidden;
+	width: 100%;
+
+	&:not(:last-child) {
+		margin-bottom: 10px;
+	}
+
+	&__left {
+		float: left;
+		width: @left-box-width;
+		height: 100px;
+		background-color: lightgreen;
+	}
+
+	&__right {
+		float: left;
+		padding: 10px;
+		width: calc(~"100% - " @left-box-width);
+		background-color: lightblue;
+	}
 }

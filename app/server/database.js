@@ -30,7 +30,8 @@ export function getAtricles() {
 	const query = `
 		SELECT url,
 			title,
-			description
+			description,
+			last_update
 		FROM articles
 		WHERE visible = 1
 		ORDER BY publication_date

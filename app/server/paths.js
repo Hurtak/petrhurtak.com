@@ -1,7 +1,7 @@
 import path from 'path';
 
 function joinPathsInObject(object, rootDirectory) {
-	for (let key in object) {
+	for (const key in object) {
 		if (typeof object[key] === 'object') {
 			joinPathsInObject(object[key], rootDirectory);
 		} else {

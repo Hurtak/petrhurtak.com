@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Hurtak</title>
-        {% include 'metatags.html' %}
-        {% include 'styles.html' %}
-    </head>
-    <body>
-        <h1>{{ title }}</h1>
-        <div>{{ date|date('d.m.Y H:i', -120) }}</div>
-        {{ article|safe }}
-        {% include 'scripts.html' %}
-    </body>
+	<head>
+		<title>Hurtak</title>
+		{% include 'metatags.html' %}
+		{% include 'styles.html' %}
+	</head>
+	<body>
+		<h1>{{ title }}</h1>
+		<div>{{ date|date('d.m.Y H:i', -120) }}</div>
+		{{ article|safe }}
+		{% include 'scripts.html' %}
+	</body>
 </html>

@@ -1,12 +1,12 @@
 {% for article in articles %}
-    <article>
-        <h2>
-            <a href="/{{ debugUrlPrefix }}{{ article.url }}">
-                {{ article.title }}
-            </a>
-        </h2>
-        <p>
-            {{ article.description }}
-        </p>
-    </article>
+	<article>
+		<h2>
+			<a href="/{{ debugUrlPrefix }}{{ article.url }}">
+				{{ article.title }}
+			</a>
+		</h2>
+		<p>
+			{{ article.description }}
+		</p>
+	</article>
 {% endfor %}

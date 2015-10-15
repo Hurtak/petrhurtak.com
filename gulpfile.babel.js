@@ -62,7 +62,7 @@ gulp.task('dev', () => {
 		['clear:dist', /*'lint:js', */'enviroment:development'],
 		['compile:client', 'compile:server', 'compile:config', 'images', 'fonts'],
 		['server:start', 'livereload:listen'],
-		['watch:client', 'watch:server', 'watch:articles']
+		['watch:client', 'watch:server']
 	);
 });
 
@@ -120,9 +120,14 @@ gulp.task('images', () => copy('./app/public/images/**', './dist/public/images')
 gulp.task('fonts', () => copy('./app/public/fonts/**', './dist/public/fonts'));
 gulp.task('livereload:listen', () => $.livereload.listen());
 gulp.task('livereload:reload', () => $.livereload.reload());
-gulp.task('watch:server', watch('./app/server/**', 'compile:server', 'server:restart'));
-gulp.task('watch:client', watch(['./app/public/**', './app/templates/**'], 'compile:client'));
-gulp.task('watch:articles', watch('./articles/**'));
+gulp.task('watch:server', watch(
+	['./app/server/**'],
+	['compile:server', 'server:restart']
+));
+gulp.task('watch:client', watch(
+	['./app/public/**', './app/templates'],
+	['compile:client', 'server:restart']
+));
 
 gulp.task('server:start', cb => {
 	$.developServer.listen(config.server, error => {
@@ -153,7 +158,7 @@ gulp.task('enviroment:development', () => {
 
 // Helper functions
 
-function watch(target, ...tasks) {
+function watch(target, tasks) {
 	$.watch([].concat(target), () => runSequence(...tasks, 'livereload:reload'));
 }
 

@@ -14,7 +14,6 @@ export async function index(req, res) {
 				obj.url,
 				'thumbnail.png'
 			);
-			console.log('obj.thumbnailUrl ' , obj.thumbnailUrl);
 			return obj;
 		});
 

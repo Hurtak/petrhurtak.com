@@ -31,6 +31,7 @@ export function getAtricles() {
 		SELECT url,
 			title,
 			description,
+			directory,
 			last_update
 		FROM articles
 		WHERE visible = 1

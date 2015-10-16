@@ -7,6 +7,16 @@ import paths from './paths.js';
 export async function index(req, res) {
 	try {
 		const databaseArticles = await database.getAtricles();
+		databaseArticles.map(obj => {
+			obj.thumbnailUrl = path.join(
+				'/articles',
+				obj.directory,
+				obj.url,
+				'thumbnail.png'
+			);
+			console.log('obj.thumbnailUrl ' , obj.thumbnailUrl);
+			return obj;
+		});
 
 		res.render(
 			path.join(paths.templates, 'index.html'),

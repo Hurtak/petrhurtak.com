@@ -17,7 +17,7 @@ app.set('views', paths.templates);
 // static files
 
 app.use('/public', express.static(paths.public));
-app.get('/articles/*/*/*/images/*.png', (req, res) => {
+app.get('/articles/**/*.png', (req, res) => {
 	res.sendFile(path.join(paths.root, req.originalUrl));
 });
 

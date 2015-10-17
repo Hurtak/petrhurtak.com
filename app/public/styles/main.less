@@ -1,5 +1,19 @@
 @import (inline) '../../../node_modules/normalize.css/normalize.css';
 
+/*
+ * variables
+ */
+
+
+/*
+ * z-indexes
+ */
+
+
+/*
+ * resets
+ */
+
 html,
 body {
 	height: 100%;
@@ -16,6 +30,31 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
+/*
+ * general
+ */
+
+
+body {
+	font-family: arial;
+	background-color: #25262B;
+	color: white;
+}
+
+
+a {
+	color: #7ad1d9;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&:visited {
+		color: #7ad149;
+	}
+}
+
 .page {
 	max-width: 800px;
 	margin: auto;
@@ -23,11 +62,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content {
-
+	margin-top: 10px;
 }
 
 .article-preview {
-	border: 1px solid red;
 	overflow: hidden;
 	width: 100%;
 
@@ -37,15 +75,13 @@ h1, h2, h3, h4, h5, h6 {
 
 	&__top {
 		width: 100%;
-		padding: 10px;
 		float: left;
-		background-color: lightgreen;
+		margin-bottom: 10px;
 	}
 
 	&__bottom {
 		width: 100%;
 		padding: 0;
 		float: left;
-		background-color: lightblue;
 	}
 }

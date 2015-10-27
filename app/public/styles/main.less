@@ -17,8 +17,10 @@
 html,
 body {
 	height: 100%;
+	margin: 0;
 }
 
+// @see: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 html {
 	box-sizing: border-box;
 }
@@ -26,7 +28,7 @@ html {
 	box-sizing: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, ul, p {
 	margin: 0;
 }
 
@@ -34,24 +36,55 @@ h1, h2, h3, h4, h5, h6 {
  * Typography
  */
 
-// @see: http://snook.ca/archives/html_and_css/font-size-with-rem
+// Optimal Typography for 18px Font
+// Font Size: 18, Line Height: 29, Content Width: 829
+// @see: http://www.pearsonified.com/typography/
+
 html {
+	// @see: http://snook.ca/archives/html_and_css/font-size-with-rem
 	font-size: 62.5%;
 }
 
-@font-size-title: 4.5rem; // 45px
-@font-size-headline: 2.8rem; // 28px
-@font-size-sub-headlines: 2.2rem; // 22px
-@font-size-primary-text: 1.7rem; // 17px
-@font-size-secondary-text: 1.3rem; // 13px
+@font-size-title: 4.7rem; // 47px
+@font-size-headline: 2.9rem; // 29px
+@font-size-sub-headlines: 2.3rem; // 23px
+@font-size-primary-text: 1.8rem; // 18px
+@font-size-secondary-text: 1.4rem; // 14px
 
-@line-hight: 1.64701;
+@line-hight: 1.6;
+@paragraph-spacing: 29px;
 @content-width: 828;
 
 body {
-	font-family: Verdana, arial;
+	font-family: Calibri, Candara, Segoe, 'Segoe UI', Arial, sans-serif;
 	font-size: @font-size-primary-text;
 	line-height: @line-hight;
+	padding: 2em;
+}
+
+h1 {
+	font-size: @font-size-title;
+}
+
+h2 {
+	font-size: @font-size-headline;
+}
+
+h3 {
+	font-size: @font-size-sub-headlines;
+}
+
+p,
+ul {
+	margin-bottom: @paragraph-spacing;
+}
+
+ul {
+	padding-left: @paragraph-spacing;
+}
+
+small {
+	font-size: @font-size-secondary-text;
 }
 
 /*

@@ -31,57 +31,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*
+ * Typography
+ */
+
+// @see: http://snook.ca/archives/html_and_css/font-size-with-rem
+html {
+	font-size: 62.5%;
+}
+
+@font-size-title: 4.5rem; // 45px
+@font-size-headline: 2.8rem; // 28px
+@font-size-sub-headlines: 2.2rem; // 22px
+@font-size-primary-text: 1.7rem; // 17px
+@font-size-secondary-text: 1.3rem; // 13px
+
+@line-hight: 1.64701;
+@content-width: 828;
+
+body {
+	font-family: Verdana, arial;
+	font-size: @font-size-primary-text;
+	line-height: @line-hight;
+}
+
+/*
  * general
  */
 
-
 body {
-	font-family: arial;
-	background-color: #25262B;
-	color: white;
-}
 
-
-a {
-	color: #7ad1d9;
-	text-decoration: none;
-
-	&:hover {
-		text-decoration: underline;
-	}
-
-	&:visited {
-		color: #7ad149;
-	}
-}
-
-.page {
-	max-width: 800px;
-	margin: auto;
-	overflow: hidden;
-}
-
-.content {
-	margin-top: 10px;
-}
-
-.article-preview {
-	overflow: hidden;
-	width: 100%;
-
-	&:not(:last-child) {
-		margin-bottom: 10px;
-	}
-
-	&__top {
-		width: 100%;
-		float: left;
-		margin-bottom: 10px;
-	}
-
-	&__bottom {
-		width: 100%;
-		padding: 0;
-		float: left;
-	}
 }

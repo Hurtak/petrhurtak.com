@@ -51,15 +51,21 @@ html {
 @font-size-primary-text: 1.8rem; // 18px
 @font-size-secondary-text: 1.4rem; // 14px
 
-@line-hight: 1.6;
-@paragraph-spacing: 29px;
-@content-width: 828;
+@line-height: 1.6;
+@paragraph-spacing: 1em;
+@content-width: 750px;
 
 body {
-	font-family: Calibri, 'Segoe UI', Arial, sans-serif;
+	font-family: Tahoma, Verdana, Segoe, sans-serif;
 	font-size: @font-size-primary-text;
-	line-height: @line-hight;
-	padding: 2em;
+	line-height: @line-height;
+	padding: 1em;
+}
+
+h1, h2, h3 {
+	font-family: Georgia, serif;
+	font-weight: 400;
+	font-style: italic;
 }
 
 h1 {
@@ -80,7 +86,7 @@ ul {
 }
 
 ul {
-	padding-left: @paragraph-spacing;
+	padding-left: @paragraph-spacing * 2;
 }
 
 small {
@@ -91,6 +97,7 @@ small {
  * general
  */
 
-body {
-
+.page {
+	max-width: @content-width;
+	margin: auto;
 }

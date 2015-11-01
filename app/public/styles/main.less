@@ -24,11 +24,20 @@ body {
 html {
 	box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
 	box-sizing: inherit;
 }
 
-h1, h2, h3, h4, h5, h6, ul, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+p {
 	margin: 0;
 }
 
@@ -45,27 +54,52 @@ html {
 	font-size: 62.5%;
 }
 
-@font-size-title: 4.7rem; // 47px
-@font-size-headline: 2.9rem; // 29px
-@font-size-sub-headlines: 2.3rem; // 23px
-@font-size-primary-text: 1.8rem; // 18px
-@font-size-secondary-text: 1.4rem; // 14px
+@font-size-title: 4.5rem; // 45px
+@font-size-headline: 2.8rem; // 28px
+@font-size-sub-headlines: 2.2rem; // 22px
+@font-size-primary-text: 1.7rem; // 17px
+@font-size-secondary-text: 1.3rem; // 13px
 
 @line-height: 1.6;
 @paragraph-spacing: 1em;
 @content-width: 750px;
 
 body {
-	font-family: Tahoma, Verdana, Segoe, sans-serif;
-	font-size: @font-size-primary-text;
 	line-height: @line-height;
 	padding: 1em;
+	background-color: @background;
+	font-family: Tahoma, Verdana, Segoe, sans-serif;
+	font-size: @font-size-primary-text;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
 	font-family: Georgia, serif;
 	font-weight: 400;
 	font-style: italic;
+}
+
+@blue: #037ca0;
+@light-blue: #f3f9fa;
+
+@orange: #da951f;
+@red: #921b18;
+@light-red: #f5e9e9;
+
+@background: #f7ecdd;
+
+a {
+	color: black;
+	text-decoration: underline;
+
+	&:visited {
+		color: black;
+	}
+
+	&:hover {
+
+	}
 }
 
 h1 {

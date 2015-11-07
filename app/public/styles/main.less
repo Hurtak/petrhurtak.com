@@ -1,49 +1,49 @@
 @import (inline) '../../../node_modules/normalize.css/normalize.css';
 
-/*
- * variables
- */
+/**********
+ * colors *
+ **********/
+
+@color-background: #f6f5ed;
+@color-font: #333;
+
+/*************
+ * z-indexes *
+ *************/
 
 
-/*
- * z-indexes
- */
-
-
-/*
- * resets
- */
+/**********
+ * resets *
+ **********/
 
 html,
 body {
 	height: 100%;
 	margin: 0;
+	padding: 0;
 }
 
 // @see: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 html {
 	box-sizing: border-box;
 }
+
 *,
 *:before,
 *:after {
 	box-sizing: inherit;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
+h1, h2, h3, h4, h5, h6,
+ol, ul, li,
 p {
 	margin: 0;
+	padding: 0;
 }
 
-/*
- * Typography
- */
+/**************
+ * Typography *
+ **************/
 
 // Optimal Typography for 18px Font
 // Font Size: 18, Line Height: 29, Content Width: 829
@@ -54,33 +54,51 @@ html {
 	font-size: 62.5%;
 }
 
-@font-size-title: 4.5rem; // 45px
-@font-size-headline: 2.8rem; // 28px
-@font-size-sub-headlines: 2.2rem; // 22px
-@font-size-primary-text: 1.7rem; // 17px
-@font-size-secondary-text: 1.3rem; // 13px
+@font-size-title: 5.2rem; //5.2px
+@font-size-headline: 3.2rem; //3.2px
+@font-size-sub-headlines: 2.5rem; //2.5px
+@font-size-primary-text: 2.0rem; //2.0px
+@font-size-secondary-text: 1.6rem; //1.6px
 
-@line-height: 1.6;
+@paragraph-line-height: 1.35;
 @paragraph-spacing: 1em;
-@content-width: 750px;
+@content-width: 700px;
 
 body {
-	line-height: @line-height;
 	padding: 1em;
-	background-color: @background;
-	font-family: Tahoma, Verdana, Segoe, sans-serif;
+	font-family: Cambria, Georgia, serif;
+
 	font-size: @font-size-primary-text;
+	line-height: @paragraph-line-height;
+
+	color: black;
+	background-color: @color-background;
+	text-rendering: optimizeLegibility;
 }
 
-h1,
-h2,
-h3 {
-	font-family: Georgia, serif;
+h1, h2, h3 {
+	color: @color-font;
+
+	text-transform: uppercase;
 	font-weight: 400;
-	font-style: italic;
+	font-family: Calibri, Candara, 'Segoe UI', Arial, sans-serif;
+
+	line-height: 1;
+	margin-top: 1.5em;
+	margin-bottom: 0.3em;
 }
 
-@background: #f7ecdd;
+h1 {
+	font-size: @font-size-title;
+}
+
+h2 {
+	font-size: @font-size-headline;
+}
+
+h3 {
+	font-size: @font-size-sub-headlines;
+}
 
 a {
 	color: black;
@@ -96,24 +114,14 @@ a {
 	}
 }
 
-h1 {
-	font-size: @font-size-title;
-}
-
-h2 {
-	font-size: @font-size-headline;
-}
-
-h3 {
-	font-size: @font-size-sub-headlines;
-}
-
 p,
-ul {
+ul,
+ol {
 	margin-bottom: @paragraph-spacing;
 }
 
-ul {
+ul,
+ol {
 	padding-left: @paragraph-spacing * 2;
 }
 
@@ -121,9 +129,9 @@ small {
 	font-size: @font-size-secondary-text;
 }
 
-/*
- * general
- */
+/***********
+ * general *
+ ***********/
 
 .page {
 	max-width: @content-width;

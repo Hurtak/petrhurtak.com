@@ -1,5 +1,5 @@
 import PrettyError from 'pretty-error';
-var error = new PrettyError();
+const error = new PrettyError();
 error.skipNodeFiles();
 error.skipPackage('gulp', 'express', 'babel', 'babel-core', 'run-sequence');
 error.start();
@@ -25,9 +25,9 @@ const config = {
 		path: './dist/server/index.js'
 	},
 	revReplace: {
-		modifyReved: function (filename) {
+		modifyReved(filename) {
 			while (filename.startsWith('../')) {
-				filename = '/' + filename.substr(3);
+				filename = `/${filename.substr(3)}`;
 			}
 			return filename;
 		}
@@ -59,7 +59,7 @@ const config = {
 
 gulp.task('dev', () => {
 	runSequence(
-		['clear:dist', /*'lint:js', */'enviroment:development'],
+		['clear:dist', /*'lint:js', */ 'enviroment:development'],
 		['compile:client', 'compile:server', 'compile:config', 'images', 'fonts'],
 		['server:start', 'livereload:listen'],
 		['watch:client', 'watch:server']
@@ -69,7 +69,7 @@ gulp.task('dev', () => {
 gulp.task('production', () => {
 	runSequence(
 		['clear:dist', 'enviroment:production'],
-		['compile:client', 'compile:server', 'compile:config', 'images', 'fonts'],
+		['compile:client', 'compile:server', 'compile:scripts', 'compile:config', 'images', 'fonts'],
 		['scripts:run']
 	);
 });
@@ -107,10 +107,10 @@ gulp.task('compile:client', () => {
 		.pipe(gulp.dest('./dist/templates'));
 });
 
-gulp.task('lint:js', () => {
-	return gulp.src(['./app/server/**', './gulpfile.babel.js', './app/scripts/**'])
-		.pipe($.xo());
-});
+gulp.task('lint:js', () =>
+	gulp.src(['./app/server/**', './gulpfile.babel.js', './app/scripts/**'])
+		.pipe($.xo())
+);
 
 gulp.task('clear:dist', () => del('./dist/**'));
 gulp.task('compile:server', () => compileBabelJs('./app/server/**', './dist/server'));

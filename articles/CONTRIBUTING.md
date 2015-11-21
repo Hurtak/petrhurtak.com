@@ -40,13 +40,13 @@ ___bold and italics text___
 
 ### Multiline
 
-````markdown
+```markdown
 ```javascript
 function name() {
     // code
 }
+```.
 ```
-````
 
 ## Quoting
 

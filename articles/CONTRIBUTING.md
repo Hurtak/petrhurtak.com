@@ -36,17 +36,17 @@ ___bold and italics text___
 
 ### Inline
 
-` `inline code\\`` `
+`` `inline code` ``
 
 ### Multiline
 
-```markdown
-```languagename
-function functionName() {
-    test();
+````markdown
+```javascript
+function name() {
+    // code
 }
-```.
 ```
+````
 
 ## Quoting
 
@@ -82,6 +82,6 @@ typographically correct quotes (`“` , `”`, `‘` and `’`)
 - if resource is avaliable on `https://` always use that of protocol relative `//`
 
 ```markdown
-![image alt text](http://satyr.io/300x100/lightblue)
+![image alt text](http://satyr.io/300x100/lightblue "Optional title attribute")
 ```
-![image alt text](http://satyr.io/300x100/lightblue)
+![image alt text](http://satyr.io/300x100/lightblue "Optional title attribute")

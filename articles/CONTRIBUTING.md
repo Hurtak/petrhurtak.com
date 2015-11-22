@@ -60,22 +60,31 @@ visible: 1
 | `--`  | `–`            |
 | `---` | `—`            |
 
-## Quoting
+## Components
 
-- use `—` before authors name (`&mdash;`)
+### Quotes
+
+- use `---` before authors name which will be converted into `&mdash;`
 
 ```html
 <blockquote>
 	<p>Citation text</p>
-	<footer>&mdash; <a href="https://hurtak.cz"><cite>Petr Huřťák</cite></a></footer>
+	<footer>--- <a href="https://hurtak.cz"><cite>Petr Huřťák</cite></a></footer>
 </blockquote>
 ```
 
-## Images
+### Images
 
 - always use `./` at the beginning of the relative urls
 - always include alt attribute
 
 ```html
 <img src="./images/test.png" alt="alt text">
+```
+
+```html
+<figure>
+	<img src="./images/test.png" alt="alt text">
+	<figcaption>Image caption</figcaption>
+</figure>
 ```

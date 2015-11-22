@@ -42,6 +42,8 @@ p {
 	margin: 0;
 	padding: 0;
 }
+ 
+img { display: block; }
 
 /**************
  * Typography *
@@ -75,7 +77,6 @@ body {
 	font-family: @font-family-paragraph;
 	font-size: @font-size-primary-text;
 	line-height: @paragraph-line-height;
-	padding: 1em;
 	text-rendering: optimizeLegibility;
 }
 
@@ -120,4 +121,35 @@ ul, ol { padding-left: @paragraph-spacing * 2; }
 .page {
 	max-width: @content-width;
 	margin: auto;
+	padding: 20px 0;
+}
+
+header {
+
+	img {
+		margin: auto;
+	}
+
+	nav {
+		margin-top: 1em;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+
+		li {
+			width: 25%;
+			line-height: 3;
+			text-align: center;
+		}
+	}
+}
+
+footer {
+	text-align: center;
+	font-size: @font-size-secondary-text;
+	margin: 2em 0;
 }

@@ -3,7 +3,6 @@ import url from 'url';
 import path from 'path';
 
 import frontMatter from 'front-matter';
-import markdownIt from 'markdown-it';
 
 import * as paths from './paths.js';
 
@@ -89,14 +88,15 @@ export function parseArticle(articlePath) {
 			// use '/' instead of path.sep, because that's what we are using in templates
 			.join('/') + '/';
 
+	console.log('test');
 	article = article.replace(
-		/(^.*!\[.*?\]\()(\.\/.*?)(\).*$)/gm,
-		(whole, first, second, third) => first + url.resolve(articleDirectory, second) + third
+		/(<img .*?src=["'])(.+?)(["'].*?>)/gm,
+		(whole, prefix, imageUrl, suffix) => prefix + url.resolve(articleDirectory, imageUrl) + suffix
 	);
 
 	return {
 		metadata,
-		html: markdownIt().render(article)
+		html: article
 	};
 }
 

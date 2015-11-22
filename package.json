@@ -7,7 +7,6 @@
     "babel-runtime": "5.8.20",
     "express": "4.13.3",
     "front-matter": "2.0.0",
-    "markdown-it": "5.0.1",
     "mysql": "2.9.0",
     "swig": "1.4.2"
   },
@@ -43,7 +42,10 @@
   "xo": {
     "esnext": true,
     "rules": {
-      "curly": [2, "multi-line"]
+      "curly": [
+        2,
+        "multi-line"
+      ]
     }
   },
   "repository": {

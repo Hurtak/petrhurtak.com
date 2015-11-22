@@ -1,11 +1,11 @@
-# Markdown code style for articles
+# html code style for articles
 
 ## Article metadata
 
 - each article starts with YAML front matter block which specifies articles metadata
 - all properties are mandatory
 
-```YAML
+```yaml
 ---
 title: Title of the article
 description: Short description of article
@@ -17,71 +17,65 @@ visible: 1
 
 ## Headings
 
-```markdown
-## Heading
-### Sub-heading
+```html
+<h2>Heading</h2>
+<h3>Sub-heading</h3>
 ```
 
 ## Formatting
 
-```markdown
-_italics text_
-__bold text__
-___bold and italics text___
-==marked text==
-~~crossed text~~
+```html
+<em>italics text</em>
+<strong>bold text</strong>
+<mark>marked text</mark>
 ```
 
 ## Code
 
 ### Inline
 
-`` `inline code` ``
+```html
+<code>inline code</code>
+```
 
 ### Multiline
 
-```markdown
-```javascript
-function name() {
-    // code
-}
-```.
+```html
+<pre><code>
+	function name() {
+		// code
+	}
+</code></pre>
 ```
+
+## Typography
+- always use bad typography for maximum clarity (eg use `--` instead of `&ndash;` or `–`)
+- [typogr.js](https://github.com/ekalinin/typogr.js) plugin is used to fix these errors
+
+| use   | converted into |
+| ----- | ---------------|
+| `...` | `…`            |
+| `'`   | `‘` or `’`     |
+| `"`   | `“` or `”`     |
+| `--`  | `–`            |
+| `---` | `—`            |
 
 ## Quoting
 
-### Inline
-
-- use regular quotes `'` and `"`, they will be automatically replaced with
-typographically correct quotes (`“` , `”`, `‘` and `’`)
-
-### Multiline
-
 - use `—` before authors name (`&mdash;`)
 
-```markdown
-> "Quote text"
->
-> — [Author name](http://adress.com)
+```html
+<blockquote>
+	<p>Citation text</p>
+	<footer>&mdash; <a href="https://hurtak.cz"><cite>Petr Huřťák</cite></a></footer>
+</blockquote>
 ```
 
 ## Images
 
-### relative url
+- always use `./` at the beginning of the relative urls
+- always include alt attribute
 
-- always use `./` at the beggining of the relative urls
-
-```markdown
-![image alt text](./images/test.png)
+```html
+<img src="./images/test.png" alt="alt text">
 ```
-![image alt text](./images/test.png)
-
-### absolute url
-
-- always include protocol
-- if resource is avaliable on `https://` always use that of protocol relative `//`
-
-```markdown
-![image alt text](http://satyr.io/300x100/lightblue "Optional title attribute")
-```
-![image alt text](http://satyr.io/300x100/lightblue "Optional title attribute")

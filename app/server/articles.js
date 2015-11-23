@@ -88,7 +88,6 @@ export function parseArticle(articlePath) {
 			// use '/' instead of path.sep, because that's what we are using in templates
 			.join('/') + '/';
 
-	console.log('test');
 	article = article.replace(
 		/(<img .*?src=["'])(.+?)(["'].*?>)/gm,
 		(whole, prefix, imageUrl, suffix) => prefix + url.resolve(articleDirectory, imageUrl) + suffix

@@ -1,20 +1,21 @@
 <main class="content">
 
 	{% for article in articles %}
-		<article class="article-preview">
+		<section class="article-preview">
 
-			<div class="article-preview__top">
-				<h2 class="article-peview__title">
-					<a href="/{{ debugUrlPrefix }}{{ article.url }}">
-						{{ article.title }}
-					</a>
-				</h2>
-				<time datetime="{{ article.last_update | date('Y-m-d H:i') }}">
-					{{ article.last_update | date('d.m.Y') }}
-				</time>
-			</div>
+			<h2 class="article-peview__title">
+				<a href="/{{ debugUrlPrefix }}{{ article.url }}">
+					{{ article.title }}
+				</a>
+			</h2>
+			<time datetime="{{ article.last_update | date('Y-m-d H:i') }}">
+				{{ article.last_update | date('d.m.Y') }}
+			</time>
+			<p>
+				{{ article.description }}
+			</p>
 
-		</article>
+		</section>
 	{% endfor %}
 
 </main>

@@ -76,6 +76,4 @@ export default async function uploadArticles() {
 	if (deletedArticles.affectedRows > 0) {
 		console.log(`${ deleteArticles.affectedRows } articles, which were not in articles directory, deleted from db.`);
 	};
-
-	process.exit();
 }

@@ -60,8 +60,8 @@ const config = {
 gulp.task('dev', () => {
 	runSequence(
 		['clear:dist', /*'lint:js', */ 'enviroment:development'],
-		['compile:client', 'compile:server', 'compile:config', 'images', 'fonts'],
-		['server:start', 'livereload:listen'],
+		['compile:client', 'compile:server', 'compile:config', 'compile:scripts', 'images', 'fonts'],
+		['server:start', 'livereload:listen', 'scripts:run'],
 		['watch:client', 'watch:server']
 	);
 });
@@ -70,14 +70,6 @@ gulp.task('production', () => {
 	runSequence(
 		['clear:dist', 'enviroment:production'],
 		['compile:client', 'compile:server', 'compile:scripts', 'compile:config', 'images', 'fonts'],
-		['scripts:run']
-	);
-});
-
-gulp.task('database:dev', () => {
-	runSequence(
-		['clear:dist', 'enviroment:development'],
-		['compile:server', 'compile:config', 'compile:scripts'],
 		['scripts:run']
 	);
 });

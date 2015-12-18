@@ -121,13 +121,13 @@ ul, ol { padding-left: @paragraph-spacing * 2; }
 .page {
 	max-width: @content-width;
 	margin: auto;
-	padding: 20px 0;
 }
 
 header {
 
 	img {
 		margin: auto;
+		margin-top: 1em;
 	}
 
 	nav {
@@ -144,6 +144,16 @@ header {
 			width: 25%;
 			line-height: 3;
 			text-align: center;
+
+			a {
+				display: block;
+				border: 0;
+
+				&:hover {
+					background-color: rgba(0, 0, 0, .05);
+					border: 0;
+				}
+			}
 		}
 	}
 }
@@ -151,5 +161,5 @@ header {
 footer {
 	text-align: center;
 	font-size: @font-size-secondary-text;
-	margin: 2em 0;
+	margin: 4em 0 2em;
 }

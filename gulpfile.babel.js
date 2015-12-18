@@ -60,7 +60,7 @@ const config = {
 gulp.task('dev', () => {
 	runSequence(
 		['clear:dist', /*'lint:js', */ 'enviroment:development'],
-		['compile:client', 'compile:server', 'compile:config', 'compile:scripts', 'images', 'fonts'],
+		['compile:client', 'compile:server', 'compile:config', 'compile:scripts', 'images'],
 		['server:start', 'livereload:listen', 'scripts:run'],
 		['watch:client', 'watch:server']
 	);
@@ -69,7 +69,7 @@ gulp.task('dev', () => {
 gulp.task('production', () => {
 	runSequence(
 		['clear:dist', 'enviroment:production'],
-		['compile:client', 'compile:server', 'compile:scripts', 'compile:config', 'images', 'fonts'],
+		['compile:client', 'compile:server', 'compile:scripts', 'compile:config', 'images'],
 		['scripts:run']
 	);
 });
@@ -109,7 +109,6 @@ gulp.task('compile:server', () => compileBabelJs('./app/server/**', './dist/serv
 gulp.task('compile:scripts', () => compileBabelJs('./app/scripts/**', './dist/scripts'));
 gulp.task('compile:config', () => compileBabelJs('./app/config/**', './dist/config'));
 gulp.task('images', () => copy('./app/public/images/**', './dist/public/images'));
-gulp.task('fonts', () => copy('./app/public/fonts/**', './dist/public/fonts'));
 gulp.task('livereload:listen', () => $.livereload.listen());
 gulp.task('livereload:reload', () => $.livereload.reload());
 gulp.task('watch:server', watch(

@@ -111,14 +111,24 @@ gulp.task('compile:config', () => compileBabelJs('./app/config/**', './dist/conf
 gulp.task('images', () => copy('./app/public/images/**', './dist/public/images'));
 gulp.task('livereload:listen', () => $.livereload.listen());
 gulp.task('livereload:reload', () => $.livereload.reload());
-gulp.task('watch:server', watch(
-	['./app/server/**'],
-	['compile:server', 'server:restart']
-));
-gulp.task('watch:client', watch(
-	['./app/public/**', './app/templates'],
-	['compile:client', 'server:restart']
-));
+
+gulp.task('watch:server', () => {
+	$.watch('./app/server/**', () => {
+		runSequence(
+			['compile:server', 'server:restart'],
+			['livereload:reload']
+		);
+	});
+});
+
+gulp.task('watch:client', () => {
+	$.watch(['./app/public/**', './app/templates/**'], () => {
+		runSequence(
+			['compile:client', 'server:restart'],
+			['livereload:reload']
+		);
+	});
+});
 
 gulp.task('server:start', cb => {
 	$.developServer.listen(config.server, error => {
@@ -148,10 +158,6 @@ gulp.task('enviroment:development', () => {
 });
 
 // Helper functions
-
-function watch(target, tasks) {
-	$.watch([].concat(target), () => runSequence(...tasks, 'livereload:reload'));
-}
 
 function compileBabelJs(origin, destination) {
 	return gulp.src([].concat(origin))

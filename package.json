@@ -60,5 +60,8 @@
   "bugs": {
     "url": "https://github.com/Hurtak/blog/issues"
   },
+  "standard": {
+    "parser": "babel-eslint"
+  },
   "homepage": "http://hurtak.cz"
 }

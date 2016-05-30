@@ -1,14 +1,12 @@
 'use strict'
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'development') {
   require('./debug.js')()
 }
 
 const path = require('path')
-
 const express = require('express')
 const swig = require('swig')
-
 const paths = require('./paths.js')
 const routes = require('./routes.js')
 

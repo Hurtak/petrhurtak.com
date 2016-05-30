@@ -12,8 +12,6 @@ if (process.env.NODE_ENV === 'production') {
 
 // shared configuration
 
-config.database = {
-  multipleStatements: true
-}
+config.database.multipleStatements = true
 
 module.exports = config

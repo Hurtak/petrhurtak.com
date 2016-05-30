@@ -7,6 +7,7 @@ if (process.env.NODE_ENV === 'development') {
 const path = require('path')
 const express = require('express')
 const swig = require('swig')
+const config = require('../config/config.js')
 const paths = require('./paths.js')
 const routes = require('./routes.js')
 
@@ -34,4 +35,4 @@ app.get('/:article', routes.article)
 
 // start server
 
-app.listen(8000, () => console.log('server started at port 8000'))
+app.listen(config.port, () => console.log(`server started at port ${ config.port }`))

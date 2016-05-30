@@ -13,5 +13,6 @@ if (process.env.NODE_ENV === 'production') {
 // shared configuration
 
 config.database.multipleStatements = true
+config.port = 8000
 
 module.exports = config

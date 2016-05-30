@@ -13,15 +13,6 @@
     "normalize.css": "3.0.3",
     "pretty-error": "1.2.0"
   },
-  "xo": {
-    "esnext": true,
-    "rules": {
-      "curly": [
-        2,
-        "multi-line"
-      ]
-    }
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Hurtak/blog"
@@ -33,9 +24,6 @@
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/Hurtak/blog/issues"
-  },
-  "standard": {
-    "parser": "babel-eslint"
   },
   "homepage": "http://hurtak.cz"
 }

@@ -28,9 +28,9 @@ app.get('/articles/**/*.png', (req, res) => {
 // dynamic pages
 
 app.get('/', routes.index)
-// app.get('/debug', routes.debug)
-// app.get('/debug/:article', routes.debugArticle)
-// app.get('/:article', routes.article)
+app.get('/debug', routes.debug)
+app.get('/debug/:article', routes.debugArticle)
+app.get('/:article', routes.article)
 
 // start server
 

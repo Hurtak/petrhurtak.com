@@ -6,7 +6,7 @@ const frontMatter = require('front-matter')
 
 const paths = require('./paths.js')
 
-module.export = function findPathToArticle (directory, articleName, searchedDepth, currentDepth = 0) {
+function findPathToArticle (directory, articleName, searchedDepth, currentDepth = 0) {
   const list = fs.readdirSync(directory)
 
   for (const file of list) {
@@ -24,7 +24,7 @@ module.export = function findPathToArticle (directory, articleName, searchedDept
   return false
 }
 
-module.export = function getArticlesMetadata (directory, filename, gatheredMetadata = [], baseDirectory = directory) {
+function getArticlesMetadata (directory, filename, gatheredMetadata = [], baseDirectory = directory) {
   const list = fs.readdirSync(directory)
   for (const file of list) {
     const filePath = path.join(directory, file)
@@ -50,7 +50,7 @@ module.export = function getArticlesMetadata (directory, filename, gatheredMetad
   return gatheredMetadata
 }
 
-module.export = function getArticlesDirectories (directory, searchedDepth, currentDepth = 0, articlesList = []) {
+function getArticlesDirectories (directory, searchedDepth, currentDepth = 0, articlesList = []) {
   const list = fs.readdirSync(directory)
 
   for (const file of list) {
@@ -69,7 +69,7 @@ module.export = function getArticlesDirectories (directory, searchedDepth, curre
   return articlesList
 }
 
-module.export = function parseArticle (articlePath) {
+function parseArticle (articlePath) {
   let data = fs.readFileSync(articlePath, 'utf8')
   data = frontMatter(data)
 
@@ -100,7 +100,7 @@ module.export = function parseArticle (articlePath) {
 }
 
 // TODO: this should not be in this file
-module.export = function sortObjectBy (object, sortBy, ascendant) {
+function sortObjectBy (object, sortBy, ascendant) {
   object.sort((a, b) => {
     if (a[sortBy] < b[sortBy]) {
       return ascendant ? -1 : 1
@@ -121,4 +121,12 @@ function stripSlashes (string) {
   }
 
   return string
+}
+
+module.exports = {
+  findPathToArticle,
+  getArticlesMetadata,
+  getArticlesDirectories,
+  parseArticle,
+  sortObjectBy
 }

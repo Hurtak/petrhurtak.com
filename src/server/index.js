@@ -1,11 +1,7 @@
 'use strict'
 
 if (process.env.NODE_ENV !== 'production') {
-  const PrettyError = require('pretty-error')
-  const error = new PrettyError()
-  error.skipNodeFiles()
-  error.skipPackage('express')
-  error.start()
+  require('./debug.js')()
 }
 
 const path = require('path')
@@ -26,10 +22,10 @@ app.set('views', paths.templates)
 
 // static files
 
-// app.use('/public', express.static(paths.public))
-// app.get('/articles/**/*.png', (req, res) => {
-//   res.sendFile(path.join(paths.root, req.originalUrl))
-// })
+app.use('/public', express.static(paths.public))
+app.get('/articles/**/*.png', (req, res) => {
+  res.sendFile(path.join(paths.root, req.originalUrl))
+})
 
 // dynamic pages
 

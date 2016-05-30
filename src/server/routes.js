@@ -30,7 +30,7 @@ function article (req, res) {
   }).catch(e => console.log(e))
 }
 
-function debug(req, res) {
+function debug (req, res) {
   // get all metadata from article.md files
   let metadata = articles.getArticlesMetadata(paths.articles, 'article.md')
 

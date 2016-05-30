@@ -12,7 +12,7 @@ const joinPathsInObject = (paths, rootDirectory) => {
 
 const appDirectory = path.join(__dirname, '../')
 
-// paths relative to app directory
+// paths relative to src directory
 const paths = {
   root: '../',
 
@@ -31,6 +31,5 @@ const paths = {
 }
 
 const absolutePaths = joinPathsInObject(paths, appDirectory)
-console.log(absolutePaths)
 
 module.exports = absolutePaths

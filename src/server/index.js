@@ -1,12 +1,20 @@
 'use strict'
 
+if (process.env.NODE_ENV !== 'production') {
+  const PrettyError = require('pretty-error')
+  const error = new PrettyError()
+  error.skipNodeFiles()
+  error.skipPackage('express')
+  error.start()
+}
+
 const path = require('path')
 
 const express = require('express')
 const swig = require('swig')
 
 const paths = require('./paths.js')
-// const routes = require('./routes.js')
+const routes = require('./routes.js')
 
 const app = express()
 
@@ -14,7 +22,7 @@ const app = express()
 
 app.engine('html', swig.renderFile)
 app.set('view engine', 'html')
-// app.set('views', paths.templates)
+app.set('views', paths.templates)
 
 // static files
 
@@ -25,7 +33,7 @@ app.set('view engine', 'html')
 
 // dynamic pages
 
-// app.get('/', routes.index)
+app.get('/', routes.index)
 // app.get('/debug', routes.debug)
 // app.get('/debug/:article', routes.debugArticle)
 // app.get('/:article', routes.article)

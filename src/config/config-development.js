@@ -1,3 +1,5 @@
+'use strict'
+
 const config = {
   database: {
     host: 'localhost',
@@ -5,6 +7,6 @@ const config = {
     user: 'root',
     password: ''
   }
-};
+}
 
-export default config;
+module.exports = config

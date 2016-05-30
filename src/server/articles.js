@@ -1,12 +1,12 @@
-import fs from 'fs'
-import url from 'url'
-import path from 'path'
+const fs = require('fs')
+const url = require('url')
+const path = require('path')
 
-import frontMatter from 'front-matter'
+const frontMatter = require('front-matter')
 
-import * as paths from './paths.js'
+const paths = require('./paths.js')
 
-export function findPathToArticle (directory, articleName, searchedDepth, currentDepth = 0) {
+module.export = function findPathToArticle (directory, articleName, searchedDepth, currentDepth = 0) {
   const list = fs.readdirSync(directory)
 
   for (const file of list) {
@@ -24,7 +24,7 @@ export function findPathToArticle (directory, articleName, searchedDepth, curren
   return false
 }
 
-export function getArticlesMetadata(directory, filename, gatheredMetadata = [], baseDirectory = directory) {
+module.export = function getArticlesMetadata (directory, filename, gatheredMetadata = [], baseDirectory = directory) {
   const list = fs.readdirSync(directory)
   for (const file of list) {
     const filePath = path.join(directory, file)
@@ -50,7 +50,7 @@ export function getArticlesMetadata(directory, filename, gatheredMetadata = [], 
   return gatheredMetadata
 }
 
-export function getArticlesDirectories(directory, searchedDepth, currentDepth = 0, articlesList = []) {
+module.export = function getArticlesDirectories (directory, searchedDepth, currentDepth = 0, articlesList = []) {
   const list = fs.readdirSync(directory)
 
   for (const file of list) {
@@ -69,7 +69,7 @@ export function getArticlesDirectories(directory, searchedDepth, currentDepth = 
   return articlesList
 }
 
-export function parseArticle(articlePath) {
+module.export = function parseArticle (articlePath) {
   let data = fs.readFileSync(articlePath, 'utf8')
   data = frontMatter(data)
 
@@ -100,7 +100,7 @@ export function parseArticle(articlePath) {
 }
 
 // TODO: this should not be in this file
-export function sortObjectBy(object, sortBy, ascendant) {
+module.export = function sortObjectBy (object, sortBy, ascendant) {
   object.sort((a, b) => {
     if (a[sortBy] < b[sortBy]) {
       return ascendant ? -1 : 1
@@ -112,7 +112,7 @@ export function sortObjectBy(object, sortBy, ascendant) {
 }
 
 // TODO: this should not be in this file
-function stripSlashes(string) {
+function stripSlashes (string) {
   if (string[0] === path.sep) {
     string = string.substr(1)
   }

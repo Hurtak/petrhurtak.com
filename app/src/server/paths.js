@@ -21,13 +21,16 @@ const paths = {
 
   config: './config',
   server: './server',
+  templates: './templates',
+
   static: './static',
   fonts: './static/fonts',
   icons: './static/icons',
   images: './static/images',
   scripts: './static/scripts',
   styles: './static/styles',
-  templates: './templates'
+
+  www: '../www'
 }
 
 const absolutePaths = joinPathsInObject(paths, appDirectory)

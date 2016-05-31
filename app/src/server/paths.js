@@ -21,12 +21,12 @@ const paths = {
 
   config: './config',
   server: './server',
-  public: './public',
-  fonts: './public/fonts',
-  icons: './public/icons',
-  images: './public/images',
-  scripts: './public/scripts',
-  styles: './public/styles',
+  static: './static',
+  fonts: './static/fonts',
+  icons: './static/icons',
+  images: './static/images',
+  scripts: './static/scripts',
+  styles: './static/styles',
   templates: './templates'
 }
 

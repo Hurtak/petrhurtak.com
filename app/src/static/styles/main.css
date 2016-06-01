@@ -1,5 +1,3 @@
-@node-modules-dir: '../../..';
-@import (inline) '@{node-modules-dir}/node_modules/normalize.css/normalize.css';
 
 /**********
  * colors *
@@ -14,36 +12,6 @@
  *************/
 
 
-/**********
- * resets *
- **********/
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-// @see: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-h1, h2, h3, h4, h5, h6,
-ol, ul, li,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-img { display: block; }
 
 /**************
  * Typography *

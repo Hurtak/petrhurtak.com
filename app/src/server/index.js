@@ -22,6 +22,10 @@ app.set('views', paths.templates)
 // static files
 
 app.use('/static', express.static(paths.static))
+if (process.env.NODE_ENV === 'development') {
+  app.use('/static/node_modules', express.static(paths.nodeModules))
+}
+
 app.get('/articles/**/*.png', (req, res) => {
   res.sendFile(path.join(paths.root, req.originalUrl))
 })

@@ -6,7 +6,8 @@
 /* 
  * resets & shared styles 
  */
-@import '/static/styles/resets.css';
+@import '/static/styles/shared/resets.css';
+@import '/static/styles/shared/variables.css';
 
 /* 
  * page specific styles 

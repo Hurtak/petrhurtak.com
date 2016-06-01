@@ -10,6 +10,7 @@
     "swig": "1.4.2"
   },
   "devDependencies": {
+    "nodemon": "1.9.2",
     "normalize.css": "4.1.1",
     "pretty-error": "2.0.0"
   },

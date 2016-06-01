@@ -6,6 +6,14 @@ const articles = require('./articles.js')
 const database = require('./database.js')
 const paths = require('./paths.js')
 
+const addCommonData = data => {
+  const commonData = {
+    currentYear: new Date().getFullYear()
+  }
+  
+  return Object.assign(commonData, data) 
+}
+
 function index (req, res) {
   database.getAtricles().then(databaseArticles => {
     res.render(
@@ -18,11 +26,13 @@ function index (req, res) {
 function article (req, res) {
   database.getAtricle(req.params.article).then(article => {
     if (article) {
-      res.render(path.join(paths.templates, 'article.html'), {
+      const data = addCommonData({
         title: article.title,
         date: article.publication_date,
         article: article.content
       })
+      
+      res.render(path.join(paths.templates, 'article.html'), data)
     } else {
       // TODO: function for displaying 404
       res.render(path.join(paths.templates, '404.html'))
@@ -36,11 +46,13 @@ function debug (req, res) {
 
   // sort articles by publication_date descendant
   articles.sortObjectBy(metadata, 'publication_date')
-
-  res.render(path.join(paths.templates, 'index.html'), {
+  
+  const data = addCommonData({
     articles: metadata,
     debugUrlPrefix: 'debug/'
   })
+
+  res.render(path.join(paths.templates, 'index.html'), data)
 }
 
 function debugArticle (req, res) {
@@ -51,12 +63,13 @@ function debugArticle (req, res) {
     res.render(path.join(paths.templates, '404.html'))
   } else {
     const fsArticle = articles.parseArticle(path.join(articlePath, 'article.md'))
-
-    res.render(path.join(paths.templates, 'article.html'), {
+    const data = addCommonData({
       title: fsArticle.metadata.title,
       date: fsArticle.metadata.publication_date,
       article: fsArticle.html
     })
+
+    res.render(path.join(paths.templates, 'article.html'), data)
   }
 }
 

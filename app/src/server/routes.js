@@ -80,6 +80,7 @@ const rss = (req, res) => {
       data.articles[i].pubData = new Date(data.articles.publication_date).toGMTString()
     }
 
+    res.type('text/xml')
     res.render('other/rss.xml', data)
   }).catch(e => console.log(e))
 }

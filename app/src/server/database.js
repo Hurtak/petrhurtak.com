@@ -126,6 +126,22 @@ function deleteArticles (urls) {
   return dbPromiseFactory(query)
 }
 
+function getRSS () {
+  const query = `
+    SELECT url,
+      title,
+      description,
+      directory,
+      publication_date
+    FROM articles
+    WHERE visible = 1
+    ORDER BY publication_date
+    DESC LIMIT 10
+  `
+
+  return dbPromiseFactory(query)
+}
+
 module.exports = {
   getAtricles,
   getAtricle,
@@ -134,5 +150,6 @@ module.exports = {
   insertArticleContent,
   updateArticleMetadata,
   updateArticleContent,
-  deleteArticles
+  deleteArticles,
+  getRSS
 }

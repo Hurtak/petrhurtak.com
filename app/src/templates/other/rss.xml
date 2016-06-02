@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+
+    <title>hurtak.cc</title>
+    <link>http://hurtak.cc</link>
+    <description>TODO</description>
+
+    {% for article in articles %}
+      <item>
+        <title>{{ article.title }}</title>
+        <link>http://hurtak.cc/{{ article.url }}</link>
+        <guid>http://hurtak.cc/{{ article.url }}</guid>
+        <pubDate>{{ article.pubDate }}</pubDate>
+        <description>{{ article.description }}</description>
+      </item>
+    {% endfor %}
+
+  </channel>
+</rss>

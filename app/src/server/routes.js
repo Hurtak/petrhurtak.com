@@ -10,8 +10,8 @@ const addCommonData = data => {
   const commonData = {
     currentYear: new Date().getFullYear()
   }
-  
-  return Object.assign(commonData, data) 
+
+  return Object.assign(commonData, data)
 }
 
 function index (req, res) {
@@ -31,7 +31,7 @@ function article (req, res) {
         date: article.publication_date,
         article: article.content
       })
-      
+
       res.render(path.join(paths.templates, 'article.html'), data)
     } else {
       // TODO: function for displaying 404
@@ -46,7 +46,7 @@ function debug (req, res) {
 
   // sort articles by publication_date descendant
   articles.sortObjectBy(metadata, 'publication_date')
-  
+
   const data = addCommonData({
     articles: metadata,
     debugUrlPrefix: 'debug/'
@@ -73,9 +73,21 @@ function debugArticle (req, res) {
   }
 }
 
+const rss = (req, res) => {
+  database.getRSS().then(databaseArticles => {
+    const data = {articles: databaseArticles}
+    for (let i = 0; i < data.articles.length; i++) {
+      data.articles[i].pubData = new Date(data.articles.publication_date).toGMTString()
+    }
+
+    res.render('other/rss.xml', data)
+  }).catch(e => console.log(e))
+}
+
 module.exports = {
   index,
   article,
   debug,
-  debugArticle
+  debugArticle,
+  rss
 }

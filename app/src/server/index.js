@@ -16,6 +16,7 @@ const app = express()
 // express config
 
 app.engine('html', swig.renderFile)
+app.engine('xml', swig.renderFile)
 app.set('view engine', 'html')
 app.set('views', paths.templates)
 
@@ -31,9 +32,10 @@ app.get('/articles/**/*.png', (req, res) => {
   res.sendFile(path.join(paths.root, req.originalUrl))
 })
 
-// dynamic pages
+// pages
 
 app.get('/', routes.index)
+app.get('/rss', routes.rss)
 app.get('/debug', routes.debug)
 app.get('/debug/:article', routes.debugArticle)
 app.get('/:article', routes.article)

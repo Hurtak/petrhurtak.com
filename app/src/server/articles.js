@@ -78,7 +78,7 @@ function parseArticle (articlePath) {
   const metadata = data.attributes
   let article = data.body
 
-  const articleDirectory = '/articles/' +
+  const articleDirectory = '/static/articles/' +
     articlePath
       // c:\some\path\rootdir\article.md -> rootdir\article.md
       .replace(paths.articles, '')

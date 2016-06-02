@@ -16,7 +16,7 @@ const appDirectory = path.join(__dirname, '../')
 const paths = {
   root: '../',
 
-  articles: '../articles',
+  articles: '../../articles',
   nodeModules: '../node_modules',
 
   config: './config',

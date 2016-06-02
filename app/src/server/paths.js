@@ -17,6 +17,7 @@ const paths = {
   root: '../',
 
   articles: '../../articles',
+  
   nodeModules: '../node_modules',
 
   config: './config',
@@ -28,9 +29,7 @@ const paths = {
   icons: './static/icons',
   images: './static/images',
   scripts: './static/scripts',
-  styles: './static/styles',
-
-  www: '../www'
+  styles: './static/styles'
 }
 
 const absolutePaths = joinPathsInObject(paths, appDirectory)

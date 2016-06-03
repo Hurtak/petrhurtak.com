@@ -15,6 +15,7 @@
  * page components
  */
 @import '/static/styles/components/header.css';
+@import '/static/styles/components/menu.css';
 @import '/static/styles/components/footer.css';
 
 
@@ -77,14 +78,9 @@ ul, ol { padding-left: calc ( var(--paragraph-spacing) * 2 ); }
  * general *
  ***********/
 
-/*
-
 .page {
   --padding: 10px;
   max-width: calc( var(--content-width) + var(--padding) * 2 );
   padding: 0 var(--padding);
   margin: auto;
 }
-
-
-*/

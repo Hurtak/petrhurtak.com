@@ -5,10 +5,10 @@
  */
 
 :root {
-  --font-size-title: 5.2rem; /* 5.2px */
-  --font-size-headline: 3.2rem; /* 3.2px */
-  --font-size-sub-headlines: 2.5rem; /* 2.5px */
-  --font-size-primary-text: 2.0rem; /* 2.0px */
+  --font-size-title:          5.2rem; /* 5.2px */
+  --font-size-headline:       3.2rem; /* 3.2px */
+  --font-size-sub-headlines:  2.5rem; /* 2.5px */
+  --font-size-primary-text:   2.0rem; /* 2.0px */
   --font-size-secondary-text: 1.6rem; /* 1.6px */
 
   --font-family-heading: Calibri, Candara, 'Segoe UI', Arial, sans-serif;
@@ -20,6 +20,7 @@
 }
 
 html {
-  /* @see: http://snook.ca/archives/html_and_css/font-size-with-rem */
+  /* with font-size: 62.5%, 1em is 10px
+   * @see: http://snook.ca/archives/html_and_css/font-size-with-rem */
   font-size: 62.5%;
 }

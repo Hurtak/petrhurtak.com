@@ -1,0 +1,25 @@
+.menu {
+  display: flex;
+  list-style-type: none;
+  justify-content: center; /* TODO remove when items fill 100% */
+}
+
+.menu__item {
+  width: 25%;
+  font-size: var(--font-size-sub-headlines);
+  line-height: 2.4;
+  text-align: center;
+}
+
+.menu__link {
+  display: block;
+  border: 0;
+  color: black;
+  text-decoration: none;
+}
+
+.menu__link:hover {
+  background-color: rgba(80, 80, 0, 0.08);
+  border-radius: 3px;
+  border: 0;
+}

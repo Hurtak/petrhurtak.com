@@ -8,3 +8,4 @@
 - fix upload script
 - pass paths as variable into templates
 - license for articles and license for app
+- replace @see links in code with my own articles

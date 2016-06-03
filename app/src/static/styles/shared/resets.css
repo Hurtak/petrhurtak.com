@@ -1,5 +1,5 @@
 /*
- * reset html & body
+ * resets on html & body
  */
 html,
 body {
@@ -20,6 +20,14 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+/*
+ * prevents the jump between scrollbar and no-scrollbar pages
+ * @see: https://aykevl.nl/2014/09/fix-jumping-scrollbar
+ */
+body {
+  margin-left: calc(100vw - 100%);
 }
 
 /*

@@ -14,7 +14,8 @@
 /*
  * page components
  */
-@import '/static/styles/shared/header.css';
+@import '/static/styles/components/header.css';
+@import '/static/styles/components/footer.css';
 
 
 

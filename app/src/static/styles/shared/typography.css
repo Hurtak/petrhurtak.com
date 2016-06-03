@@ -1,0 +1,25 @@
+/*
+ * Optimal Typography for 18px Font
+ * Font Size: 18, Line Height: 29, Content Width: 829
+ * @see: http://www.pearsonified.com/typography/
+ */
+
+:root {
+  --font-size-title: 5.2rem; /* 5.2px */
+  --font-size-headline: 3.2rem; /* 3.2px */
+  --font-size-sub-headlines: 2.5rem; /* 2.5px */
+  --font-size-primary-text: 2.0rem; /* 2.0px */
+  --font-size-secondary-text: 1.6rem; /* 1.6px */
+
+  --font-family-heading: Calibri, Candara, 'Segoe UI', Arial, sans-serif;
+  --font-family-paragraph: Cambria, Georgia, serif;
+
+  --paragraph-line-height: 1.4;
+  --paragraph-spacing: 1em;
+  --content-width: 700px;
+}
+
+html {
+  /* @see: http://snook.ca/archives/html_and_css/font-size-with-rem */
+  font-size: 62.5%;
+}

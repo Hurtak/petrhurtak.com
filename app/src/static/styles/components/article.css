@@ -1,0 +1,60 @@
+.article {
+  font-family: var(--font-family-paragraph);
+  font-size: var(--font-size-primary-text);
+  line-height: var(--paragraph-line-height);
+}
+
+.article h1,
+.article h2,
+.article h3 {
+  color: var(--color-font);
+  font-family: var(--font-family-heading);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 0.3em;
+  margin-top: 1.5em;
+  text-transform: uppercase;
+}
+
+.article h1 {
+  font-size: var(--font-size-title);
+  margin-top: 0.6em;
+}
+
+.article h2 {
+  font-size: var(--font-size-headline);
+}
+
+.article h3 {
+  font-size: var(--font-size-sub-headlines);
+}
+
+.article small {
+  font-size: var(--font-size-secondary-text);
+}
+
+.article a {
+  color: black;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-link-border);
+  transition: 0.2s border ease-in-out;
+}
+
+.article a:visited {
+  color: black;
+}
+
+.article a:hover {
+  border-bottom: 1px dotted black;
+}
+
+.article p,
+.article ul,
+.article ol {
+  margin-bottom: var(--paragraph-spacing);
+}
+
+.article ul,
+.article ol {
+  padding-left: calc ( var(--paragraph-spacing) * 2 );
+}

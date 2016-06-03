@@ -10,73 +10,23 @@
 @import '/static/styles/shared/variables.css';
 @import '/static/styles/shared/typography.css';
 
-
 /*
  * page components
  */
 @import '/static/styles/components/header.css';
 @import '/static/styles/components/menu.css';
+@import '/static/styles/components/article.css';
 @import '/static/styles/components/footer.css';
 
-
-
-
 /*
-
-
+ * general
+ * TODO: move into separate component?
+ */
 
 body {
   background-color: var(--color-background);
-  color: black;
-  font-family: var(--font-family-paragraph);
-  font-size: var(--font-size-primary-text);
-  line-height: var(--paragraph-line-height);
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility; /* is this doing anyting? */
 }
-
-h1, h2, h3 {
-  color: var(--color-font);
-  font-family: var(--font-family-heading);
-  font-weight: 400;
-  line-height: 1;
-  margin-bottom: 0.3em;
-  margin-top: 1.5em;
-  text-transform: uppercase;
-}
-
-h1 {
-  font-size: var(--font-size-title);
-  margin-top: 0.6em;
-}
-h2 { font-size: var(--font-size-headline); }
-h3 { font-size: var(--font-size-sub-headlines); }
-small { font-size: var(--font-size-secondary-text); }
-
-a {
-  color: black;
-  text-decoration: none;
-  border-bottom: 1px dotted var(--color-link-border);
-  transition: 0.2s border ease-in-out;
-}
-
-a:visited {
-  color: black;
-}
-
-a:hover {
-  border-bottom: 1px dotted black;
-}
-
-p, ul, ol { margin-bottom: var(--paragraph-spacing); }
-
-ul, ol { padding-left: calc ( var(--paragraph-spacing) * 2 ); }
-
-
-*/
-
-/***********
- * general *
- ***********/
 
 .page {
   --padding: 10px;

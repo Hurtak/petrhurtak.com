@@ -1,5 +1,5 @@
-/* 
- * reset html & body 
+/*
+ * reset html & body
  */
 html,
 body {
@@ -8,9 +8,9 @@ body {
   padding: 0;
 }
 
-/* 
- * better box-sizing: border-box reset 
- * @see: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ 
+/*
+ * better box-sizing: border-box reset
+ * @see: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
  */
 html {
   box-sizing: border-box;
@@ -22,14 +22,18 @@ html {
   box-sizing: inherit;
 }
 
-/* 
- * reset common elements 
+/*
+ * reset common elements
  */
 h1, h2, h3, h4, h5, h6,
 ol, ul, li,
 p {
   margin: 0;
   padding: 0;
+}
+
+ol, ul {
+  list-style-type: none;
 }
 
 img { display: block; }

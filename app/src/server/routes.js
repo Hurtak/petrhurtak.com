@@ -11,15 +11,16 @@ const addCommonData = data => {
     currentYear: new Date().getFullYear()
   }
 
-  return Object.assign(commonData, data)
+  return Object.assign({}, commonData, data)
 }
 
 function index (req, res) {
   database.getAtricles().then(databaseArticles => {
-    res.render(
-      path.join(paths.templates, 'index.html'),
-      {articles: databaseArticles}
-    )
+    const data = addCommonData({
+      articles: databaseArticles
+    })
+
+    res.render(path.join(paths.templates, 'index.html'), data)
   }).catch(e => console.log(e))
 }
 

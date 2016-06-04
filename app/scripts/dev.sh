@@ -10,7 +10,7 @@ NODE_BIN="node_modules/.bin"
 
 ### START SERVER
 ${NODE_BIN}/nodemon src/server/index.js \
-  --ext js,html,json # extensions to look for when file wathing
+  --ext js,json,html \
   --watch src/templates \
   --watch src/server \
   --watch src/config

@@ -1,4 +1,4 @@
-### Directory setup 
+### DIRECTORY SETUP
 cd "$(dirname "$0")" # cd into directory where script is located
 cd .. # cd into app director
 
@@ -6,7 +6,7 @@ cd .. # cd into app director
 export NODE_ENV="development"
 
 ### LOCAL VARIABLES
-NODE_BIN="node_modules/.bin" 
+NODE_BIN="node_modules/.bin"
 
 ### START SERVER
 ${NODE_BIN}/nodemon src/server/index.js \
@@ -14,6 +14,3 @@ ${NODE_BIN}/nodemon src/server/index.js \
   --watch src/templates \
   --watch src/server \
   --watch src/config
-   
-
-

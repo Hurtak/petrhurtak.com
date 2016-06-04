@@ -16,6 +16,7 @@
 @import '/static/styles/components/header.css';
 @import '/static/styles/components/menu.css';
 @import '/static/styles/components/article.css';
+@import '/static/styles/components/article-preview.css';
 @import '/static/styles/components/footer.css';
 
 /*
@@ -25,7 +26,7 @@
 
 body {
   background-color: var(--color-background);
-  text-rendering: optimizeLegibility; /* is this doing anyting? */
+  text-rendering: optimizeLegibility; /* TODO: is this doing anyting? */
 }
 
 .page {

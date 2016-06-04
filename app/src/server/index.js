@@ -6,7 +6,7 @@ if (process.env.NODE_ENV === 'development') {
 
 const path = require('path')
 const express = require('express')
-const swig = require('swig')
+const nunjucks = require('nunjucks')
 const config = require('../config/config.js')
 const paths = require('./paths.js')
 const routes = require('./routes.js')
@@ -15,10 +15,18 @@ const app = express()
 
 // express config
 
-app.engine('html', swig.renderFile)
-app.engine('xml', swig.renderFile)
-app.set('view engine', 'html')
 app.set('views', paths.templates)
+
+nunjucks.configure(app.get('views'), {
+  autoescape: true,
+  express: app
+})
+
+//  Example filter setup - remote link assets
+// env.addFilter('asset', function(assetpath) {
+//     var asset_url = "/path/to/assets"      // can be a path, or an absolute web URL
+//     return asset_url + assetpath
+// });
 
 // static files
 

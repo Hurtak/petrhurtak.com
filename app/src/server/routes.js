@@ -20,7 +20,7 @@ function index (req, res) {
       articles: databaseArticles
     })
 
-    res.render('index.html', data)
+    res.render('index.njk', data)
   }).catch(e => console.log(e))
 }
 
@@ -33,10 +33,10 @@ function article (req, res) {
         article: article.content
       })
 
-      res.render('article.html', data)
+      res.render('article.njk', data)
     } else {
       // TODO: function for displaying 404
-      res.render('404.html')
+      res.render('404.njk')
     }
   }).catch(e => console.log(e))
 }
@@ -53,7 +53,7 @@ function debug (req, res) {
     debugUrlPrefix: 'debug/'
   })
 
-  res.render('index.html', data)
+  res.render('index.njk', data)
 }
 
 function debugArticle (req, res) {
@@ -61,7 +61,7 @@ function debugArticle (req, res) {
 
   let articlePath = articles.findPathToArticle(paths.articles, articleName, 2)
   if (!articlePath) {
-    res.render('404.html')
+    res.render('404.njk')
     return
   }
 
@@ -72,7 +72,7 @@ function debugArticle (req, res) {
     article: fsArticle.html
   })
 
-  res.render('article.html', data)
+  res.render('article.njk', data)
 }
 
 const rss = (req, res) => {
@@ -83,7 +83,7 @@ const rss = (req, res) => {
     }
 
     res.type('text/xml')
-    res.render('other/rss.xml', data)
+    res.render('other/rss.njk', data)
   }).catch(e => console.log(e))
 }
 

@@ -1,7 +1,6 @@
 # TODO
 
 ## BEFORE RELEASE
-- finish css transition
 - convert from swig to marko
 - rss fix date
 - rss wrong headers?

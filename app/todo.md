@@ -19,3 +19,5 @@
 
 ## NICE TO HAVE
 - cron job to detect 404 links
+- switch to templating engine which supports streaming
+- evaluate switch from express to alternatives

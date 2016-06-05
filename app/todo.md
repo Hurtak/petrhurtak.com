@@ -23,6 +23,7 @@
 - replace @see links in code with my own articles
 - start using mixins css http://zeke.sikelianos.com/css-from-the-future/
 - add compilation process for static files
+- instead of date display "published x days ago", like on Instagram
 - intelligent 404 page
   - log 404
   - reccomend some content based on searched query

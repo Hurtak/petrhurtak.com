@@ -1,0 +1,17 @@
+{% extends "../base.njk" %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+
+  <article class="article">
+    <h1>{{ title }}</h1>
+    {# <div>{{ date|date('d.m.Y H:i', -120) }}</div> #}
+    <div>{{ date }}</div>
+
+    {{ article | safe }}
+  </article>
+
+{% endblock %}

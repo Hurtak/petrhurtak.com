@@ -1,4 +1,10 @@
-<main class="content">
+{% extends "../base.njk" %}
+
+{% block title %}
+  blog o webdesignu
+{% endblock %}
+
+{% block content %}
 
   {% for article in articles %}
     <section class="article-preview">
@@ -22,4 +28,4 @@
     </section>
   {% endfor %}
 
-</main>
+{% endblock %}

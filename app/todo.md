@@ -4,9 +4,11 @@
 - fix date in articles and index
 - rss fix date
 - rss wrong headers?
+- make logo as H1?
 - fix upload script
 - finish css design
 - pass paths as variable into templates?
+- merge article and debugArticle routes so they reuse most of the logic
 
 - license for articles and license for app
 - write README.md
@@ -20,6 +22,9 @@
 - replace @see links in code with my own articles
 - start using mixins css http://zeke.sikelianos.com/css-from-the-future/
 - add compilation process for static files
+- intelligent 404 page
+  - log 404
+  - reccomend some content based on searched query
 
 ## NICE TO HAVE
 - cron job to detect 404 links

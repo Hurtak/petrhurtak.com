@@ -5,7 +5,11 @@ module.exports = () => {
   const error = new PrettyError()
 
   error.skipNodeFiles()
-  error.skipPackage('express', 'mysql')
+  error.skipPackage(
+    'express',
+    'mysql',
+    'nunjucks'
+  )
 
   error.start()
 }

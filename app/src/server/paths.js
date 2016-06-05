@@ -17,8 +17,9 @@ const paths = {
   root: '../',
 
   articles: '../../articles',
-  
+
   nodeModules: '../node_modules',
+  log: '../log',
 
   config: './config',
   server: './server',

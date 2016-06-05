@@ -18,6 +18,7 @@
   - use some tool to detect unused styles
 
 ## AFTER RELEASE
+- prereload headers
 - sticky footer
 - replace @see links in code with my own articles
 - start using mixins css http://zeke.sikelianos.com/css-from-the-future/

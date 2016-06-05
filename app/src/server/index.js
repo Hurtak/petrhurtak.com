@@ -5,7 +5,11 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const path = require('path')
+const fs = require('fs')
+
 const express = require('express')
+const expressMorgan = require('morgan')
+const expressResponseTime = require('response-time')
 const expressCompression = require('compression')
 const nunjucks = require('nunjucks')
 
@@ -17,6 +21,13 @@ const app = express()
 
 // middlewares
 
+const logWriteStream = fs.createWriteStream(
+  path.join(paths.log, new Date().toISOString().slice(0, 10)),
+  { flags: 'a' }
+)
+
+app.use(expressMorgan('short', { stream: logWriteStream }))
+app.use(expressResponseTime())
 app.use(expressCompression())
 
 // template config

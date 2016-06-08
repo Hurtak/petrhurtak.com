@@ -44,7 +44,7 @@ function getAtricles () {
   return dbPromiseFactory(query)
 }
 
-function getAtricle (article) {
+function getAtricle (articleUrl) {
   const query = `
     SELECT id,
       title,
@@ -58,7 +58,7 @@ function getAtricle (article) {
     AND url = ?
   `
 
-  return dbPromiseFactory(query, article, true)
+  return dbPromiseFactory(query, articleUrl, true)
 }
 
 // upload articles script

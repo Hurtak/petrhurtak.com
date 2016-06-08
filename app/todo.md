@@ -2,7 +2,7 @@
 
 ## BEFORE RELEASE
 - finish dateHowLongBefore filter
-- add tooltip on dates
+- add tooltip on dates with timezone (UTC?)
 - use time tag in article.njk, possibly refactor into njk component(macro?)
 - add testing framework
 - fix date in articles and index
@@ -25,6 +25,7 @@
 - take a look at node flags
 - consider unification of quotes (html ", js ')
 - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
+- is the date column properly set in mysql database? also is the database timezone correctly set?
 - prereload headers
 - sticky footer
 - replace @see links in code with my own articles

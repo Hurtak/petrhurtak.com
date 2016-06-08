@@ -32,4 +32,6 @@
 - cron job to detect 404 links
 - switch to templating engine which supports streaming
 - evaluate switch from express to alternatives (koa, hapi)
+  - once async/await hits node consider switching to koa2
+  - https://github.com/llambda/koa-boiler (http2, caching...)
 - serve static files from nginx

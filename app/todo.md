@@ -23,6 +23,8 @@
 ## AFTER RELEASE
 - node turn on 'use srict' by default?
 - take a look at node flags
+- consider unification of quotes (html ", js ')
+- consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
 - prereload headers
 - sticky footer
 - replace @see links in code with my own articles

@@ -16,6 +16,7 @@ const nunjucks = require('nunjucks')
 const config = require('../config/config.js')
 const paths = require('./paths.js')
 const routes = require('./routes.js')
+const nunjucksFilters = require('./nunjucks-filters.js')
 
 const app = express()
 
@@ -34,10 +35,14 @@ app.use(expressCompression())
 
 app.set('views', paths.templates)
 
-nunjucks.configure(app.get('views'), {
+const nunjucksEnv = nunjucks.configure(app.get('views'), {
   autoescape: true,
   express: app
 })
+
+for (const filterName in nunjucksFilters) { // add custom filters
+  nunjucksEnv.addFilter(filterName, nunjucksFilters[filterName])
+}
 
 // static files
 

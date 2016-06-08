@@ -15,12 +15,13 @@
           {{ article.title }}
         </a>
       </h2>
-      {# <time datetime="{{ article.last_update | date('Y-m-d H:i') }}" #}
-      <time datetime="{{ article.last_update }}"
+
+      <time datetime="{{ article.last_update | datetimeAttribute }}"
         class="article-preview__date">
         {# {{ article.last_update | date('d.m.Y') }} #}
         {{ article.last_update }}
       </time>
+
       <p class="article-preview__description">
         {{ article.description }}
       </p>

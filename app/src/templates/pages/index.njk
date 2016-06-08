@@ -18,8 +18,7 @@
 
       <time datetime="{{ article.last_update | datetimeAttribute }}"
         class="article-preview__date">
-        {# {{ article.last_update | date('d.m.Y') }} #}
-        {{ article.last_update }}
+        {{ article.last_update | dateHowLongBefore }}
       </time>
 
       <p class="article-preview__description">

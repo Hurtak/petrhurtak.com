@@ -1,6 +1,10 @@
 # TODO
 
 ## BEFORE RELEASE
+- finish dateHowLongBefore filter
+- add tooltip on dates
+- use time tag in article.njk, possibly refactor into njk component(macro?)
+- add testing framework
 - fix date in articles and index
 - rss fix date
 - rss wrong headers?
@@ -9,7 +13,6 @@
 - finish css design
 - pass paths as variable into templates?
 - merge article and debugArticle routes so they reuse most of the logic
-
 - license for articles and license for app
 - write README.md
 - fill package.json
@@ -18,6 +21,8 @@
   - use some tool to detect unused styles
 
 ## AFTER RELEASE
+- node turn on 'use srict' by default?
+- take a look at node flags
 - prereload headers
 - sticky footer
 - replace @see links in code with my own articles

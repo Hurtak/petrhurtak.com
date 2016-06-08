@@ -24,6 +24,9 @@
 - start using mixins css http://zeke.sikelianos.com/css-from-the-future/
 - add compilation process for static files
 - instead of date display "published x days ago", like on Instagram
+- consider loading images with javascript with <noscript> fallback?
+- consider adding critical css
+- take a look at ponyfoo.com for performance ideas
 - intelligent 404 page
   - log 404
   - reccomend some content based on searched query

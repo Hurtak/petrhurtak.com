@@ -16,7 +16,7 @@ const dateHowLongBefore = (date) => {
   const years = Math.floor(seconds / (60 * 60 * 24 * 30 * 12))
 
   const plural = (word, count) => `${ word }${ count === 1 ? '' : 's' }`
-``
+
   if (minutes <= 10) {
     return 'just now'
   } else if (minutes <= 60) {

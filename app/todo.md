@@ -1,10 +1,9 @@
 # TODO
 
 ## BEFORE RELEASE
-- finish dateHowLongBefore filter
+- add testing framework
 - add tooltip on dates with timezone (UTC?)
 - use time tag in article.njk, possibly refactor into njk component(macro?)
-- add testing framework
 - fix date in articles and index
 - rss fix date
 - rss wrong headers?

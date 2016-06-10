@@ -45,3 +45,8 @@
   - once async/await hits node consider switching to koa2
   - https://github.com/llambda/koa-boiler (http2, caching...)
 - serve static files from nginx
+
+## LONG TERM
+- once standard supports ES6 + Async/Await:
+  - remove "standard" from package.json
+  - remove "babel-eslint" dependency

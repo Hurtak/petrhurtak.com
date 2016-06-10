@@ -8,9 +8,21 @@ export NODE_ENV="development"
 ### LOCAL VARIABLES
 NODE_BIN="node_modules/.bin"
 
-### START SERVER
-${NODE_BIN}/nodemon src/server/index.js \
-  --ext js,json,njk \
-  --watch src/templates \
-  --watch src/server \
-  --watch src/config
+### FUNCTIONS
+function startServer {
+  ${NODE_BIN}/nodemon src/server/index.js \
+    --ext js,json,njk \
+    --watch src/templates \
+    --watch src/server \
+    --watch src/config
+}
+
+function test {
+  ${NODE_BIN}/ava src/test/**/*.js \
+    --watch
+}
+
+### START DEVELOPMENT SERVICES
+startServer \
+  & test
+wait

@@ -9,7 +9,7 @@
     "front-matter": "2.0.8",
     "lodash": "4.13.1",
     "morgan": "1.7.0",
-    "mysql": "2.10.2",
+    "mysql": "2.11.1",
     "nunjucks": "2.4.2",
     "response-time": "2.3.1"
   },

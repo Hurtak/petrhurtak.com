@@ -1,7 +1,6 @@
 # TODO
 
 ## BEFORE RELEASE
-- add testing framework
 - add tooltip on dates with timezone (UTC?)
 - use time tag in article.njk, possibly refactor into njk component(macro?)
 - fix date in articles and index
@@ -21,7 +20,6 @@
 
 ## AFTER RELEASE
 - node turn on 'use srict' by default?
-- take a look at node flags
 - consider unification of quotes (html ", js ')
 - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
 - is the date column properly set in mysql database? also is the database timezone correctly set?

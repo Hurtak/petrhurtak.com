@@ -84,7 +84,7 @@ const rss = (req, res) => {
     }
 
     res.type('text/xml')
-    res.render('pages/rss.njk', data)
+    res.render('special/rss.njk', data)
   }).catch(e => console.log(e))
 }
 

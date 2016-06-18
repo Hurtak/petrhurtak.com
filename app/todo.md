@@ -1,7 +1,6 @@
 # TODO
 
 ## BEFORE RELEASE
-- add robots.txt
 - add tooltip on dates with timezone (UTC?)
 - use time tag in article.njk, possibly refactor into njk component(macro?)
 - fix date in articles and index

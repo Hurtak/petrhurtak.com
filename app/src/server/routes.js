@@ -88,6 +88,11 @@ const rss = (req, res) => {
   }).catch(e => console.log(e))
 }
 
+const robotsTxt = (req, res) => {
+  res.type('text/plain')
+  res.render('special/robots.txt.njk')
+}
+
 const humansTxt = (req, res) => {
   database.getHumansTxt().then(data => {
     const templateData = addCommonData({
@@ -105,5 +110,6 @@ module.exports = {
   debug,
   debugArticle,
   rss,
+  robotsTxt,
   humansTxt
 }

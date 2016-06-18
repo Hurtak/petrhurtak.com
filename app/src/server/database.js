@@ -142,6 +142,18 @@ function getRSS () {
   return dbPromiseFactory(query)
 }
 
+function getHumansTxt () {
+  const query = `
+    SELECT last_update
+    FROM articles
+    WHERE visible = 1
+    ORDER BY last_update
+    DESC LIMIT 1
+  `
+
+  return dbPromiseFactory(query, [], true)
+}
+
 module.exports = {
   getAtricles,
   getAtricle,
@@ -151,5 +163,6 @@ module.exports = {
   updateArticleMetadata,
   updateArticleContent,
   deleteArticles,
-  getRSS
+  getRSS,
+  getHumansTxt
 }

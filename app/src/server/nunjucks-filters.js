@@ -1,7 +1,34 @@
 'use strict'
 
 const datetimeAttribute = (date) => {
+  // 1. date -> "Sat Jun 18 2016 17:08:32 GMT+0200 (Central Europe Daylight Time)"
+  // 2. toISOString() -> "2016-06-18T15:08:32.598Z"
+  // 3. substr(0,19) -> "2016-06-18T15:08:32"
   return date.toISOString().substr(0, 19)
+}
+
+const fullDate = (dateString) => {
+  const date = new Date(dateString)
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
+
+  const day = date.getDate()
+  const month = months[date.getMonth()]
+  const year = date.getFullYear()
+
+  return `${ day } ${ month } ${ year }`
 }
 
 const dateHowLongBefore = (date) => {
@@ -36,5 +63,6 @@ const dateHowLongBefore = (date) => {
 
 module.exports = {
   datetimeAttribute,
+  fullDate,
   dateHowLongBefore
 }

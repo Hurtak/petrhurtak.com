@@ -60,6 +60,7 @@ app.get('/articles/**/*.png', (req, res) => {
 
 app.get('/', routes.index)
 app.get('/rss', routes.rss)
+app.get('/humans.txt', routes.humansTxt)
 app.get('/debug', routes.debug)
 app.get('/debug/:article', routes.debugArticle)
 app.get('/:article', routes.article)

@@ -1,6 +1,7 @@
 # TODO
 
 ## BEFORE RELEASE
+- add robots.txt
 - add tooltip on dates with timezone (UTC?)
 - use time tag in article.njk, possibly refactor into njk component(macro?)
 - fix date in articles and index
@@ -19,6 +20,8 @@
   - use some tool to detect unused styles
 
 ## AFTER RELEASE
+- sitemap
+- finetune humans.txt
 - node turn on 'use srict' by default?
 - consider unification of quotes (html ", js ')
 - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)

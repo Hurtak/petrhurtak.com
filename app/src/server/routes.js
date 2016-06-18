@@ -8,7 +8,8 @@ const paths = require('./paths.js')
 
 const addCommonData = data => {
   const commonData = {
-    currentYear: new Date().getFullYear()
+    currentYear: new Date().getFullYear(),
+    siteUrl: 'https://hurtak.cc'
   }
 
   return Object.assign({}, commonData, data)
@@ -87,10 +88,22 @@ const rss = (req, res) => {
   }).catch(e => console.log(e))
 }
 
+const humansTxt = (req, res) => {
+  database.getHumansTxt().then(data => {
+    const templateData = addCommonData({
+      lastUpdate: new Date(data.last_update).toGMTString()
+    })
+
+    res.type('text/plain')
+    res.render('special/humans.txt.njk', templateData)
+  }).catch(e => console.log(e))
+}
+
 module.exports = {
   index,
   article,
   debug,
   debugArticle,
-  rss
+  rss,
+  humansTxt
 }

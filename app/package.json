@@ -5,8 +5,8 @@
   "main": "src/server/index.js",
   "dependencies": {
     "compression": "1.6.2",
-    "express": "4.13.4",
-    "front-matter": "2.0.8",
+    "express": "4.14.0",
+    "front-matter": "2.1.0",
     "lodash": "4.13.1",
     "morgan": "1.7.0",
     "mysql": "2.11.1",

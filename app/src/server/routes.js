@@ -9,7 +9,9 @@ const paths = require('./paths.js')
 const addCommonData = data => {
   const commonData = {
     currentYear: new Date().getFullYear(),
-    siteUrl: 'https://hurtak.cc'
+    siteUrl: 'https://hurtak.cc',
+    siteDomain: 'hurtak.cc',
+    siteProtocol: 'https://'
   }
 
   return Object.assign({}, commonData, data)
@@ -84,7 +86,7 @@ const rss = (req, res) => {
     }
 
     res.type('text/xml')
-    res.render('special/rss.njk', data)
+    res.render('special/rss.njk', addCommonData(data))
   }).catch(e => console.log(e))
 }
 

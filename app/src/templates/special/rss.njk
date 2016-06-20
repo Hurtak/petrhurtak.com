@@ -2,16 +2,16 @@
 <rss version="2.0">
   <channel>
 
-    <title>hurtak.cc</title>
-    <link>http://hurtak.cc</link>
-    <description>TODO</description>
+    <title>{{ siteDomain }}</title>
+    <link>{{ siteUrl }}</link>
+    <description>Blog about web design and technologies</description>
 
     {% for article in articles %}
       <item>
         <title>{{ article.title }}</title>
-        <link>http://hurtak.cc/{{ article.url }}</link>
-        <guid>http://hurtak.cc/{{ article.url }}</guid>
-        <pubDate>{{ article.pubDate }}</pubDate>
+        <link>{{ siteUrl }}/{{ article.url }}</link>
+        <guid>{{ siteUrl }}/{{ article.url }}</guid>
+        <pubDate>{{ article.publication_date | gtm }}</pubDate>
         <description>{{ article.description }}</description>
       </item>
     {% endfor %}

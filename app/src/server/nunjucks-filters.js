@@ -7,6 +7,11 @@ const datetimeAttribute = (date) => {
   return date.toISOString().substr(0, 19)
 }
 
+const gtm = (dateString) => {
+  const date = new Date(dateString)
+  return date.toGMTString()
+}
+
 const fullDate = (dateString) => {
   const date = new Date(dateString)
   const months = [
@@ -74,6 +79,7 @@ const dateHowLongBefore = (date) => {
 
 module.exports = {
   datetimeAttribute,
+  gtm,
   fullDate,
   dateHowLongBefore
 }

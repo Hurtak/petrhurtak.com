@@ -1,8 +1,9 @@
 # TODO
 
 ## BEFORE RELEASE
-- add tooltip on dates with timezone (UTC?)
 - use time tag in article.njk, possibly refactor into njk component(macro?)
+- meta tag into head about rss
+- add tooltip on dates with timezone (UTC?)
 - fix date in articles and index
 - rss fix date
 - rss wrong headers?
@@ -19,6 +20,7 @@
   - use some tool to detect unused styles
 
 ## AFTER RELEASE
+- change /debug route to route configurable in deb config
 - sitemap
 - finetune humans.txt
 - node turn on 'use srict' by default?

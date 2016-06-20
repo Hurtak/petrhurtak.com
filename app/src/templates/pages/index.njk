@@ -10,14 +10,19 @@
     <section class="article-preview">
 
       <h2>
-        <a href="/{{ debugUrlPrefix }}{{ article.url }}"
-          class="article-preview__title">
+        <a
+          href="/{{ debugUrlPrefix }}{{ article.url }}"
+          class="article-preview__title"
+        >
           {{ article.title }}
         </a>
       </h2>
 
-      <time datetime="{{ article.last_update | datetimeAttribute }}"
-        class="article-preview__date">
+      <time
+        datetime="{{ article.last_update | datetimeAttribute }}"
+        title="{{ article.last_update | fullDate }}"
+        class="article-preview__date"
+      >
         {{ article.last_update | dateHowLongBefore }}
       </time>
 

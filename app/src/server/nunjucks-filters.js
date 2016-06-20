@@ -25,10 +25,21 @@ const fullDate = (dateString) => {
   ]
 
   const day = date.getDate()
+
+  const lastDigitInDay = date.getDate() % 10
+
+  let dayPostfix
+  switch (lastDigitInDay) {
+    case 1: dayPostfix = 'st'; break
+    case 2: dayPostfix = 'nd'; break
+    case 3: dayPostfix = 'rd'; break
+    default: dayPostfix = 'th'; break
+  }
+
   const month = months[date.getMonth()]
   const year = date.getFullYear()
 
-  return `${ day } ${ month } ${ year }`
+  return `${ day }${ dayPostfix } ${ month } ${ year }`
 }
 
 const dateHowLongBefore = (date) => {

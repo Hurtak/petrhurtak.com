@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "ava": "0.15.2",
-    "babel-eslint": "6.0.4",
+    "babel-eslint": "6.0.5",
     "nodemon": "1.9.2",
     "normalize.css": "4.1.1",
     "pretty-error": "2.0.0"

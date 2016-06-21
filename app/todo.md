@@ -1,7 +1,6 @@
 # TODO
 
 ## BEFORE RELEASE
-- make logo as H1?
 - fix upload script
 - finish css design
 - pass paths as variable into templates?

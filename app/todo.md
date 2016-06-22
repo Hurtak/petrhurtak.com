@@ -3,14 +3,13 @@
 ## BEFORE RELEASE
 - fix upload script
 - finish css design
-- pass paths as variable into templates?
-- merge article and debugArticle routes so they reuse most of the logic
-- fill package.json
 - run blog through
   - css & html validator
   - use some tool to detect unused styles
 
 ## AFTER RELEASE
+- merge article and debugArticle routes so they reuse most of the logic
+- pass paths as variable into templates?
 - write README.md
 - license for articles and license for app
 - revisit rss feed items
@@ -30,6 +29,7 @@
 - consider loading images with javascript with <noscript> fallback?
 - consider adding critical css
 - take a look at ponyfoo.com for performance ideas
+- revisit package.json
 - intelligent 404 page
   - log 404
   - reccomend some content based on searched query

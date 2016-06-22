@@ -1,25 +1,27 @@
-import path from 'path'
+'use strict'
 
-import paths from '../server/paths.js'
-import * as articles from '../server/articles.js'
-import * as database from '../server/database.js'
+const path = require('path')
 
-function getDirectoryDate(directoryPath) {
+const paths = require('../src/server/paths.js')
+const articles = require('../src/server/articles.js')
+const database = require('../src/server/database.js')
+
+function getDirectoryDate (directoryPath) {
   return directoryPath
     .split(path.sep)
-    .filter(dir => dir && dir == Number(dir))
+    .filter(dir => dir)
+    .map(Number)
+    .filter(dir => !Number.isNaN(dir))
 }
 
-function isDirectoryNameCorrect(metadataDate, directoryName) {
+function isDirectoryNameCorrect (metadataDate, directoryName) {
   const publicationDate = new Date(metadataDate)
   const publicationYear = publicationDate.getFullYear()
   const publicationMonth = publicationDate.getMonth() + 1
 
-  const directoryDate = getDirectoryDate(directoryName)
-  const directoryYear = directoryDate[0]
-  const directoryMonth = directoryDate[1]
+  const [directoryYear, directoryMonth] = getDirectoryDate(directoryName)
 
-  if (publicationYear != directoryYear || publicationMonth != directoryMonth) {
+  if (publicationYear !== directoryYear || publicationMonth !== directoryMonth) {
     console.error(`publication_date in article.md yaml header is different from year or month directory ${ directoryName }`)
     return false
   }
@@ -27,10 +29,12 @@ function isDirectoryNameCorrect(metadataDate, directoryName) {
   return true
 }
 
-export default async function uploadArticles() {
+function uploadArticles () {
   let allArticlesUrls = []
   const articlesDirectories = articles.getArticlesDirectories(paths.articles, 2)
   articlesDirectories.reverse()
+
+  let promises = []
 
   for (let articleDirectory of articlesDirectories) {
     const articleUrl = articleDirectory.split(path.sep).reverse()[0]
@@ -57,23 +61,34 @@ export default async function uploadArticles() {
       metadata.visible
     ]
 
-    const articleId = await database.getIdByArticleUrl(articleUrl)
+    const promise = database.getIdByArticleUrl(articleUrl)
+    promises.push(promise)
 
-    if (articleId === null) { // new article which is not in db
-      let dbResponse = await database.insertArticleMetadata(dbData)
-      await database.insertArticleContent([dbResponse.insertId, articleContent])
-      console.log(`${ metadata.publication_date.toLocaleDateString('cs') } article ${ articleUrl } INSERTED.`)
-    } else {
-      await database.updateArticleMetadata(dbData.concat(articleId.id))
-      await database.updateArticleContent([articleContent, articleId.id])
-      console.log(`${ metadata.publication_date.toLocaleDateString('cs') } article ${ articleUrl } updated.`)
-    }
+    promise.then(articleId => {
+      if (articleId === null) { // new article which is not in db
+        database.insertArticleMetadata(dbData).then(dbResponse => {
+          database.insertArticleContent([dbResponse.insertId, articleContent]).then(() => {
+            console.log(`${ metadata.publication_date.toLocaleDateString('cs') } article ${ articleUrl } INSERTED.`)
+          })
+        })
+      } else {
+        database.updateArticleMetadata([...dbData, articleId.id]).then(() => {
+          database.updateArticleContent([articleContent, articleId.id]).then(() => {
+            console.log(`${ metadata.publication_date.toLocaleDateString('cs') } article ${ articleUrl } updated.`)
+          })
+        })
+      }
+    })
   }
 
-  // delete all articles except the ones in article directory
-  var deletedArticles = await database.deleteArticles(allArticlesUrls)
-
-  if (deletedArticles.affectedRows > 0) {
-    console.log(`${ deleteArticles.affectedRows } articles, which were not in articles directory, deleted from db.`)
-  }
+  Promise.all(promises).then(() => {
+    // delete all articles except the ones in article directory
+    database.deleteArticles(allArticlesUrls).then(deletedArticles => {
+      if (deletedArticles.affectedRows > 0) {
+        console.log(`${ deletedArticles.affectedRows } articles, which were not in articles directory, deleted from db.`)
+      }
+    })
+  })
 }
+
+uploadArticles()

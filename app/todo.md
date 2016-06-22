@@ -8,6 +8,9 @@
   - use some tool to detect unused styles
 
 ## AFTER RELEASE
+- minify scripts & css (debug mode in production still with unminified files)
+- minify article images
+- refactor upload script, put id into articles so we have truly unique identificator?
 - merge article and debugArticle routes so they reuse most of the logic
 - pass paths as variable into templates?
 - write README.md

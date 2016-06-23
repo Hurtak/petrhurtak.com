@@ -31,10 +31,9 @@ function isDirectoryNameCorrect (metadataDate, directoryName) {
 
 function uploadArticles () {
   let allArticlesUrls = []
+
   const articlesDirectories = articles.getArticlesDirectories(paths.articles, 2)
   articlesDirectories.reverse()
-
-  let promises = []
 
   for (let articleDirectory of articlesDirectories) {
     const articleUrl = articleDirectory.split(path.sep).reverse()[0]
@@ -61,10 +60,7 @@ function uploadArticles () {
       metadata.visible
     ]
 
-    const promise = database.getIdByArticleUrl(articleUrl)
-    promises.push(promise)
-
-    promise.then(articleId => {
+    database.getIdByArticleUrl(articleUrl).then(articleId => {
       if (articleId === null) { // new article which is not in db
         database.insertArticleMetadata(dbData).then(dbResponse => {
           database.insertArticleContent([dbResponse.insertId, articleContent]).then(() => {
@@ -81,13 +77,11 @@ function uploadArticles () {
     })
   }
 
-  Promise.all(promises).then(() => {
-    // delete all articles except the ones in article directory
-    database.deleteArticles(allArticlesUrls).then(deletedArticles => {
-      if (deletedArticles.affectedRows > 0) {
-        console.log(`${ deletedArticles.affectedRows } articles, which were not in articles directory, deleted from db.`)
-      }
-    })
+  // delete all articles except the ones in article directory
+  database.deleteArticles(allArticlesUrls).then(deletedArticles => {
+    if (deletedArticles.affectedRows > 0) {
+      console.log(`${ deletedArticles.affectedRows } articles, which were not in articles directory, deleted from db.`)
+    }
   })
 }
 

@@ -1,13 +1,20 @@
 # TODO
 
 ## BEFORE RELEASE
-- fix upload script
 - finish css design
+- fix images in debug mode
+- syntax highlight
+- comments
 - run blog through
   - css & html validator
   - use some tool to detect unused styles
 
 ## AFTER RELEASE
+- make upload script exit properly
+- add checks in upload script so it checks if
+  - url's are unique
+  - id's are unique
+  - directory month/year fits the publication date directories
 - minify scripts & css (debug mode in production still with unminified files)
 - minify article images
 - refactor upload script, put id into articles so we have truly unique identificator?
@@ -39,6 +46,7 @@
 
 ## NICE TO HAVE
 - cron job to detect 404 links
+- cron job to automatically git fetch changes & update new articles
 - switch to templating engine which supports streaming
 - evaluate switch from express to alternatives (koa, hapi)
   - once async/await hits node consider switching to koa2

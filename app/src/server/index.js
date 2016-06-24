@@ -1,7 +1,7 @@
 'use strict'
 
 if (process.env.NODE_ENV === 'development') {
-  require('./debug.js')()
+  require('./debug.js')
 }
 
 const path = require('path')

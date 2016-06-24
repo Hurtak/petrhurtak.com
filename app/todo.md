@@ -2,12 +2,7 @@
 
 ## BEFORE RELEASE
 - finish css design
-- fix images in debug mode
 - syntax highlight
-- comments
-- run blog through
-  - css & html validator
-  - use some tool to detect unused styles
 
 ## AFTER RELEASE
 - make upload script exit properly
@@ -18,6 +13,7 @@
 - flatten directory structure, just use years directories
 - minify scripts & css (debug mode in production still with unminified files)
 - minify article images
+- node_modules folder only in debug mode?
 - refactor upload script, put id into articles so we have truly unique identificator?
 - merge article and debugArticle routes so they reuse most of the logic
 - pass paths as variable into templates?
@@ -28,6 +24,9 @@
 - change /debug route to route configurable in deb config
 - sitemap
 - finetune humans.txt
+- run blog through
+  - css & html validator
+  - use some tool to detect unused styles
 - node turn on 'use srict' by default?
 - consider unification of quotes (html ", js ')
 - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)

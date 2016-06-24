@@ -1,6 +1,6 @@
 {
   "name": "hurtak.cz",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "dependencies": {
     "abbrev": {
       "version": "1.0.9",
@@ -1086,6 +1086,11 @@
       "version": "2.0.0",
       "from": "has-flag@>=2.0.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-2.0.0.tgz"
+    },
+    "highlight.js": {
+      "version": "9.4.0",
+      "from": "highlight.js@latest",
+      "resolved": "https://registry.npmjs.org/highlight.js/-/highlight.js-9.4.0.tgz"
     },
     "home-or-tmp": {
       "version": "1.0.0",

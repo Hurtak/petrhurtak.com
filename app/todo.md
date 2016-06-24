@@ -2,7 +2,6 @@
 
 ## BEFORE RELEASE
 - finish css design
-- syntax highlight
 
 ## AFTER RELEASE
 - make upload script exit properly
@@ -19,6 +18,8 @@
 - pass paths as variable into templates?
 - add favicon
 - write README.md
+- precompile highlight js syntax highlight on the server or use web workers on the client https://highlightjs.org/usage/
+- load highlightjs css styles asynchronously
 - license for articles and license for app
 - revisit rss feed items
 - change /debug route to route configurable in deb config

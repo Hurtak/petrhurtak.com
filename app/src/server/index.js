@@ -66,4 +66,4 @@ app.get('/:article', routes.article)
 
 // start server
 
-app.listen(config.port, () => console.log(`server started at port ${ config.port }`))
+app.listen(config.port)

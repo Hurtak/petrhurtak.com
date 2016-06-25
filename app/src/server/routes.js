@@ -29,7 +29,7 @@ const index = (req, res) => {
     })
 
     res.render('pages/index.njk', data)
-  }).catch(e => console.log(e)) // TODO: do we need catch?
+  })
 }
 
 const article = (req, res) => {
@@ -45,7 +45,7 @@ const article = (req, res) => {
     } else {
       notFound(req, res)
     }
-  }).catch(e => console.log(e))
+  })
 }
 
 const debug = (req, res) => {
@@ -91,7 +91,7 @@ const rss = (req, res) => {
 
     res.type('text/xml')
     res.render('special/rss.njk', addCommonData(data))
-  }).catch(e => console.log(e))
+  })
 }
 
 const robotsTxt = (req, res) => {
@@ -107,7 +107,7 @@ const humansTxt = (req, res) => {
 
     res.type('text/plain')
     res.render('special/humans.txt.njk', templateData)
-  }).catch(e => console.log(e))
+  })
 }
 
 module.exports = {

@@ -55,6 +55,9 @@
     - reccomend some content based on searched query
     - fix common typos?
     - http://jecas.cz/oprava-url
+  - 500
+    - add error handler to display 500 pages
+    - add .catch on promises inside router to display 500?
 
 - Frontend
   - minify scripts & css (debug mode in production still with unminified files)
@@ -86,3 +89,4 @@
 - once standard supports ES6 + Async/Await:
   - remove "standard" from package.json
   - remove "babel-eslint" dependency
+- once we have object spread operator replace Object.assign in addCommonData function in routes.js

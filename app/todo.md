@@ -1,50 +1,64 @@
 # TODO
 
-## BEFORE RELEASE
+## NEXT RELEASE
 - finish css design
+- buy domains
 
-## AFTER RELEASE
-- make upload script exit properly
-- add checks in upload script so it checks if
-  - url's are unique
-  - id's are unique
-  - directory month/year fits the publication date directories
-- flatten directory structure, just use years directories
-- minify scripts & css (debug mode in production still with unminified files)
-- minify article images
-- node_modules folder only in debug mode?
-- refactor upload script, put id into articles so we have truly unique identificator?
-- merge article and debugArticle routes so they reuse most of the logic
-- pass paths as variable into templates?
-- add favicon
-- write README.md
-- precompile highlight js syntax highlight on the server or use web workers on the client https://highlightjs.org/usage/
-- load highlightjs css styles asynchronously
-- license for articles and license for app
-- revisit rss feed items
-- change /debug route to route configurable in deb config
-- sitemap
-- finetune humans.txt
-- run blog through
-  - css & html validator
-  - use some tool to detect unused styles
-- node turn on 'use srict' by default?
-- consider unification of quotes (html ", js ')
-- consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
-- is the date column properly set in mysql database? also is the database timezone correctly set?
-- prereload headers
-- sticky footer
-- replace @see links in code with my own articles
-- start using mixins css http://zeke.sikelianos.com/css-from-the-future/
-- add compilation process for static files
-- instead of date display "published x days ago", like on Instagram
-- consider loading images with javascript with <noscript> fallback?
-- consider adding critical css
-- take a look at ponyfoo.com for performance ideas
-- revisit package.json
-- intelligent 404 page
-  - log 404
-  - reccomend some content based on searched query
+## FUTURE RELEASES
+- General
+  - write README.md
+  - license for articles and license for app
+  - sitemap
+  - finetune humans.txt
+  - run blog through
+    - css & html validator
+    - use some tool to detect unused styles
+  - consider unification of quotes (html ", js ')
+  - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
+  - take a look at ponyfoo.com for performance ideas
+  - revisit package.json
+
+- Articles
+  - make upload script exit properly
+  - add checks in upload script so it checks if
+    - url's are unique
+    - id's are unique
+    - directory month/year fits the publication date directories
+  - flatten directory structure, just use years directories
+  - refactor upload script, put id into articles so we have truly unique identificator?
+  - precompile highlight js syntax highlight on the server or use web workers on the client https://highlightjs.org/usage/
+  - replace @see links in code with my own articles
+
+- Backend
+  - https
+  - node_modules folder only in debug mode?
+  - merge article and debugArticle routes so they reuse most of the logic
+  - change /debug route to route configurable in deb config
+  - node turn on 'use srict' by default?
+  - prereload headers
+  - redirect from /article/ to /article (301?)
+  - is the date column properly set in mysql database? also is the database timezone correctly set?
+  - 404
+    - log 404s
+    - reccomend some content based on searched query
+    - fix common typos?
+    - http://jecas.cz/oprava-url
+
+- Frontend
+  - minify scripts & css (debug mode in production still with unminified files)
+  - minify article images
+  - add favicon
+  - pass paths as variable into templates?
+  - load highlightjs css styles asynchronously
+  - revisit rss feed items
+  - sticky footer
+  - add compilation process for static files
+  - consider loading images with javascript with <noscript> fallback?
+  - fine tune "published x days ago"
+  - start using mixins css http://zeke.sikelianos.com/css-from-the-future/
+  - consider adding critical css
+  - sprites for images/icons
+  - provide rss1, rss2 and atom feeds
 
 ## NICE TO HAVE
 - cron job to detect 404 links

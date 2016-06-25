@@ -3,6 +3,9 @@
 ## NEXT RELEASE
 - finish css design
 - buy domains
+- put this thing on the internet
+- add google analytics
+- add comments
 
 ## FUTURE RELEASES
 - General
@@ -17,6 +20,10 @@
   - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
   - take a look at ponyfoo.com for performance ideas
   - revisit package.json
+  - tags to articles
+  - projects page
+  - about page
+  - link to github/twitter
 
 - Articles
   - make upload script exit properly
@@ -25,6 +32,11 @@
     - id's are unique
     - directory month/year fits the publication date directories
   - flatten directory structure, just use years directories
+  - add article footer with
+    - share on twitter & facebook
+    - edit this article on github
+      - or maybe what could be really cool would be if there was live edit and anyone could submit edit
+    - similar articles & next article
   - refactor upload script, put id into articles so we have truly unique identificator?
   - precompile highlight js syntax highlight on the server or use web workers on the client https://highlightjs.org/usage/
   - replace @see links in code with my own articles
@@ -64,6 +76,7 @@
 - cron job to detect 404 links
 - cron job to automatically git fetch changes & update new articles
 - switch to templating engine which supports streaming
+- own comment system?
 - evaluate switch from express to alternatives (koa, hapi)
   - once async/await hits node consider switching to koa2
   - https://github.com/llambda/koa-boiler (http2, caching...)

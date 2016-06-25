@@ -17,17 +17,22 @@ const addCommonData = data => {
   return Object.assign({}, commonData, data)
 }
 
-function index (req, res) {
+const notFound = (req, res) => {
+  const data = addCommonData({})
+  res.render('pages/404.njk', data)
+}
+
+const index = (req, res) => {
   database.getAtricles().then(databaseArticles => {
     const data = addCommonData({
       articles: databaseArticles
     })
 
     res.render('pages/index.njk', data)
-  }).catch(e => console.log(e))
+  }).catch(e => console.log(e)) // TODO: do we need catch?
 }
 
-function article (req, res) {
+const article = (req, res) => {
   database.getAtricle(req.params.article).then(article => {
     if (article) {
       const data = addCommonData({
@@ -38,13 +43,12 @@ function article (req, res) {
 
       res.render('pages/article.njk', data)
     } else {
-      // TODO: function for displaying 404
-      res.render('pages/404.njk')
+      notFound(req, res)
     }
   }).catch(e => console.log(e))
 }
 
-function debug (req, res) {
+const debug = (req, res) => {
   // get all metadata from article.md files
   let metadata = articles.getArticlesMetadata(paths.articles, 'article.md')
 
@@ -59,7 +63,7 @@ function debug (req, res) {
   res.render('pages/index.njk', data)
 }
 
-function debugArticle (req, res) {
+const debugArticle = (req, res) => {
   let articleName = req.params.article
 
   let articlePath = articles.findPathToArticle(paths.articles, articleName, 2)

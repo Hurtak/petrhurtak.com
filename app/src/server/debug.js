@@ -9,5 +9,9 @@ error.skipPackage(
   'mysql',
   'nunjucks'
 )
-
 error.start()
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection of Promise')
+  console.error(reason)
+})

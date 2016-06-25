@@ -3,9 +3,9 @@
 ## NEXT RELEASE
 - finish css design
 - buy domains
-- put this thing on the internet
-- add google analytics
+- put this damn thing on the internet
 - add comments
+- add google analytics
 
 ## FUTURE RELEASES
 - General
@@ -43,6 +43,8 @@
 
 - Backend
   - https
+  - fork processes to number of processors http://shapeshed.com/uncaught-exceptions-in-node/
+  - log unhandle exceptions & uncaight promises into file http://shapeshed.com/uncaught-exceptions-in-node/
   - node_modules folder only in debug mode?
   - merge article and debugArticle routes so they reuse most of the logic
   - change /debug route to route configurable in deb config

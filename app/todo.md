@@ -23,6 +23,8 @@
   - tags to articles
   - projects page
   - about page
+  - add search with suggest box
+  - add aria stuff and accessibility stuff, also add that accessibility menu when you press tab
   - link to github/twitter
 
 - Articles

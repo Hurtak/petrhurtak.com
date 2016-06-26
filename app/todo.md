@@ -1,7 +1,7 @@
 # TODO
 
 ## NEXT RELEASE
-- finish css design
+- finish CSS design
 - buy domains
 - put this damn thing on the internet
 - add comments
@@ -14,7 +14,7 @@
   - sitemap
   - finetune humans.txt
   - run blog through
-    - css & html validator
+    - CSS & HTML validator
     - use some tool to detect unused styles
   - consider unification of quotes (html ", js ')
   - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
@@ -26,7 +26,6 @@
   - link to github/twitter
 
 - Articles
-  - make upload script exit properly
   - add checks in upload script so it checks if
     - url's are unique
     - id's are unique

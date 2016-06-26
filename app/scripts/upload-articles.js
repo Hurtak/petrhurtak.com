@@ -31,11 +31,22 @@ function isDirectoryNameCorrect (metadataDate, directoryName) {
   return true
 }
 
+const checkIfDone = (promisesRunning) => {
+  promisesRunning--
+  if (promisesRunning <= 0) {
+    database.closeConnection()
+  } else {
+    return promisesRunning
+  }
+}
+
 function uploadArticles () {
   let allArticlesUrls = []
 
   const articlesDirectories = articles.getArticlesDirectories(paths.articles, 2)
   articlesDirectories.reverse()
+
+  let promisesRunning = articlesDirectories.length + 1 // +1 for delete articles promise
 
   for (let articleDirectory of articlesDirectories) {
     const articleUrl = articleDirectory.split(path.sep).reverse()[0]
@@ -63,16 +74,19 @@ function uploadArticles () {
     ]
 
     database.getIdByArticleUrl(articleUrl).then(articleId => {
+      const date = metadata.publication_date.toLocaleDateString('cs')
       if (articleId === null) { // new article which is not in db
         database.insertArticleMetadata(dbData).then(dbResponse => {
           database.insertArticleContent([dbResponse.insertId, articleContent]).then(() => {
-            console.log(`${ metadata.publication_date.toLocaleDateString('cs') } article ${ articleUrl } INSERTED.`)
+            console.log(`${date} article ${articleUrl} INSERTED.`)
+            promisesRunning = checkIfDone(promisesRunning)
           })
         })
       } else {
         database.updateArticleMetadata([...dbData, articleId.id]).then(() => {
           database.updateArticleContent([articleContent, articleId.id]).then(() => {
-            console.log(`${ metadata.publication_date.toLocaleDateString('cs') } article ${ articleUrl } updated.`)
+            console.log(`${date} article ${articleUrl} updated.`)
+            promisesRunning = checkIfDone(promisesRunning)
           })
         })
       }
@@ -82,8 +96,11 @@ function uploadArticles () {
   // delete all articles except the ones in article directory
   database.deleteArticles(allArticlesUrls).then(deletedArticles => {
     if (deletedArticles.affectedRows > 0) {
-      console.log(`${ deletedArticles.affectedRows } articles, which were not in articles directory, deleted from db.`)
+      console.log(`${deletedArticles.affectedRows} articles, which were not in articles directory, deleted from db.`)
+    } else {
+      console.log('no articles deleted from db.')
     }
+    promisesRunning = checkIfDone(promisesRunning)
   })
 }
 

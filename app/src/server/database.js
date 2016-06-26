@@ -64,7 +64,11 @@ function getAtricle (articleUrl) {
 // upload articles script
 
 function getIdByArticleUrl (articleUrl) {
-  const query = `SELECT id FROM articles WHERE url = ?`
+  const query = `
+    SELECT id
+    FROM articles
+    WHERE url = ?
+  `
   return dbPromiseFactory(query, articleUrl, true)
 }
 
@@ -117,10 +121,10 @@ function updateArticleContent (params) {
 }
 
 function deleteArticles (urls) {
-  urls = urls.join('\', \'')
+  urls = urls.join('", "')
   const query = `
     DELETE FROM articles
-    WHERE url NOT IN ('${ urls }')
+    WHERE url NOT IN ("${urls}")
   ` // TODO: fix SQL injection
 
   return dbPromiseFactory(query)
@@ -154,6 +158,10 @@ function getHumansTxt () {
   return dbPromiseFactory(query, [], true)
 }
 
+const closeConnection = () => {
+  db.end()
+}
+
 module.exports = {
   getAtricles,
   getAtricle,
@@ -164,5 +172,6 @@ module.exports = {
   updateArticleContent,
   deleteArticles,
   getRSS,
-  getHumansTxt
+  getHumansTxt,
+  closeConnection
 }

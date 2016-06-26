@@ -12,7 +12,7 @@
   - write README.md
   - license for articles and license for app
   - sitemap
-  - finetune humans.txt
+  - fine tune humans.txt
   - run blog through
     - CSS & HTML validator
     - use some tool to detect unused styles
@@ -43,17 +43,18 @@
 - Backend
   - https
   - fork processes to number of processors http://shapeshed.com/uncaught-exceptions-in-node/
-  - log unhandle exceptions & uncaight promises into file http://shapeshed.com/uncaught-exceptions-in-node/
+  - log unhandle exceptions & uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
   - node_modules folder only in debug mode?
   - merge article and debugArticle routes so they reuse most of the logic
   - change /debug route to route configurable in deb config
-  - node turn on 'use srict' by default?
+  - node turn on 'use strict' by default?
+  - decide when to use const x = () => {} and when to use function x () {}
   - prereload headers
   - redirect from /article/ to /article (301?)
-  - is the date column properly set in mysql database? also is the database timezone correctly set?
+  - is the date column properly set in MySQL database? also is the database timezone correctly set?
   - 404
     - log 404s
-    - reccomend some content based on searched query
+    - recommend some content based on searched query
     - fix common typos?
     - http://jecas.cz/oprava-url
   - 500

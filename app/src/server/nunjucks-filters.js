@@ -7,7 +7,8 @@ const datetimeAttribute = (date) => {
   return date.toISOString().substr(0, 19)
 }
 
-const gtm = (dateString) => {
+const gmt = (dateString) => {
+  // GMT string example "Mon, 27 Jun 2016 17:48:24 GMT"
   const date = new Date(dateString)
   return date.toGMTString()
 }
@@ -79,7 +80,7 @@ const dateHowLongBefore = (date) => {
 
 module.exports = {
   datetimeAttribute,
-  gtm,
+  gmt,
   fullDate,
   dateHowLongBefore
 }

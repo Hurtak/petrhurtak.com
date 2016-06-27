@@ -64,6 +64,7 @@
     - add .catch on promises inside router to display 500?
 
 - Frontend
+  - http://mozilla.github.io/nunjucks/templating.html#whitespace-control
   - minify scripts & css (debug mode in production still with unminified files)
   - minify article images
   - add favicon

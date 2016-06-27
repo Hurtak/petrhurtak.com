@@ -8,10 +8,61 @@ test('dateHowLongBefore', t => {
   t.deepEqual(fn(new Date()), 'just now')
 })
 
+const datesToTest = [
+  new Date(),
+  new Date(2000, 1, 1, 0, 0, 0),
+  new Date(2000, 12, 31, 23, 59, 59),
+  new Date(0)
+]
+
+// days
+for (let day = 1; day <= 31; day++) {
+  datesToTest.push(new Date(2016, 0, day, 0, 0, 0))
+}
+
+// months
+for (let month = 0; month <= 11; month++) {
+  datesToTest.push(new Date(2016, month, 1, 0, 0, 0))
+}
+
 test('datetimeAttribute', t => {
   const fn = nunjucksFilters.datetimeAttribute
 
-  const addLeadingZero = input => {
+  const dateToDateTimeAttribute = givenDate => {
+    const d = removeTimeZoneOffset(givenDate)
+    return `${d.year}-${d.month}-${d.day}T${d.hours}:${d.minutes}:${d.seconds}`
+  }
+
+  for (const date of datesToTest) {
+    t.deepEqual(fn(date), dateToDateTimeAttribute(date))
+  }
+})
+
+test('gmt', t => {
+  const fn = nunjucksFilters.gmt
+
+  const dateToGmt = givenDate => {
+    const d = removeTimeZoneOffset(givenDate)
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    const monthNames = [
+      'Jan', 'Feb', 'Mar', 'Apr',
+      'May', 'Jun', 'Jul', 'Aug',
+      'Sep', 'Oct', 'Nov', 'Dec'
+    ]
+
+    return `${dayNames[d.dayOfWeek]}, ${d.day} ${monthNames[d.month - 1]} ${d.year} ${d.hours}:${d.minutes}:${d.seconds} GMT`
+  }
+
+  for (const date of datesToTest) {
+    t.deepEqual(fn(date), dateToGmt(date))
+  }
+})
+
+function removeTimeZoneOffset (givenDate) {
+  const timezoneOffset = givenDate.getTimezoneOffset()
+  const date = new Date(givenDate.getTime() + timezoneOffset * 1000 * 60)
+
+  function addLeadingZero (input) {
     input = String(input)
     while (input.length < 2) {
       input = '0' + input
@@ -19,33 +70,14 @@ test('datetimeAttribute', t => {
     return input
   }
 
-  const dateToDateTimeAttribute = givenDate => {
-    const timezoneOffset = givenDate.getTimezoneOffset()
-    // remove timezone offset
-    const date = new Date(givenDate.getTime() + timezoneOffset * 1000 * 60)
-
-    const year = date.getFullYear()
-    const month = addLeadingZero(date.getMonth() + 1)
-    const day = addLeadingZero(date.getDate())
-    const hours = addLeadingZero(date.getHours())
-    const minutes = addLeadingZero(date.getMinutes())
-    const seconds = addLeadingZero(date.getSeconds())
-
-    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`
+  return {
+    year: date.getFullYear(),
+    month: addLeadingZero(date.getMonth() + 1),
+    day: addLeadingZero(date.getDate()),
+    dayOfWeek: date.getDay(),
+    hours: addLeadingZero(date.getHours()),
+    minutes: addLeadingZero(date.getMinutes()),
+    seconds: addLeadingZero(date.getSeconds())
   }
+}
 
-  const date1 = new Date()
-  t.deepEqual(fn(date1), dateToDateTimeAttribute(date1))
-
-  const date2 = new Date(2016, 1, 2, 3, 4, 5)
-  t.deepEqual(fn(date2), dateToDateTimeAttribute(date2))
-
-  const date3 = new Date(2000, 1, 1, 0, 0, 0)
-  t.deepEqual(fn(date3), dateToDateTimeAttribute(date3))
-
-  const date4 = new Date(2000, 12, 31, 23, 59, 59)
-  t.deepEqual(fn(date4), dateToDateTimeAttribute(date4))
-
-  const date5 = new Date(0)
-  t.deepEqual(fn(date5), dateToDateTimeAttribute(date5))
-})

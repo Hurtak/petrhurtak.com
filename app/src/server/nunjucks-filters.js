@@ -45,7 +45,7 @@ const fullDate = (dateString) => {
   const month = months[date.getMonth()]
   const year = date.getFullYear()
 
-  return `${ day }${ dayPostfix } ${ month } ${ year }`
+  return `${day}${dayPostfix} ${month} ${year}`
 }
 
 const dateHowLongBefore = (date) => {
@@ -59,22 +59,22 @@ const dateHowLongBefore = (date) => {
   const months = Math.floor(seconds / (60 * 60 * 24 * 30))
   const years = Math.floor(seconds / (60 * 60 * 24 * 30 * 12))
 
-  const plural = (word, count) => `${ word }${ count === 1 ? '' : 's' }`
+  const plural = (word, count) => `${word}${count === 1 ? '' : 's'}`
 
   if (minutes <= 10) {
     return 'just now'
   } else if (minutes <= 60) {
-    return `before ${ minutes } ${ plural('minute', minutes) }`
+    return `before ${minutes} ${plural('minute', minutes)}`
   } else if (hours <= 6) {
-    return `${ hours } ${ plural('hour', minutes) } ago`
+    return `${hours} ${plural('hour', minutes)} ago`
   } else if (hours <= 24) {
-    return `today`
+    return 'today'
   } else if (days <= 30) {
-    return `${ days } ${ plural('day', days) } ago`
+    return `${days} ${plural('day', days)} ago`
   } else if (months <= 12) {
-    return `${ months } ${ plural('month', months) } ago`
+    return `${months} ${plural('month', months)} ago`
   } else {
-    return `${ years } ${ plural('year', years) } ago`
+    return `${years} ${plural('year', years)} ago`
   }
 }
 

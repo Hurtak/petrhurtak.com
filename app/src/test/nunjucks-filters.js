@@ -2,25 +2,39 @@ import test from 'ava'
 
 import * as nunjucksFilters from '../server/nunjucks-filters.js'
 
-test('dateHowLongBefore', t => {
-  const fn = nunjucksFilters.dateHowLongBefore
+function removeTimeData (date) {
+  return {
+    year: date.getUTCFullYear(),
+    month: date.getUTCMonth() + 1,
+    day: date.getUTCDate(),
+    dayOfWeek: date.getUTCDay(),
+    hours: date.getUTCHours(),
+    minutes: date.getUTCMinutes(),
+    seconds: date.getUTCSeconds()
+  }
+}
 
-  t.deepEqual(fn(new Date()), 'just now')
-})
+function addLeadingZero (input) {
+  input = String(input)
+  while (input.length < 2) {
+    input = '0' + input
+  }
+  return input
+}
 
 const datesToTest = [
   new Date(),
-  new Date(2000, 1, 1, 0, 0, 0),
-  new Date(2000, 12, 31, 23, 59, 59),
+  new Date(Date.UTC(2000, 0, 1, 0, 0, 0)),
+  new Date(Date.UTC(2000, 11, 31, 23, 59, 59)),
   new Date(0)
 ]
 
-// days
+// all days
 for (let day = 1; day <= 31; day++) {
   datesToTest.push(new Date(2016, 0, day, 0, 0, 0))
 }
 
-// months
+// all months
 for (let month = 0; month <= 11; month++) {
   datesToTest.push(new Date(2016, month, 1, 0, 0, 0))
 }
@@ -29,8 +43,8 @@ test('datetimeAttribute', t => {
   const fn = nunjucksFilters.datetimeAttribute
 
   const dateToDateTimeAttribute = givenDate => {
-    const d = removeTimeZoneOffset(givenDate)
-    return `${d.year}-${d.month}-${d.day}T${d.hours}:${d.minutes}:${d.seconds}`
+    const d = removeTimeData(givenDate)
+    return `${d.year}-${addLeadingZero(d.month)}-${addLeadingZero(d.day)}T${addLeadingZero(d.hours)}:${addLeadingZero(d.minutes)}:${addLeadingZero(d.seconds)}`
   }
 
   for (const date of datesToTest) {
@@ -42,7 +56,7 @@ test('gmt', t => {
   const fn = nunjucksFilters.gmt
 
   const dateToGmt = givenDate => {
-    const d = removeTimeZoneOffset(givenDate)
+    const d = removeTimeData(givenDate)
     const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     const monthNames = [
       'Jan', 'Feb', 'Mar', 'Apr',
@@ -50,7 +64,7 @@ test('gmt', t => {
       'Sep', 'Oct', 'Nov', 'Dec'
     ]
 
-    return `${dayNames[d.dayOfWeek]}, ${d.day} ${monthNames[d.month - 1]} ${d.year} ${d.hours}:${d.minutes}:${d.seconds} GMT`
+    return `${dayNames[d.dayOfWeek]}, ${addLeadingZero(d.day)} ${monthNames[d.month - 1]} ${d.year} ${addLeadingZero(d.hours)}:${addLeadingZero(d.minutes)}:${addLeadingZero(d.seconds)} GMT`
   }
 
   for (const date of datesToTest) {
@@ -58,26 +72,40 @@ test('gmt', t => {
   }
 })
 
-function removeTimeZoneOffset (givenDate) {
-  const timezoneOffset = givenDate.getTimezoneOffset()
-  const date = new Date(givenDate.getTime() + timezoneOffset * 1000 * 60)
+test('fullDate', t => {
+  const fn = nunjucksFilters.fullDate
 
-  function addLeadingZero (input) {
-    input = String(input)
-    while (input.length < 2) {
-      input = '0' + input
+  const dateToFullDate = givenDate => {
+    const d = removeTimeData(givenDate)
+    const monthNames = [
+      'January', 'February', 'March', 'April',
+      'May', 'June', 'July', 'August',
+      'September', 'October', 'November', 'December'
+    ]
+
+    const lastDigitInDay = d.day % 10
+    let dayPostfix
+    switch (lastDigitInDay) {
+      case 1: dayPostfix = 'st'; break
+      case 2: dayPostfix = 'nd'; break
+      case 3: dayPostfix = 'rd'; break
+      default: dayPostfix = 'th'; break
     }
-    return input
+
+    return `${d.day}${dayPostfix} ${monthNames[d.month - 1]} ${d.year}`
   }
 
-  return {
-    year: date.getFullYear(),
-    month: addLeadingZero(date.getMonth() + 1),
-    day: addLeadingZero(date.getDate()),
-    dayOfWeek: date.getDay(),
-    hours: addLeadingZero(date.getHours()),
-    minutes: addLeadingZero(date.getMinutes()),
-    seconds: addLeadingZero(date.getSeconds())
+  for (const date of datesToTest) {
+    t.deepEqual(fn(date), dateToFullDate(date))
   }
-}
+})
 
+test('dateHowLongBefore', t => {
+  const fn = nunjucksFilters.dateHowLongBefore
+
+  t.deepEqual(fn(new Date()), 'just now')
+
+  for (const date of datesToTest) {
+    t.true(fn(date).length > 1)
+  }
+})

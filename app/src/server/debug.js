@@ -1,19 +1,21 @@
 'use strict'
 
-if (process.env.NODE_ENV === 'development') {
-  const PrettyError = require('pretty-error')
-  const error = new PrettyError()
+module.exports = function () {
+  if (process.env.NODE_ENV === 'development') {
+    const PrettyError = require('pretty-error')
+    const error = new PrettyError()
 
-  error.skipNodeFiles()
-  error.skipPackage(
-    'express',
-    'mysql',
-    'nunjucks'
-  )
-  error.start()
+    error.skipNodeFiles()
+    error.skipPackage(
+      'express',
+      'mysql',
+      'nunjucks'
+    )
+    error.start()
+  }
+
+  process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection of Promise')
+    console.error(reason)
+  })
 }
-
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('Unhandled Rejection of Promise')
-  console.error(reason)
-})

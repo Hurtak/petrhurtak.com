@@ -1,5 +1,7 @@
 'use strict'
 
+require('./debug.js')()
+
 const path = require('path')
 const fs = require('fs')
 
@@ -9,11 +11,12 @@ const expressResponseTime = require('response-time')
 const expressCompression = require('compression')
 const nunjucks = require('nunjucks')
 
-require('./debug.js')
 const config = require('../config/config.js')
 const paths = require('./paths.js')
 const routes = require('./routes.js')
 const nunjucksFilters = require('./nunjucks-filters.js')
+
+// app
 
 const app = express()
 

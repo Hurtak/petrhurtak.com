@@ -30,10 +30,11 @@ const fullDate = (dateString) => {
     'December'
   ]
 
-  const day = date.getDate()
+  const day = date.getUTCDate()
+  const month = months[date.getUTCMonth()]
+  const year = date.getUTCFullYear()
 
-  const lastDigitInDay = date.getDate() % 10
-
+  const lastDigitInDay = date.getUTCDate() % 10
   let dayPostfix
   switch (lastDigitInDay) {
     case 1: dayPostfix = 'st'; break
@@ -41,9 +42,6 @@ const fullDate = (dateString) => {
     case 3: dayPostfix = 'rd'; break
     default: dayPostfix = 'th'; break
   }
-
-  const month = months[date.getMonth()]
-  const year = date.getFullYear()
 
   return `${day}${dayPostfix} ${month} ${year}`
 }

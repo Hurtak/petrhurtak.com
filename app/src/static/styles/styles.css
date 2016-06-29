@@ -27,6 +27,7 @@
 body {
   background-color: var(--color-background);
   text-rendering: optimizeLegibility; /* TODO: is this doing anyting? */
+  border-top: 6px solid black;
 }
 
 .page {

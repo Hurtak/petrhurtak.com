@@ -23,14 +23,6 @@ html {
 }
 
 /*
- * prevents the jump between scrollbar and no-scrollbar pages
- * @see: https://aykevl.nl/2014/09/fix-jumping-scrollbar
- */
-body {
-  margin-left: calc(100vw - 100%);
-}
-
-/*
  * reset common elements
  * TODO: remove and make resets on individual components?
  */

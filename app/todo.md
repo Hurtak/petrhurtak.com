@@ -1,6 +1,7 @@
 # TODO
 
 ## NEXT RELEASE
+- use standard fonts (arial..)
 - finish CSS design
 - buy domains
 - put this damn thing on the internet
@@ -41,6 +42,7 @@
   - refactor upload script, put id into articles so we have truly unique identificator?
   - precompile highlight js syntax highlight on the server or use web workers on the client https://highlightjs.org/usage/
   - replace @see links in code with my own articles
+  - sub headings in articles -> automaticall generate id's for them - <h2>How to?</h2> -> <h2 id="how-to">How-to?</h2>
 
 - Backend
   - https

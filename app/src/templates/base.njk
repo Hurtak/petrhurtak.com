@@ -16,14 +16,18 @@
   </head>
   <body>
 
-    <div class="page">
-      {% include './base/header.njk' %}
+    <div class="page-wrapper">
 
-      <main>
-        {% block content %}{% endblock %}
-      </main>
+      <div class="content">
+        {% include './base/header.njk' %}
 
-      {% include './base/footer.njk' %}
+        <main>
+          {% block content %}{% endblock %}
+        </main>
+
+        {% include './base/footer.njk' %}
+      </div>
+
     </div>
 
     <script type="text/javascript" src="/static/scripts/scripts.js"></script>

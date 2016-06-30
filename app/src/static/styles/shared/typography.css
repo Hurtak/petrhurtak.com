@@ -1,6 +1,6 @@
 /*
- * Optimal Typography for 18px Font
- * Font Size: 18, Line Height: 29, Content Width: 829
+ * Optimal Typography for 20px Font
+ * Font Size: 20, Line Height: 32, Content Width: 986
  * @see: http://www.pearsonified.com/typography/
  */
 
@@ -11,11 +11,11 @@
   --font-size-primary-text:   2.0rem; /* 2.0px */
   --font-size-secondary-text: 1.6rem; /* 1.6px */
 
-  --font-family-heading: Calibri, Candara, 'Segoe UI', Arial, sans-serif;
-  --font-family-paragraph: Cambria, Georgia, serif;
+  --font-family-heading: Arial, sans-serif;
+  --font-family-paragraph: Georgia, serif;
 
-  --paragraph-line-height: 1.4;
-  --paragraph-spacing: 1em;
+  --paragraph-line-height: 1.6;
+  --paragraph-spacing: 1.5em;
   --content-width: 700px;
 }
 

@@ -13,6 +13,7 @@
   - write README.md
   - license for articles and license for app
   - sitemap
+  - take a look at medium, what components they use in articles
   - fine tune humans.txt
   - run blog through
     - CSS & HTML validator
@@ -27,6 +28,7 @@
   - add search with suggest box
   - add aria stuff and accessibility stuff, also add that accessibility menu when you press tab
   - link to github/twitter
+  - decide what categories to use in commit messages
 
 - Articles
   - add checks in upload script so it checks if
@@ -34,6 +36,7 @@
     - id's are unique
     - directory month/year fits the publication date directories
   - flatten directory structure, just use years directories
+  - refactor styles
   - add article footer with
     - share on twitter & facebook
     - edit this article on github

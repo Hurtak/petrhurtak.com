@@ -44,6 +44,7 @@
 
 - Backend
   - https
+  - https://www.sitepoint.com/how-to-create-a-node-js-cluster-for-speeding-up-your-apps/
   - fork processes to number of processors http://shapeshed.com/uncaught-exceptions-in-node/
   - log unhandle exceptions & uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
   - node_modules folder only in debug mode?

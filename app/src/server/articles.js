@@ -5,6 +5,9 @@ const url = require('url')
 const path = require('path')
 
 const frontMatter = require('front-matter')
+const escapeHtml = require('escape-html')
+const isAbsoluteUrl = require('is-absolute-url')
+const cheerio = require('cheerio')
 
 const paths = require('./paths.js')
 
@@ -90,14 +93,26 @@ function parseArticle (articlePath) {
       // use '/' instead of path.sep, because that's what we are using in templates
       .join('/') + '/'
 
-  article = article.replace(
-    /(<img .*?src=["'])(.+?)(["'].*?>)/gm,
-    (whole, prefix, imageUrl, suffix) => prefix + url.resolve(articleDirectory, imageUrl) + suffix
-  )
+  let $ = cheerio.load(article)
+
+  // replace relative img paths with real image paths
+  $('img').attr('src', (index, src) => {
+    if (isAbsoluteUrl(src)) {
+      return src
+    }
+    const newSrc = url.resolve(articleDirectory, src)
+    return newSrc
+  })
+
+  // escape characters in <code> blocks
+  // article = article.replace(
+  //   /(<code>)((.|\n)+?)(<\/code>)/gm,
+  //   (whole, prefix, inside, suffix) => prefix + escapeHtml(inside) + suffix
+  // )
 
   return {
     metadata,
-    html: article
+    html: $.html()
   }
 }
 

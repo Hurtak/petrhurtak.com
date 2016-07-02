@@ -1,6 +1,8 @@
 # TODO
 
 ## NEXT RELEASE
+- switch back to markdow
+- remove leading whitespace from inside code tags
 - use standard fonts (arial..)
 - finish CSS design
 - buy domains
@@ -31,6 +33,9 @@
   - decide what categories to use in commit messages
 
 - Articles
+  - do not compile articles manually with script, compile them on the fly when requested
+    - measure how long this takes
+    - if it takes > 5ms, wrap the whole thing in caching function which will just save the result into file
   - add checks in upload script so it checks if
     - url's are unique
     - id's are unique
@@ -88,6 +93,10 @@
   - consider adding critical css
   - sprites for images/icons
   - provide rss1, rss2 and atom feeds
+  - responsive images (srcset, image element), also generate these automatically
+  - use sprites https://speakerdeck.com/bevacqua/high-performance-in-the-critical-path
+  - have all relevant metatags, inspire with jecas.cz and ponyfoo.com
+  - console easter egg, or perhaps something inside HTML? http://codepen.io/elijahmanor/pen/RPjeLz?editors=001
 
 ## NICE TO HAVE
 - cron job to detect 404 links

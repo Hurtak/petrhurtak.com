@@ -95,20 +95,22 @@ function parseArticle (articlePath) {
 
   let $ = cheerio.load(article)
 
-  // replace relative img paths with real image paths
-  $('img').attr('src', (index, src) => {
+  // replace relative img paths with absolute paths to images
+  $('img').attr('src', (_, src) => {
     if (isAbsoluteUrl(src)) {
       return src
+    } else {
+      return url.resolve(articleDirectory, src)
     }
-    const newSrc = url.resolve(articleDirectory, src)
-    return newSrc
   })
 
-  // escape characters in <code> blocks
-  // article = article.replace(
-  //   /(<code>)((.|\n)+?)(<\/code>)/gm,
-  //   (whole, prefix, inside, suffix) => prefix + escapeHtml(inside) + suffix
-  // )
+  // escape content of <code> blocks
+  $('code').replaceWith((_, el) => {
+    const html = $(el).html()
+    const escapedHtml = escapeHtml(html)
+
+    return escapedHtml
+  })
 
   return {
     metadata,

@@ -10,6 +10,7 @@ const isAbsoluteUrl = require('is-absolute-url')
 const cheerio = require('cheerio')
 
 const paths = require('./paths.js')
+const utilsArticles = require('./utils/articles.js')
 
 function findPathToArticle (directory, articleName, searchedDepth, currentDepth = 0) {
   const list = fs.readdirSync(directory)
@@ -46,7 +47,7 @@ function getArticlesMetadata (directory, filename, gatheredMetadata = [], baseDi
       const metadata = frontMatter(fs.readFileSync(filePath, 'utf8')).attributes
 
       metadata.directory = articleDirectory
-      metadata.url = stripSlashes(articleDirectory).split(path.sep)
+      metadata.url = utilsArticles.stripPathSeparators(articleDirectory).split(path.sep)
       metadata.url = metadata.url[metadata.url.length - 1]
       gatheredMetadata.push(metadata)
     }
@@ -116,18 +117,6 @@ function parseArticle (articlePath) {
     metadata,
     html: $.html()
   }
-}
-
-// TODO: this should not be in this file
-function stripSlashes (string) {
-  if (string[0] === path.sep) {
-    string = string.substr(1)
-  }
-  if (string[string.length - 1] === path.sep) {
-    string = string.slice(0, -1)
-  }
-
-  return string
 }
 
 module.exports = {

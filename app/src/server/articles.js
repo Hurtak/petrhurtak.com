@@ -1,13 +1,9 @@
 'use strict'
 
 const fs = require('fs')
-const url = require('url')
 const path = require('path')
 
 const frontMatter = require('front-matter')
-const escapeHtml = require('escape-html')
-const isAbsoluteUrl = require('is-absolute-url')
-const cheerio = require('cheerio')
 
 const paths = require('./paths.js')
 const utilsArticles = require('./utils/articles.js')
@@ -47,8 +43,12 @@ function getArticlesMetadata (directory, filename, gatheredMetadata = [], baseDi
       const metadata = frontMatter(fs.readFileSync(filePath, 'utf8')).attributes
 
       metadata.directory = articleDirectory
-      metadata.url = utilsArticles.stripPathSeparators(articleDirectory).split(path.sep)
-      metadata.url = metadata.url[metadata.url.length - 1]
+
+      const articlePath = articleDirectory
+        .split(path.sep)
+        .filter(x => x)
+
+      metadata.url = articlePath[articlePath.length - 1]
       gatheredMetadata.push(metadata)
     }
   }
@@ -94,28 +94,18 @@ function parseArticle (articlePath) {
       // use '/' instead of path.sep, because that's what we are using in templates
       .join('/') + '/'
 
-  let $ = cheerio.load(article)
-
-  // replace relative img paths with absolute paths to images
-  $('img').attr('src', (_, src) => {
-    if (isAbsoluteUrl(src)) {
-      return src
-    } else {
-      return url.resolve(articleDirectory, src)
-    }
-  })
-
-  // escape content of <code> blocks
-  $('code').replaceWith((_, el) => {
-    const html = $(el).html()
-    const escapedHtml = escapeHtml(html)
-
-    return escapedHtml
-  })
+  // TODO: every time we make html transformation we take html
+  //       string and pass it into cheerio and create cheerio
+  //       object, then make transformations and then transform
+  //       back to html string. We could pass around cheerio
+  //       object so creation of cheerio object and transformation
+  //       to html string will be done only once
+  article = utilsArticles.replaceRelativeImageUrls(article, articleDirectory)
+  article = utilsArticles.escapeCodeBlocks(article)
 
   return {
     metadata,
-    html: $.html()
+    html: article
   }
 }
 

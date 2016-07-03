@@ -32,6 +32,7 @@
   - add aria stuff and accessibility stuff, also add that accessibility menu when you press tab
   - link to github/twitter
   - decide what categories to use in commit messages
+  - check if we are not using sync (readFileSync) functions anywhere
 
 - Articles
   - do not compile articles manually with script, compile them on the fly when requested
@@ -49,6 +50,7 @@
       - or maybe what could be really cool would be if there was live edit and anyone could submit edit
     - similar articles & next article
   - refactor upload script, put id into articles so we have truly unique identificator?
+  - parse article function uses readFileSync, rewrite to use promises/cb
   - precompile highlight js syntax highlight on the server or use web workers on the client https://highlightjs.org/usage/
   - replace @see links in code with my own articles
   - sub headings in articles -> automaticall generate id's for them - <h2>How to?</h2> -> <h2 id="how-to">How-to?</h2>

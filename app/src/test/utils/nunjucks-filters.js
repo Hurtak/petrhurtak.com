@@ -1,8 +1,10 @@
 import test from 'ava'
 
-import * as nunjucksFilters from '../server/nunjucks-filters.js'
+import * as nunjucksFilters from '../../server/utils/nunjucks-filters.js'
 
-function removeTimeData (date) {
+// helper functions
+
+function getDateData (date) {
   return {
     year: date.getUTCFullYear(),
     month: date.getUTCMonth() + 1,
@@ -22,6 +24,8 @@ function addLeadingZero (input) {
   return input
 }
 
+// prepare dates to test
+
 const datesToTest = [
   new Date(),
   new Date(Date.UTC(2000, 0, 1, 0, 0, 0)),
@@ -29,21 +33,23 @@ const datesToTest = [
   new Date(0)
 ]
 
-// all days
 for (let day = 1; day <= 31; day++) {
+  // 1-31 days
   datesToTest.push(new Date(2016, 0, day, 0, 0, 0))
 }
 
-// all months
 for (let month = 0; month <= 11; month++) {
+// 0-11 months (months start from 0)
   datesToTest.push(new Date(2016, month, 1, 0, 0, 0))
 }
+
+// tests
 
 test('datetimeAttribute', t => {
   const fn = nunjucksFilters.datetimeAttribute
 
   const dateToDateTimeAttribute = givenDate => {
-    const d = removeTimeData(givenDate)
+    const d = getDateData(givenDate)
     return `${d.year}-${addLeadingZero(d.month)}-${addLeadingZero(d.day)}T${addLeadingZero(d.hours)}:${addLeadingZero(d.minutes)}:${addLeadingZero(d.seconds)}`
   }
 
@@ -56,7 +62,7 @@ test('gmt', t => {
   const fn = nunjucksFilters.gmt
 
   const dateToGmt = givenDate => {
-    const d = removeTimeData(givenDate)
+    const d = getDateData(givenDate)
     const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     const monthNames = [
       'Jan', 'Feb', 'Mar', 'Apr',
@@ -76,7 +82,7 @@ test('fullDate', t => {
   const fn = nunjucksFilters.fullDate
 
   const dateToFullDate = givenDate => {
-    const d = removeTimeData(givenDate)
+    const d = getDateData(givenDate)
     const monthNames = [
       'January', 'February', 'March', 'April',
       'May', 'June', 'July', 'August',

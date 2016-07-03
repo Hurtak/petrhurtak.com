@@ -12,9 +12,9 @@ const expressCompression = require('compression')
 const nunjucks = require('nunjucks')
 
 const config = require('../config/config.js')
+const nunjucksFilters = require('./utils/nunjucks-filters.js')
 const paths = require('./paths.js')
 const routes = require('./routes.js')
-const nunjucksFilters = require('./nunjucks-filters.js')
 
 // app
 

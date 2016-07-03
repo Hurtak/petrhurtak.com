@@ -1,7 +1,7 @@
 # TODO
 
 ## NEXT RELEASE
-- switch back to markdow
+- switch back to markdown
 - remove leading whitespace from inside code tags
 - use standard fonts (arial..)
 - finish CSS design
@@ -12,6 +12,7 @@
 
 ## FUTURE RELEASES
 - General
+  - progressively enhanced tweet quotations
   - write README.md
   - license for articles and license for app
   - sitemap
@@ -97,6 +98,7 @@
   - use sprites https://speakerdeck.com/bevacqua/high-performance-in-the-critical-path
   - have all relevant metatags, inspire with jecas.cz and ponyfoo.com
   - console easter egg, or perhaps something inside HTML? http://codepen.io/elijahmanor/pen/RPjeLz?editors=001
+  - consider switching to async templating engine with streaing support (markojs by ebay, dustjs by linkedin)
 
 ## NICE TO HAVE
 - cron job to detect 404 links

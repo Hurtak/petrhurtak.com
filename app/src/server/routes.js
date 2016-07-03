@@ -2,6 +2,8 @@
 
 const path = require('path')
 
+const lodash = require('lodash')
+
 const articles = require('./articles.js')
 const database = require('./database.js')
 const paths = require('./paths.js')
@@ -53,7 +55,8 @@ const debug = (req, res) => {
   let metadata = articles.getArticlesMetadata(paths.articles, 'article.md')
 
   // sort articles by publication_date descendant
-  articles.sortObjectBy(metadata, 'publication_date')
+  metadata = lodash.sortBy(metadata, 'publication_date')
+  metadata = lodash.reverse(metadata)
 
   const data = addCommonData({
     articles: metadata,

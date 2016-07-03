@@ -119,18 +119,6 @@ function parseArticle (articlePath) {
 }
 
 // TODO: this should not be in this file
-function sortObjectBy (object, sortBy, ascendant) {
-  object.sort((a, b) => {
-    if (a[sortBy] < b[sortBy]) {
-      return ascendant ? -1 : 1
-    } else if (a[sortBy] > b[sortBy]) {
-      return ascendant ? 1 : -1
-    }
-    return 0
-  })
-}
-
-// TODO: this should not be in this file
 function stripSlashes (string) {
   if (string[0] === path.sep) {
     string = string.substr(1)
@@ -146,6 +134,5 @@ module.exports = {
   findPathToArticle,
   getArticlesMetadata,
   getArticlesDirectories,
-  parseArticle,
-  sortObjectBy
+  parseArticle
 }

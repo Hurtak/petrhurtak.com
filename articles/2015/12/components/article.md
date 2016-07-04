@@ -10,22 +10,11 @@ visible: 1
   Regular paragraph
 </p>
 
-
-<pre>
-<code>
-<p>
-  Regular paragraph
-</p>
-</code>
-</pre>
-
-```html
-<p>
-  Regular paragraph
-</p>
-```
-
-
+<pre><code>
+  <p>
+    Regular paragraph
+  </p>
+</code></pre>
 
 <h2>Sub heading</h2>
 

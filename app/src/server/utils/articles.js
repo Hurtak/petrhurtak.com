@@ -38,8 +38,10 @@ function escapeCodeBlocks (htmlString) {
 
   // escape content of <code> blocks
   $('code').replaceWith((_, el) => {
-    const html = $(el).html()
-    return escapeHtml(html)
+    const innerHtml = $(el).html()
+    const codeEl = $('code')
+    codeEl.html(escapeHtml(innerHtml))
+    return codeEl
   })
 
   return $.html()

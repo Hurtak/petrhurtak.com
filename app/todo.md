@@ -35,6 +35,11 @@
   - check if we are not using sync (readFileSync) functions anywhere
 
 - Articles
+  - post all articles to hacker news, reddit, twitter
+    - provide links under article to hacker news and twitter discussion
+    - have these links saved in front matter
+    - have cron job which determines number of comments on giver articles
+    - display number of comments under
   - do not compile articles manually with script, compile them on the fly when requested
     - measure how long this takes
     - if it takes > 5ms, wrap the whole thing in caching function which will just save the result into file
@@ -53,7 +58,7 @@
   - parse article function uses readFileSync, rewrite to use promises/cb
   - precompile highlight js syntax highlight on the server or use web workers on the client https://highlightjs.org/usage/
   - replace @see links in code with my own articles
-  - sub headings in articles -> automaticall generate id's for them - <h2>How to?</h2> -> <h2 id="how-to">How-to?</h2>
+  - sub headings in articles -> automaticall generate id's for them - `<h2>How to?</h2>` -> `<h2 id="how-to">How-to?</h2>`
   - remove seconds from publication date (in article.md header)
   - article.md -> article.html
 

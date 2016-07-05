@@ -6,7 +6,13 @@ last_update: 2015-05-28 19:22:57
 visible: 1
 ---
 
+## General
+
+- use 2 space indentation
+
 ## Headings
+
+- h1 heading is generated automatically based on the article title
 
 **markdown**
 
@@ -29,23 +35,28 @@ visible: 1
 
 ## Paragraphs
 
+- start sentences with capital letter
+- end sentences with dot.
+
 **markdown**
 
 ```markdown
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Paragraph of text.
 ```
 
 **compiles to**
 
 ```html
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Paragraph of text.</p>
 ```
 
 **how it looks like**
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Paragraph of text.
 
 ## Bold & Italic text
+
+- for bold and italic text always use `*` instead of `_`
 
 **markdown**
 
@@ -72,58 +83,104 @@ Regular text
 - *italic text*,
 -  ~~striked text~~
 
-
 ## Images
+
+- relative images
 
 **markdown**
 
-```markdown
-![image alt](http://satyr.io/200x300)
+- when linking to article images use relative paths without `./` at the start of the url
+- these relative url are then transformed into absolute paths `images/test.png` -> `/static/articles/../images/test.png`
 
-![image alt 2](images/test.png)
+```markdown
+![image with relative url](images/test.png)
+![image abslute url](http://satyr.io/200x300)
 ```
 
 **compiles to**
 
 ```html
 <img src="http://satyr.io/200x300" alt="image alt">
-TODO
+<img src="/static/articles/2015/12/components/images/test.png" alt="image alt">
 ```
 
 **how it looks like**
 
-![image alt](http://satyr.io/200x300)
-
-![image alt 2](images/test.png)
-
+![image with relative url](http://satyr.io/200x300)
+![image abslute url](images/test.png)
 
 ## Lists
+
+- start list items with lower case letter
+- do not end list items with dot
+-
+
+**markdown**
 
 ```markdown
 - first item
 - second item
   - nested item
-  - nested item
+    - deeply nested item
+    - deeply nested item
 - third item
 
 1. first item
 2. second item
   1. nested item
-  2. nested item
+    1. deeply nested item
+    2. deeply nested item
 3. third item
 ```
+
+**compiles to**
+
+```html
+<ul>
+  <li>first item</li>
+  <li>second item
+    <ul>
+      <li>nested item
+        <ul>
+          <li>deeply nested item</li>
+          <li>deeply nested item</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  </li>third item</li>
+</ul>
+
+<ol>
+  <li>first item</li>
+  <li>second item
+    <ol>
+      <li>nested item
+        <ol>
+          <li>deeply nested item</li>
+          <li>deeply nested item</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  </li>third item</li>
+</ol>
+```
+
+**how it looks like**
 
 - first item
 - second item
   - nested item
-  - nested item
-  - nested item
+    - deeply nested item
+    - deeply nested item
 - third item
 
 1. first item
 2. second item
   1. nested item
-  2. nested item
+    1. deeply nested item
+    2. deeply nested item
 3. third item
 
 ## Code

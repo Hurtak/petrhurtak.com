@@ -1,14 +1,14 @@
 import test from 'ava'
 
-import * as path from 'path'
 import * as utilsArticles from '../../server/utils/articles.js'
 
-test('stripPathSeparators', t => {
-  const fn = utilsArticles.stripPathSeparators
+test('replaceRelativeImageUrls', t => {
+  const fn = utilsArticles.replaceRelativeImageUrls
 
-  t.deepEqual(fn(''), '')
-  t.deepEqual(fn('foo'), 'foo')
-  t.deepEqual(fn('foo' + path.sep), 'foo')
-  t.deepEqual(fn(path.sep + 'foo'), 'foo')
-  t.deepEqual(fn(path.sep + 'foo' + path.sep), 'foo')
+  t.throws(() => { fn('') })
+  t.throws(() => { fn('', '') })
+
+  t.deepEqual(fn('<img src="foo.png">', 'static'), '<img src="/static/foo.png">')
+  t.deepEqual(fn('<img src="foo.png">', '/static'), '<img src="/static/foo.png">')
+  t.deepEqual(fn('<img src="foo.png">', '/static/'), '<img src="/static/foo.png">')
 })

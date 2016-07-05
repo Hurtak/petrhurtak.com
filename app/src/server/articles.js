@@ -103,8 +103,7 @@ function parseArticle (articlePath) {
   //       back to html string. We could pass around cheerio
   //       object so creation of cheerio object and transformation
   //       to html string will be done only once
-  // article = utilsArticles.
-  // article = utilsArticles.
+  article = utilsArticles.replaceRelativeImageUrls(article, articleDirectory)
 
   return {
     metadata,

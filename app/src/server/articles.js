@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 
 const frontMatter = require('front-matter')
+const markdown = require('markdown-it')()
 
 const paths = require('./paths.js')
 const utilsArticles = require('./utils/articles.js')
@@ -80,7 +81,9 @@ function parseArticle (articlePath) {
   data = frontMatter(data)
 
   const metadata = data.attributes
+
   let article = data.body
+  article = markdown.render(data.body)
 
   const articleDirectory = '/static/articles/' +
     articlePath
@@ -100,8 +103,8 @@ function parseArticle (articlePath) {
   //       back to html string. We could pass around cheerio
   //       object so creation of cheerio object and transformation
   //       to html string will be done only once
-  article = utilsArticles.replaceRelativeImageUrls(article, articleDirectory)
-  article = utilsArticles.escapeCodeBlocks(article)
+  // article = utilsArticles.replaceRelativeImageUrls(article, articleDirectory)
+  // article = utilsArticles.escapeCodeBlocks(article)
 
   return {
     metadata,

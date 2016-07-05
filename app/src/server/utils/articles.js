@@ -3,7 +3,6 @@
 const path = require('path')
 const url = require('url')
 
-const escapeHtml = require('escape-html')
 const isAbsoluteUrl = require('is-absolute-url')
 const cheerio = require('cheerio')
 
@@ -33,22 +32,7 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
   return $.html()
 }
 
-function escapeCodeBlocks (htmlString) {
-  let $ = cheerio.load(htmlString)
-
-  // escape content of <code> blocks
-  $('code').replaceWith((_, el) => {
-    const innerHtml = $(el).html()
-    const codeEl = $('code')
-    codeEl.html(escapeHtml(innerHtml))
-    return codeEl
-  })
-
-  return $.html()
-}
-
 module.exports = {
   stripPathSeparators,
-  replaceRelativeImageUrls,
-  escapeCodeBlocks
+  replaceRelativeImageUrls
 }

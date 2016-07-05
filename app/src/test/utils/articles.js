@@ -12,20 +12,3 @@ test('stripPathSeparators', t => {
   t.deepEqual(fn(path.sep + 'foo'), 'foo')
   t.deepEqual(fn(path.sep + 'foo' + path.sep), 'foo')
 })
-
-test('escapeCodeBlocks', t => {
-  const fn = utilsArticles.escapeCodeBlocks
-
-  t.deepEqual(fn(''), '')
-  t.deepEqual(fn('<code></code>'), '<code></code>')
-  t.deepEqual(fn('<code>foo</code>'), '<code>foo</code>')
-  t.deepEqual(
-    fn('<code><h1>foo</h1></code>'),
-    '<code>&lt;h1&gt;foo&lt;/h1&gt;</code>'
-  )
-  t.deepEqual(
-    fn('<code>function foo (bar) { return bar[0]; }</code>'),
-    '<code>function foo (bar) { return bar[0]; }</code>'
-  )
-})
-

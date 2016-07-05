@@ -83,7 +83,8 @@ function parseArticle (articlePath) {
   const metadata = data.attributes
 
   let article = data.body
-  article = markdown.render(data.body)
+  article = utilsArticles.fixMarkdownOrderedListIndentation(article)
+  article = markdown.render(article)
 
   const articleDirectory = '/static/articles/' +
     articlePath
@@ -103,8 +104,8 @@ function parseArticle (articlePath) {
   //       back to html string. We could pass around cheerio
   //       object so creation of cheerio object and transformation
   //       to html string will be done only once
-  // article = utilsArticles.replaceRelativeImageUrls(article, articleDirectory)
-  // article = utilsArticles.escapeCodeBlocks(article)
+  // article = utilsArticles.
+  // article = utilsArticles.
 
   return {
     metadata,

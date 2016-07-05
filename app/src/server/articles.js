@@ -83,7 +83,6 @@ function parseArticle (articlePath) {
   const metadata = data.attributes
 
   let article = data.body
-  article = utilsArticles.fixMarkdownOrderedListIndentation(article)
   article = markdown.render(article)
 
   const articleDirectory = '/static/articles/' +

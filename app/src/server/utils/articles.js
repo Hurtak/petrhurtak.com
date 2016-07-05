@@ -32,15 +32,8 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
   return $.html()
 }
 
-function fixMarkdownOrderedListIndentation (markdownString) {
-  return markdownString.replace(
-    /^( {2,})([0-9]+)(\. )/gm,
-    (whole, indentation, number, dot) => indentation.repeat(2) + number + dot
-  )
-}
 
 module.exports = {
   stripPathSeparators,
-  replaceRelativeImageUrls,
-  fixMarkdownOrderedListIndentation
+  replaceRelativeImageUrls
 }

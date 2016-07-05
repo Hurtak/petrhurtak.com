@@ -8,7 +8,7 @@ visible: 1
 
 ## General
 
-- use 2 space indentation
+- use 4 space indentation
 
 ## Headings
 
@@ -113,23 +113,22 @@ Regular text
 
 - start list items with lower case letter
 - do not end list items with dot
--
 
 **markdown**
 
 ```markdown
 - first item
 - second item
-  - nested item
-    - deeply nested item
-    - deeply nested item
+    - nested item
+        - deeply nested item
+        - deeply nested item
 - third item
 
 1. first item
 2. second item
-  1. nested item
-    1. deeply nested item
-    2. deeply nested item
+    1. nested item
+        1. deeply nested item
+        2. deeply nested item
 3. third item
 ```
 
@@ -137,33 +136,33 @@ Regular text
 
 ```html
 <ul>
-  <li>first item</li>
-  <li>second item
-    <ul>
-      <li>nested item
+    <li>first item</li>
+    <li>second item
         <ul>
-          <li>deeply nested item</li>
-          <li>deeply nested item</li>
+            <li>nested item
+                <ul>
+                    <li>deeply nested item</li>
+                    <li>deeply nested item</li>
+                </ul>
+            </li>
         </ul>
-      </li>
-    </ul>
-  </li>
-  </li>third item</li>
+    </li>
+    </li>third item</li>
 </ul>
 
 <ol>
-  <li>first item</li>
-  <li>second item
-    <ol>
-      <li>nested item
+    <li>first item</li>
+    <li>second item
         <ol>
-          <li>deeply nested item</li>
-          <li>deeply nested item</li>
+            <li>nested item
+                <ol>
+                    <li>deeply nested item</li>
+                    <li>deeply nested item</li>
+                </ol>
+            </li>
         </ol>
-      </li>
-    </ol>
-  </li>
-  </li>third item</li>
+    </li>
+    </li>third item</li>
 </ol>
 ```
 
@@ -171,34 +170,34 @@ Regular text
 
 - first item
 - second item
-  - nested item
-    - deeply nested item
-    - deeply nested item
+    - nested item
+        - deeply nested item
+        - deeply nested item
 - third item
 
 1. first item
 2. second item
-  1. nested item
-    1. deeply nested item
-    2. deeply nested item
+    1. nested item
+        1. deeply nested item
+        2. deeply nested item
 3. third item
 
 ## Code
 
 ```javascript
 function isDirectoryNameCorrect (metadataDate, directoryName) {
-  const publicationDate = new Date(metadataDate)
-  const publicationYear = publicationDate.getFullYear()
-  const publicationMonth = publicationDate.getMonth() + 1
+    const publicationDate = new Date(metadataDate)
+    const publicationYear = publicationDate.getFullYear()
+    const publicationMonth = publicationDate.getMonth() + 1
 
-  const [directoryYear, directoryMonth] = getDirectoryDate(directoryName)
+    const [directoryYear, directoryMonth] = getDirectoryDate(directoryName)
 
-  if (publicationYear !== directoryYear || publicationMonth !== directoryMonth) {
-    console.error(`publication_date in article.md yaml header is different from year or month directory ${ directoryName }`)
-    return false
-  }
+    if (publicationYear !== directoryYear || publicationMonth !== directoryMonth) {
+        console.error(`publication_date in article.md yaml header is different from year or month directory ${ directoryName }`)
+        return false
+    }
 
-  return true
+    return true
 }
 ```
 

@@ -50,18 +50,27 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 **markdown**
 
 ```markdown
-Regular text, **bold text**, *italic text*.
+Regular text
+**bold text**
+*italic text*
+~~striked text~~
 ```
 
 **compiles to**
 
 ```html
-Regular text, <strong>bold text</strong>, <em>italic text</em>.
+Regular text
+<strong>bold text</strong>
+<em>italic text</em>
+<s>striked text</s>
 ```
 
 **how it looks like**
 
-Regular text, **bold text**, *italic text*.
+- Regular text,
+- **bold text**,
+- *italic text*,
+-  ~~striked text~~
 
 
 ## Images

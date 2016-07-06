@@ -1835,6 +1835,11 @@
       "from": "markdown-it@latest",
       "resolved": "https://registry.npmjs.org/markdown-it/-/markdown-it-7.0.0.tgz"
     },
+    "markdown-it-mark": {
+      "version": "2.0.0",
+      "from": "markdown-it-mark@latest",
+      "resolved": "https://registry.npmjs.org/markdown-it-mark/-/markdown-it-mark-2.0.0.tgz"
+    },
     "matcher": {
       "version": "0.1.2",
       "from": "matcher@>=0.1.1 <0.2.0",

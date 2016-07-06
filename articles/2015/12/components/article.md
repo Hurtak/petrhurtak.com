@@ -54,7 +54,7 @@ Paragraph of text.
 
 Paragraph of text.
 
-## Bold & Italic text
+## Bold, Italic, Striked & Marked text
 
 - for bold and italic text always use `*` instead of `_`
 
@@ -65,6 +65,7 @@ Regular text
 **bold text**
 *italic text*
 ~~striked text~~
+==marked text==
 ```
 
 **compiles to**
@@ -74,6 +75,7 @@ Regular text
 <strong>bold text</strong>
 <em>italic text</em>
 <s>striked text</s>
+<mark>marked text</mark>
 ```
 
 **how it looks like**
@@ -82,15 +84,14 @@ Regular text
 - **bold text**,
 - *italic text*,
 -  ~~striked text~~
+- ==marked text==
 
 ## Images
 
-- relative images
-
-**markdown**
-
 - when linking to article images use relative paths without `./` at the start of the url
 - these relative url are then transformed into absolute paths `images/test.png` -> `/static/articles/../images/test.png`
+
+**markdown**
 
 ```markdown
 ![image with relative url](images/test.png)

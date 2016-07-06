@@ -185,20 +185,37 @@ Regular text
 
 ## Code
 
+- always write what language is code snippet written in
+- do not use abbreviations, use `javascript` instead of `js`
+- omit semicolons in javascript language
+- use 4 space indentation
+
+**markdown**
+
+````markdown
 ```javascript
-function isDirectoryNameCorrect (metadataDate, directoryName) {
-    const publicationDate = new Date(metadataDate)
-    const publicationYear = publicationDate.getFullYear()
-    const publicationMonth = publicationDate.getMonth() + 1
-
-    const [directoryYear, directoryMonth] = getDirectoryDate(directoryName)
-
-    if (publicationYear !== directoryYear || publicationMonth !== directoryMonth) {
-        console.error(`publication_date in article.md yaml header is different from year or month directory ${ directoryName }`)
-        return false
-    }
-
-    return true
+function foo (bar) {
+    return bar * 2
 }
 ```
+````
 
+**compiles to**
+
+```html
+<pre>
+    <code class="language-javascript hljs">
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
+            <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
+        }
+    </code>
+</pre>
+```
+
+**how it looks like**
+
+```javascript
+function foo (bar) {
+    return bar * 2
+}
+```

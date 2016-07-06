@@ -2,8 +2,9 @@
 
 ## NEXT RELEASE
 - finish components for code blocks
-    - code
+    - quotes
     - tables
+- syntax highlight on the backend
 - markdown blocks for highlight
 - do not put articles HTML into database, but in cache folder
 - use standard fonts (arial..)
@@ -36,6 +37,9 @@
     - link to github/twitter
     - decide what categories to use in commit messages
     - check if we are not using sync (readFileSync) functions anywhere
+    - figure if we could use 2 space indentaion in markdown files
+        - https://github.com/markdown-it/markdown-it/issues/215
+        - https://talk.commonmark.org/t/nested-ordered-lists-indented-with-2-spaces-are-broken/2064
 
 - Articles
     - post all articles to hacker news, reddit, twitter

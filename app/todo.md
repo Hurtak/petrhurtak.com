@@ -1,8 +1,11 @@
 # TODO
 
 ## NEXT RELEASE
-- switch back to markdown
-- remove leading whitespace from inside code tags
+- finish components for code blocks
+    - <mark> https://github.com/markdown-it/markdown-it-mark
+    - tables
+- markdown blocks for highlight
+- do not put articles HTML into database, but in cache folder
 - use standard fonts (arial..)
 - finish CSS design
 - buy domains

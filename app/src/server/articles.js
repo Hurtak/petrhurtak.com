@@ -95,7 +95,7 @@ function parseArticle (articlePath) {
       // remove filename rootdir\article.md - > rootdir
       .filter((value, index, array) => index !== array.length - 1)
       // use '/' instead of path.sep, because that's what we are using in templates
-      .join('/') + '/'
+      .join('/')
 
   // TODO: every time we make html transformation we take html
   //       string and pass it into cheerio and create cheerio

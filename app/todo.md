@@ -2,8 +2,8 @@
 
 ## NEXT RELEASE
 - finish components for code blocks
-    - quotes
     - tables
+    - quotes
 - syntax highlight on the backend
 - markdown blocks for highlight
 - do not put articles HTML into database, but in cache folder

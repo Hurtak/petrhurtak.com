@@ -61,7 +61,7 @@ Paragraph of text.
 **markdown**
 
 ```markdown
-Regular text
+regular text
 **bold text**
 *italic text*
 ~~striked text~~
@@ -71,25 +71,27 @@ Regular text
 **compiles to**
 
 ```html
-Regular text
-<strong>bold text</strong>
-<em>italic text</em>
-<s>striked text</s>
-<mark>marked text</mark>
+<ul>
+    <li>regular text</li>
+    <li><strong>bold text</strong></li>
+    <li><em>italic text</em></li>
+    <li><s>striked text</s></li>
+    <li><mark>marked text</mark></li>
+</ul>
 ```
 
 **how it looks like**
 
-- Regular text,
-- **bold text**,
-- *italic text*,
+- regular text
+- **bold text**
+- *italic text*
 -  ~~striked text~~
 - ==marked text==
 
 ## Images
 
 - when linking to article images use relative paths without `./` at the start of the url
-- these relative url are then transformed into absolute paths `images/test.png` -> `/static/articles/../images/test.png`
+- these relative url are then transformed into absolute paths `images/test.png` → `/static/articles/../images/test.png`
 
 **markdown**
 
@@ -219,3 +221,56 @@ function foo (bar) {
     return bar * 2
 }
 ```
+
+// ## Tables
+
+// - always "adw" what language is code snippet written in
+// - do not use abbreviations, use `javascript` instead of `js`
+// - omit semicolons in javascript language
+// - use 4 space indentation
+
+// **markdown**
+
+// ````markdown
+// ```javascript
+// function foo (bar) {
+//     return bar * 2
+// }
+// ```
+// ````
+
+// **compiles to**
+
+// ```html
+// <pre>
+//     <code class="language-javascript hljs">
+//         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
+//             <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
+//         }
+//     </code>
+// </pre>
+// ```
+
+// **how it looks like**
+
+// ```javascript
+// function foo (bar) {
+//     return bar * 2
+// }
+// ```
+
+## Typography
+
+| Wrong           | Correct          | HTML                                    |
+| --------------- | ---------------  | --------------------------------------  |
+| "quoted 'text'" | “quoted ‘text’”  | `&lsquo;` `&rsquo;` `&ldquo;` `&rdquo;` |
+| (c) (C)         | ©                | `&copy;`                                |
+| (tm) (TM)       | ™                | `&trade;`                               |
+| (r) (R)         | ®                | `&reg;`                                 |
+| +-              | ±                | `&pm;`                                  |
+| ...             | …                | `&hellip;`                              |
+| --, ---         | –, —             | `&ndash;`, `&mdash;`                    |
+| 1/2, 1/4, 3/4   | ½, ¼, ¾          | `&half;`, `&frac14;`, `&frac34;`        |
+| 2 x 4           | 2 &times; 4      | `&times;`                               |
+| 2 - 1           | 2 &minus; 4      | `&minus;`                               |
+| a -> b          | a → b            | `&rarr;`                               |

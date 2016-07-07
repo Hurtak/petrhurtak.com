@@ -264,13 +264,13 @@ function foo (bar) {
 | Wrong           | Correct          | HTML                                    |
 | --------------- | ---------------  | --------------------------------------  |
 | "quoted 'text'" | “quoted ‘text’”  | `&lsquo;` `&rsquo;` `&ldquo;` `&rdquo;` |
+| ...             | …                | `&hellip;`                              |
+| --, ---         | –, —             | `&ndash;`, `&mdash;`                    |
+| a -> b          | a → b            | `&rarr;`                                |
+| 2 - 1           | 2 − 4            | `&minus;`                               |
+| 2 x 4           | 2 × 4            | `&times;`                               |
+| +-              | ±                | `&pm;`                                  |
+| 1/2, 1/4, 3/4   | ½, ¼, ¾          | `&half;`, `&frac14;`, `&frac34;`        |
 | (c) (C)         | ©                | `&copy;`                                |
 | (tm) (TM)       | ™                | `&trade;`                               |
 | (r) (R)         | ®                | `&reg;`                                 |
-| +-              | ±                | `&pm;`                                  |
-| ...             | …                | `&hellip;`                              |
-| --, ---         | –, —             | `&ndash;`, `&mdash;`                    |
-| 1/2, 1/4, 3/4   | ½, ¼, ¾          | `&half;`, `&frac14;`, `&frac34;`        |
-| 2 x 4           | 2 &times; 4      | `&times;`                               |
-| 2 - 1           | 2 &minus; 4      | `&minus;`                               |
-| a -> b          | a → b            | `&rarr;`                               |

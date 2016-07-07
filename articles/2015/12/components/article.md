@@ -222,42 +222,46 @@ function foo (bar) {
 }
 ```
 
-// ## Tables
+## Tables
 
-// - always "adw" what language is code snippet written in
-// - do not use abbreviations, use `javascript` instead of `js`
-// - omit semicolons in javascript language
-// - use 4 space indentation
+- colons can be used to align columns
+- the outer pipes `|` are optional but always include them
+- always properly align table pipes
 
-// **markdown**
+**markdown**
 
-// ````markdown
-// ```javascript
-// function foo (bar) {
-//     return bar * 2
-// }
-// ```
-// ````
+````markdown
+| heading             | left aligned        | right aligned       |
+| ------------------- |:------------------- | -------------------:|
+| Cell text text text | Cell text text text | Cell text text text |
+````
 
-// **compiles to**
+**compiles to**
 
-// ```html
-// <pre>
-//     <code class="language-javascript hljs">
-//         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
-//             <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
-//         }
-//     </code>
-// </pre>
-// ```
+```html
+<table>
+    <thead>
+        <tr>
+            <th>heading</th>
+            <th style="text-align:left">left aligned</th>
+            <th style="text-align:right">right aligned</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Cell text text text</td>
+            <td style="text-align:left">Cell text text text</td>
+            <td style="text-align:right">Cell text text text</td>
+        </tr>
+    </tbody>
+</table>
+```
 
-// **how it looks like**
+**how it looks like**
 
-// ```javascript
-// function foo (bar) {
-//     return bar * 2
-// }
-// ```
+| heading             | left aligned        | right aligned       |
+| ------------------- |:------------------- | -------------------:|
+| Cell text text text | Cell text text text | Cell text text text |
 
 ## Typography
 

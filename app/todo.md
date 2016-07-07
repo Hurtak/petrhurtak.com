@@ -2,7 +2,6 @@
 
 ## NEXT RELEASE
 - finish components for code blocks
-    - tables
     - quotes
 - syntax highlight on the backend
 - markdown blocks for highlight

@@ -1,13 +1,25 @@
 # TODO
 
 ## NEXT RELEASE
+- remove markdown
+- finish transition to pure html
 - finish components for code blocks
     - quotes
-- syntax highlight on the backend
+    - dl - dt dd
+- transformations
+    - syntax highlight on the backend
+    - html escape code blocks
+    - trim pre code blocks starting/ending whitespace
+    - auto add id's to h2 & h3 headings
+- fix http://i.imgur.com/uAfDukK.png
 - markdown blocks for highlight
 - do not put articles HTML into database, but in cache folder
 - use standard fonts (arial..)
 - finish CSS design
+    - inspiration
+        - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/Material-I-II-opt.jpg
+        - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/uefa-euro2016-belgium-opt.jpg
+        - https://www.google.cz/search?hl=cs&tbm=isch&sa=1&q=mirrors+edge+interior
 - buy domains
 - put this damn thing on the internet
 - add comments

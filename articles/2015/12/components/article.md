@@ -6,92 +6,98 @@ last_update: 2015-05-28 19:22:57
 visible: 1
 ---
 
-## General
+<h2>General</h2>
 
-- use 4 space indentation
-
-## Headings
-
-- h1 heading is generated automatically based on the article title
-
-**markdown**
-
-```markdown
-## Sub heading
-### Smaller heading
-```
-
-**compiles to**
-
-```markdown
-<h2>Sub heading</h2>
-<h3>Smaller heading</h3>
-```
-
-**how it looks like**
-
-## Sub heading
-### Smaller heading
-
-## Paragraphs
-
-- start sentences with capital letter
-- end sentences with dot.
-
-**markdown**
-
-```markdown
-Paragraph of text.
-```
-
-**compiles to**
-
-```html
-<p>Paragraph of text.</p>
-```
-
-**how it looks like**
-
-Paragraph of text.
-
-## Bold, Italic, Striked & Marked text
-
-- for bold and italic text always use `*` instead of `_`
-
-**markdown**
-
-```markdown
-regular text
-**bold text**
-*italic text*
-~~striked text~~
-==marked text==
-```
-
-**compiles to**
-
-```html
 <ul>
-    <li>regular text</li>
-    <li><strong>bold text</strong></li>
-    <li><em>italic text</em></li>
-    <li><s>striked text</s></li>
-    <li><mark>marked text</mark></li>
+    <li>use 2 space indentation</li>
 </ul>
-```
 
-**how it looks like**
 
-- regular text
-- **bold text**
-- *italic text*
--  ~~striked text~~
-- ==marked text==
+<h2>Article metadata</h2>
 
-## Images
+<ul>
+    <li>each article starts with YAML front matter block which specifies articles metadata</li>
+    <li>all properties are mandatory</li>
+</ul>
 
-- when linking to article images use relative paths without `./` at the start of the url
-- these relative url are then transformed into absolute paths `images/test.png` → `/static/articles/../images/test.png`
+<pre><code>
+---
+title: Title of the article
+description: Short description of article
+publication_date: 2015-07-02 13:37:00
+last_update: 2015-05-28 19:20:00
+visible: 1
+---
+</code></pre>
+
+
+<h2>Headings</h2>
+
+<h3>Code</h3>
+
+<pre><code>
+<h2>Heading</h2>
+<h3>Sub-heading</h3>
+</code></pre>
+
+<h3>How it looks like</h3>
+
+<h2>Heading</h2>
+<h3>Sub-heading</h3>
+
+
+<h2>Formatting</h2>
+
+<h3>Code</h3>
+
+<pre><code>
+<em>italics text</em>
+<strong>bold text</strong>
+<mark>marked text</mark>
+<s>striked text</s>
+</code></pre>
+
+<h3>How it looks like</h3>
+
+<ul>
+    <li><em>italics text</em></li>
+    <li><strong>bold text</strong></li>
+    <li><mark>marked text</mark></li>
+    <li><s>striked text</s></li>
+</ul>
+
+
+<h2>Images</h2>
+
+<ul>
+    <li>when linking to article images use relative paths without <code>./</code> at the start of the url</li>
+    <li>these relative url are then transformed into absolute paths <code>images/test.png</code> → <code>/static/articles/../images/test.png</code></li>
+</ul>
+
+<h3>Code</h3>
+
+<pre><code>
+<!-- just image -->
+<img src="./images/test.png" alt="alt text">
+
+<!-- image with caption -->
+<figure>
+	<img src="./images/test.png" alt="alt text">
+	<figcaption>Image caption</figcaption>
+</figure>
+</code></pre>
+
+<h3>How it looks like</h3>
+
+<img src="./images/test.png" alt="alt text">
+
+<figure>
+	<img src="./images/test.png" alt="alt text">
+	<figcaption>Image caption</figcaption>
+</figure>
+
+
+
 
 **markdown**
 
@@ -262,6 +268,17 @@ function foo (bar) {
 | heading             | left aligned        | right aligned       |
 | ------------------- |:------------------- | -------------------:|
 | Cell text text text | Cell text text text | Cell text text text |
+
+## Quotes
+
+> Blockquotes are very handy in email to emulate reply text.
+> This line is part of the same quote.
+>
+> &mdash; Petr Huřťák
+
+This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
+
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
 
 ## Typography
 

@@ -4,8 +4,6 @@ const fs = require('fs')
 const path = require('path')
 
 const frontMatter = require('front-matter')
-const markdownIt = require('markdown-it')
-const markdownItMark = require('markdown-it-mark')
 
 const paths = require('./paths.js')
 const utilsArticles = require('./utils/articles.js')
@@ -78,15 +76,12 @@ function getArticlesDirectories (directory, searchedDepth, currentDepth = 0, art
 }
 
 function parseArticle (articlePath) {
-  const markdown = markdownIt().use(markdownItMark)
-
   let data = fs.readFileSync(articlePath, 'utf8')
   data = frontMatter(data)
 
   const metadata = data.attributes
 
   let article = data.body
-  article = markdown.render(article)
 
   const articleDirectory = '/static/articles/' +
     articlePath

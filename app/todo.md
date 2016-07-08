@@ -7,8 +7,8 @@
     - quotes
     - dl - dt dd
 - transformations
-    - syntax highlight on the backend
     - html escape code blocks
+    - syntax highlight on the backend
     - trim pre code blocks starting/ending whitespace
     - auto add id's to h2 & h3 headings
 - fix http://i.imgur.com/uAfDukK.png

@@ -1,9 +1,25 @@
 'use strict'
 
 const url = require('url')
-
 const isAbsoluteUrl = require('is-absolute-url')
+const escapeHtml = require('escape-html')
 const cheerio = require('cheerio')
+
+function escapeCodeBlocks (htmlString) {
+  let $ = cheerio.load(htmlString)
+
+  // escape content of <code> blocks
+  $('code').each(() => {
+    const html = $(this).html()
+    console.log(html)
+    const escapedHtml = escapeHtml(html)
+    console.log(escapedHtml)
+    $(this).html(escapedHtml)
+    // $(this).replaceWith($(this).html())
+  })
+
+  return $.html()
+}
 
 function replaceRelativeImageUrls (htmlString, absolutePath) {
   if (!absolutePath) {
@@ -32,5 +48,6 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
 
 
 module.exports = {
+  escapeCodeBlocks,
   replaceRelativeImageUrls
 }

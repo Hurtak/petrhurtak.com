@@ -81,8 +81,6 @@ function parseArticle (articlePath) {
 
   const metadata = data.attributes
 
-  let article = data.body
-
   const articleDirectory = '/static/articles/' +
     articlePath
       // c:\some\path\rootdir\article.md -> rootdir\article.md
@@ -101,6 +99,8 @@ function parseArticle (articlePath) {
   //       back to html string. We could pass around cheerio
   //       object so creation of cheerio object and transformation
   //       to html string will be done only once
+  let article = data.body
+  article = utilsArticles.escapeCodeBlocks(article)
   article = utilsArticles.replaceRelativeImageUrls(article, articleDirectory)
 
   return {

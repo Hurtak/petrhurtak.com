@@ -9,13 +9,10 @@ function escapeCodeBlocks (htmlString) {
   let $ = cheerio.load(htmlString)
 
   // escape content of <code> blocks
-  $('code').each(() => {
-    const html = $(this).html()
-    console.log(html)
+  $('code').each((index, element) => {
+    const html = $(element).html()
     const escapedHtml = escapeHtml(html)
-    console.log(escapedHtml)
-    $(this).html(escapedHtml)
-    // $(this).replaceWith($(this).html())
+    $(element).html(escapedHtml)
   })
 
   return $.html()
@@ -29,18 +26,20 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
   let $ = cheerio.load(htmlString)
 
   // replace relative img paths with absolute paths to images
-  $('img').attr('src', (_, src) => {
-    if (isAbsoluteUrl(src)) {
-      return src
-    } else {
-      if (!absolutePath.endsWith('/')) {
-        absolutePath = absolutePath + '/'
-      }
-      if (!absolutePath.startsWith('/')) {
-        absolutePath = '/' + absolutePath
-      }
-      return url.resolve(absolutePath, src)
+  $('img').each((_, element) => {
+    const el = $(element)
+    const src = el.attr('src')
+
+    if (isAbsoluteUrl(src)) return
+
+    if (!absolutePath.endsWith('/')) {
+      absolutePath = absolutePath + '/'
     }
+    if (!absolutePath.startsWith('/')) {
+      absolutePath = '/' + absolutePath
+    }
+
+    el.attr('src', url.resolve(absolutePath, src))
   })
 
   return $.html()

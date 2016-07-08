@@ -5,10 +5,31 @@ const isAbsoluteUrl = require('is-absolute-url')
 const escapeHtml = require('escape-html')
 const cheerio = require('cheerio')
 
+function trimCodeBlocks (htmlString) {
+  let $ = cheerio.load(htmlString)
+
+  $('code').each((index, element) => {
+    let html = $(element).html()
+
+    // TODO refactor
+    while (html[0].match(/\s/)) {
+      html = html.substr(1)
+    }
+    html = html.split('').reverse().join('')
+    while (html[0].match(/\s/)) {
+      html = html.substr(1)
+    }
+    html = html.split('').reverse().join('')
+
+    $(element).html(html)
+  })
+
+  return $.html()
+}
+
 function escapeCodeBlocks (htmlString) {
   let $ = cheerio.load(htmlString)
 
-  // escape content of <code> blocks
   $('code').each((index, element) => {
     const html = $(element).html()
     const escapedHtml = escapeHtml(html)
@@ -47,6 +68,7 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
 
 
 module.exports = {
+  trimCodeBlocks,
   escapeCodeBlocks,
   replaceRelativeImageUrls
 }

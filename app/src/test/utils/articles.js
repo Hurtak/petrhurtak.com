@@ -2,6 +2,23 @@ import test from 'ava'
 
 import * as utilsArticles from '../../server/utils/articles.js'
 
+test('trimCodeBlocks', t => {
+  const fn = utilsArticles.trimCodeBlocks
+
+  t.deepEqual(fn(''), '')
+  t.deepEqual(fn(
+      '<code>\n' +
+      'function hello () {\n' +
+      '  return 1\n' +
+      '}\n' +
+      '</code>'
+    ),
+      '<code>function hello () {\n' +
+      '  return 1\n' +
+      '}</code>'
+    )
+})
+
 test('escapeCodeBlocks', t => {
   const fn = utilsArticles.escapeCodeBlocks
 
@@ -17,7 +34,6 @@ test('escapeCodeBlocks', t => {
     '<code>function foo (bar) { return bar[0]; }</code>'
   )
 })
-
 
 test('replaceRelativeImageUrls', t => {
   const fn = utilsArticles.replaceRelativeImageUrls

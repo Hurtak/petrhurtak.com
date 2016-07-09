@@ -11,15 +11,8 @@ function trimCodeBlocks (htmlString) {
   $('code').each((index, element) => {
     let html = $(element).html()
 
-    // TODO refactor
-    while (html[0].match(/\s/)) {
-      html = html.substr(1)
-    }
-    html = html.split('').reverse().join('')
-    while (html[0].match(/\s/)) {
-      html = html.substr(1)
-    }
-    html = html.split('').reverse().join('')
+    html = html.replace(/^\s+/, '')
+    html = html.replace(/\s+$/, '')
 
     $(element).html(html)
   })

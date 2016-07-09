@@ -7,6 +7,15 @@ test('trimCodeBlocks', t => {
 
   t.deepEqual(fn(''), '')
   t.deepEqual(fn(
+      '<code>function hello () {\n' +
+      '  return 1\n' +
+      '}</code>'
+    ),
+      '<code>function hello () {\n' +
+      '  return 1\n' +
+      '}</code>'
+    )
+  t.deepEqual(fn(
       '<code>\n' +
       'function hello () {\n' +
       '  return 1\n' +

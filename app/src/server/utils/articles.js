@@ -4,13 +4,29 @@ const url = require('url')
 const isAbsoluteUrl = require('is-absolute-url')
 const escapeHtml = require('escape-html')
 const cheerio = require('cheerio')
+const lodash = require('lodash')
+
+function addIdsToHeadings (htmlString) {
+  let $ = cheerio.load(htmlString)
+
+  $('h2, h3').each((index, element) => {
+    const el = $(element)
+
+    let id = el.text()
+    id = lodash.replace(id, /[^A-Za-z0-9-_.&\s]/g, '') // remove special characters
+    id = lodash.kebabCase(id)
+
+    el.attr('id', id)
+  })
+
+  return $.html()
+}
 
 function trimCodeBlocks (htmlString) {
   let $ = cheerio.load(htmlString)
 
   $('code').each((index, element) => {
     let html = $(element).html()
-
     html = html.replace(/^\s+/, '')
     html = html.replace(/\s+$/, '')
 
@@ -26,6 +42,7 @@ function escapeCodeBlocks (htmlString) {
   $('code').each((index, element) => {
     const html = $(element).html()
     const escapedHtml = escapeHtml(html)
+
     $(element).html(escapedHtml)
   })
 
@@ -61,6 +78,7 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
 
 
 module.exports = {
+  addIdsToHeadings,
   trimCodeBlocks,
   escapeCodeBlocks,
   replaceRelativeImageUrls

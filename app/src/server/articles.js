@@ -100,6 +100,7 @@ function parseArticle (articlePath) {
   //       object so creation of cheerio object and transformation
   //       to html string will be done only once
   let article = data.body
+  article = utilsArticles.addIdsToHeadings(article)
   article = utilsArticles.trimCodeBlocks(article)
   article = utilsArticles.escapeCodeBlocks(article)
   article = utilsArticles.replaceRelativeImageUrls(article, articleDirectory)

@@ -7,7 +7,6 @@
     - quotes
     - dl - dt dd
 - transformations
-    - syntax highlight on the backend
     - auto add id's to h2 & h3 headings
 - fix http://i.imgur.com/uAfDukK.png
 - markdown blocks for highlight

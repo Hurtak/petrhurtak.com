@@ -9,22 +9,22 @@ visible: 1
 <h2>General</h2>
 
 <ul>
-    <li>use 2 space indentation</li>
+  <li>use 2 space indentation</li>
 </ul>
 
 
 <h2>Article metadata</h2>
 
 <ul>
-    <li>each article starts with YAML front matter block which specifies articles metadata</li>
-    <li>all properties are mandatory</li>
+  <li>each article starts with YAML front matter block which specifies articles metadata</li>
+  <li>all properties are mandatory</li>
 </ul>
 
-<pre><code>
+<pre><code data-language="yaml">
 ---
-title: Title of the article
+title: "Title of the article"
 description: Short description of article
-publication_date: 2015-07-02 13:37:00
+publication_date: "2015-07-02 13:37:00"
 last_update: 2015-05-28 19:20:00
 visible: 1
 ---
@@ -35,7 +35,7 @@ visible: 1
 
 <h3>Code</h3>
 
-<pre><code>
+<pre><code data-language="html">
 <h2>Heading</h2>
 <h3>Sub-heading</h3>
 </code></pre>
@@ -50,7 +50,7 @@ visible: 1
 
 <h3>Code</h3>
 
-<pre><code>
+<pre><code data-language="html">
 <em>italics text</em>
 <strong>bold text</strong>
 <mark>marked text</mark>
@@ -60,30 +60,30 @@ visible: 1
 <h3>How it looks like</h3>
 
 <ul>
-    <li><em>italics text</em></li>
-    <li><strong>bold text</strong></li>
-    <li><mark>marked text</mark></li>
-    <li><s>striked text</s></li>
+  <li><em>italics text</em></li>
+  <li><strong>bold text</strong></li>
+  <li><mark>marked text</mark></li>
+  <li><s>striked text</s></li>
 </ul>
 
 
 <h2>Images</h2>
 
 <ul>
-    <li>when linking to article images use relative paths without <code>./</code> at the start of the url</li>
-    <li>these relative url are then transformed into absolute paths <code>images/test.png</code> → <code>/static/articles/../images/test.png</code></li>
+  <li>when linking to article images use relative paths without <code>./</code> at the start of the url</li>
+  <li>these relative url are then transformed into absolute paths <code>images/test.png</code> → <code>/static/articles/../images/test.png</code></li>
 </ul>
 
 <h3>Code</h3>
 
-<pre><code>
+<pre><code data-language="html">
 <!-- just image -->
 <img src="./images/test.png" alt="alt text">
 
 <!-- image with caption -->
 <figure>
-	<img src="./images/test.png" alt="alt text">
-	<figcaption>Image caption</figcaption>
+  <img src="./images/test.png" alt="alt text">
+  <figcaption>Image caption</figcaption>
 </figure>
 </code></pre>
 
@@ -92,8 +92,8 @@ visible: 1
 <img src="./images/test.png" alt="alt text">
 
 <figure>
-	<img src="./images/test.png" alt="alt text">
-	<figcaption>Image caption</figcaption>
+  <img src="./images/test.png" alt="alt text">
+  <figcaption>Image caption</figcaption>
 </figure>
 
 
@@ -128,16 +128,16 @@ visible: 1
 ```markdown
 - first item
 - second item
-    - nested item
-        - deeply nested item
-        - deeply nested item
+  - nested item
+    - deeply nested item
+    - deeply nested item
 - third item
 
 1. first item
 2. second item
-    1. nested item
-        1. deeply nested item
-        2. deeply nested item
+  1. nested item
+    1. deeply nested item
+    2. deeply nested item
 3. third item
 ```
 
@@ -145,33 +145,33 @@ visible: 1
 
 ```html
 <ul>
-    <li>first item</li>
-    <li>second item
+  <li>first item</li>
+  <li>second item
+    <ul>
+      <li>nested item
         <ul>
-            <li>nested item
-                <ul>
-                    <li>deeply nested item</li>
-                    <li>deeply nested item</li>
-                </ul>
-            </li>
+          <li>deeply nested item</li>
+          <li>deeply nested item</li>
         </ul>
-    </li>
-    </li>third item</li>
+      </li>
+    </ul>
+  </li>
+  </li>third item</li>
 </ul>
 
 <ol>
-    <li>first item</li>
-    <li>second item
+  <li>first item</li>
+  <li>second item
+    <ol>
+      <li>nested item
         <ol>
-            <li>nested item
-                <ol>
-                    <li>deeply nested item</li>
-                    <li>deeply nested item</li>
-                </ol>
-            </li>
+          <li>deeply nested item</li>
+          <li>deeply nested item</li>
         </ol>
-    </li>
-    </li>third item</li>
+      </li>
+    </ol>
+  </li>
+  </li>third item</li>
 </ol>
 ```
 
@@ -179,16 +179,16 @@ visible: 1
 
 - first item
 - second item
-    - nested item
-        - deeply nested item
-        - deeply nested item
+  - nested item
+    - deeply nested item
+    - deeply nested item
 - third item
 
 1. first item
 2. second item
-    1. nested item
-        1. deeply nested item
-        2. deeply nested item
+  1. nested item
+    1. deeply nested item
+    2. deeply nested item
 3. third item
 
 ## Code
@@ -203,7 +203,7 @@ visible: 1
 ````markdown
 ```javascript
 function foo (bar) {
-    return bar * 2
+  return bar * 2
 }
 ```
 ````
@@ -212,11 +212,11 @@ function foo (bar) {
 
 ```html
 <pre>
-    <code class="language-javascript hljs">
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
-            <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
-        }
-    </code>
+  <code class="language-javascript hljs">
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
+      <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
+    }
+  </code>
 </pre>
 ```
 
@@ -224,7 +224,7 @@ function foo (bar) {
 
 ```javascript
 function foo (bar) {
-    return bar * 2
+  return bar * 2
 }
 ```
 
@@ -246,20 +246,20 @@ function foo (bar) {
 
 ```html
 <table>
-    <thead>
-        <tr>
-            <th>heading</th>
-            <th style="text-align:left">left aligned</th>
-            <th style="text-align:right">right aligned</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Cell text text text</td>
-            <td style="text-align:left">Cell text text text</td>
-            <td style="text-align:right">Cell text text text</td>
-        </tr>
-    </tbody>
+  <thead>
+  <tr>
+    <th>heading</th>
+    <th style="text-align:left">left aligned</th>
+    <th style="text-align:right">right aligned</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Cell text text text</td>
+    <td style="text-align:left">Cell text text text</td>
+    <td style="text-align:right">Cell text text text</td>
+  </tr>
+  </tbody>
 </table>
 ```
 
@@ -283,7 +283,7 @@ This is a very long line that will still be quoted properly when it wraps. Oh bo
 ## Typography
 
 | Wrong           | Correct          | HTML                                    |
-| --------------- | ---------------  | --------------------------------------  |
+| --------------- | ---------------  | --------------------------------------- |
 | "quoted 'text'" | “quoted ‘text’”  | `&lsquo;` `&rsquo;` `&ldquo;` `&rdquo;` |
 | ...             | …                | `&hellip;`                              |
 | --, ---         | –, —             | `&ndash;`, `&mdash;`                    |

@@ -3,11 +3,16 @@
 const url = require('url')
 const isAbsoluteUrl = require('is-absolute-url')
 const escapeHtml = require('escape-html')
+const highlight = require('highlight.js')
 const cheerio = require('cheerio')
 const lodash = require('lodash')
 
+function cheerioLoadWithouEscaping (htmlString) {
+  return cheerio.load(htmlString, { decodeEntities: false })
+}
+
 function addIdsToHeadings (htmlString) {
-  let $ = cheerio.load(htmlString)
+  let $ = cheerioLoadWithouEscaping(htmlString)
 
   $('h2, h3').each((index, element) => {
     const el = $(element)
@@ -26,7 +31,7 @@ function addIdsToHeadings (htmlString) {
 }
 
 function trimCodeBlocks (htmlString) {
-  let $ = cheerio.load(htmlString)
+  let $ = cheerioLoadWithouEscaping(htmlString)
 
   $('code').each((index, element) => {
     let html = $(element).html()
@@ -39,14 +44,24 @@ function trimCodeBlocks (htmlString) {
   return $.html()
 }
 
-function escapeCodeBlocks (htmlString) {
-  let $ = cheerio.load(htmlString)
+function escapeAndHighlightCodeBlocks (htmlString) {
+  let $ = cheerioLoadWithouEscaping(htmlString)
 
   $('code').each((index, element) => {
-    const html = $(element).html()
-    const escapedHtml = escapeHtml(html)
+    const el = $(element)
+    const html = el.html()
 
-    $(element).html(escapedHtml)
+    const language = el.attr('data-language')
+    if (language) {
+      // syntax highlight (highlight.js does the escaping)
+      const highlightObj = highlight.highlight(language, html)
+
+      el.html(highlightObj.value)
+    } else {
+      // just escape the content
+      const escapedHtml = escapeHtml(html)
+      el.html(escapedHtml)
+    }
   })
 
   return $.html()
@@ -57,7 +72,7 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
     throw new Error('missing absolutePath paramenter')
   }
 
-  let $ = cheerio.load(htmlString)
+  let $ = cheerioLoadWithouEscaping(htmlString)
 
   // replace relative img paths with absolute paths to images
   $('img').each((_, element) => {
@@ -83,6 +98,6 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
 module.exports = {
   addIdsToHeadings,
   trimCodeBlocks,
-  escapeCodeBlocks,
+  escapeAndHighlightCodeBlocks,
   replaceRelativeImageUrls
 }

@@ -1,7 +1,6 @@
 # TODO
 
 ## NEXT RELEASE
-- precompile highlight js syntax highlight on the server or use web workers on the client https://highlightjs.org/usage/
 - remove markdown
 - finish transition to pure html
 - finish components for code blocks
@@ -11,6 +10,7 @@
 - markdown blocks for highlight
 - do not put articles HTML into database, but in cache folder
 - use standard fonts (arial..)
+- add css reset and make it easy to turn off/on to see if everything has it's own style
 - finish CSS design
   - inspiration
     - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/Material-I-II-opt.jpg
@@ -100,6 +100,9 @@
     - add .catch on promises inside router to display 500?
 
 - Frontend
+  - highlight.js
+    - locally host css file
+    - only take css for languages that are really used
   - http://mozilla.github.io/nunjucks/templating.html#whitespace-control
   - minify scripts & css (debug mode in production still with unminified files)
   - minify article images

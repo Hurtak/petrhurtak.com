@@ -102,7 +102,7 @@ function parseArticle (articlePath) {
   let article = data.body
   article = utilsArticles.addIdsToHeadings(article)
   article = utilsArticles.trimCodeBlocks(article)
-  article = utilsArticles.escapeCodeBlocks(article)
+  article = utilsArticles.escapeAndHighlightCodeBlocks(article)
   article = utilsArticles.replaceRelativeImageUrls(article, articleDirectory)
 
   return {

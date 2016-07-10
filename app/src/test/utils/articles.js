@@ -19,9 +19,9 @@ test('addIdsToHeadings', t => {
   t.deepEqual(fn('<h2> hello </h2>'), '<h2 id="hello"> hello </h2>')
   t.deepEqual(fn('<h2>HELLO</h2>'), '<h2 id="hello">HELLO</h2>')
   t.deepEqual(fn('<h2>longer heading</h2>'), '<h2 id="longer-heading">longer heading</h2>')
-  t.deepEqual(fn('<h2>foo\'s</h2>'), '<h2 id="foos">foo&apos;s</h2>')
-  t.deepEqual(fn('<h2>foo&bar</h2>'), '<h2 id="foo-bar">foo&amp;bar</h2>')
-  t.deepEqual(fn('<h2>a "foo"</h2>'), '<h2 id="a-foo">a &quot;foo&quot;</h2>')
+  t.deepEqual(fn('<h2>foo\'s</h2>'), '<h2 id="foos">foo\'s</h2>')
+  t.deepEqual(fn('<h2>foo&bar</h2>'), '<h2 id="foo-bar">foo&bar</h2>')
+  t.deepEqual(fn('<h2>a "foo"</h2>'), '<h2 id="a-foo">a "foo"</h2>')
   t.deepEqual(fn('<h2>Node.js</h2>'), '<h2 id="node-js">Node.js</h2>')
   t.deepEqual(fn('<h2>foo 1.0.0</h2>'), '<h2 id="foo-1-0-0">foo 1.0.0</h2>')
   t.deepEqual(fn('<h2>foo 1.0.0</h2>'), '<h2 id="foo-1-0-0">foo 1.0.0</h2>')
@@ -56,9 +56,10 @@ test('trimCodeBlocks', t => {
     )
 })
 
-test('escapeCodeBlocks', t => {
-  const fn = utilsArticles.escapeCodeBlocks
+test('escapeAndHighlightCodeBlocks', t => {
+  const fn = utilsArticles.escapeAndHighlightCodeBlocks
 
+  // no data-language attribute, just escape
   t.deepEqual(fn(''), '')
   t.deepEqual(fn('<code></code>'), '<code></code>')
   t.deepEqual(fn('<code>foo</code>'), '<code>foo</code>')
@@ -67,8 +68,30 @@ test('escapeCodeBlocks', t => {
     '<code>&lt;h1&gt;foo&lt;/h1&gt;</code>'
   )
   t.deepEqual(
-    fn('<code>function foo (bar) { return bar[0]; }</code>'),
-    '<code>function foo (bar) { return bar[0]; }</code>'
+    fn('<code>yaml: "foo"</code>'),
+    '<code>yaml: &quot;foo&quot;</code>'
+  )
+
+  // data-language attribute, syntax highlight + escape
+  t.deepEqual(
+    fn('<code data-language="yaml">yaml: "foo"</code>'),
+    '<code data-language="yaml"><span class="hljs-attr">yaml:</span> <span class="hljs-string">"foo"</span></code>'
+  )
+  t.deepEqual(
+    fn(`
+      <code data-language="javascript">
+        function foo (bar) {
+          return bar[0];
+        }
+      </code>
+    `),
+    `
+      <code data-language="javascript">
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
+          <span class="hljs-keyword">return</span> bar[<span class="hljs-number">0</span>];
+        }
+      </code>
+    `
   )
 })
 

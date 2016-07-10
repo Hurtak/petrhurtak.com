@@ -7,8 +7,12 @@ test('addIdsToHeadings', t => {
 
   t.deepEqual(fn(''), '')
 
+  // only h2 & h3 which are not in <code> block will be transformed
   t.deepEqual(fn('<p>hello</p>'), '<p>hello</p>')
   t.deepEqual(fn('<h1>hello</h1>'), '<h1>hello</h1>')
+  t.deepEqual(fn('<code><h1>hello</h1></code>'), '<code><h1>hello</h1></code>')
+  t.deepEqual(fn('<code><h2>hello</h2></code>'), '<code><h2>hello</h2></code>')
+  t.deepEqual(fn('<code><h3>hello</h3></code>'), '<code><h3>hello</h3></code>')
   t.deepEqual(fn('<h2>hello</h2>'), '<h2 id="hello">hello</h2>')
   t.deepEqual(fn('<h3>hello</h3>'), '<h3 id="hello">hello</h3>')
 

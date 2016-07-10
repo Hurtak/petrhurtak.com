@@ -12,6 +12,9 @@ function addIdsToHeadings (htmlString) {
   $('h2, h3').each((index, element) => {
     const el = $(element)
 
+    const insideCodeBlock = el.parent('code').length > 0
+    if (insideCodeBlock) return
+
     let id = el.text()
     id = lodash.replace(id, /[^A-Za-z0-9-_.&\s]/g, '') // remove special characters
     id = lodash.kebabCase(id)

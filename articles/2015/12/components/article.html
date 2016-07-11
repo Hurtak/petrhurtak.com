@@ -37,11 +37,22 @@ visible: 1
 
 <h2>Headings</h2>
 
+<ul>
+  <li>headings have automatically added id's for easier sharing</li>
+</ul>
+
 <h3>Code</h3>
 
 <pre><code data-language="html">
 <h2>Heading</h2>
 <h3>Sub-heading</h3>
+</code></pre>
+
+<h3>Compiles to</h3>
+
+<pre><code data-language="html">
+<h2 id="heading">Heading</h2>
+<h3 id="sub-heading">Sub-heading</h3>
 </code></pre>
 
 <h3>How it looks like</h3>
@@ -89,6 +100,19 @@ visible: 1
 <!-- image with caption -->
 <figure>
   <img src="./images/test.png" alt="image alt text">
+  <figcaption>Image caption</figcaption>
+</figure>
+</code></pre>
+
+<h3>Compiles to</h3>
+
+<pre><code data-language="html">
+<!-- just image -->
+<img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
+
+<!-- image with caption -->
+<figure>
+  <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
   <figcaption>Image caption</figcaption>
 </figure>
 </code></pre>

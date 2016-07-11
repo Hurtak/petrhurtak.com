@@ -1,7 +1,6 @@
 # TODO
 
 ## NEXT RELEASE
-- compilation about each component
 - remove markdown
 - finish transition to pure html
 - finish components for code blocks

@@ -248,6 +248,9 @@ function foo (bar) {
 
 <ul>
   <li>start headings and cell text with lower case letter</li>
+  <li>if there is heading row, wrap it in <code>thead</code> and regular rows in <code><tbody></code></li>
+  <li>in <code>thead</code> use <code>th</code> instead of <code>td</code></li>
+  <li>if there is not heading row, do not wrap rows in <code><tbody></code></li>
 </ul>
 
 <h3>Code</h3>
@@ -302,23 +305,67 @@ This is a very long line that will still be quoted properly when it wraps. Oh bo
 <table>
   <thead>
     <tr>
-      <th>Wrong</th>
+      <th>wrong</th>
+      <th>correct</th>
+      <th>HTML</th>
     </tr>
   </thead>
+  <tbody>
+    <tr>
+      <td>"quoted 'text'"</td>
+      <td>“quoted ‘text’”</td>
+      <td><code data-lang="html">&lsquo;</code> <code data-lang="html">&rsquo;</code> <code data-lang="html">&ldquo;</code> <code data-lang="html">&rdquo;</code></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>…</td>
+      <td><code data-lang="html">&hellip;</code></td>
+    </tr>
+    <tr>
+      <td>--, ---</td>
+      <td>–, —</td>
+      <td><code data-lang="html">&ndash;</code>, <code data-lang="html">&mdash;</code></td>
+    </tr>
+    <tr>
+      <td>a -> b</td>
+      <td>a → b</td>
+      <td><code data-lang="html">&rarr;</code></td>
+    </tr>
+    <tr>
+      <td>2 - 1</td>
+      <td>2 − 4</td>
+      <td><code data-lang="html">&minus;</code></td>
+    </tr>
+    <tr>
+      <td>2 x 4</td>
+      <td>2 × 4</td>
+      <td><code data-lang="html">&times;</code></td>
+    </tr>
+    <tr>
+      <td>+-</td>
+      <td>±</td>
+      <td><code data-lang="html">&pm;</code></td>
+    </tr>
+    <tr>
+      <td>1/2, 1/4, 3/4</td>
+      <td>½, ¼, ¾</td>
+      <td><code data-lang="html">&half;</code>, <code data-lang="html">&frac14;</code>, <code data-lang="html">&frac34;</code></td>
+    </tr>
+    <tr>
+      <td>(c) (C)</td>
+      <td>©</td>
+      <td><code data-lang="html">&copy;</code></td>
+    </tr>
+    <tr>
+      <td>(tm) (TM)</td>
+      <td>™</td>
+      <td><code data-lang="html">&trade;</code></td>
+    </tr>
+    <tr>
+      <td>(r) (R)</td>
+      <td>®</td>
+      <td><code data-lang="html">&reg;</code></td>
+    </tr>
+
+  </tbody>
 </table>
-
-## Typography
-
-| Wrong           | Correct          | HTML                                    |
-| --------------- | ---------------  | --------------------------------------- |
-| "quoted 'text'" | “quoted ‘text’”  | `&lsquo;` `&rsquo;` `&ldquo;` `&rdquo;` |
-| ...             | …                | `&hellip;`                              |
-| --, ---         | –, —             | `&ndash;`, `&mdash;`                    |
-| a -> b          | a → b            | `&rarr;`                                |
-| 2 - 1           | 2 − 4            | `&minus;`                               |
-| 2 x 4           | 2 × 4            | `&times;`                               |
-| +-              | ±                | `&pm;`                                  |
-| 1/2, 1/4, 3/4   | ½, ¼, ¾          | `&half;`, `&frac14;`, `&frac34;`        |
-| (c) (C)         | ©                | `&copy;`                                |
-| (tm) (TM)       | ™                | `&trade;`                               |
-| (r) (R)         | ®                | `&reg;`                                 |

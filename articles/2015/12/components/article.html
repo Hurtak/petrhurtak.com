@@ -24,13 +24,13 @@ visible: 1
 </ul>
 
 <pre><code data-lang="yaml">
----
-title: "Title of the article"
-description: Short description of article
-publication_date: "2015-07-02 13:37:00"
-last_update: 2015-05-28 19:20:00
-visible: 1
----
+  ---
+  title: "Title of the article"
+  description: Short description of article
+  publication_date: "2015-07-02 13:37:00"
+  last_update: 2015-05-28 19:20:00
+  visible: 1
+  ---
 </code></pre>
 
 
@@ -44,15 +44,15 @@ visible: 1
 <h3>Code</h3>
 
 <pre><code data-lang="html">
-<h2>Heading</h2>
-<h3>Sub-heading</h3>
+  <h2>Heading</h2>
+  <h3>Sub-heading</h3>
 </code></pre>
 
 <h3>Compiles to</h3>
 
 <pre><code data-lang="html">
-<h2 id="heading">Heading</h2>
-<h3 id="sub-heading">Sub-heading</h3>
+  <h2 id="heading">Heading</h2>
+  <h3 id="sub-heading">Sub-heading</h3>
 </code></pre>
 
 <h3>How it looks like</h3>
@@ -67,10 +67,10 @@ visible: 1
 <h3>Code</h3>
 
 <pre><code data-lang="html">
-<em>italics text</em>
-<strong>bold text</strong>
-<mark>marked text</mark>
-<s>striked text</s>
+  <em>italics text</em>
+  <strong>bold text</strong>
+  <mark>marked text</mark>
+  <s>striked text</s>
 </code></pre>
 
 <h3>How it looks like</h3>
@@ -94,27 +94,27 @@ visible: 1
 <h3>Code</h3>
 
 <pre><code data-lang="html">
-<!-- just image -->
-<img src="./images/test.png" alt="image alt text">
-
-<!-- image with caption -->
-<figure>
+  <!-- just image -->
   <img src="./images/test.png" alt="image alt text">
-  <figcaption>Image caption</figcaption>
-</figure>
+
+  <!-- image with caption -->
+  <figure>
+    <img src="./images/test.png" alt="image alt text">
+    <figcaption>Image caption</figcaption>
+  </figure>
 </code></pre>
 
 <h3>Compiles to</h3>
 
 <pre><code data-lang="html">
-<!-- just image -->
-<img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
-
-<!-- image with caption -->
-<figure>
+  <!-- just image -->
   <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
-  <figcaption>Image caption</figcaption>
-</figure>
+
+  <!-- image with caption -->
+  <figure>
+    <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
+    <figcaption>Image caption</figcaption>
+  </figure>
 </code></pre>
 
 <h3>How it looks like</h3>
@@ -138,37 +138,37 @@ visible: 1
 <h3>Code</h3>
 
 <pre><code data-lang="html">
-<!-- unordered list -->
-<ul>
-  <li>first item</li>
-  <li>second item
-    <ul>
-      <li>nested item
-        <ul>
-          <li>deeply nested item</li>
-          <li>deeply nested item</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>third item</li>
-</ul>
+  <!-- unordered list -->
+  <ul>
+    <li>first item</li>
+    <li>second item
+      <ul>
+        <li>nested item
+          <ul>
+            <li>deeply nested item</li>
+            <li>deeply nested item</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>third item</li>
+  </ul>
 
-<!-- ordered list -->
-<ol>
-  <li>first item</li>
-  <li>second item
-    <ol>
-      <li>nested item
-        <ol>
-          <li>deeply nested item</li>
-          <li>deeply nested item</li>
-        </ol>
-      </li>
-    </ol>
-  </li>
-  <li>third item</li>
-</ol>
+  <!-- ordered list -->
+  <ol>
+    <li>first item</li>
+    <li>second item
+      <ol>
+        <li>nested item
+          <ol>
+            <li>deeply nested item</li>
+            <li>deeply nested item</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>third item</li>
+  </ol>
 </code></pre>
 
 <h3>How it looks like</h3>
@@ -220,27 +220,27 @@ visible: 1
 <h3>Code</h3>
 
 <pre><code data-lang="html">
-<!-- inline code -->
-<p>Some text, <code><h1>hello</h1></code>.</p>
+  <!-- inline code -->
+  <p>Some text, <code><h1>hello</h1></code>.</p>
 
-<!-- multiline code -->
-<pre><code data-lang="html">
-function foo (bar) {
-  return bar * 2
-}
-</code></pre>
+  <!-- multiline code -->
+  <pre><code data-lang="html">
+    function foo (bar) {
+      return bar * 2
+    }
+  </code></pre>
 </code></pre>
 
 <h3>Compiles to</h3>
 
 <pre><code data-lang="html">
-<!-- inline code -->
-<p>Some text, <code>&lt;h1&gt;hello&lt;/h1&gt;</code>.</p>
+  <!-- inline code -->
+  <p>Some text, <code>&lt;h1&gt;hello&lt;/h1&gt;</code>.</p>
 
-<!-- multiline code -->
-<pre><code data-lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
-  <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
-}</code></pre>
+  <!-- multiline code -->
+  <pre><code data-lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
+    <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
+  }</code></pre>
 </code></pre>
 
 <h3>How it looks like</h3>
@@ -248,9 +248,9 @@ function foo (bar) {
 <p>Some text, <code><h1>hello</h1></code>.</p>
 
 <pre><code data-lang="javascript">
-function foo (bar) {
-  return bar * 2
-}
+  function foo (bar) {
+    return bar * 2
+  }
 </code></pre>
 
 
@@ -377,6 +377,5 @@ This is a very long line that will still be quoted properly when it wraps. Oh bo
       <td>®</td>
       <td><code data-lang="html">&reg;</code></td>
     </tr>
-
   </tbody>
 </table>

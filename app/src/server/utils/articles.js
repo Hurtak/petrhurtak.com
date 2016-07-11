@@ -35,8 +35,13 @@ function trimCodeBlocks (htmlString) {
 
   $('code').each((index, element) => {
     let html = $(element).html()
-    html = html.replace(/^\s+/, '')
-    html = html.replace(/\s+$/, '')
+
+    while (html[0] === '\n') {
+      html = html.substr(1)
+    }
+    while (html[html.length - 1] === '\n') {
+      html = html.slice(0, -1)
+    }
 
     $(element).html(html)
   })
@@ -66,6 +71,8 @@ function escapeAndHighlightCodeBlocks (htmlString) {
 
   return $.html()
 }
+
+
 
 function replaceRelativeImageUrls (htmlString, absolutePath) {
   if (!absolutePath) {

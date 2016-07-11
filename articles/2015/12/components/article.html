@@ -209,6 +209,7 @@ visible: 1
 <h2>Code blocks</h2>
 
 <ul>
+  <li>content of code blocks is HTML escaped</li>
   <li>when possible, add <code>data-lang</code> attribute with what language is code snippet written in</li>
   <li>do not use abbreviations in this attribute, use <code>javascript</code> instead of <code>js</code></li>
   <li>whitespace at the start & end of the <code>code</code> block is trimmed</li>
@@ -219,6 +220,10 @@ visible: 1
 <h3>Code</h3>
 
 <pre><code data-lang="html">
+<!-- inline code -->
+<p>Some text, <code><h1>hello</h1></code>.</p>
+
+<!-- multiline code -->
 <pre><code data-lang="html">
 function foo (bar) {
   return bar * 2
@@ -229,12 +234,18 @@ function foo (bar) {
 <h3>Compiles to</h3>
 
 <pre><code data-lang="html">
+<!-- inline code -->
+<p>Some text, <code>&lt;h1&gt;hello&lt;/h1&gt;</code>.</p>
+
+<!-- multiline code -->
 <pre><code data-lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
   <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
 }</code></pre>
 </code></pre>
 
 <h3>How it looks like</h3>
+
+<p>Some text, <code><h1>hello</h1></code>.</p>
 
 <pre><code data-lang="javascript">
 function foo (bar) {

@@ -49,6 +49,31 @@ function trimCodeBlocks (htmlString) {
   return $.html()
 }
 
+function removeIndentationInCodeBlocks (htmlString) {
+  let $ = cheerioLoadWithouEscaping(htmlString)
+
+  $('code').each((index, element) => {
+    let html = $(element).html()
+
+    html = html.split('\n')
+    if (html.length < 2) return
+
+    const indentationMatch = html[0].match(/^ +/)
+    if (!indentationMatch) return
+
+    const indentationLength = indentationMatch[0].length
+    if (indentationLength === 0) return
+
+    // remove indentation
+    html = html.map(line => line.substr(indentationLength))
+    html = html.join('\n')
+
+    $(element).html(html)
+  })
+
+  return $.html()
+}
+
 function escapeAndHighlightCodeBlocks (htmlString) {
   let $ = cheerioLoadWithouEscaping(htmlString)
 
@@ -105,6 +130,7 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
 module.exports = {
   addIdsToHeadings,
   trimCodeBlocks,
+  removeIndentationInCodeBlocks,
   escapeAndHighlightCodeBlocks,
   replaceRelativeImageUrls
 }

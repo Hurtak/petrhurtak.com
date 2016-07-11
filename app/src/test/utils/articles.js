@@ -34,6 +34,7 @@ test('trimCodeBlocks', t => {
   const fn = utilsArticles.trimCodeBlocks
 
   t.deepEqual(fn(''), '')
+  t.deepEqual(fn('<code></code>'), '<code></code>')
   t.deepEqual(fn(
     '<code>function hello () {\n' +
     '  return 1\n' +
@@ -77,6 +78,40 @@ test('trimCodeBlocks', t => {
     '<code>  function hello () {\n' +
     '    return 1\n' +
     '  }</code>'
+  )
+})
+
+test('removeIndentationInCodeBlocks', t => {
+  const fn = utilsArticles.removeIndentationInCodeBlocks
+
+  t.deepEqual(fn(''), '')
+  t.deepEqual(fn('<code></code>'), '<code></code>')
+  t.deepEqual(fn(
+    '<code>function hello () {\n' +
+    '  return 1\n' +
+    '}</code>'
+  ),
+    '<code>function hello () {\n' +
+    '  return 1\n' +
+    '}</code>'
+  )
+  t.deepEqual(fn(
+    '<code>  function hello () {\n' +
+    '    return 1\n' +
+    '  }</code>'
+  ),
+    '<code>function hello () {\n' +
+    '  return 1\n' +
+    '}</code>'
+  )
+  t.deepEqual(fn(
+    '<code>    function hello () {\n' +
+    '        return 1\n' +
+    '    }</code>'
+  ),
+    '<code>function hello () {\n' +
+    '    return 1\n' +
+    '}</code>'
   )
 })
 

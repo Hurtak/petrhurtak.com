@@ -59,7 +59,7 @@ test('trimCodeBlocks', t => {
 test('escapeAndHighlightCodeBlocks', t => {
   const fn = utilsArticles.escapeAndHighlightCodeBlocks
 
-  // no data-language attribute, just escape
+  // no data-lang attribute, just escape
   t.deepEqual(fn(''), '')
   t.deepEqual(fn('<code></code>'), '<code></code>')
   t.deepEqual(fn('<code>foo</code>'), '<code>foo</code>')
@@ -72,21 +72,21 @@ test('escapeAndHighlightCodeBlocks', t => {
     '<code>yaml: &quot;foo&quot;</code>'
   )
 
-  // data-language attribute, syntax highlight + escape
+  // data-lang attribute, syntax highlight + escape
   t.deepEqual(
-    fn('<code data-language="yaml">yaml: "foo"</code>'),
-    '<code data-language="yaml"><span class="hljs-attr">yaml:</span> <span class="hljs-string">"foo"</span></code>'
+    fn('<code data-lang="yaml">yaml: "foo"</code>'),
+    '<code data-lang="yaml"><span class="hljs-attr">yaml:</span> <span class="hljs-string">"foo"</span></code>'
   )
   t.deepEqual(
     fn(`
-      <code data-language="javascript">
+      <code data-lang="javascript">
         function foo (bar) {
           return bar[0];
         }
       </code>
     `),
     `
-      <code data-language="javascript">
+      <code data-lang="javascript">
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
           <span class="hljs-keyword">return</span> bar[<span class="hljs-number">0</span>];
         }

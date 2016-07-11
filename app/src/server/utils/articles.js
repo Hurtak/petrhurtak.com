@@ -51,7 +51,7 @@ function escapeAndHighlightCodeBlocks (htmlString) {
     const el = $(element)
     const html = el.html()
 
-    const language = el.attr('data-language')
+    const language = el.attr('data-lang')
     if (language) {
       // syntax highlight (highlight.js does the escaping)
       const highlightObj = highlight.highlight(language, html)

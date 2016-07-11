@@ -1,6 +1,10 @@
 # TODO
 
 ## NEXT RELEASE
+- think of how to structure articles
+  - 3 empty rows between h2 headings?
+  - indentation in code blocks?
+  - indentation of code blocks bellow h3? or maybe close h3 + content blocks in section or something?
 - remove markdown
 - finish transition to pure html
 - finish components for code blocks

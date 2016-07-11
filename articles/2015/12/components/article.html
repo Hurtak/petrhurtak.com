@@ -84,72 +84,37 @@ visible: 1
 
 <pre><code data-language="html">
 <!-- just image -->
-<img src="./images/test.png" alt="alt text">
+<img src="./images/test.png" alt="image alt text">
 
 <!-- image with caption -->
 <figure>
-  <img src="./images/test.png" alt="alt text">
+  <img src="./images/test.png" alt="image alt text">
   <figcaption>Image caption</figcaption>
 </figure>
 </code></pre>
 
 <h3>How it looks like</h3>
 
-<img src="./images/test.png" alt="alt text">
+<img src="./images/test.png" alt="image alt text">
 
 <figure>
-  <img src="./images/test.png" alt="alt text">
+  <img src="./images/test.png" alt="image alt text">
   <figcaption>Image caption</figcaption>
 </figure>
 
 
 
+<h2>Lists</h2>
 
-**markdown**
+<ul>
+  <li>start list items with lower case letter</li>
+  <li>do not end list items with dot</li>
+</ul>
 
-```markdown
-![image with relative url](images/test.png)
-![image abslute url](http://satyr.io/200x300)
-```
+<h3>Code</h3>
 
-**compiles to**
-
-```html
-<img src="http://satyr.io/200x300" alt="image alt">
-<img src="/static/articles/2015/12/components/images/test.png" alt="image alt">
-```
-
-**how it looks like**
-
-![image with relative url](http://satyr.io/200x300)
-![image abslute url](images/test.png)
-
-## Lists
-
-- start list items with lower case letter
-- do not end list items with dot
-
-**markdown**
-
-```markdown
-- first item
-- second item
-  - nested item
-    - deeply nested item
-    - deeply nested item
-- third item
-
-1. first item
-2. second item
-  1. nested item
-    1. deeply nested item
-    2. deeply nested item
-3. third item
-```
-
-**compiles to**
-
-```html
+<pre><code data-language="html">
+<!-- unordered list -->
 <ul>
   <li>first item</li>
   <li>second item
@@ -162,9 +127,10 @@ visible: 1
       </li>
     </ul>
   </li>
-  </li>third item</li>
+  <li>third item</li>
 </ul>
 
+<!-- ordered list -->
 <ol>
   <li>first item</li>
   <li>second item
@@ -177,25 +143,43 @@ visible: 1
       </li>
     </ol>
   </li>
-  </li>third item</li>
+  <li>third item</li>
 </ol>
-```
+</code></pre>
 
-**how it looks like**
+<h3>How it looks like</h3>
 
-- first item
-- second item
-  - nested item
-    - deeply nested item
-    - deeply nested item
-- third item
+<ul>
+  <li>first item</li>
+  <li>second item
+    <ul>
+      <li>nested item
+        <ul>
+          <li>deeply nested item</li>
+          <li>deeply nested item</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>third item</li>
+</ul>
 
-1. first item
-2. second item
-  1. nested item
-    1. deeply nested item
-    2. deeply nested item
-3. third item
+<!-- ordered list -->
+<ol>
+  <li>first item</li>
+  <li>second item
+    <ol>
+      <li>nested item
+        <ol>
+          <li>deeply nested item</li>
+          <li>deeply nested item</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>third item</li>
+</ol>
+
 
 ## Code
 

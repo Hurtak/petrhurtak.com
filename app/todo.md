@@ -30,7 +30,7 @@
   - take a look at medium, what components they use in articles
   - fine tune humans.txt
   - run blog through
-    - CSS & HTML validator
+    - CSS and HTML validator
     - use some tool to detect unused styles
   - consider unification of quotes (html ", js ')
   - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
@@ -49,6 +49,13 @@
     - https://talk.commonmark.org/t/nested-ordered-lists-indented-with-2-spaces-are-broken/2064
 
 - Articles
+  - in parseArticle funtion have functions which checks article for correctness
+    - check if paragraphs start with capital letter and end with dot
+    - check of headings start with capital letter
+    - check YAML header for correctness
+    - and so on...
+    - maybe refactor this into separate module?
+    - maybe when checking html, when we find error -> add console.log describing the error
   - post all articles to hacker news, reddit, twitter
     - provide links under article to hacker news and twitter discussion
     - have these links saved in front matter
@@ -64,10 +71,10 @@
   - flatten directory structure, just use years directories
   - refactor styles
   - add article footer with
-    - share on twitter & facebook
+    - share on twitter and facebook
     - edit this article on github
       - or maybe what could be really cool would be if there was live edit and anyone could submit edit
-    - similar articles & next article
+    - similar articles and next article
   - refactor upload script, put id into articles so we have truly unique identificator?
   - parse article function uses readFileSync, rewrite to use promises/cb
   - replace @see links in code with my own articles

@@ -181,42 +181,43 @@ visible: 1
 </ol>
 
 
-## Code
 
-- always write what language is code snippet written in
-- do not use abbreviations, use `javascript` instead of `js`
-- omit semicolons in javascript language
-- use 4 space indentation
+<h2>Code blocks</h2>
 
-**markdown**
+<ul>
+  <li>when possible, add <code>data-language</code> attribute with what language is code snippet written in</li>
+  <li>do not use abbreviations in this attribute, use <code>javascript</code> instead of <code>js</code></li>
+  <li>whitespace at the start & end of the <code>code</code> block is trimmed</li>
+  <li>omit semicolons in javascript language</li>
+  <li>use 2 space indentation</li>
+</ul>
 
-````markdown
-```javascript
+<h3>Code</h3>
+
+<pre><code data-language="html">
+<pre><code data-language="html">
 function foo (bar) {
   return bar * 2
 }
-```
-````
+</code></pre>
+</code></pre>
 
-**compiles to**
+<h3>Compiles to</h3>
 
-```html
-<pre>
-  <code class="language-javascript hljs">
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
-      <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
-    }
-  </code>
-</pre>
-```
+<pre><code data-language="html">
+<pre><code data-language="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
+  <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
+}</code></pre>
+</code></pre>
 
-**how it looks like**
+<h3>How it looks like</h3>
 
-```javascript
+<pre><code data-language="javascript">
 function foo (bar) {
   return bar * 2
 }
-```
+</code></pre>
+
 
 ## Tables
 

@@ -132,7 +132,7 @@ visible: 1
 
 <ul>
   <li>start list items with lower case letter</li>
-  <li>do not end list items with dot</li>
+  <li>do not end list items with dot, add new list item instead or use parentheses</li>
 </ul>
 
 <h3>Code</h3>
@@ -244,47 +244,47 @@ function foo (bar) {
 
 
 
-<h3></h3>
-## Tables
+<h2>Tables</h2>
 
-- colons can be used to align columns
-- the outer pipes `|` are optional but always include them
-- always properly align table pipes
+<ul>
+  <li>start headings and cell text with lower case letter</li>
+</ul>
 
-**markdown**
+<h3>Code</h3>
 
-````markdown
-| heading             | left aligned        | right aligned       |
-| ------------------- |:------------------- | -------------------:|
-| Cell text text text | Cell text text text | Cell text text text |
-````
-
-**compiles to**
-
-```html
+<pre><code data-lang="html">
 <table>
   <thead>
-  <tr>
-    <th>heading</th>
-    <th style="text-align:left">left aligned</th>
-    <th style="text-align:right">right aligned</th>
-  </tr>
+    <tr>
+      <th>heading</th>
+      <th>heading</th>
+    </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Cell text text text</td>
-    <td style="text-align:left">Cell text text text</td>
-    <td style="text-align:right">Cell text text text</td>
-  </tr>
+    <tr>
+      <td>Cell text</td>
+      <td>Cell text</td>
+    </tr>
   </tbody>
 </table>
-```
+</code></pre>
 
-**how it looks like**
+<h3>How it looks like</h3>
 
-| heading             | left aligned        | right aligned       |
-| ------------------- |:------------------- | -------------------:|
-| Cell text text text | Cell text text text | Cell text text text |
+<table>
+  <thead>
+    <tr>
+      <th>heading</th>
+      <th>heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cell text</td>
+      <td>Cell text</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Quotes
 
@@ -296,6 +296,16 @@ function foo (bar) {
 This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
 
 > This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
+
+<h2>Typography</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Wrong</th>
+    </tr>
+  </thead>
+</table>
 
 ## Typography
 

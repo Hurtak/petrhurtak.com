@@ -16,6 +16,7 @@ test('addIdsToHeadings', t => {
   t.deepEqual(fn('<h2>hello</h2>'), '<h2 id="hello">hello</h2>')
   t.deepEqual(fn('<h3>hello</h3>'), '<h3 id="hello">hello</h3>')
 
+  // basic transformations
   t.deepEqual(fn('<h2> hello </h2>'), '<h2 id="hello"> hello </h2>')
   t.deepEqual(fn('<h2>HELLO</h2>'), '<h2 id="hello">HELLO</h2>')
   t.deepEqual(fn('<h2>longer heading</h2>'), '<h2 id="longer-heading">longer heading</h2>')
@@ -28,6 +29,22 @@ test('addIdsToHeadings', t => {
   t.deepEqual(fn('<h2>www.google.com</h2>'), '<h2 id="www-google-com">www.google.com</h2>')
   t.deepEqual(fn('<h2>some underscore_case</h2>'), '<h2 id="some-underscore-case">some underscore_case</h2>')
   t.deepEqual(fn('<h2>a snake-case</h2>'), '<h2 id="a-snake-case">a snake-case</h2>')
+
+  // multiple headings
+  t.deepEqual(fn(`
+    <h2>foo</h2>
+    <h2>bar</h2>
+  `), `
+    <h2 id="foo">foo</h2>
+    <h2 id="bar">bar</h2>
+  `)
+  t.deepEqual(fn(`
+    <h2>hello</h2>
+    <h2>hello</h2>
+  `), `
+    <h2 id="hello">hello</h2>
+    <h2 id="hello">hello</h2>
+  `)
 })
 
 test('trimCodeBlocks', t => {
@@ -143,15 +160,13 @@ test('escapeAndHighlightCodeBlocks', t => {
           return bar[0];
         }
       </code>
-    `),
-    `
+    `), `
       <code data-lang="javascript">
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
           <span class="hljs-keyword">return</span> bar[<span class="hljs-number">0</span>];
         }
       </code>
-    `
-  )
+    `)
 })
 
 test('replaceRelativeImageUrls', t => {

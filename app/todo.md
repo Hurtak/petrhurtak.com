@@ -1,6 +1,7 @@
 # TODO
 
 ## NEXT RELEASE
+- headings with the same text h2 hello -> id hello-1; h2 hello -> id hello-2
 - remove markdown
 - fix horizontal scroll bar appearing at the bottom of the page instead of bottom of the viewport
 - finish transition to pure html

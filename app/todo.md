@@ -1,15 +1,10 @@
 # TODO
 
 ## NEXT RELEASE
-- remove markdown
-- fix horizontal scroll bar appearing at the bottom of the page instead of bottom of the viewport
-- finish transition to pure html
-- finish components for code blocks
-  - quotes
-  - dl - dt dd
-- fix http://i.imgur.com/uAfDukK.png
-- markdown blocks for highlight
+- consider using block filters in articles instead of html parsing?
 - do not put articles HTML into database, but in cache folder
+- fix horizontal scroll bar appearing at the bottom of the page instead of bottom of the viewport
+- fix http://i.imgur.com/uAfDukK.png
 - use standard fonts (arial..)
 - add css reset and make it easy to turn off/on to see if everything has it's own style
 - finish CSS design
@@ -39,6 +34,10 @@
   - revisit package.json
   - tags to articles
   - projects page
+  - consider taking a look at some HTML elements and putting them in components article & using them
+    - dl (dt dd)
+    - date
+    - itemprop attribute
   - about page
   - add search with suggest box
   - add aria stuff and accessibility stuff, also add that accessibility menu when you press tab

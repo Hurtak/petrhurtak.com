@@ -1,10 +1,6 @@
 # TODO
 
 ## NEXT RELEASE
-- think of how to structure articles
-  - 3 empty rows between h2 headings?
-  - indentation in code blocks?
-  - indentation of code blocks bellow h3? or maybe close h3 + content blocks in section or something?
 - remove markdown
 - fix horizontal scroll bar appearing at the bottom of the page instead of bottom of the viewport
 - finish transition to pure html

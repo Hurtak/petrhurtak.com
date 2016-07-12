@@ -39,11 +39,22 @@ test('addIdsToHeadings', t => {
     <h2 id="bar">bar</h2>
   `)
   t.deepEqual(fn(`
-    <h2>hello</h2>
-    <h2>hello</h2>
+    <h2>Hello there</h2>
+    <h2>Hello there</h2>
+    <h2>Hello there</h2>
   `), `
-    <h2 id="hello">hello</h2>
-    <h2 id="hello">hello</h2>
+    <h2 id="hello-there">Hello there</h2>
+    <h2 id="hello-there-2">Hello there</h2>
+    <h2 id="hello-there-3">Hello there</h2>
+  `)
+  t.deepEqual(fn(`
+    <h2>a</h2>
+    <h2>a-2</h2>
+    <h2>a</h2>
+  `), `
+    <h2 id="a">a</h2>
+    <h2 id="a-2">a-2</h2>
+    <h2 id="a-3">a</h2>
   `)
 })
 

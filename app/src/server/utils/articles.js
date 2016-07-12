@@ -13,6 +13,7 @@ function cheerioLoadWithouEscaping (htmlString) {
 
 function addIdsToHeadings (htmlString) {
   let $ = cheerioLoadWithouEscaping(htmlString)
+  let sameHeadingsCount = 0
 
   $('h2, h3').each((index, element) => {
     const el = $(element)
@@ -24,7 +25,16 @@ function addIdsToHeadings (htmlString) {
     id = lodash.replace(id, /[^A-Za-z0-9-_.&\s]/g, '') // remove special characters
     id = lodash.kebabCase(id)
 
-    el.attr('id', id)
+    let postfix = ''
+    while (true) {
+      const idUnique = $('#' + id + postfix).length === 0
+      if (idUnique) break
+
+      sameHeadingsCount++
+      postfix = '-' + (sameHeadingsCount + 1)
+    }
+
+    el.attr('id', id + postfix)
   })
 
   return $.html()
@@ -96,8 +106,6 @@ function escapeAndHighlightCodeBlocks (htmlString) {
 
   return $.html()
 }
-
-
 
 function replaceRelativeImageUrls (htmlString, absolutePath) {
   if (!absolutePath) {

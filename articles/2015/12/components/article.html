@@ -6,212 +6,141 @@ last_update: 2015-05-28 19:22:57
 visible: 1
 ---
 
-<section>
 
-  <h2>General</h2>
 
-  <ul>
-    <li>use 2 space indentation</li>
-  </ul>
+<h2>General</h2>
 
-</section>
+<ul>
+  <li>use 2 space indentation</li>
+</ul>
 
-<section>
 
-  <h2>Article metadata</h2>
 
-  <ul>
-    <li>each article starts with YAML front matter block which specifies articles metadata</li>
-    <li>all properties are mandatory</li>
-  </ul>
+<h2>Article metadata</h2>
 
-  <h3>Code</h3>
+<ul>
+  <li>each article starts with YAML front matter block which specifies articles metadata</li>
+  <li>all properties are mandatory</li>
+</ul>
 
-  <pre><code data-lang="yaml">
-    ---
-    title: "Title of the article"
-    description: Short description of article
-    publication_date: "2015-07-02 13:37:00"
-    last_update: 2015-05-28 19:20:00
-    visible: 1
-    ---
-  </code></pre>
+<h3>Code</h3>
 
-</section>
+<pre><code data-lang="yaml">
+  ---
+  title: "Title of the article"
+  description: Short description of article
+  publication_date: "2015-07-02 13:37:00"
+  last_update: 2015-05-28 19:20:00
+  visible: 1
+  ---
+</code></pre>
 
-<section>
 
-  <h2>Headings</h2>
 
-  <ul>
-    <li>headings have automatically added id's for easier sharing</li>
-  </ul>
+<h2>Headings</h2>
 
-  <h3>Code</h3>
+<ul>
+  <li>headings have automatically added id's for easier sharing</li>
+</ul>
 
-  <pre><code data-lang="html">
-    <h2>Heading</h2>
-    <h3>Sub-heading</h3>
-  </code></pre>
+<h3>Code</h3>
 
-  <h3>Compiles to</h3>
-
-  <pre><code data-lang="html">
-    <h2 id="heading">Heading</h2>
-    <h3 id="sub-heading">Sub-heading</h3>
-  </code></pre>
-
-  <h3>How it looks like</h3>
-
+<pre><code data-lang="html">
   <h2>Heading</h2>
   <h3>Sub-heading</h3>
+</code></pre>
 
-</section>
+<h3>Compiles to</h3>
 
-<section>
+<pre><code data-lang="html">
+  <h2 id="heading">Heading</h2>
+  <h3 id="sub-heading">Sub-heading</h3>
+</code></pre>
 
-  <h2>Article sections</h2>
+<h3>How it looks like</h3>
 
-  <ul>
-    <li>wrap <code><h3></code> headings with content under in <code><section></code> element</li>
-  </ul>
+<h2>Heading</h2>
+<h3>Sub-heading</h3>
 
-  <h3>Code</h3>
 
-  <pre><code data-lang="html">
-    <section>
-      <h2>Heading 1</h2>
-      <p>text</p>
-    </section>
 
-    <section>
-      <h2>Heading 2</h2>
-      <h3>Sub-heading 1</h3>
-      <p>text</p>
-      <h3>Sub-heading 2</h3>
-      <p>text</p>
-    </section>
-  </code></pre>
+<h2>Formatting</h2>
 
-</section>
+<h3>Code</h3>
 
-<section>
+<pre><code data-lang="html">
+  <em>italics text</em>
+  <strong>bold text</strong>
+  <mark>marked text</mark>
+  <s>striked text</s>
+</code></pre>
 
-  <h2>Formatting</h2>
+<h3>How it looks like</h3>
 
-  <h3>Code</h3>
+<ul>
+  <li><em>italics text</em></li>
+  <li><strong>bold text</strong></li>
+  <li><mark>marked text</mark></li>
+  <li><s>striked text</s></li>
+</ul>
 
-  <pre><code data-lang="html">
-    <em>italics text</em>
-    <strong>bold text</strong>
-    <mark>marked text</mark>
-    <s>striked text</s>
-  </code></pre>
 
-  <h3>How it looks like</h3>
 
-  <ul>
-    <li><em>italics text</em></li>
-    <li><strong>bold text</strong></li>
-    <li><mark>marked text</mark></li>
-    <li><s>striked text</s></li>
-  </ul>
+<h2>Images</h2>
 
-</section>
+<ul>
+  <li>when linking to article images use relative paths without <code>./</code> at the start of the url</li>
+  <li>these relative url are then transformed into absolute paths <code>images/test.png</code> → <code>/static/articles/../images/test.png</code></li>
+</ul>
 
-<section>
+<h3>Code</h3>
 
-  <h2>Images</h2>
-
-  <ul>
-    <li>when linking to article images use relative paths without <code>./</code> at the start of the url</li>
-    <li>these relative url are then transformed into absolute paths <code>images/test.png</code> → <code>/static/articles/../images/test.png</code></li>
-  </ul>
-
-  <h3>Code</h3>
-
-  <pre><code data-lang="html">
-    <!-- just image -->
-    <img src="./images/test.png" alt="image alt text">
-
-    <!-- image with caption -->
-    <figure>
-      <img src="./images/test.png" alt="image alt text">
-      <figcaption>Image caption</figcaption>
-    </figure>
-  </code></pre>
-
-  <h3>Compiles to</h3>
-
-  <pre><code data-lang="html">
-    <!-- just image -->
-    <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
-
-    <!-- image with caption -->
-    <figure>
-      <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
-      <figcaption>Image caption</figcaption>
-    </figure>
-  </code></pre>
-
-  <h3>How it looks like</h3>
-
+<pre><code data-lang="html">
+  <!-- just image -->
   <img src="./images/test.png" alt="image alt text">
 
+  <!-- image with caption -->
   <figure>
     <img src="./images/test.png" alt="image alt text">
     <figcaption>Image caption</figcaption>
   </figure>
+</code></pre>
 
-</section>
+<h3>Compiles to</h3>
 
-<section>
+<pre><code data-lang="html">
+  <!-- just image -->
+  <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
 
-  <h2>Lists</h2>
+  <!-- image with caption -->
+  <figure>
+    <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
+    <figcaption>Image caption</figcaption>
+  </figure>
+</code></pre>
 
-  <ul>
-    <li>start list items with lower case letter</li>
-    <li>do not end list items with dot, add new list item instead or use parentheses</li>
-  </ul>
+<h3>How it looks like</h3>
 
-  <h3>Code</h3>
+<img src="./images/test.png" alt="image alt text">
 
-  <pre><code data-lang="html">
-    <!-- unordered list -->
-    <ul>
-      <li>first item</li>
-      <li>second item
-        <ul>
-          <li>nested item
-            <ul>
-              <li>deeply nested item</li>
-              <li>deeply nested item</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>third item</li>
-    </ul>
+<figure>
+  <img src="./images/test.png" alt="image alt text">
+  <figcaption>Image caption</figcaption>
+</figure>
 
-    <!-- ordered list -->
-    <ol>
-      <li>first item</li>
-      <li>second item
-        <ol>
-          <li>nested item
-            <ol>
-              <li>deeply nested item</li>
-              <li>deeply nested item</li>
-            </ol>
-          </li>
-        </ol>
-      </li>
-      <li>third item</li>
-    </ol>
-  </code></pre>
 
-  <h3>How it looks like</h3>
 
+<h2>Lists</h2>
+
+<ul>
+  <li>start list items with lower case letter</li>
+  <li>do not end list items with dot, add new list item instead or use parentheses</li>
+</ul>
+
+<h3>Code</h3>
+
+<pre><code data-lang="html">
+  <!-- unordered list -->
   <ul>
     <li>first item</li>
     <li>second item
@@ -242,201 +171,226 @@ visible: 1
     </li>
     <li>third item</li>
   </ol>
+</code></pre>
 
-</section>
+<h3>How it looks like</h3>
 
-<section>
+<ul>
+  <li>first item</li>
+  <li>second item
+    <ul>
+      <li>nested item
+        <ul>
+          <li>deeply nested item</li>
+          <li>deeply nested item</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>third item</li>
+</ul>
 
-  <h2>Code blocks</h2>
+<!-- ordered list -->
+<ol>
+  <li>first item</li>
+  <li>second item
+    <ol>
+      <li>nested item
+        <ol>
+          <li>deeply nested item</li>
+          <li>deeply nested item</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>third item</li>
+</ol>
 
-  <ul>
-    <li>content of code blocks is HTML escaped</li>
-    <li>when possible, add <code>data-lang</code> attribute with what language is code snippet written in</li>
-    <li>do not use abbreviations in this attribute, use <code>javascript</code> instead of <code>js</code></li>
-    <li>whitespace at the start & end of the <code>code</code> block is trimmed</li>
-    <li>omit semicolons in javascript language</li>
-    <li>use 2 space indentation</li>
-  </ul>
 
-  <h3>Code</h3>
 
-  <pre><code data-lang="html">
-    <!-- inline code -->
-    <p>Some text, <code><h1>hello</h1></code>.</p>
+<h2>Code blocks</h2>
 
-    <!-- multiline code -->
-    <pre><code data-lang="html">
-      function foo (bar) {
-        return bar * 2
-      }
-    </code></pre>
-  </code></pre>
+<ul>
+  <li>content of code blocks is HTML escaped</li>
+  <li>when possible, add <code>data-lang</code> attribute with what language is code snippet written in</li>
+  <li>do not use abbreviations in this attribute, use <code>javascript</code> instead of <code>js</code></li>
+  <li>whitespace at the start & end of the <code>code</code> block is trimmed</li>
+  <li>omit semicolons in javascript language</li>
+  <li>use 2 space indentation</li>
+</ul>
 
-  <h3>Compiles to</h3>
+<h3>Code</h3>
 
-  <pre><code data-lang="html">
-    <!-- inline code -->
-    <p>Some text, <code>&lt;h1&gt;hello&lt;/h1&gt;</code>.</p>
-
-    <!-- multiline code -->
-    <pre><code data-lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
-      <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
-    }</code></pre>
-  </code></pre>
-
-  <h3>How it looks like</h3>
-
+<pre><code data-lang="html">
+  <!-- inline code -->
   <p>Some text, <code><h1>hello</h1></code>.</p>
 
-  <pre><code data-lang="javascript">
+  <!-- multiline code -->
+  <pre><code data-lang="html">
     function foo (bar) {
       return bar * 2
     }
   </code></pre>
+</code></pre>
 
-</section>
+<h3>Compiles to</h3>
 
-<section>
+<pre><code data-lang="html">
+  <!-- inline code -->
+  <p>Some text, <code>&lt;h1&gt;hello&lt;/h1&gt;</code>.</p>
 
-  <h2>Tables</h2>
+  <!-- multiline code -->
+  <pre><code data-lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
+    <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
+  }</code></pre>
+</code></pre>
 
-  <ul>
-    <li>start headings and cell text with lower case letter</li>
-    <li>if there is heading row, wrap it in <code>thead</code> and regular rows in <code><tbody></code></li>
-    <li>in <code>thead</code> use <code>th</code> instead of <code>td</code></li>
-    <li>if there is not heading row, do not wrap rows in <code><tbody></code></li>
-  </ul>
+<h3>How it looks like</h3>
 
-  <h3>Code</h3>
+<p>Some text, <code><h1>hello</h1></code>.</p>
 
-  <pre><code data-lang="html">
-  <table>
-    <thead>
-      <tr>
-        <th>heading</th>
-        <th>heading</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Cell text</td>
-        <td>Cell text</td>
-      </tr>
-    </tbody>
-  </table>
-  </code></pre>
+<pre><code data-lang="javascript">
+  function foo (bar) {
+    return bar * 2
+  }
+</code></pre>
 
-  <h3>How it looks like</h3>
 
-  <table>
-    <thead>
-      <tr>
-        <th>heading</th>
-        <th>heading</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Cell text</td>
-        <td>Cell text</td>
-      </tr>
-    </tbody>
-  </table>
 
-</section>
+<h2>Tables</h2>
 
-<secion>
+<ul>
+  <li>start headings and cell text with lower case letter</li>
+  <li>if there is heading row, wrap it in <code>thead</code> and regular rows in <code><tbody></code></li>
+  <li>in <code>thead</code> use <code>th</code> instead of <code>td</code></li>
+  <li>if there is not heading row, do not wrap rows in <code><tbody></code></li>
+</ul>
 
-  <h2>Quotes</h2>
+<h3>Code</h3>
 
-  <h3>Code</h3>
+<pre><code data-lang="html">
+<table>
+  <thead>
+    <tr>
+      <th>heading</th>
+      <th>heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cell text</td>
+      <td>Cell text</td>
+    </tr>
+  </tbody>
+</table>
+</code></pre>
 
-  <pre><code data-lang="html">
-    <blockquote>
-      <p>Citation text</p>
-      <footer>
-        &mdash; <a href="https://hurtak.cz"><cite>Petr Huřťák</cite></a></footer>
-    </blockquote>
-  </code></pre>
+<h3>How it looks like</h3>
 
-  <h3>How it looks like</h3>
+<table>
+  <thead>
+    <tr>
+      <th>heading</th>
+      <th>heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cell text</td>
+      <td>Cell text</td>
+    </tr>
+  </tbody>
+</table>
 
+
+
+<h2>Quotes</h2>
+
+<h3>Code</h3>
+
+<pre><code data-lang="html">
   <blockquote>
     <p>Citation text</p>
-    <footer>&mdash; <a href="https://hurtak.cz"><cite>Petr Huřťák</cite></a></footer>
+    <footer>
+      &mdash; <a href="https://hurtak.cz"><cite>Petr Huřťák</cite></a></footer>
   </blockquote>
+</code></pre>
 
-</secion>
+<h3>How it looks like</h3>
 
-<section>
+<blockquote>
+  <p>Citation text</p>
+  <footer>&mdash; <a href="https://hurtak.cz"><cite>Petr Huřťák</cite></a></footer>
+</blockquote>
 
-  <h2>Typography</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>wrong</th>
-        <th>correct</th>
-        <th>HTML</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>"quoted 'text'"</td>
-        <td>“quoted ‘text’”</td>
-        <td><code data-lang="html">&lsquo;</code> <code data-lang="html">&rsquo;</code> <code data-lang="html">&ldquo;</code> <code data-lang="html">&rdquo;</code></td>
-      </tr>
-      <tr>
-        <td>...</td>
-        <td>…</td>
-        <td><code data-lang="html">&hellip;</code></td>
-      </tr>
-      <tr>
-        <td>--, ---</td>
-        <td>–, —</td>
-        <td><code data-lang="html">&ndash;</code>, <code data-lang="html">&mdash;</code></td>
-      </tr>
-      <tr>
-        <td>a -> b</td>
-        <td>a → b</td>
-        <td><code data-lang="html">&rarr;</code></td>
-      </tr>
-      <tr>
-        <td>2 - 1</td>
-        <td>2 − 4</td>
-        <td><code data-lang="html">&minus;</code></td>
-      </tr>
-      <tr>
-        <td>2 x 4</td>
-        <td>2 × 4</td>
-        <td><code data-lang="html">&times;</code></td>
-      </tr>
-      <tr>
-        <td>+-</td>
-        <td>±</td>
-        <td><code data-lang="html">&pm;</code></td>
-      </tr>
-      <tr>
-        <td>1/2, 1/4, 3/4</td>
-        <td>½, ¼, ¾</td>
-        <td><code data-lang="html">&half;</code>, <code data-lang="html">&frac14;</code>, <code data-lang="html">&frac34;</code></td>
-      </tr>
-      <tr>
-        <td>(c) (C)</td>
-        <td>©</td>
-        <td><code data-lang="html">&copy;</code></td>
-      </tr>
-      <tr>
-        <td>(tm) (TM)</td>
-        <td>™</td>
-        <td><code data-lang="html">&trade;</code></td>
-      </tr>
-      <tr>
-        <td>(r) (R)</td>
-        <td>®</td>
-        <td><code data-lang="html">&reg;</code></td>
-      </tr>
-    </tbody>
-  </table>
 
-</section>
+<h2>Typography</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>wrong</th>
+      <th>correct</th>
+      <th>HTML</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>"quoted 'text'"</td>
+      <td>“quoted ‘text’”</td>
+      <td><code data-lang="html">&lsquo;</code> <code data-lang="html">&rsquo;</code> <code data-lang="html">&ldquo;</code> <code data-lang="html">&rdquo;</code></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>…</td>
+      <td><code data-lang="html">&hellip;</code></td>
+    </tr>
+    <tr>
+      <td>--, ---</td>
+      <td>–, —</td>
+      <td><code data-lang="html">&ndash;</code>, <code data-lang="html">&mdash;</code></td>
+    </tr>
+    <tr>
+      <td>a -> b</td>
+      <td>a → b</td>
+      <td><code data-lang="html">&rarr;</code></td>
+    </tr>
+    <tr>
+      <td>2 - 1</td>
+      <td>2 − 4</td>
+      <td><code data-lang="html">&minus;</code></td>
+    </tr>
+    <tr>
+      <td>2 x 4</td>
+      <td>2 × 4</td>
+      <td><code data-lang="html">&times;</code></td>
+    </tr>
+    <tr>
+      <td>+-</td>
+      <td>±</td>
+      <td><code data-lang="html">&pm;</code></td>
+    </tr>
+    <tr>
+      <td>1/2, 1/4, 3/4</td>
+      <td>½, ¼, ¾</td>
+      <td><code data-lang="html">&half;</code>, <code data-lang="html">&frac14;</code>, <code data-lang="html">&frac34;</code></td>
+    </tr>
+    <tr>
+      <td>(c) (C)</td>
+      <td>©</td>
+      <td><code data-lang="html">&copy;</code></td>
+    </tr>
+    <tr>
+      <td>(tm) (TM)</td>
+      <td>™</td>
+      <td><code data-lang="html">&trade;</code></td>
+    </tr>
+    <tr>
+      <td>(r) (R)</td>
+      <td>®</td>
+      <td><code data-lang="html">&reg;</code></td>
+    </tr>
+  </tbody>
+</table>
+

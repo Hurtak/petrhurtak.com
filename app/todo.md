@@ -37,6 +37,9 @@
   - consider taking a look at some HTML elements and putting them in components article & using them
     - dl (dt dd)
     - date
+    - kbd
+    - abbr (http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_txt_abbr&stacked=h)
+    - small
     - itemprop attribute
   - about page
   - add search with suggest box

@@ -1,7 +1,6 @@
 # TODO
 
 ## NEXT RELEASE
-- consider using xmp tag in articles and then transforming them to code
 - do not put articles HTML into database, but in cache folder
 - fix horizontal scroll bar appearing at the bottom of the page instead of bottom of the viewport
 - fix http://i.imgur.com/uAfDukK.png

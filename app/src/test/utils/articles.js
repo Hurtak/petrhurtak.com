@@ -58,6 +58,24 @@ test('addIdsToHeadings', t => {
   `)
 })
 
+test('changeXmpToCode', t => {
+  const fn = utilsArticles.changeXmpToCode
+
+  t.deepEqual(fn(''), '')
+  t.deepEqual(fn('<xmp></xmp>'), '<code></code>')
+  t.deepEqual(fn('<xmp></xmp>'), '<code></code>')
+  t.deepEqual(fn('<xmp data-lang="html"></xmp>'), '<code data-lang="html"></code>')
+  t.deepEqual(fn(`
+    <xmp xmp="xmp" code="code" blank="">
+      <h1>hello</h1>
+    </xmp>
+  `), `
+    <code xmp="xmp" code="code" blank="">
+      <h1>hello</h1>
+    </code>
+  `)
+})
+
 test('trimCodeBlocks', t => {
   const fn = utilsArticles.trimCodeBlocks
 

@@ -101,6 +101,7 @@ function parseArticle (articlePath) {
   //       to html string will be done only once
   let article = data.body
   article = utilsArticles.addIdsToHeadings(article)
+  article = utilsArticles.changeXmpToCode(article)
   article = utilsArticles.trimCodeBlocks(article)
   article = utilsArticles.removeIndentationInCodeBlocks(article)
   article = utilsArticles.escapeAndHighlightCodeBlocks(article)

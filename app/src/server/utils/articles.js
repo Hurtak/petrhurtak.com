@@ -40,6 +40,24 @@ function addIdsToHeadings (htmlString) {
   return $.html()
 }
 
+function changeXmpToCode (htmlString) {
+  let $ = cheerioLoadWithouEscaping(htmlString)
+
+  $('xmp').each((index, element) => {
+    const xmpEl = $(element)
+    const codeEl = $('<code></code>')
+
+    codeEl.html(xmpEl.html())
+    for (const key in element.attribs) {
+      codeEl.attr(key, element.attribs[key])
+    }
+
+    xmpEl.replaceWith(codeEl)
+  })
+
+  return $.html()
+}
+
 function trimCodeBlocks (htmlString) {
   let $ = cheerioLoadWithouEscaping(htmlString)
 
@@ -137,6 +155,7 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
 
 module.exports = {
   addIdsToHeadings,
+  changeXmpToCode,
   trimCodeBlocks,
   removeIndentationInCodeBlocks,
   escapeAndHighlightCodeBlocks,

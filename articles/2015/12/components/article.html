@@ -25,7 +25,7 @@ visible: 1
 
 <h3>Code</h3>
 
-<pre><code data-lang="yaml">
+<pre><xmp data-lang="yaml">
   ---
   title: "Title of the article"
   description: Short description of article
@@ -33,7 +33,7 @@ visible: 1
   last_update: 2015-05-28 19:20:00
   visible: 1
   ---
-</code></pre>
+</xmp></pre>
 
 
 
@@ -45,17 +45,17 @@ visible: 1
 
 <h3>Code</h3>
 
-<pre><code data-lang="html">
+<pre><xmp data-lang="html">
   <h2>Heading</h2>
   <h3>Sub-heading</h3>
-</code></pre>
+</xmp></pre>
 
 <h3>Compiles to</h3>
 
-<pre><code data-lang="html">
+<pre><xmp data-lang="html">
   <h2 id="heading">Heading</h2>
   <h3 id="sub-heading">Sub-heading</h3>
-</code></pre>
+</xmp></pre>
 
 <h3>How it looks like</h3>
 
@@ -68,12 +68,12 @@ visible: 1
 
 <h3>Code</h3>
 
-<pre><code data-lang="html">
+<pre><xmp data-lang="html">
   <em>italics text</em>
   <strong>bold text</strong>
   <mark>marked text</mark>
   <s>striked text</s>
-</code></pre>
+</xmp></pre>
 
 <h3>How it looks like</h3>
 
@@ -89,13 +89,13 @@ visible: 1
 <h2>Images</h2>
 
 <ul>
-  <li>when linking to article images use relative paths without <code>./</code> at the start of the url</li>
-  <li>these relative url are then transformed into absolute paths <code>images/test.png</code> → <code>/static/articles/../images/test.png</code></li>
+  <li>when linking to article images use relative paths without <xmp>./</xmp> at the start of the url</li>
+  <li>these relative url are then transformed into absolute paths <xmp>images/test.png</xmp> → <xmp>/static/articles/../images/test.png</xmp></li>
 </ul>
 
 <h3>Code</h3>
 
-<pre><code data-lang="html">
+<pre><xmp data-lang="html">
   <!-- just image -->
   <img src="./images/test.png" alt="image alt text">
 
@@ -104,11 +104,11 @@ visible: 1
     <img src="./images/test.png" alt="image alt text">
     <figcaption>Image caption</figcaption>
   </figure>
-</code></pre>
+</xmp></pre>
 
 <h3>Compiles to</h3>
 
-<pre><code data-lang="html">
+<pre><xmp data-lang="html">
   <!-- just image -->
   <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
 
@@ -117,7 +117,7 @@ visible: 1
     <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
     <figcaption>Image caption</figcaption>
   </figure>
-</code></pre>
+</xmp></pre>
 
 <h3>How it looks like</h3>
 
@@ -139,7 +139,7 @@ visible: 1
 
 <h3>Code</h3>
 
-<pre><code data-lang="html">
+<pre><xmp data-lang="html">
   <!-- unordered list -->
   <ul>
     <li>first item</li>
@@ -171,7 +171,7 @@ visible: 1
     </li>
     <li>third item</li>
   </ol>
-</code></pre>
+</xmp></pre>
 
 <h3>How it looks like</h3>
 
@@ -212,48 +212,48 @@ visible: 1
 
 <ul>
   <li>content of code blocks is HTML escaped</li>
-  <li>when possible, add <code>data-lang</code> attribute with what language is code snippet written in</li>
-  <li>do not use abbreviations in this attribute, use <code>javascript</code> instead of <code>js</code></li>
-  <li>whitespace at the start & end of the <code>code</code> block is trimmed</li>
+  <li>when possible, add <xmp>data-lang</xmp> attribute with what language is code snippet written in</li>
+  <li>do not use abbreviations in this attribute, use <xmp>javascript</xmp> instead of <xmp>js</xmp></li>
+  <li>whitespace at the start & end of the <xmp>code</xmp> block is trimmed</li>
   <li>omit semicolons in javascript language</li>
   <li>use 2 space indentation</li>
 </ul>
 
 <h3>Code</h3>
 
-<pre><code data-lang="html">
+<pre><xmp data-lang="html">
   <!-- inline code -->
-  <p>Some text, <code><h1>hello</h1></code>.</p>
+  <p>Some text, <xmp><h1>hello</h1></xmp>.</p>
 
   <!-- multiline code -->
-  <pre><code data-lang="html">
+  <pre><xmp data-lang="html">
     function foo (bar) {
       return bar * 2
     }
-  </code></pre>
-</code></pre>
+  </xmp></pre>
+</xmp></pre>
 
 <h3>Compiles to</h3>
 
-<pre><code data-lang="html">
+<pre><xmp data-lang="html">
   <!-- inline code -->
-  <p>Some text, <code>&lt;h1&gt;hello&lt;/h1&gt;</code>.</p>
+  <p>Some text, <xmp>&lt;h1&gt;hello&lt;/h1&gt;</xmp>.</p>
 
   <!-- multiline code -->
-  <pre><code data-lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
+  <pre><xmp data-lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
     <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
-  }</code></pre>
-</code></pre>
+  }</xmp></pre>
+</xmp></pre>
 
 <h3>How it looks like</h3>
 
-<p>Some text, <code><h1>hello</h1></code>.</p>
+<p>Some text, <xmp><h1>hello</h1></xmp>.</p>
 
-<pre><code data-lang="javascript">
+<pre><xmp data-lang="javascript">
   function foo (bar) {
     return bar * 2
   }
-</code></pre>
+</xmp></pre>
 
 
 
@@ -261,14 +261,14 @@ visible: 1
 
 <ul>
   <li>start headings and cell text with lower case letter</li>
-  <li>if there is heading row, wrap it in <code>thead</code> and regular rows in <code><tbody></code></li>
-  <li>in <code>thead</code> use <code>th</code> instead of <code>td</code></li>
-  <li>if there is not heading row, do not wrap rows in <code><tbody></code></li>
+  <li>if there is heading row, wrap it in <xmp>thead</xmp> and regular rows in <xmp><tbody></xmp></li>
+  <li>in <xmp>thead</xmp> use <xmp>th</xmp> instead of <xmp>td</xmp></li>
+  <li>if there is not heading row, do not wrap rows in <xmp><tbody></xmp></li>
 </ul>
 
 <h3>Code</h3>
 
-<pre><code data-lang="html">
+<pre><xmp data-lang="html">
 <table>
   <thead>
     <tr>
@@ -283,7 +283,7 @@ visible: 1
     </tr>
   </tbody>
 </table>
-</code></pre>
+</xmp></pre>
 
 <h3>How it looks like</h3>
 
@@ -308,13 +308,13 @@ visible: 1
 
 <h3>Code</h3>
 
-<pre><code data-lang="html">
+<pre><xmp data-lang="html">
   <blockquote>
     <p>Citation text</p>
     <footer>
       &mdash; <a href="https://hurtak.cz"><cite>Petr Huřťák</cite></a></footer>
   </blockquote>
-</code></pre>
+</xmp></pre>
 
 <h3>How it looks like</h3>
 
@@ -339,57 +339,57 @@ visible: 1
     <tr>
       <td>"quoted 'text'"</td>
       <td>“quoted ‘text’”</td>
-      <td><code data-lang="html">&lsquo;</code> <code data-lang="html">&rsquo;</code> <code data-lang="html">&ldquo;</code> <code data-lang="html">&rdquo;</code></td>
+      <td><xmp data-lang="html">&lsquo;</xmp> <xmp data-lang="html">&rsquo;</xmp> <xmp data-lang="html">&ldquo;</xmp> <xmp data-lang="html">&rdquo;</xmp></td>
     </tr>
     <tr>
       <td>...</td>
       <td>…</td>
-      <td><code data-lang="html">&hellip;</code></td>
+      <td><xmp data-lang="html">&hellip;</xmp></td>
     </tr>
     <tr>
       <td>--, ---</td>
       <td>–, —</td>
-      <td><code data-lang="html">&ndash;</code>, <code data-lang="html">&mdash;</code></td>
+      <td><xmp data-lang="html">&ndash;</xmp>, <xmp data-lang="html">&mdash;</xmp></td>
     </tr>
     <tr>
       <td>a -> b</td>
       <td>a → b</td>
-      <td><code data-lang="html">&rarr;</code></td>
+      <td><xmp data-lang="html">&rarr;</xmp></td>
     </tr>
     <tr>
       <td>2 - 1</td>
       <td>2 − 4</td>
-      <td><code data-lang="html">&minus;</code></td>
+      <td><xmp data-lang="html">&minus;</xmp></td>
     </tr>
     <tr>
       <td>2 x 4</td>
       <td>2 × 4</td>
-      <td><code data-lang="html">&times;</code></td>
+      <td><xmp data-lang="html">&times;</xmp></td>
     </tr>
     <tr>
       <td>+-</td>
       <td>±</td>
-      <td><code data-lang="html">&pm;</code></td>
+      <td><xmp data-lang="html">&pm;</xmp></td>
     </tr>
     <tr>
       <td>1/2, 1/4, 3/4</td>
       <td>½, ¼, ¾</td>
-      <td><code data-lang="html">&half;</code>, <code data-lang="html">&frac14;</code>, <code data-lang="html">&frac34;</code></td>
+      <td><xmp data-lang="html">&half;</xmp>, <xmp data-lang="html">&frac14;</xmp>, <xmp data-lang="html">&frac34;</xmp></td>
     </tr>
     <tr>
       <td>(c) (C)</td>
       <td>©</td>
-      <td><code data-lang="html">&copy;</code></td>
+      <td><xmp data-lang="html">&copy;</xmp></td>
     </tr>
     <tr>
       <td>(tm) (TM)</td>
       <td>™</td>
-      <td><code data-lang="html">&trade;</code></td>
+      <td><xmp data-lang="html">&trade;</xmp></td>
     </tr>
     <tr>
       <td>(r) (R)</td>
       <td>®</td>
-      <td><code data-lang="html">&reg;</code></td>
+      <td><xmp data-lang="html">&reg;</xmp></td>
     </tr>
   </tbody>
 </table>

@@ -1,6 +1,10 @@
 # TODO
 
 ## NEXT RELEASE
+- think about
+  - where to store article metadata
+  - are we going to have generic article.md?
+  - how about pitting articles in books or keywords?
 - do not put articles HTML into database, but in cache folder
 - fix horizontal scroll bar appearing at the bottom of the page instead of bottom of the viewport
 - fix http://i.imgur.com/uAfDukK.png

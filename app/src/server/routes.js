@@ -75,7 +75,7 @@ const debugArticle = (req, res) => {
     return
   }
 
-  const fsArticle = articles.parseArticle(path.join(articlePath, 'article.html'))
+  const fsArticle = articles.parseArticle(path.join(articlePath, 'article.md'))
   const data = addCommonData({
     title: fsArticle.metadata.title,
     date: fsArticle.metadata.publication_date,

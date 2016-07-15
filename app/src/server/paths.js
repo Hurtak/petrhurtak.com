@@ -19,7 +19,9 @@ const paths = {
   articles: '../../articles',
 
   nodeModules: '../node_modules',
-  log: '../log',
+
+  www: '../www',
+  log: '../www/log',
 
   config: './config',
   server: './server',

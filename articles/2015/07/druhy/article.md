@@ -1,8 +1,8 @@
 ---
 title: Title of the article
 description: Short description of article
-publication_date: 2015-07-02 13:37:00
-last_update: 2015-05-28 19:20:00
+publication_date: 2015-07-02 13:37
+last_update: 2015-05-28 19:20
 visible: 1
 ---
 

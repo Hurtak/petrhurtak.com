@@ -43,6 +43,8 @@ function getArticlesMetadata (directory, filename, gatheredMetadata = [], baseDi
       const metadata = frontMatter(fs.readFileSync(filePath, 'utf8')).attributes
 
       metadata.directory = articleDirectory
+      metadata.publication_date = utilsArticles.isoStringToUtcDate(metadata.publication_date)
+      metadata.last_update = utilsArticles.isoStringToUtcDate(metadata.last_update)
 
       const articlePath = articleDirectory
         .split(path.sep)

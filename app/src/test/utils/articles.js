@@ -208,3 +208,11 @@ test('replaceRelativeImageUrls', t => {
   t.deepEqual(fn('<img src="foo.png">', '/static'), '<img src="/static/foo.png">')
   t.deepEqual(fn('<img src="foo.png">', '/static/'), '<img src="/static/foo.png">')
 })
+
+test('isoStringToUtcDate', t => {
+  const fn = utilsArticles.isoStringToUtcDate
+
+  t.deepEqual(fn('2000-10-5 10:20'), Date.UTC(2000, 9, 5, 10, 20))
+  t.deepEqual(fn('2000-1-1 00:00'), Date.UTC(2000, 0, 1, 0, 0))
+  t.deepEqual(fn('2016-12-31 23:59'), Date.UTC(2016, 11, 31, 23, 59))
+})

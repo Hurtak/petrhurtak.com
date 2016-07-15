@@ -152,6 +152,14 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
   return $.html()
 }
 
+function isoStringToUtcDate (isoString) {
+  const [date, time] = isoString.split(' ')
+
+  const [year, month, day] = date.split('-').map(Number)
+  const [hour, minute] = time.split(':').map(Number)
+
+  return Date.UTC(year, month - 1, day, hour, minute)
+}
 
 module.exports = {
   addIdsToHeadings,
@@ -159,5 +167,6 @@ module.exports = {
   trimCodeBlocks,
   removeIndentationInCodeBlocks,
   escapeAndHighlightCodeBlocks,
-  replaceRelativeImageUrls
+  replaceRelativeImageUrls,
+  isoStringToUtcDate
 }

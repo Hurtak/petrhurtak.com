@@ -1,9 +1,9 @@
 ---
 title: Components
 description: Collection of UI components used on this page
-publication_date: 2015-12-01 13:37:00
-last_update: 2015-05-28 19:22:57
-visible: 1
+publication_date: 2015-12-01 13:37
+last_update: 2015-05-28 19:22
+visible: true
 ---
 
 
@@ -19,17 +19,21 @@ visible: 1
 <ul>
   <li>each article starts with YAML front matter block which specifies articles metadata</li>
   <li>all properties are mandatory</li>
+  <li>dates are in UTC, seconds are ommited</li>
+  <li>when article is created <xmp>last_update</xmp> is set to the same value as <xmp>publication_date</xmp></li>
+  <li>only updated <xmp>last_update</xmp> field after big changes to the article</li>
+  <li>articles on the main page are sorted by the <xmp>last_update</xmp></li>
 </ul>
 
 <h3>Code</h3>
 
 <pre><xmp data-lang="yaml">
   ---
-  title: "Title of the article"
+  title: Title of the article
   description: Short description of article
-  publication_date: "2015-07-02 13:37:00"
-  last_update: 2015-05-28 19:20:00
-  visible: 1
+  publication_date: 2015-07-02 13:37
+  last_update: 2015-05-28 19:20
+  visible: true
   ---
 </xmp></pre>
 

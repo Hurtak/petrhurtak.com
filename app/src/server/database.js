@@ -49,11 +49,8 @@ function getAtricle (articleUrl) {
     SELECT id,
       title,
       publication_date,
-      url,
-      content
+      url
     FROM articles
-    LEFT JOIN articles_content
-      ON articles.id = articles_content.article_id
     WHERE visible = 1
     AND url = ?
   `
@@ -83,17 +80,6 @@ function insertArticleMetadata (params) {
   return dbPromiseFactory(query, params)
 }
 
-function insertArticleContent (params) {
-  const query = `
-    INSERT INTO articles_content
-      (article_id, content)
-    VALUES
-      (?, ?)
-  `
-
-  return dbPromiseFactory(query, params)
-}
-
 function updateArticleMetadata (params) {
   const query = `
     UPDATE articles
@@ -105,16 +91,6 @@ function updateArticleMetadata (params) {
       last_update = ?,
       visible = ?
     WHERE id = ?
-  `
-
-  return dbPromiseFactory(query, params)
-}
-
-function updateArticleContent (params) {
-  const query = `
-    UPDATE articles_content
-    SET content = ?
-    WHERE article_id = ?
   `
 
   return dbPromiseFactory(query, params)
@@ -167,9 +143,7 @@ module.exports = {
   getAtricle,
   getIdByArticleUrl,
   insertArticleMetadata,
-  insertArticleContent,
   updateArticleMetadata,
-  updateArticleContent,
   deleteArticles,
   getRSS,
   getHumansTxt,

@@ -1,9 +1,9 @@
-#!/usr/bin/env node
-
 'use strict'
 
 const path = require('path')
+const fs = require('fs')
 
+require('../src/server/debug.js')()
 const paths = require('../src/server/paths.js')
 const articles = require('../src/server/articles.js')
 const database = require('../src/server/database.js')
@@ -53,11 +53,19 @@ function uploadArticles () {
 
     const data = articles.parseArticle(path.join(articleDirectory, 'article.md'))
     const metadata = data.metadata
-    const articleContent = data.html
 
     if (!isDirectoryNameCorrect(metadata.publication_date, articleDirectory)) {
       return
     }
+
+    const articleContent = data.html
+    const filename = path.join(paths.articlesCache, articleUrl + '.html')
+    fs.writeFile(filename, articleContent, (err) => {
+      if (err) {
+        console.log(err)
+      }
+      console.log(`${filename} cache file written`)
+    })
 
     allArticlesUrls.push(articleUrl)
 
@@ -74,20 +82,17 @@ function uploadArticles () {
     ]
 
     database.getIdByArticleUrl(articleUrl).then(articleId => {
-      const date = metadata.publication_date.toLocaleDateString('cs')
+      const date = new Date(metadata.publication_date).toLocaleDateString('cs')
       if (articleId === null) { // new article which is not in db
         database.insertArticleMetadata(dbData).then(dbResponse => {
-          database.insertArticleContent([dbResponse.insertId, articleContent]).then(() => {
-            console.log(`${date} article ${articleUrl} INSERTED.`)
-            promisesRunning = checkIfDone(promisesRunning)
-          })
+          // id: dbResponse.insertId
+          console.log(`${date} article ${articleUrl} INSERTED.`)
+          promisesRunning = checkIfDone(promisesRunning)
         })
       } else {
         database.updateArticleMetadata([...dbData, articleId.id]).then(() => {
-          database.updateArticleContent([articleContent, articleId.id]).then(() => {
-            console.log(`${date} article ${articleUrl} updated.`)
-            promisesRunning = checkIfDone(promisesRunning)
-          })
+          console.log(`${date} article ${articleUrl} updated.`)
+          promisesRunning = checkIfDone(promisesRunning)
         })
       }
     })

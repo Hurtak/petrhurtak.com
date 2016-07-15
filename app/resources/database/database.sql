@@ -22,15 +22,6 @@ CREATE TABLE `articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 
-DROP TABLE IF EXISTS `articles_content`;
-CREATE TABLE `articles_content` (
-  `article_id` int(11) NOT NULL,
-  `content` varchar(10000) COLLATE utf8_czech_ci NOT NULL,
-  KEY `article_id` (`article_id`),
-  CONSTRAINT `articles_content_ibfk_4` FOREIGN KEY (`article_id`) REFERENCES `articles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
-
-
 DROP TABLE IF EXISTS `fulltext`;
 CREATE TABLE `fulltext` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -42,4 +33,4 @@ CREATE TABLE `fulltext` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 
--- 2015-07-26 20:19:56
+-- 2016-07-15 19:20:24

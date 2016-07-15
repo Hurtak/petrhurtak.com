@@ -1,8 +1,8 @@
 # TODO
 
 ## NEXT RELEASE
-- do not put articles HTML into database, but in cache folder
 - fix horizontal scroll bar appearing at the bottom of the page instead of bottom of the viewport
+- smaller font size?
 - fix http://i.imgur.com/uAfDukK.png
 - use standard fonts (arial..)
 - add css reset and make it easy to turn off/on to see if everything has it's own style

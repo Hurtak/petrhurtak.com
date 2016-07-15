@@ -1,6 +1,7 @@
 'use strict'
 
 const path = require('path')
+const fs = require('fs')
 
 const lodash = require('lodash')
 
@@ -37,13 +38,21 @@ const index = (req, res) => {
 const article = (req, res) => {
   database.getAtricle(req.params.article).then(article => {
     if (article) {
-      const data = addCommonData({
-        title: article.title,
-        date: article.publication_date,
-        article: article.content
-      })
+      const articlePath = path.join(paths.articlesCache, article.url + '.html')
+      fs.readFile(articlePath, 'utf8', (err, articleContent) => {
+        if (err) {
+          // TODO: this should not happen, make a log
+          throw err
+        }
 
-      res.render('pages/article.njk', data)
+        const data = addCommonData({
+          title: article.title,
+          date: article.publication_date,
+          article: articleContent
+        })
+
+        res.render('pages/article.njk', data)
+      })
     } else {
       notFound(req, res)
     }

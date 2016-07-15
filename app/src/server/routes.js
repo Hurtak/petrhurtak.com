@@ -55,7 +55,7 @@ const debug = (req, res) => {
   let metadata = articles.getArticlesMetadata(paths.articles, 'article.md')
 
   // sort articles by publication_date descendant
-  metadata = lodash.sortBy(metadata, 'publication_date')
+  metadata = lodash.sortBy(metadata, 'last_update')
   metadata = lodash.reverse(metadata)
 
   const data = addCommonData({

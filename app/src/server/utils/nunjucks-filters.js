@@ -4,12 +4,13 @@ const datetimeAttribute = (date) => {
   // 1. date -> "Sat Jun 18 2016 17:08:32 GMT+0200 (Central Europe Daylight Time)"
   // 2. toISOString() -> "2016-06-18T15:08:32.598Z"
   // 3. substr(0,19) -> "2016-06-18T15:08:32"
+  date = new Date(date)
   return date.toISOString().substr(0, 19)
 }
 
-const gmt = (dateString) => {
+const gmt = (date) => {
   // GMT string example "Mon, 27 Jun 2016 17:48:24 GMT"
-  const date = new Date(dateString)
+  date = new Date(date)
   return date.toGMTString()
 }
 
@@ -47,6 +48,7 @@ const fullDate = (dateString) => {
 }
 
 const dateHowLongBefore = (date) => {
+  date = new Date(date)
   const nowTimestamp = Date.now()
   const dateTimestamp = date.getTime()
 

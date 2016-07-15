@@ -7,13 +7,11 @@ visible: 1
 ---
 
 
-
 <h2>General</h2>
 
 <ul>
   <li>use 2 space indentation</li>
 </ul>
-
 
 
 <h2>Article metadata</h2>
@@ -34,7 +32,6 @@ visible: 1
   visible: 1
   ---
 </xmp></pre>
-
 
 
 <h2>Headings</h2>
@@ -63,7 +60,6 @@ visible: 1
 <h3>Sub-heading</h3>
 
 
-
 <h2>Formatting</h2>
 
 <h3>Code</h3>
@@ -83,7 +79,6 @@ visible: 1
   <li><mark>marked text</mark></li>
   <li><s>striked text</s></li>
 </ul>
-
 
 
 <h2>Images</h2>
@@ -127,7 +122,6 @@ visible: 1
   <img src="./images/test.png" alt="image alt text">
   <figcaption>Image caption</figcaption>
 </figure>
-
 
 
 <h2>Lists</h2>
@@ -207,14 +201,16 @@ visible: 1
 </ol>
 
 
-
 <h2>Code blocks</h2>
 
 <ul>
+  <li>put code in <xmp>xmp</xmp> blocks instad of <xmp>code</xmp> blocks</li>
+  <li>this is so we can have nice previews on github without having to manually do HTML escaping</li>
+  <li><xmp>xmp</xmp> blocks are the compiled indo <xmp>code</xmp></li>
   <li>content of code blocks is HTML escaped</li>
   <li>when possible, add <xmp>data-lang</xmp> attribute with what language is code snippet written in</li>
   <li>do not use abbreviations in this attribute, use <xmp>javascript</xmp> instead of <xmp>js</xmp></li>
-  <li>whitespace at the start & end of the <xmp>code</xmp> block is trimmed</li>
+  <li>whitespace at the start & end of the <xmp>xmp</xmp> block is trimmed</li>
   <li>omit semicolons in javascript language</li>
   <li>use 2 space indentation</li>
 </ul>
@@ -237,12 +233,12 @@ visible: 1
 
 <pre><xmp data-lang="html">
   <!-- inline code -->
-  <p>Some text, <xmp>&lt;h1&gt;hello&lt;/h1&gt;</xmp>.</p>
+  <p>Some text, <code>&lt;h1&gt;hello&lt;/h1&gt;</code>.</p>
 
   <!-- multiline code -->
-  <pre><xmp data-lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
+  <pre><code data-lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
     <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
-  }</xmp></pre>
+  }</code></pre>
 </xmp></pre>
 
 <h3>How it looks like</h3>

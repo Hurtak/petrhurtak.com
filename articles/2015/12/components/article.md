@@ -269,7 +269,7 @@ visible: true
 
 <ul>
   <li>start headings and cell text with lower case letter</li>
-  <li>if there is heading row, wrap it in <xmp>thead</xmp> and regular rows in <xmp><tbody></xmp></li>
+  <li>if there is heading row, wrap it in <xmp><thead></xmp> and regular rows in <xmp><tbody></xmp></li>
   <li>in <xmp>thead</xmp> use <xmp>th</xmp> instead of <xmp>td</xmp></li>
   <li>if there is not heading row, do not wrap rows in <xmp><tbody></xmp></li>
 </ul>

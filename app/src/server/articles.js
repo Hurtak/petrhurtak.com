@@ -103,12 +103,18 @@ function parseArticle (articlePath) {
   //       object so creation of cheerio object and transformation
   //       to html string will be done only once
   let article = data.body
-  article = utilsArticles.addIdsToHeadings(article)
+
+  // inside articles we are using <xmp> instead of <code>, so transform it to <code> before we
+  // run other transformations which might depend on <code> tag being used instead of <xmp>
   article = utilsArticles.changeXmpToCode(article)
   article = utilsArticles.trimCodeBlocks(article)
   article = utilsArticles.removeIndentationInCodeBlocks(article)
   article = utilsArticles.escapeAndHighlightCodeBlocks(article)
+
+  article = utilsArticles.addIdsToHeadings(article)
+
   article = utilsArticles.replaceRelativeImageUrls(article, articleDirectory)
+
   article = htmlMinifier.minify(article, {
     collapseWhitespace: true,
     conservativeCollapse: true,

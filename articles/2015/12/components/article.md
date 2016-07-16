@@ -7,11 +7,13 @@ visible: true
 ---
 
 
+
 <h2>General</h2>
 
 <ul>
   <li>use 2 space indentation</li>
 </ul>
+
 
 
 <h2>Article metadata</h2>
@@ -38,10 +40,12 @@ visible: true
 </xmp></pre>
 
 
+
 <h2>Headings</h2>
 
 <ul>
   <li>headings have automatically added id's for easier sharing</li>
+  <li>add 3 newlines before each <xmp><h2></xmp> heading</li>
 </ul>
 
 <h3>Code</h3>
@@ -64,6 +68,7 @@ visible: true
 <h3>Sub-heading</h3>
 
 
+
 <h2>Formatting</h2>
 
 <h3>Code</h3>
@@ -83,6 +88,7 @@ visible: true
   <li><mark>marked text</mark></li>
   <li><s>striked text</s></li>
 </ul>
+
 
 
 <h2>Images</h2>
@@ -126,6 +132,7 @@ visible: true
   <img src="./images/test.png" alt="image alt text">
   <figcaption>Image caption</figcaption>
 </figure>
+
 
 
 <h2>Lists</h2>
@@ -203,6 +210,7 @@ visible: true
   </li>
   <li>third item</li>
 </ol>
+
 
 
 <h2>Code blocks</h2>

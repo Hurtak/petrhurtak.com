@@ -1,5 +1,5 @@
 .footer {
-  margin: 4em 0 2em;
+  padding: 4em 0 2em;
   font-size: var(--font-size-secondary-text);
   text-align: center;
 }

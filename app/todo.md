@@ -1,7 +1,6 @@
 # TODO
 
 ## NEXT RELEASE
-- fix horizontal scroll bar appearing at the bottom of the page instead of bottom of the viewport
 - smaller font size?
 - fix http://i.imgur.com/uAfDukK.png
 - use standard fonts (arial..)

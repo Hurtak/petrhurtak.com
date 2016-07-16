@@ -26,7 +26,6 @@
 
 .page-wrapper {
   min-height: 100%;
-  overflow: auto;
   border-top: 6px solid black;
   background-color: var(--color-background);
   text-rendering: optimizeLegibility; /* TODO: is this doing anyting? */

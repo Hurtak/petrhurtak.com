@@ -23,7 +23,8 @@
     "ava": "0.15.2",
     "babel-eslint": "6.1.2",
     "nodemon": "1.9.2",
-    "pretty-error": "2.0.0"
+    "pretty-error": "2.0.0",
+    "reset-css": "2.0.2011012603"
   },
   "repository": {
     "type": "git",

@@ -4,7 +4,6 @@
 - smaller font size?
 - fix http://i.imgur.com/uAfDukK.png
 - use standard fonts (arial..)
-- add css reset and make it easy to turn off/on to see if everything has it's own style
 - finish CSS design
   - inspiration
     - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/Material-I-II-opt.jpg

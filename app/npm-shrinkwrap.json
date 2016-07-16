@@ -2597,6 +2597,11 @@
       "from": "require-precompiled@>=0.1.0 <0.2.0",
       "resolved": "https://registry.npmjs.org/require-precompiled/-/require-precompiled-0.1.0.tgz"
     },
+    "reset-css": {
+      "version": "2.0.2011012603",
+      "from": "reset-css@latest",
+      "resolved": "https://registry.npmjs.org/reset-css/-/reset-css-2.0.2011012603.tgz"
+    },
     "resolve-cwd": {
       "version": "1.0.0",
       "from": "resolve-cwd@>=1.0.0 <2.0.0",

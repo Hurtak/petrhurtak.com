@@ -49,6 +49,7 @@
     - automatically git fetch changes and update new articles
 
 - Articles
+  - currently html of code blocks is parsed and we cannot get raw html? so `<h2>` will become `<h2></h2>`, maybe switch to jsdom?
   - in parseArticle funtion have functions which checks article for correctness
     - check if paragraphs start with capital letter and end with dot
     - check of headings start with capital letter

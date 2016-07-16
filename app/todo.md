@@ -20,7 +20,6 @@
 - General
   - progressively enhanced tweet quotations
   - write README.md
-  - license for articles and license for app
   - sitemap
   - take a look at medium, what components they use in articles
   - fine tune humans.txt

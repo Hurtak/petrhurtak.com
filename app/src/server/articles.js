@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 
 const frontMatter = require('front-matter')
+const htmlMinifier = require('html-minifier')
 
 const paths = require('./paths.js')
 const utilsArticles = require('./utils/articles.js')
@@ -108,6 +109,16 @@ function parseArticle (articlePath) {
   article = utilsArticles.removeIndentationInCodeBlocks(article)
   article = utilsArticles.escapeAndHighlightCodeBlocks(article)
   article = utilsArticles.replaceRelativeImageUrls(article, articleDirectory)
+  article = htmlMinifier.minify(article, {
+    collapseWhitespace: true,
+    conservativeCollapse: true,
+    minifyCSS: true,
+    minifyJS: true,
+    removeComments: true,
+    removeRedundantAttributes: true,
+    sortAttributes: true,
+    sortClassName: true
+  })
 
   return {
     metadata,

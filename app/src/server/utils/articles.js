@@ -22,6 +22,8 @@ function addIdsToHeadings (htmlString) {
     if (insideCodeBlock) return
 
     let id = el.text()
+    if (!id.trim()) return
+
     id = lodash.replace(id, /[^A-Za-z0-9-_.&\s]/g, '') // remove special characters
     id = lodash.kebabCase(id)
 

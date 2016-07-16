@@ -16,6 +16,10 @@ test('addIdsToHeadings', t => {
   t.deepEqual(fn('<h2>hello</h2>'), '<h2 id="hello">hello</h2>')
   t.deepEqual(fn('<h3>hello</h3>'), '<h3 id="hello">hello</h3>')
 
+  // empty headings get no id
+  t.deepEqual(fn('<h2></h2>'), '<h2></h2>')
+  t.deepEqual(fn('<h3></h3>'), '<h3></h3>')
+
   // basic transformations
   t.deepEqual(fn('<h2> hello </h2>'), '<h2 id="hello"> hello </h2>')
   t.deepEqual(fn('<h2>HELLO</h2>'), '<h2 id="hello">HELLO</h2>')

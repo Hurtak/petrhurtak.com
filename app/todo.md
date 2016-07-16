@@ -33,7 +33,7 @@
   - revisit package.json
   - tags to articles
   - projects page
-  - consider taking a look at some HTML elements and putting them in components article & using them
+  - consider taking a look at some HTML elements and putting them in components article and using them
     - dl (dt dd)
     - date
     - kbd
@@ -46,9 +46,10 @@
   - link to github/twitter
   - decide what categories to use in commit messages
   - check if we are not using sync (readFileSync) functions anywhere
-  - figure if we could use 2 space indentaion in markdown files
-    - https://github.com/markdown-it/markdown-it/issues/215
-    - https://talk.commonmark.org/t/nested-ordered-lists-indented-with-2-spaces-are-broken/2064
+  - cron job to test
+    - if all pages are html valid
+    - detect 404 links
+    - automatically git fetch changes and update new articles
 
 - Articles
   - in parseArticle funtion have functions which checks article for correctness
@@ -80,15 +81,12 @@
   - refactor upload script, put id into articles so we have truly unique identificator?
   - parse article function uses readFileSync, rewrite to use promises/cb
   - replace @see links in code with my own articles
-  - sub headings in articles -> automaticall generate id's for them - `<h2>How to?</h2>` -> `<h2 id="how-to">How-to?</h2>`
-  - remove seconds from publication date (in article.md header)
-  - article.md -> article.html
 
 - Backend
   - https
   - https://www.sitepoint.com/how-to-create-a-node-js-cluster-for-speeding-up-your-apps/
   - fork processes to number of processors http://shapeshed.com/uncaught-exceptions-in-node/
-  - log unhandle exceptions & uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
+  - log unhandle exceptions and uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
   - node_modules folder only in debug mode?
   - test express, routes, database
   - add code coverage to tests
@@ -113,7 +111,7 @@
     - locally host css file
     - only take css for languages that are really used
   - http://mozilla.github.io/nunjucks/templating.html#whitespace-control
-  - minify scripts & css (debug mode in production still with unminified files)
+  - minify scripts and css (debug mode in production still with unminified files)
   - minify article images
   - add favicon
   - pass paths as variable into templates?
@@ -134,8 +132,6 @@
   - consider switching to async templating engine with streaing support (markojs by ebay, dustjs by linkedin)
 
 ## NICE TO HAVE
-- cron job to detect 404 links
-- cron job to automatically git fetch changes & update new articles
 - switch to templating engine which supports streaming
 - own comment system?
 - evaluate switch from express to alternatives (koa, hapi)

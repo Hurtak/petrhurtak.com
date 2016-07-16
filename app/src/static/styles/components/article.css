@@ -109,3 +109,20 @@
   border-left: 6px solid #ddd;
 }
 
+.article code {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 0.1em 0.2em;
+  -webkit-box-decoration-break: clone; /* TODO: remove once we no longer need it in chrome for development */
+  box-decoration-break: clone;
+}
+
+.article pre > code {
+  display: block;
+  overflow: auto;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 0.5em;
+}

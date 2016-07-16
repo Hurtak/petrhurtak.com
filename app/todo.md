@@ -17,7 +17,6 @@
 
 ## FUTURE RELEASES
 - General
-  - progressively enhanced tweet quotations
   - write README.md
   - sitemap
   - take a look at medium, what components they use in articles
@@ -29,6 +28,7 @@
   - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
   - take a look at ponyfoo.com for performance ideas
   - revisit package.json
+  - progressively enhanced tweet quotations
   - tags to articles
   - projects page
   - consider taking a look at some HTML elements and putting them in components article and using them

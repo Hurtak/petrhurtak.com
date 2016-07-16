@@ -226,7 +226,7 @@ visible: true
   <p>Some text, <xmp><h1>hello</h1></xmp>.</p>
 
   <!-- multiline code -->
-  <pre><xmp data-lang="html">
+  <pre><xmp data-lang="javascript">
     function foo (bar) {
       return bar * 2
     }

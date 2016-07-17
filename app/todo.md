@@ -28,6 +28,7 @@
   - take a look at ponyfoo.com for performance ideas
   - revisit package.json
   - progressively enhanced tweet quotations
+  - consider having install script which would create www/ www/log/ and others, instead of having these folders in git with .gitkeep
   - tags to articles
   - projects page
   - consider taking a look at some HTML elements and putting them in components article and using them

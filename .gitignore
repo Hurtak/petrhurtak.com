@@ -1,4 +1,6 @@
 .vscode/
-app/www/
 app/node_modules/
 app/src/config/config-production.js
+app/www/log/*
+app/www/articles/*
+!.gitkeep

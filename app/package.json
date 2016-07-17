@@ -32,7 +32,8 @@
     "url": "https://github.com/Hurtak/blog"
   },
   "scripts": {
-    "start": "export NODE_ENV=production && node dist/server/index.js"
+    "start": "export NODE_ENV=production && node dist/server/index.js",
+    "test": "ava src/test/**/*.js"
   },
   "author": "Petr Huřťák",
   "license": "GPL-3.0",

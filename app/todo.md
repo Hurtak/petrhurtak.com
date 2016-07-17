@@ -48,6 +48,11 @@
     - if all pages are html valid
     - detect 404 links
     - automatically git fetch changes and update new articles
+  -ci
+    - read docs https://docs.travis-ci.com/user/languages/javascript-with-nodejs (notifications when it fails?)
+    - have CI job which will run all article validity checks
+    - check if article links are not 404
+    - npm outdated check
 
 - Articles
   - currently html of code blocks is parsed and we cannot get raw html? so `<h2>` will become `<h2></h2>`, maybe switch to jsdom?
@@ -58,7 +63,6 @@
     - and so on...
     - maybe refactor this into separate module?
     - maybe when checking html, when we find error -> add console.log describing the error
-    - have CI job which will run all these checks when we make commit or somebody makes pull request
   - post all articles to hacker news, reddit, twitter
     - provide links under article to hacker news and twitter discussion
     - have these links saved in front matter

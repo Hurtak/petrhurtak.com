@@ -25,7 +25,8 @@
     "babel-eslint": "6.1.2",
     "nodemon": "1.9.2",
     "pretty-error": "2.0.0",
-    "reset-css": "2.0.2011012603"
+    "reset-css": "2.0.2011012603",
+    "standard": "7.1.2"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,8 @@
   },
   "scripts": {
     "start": "export NODE_ENV=production && node dist/server/index.js",
-    "test": "ava src/test/**/*.js"
+    "test": "ava src/test/**/*.js",
+    "lint": "standard --verbose \"scripts/**/*.js\" \"src/**/*.js\""
   },
   "author": "Petr Huřťák",
   "license": "GPL-3.0",

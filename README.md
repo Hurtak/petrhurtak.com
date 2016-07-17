@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/Hurtak/blog.svg?branch=master)](https://travis-ci.org/Hurtak/blog)
-[![Dependency Status](https://david-dm.org/Hurtak/blog.svg)](https://david-dm.org/Hurtak/blog)
-[![devDependency Status](https://david-dm.org/Hurtak/blog/dev-status.svg)](https://david-dm.org/Hurtak/blog#info=devDependencies)
+[![Build Status](https://travis-ci.org/Hurtak/hurtak.cc.svg?branch=master)](https://travis-ci.org/Hurtak/hurtak.cc)
+[![Dependency Status](https://david-dm.org/Hurtak/hurtak.cc.svg)](https://david-dm.org/Hurtak/hurtak.cc)
+[![devDependency Status](https://david-dm.org/Hurtak/hurtak.cc/dev-status.svg)](https://david-dm.org/Hurtak/hurtak.cc#info=devDependencies)
 
 # blog
 

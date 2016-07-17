@@ -24,7 +24,7 @@ function isDirectoryNameCorrect (metadataDate, directoryName) {
   const [directoryYear, directoryMonth] = getDirectoryDate(directoryName)
 
   if (publicationYear !== directoryYear || publicationMonth !== directoryMonth) {
-    console.error(`publication_date in article.md yaml header is different from year or month directory ${ directoryName }`)
+    console.error(`publication_date in article.md yaml header is different from year or month directory ${directoryName}`)
     return false
   }
 

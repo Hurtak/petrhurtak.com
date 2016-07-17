@@ -4,7 +4,7 @@ node_js:
   - "6"
   - "5"
   - "4"
-before_script:
+before_install:
   - cd app
 script:
   - npm run test

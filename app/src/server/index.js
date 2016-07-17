@@ -6,9 +6,10 @@ const path = require('path')
 const fs = require('fs')
 
 const express = require('express')
-const expressMorgan = require('morgan')
-const expressResponseTime = require('response-time')
-const expressCompression = require('compression')
+const helmet = require('helmet') // TODO: article about all header this provides
+const morgan = require('morgan')
+const responseTime = require('response-time')
+const compression = require('compression')
 const nunjucks = require('nunjucks')
 
 const config = require('../config/config.js')
@@ -27,9 +28,10 @@ const logWriteStream = fs.createWriteStream(
   { flags: 'a' }
 )
 
-app.use(expressMorgan('short', { stream: logWriteStream }))
-app.use(expressResponseTime())
-app.use(expressCompression())
+app.use(helmet())
+app.use(morgan('short', { stream: logWriteStream }))
+app.use(responseTime())
+app.use(compression())
 
 // template config
 

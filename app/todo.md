@@ -58,6 +58,7 @@
     - and so on...
     - maybe refactor this into separate module?
     - maybe when checking html, when we find error -> add console.log describing the error
+    - have CI job which will run all these checks when we make commit or somebody makes pull request
   - post all articles to hacker news, reddit, twitter
     - provide links under article to hacker news and twitter discussion
     - have these links saved in front matter

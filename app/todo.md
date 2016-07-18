@@ -95,7 +95,6 @@
   - log unhandle exceptions and uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
   - node_modules folder only in debug mode?
   - test express, routes, database
-  - add code coverage to tests
   - merge article and debugArticle routes so they reuse most of the logic
   - change /debug route to route configurable in deb config
   - node turn on 'use strict' by default?

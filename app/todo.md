@@ -54,10 +54,11 @@
     - have CI job which will run all article validity checks
     - check if article links are not 404
     - npm outdated check
+    - https://www.npmjs.com/package/sloc-for-jenkins
 
 - Articles
   - currently html of code blocks is parsed and we cannot get raw html? so `<h2>` will become `<h2></h2>`, maybe switch to jsdom?
-  - in parseArticle funtion have functions which checks article for correctness
+  - in parseArticle function have functions which checks article for correctness
     - check if paragraphs start with capital letter and end with dot
     - check of headings start with capital letter
     - check YAML header for correctness

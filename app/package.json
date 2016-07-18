@@ -1,5 +1,5 @@
 {
-  "name": "hurtak.cz",
+  "name": "hurtak.cc",
   "version": "1.0.0",
   "description": "source code for hurtak.cc",
   "main": "src/server/index.js",
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Hurtak/blog"
+    "url": "https://github.com/Hurtak/hurtak.cc"
   },
   "scripts": {
     "start": "export NODE_ENV=production && node dist/server/index.js",
@@ -38,9 +38,9 @@
     "lint": "standard --verbose \"scripts/**/*.js\" \"src/**/*.js\""
   },
   "author": "Petr Huřťák",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Hurtak/blog/issues"
+    "url": "https://github.com/Hurtak/hurtak.cc/issues"
   },
   "standard": {
     "parser": "babel-eslint"

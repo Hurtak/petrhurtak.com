@@ -66,12 +66,8 @@ function trimCodeBlocks (htmlString) {
   $('code').each((index, element) => {
     let html = $(element).html()
 
-    while (html[0] === '\n') {
-      html = html.substr(1)
-    }
-    while (html[html.length - 1] === '\n') {
-      html = html.slice(0, -1)
-    }
+    html = html.replace(/^(\n|\r\n)+/, '')
+    html = html.replace(/(\n|\r\n)+$/, '')
 
     $(element).html(html)
   })

@@ -129,6 +129,17 @@ test('trimCodeBlocks', t => {
     '    return 1\n' +
     '  }</code>'
   )
+  t.deepEqual(fn(
+    '<code>\r\n' +
+    '  function hello () {\r\n' +
+    '    return 1\r\n' +
+    '  }\r\n' +
+    '</code>'
+  ),
+    '<code>  function hello () {\r\n' +
+    '    return 1\r\n' +
+    '  }</code>'
+  )
 })
 
 test('removeIndentationInCodeBlocks', t => {

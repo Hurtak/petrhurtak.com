@@ -13,7 +13,6 @@
   line-height: 1;
   margin-bottom: 1em;
   margin-top: 1.8em;
-  text-transform: uppercase;
 }
 
 .article h1 {
@@ -24,6 +23,22 @@
 
 .article h2 {
   font-size: var(--font-size-headline);
+  padding: var(--font-padding-headline);
+  line-height: var(--font-line-height-headline);
+  margin: 0;
+}
+
+.article h3 {
+  font-size: var(--font-size-sub-headlines);
+  padding: var(--font-padding-sub-headline);
+  line-height: var(--font-line-height-sub-headline);
+  margin: 0;
+}
+
+.article h2 {
+  font-size: var(--font-size-headline);
+  padding: var(--font-padding-headline);
+  margin: 0;
 }
 
 .article h3 {
@@ -38,6 +53,7 @@
   font-style: italic;
   display: block;
   margin-top: 0.2em;
+  margin-bottom: 2.8rem;
 }
 
 .article a {
@@ -58,12 +74,6 @@
 .article p,
 .article ul,
 .article ol {
-  margin-bottom: var(--paragraph-spacing);
-}
-
-.article p:first-of-type,
-.article ul:first-of-type,
-.article ol:first-of-type {
   margin-top: var(--paragraph-spacing);
 }
 
@@ -118,6 +128,18 @@
   box-decoration-break: clone;
 }
 
+.article pre {
+  margin: var(--paragraph-spacing) 0 0 0;
+}
+
+.article figure {
+  margin: 0;
+}
+
+.article blockquote p {
+  margin: 0;
+}
+
 .article pre > code {
   display: block;
   overflow: auto;
@@ -125,4 +147,24 @@
   border: 1px solid #ddd;
   border-radius: 3px;
   padding: 0.5em;
+}
+
+.article h2 + p,
+.article h3 + p,
+.article h2 + ul,
+.article h3 + ul,
+.article h2 + pre,
+.article h3 + pre,
+.article h2 + ol,
+.article h3 + ol {
+  margin-top: 0;
+}
+
+.article time + h2,
+.article time + h3,
+.article time + p,
+.article time + pre,
+.article time + ul,
+.article time + ol {
+  padding-top: 0;
 }

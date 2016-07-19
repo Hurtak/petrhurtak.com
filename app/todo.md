@@ -1,7 +1,6 @@
 # TODO
 
 ## NEXT RELEASE
-- smaller font size?
 - fix http://i.imgur.com/uAfDukK.png
 - use standard fonts (arial..)
 - finish CSS design

@@ -5,18 +5,25 @@
  */
 
 :root {
-  --font-size-title:          5.2rem; /* 5.2px */
-  --font-size-headline:       3.2rem; /* 3.2px */
-  --font-size-sub-headlines:  2.5rem; /* 2.5px */
-  --font-size-primary-text:   2.0rem; /* 2.0px */
-  --font-size-secondary-text: 1.6rem; /* 1.6px */
+  --content-width: 700px;
 
   --font-family-heading: Arial, sans-serif;
   --font-family-paragraph: Georgia, serif;
 
+  --font-size-title:          5.2rem; /* 5.2px */
+  --font-size-headline:       3.3rem; /* 3.2px */
+  --font-size-sub-headlines:  2.5rem; /* 2.5px */
+  --font-size-primary-text:   2.0rem; /* 2.0px */
+  --font-size-secondary-text: 1.6rem; /* 1.6px */
+
+  --font-padding-headline: 5.6rem 0 1.2rem;
+  --font-padding-sub-headline: 3.2rem 0 1.0rem;
+
+  --font-line-height-headline: 1.2;
+  --font-line-height-sub-headline: 1.3;
+
   --paragraph-line-height: 1.6;
   --paragraph-spacing: 1.5em;
-  --content-width: 700px;
 }
 
 html {

@@ -345,8 +345,8 @@ visible: true
   </thead>
   <tbody>
     <tr>
-      <td>"quoted 'text'"</td>
-      <td>“quoted ‘text’”</td>
+      <td>"a 'quoted' text"</td>
+      <td>“a ‘quoted’ text”</td>
       <td><xmp data-lang="html">&lsquo;</xmp> <xmp data-lang="html">&rsquo;</xmp> <xmp data-lang="html">&ldquo;</xmp> <xmp data-lang="html">&rdquo;</xmp></td>
     </tr>
     <tr>

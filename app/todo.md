@@ -1,9 +1,15 @@
 # TODO
 
 ## NEXT RELEASE
+- refactor article styles
+  - do something what medium does https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
 - fix http://i.imgur.com/uAfDukK.png
-- use standard fonts (arial..)
+- think of categories to prefix git commits
 - finish CSS design
+  - page header
+  - article header
+  - articles list page
+  - footer
   - inspiration
     - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/Material-I-II-opt.jpg
     - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/uefa-euro2016-belgium-opt.jpg
@@ -33,6 +39,7 @@
   - consider taking a look at some HTML elements and putting them in components article and using them
     - dl (dt dd)
     - date
+    - hr, something like medium?
     - kbd
     - abbr (http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_txt_abbr&stacked=h)
     - small
@@ -57,6 +64,7 @@
 
 - Articles
   - currently html of code blocks is parsed and we cannot get raw html? so `<h2>` will become `<h2></h2>`, maybe switch to jsdom?
+  - add gradient overlay on code blocks that overflow to y
   - in parseArticle function have functions which checks article for correctness
     - check if paragraphs start with capital letter and end with dot
     - check of headings start with capital letter

@@ -6,21 +6,20 @@
 }
 
 .article__title {
-  color: var(--color-font);
-  font-family: var(--font-family-heading);
-  font-size: var(--font-size-title);
-  font-weight: 400;
-  line-height: 1;
   margin-top: 1.2em;
+  font-size: var(--font-size-title);
+  line-height: var(--font-line-height-title);
+  font-family: var(--font-family-heading);
+  font-weight: 400;
+  color: var(--color-font);
 }
 
 .article__datetime {
-  font-style: italic;
-  display: block;
   margin-top: 0.2em;
-  font-family: var(--font-family-paragraph);
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
+  font-family: var(--font-family-paragraph);
+  font-style: italic;
 }
 
 /* Content */
@@ -32,44 +31,49 @@
 /* Headings */
 
 .article__content h2 {
-  color: var(--color-font);
-  font-family: var(--font-family-heading);
-  font-size: var(--font-size-headline);
-  font-weight: 400;
   padding: var(--font-padding-headline);
+  font-size: var(--font-size-headline);
   line-height: var(--font-line-height-headline);
+  font-family: var(--font-family-heading);
+  font-weight: 400;
+  color: var(--color-font);
 }
 
 .article__content h3 {
-  color: var(--color-font);
+  padding: var(--font-padding-headline-small);
+  font-size: var(--font-size-headline-small);
+  line-height: var(--font-line-height-headline-small);
   font-family: var(--font-family-heading);
   font-weight: 400;
-  font-size: var(--font-size-headline-small);
-  padding: var(--font-padding-headline-small);
-  line-height: var(--font-line-height-headline-small);
+  color: var(--color-font);
 }
 
-.article__content > *:first-child,
-.article__content h2 + *:not(h2):not(h3),
-.article__content h3 + *:not(h2):not(h3) {
-  /* Remove margin after heading, since headins has margin bottom */
-  margin-top: 0;
-  padding-top: 0;
+/* Paragraphs */
+
+.article__content p {
+  margin: var(--paragraph-spacing) 0 0 0;
+  font-size: var(--font-size-paragraph);
+  line-height: var(--font-line-height-paragraph);
+  font-family: var(--font-family-paragraph);
 }
 
 /* Small */
 
 .article__content small {
+  margin: var(--paragraph-spacing) 0 0 0;
   font-size: var(--font-size-paragraph-small);
+  line-height: var(--font-line-height-paragraph-small);
+  font-family: var(--font-family-paragraph);
+  color: var(--color-font);
 }
 
  /* Links */
 
 .article__content a {
   color: black;
-  text-decoration: none;
   border-bottom: 1px dotted var(--color-link-border);
   transition: 0.2s border ease-in-out;
+  text-decoration: none;
 }
 
 .article__content a:visited {
@@ -80,23 +84,15 @@
   border-bottom: 1px dotted black;
 }
 
-/* Paragraphs */
-
-.article__content p {
-  margin-top: var(--paragraph-spacing);
-  font-family: var(--font-family-paragraph);
-  font-size: var(--font-size-paragraph);
-  line-height: var(--font-line-height-paragraph);
-}
-
 /* Lists */
 
 .article__content ul,
 .article__content ol {
+  margin: var(--paragraph-spacing) 0 0 0;
   padding-left: 1em;
-  font-family: var(--font-family-paragraph);
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
+  font-family: var(--font-family-paragraph);
 }
 
 .article__content ul ul,
@@ -116,8 +112,8 @@
 }
 
 .article__content ul {
-  list-style-type: none;
   padding-left: 0em;
+  list-style-type: none;
 }
 
 .article__content ul li::before {
@@ -132,23 +128,19 @@
 }
 
 .article__content code {
-  background-color: #eee;
-  border: 1px solid #ddd;
-  border-radius: 3px;
   padding: 0.1em 0.2em;
-  -webkit-box-decoration-break: clone; /* TODO: remove once we no longer need it in chrome for development */
-  box-decoration-break: clone;
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
-  /* TODO */
+  background-color: #eee; /* TODO: move to variable? */
+  border: 1px solid #ddd; /* TODO: move to variable? */
+  border-radius: 3px;
+  -webkit-box-decoration-break: clone; /* TODO: remove once we no longer need it in chrome for development */
+  box-decoration-break: clone;
 }
 
 .article__content pre > code {
   display: block;
   overflow: auto;
-  background-color: #eee;
-  border: 1px solid #ddd;
-  border-radius: 3px;
   padding: 0.5em;
 }
 
@@ -156,12 +148,11 @@
 
 .article__content img {
   display: block;
-  margin-top: var(--paragraph-spacing);
+  margin: var(--paragraph-spacing) 0 0 0;
 }
 
 .article__content figure {
-  margin: 0;
-  margin-top: var(--paragraph-spacing);
+  margin: var(--paragraph-spacing) 0 0 0;
   font-family: var(--font-family-paragraph);
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
@@ -174,7 +165,7 @@
 /* Quotes */
 
 .article__content blockquote {
-  margin: 0;
+  margin: var(--paragraph-spacing) 0 0 0;
   padding-left: 1.5em;
   padding-right: 1.5em;
   border-left: 6px solid #ddd;
@@ -185,12 +176,27 @@
 
 .article__content blockquote p {
   margin: 0;
+  /*TODO multiple paragraphs in quote?*/
 }
 
 /* Table */
 
 .article__content table {
+  margin: var(--paragraph-spacing) 0 0 0;
   font-family: var(--font-family-paragraph);
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
+}
+
+/* Spacing between paragraphs and headings */
+
+.article__content > *:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.article__content h2 + *:not(h2):not(h3),
+.article__content h3 + *:not(h2):not(h3) {
+  /* Remove margin after heading, since headins has margin bottom */
+  margin-top: 0;
 }

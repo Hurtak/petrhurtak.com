@@ -6,7 +6,7 @@
 
 .menu__item {
   width: 25%;
-  font-size: var(--font-size-sub-headlines);
+  font-size: var(--font-size-headline-small);
   line-height: 2.4;
   text-align: center;
 }

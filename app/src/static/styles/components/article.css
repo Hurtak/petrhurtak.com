@@ -19,8 +19,8 @@
   display: block;
   margin-top: 0.2em;
   font-family: var(--font-family-paragraph);
-  font-size: var(--font-size-primary-text);
-  line-height: var(--paragraph-line-height);
+  font-size: var(--font-size-paragraph);
+  line-height: var(--font-line-height-paragraph);
 }
 
 /* Content */
@@ -44,15 +44,23 @@
   color: var(--color-font);
   font-family: var(--font-family-heading);
   font-weight: 400;
-  font-size: var(--font-size-sub-headlines);
-  padding: var(--font-padding-sub-headline);
-  line-height: var(--font-line-height-sub-headline);
+  font-size: var(--font-size-headline-small);
+  padding: var(--font-padding-headline-small);
+  line-height: var(--font-line-height-headline-small);
+}
+
+.article__content > *:first-child,
+.article__content h2 + *:not(h2):not(h3),
+.article__content h3 + *:not(h2):not(h3) {
+  /* Remove margin after heading, since headins has margin bottom */
+  margin-top: 0;
+  padding-top: 0;
 }
 
 /* Small */
 
 .article__content small {
-  font-size: var(--font-size-secondary-text);
+  font-size: var(--font-size-paragraph-small);
 }
 
  /* Links */
@@ -76,6 +84,9 @@
 
 .article__content p {
   margin-top: var(--paragraph-spacing);
+  font-family: var(--font-family-paragraph);
+  font-size: var(--font-size-paragraph);
+  line-height: var(--font-line-height-paragraph);
 }
 
 /* Lists */
@@ -84,8 +95,8 @@
 .article__content ol {
   padding-left: 1em;
   font-family: var(--font-family-paragraph);
-  font-size: var(--font-size-primary-text);
-  line-height: var(--paragraph-line-height);
+  font-size: var(--font-size-paragraph);
+  line-height: var(--font-line-height-paragraph);
 }
 
 .article__content ul ul,
@@ -127,8 +138,8 @@
   padding: 0.1em 0.2em;
   -webkit-box-decoration-break: clone; /* TODO: remove once we no longer need it in chrome for development */
   box-decoration-break: clone;
-  font-size: var(--font-size-primary-text);
-  line-height: var(--paragraph-line-height);
+  font-size: var(--font-size-paragraph);
+  line-height: var(--font-line-height-paragraph);
   /* TODO */
 }
 
@@ -152,12 +163,12 @@
   margin: 0;
   margin-top: var(--paragraph-spacing);
   font-family: var(--font-family-paragraph);
-  font-size: var(--font-size-primary-text);
-  line-height: var(--paragraph-line-height);
+  font-size: var(--font-size-paragraph);
+  line-height: var(--font-line-height-paragraph);
 }
 
 .article__content figure figcaption {
-  font-size: var(--font-size-secondary-text);
+  font-size: var(--font-size-paragraph-small);
 }
 
 /* Quotes */
@@ -168,8 +179,8 @@
   padding-right: 1.5em;
   border-left: 6px solid #ddd;
   font-family: var(--font-family-paragraph);
-  font-size: var(--font-size-primary-text);
-  line-height: var(--paragraph-line-height);
+  font-size: var(--font-size-paragraph);
+  line-height: var(--font-line-height-paragraph);
 }
 
 .article__content blockquote p {
@@ -180,15 +191,6 @@
 
 .article__content table {
   font-family: var(--font-family-paragraph);
-  font-size: var(--font-size-primary-text);
-  line-height: var(--paragraph-line-height);
-}
-
-/* Remove margin after heading, since headins has margin bottom */
-
-.article__content > *:first-child,
-.article__content h2 + *:not(h2):not(h3),
-.article__content h3 + *:not(h2):not(h3) {
-  margin-top: 0;
-  padding-top: 0;
+  font-size: var(--font-size-paragraph);
+  line-height: var(--font-line-height-paragraph);
 }

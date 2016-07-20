@@ -15,11 +15,11 @@
 }
 
 .article-preview__date {
-  font-size: var(--font-size-secondary-text);
+  font-size: var(--font-size-paragraph-small);
   font-family: var(--font-family-paragraph);
 }
 
 .article-preview__description {
-  font-size: var(--font-size-primary-text);
+  font-size: var(--font-size-paragraph);
   font-family: var(--font-family-paragraph);
 }

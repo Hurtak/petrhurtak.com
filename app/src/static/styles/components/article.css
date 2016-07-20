@@ -175,8 +175,12 @@
 }
 
 .article__content blockquote p {
+  /* TODO: add paragraph spacing between paragraphs? */
   margin: 0;
-  /*TODO multiple paragraphs in quote?*/
+}
+
+.article__content blockquote footer {
+  margin-top: 1em;
 }
 
 /* Table */

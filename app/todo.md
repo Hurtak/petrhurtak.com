@@ -1,11 +1,8 @@
 # TODO
 
 ## NEXT RELEASE
-- line height title
-- line height paragraph small
 - fine tune code blocks colors
 - move code block colors into variables
-- refactor article styles
   - do something what medium does https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
 - fix http://i.imgur.com/uAfDukK.png
 - think of categories to prefix git commits

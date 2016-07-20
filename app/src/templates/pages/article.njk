@@ -7,17 +7,23 @@
 {% block content %}
 
   <article class="article">
-    <h1>
-      {{ title }}
-    </h1>
-    <time
-      datetime="{{ date | datetimeAttribute }}"
-      title="{{ date | fullDate }}"
-    >
-      {{ date | dateHowLongBefore }}
-    </time>
 
-    {{ article | safe }}
+    <div class="article__header">
+      <h1 class="article__title">
+        {{ title }}
+      </h1>
+      <time
+        class="article__datetime"
+        datetime="{{ date | datetimeAttribute }}"
+        title="{{ date | fullDate }}"
+      >
+        {{ date | dateHowLongBefore }}
+      </time>
+    </div>
+
+    <div class="article__content">
+      {{ article | safe }}
+    </div>
 
   </article>
 

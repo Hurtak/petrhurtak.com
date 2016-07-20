@@ -4,122 +4,126 @@
   line-height: var(--paragraph-line-height);
 }
 
-.article h1,
-.article h2,
-.article h3 {
+/* Header */
+
+.article__header {
+  display: flex;
+  flex-direction: column;
+}
+
+.article__title {
   color: var(--color-font);
   font-family: var(--font-family-heading);
+  font-size: var(--font-size-title);
   font-weight: 400;
   line-height: 1;
-  margin-bottom: 1em;
-  margin-top: 1.8em;
-}
-
-.article h1 {
-  font-size: var(--font-size-title);
   margin-top: 1.2em;
-  margin-bottom: 0;
 }
 
-.article h2 {
+.article__datetime {
+  font-style: italic;
+  display: block;
+  margin-top: 0.2em;
+}
+
+/* Content */
+
+.article__content {
+  margin-top: 2.8rem;
+}
+
+/* Headings */
+
+.article__content h2 {
+  color: var(--color-font);
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-headline);
+  font-weight: 400;
   padding: var(--font-padding-headline);
   line-height: var(--font-line-height-headline);
   margin: 0;
 }
 
-.article h3 {
+.article__content h3 {
+  color: var(--color-font);
+  font-family: var(--font-family-heading);
+  font-weight: 400;
   font-size: var(--font-size-sub-headlines);
   padding: var(--font-padding-sub-headline);
   line-height: var(--font-line-height-sub-headline);
   margin: 0;
 }
 
-.article h2 {
-  font-size: var(--font-size-headline);
-  padding: var(--font-padding-headline);
-  margin: 0;
-}
+/* Texts */
 
-.article h3 {
-  font-size: var(--font-size-sub-headlines);
-}
-
-.article small {
+.article__content small {
   font-size: var(--font-size-secondary-text);
 }
 
-.article time {
-  font-style: italic;
-  display: block;
-  margin-top: 0.2em;
-  margin-bottom: 2.8rem;
-}
-
-.article a {
+.article__content a {
   color: black;
   text-decoration: none;
   border-bottom: 1px dotted var(--color-link-border);
   transition: 0.2s border ease-in-out;
 }
 
-.article a:visited {
+.article__content a:visited {
   color: black;
 }
 
-.article a:hover {
+.article__content a:hover {
   border-bottom: 1px dotted black;
 }
 
-.article p,
-.article ul,
-.article ol {
+.article__content p {
   margin-top: var(--paragraph-spacing);
 }
 
-.article ul,
-.article ol {
+/* Lists */
+
+.article__content ul,
+.article__content ol {
+  margin-top: var(--paragraph-spacing);
+}
+
+.article__content ul,
+.article__content ol {
   padding-left: 1em;
 }
 
-.article ul ul,
-.article ul ol,
-.article ol ul,
-.article ol ol {
+.article__content ul ul,
+.article__content ul ol,
+.article__content ol ul,
+.article__content ol ol {
   /* TODO: refactor importants */
   margin-top: 0!important;
   margin-bottom: 0!important;
   margin-left: 1em;
 }
 
-.article ul ol,
-.article ol ol {
+.article__content ul ol,
+.article__content ol ol {
   /* TODO: refactor */
   margin-left: 0;
 }
 
-.article ul {
+.article__content ul {
   list-style-type: none;
   padding-left: 0em;
 }
 
-.article ul li::before {
+.article__content ul li::before {
   content: "–";
   padding-right: 0.35em;
 }
 
-.article > *:last-child {
-  margin-bottom: 0;
+/* Code */
+
+.article__content pre {
+  margin: var(--paragraph-spacing) 0 0 0;
 }
 
-.article blockquote {
-  margin: 0;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
-  border-left: 6px solid #ddd;
-}
-
-.article code {
+.article__content code {
   background-color: #eee;
   border: 1px solid #ddd;
   border-radius: 3px;
@@ -128,19 +132,7 @@
   box-decoration-break: clone;
 }
 
-.article pre {
-  margin: var(--paragraph-spacing) 0 0 0;
-}
-
-.article figure {
-  margin: 0;
-}
-
-.article blockquote p {
-  margin: 0;
-}
-
-.article pre > code {
+.article__content pre > code {
   display: block;
   overflow: auto;
   background-color: #eee;
@@ -149,22 +141,33 @@
   padding: 0.5em;
 }
 
-.article h2 + p,
-.article h3 + p,
-.article h2 + ul,
-.article h3 + ul,
-.article h2 + pre,
-.article h3 + pre,
-.article h2 + ol,
-.article h3 + ol {
+/* Images */
+
+.article__content figure {
+  margin: 0;
+}
+
+/* Quotes */
+
+.article__content blockquote {
+  margin: 0;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  border-left: 6px solid #ddd;
+}
+
+.article__content blockquote p {
+  margin: 0;
+}
+
+/* Remove top spacing after heading, headings have their own padding bottom */
+
+.article__content h2 + *,
+.article__content h3 + * {
   margin-top: 0;
 }
 
-.article time + h2,
-.article time + h3,
-.article time + p,
-.article time + pre,
-.article time + ul,
-.article time + ol {
+.article__content > *:first-child {
   padding-top: 0;
+  margin-top: 0;
 }

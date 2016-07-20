@@ -88,37 +88,30 @@
 
 .article__content ul,
 .article__content ol {
-  margin: var(--paragraph-spacing) 0 0 0;
-  padding-left: 1em;
+  margin: var(--paragraph-spacing) 0 0 1em;
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
   font-family: var(--font-family-paragraph);
 }
 
-.article__content ul ul,
-.article__content ul ol,
-.article__content ol ul,
-.article__content ol ol {
-  /* TODO: refactor importants */
-  margin-top: 0!important;
-  margin-bottom: 0!important;
-  margin-left: 1em;
+.article__content li > ul,
+.article__content li > ol {
+  margin-top: 0;
 }
 
-.article__content ul ol,
-.article__content ol ol {
-  /* TODO: refactor */
-  margin-left: 0;
-}
-
+/* unordered lists do not have list-style-type: dash,
+   so we create it with absolute positioned ::before element */
 .article__content ul {
-  padding-left: 0em;
+  position: relative;
+  margin-left: 1em;
   list-style-type: none;
 }
 
 .article__content ul li::before {
   content: "–";
-  padding-right: 0.35em;
+  display: block;
+  position: absolute;
+  transform: translateX(-2rem);
 }
 
 /* Code */
@@ -131,8 +124,8 @@
   padding: 0.1em 0.2em;
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
-  background-color: #eee; /* TODO: move to variable? */
-  border: 1px solid #ddd; /* TODO: move to variable? */
+  background-color: #eee;
+  border: 1px solid #ddd;
   border-radius: 3px;
   -webkit-box-decoration-break: clone; /* TODO: remove once we no longer need it in chrome for development */
   box-decoration-break: clone;

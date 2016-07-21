@@ -5,4 +5,7 @@
   --color-background: #fff;
   --color-font: #333;
   --color-link-border: rgba(0, 0, 0, 0.3);
+  --color-code-border: #ddd;
+  --color-code-background: rgb(245, 245, 245);
+  --color-quote-border: #ddd;
 }

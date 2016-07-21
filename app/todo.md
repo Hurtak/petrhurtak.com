@@ -1,9 +1,6 @@
 # TODO
 
 ## NEXT RELEASE
-- fine tune code blocks colors
-- move code block colors into variables
-  - do something what medium does https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
 - fix http://i.imgur.com/uAfDukK.png
 - code snippet tool
   - be able to resize
@@ -20,6 +17,7 @@
     - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/Material-I-II-opt.jpg
     - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/uefa-euro2016-belgium-opt.jpg
     - https://www.google.cz/search?hl=cs&tbm=isch&sa=1&q=mirrors+edge+interior
+    - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
 - buy domains
 - put this damn thing on the internet
 - add comments

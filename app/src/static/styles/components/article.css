@@ -1,4 +1,6 @@
-/* Header */
+/*
+ * header
+ */
 
 .article__header {
   display: flex;
@@ -22,13 +24,17 @@
   font-style: italic;
 }
 
-/* Content */
+/*
+ * content
+ */
 
 .article__content {
   margin-top: 2.8rem;
 }
 
-/* Headings */
+/*
+ * headings
+ */
 
 .article__content h2 {
   padding: var(--font-padding-headline);
@@ -48,7 +54,9 @@
   color: var(--color-font);
 }
 
-/* Paragraphs */
+/*
+ * paragraphs
+ */
 
 .article__content p {
   margin: var(--paragraph-spacing) 0 0 0;
@@ -57,7 +65,9 @@
   font-family: var(--font-family-paragraph);
 }
 
-/* Small */
+/*
+ * small
+ */
 
 .article__content small {
   margin: var(--paragraph-spacing) 0 0 0;
@@ -67,7 +77,9 @@
   color: var(--color-font);
 }
 
- /* Links */
+/*
+ * Links
+ */
 
 .article__content a {
   color: black;
@@ -84,7 +96,9 @@
   border-bottom: 1px dotted black;
 }
 
-/* Lists */
+/*
+ * Lists
+ */
 
 .article__content ul,
 .article__content ol {
@@ -99,8 +113,7 @@
   margin-top: 0;
 }
 
-/* unordered lists do not have list-style-type: dash,
-   so we create it with absolute positioned ::before element */
+/* unordered lists do not have list-style-type: dash, so we create it with absolute positioned ::before element */
 .article__content ul {
   position: relative;
   margin-left: 1em;
@@ -114,7 +127,9 @@
   transform: translateX(-2rem);
 }
 
-/* Code */
+/*
+ * code
+ */
 
 .article__content pre {
   margin: var(--paragraph-spacing) 0 0 0;
@@ -124,8 +139,8 @@
   padding: 0.1em 0.2em;
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
-  background-color: #eee;
-  border: 1px solid #ddd;
+  background-color: var(--color-code-background);
+  border: 1px solid var(--color-code-border);
   border-radius: 3px;
   -webkit-box-decoration-break: clone; /* TODO: remove once we no longer need it in chrome for development */
   box-decoration-break: clone;
@@ -137,7 +152,9 @@
   padding: 0.5em;
 }
 
-/* Images */
+/*
+ * images
+ */
 
 .article__content img {
   display: block;
@@ -155,13 +172,15 @@
   font-size: var(--font-size-paragraph-small);
 }
 
-/* Quotes */
+/*
+ * quotes
+ */
 
 .article__content blockquote {
   margin: var(--paragraph-spacing) 0 0 0;
   padding-left: 1.5em;
   padding-right: 1.5em;
-  border-left: 6px solid #ddd;
+  border-left: 6px solid var(--color-quote-border);
   font-family: var(--font-family-paragraph);
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
@@ -176,7 +195,9 @@
   margin-top: 1em;
 }
 
-/* Table */
+/*
+ * table
+ */
 
 .article__content table {
   margin: var(--paragraph-spacing) 0 0 0;
@@ -185,7 +206,9 @@
   line-height: var(--font-line-height-paragraph);
 }
 
-/* Spacing between paragraphs and headings */
+/*
+ * spacing between paragraphs and headings
+ */
 
 .article__content > *:first-child {
   margin-top: 0;
@@ -194,6 +217,6 @@
 
 .article__content h2 + *:not(h2):not(h3),
 .article__content h3 + *:not(h2):not(h3) {
-  /* Remove margin after heading, since headins has margin bottom */
+  /* remove margin after heading, since headins has margin bottom */
   margin-top: 0;
 }

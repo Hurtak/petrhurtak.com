@@ -1,13 +1,11 @@
 # TODO
 
 ## NEXT RELEASE
-- fix http://i.imgur.com/uAfDukK.png
 - code snippet tool
   - be able to resize
   - show css / html / js / result
   - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippe which would be just used instead of inspected how it was done. On the other hand, some css layout example would be useful to have easily avaliable button to show what is the html / css, and also way to resize
   - have a way to display example fullscreen like kod.jecas.cz?
-- think of categories to prefix git commits
 - finish CSS design
   - page header
   - article header
@@ -89,6 +87,9 @@
     - id's are unique
     - directory month/year fits the publication date directories
   - flatten directory structure, just use years directories
+  - add rel="noopener" to links to other domains
+    - https://jakearchibald.com/2016/performance-benefits-of-rel-noopener/
+    - write article about this
   - refactor styles
   - add article footer with
     - share on twitter and facebook

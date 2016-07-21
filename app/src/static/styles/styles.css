@@ -8,7 +8,7 @@
  * resets & shared styles
  */
 @import '/static/styles/shared/resets.css';
-@import '/static/styles/shared/variables.css';
+@import '/static/styles/shared/colors.css';
 @import '/static/styles/shared/typography.css';
 
 /*

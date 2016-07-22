@@ -14,7 +14,8 @@ const addCommonData = data => {
     currentYear: new Date().getFullYear(),
     siteUrl: 'https://hurtak.cc',
     siteDomain: 'hurtak.cc',
-    siteProtocol: 'https://'
+    siteProtocol: 'https://',
+    debug: false
   }
 
   return Object.assign({}, commonData, data)
@@ -69,7 +70,8 @@ const debug = (req, res) => {
 
   const data = addCommonData({
     articles: metadata,
-    debugUrlPrefix: 'debug/'
+    debugUrlPrefix: 'debug/',
+    debug: true
   })
 
   res.render('pages/index.njk', data)
@@ -88,7 +90,8 @@ const debugArticle = (req, res) => {
   const data = addCommonData({
     title: fsArticle.metadata.title,
     date: fsArticle.metadata.publication_date,
-    article: fsArticle.html
+    article: fsArticle.html,
+    debug: true
   })
 
   res.render('pages/article.njk', data)

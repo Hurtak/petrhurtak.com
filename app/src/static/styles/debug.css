@@ -1,0 +1,20 @@
+/*
+ * In debug mode we include css resets which forces us to style properties
+ * which could be normally handled by default browser styles. Then we can
+ * compare production mode with developemnt, they should both look the same.
+ * This should lead to better reusability of components and more consistent
+ * look across browsers, since we are not relying on browser default styles.
+ */
+
+@import '/static/node_modules/reset-css/reset.css';
+
+*,
+*:focus,
+*:active,
+*:hover {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	background: none;
+}

@@ -2,6 +2,7 @@
  * libraries
  */
 @import '/static/node_modules/normalize.css/normalize.css';
+@import '/static/node_modules/highlight.js/styles/xcode.css';
 
 /*
  * resets & shared styles
@@ -48,4 +49,3 @@
   }
 }
  */
-

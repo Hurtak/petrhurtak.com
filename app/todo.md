@@ -1,10 +1,6 @@
 # TODO
 
 ## NEXT RELEASE
-- use local copy of highlight.js css style
-  - can we load styles asynchronously?
-    - putting link tag in body will do this in some newer versions of chrome
-  - article about this
 - code snippet tool
   - be able to resize
   - show css / html / js / result
@@ -143,7 +139,10 @@
   - add compilation process for static files
   - consider loading images with javascript with <noscript> fallback?
   - fine tune "published x days ago"
-  - start using mixins css http://zeke.sikelianos.com/css-from-the-future/
+  - start using mixins css
+    - http://zeke.sikelianos.com/css-from-the-future/
+    - convert from typography variables to typography mixins
+    - some resets mixins?
   - consider adding critical css
   - sprites for images/icons
   - provide rss1, rss2 and atom feeds

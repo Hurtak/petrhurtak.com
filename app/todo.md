@@ -1,6 +1,11 @@
 # TODO
 
 ## NEXT RELEASE
+- remove css reset and have our own css reset?
+- use local copy of highlight.js css style
+  - can we load styles asynchronously?
+    - putting link tag in body will do this in some newer versions of chrome
+  - article about this
 - code snippet tool
   - be able to resize
   - show css / html / js / result
@@ -43,6 +48,7 @@
     - date
     - hr, something like medium?
     - kbd
+    - q (quotes: none; or have our own quotes with ::after and ::before, if we would have our own quotes, add note into typography chapter of components article)
     - abbr (http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_txt_abbr&stacked=h)
     - small
     - itemprop attribute

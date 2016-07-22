@@ -2,6 +2,8 @@
   display: flex;
   list-style-type: none;
   justify-content: center; /* TODO remove when items fill 100% */
+  margin: 0;
+  padding: 0;
 }
 
 .menu__item {

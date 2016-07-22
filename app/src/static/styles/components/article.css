@@ -8,7 +8,7 @@
 }
 
 .article__title {
-  margin-top: 1.2em;
+  margin: 1.2em 0 0 0;
   font-size: var(--font-size-title);
   line-height: var(--font-line-height-title);
   font-family: var(--font-family-heading);
@@ -37,6 +37,7 @@
  */
 
 .article__content h2 {
+  margin: 0;
   padding: var(--font-padding-headline);
   font-size: var(--font-size-headline);
   line-height: var(--font-line-height-headline);
@@ -46,6 +47,7 @@
 }
 
 .article__content h3 {
+  margin: 0;
   padding: var(--font-padding-headline-small);
   font-size: var(--font-size-headline-small);
   line-height: var(--font-line-height-headline-small);
@@ -103,6 +105,7 @@
 .article__content ul,
 .article__content ol {
   margin: var(--paragraph-spacing) 0 0 1em;
+  padding: 0;
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
   font-family: var(--font-family-paragraph);

@@ -13,6 +13,7 @@
     "highlight.js": "9.5.0",
     "html-minifier": "3.0.1",
     "is-absolute-url": "2.0.0",
+    "reset-css": "2.0.2011012603",
     "lodash": "4.13.1",
     "morgan": "1.7.0",
     "mysql": "2.11.1",
@@ -27,7 +28,6 @@
     "nodemon": "1.9.2",
     "nyc": "7.0.0",
     "pretty-error": "2.0.0",
-    "reset-css": "2.0.2011012603",
     "standard": "7.1.2"
   },
   "repository": {

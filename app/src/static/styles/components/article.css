@@ -116,6 +116,10 @@
   margin-top: 0;
 }
 
+.article__content ol {
+  list-style-type: decimal;
+}
+
 /* unordered lists do not have list-style-type: dash, so we create it with absolute positioned ::before element */
 .article__content ul {
   position: relative;

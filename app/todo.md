@@ -1,8 +1,6 @@
 # TODO
 
 ## NEXT RELEASE
-- resets.css line 24 remove these styles!
-- remove css reset and have our own css reset?
 - use local copy of highlight.js css style
   - can we load styles asynchronously?
     - putting link tag in body will do this in some newer versions of chrome

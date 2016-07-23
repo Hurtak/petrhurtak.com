@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Example snippet</title>
+
+  <style>
+    h1 {
+      color: red;
+    }
+  </style>
+
+</head>
+<body>
+
+  <h1>Hello</h1>
+
+  <script>
+    console.log('console log')
+
+    setTimeout(() => {
+      const el = document.querySelector('h1')
+      el.innerHTML += ' world'
+    }, 1000)
+  </script>
+
+</body>
+</html>

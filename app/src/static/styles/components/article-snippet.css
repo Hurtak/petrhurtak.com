@@ -1,0 +1,18 @@
+.snippet {
+  position: relative;
+  display: flex;
+  margin: var(--paragraph-spacing) 0 0 0;
+  justify-content: center;
+  width: 100%;
+  height: 20rem;
+  background-color:lightblue;
+  border: 0!important; /* TODO: remove important */
+}
+
+.snippet::after {
+  content: "Live code snippet is loading";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

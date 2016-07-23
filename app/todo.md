@@ -105,6 +105,7 @@
   - figure out how to do dev/production enviroment
     - right now we have /debug prefix for articles, but determining based on the enviroment variables would be better
       - enviroment variable for debug mode
+    - displaying of hidden articles could be with secred query parameter
   - https
   - pretty 500 page, figure out how to do this in express
   - https://www.sitepoint.com/how-to-create-a-node-js-cluster-for-speeding-up-your-apps/

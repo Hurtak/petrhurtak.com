@@ -102,7 +102,11 @@
   - replace @see links in code with my own articles
 
 - Backend
+  - figure out how to do dev/production enviroment
+    - right now we have /debug prefix for articles, but determining based on the enviroment variables would be better
+      - enviroment variable for debug mode
   - https
+  - pretty 500 page, figure out how to do this in express
   - https://www.sitepoint.com/how-to-create-a-node-js-cluster-for-speeding-up-your-apps/
   - fork processes to number of processors http://shapeshed.com/uncaught-exceptions-in-node/
   - log unhandle exceptions and uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/

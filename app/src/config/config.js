@@ -1,18 +1,12 @@
 'use strict'
 
-let config = {}
-
-// enviroment dependent configuration (passwords, url's)
-
-if (process.env.NODE_ENV === 'production') {
-  config = require('./config-production.js')
-} else {
-  config = require('./config-development.js')
+module.exports = {
+  database: {
+    host: process.env.NODE_DB_HOST || 'localhost',
+    database: process.env.NODE_DB_NAME || 'hurtak_blog',
+    user: process.env.NODE_DB_USER || 'root',
+    password: process.env.NODE_DB_PASS || '',
+    multipleStatements: true
+  },
+  port: 8000
 }
-
-// shared configuration
-
-config.database.multipleStatements = true
-config.port = 8000
-
-module.exports = config

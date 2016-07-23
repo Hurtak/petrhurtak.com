@@ -113,7 +113,7 @@ function parseArticle (articlePath) {
 
   article = utilsArticles.addIdsToHeadings(article)
 
-  article = utilsArticles.replaceRelativeImageUrls(article, articleDirectory)
+  article = utilsArticles.relativeUrlToAbsolute(article, 'img', 'src', articleDirectory)
 
   article = htmlMinifier.minify(article, {
     collapseWhitespace: true,

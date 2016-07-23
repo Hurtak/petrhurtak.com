@@ -123,7 +123,7 @@ function escapeAndHighlightCodeBlocks (htmlString) {
   return $.html()
 }
 
-function replaceRelativeImageUrls (htmlString, absolutePath) {
+function relativeUrlToAbsolute (htmlString, selector, attribute, absolutePath) {
   if (!absolutePath) {
     throw new Error('missing absolutePath paramenter')
   }
@@ -131,9 +131,9 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
   let $ = cheerioLoadWithouEscaping(htmlString)
 
   // replace relative img paths with absolute paths to images
-  $('img').each((_, element) => {
+  $(selector).each((_, element) => {
     const el = $(element)
-    const src = el.attr('src')
+    const src = el.attr(attribute)
 
     if (isAbsoluteUrl(src)) return
 
@@ -144,7 +144,7 @@ function replaceRelativeImageUrls (htmlString, absolutePath) {
       absolutePath = '/' + absolutePath
     }
 
-    el.attr('src', url.resolve(absolutePath, src))
+    el.attr(attribute, url.resolve(absolutePath, src))
   })
 
   return $.html()
@@ -165,6 +165,6 @@ module.exports = {
   trimCodeBlocks,
   removeIndentationInCodeBlocks,
   escapeAndHighlightCodeBlocks,
-  replaceRelativeImageUrls,
+  relativeUrlToAbsolute,
   isoStringToUtcDate
 }

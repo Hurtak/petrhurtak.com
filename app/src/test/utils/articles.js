@@ -213,15 +213,30 @@ test('escapeAndHighlightCodeBlocks', t => {
     `)
 })
 
-test('replaceRelativeImageUrls', t => {
-  const fn = utilsArticles.replaceRelativeImageUrls
+test('relativeUrlToAbsolute', t => {
+  const fn = utilsArticles.relativeUrlToAbsolute
 
-  t.throws(() => { fn('') })
-  t.throws(() => { fn('', '') })
+  t.throws(() => { fn('', '', '', '') })
 
-  t.deepEqual(fn('<img src="foo.png">', 'static'), '<img src="/static/foo.png">')
-  t.deepEqual(fn('<img src="foo.png">', '/static'), '<img src="/static/foo.png">')
-  t.deepEqual(fn('<img src="foo.png">', '/static/'), '<img src="/static/foo.png">')
+  // path combinations
+  t.deepEqual(fn('<img src="foo.png">', 'img', 'src', 'static'), '<img src="/static/foo.png">')
+  t.deepEqual(fn('<img src="foo.png">', 'img', 'src', '/static'), '<img src="/static/foo.png">')
+  t.deepEqual(fn('<img src="foo.png">', 'img', 'src', '/static/'), '<img src="/static/foo.png">')
+  t.deepEqual(fn('<img src="./foo.png">', 'img', 'src', 'static'), '<img src="/static/foo.png">')
+  t.deepEqual(fn('<img src="./foo.png">', 'img', 'src', '/static'), '<img src="/static/foo.png">')
+  t.deepEqual(fn('<img src="./foo.png">', 'img', 'src', '/static/'), '<img src="/static/foo.png">')
+
+  // multiple elements
+  t.deepEqual(fn(
+    '<img src="foo.png"><a href="bar.html">bar</a>', 'img', 'src', '/static/'),
+    '<img src="/static/foo.png"><a href="bar.html">bar</a>'
+  )
+
+  // more complicated selector
+  t.deepEqual(fn(
+    '<img src="img.png"><a class="foo" href="bar.html">bar</a>', '.foo', 'href', '/static'),
+    '<img src="img.png"><a class="foo" href="/static/bar.html">bar</a>'
+  )
 })
 
 test('isoStringToUtcDate', t => {

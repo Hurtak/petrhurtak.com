@@ -2,6 +2,11 @@
 
 ## NEXT RELEASE
 - code snippet tool
+  - 1 get snippet data
+  - 2 parse snippet data
+  - 3 save snippet data
+  - 4 write snippet data in templates
+  - 5 js snippet tool will display data
   - show css / html / js / result
   - be able to resize
   - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippe which would be just used instead of inspected how it was done. On the other hand, some css layout example would be useful to have easily avaliable button to show what is the html / css, and also way to resize

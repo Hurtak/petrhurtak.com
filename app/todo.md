@@ -54,14 +54,14 @@
   - decide what categories to use in commit messages
   - check if we are not using sync (readFileSync) functions anywhere
   - cron job to test
-    - if all pages are html valid
-    - detect 404 links
     - automatically git fetch changes and update new articles
   - CI
     - consider switching to some other ci tool (https://github.com/integrations), seems like Travis is not supporting multiple tasks
     - read docs https://docs.travis-ci.com/user/languages/javascript-with-nodejs (notifications when it fails?)
     - have CI job which will run all article validity checks
     - check if article links are not 404
+    - check if other page links are not 404
+    - if all pages are html valid
     - npm outdated check
     - https://www.npmjs.com/package/sloc-for-jenkins
 
@@ -112,7 +112,15 @@
   - fork processes to number of processors http://shapeshed.com/uncaught-exceptions-in-node/
   - log unhandle exceptions and uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
   - node_modules folder only in debug mode?
-  - test express, routes, database
+  - tests
+    - test express
+    - test routes
+    - test database
+    - code coverage > 50%
+    - synon.js to moc db/api calls?
+    - selenium tests
+      - with CI
+      - periodically on distribution page
   - merge article and debugArticle routes so they reuse most of the logic
   - change /debug route to route configurable in deb config
   - node turn on 'use strict' by default?

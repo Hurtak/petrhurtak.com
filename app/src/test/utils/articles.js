@@ -230,6 +230,10 @@ test('relativeUrlToAbsolute', t => {
   t.deepEqual(fn('<img src="/foo.png">', 'img', 'src', '/static'), '<img src="/foo.png">')
   t.deepEqual(fn('<img src="https://google.com/foo.png">', 'img', 'src', '/static'), '<img src="https://google.com/foo.png">')
 
+  // do not do any transformations in <code> blocks
+  t.deepEqual(fn('<img src="foo.png">', 'img', 'src', '/static'), '<img src="/static/foo.png">')
+  t.deepEqual(fn('<code><img src="foo.png"></code>', 'img', 'src', '/static'), '<code><img src="foo.png"></code>')
+
   // multiple elements
   t.deepEqual(fn(
     '<img src="foo.png"><a href="bar.html">bar</a>', 'img', 'src', '/static/'),

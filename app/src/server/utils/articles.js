@@ -11,6 +11,10 @@ function cheerioLoadWithouEscaping (htmlString) {
   return cheerio.load(htmlString, { decodeEntities: false })
 }
 
+function isElementInsideCodeBlock (cheerioElementObject) {
+  return cheerioElementObject.parent('code').length > 0
+}
+
 function addIdsToHeadings (htmlString) {
   let $ = cheerioLoadWithouEscaping(htmlString)
   let sameHeadingsCount = 0
@@ -18,8 +22,7 @@ function addIdsToHeadings (htmlString) {
   $('h2, h3').each((index, element) => {
     const el = $(element)
 
-    const insideCodeBlock = el.parent('code').length > 0
-    if (insideCodeBlock) return
+    if (isElementInsideCodeBlock(el)) return
 
     let id = el.text()
     if (!id.trim()) return
@@ -134,6 +137,8 @@ function relativeUrlToAbsolute (htmlString, selector, attribute, absolutePath) {
   $(selector).each((_, element) => {
     const el = $(element)
     const src = el.attr(attribute)
+
+    if (isElementInsideCodeBlock(el)) return
 
     if (isAbsoluteUrl(src)) return
 

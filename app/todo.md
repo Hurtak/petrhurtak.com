@@ -2,10 +2,11 @@
 
 ## NEXT RELEASE
 - code snippet tool
-  - be able to resize
   - show css / html / js / result
+  - be able to resize
   - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippe which would be just used instead of inspected how it was done. On the other hand, some css layout example would be useful to have easily avaliable button to show what is the html / css, and also way to resize
   - have a way to display example fullscreen like kod.jecas.cz?
+  - chapter about this into components
 
 - finish CSS design
   - page header

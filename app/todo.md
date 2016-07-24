@@ -74,7 +74,7 @@
     - check if paragraphs start with capital letter and end with dot
     - check of headings start with capital letter
     - check YAML header for correctness
-    - and so on...
+    - check that all relative url's start with `./` (or do not start with)
     - maybe refactor this into separate module?
     - maybe when checking html, when we find error -> add console.log describing the error
   - post all articles to hacker news, reddit, twitter

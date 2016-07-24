@@ -133,13 +133,12 @@ function relativeUrlToAbsolute (htmlString, selector, attribute, absolutePath) {
 
   let $ = cheerioLoadWithouEscaping(htmlString)
 
-  // replace relative img paths with absolute paths to images
+  // replace relative paths with absolute paths
   $(selector).each((_, element) => {
     const el = $(element)
     const src = el.attr(attribute)
 
     if (isElementInsideCodeBlock(el)) return
-
     if (isAbsoluteUrl(src)) return
 
     if (!absolutePath.endsWith('/')) {
@@ -150,6 +149,23 @@ function relativeUrlToAbsolute (htmlString, selector, attribute, absolutePath) {
     }
 
     el.attr(attribute, url.resolve(absolutePath, src))
+  })
+
+  return $.html()
+}
+
+function enhanceSnippetLinks (htmlString) {
+  let $ = cheerioLoadWithouEscaping(htmlString)
+
+  $('a[href^="./snippets/"]').each((_, element) => {
+    const el = $(element)
+    console.log(1)
+
+    const href = el.attr('href')
+    const fileName = href.split('/').reverse()[0]
+    const snippetName = fileName.split('.')[0]
+
+    el.attr('data-snippet', snippetName)
   })
 
   return $.html()
@@ -171,5 +187,6 @@ module.exports = {
   removeIndentationInCodeBlocks,
   escapeAndHighlightCodeBlocks,
   relativeUrlToAbsolute,
+  enhanceSnippetLinks,
   isoStringToUtcDate
 }

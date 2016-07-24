@@ -114,6 +114,9 @@ function parseArticle (articlePath) {
   article = utilsArticles.addIdsToHeadings(article)
 
   article = utilsArticles.relativeUrlToAbsolute(article, 'img', 'src', articleDirectory)
+
+  // TODO: think about merging these two together, or at least share css selector?
+  article = utilsArticles.enhanceSnippetLinks(article)
   article = utilsArticles.relativeUrlToAbsolute(article, 'a[href^="./snippets/"]', 'href', articleDirectory)
 
   article = htmlMinifier.minify(article, {

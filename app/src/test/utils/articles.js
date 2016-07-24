@@ -226,6 +226,10 @@ test('relativeUrlToAbsolute', t => {
   t.deepEqual(fn('<img src="./foo.png">', 'img', 'src', '/static'), '<img src="/static/foo.png">')
   t.deepEqual(fn('<img src="./foo.png">', 'img', 'src', '/static/'), '<img src="/static/foo.png">')
 
+  // absolute paths ignored
+  t.deepEqual(fn('<img src="/foo.png">', 'img', 'src', '/static'), '<img src="/foo.png">')
+  t.deepEqual(fn('<img src="https://google.com/foo.png">', 'img', 'src', '/static'), '<img src="https://google.com/foo.png">')
+
   // multiple elements
   t.deepEqual(fn(
     '<img src="foo.png"><a href="bar.html">bar</a>', 'img', 'src', '/static/'),
@@ -234,8 +238,8 @@ test('relativeUrlToAbsolute', t => {
 
   // more complicated selector
   t.deepEqual(fn(
-    '<img src="img.png"><a class="foo" href="bar.html">bar</a>', '.foo', 'href', '/static'),
-    '<img src="img.png"><a class="foo" href="/static/bar.html">bar</a>'
+    '<img src="img.png"><a href="example/foo.html">bar</a>', 'a[href^="example/"]', 'href', '/static'),
+    '<img src="img.png"><a href="/static/example/foo.html">bar</a>'
   )
 })
 

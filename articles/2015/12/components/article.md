@@ -402,4 +402,4 @@ visible: true
   </tbody>
 </table>
 
-<a class="snippet" href="./snippets/example.html">Live code example snippet</a>
+<a href="./snippets/example.html">Live code example snippet</a>

@@ -114,7 +114,7 @@ function parseArticle (articlePath) {
   article = utilsArticles.addIdsToHeadings(article)
 
   article = utilsArticles.relativeUrlToAbsolute(article, 'img', 'src', articleDirectory)
-  article = utilsArticles.relativeUrlToAbsolute(article, 'a.snippet', 'href', articleDirectory)
+  article = utilsArticles.relativeUrlToAbsolute(article, 'a[href^="./snippets/"]', 'href', articleDirectory)
 
   article = htmlMinifier.minify(article, {
     collapseWhitespace: true,

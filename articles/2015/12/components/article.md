@@ -357,7 +357,7 @@ visible: true
     <tr>
       <td>--, ---</td>
       <td>–, —</td>
-      <td><xmp data-lang="html">&ndash;</xmp>, <xmp data-lang="html">&mdash;</xmp></td>
+      <td><xmp data-lang="html">&ndash;</xmp> <xmp data-lang="html">&mdash;</xmp></td>
     </tr>
     <tr>
       <td>a -> b</td>
@@ -382,7 +382,7 @@ visible: true
     <tr>
       <td>1/2, 1/4, 3/4</td>
       <td>½, ¼, ¾</td>
-      <td><xmp data-lang="html">&half;</xmp>, <xmp data-lang="html">&frac14;</xmp>, <xmp data-lang="html">&frac34;</xmp></td>
+      <td><xmp data-lang="html">&half;</xmp> <xmp data-lang="html">&frac14;</xmp> <xmp data-lang="html">&frac34;</xmp></td>
     </tr>
     <tr>
       <td>(c) (C)</td>

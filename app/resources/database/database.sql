@@ -3,6 +3,8 @@
 SET NAMES utf8;
 SET time_zone = '+00:00';
 
+USE `hurtak_blog`;
+
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE `articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -31,15 +33,4 @@ CREATE TABLE `articles_content` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `fulltext`;
-CREATE TABLE `fulltext` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `article_id` int(11) NOT NULL,
-  `text` text COLLATE utf8_czech_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `article_id` (`article_id`),
-  CONSTRAINT `fulltext_ibfk_2` FOREIGN KEY (`article_id`) REFERENCES `articles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
-
-
--- 2016-07-25 20:21:12
+-- 2016-07-25 20:23:44

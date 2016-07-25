@@ -27,7 +27,7 @@ const notFound = (req, res) => {
 }
 
 const index = (req, res) => {
-  database.getAtricles().then(databaseArticles => {
+  database.getArticles().then(databaseArticles => {
     const data = addCommonData({
       articles: databaseArticles
     })
@@ -37,7 +37,7 @@ const index = (req, res) => {
 }
 
 const article = (req, res) => {
-  database.getAtricle(req.params.article).then(article => {
+  database.getArticle(req.params.article).then(article => {
     if (article) {
       const data = addCommonData({
         title: article.title,

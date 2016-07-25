@@ -28,7 +28,7 @@ function dbPromiseFactory (queryString, params = [], returnOneResults = false) {
 
 // articles functions
 
-function getAtricles () {
+function getArticles () {
   const query = `
     SELECT
       url,
@@ -45,7 +45,7 @@ function getAtricles () {
   return dbPromiseFactory(query)
 }
 
-function getAtricle (articleUrl) {
+function getArticle (articleUrl) {
   const query = `
     SELECT
       title,
@@ -163,8 +163,8 @@ const closeConnection = () => {
 }
 
 module.exports = {
-  getAtricles,
-  getAtricle,
+  getArticles,
+  getArticle,
   getIdByArticleUrl,
   insertArticleMetadata,
   updateArticleMetadata,

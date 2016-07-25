@@ -1,7 +1,6 @@
 'use strict'
 
 const path = require('path')
-const fs = require('fs')
 
 require('../src/server/debug.js')()
 const paths = require('../src/server/paths.js')
@@ -48,8 +47,8 @@ function uploadArticles () {
 
   let promisesRunning = articlesDirectories.length + 1 // +1 for delete articles promise
 
-  for (let articleDirectory of articlesDirectories) {
-    const articleUrl = articleDirectory.split(path.sep).reverse()[0]
+  for (const articleDirectory of articlesDirectories) {
+    const articleUrl = [...articleDirectory.split(path.sep)].reverse()[0]
 
     const data = articles.parseArticle(path.join(articleDirectory, 'article.md'))
     const metadata = data.metadata

@@ -2,8 +2,6 @@
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
-SET foreign_key_checks = 0;
-SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE `articles` (
@@ -22,6 +20,17 @@ CREATE TABLE `articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 
+DROP TABLE IF EXISTS `articles_content`;
+CREATE TABLE `articles_content` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_article` int(11) NOT NULL,
+  `html` mediumtext NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_article` (`id_article`),
+  CONSTRAINT `articles_content_ibfk_1` FOREIGN KEY (`id_article`) REFERENCES `articles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 DROP TABLE IF EXISTS `fulltext`;
 CREATE TABLE `fulltext` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -33,4 +42,4 @@ CREATE TABLE `fulltext` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 
--- 2016-07-15 19:20:24
+-- 2016-07-25 20:21:12

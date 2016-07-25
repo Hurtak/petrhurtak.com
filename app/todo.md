@@ -1,12 +1,17 @@
 # TODO
 
 ## NEXT RELEASE
+- get atricle typo
+- put compiled article content into database
+- 1 get snippet data
+- 2 parse snippet data
+- 3 save snippet data
+- 4 write snippet data in templates
+- 5 js snippet tool will display data
+
+- think of a ways how to unify debug mode with production mode
+
 - code snippet tool
-  - 1 get snippet data
-  - 2 parse snippet data
-  - 3 save snippet data
-  - 4 write snippet data in templates
-  - 5 js snippet tool will display data
   - show css / html / js / result
   - be able to resize
   - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippe which would be just used instead of inspected how it was done. On the other hand, some css layout example would be useful to have easily avaliable button to show what is the html / css, and also way to resize
@@ -117,6 +122,14 @@
   - pretty 500 page, figure out how to do this in express
   - https://www.sitepoint.com/how-to-create-a-node-js-cluster-for-speeding-up-your-apps/
   - fork processes to number of processors http://shapeshed.com/uncaught-exceptions-in-node/
+  - database
+    - COLLATE=utf8_czech_ci; -> use something for english
+    - mediumtext type for article html, what is it?
+    - is the date column properly set in MySQL database? also is the database timezone correctly set?
+    - correctly set encoding on all tables
+    - check if indexes are set correctly
+    - use transactions (in update script)
+    - use named parameters and pass data as object instead of array?
   - log unhandle exceptions and uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
   - node_modules folder only in debug mode?
   - tests
@@ -134,7 +147,6 @@
   - decide when to use const x = () => {} and when to use function x () {}
   - prereload headers
   - redirect from /article/ to /article (301?)
-  - is the date column properly set in MySQL database? also is the database timezone correctly set?
   - 404
     - log 404s
     - recommend some content based on searched query

@@ -159,7 +159,6 @@ function enhanceSnippetLinks (htmlString) {
 
   $('a[href^="./snippets/"]').each((_, element) => {
     const el = $(element)
-    console.log(1)
 
     const href = el.attr('href')
     const fileName = href.split('/').reverse()[0]

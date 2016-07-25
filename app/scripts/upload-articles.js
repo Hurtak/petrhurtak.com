@@ -53,19 +53,11 @@ function uploadArticles () {
 
     const data = articles.parseArticle(path.join(articleDirectory, 'article.md'))
     const metadata = data.metadata
+    const articleHtml = data.html
 
     if (!isDirectoryNameCorrect(metadata.publication_date, articleDirectory)) {
       return
     }
-
-    const articleContent = data.html
-    const filename = path.join(paths.articlesCache, articleUrl + '.html')
-    fs.writeFile(filename, articleContent, (err) => {
-      if (err) {
-        console.log(err)
-      }
-      console.log(`${filename} cache file written`)
-    })
 
     allArticlesUrls.push(articleUrl)
 
@@ -86,13 +78,21 @@ function uploadArticles () {
       if (articleId === null) { // new article which is not in db
         database.insertArticleMetadata(dbData).then(dbResponse => {
           // id: dbResponse.insertId
-          console.log(`${date} article ${articleUrl} INSERTED.`)
-          promisesRunning = checkIfDone(promisesRunning)
+          console.log(`${date} article ${articleUrl} metadata INSERTED.`)
+
+          database.insertArticleHtml([dbResponse.insertId, articleHtml]).then(dbResponse => {
+            console.log(`${date} article ${articleUrl} html INSERTED.`)
+            promisesRunning = checkIfDone(promisesRunning)
+          })
         })
       } else {
         database.updateArticleMetadata([...dbData, articleId.id]).then(() => {
-          console.log(`${date} article ${articleUrl} updated.`)
-          promisesRunning = checkIfDone(promisesRunning)
+          console.log(`${date} article ${articleUrl} metadata updated.`)
+
+          database.updateArticleHtml([articleHtml, articleId.id]).then(dbResponse => {
+            console.log(`${date} article ${articleUrl} html updated.`)
+            promisesRunning = checkIfDone(promisesRunning)
+          })
         })
       }
     })

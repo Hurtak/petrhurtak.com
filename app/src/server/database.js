@@ -30,7 +30,8 @@ function dbPromiseFactory (queryString, params = [], returnOneResults = false) {
 
 function getAtricles () {
   const query = `
-    SELECT url,
+    SELECT
+      url,
       title,
       description,
       directory,
@@ -46,11 +47,13 @@ function getAtricles () {
 
 function getAtricle (articleUrl) {
   const query = `
-    SELECT id,
+    SELECT
       title,
       publication_date,
-      url
+      url,
+      html
     FROM articles
+    LEFT JOIN articles_html ON articles.id = articles_html.id_article
     WHERE visible = 1
     AND url = ?
   `
@@ -90,6 +93,27 @@ function updateArticleMetadata (params) {
       publication_date = ?,
       last_update = ?,
       visible = ?
+    WHERE id = ?
+  `
+
+  return dbPromiseFactory(query, params)
+}
+
+function insertArticleHtml (params) {
+  const query = `
+    INSERT INTO articles_html
+      (id_article, html)
+    VALUES
+      (?, ?)
+  `
+
+  return dbPromiseFactory(query, params)
+}
+
+function updateArticleHtml (params) {
+  const query = `
+    UPDATE articles_html
+    SET html = ?
     WHERE id = ?
   `
 
@@ -144,6 +168,8 @@ module.exports = {
   getIdByArticleUrl,
   insertArticleMetadata,
   updateArticleMetadata,
+  insertArticleHtml,
+  updateArticleHtml,
   deleteArticles,
   getRSS,
   getHumansTxt,

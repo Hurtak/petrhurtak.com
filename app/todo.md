@@ -1,8 +1,6 @@
 # TODO
 
 ## NEXT RELEASE
-- get atricle typo
-- put compiled article content into database
 - 1 get snippet data
 - 2 parse snippet data
 - 3 save snippet data

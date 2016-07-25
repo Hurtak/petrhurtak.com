@@ -80,6 +80,7 @@ function uploadArticles () {
           // id: dbResponse.insertId
           console.log(`${date} article ${articleUrl} metadata INSERTED.`)
 
+          // TODO: check if article html exists?
           database.insertArticleHtml([dbResponse.insertId, articleHtml]).then(dbResponse => {
             console.log(`${date} article ${articleUrl} html INSERTED.`)
             promisesRunning = checkIfDone(promisesRunning)
@@ -89,6 +90,7 @@ function uploadArticles () {
         database.updateArticleMetadata([...dbData, articleId.id]).then(() => {
           console.log(`${date} article ${articleUrl} metadata updated.`)
 
+          // TODO: check if article html exists?
           database.updateArticleHtml([articleHtml, articleId.id]).then(dbResponse => {
             console.log(`${date} article ${articleUrl} html updated.`)
             promisesRunning = checkIfDone(promisesRunning)

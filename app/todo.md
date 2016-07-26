@@ -1,15 +1,27 @@
 # TODO
 
 ## NEXT RELEASE
+- have snippets CSS of snippets ability to turn off decoration styles
+  - for example we are showing some css layout, but we also need to add some background color to the layout parts so it's easily reckognizable, but for the layout itself, which is what this example is about, the colors/paddings are not important. So having the ability to turn off these snippet decoration styles would be nice
+- configurable position of js (head, end of body?)
+
+  /layout
+  /layout/snippets/layout
+  /layout/images/layout.png
+
+  or
+
+  /layout
+  /static/articles/2015/12/layout/snippets/layout
+  /static/articles/2015/12/layout/images/layout.png
+
+- break snippets into database or have it as static file? or both when we are displaying whole snippet?
+
 - 1 get snippet data
 - 2 parse snippet data
 - 3 save snippet data
 - 4 write snippet data in templates
 - 5 js snippet tool will display data
-
-- CI
-  - move npm run lint in something like before_script?
-  - think of how to unify scripts between package.json, scripts/ and .travis.yml
 
 - think of a ways how to unify debug mode with production mode
 
@@ -69,15 +81,18 @@
   - check if we are not using sync (readFileSync) functions anywhere
   - cron job to test
     - automatically git fetch changes and update new articles
-  - CI
-    - consider switching to some other ci tool (https://github.com/integrations), seems like Travis is not supporting multiple tasks
-    - read docs https://docs.travis-ci.com/user/languages/javascript-with-nodejs (notifications when it fails?)
-    - have CI job which will run all article validity checks
-    - check if article links are not 404
-    - check if other page links are not 404
-    - if all pages are html valid
-    - npm outdated check
-    - https://www.npmjs.com/package/sloc-for-jenkins
+  - think of how to unify scripts between package.json, scripts/ and .travis.yml
+
+- CI
+  - consider switching to some other ci tool (https://github.com/integrations), seems like Travis is not supporting multiple tasks
+  - read docs https://docs.travis-ci.com/user/languages/javascript-with-nodejs (notifications when it fails?)
+  - have CI job which will run all article validity checks
+  - check if article links are not 404
+  - check if other page links are not 404
+  - if all pages are html valid
+  - npm outdated check
+  - https://www.npmjs.com/package/sloc-for-jenkins
+  - move npm run lint in something like before_script?
 
 - Articles
   - currently html of code blocks is parsed and we cannot get raw html? so `<h2>` will become `<h2></h2>`, maybe switch to jsdom?

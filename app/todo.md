@@ -1,20 +1,13 @@
 # TODO
 
 ## NEXT RELEASE
+- new folder layout
+  - /layout
+  - /layout/snippets/layout
+  - /layout/images/layout.png
+
 - have snippets CSS of snippets ability to turn off decoration styles
   - for example we are showing some css layout, but we also need to add some background color to the layout parts so it's easily reckognizable, but for the layout itself, which is what this example is about, the colors/paddings are not important. So having the ability to turn off these snippet decoration styles would be nice
-- configurable position of js (head, end of body?)
-
-  /layout
-  /layout/snippets/layout
-  /layout/images/layout.png
-
-  or
-
-  /layout
-  /static/articles/2015/12/layout/snippets/layout
-  /static/articles/2015/12/layout/images/layout.png
-
 - break snippets into database or have it as static file? or both when we are displaying whole snippet?
 
 - 1 get snippet data
@@ -131,6 +124,7 @@
   - replace @see links in code with my own articles
 
 - Backend
+  - when mysql server is not running, console log error and display 500
   - figure out how to do dev/production enviroment
     - right now we have /debug prefix for articles, but determining based on the enviroment variables would be better
       - enviroment variable for debug mode

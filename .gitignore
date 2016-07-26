@@ -1,8 +1,5 @@
 .vscode/
 app/node_modules/
-app/src/config/config-production.js
-app/coverage
-app/.nyc_output
-app/www/log/*
-app/www/articles/*
-!.gitkeep
+app/.nyc_output/
+app/coverage/
+app/www/

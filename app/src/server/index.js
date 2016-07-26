@@ -52,10 +52,6 @@ app.use('/static', express.static(paths.static))
 app.use('/static/articles', express.static(paths.articles))
 app.use('/static/node_modules', express.static(paths.nodeModules))
 
-app.get('/articles/**/*.png', (req, res) => {
-  res.sendFile(path.join(paths.root, req.originalUrl))
-})
-
 // pages
 
 app.get('/', routes.index)

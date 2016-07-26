@@ -20,7 +20,7 @@ before_install:
   - cd app
 
 install:
-  - ./scripts/install.sh
+  - ./app/scripts/install.sh
 
 script:
   - npm run lint

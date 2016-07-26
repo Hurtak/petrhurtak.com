@@ -62,16 +62,16 @@ function getArticlesMetadata (directory, filename, gatheredMetadata = [], baseDi
 function getArticlesDirectories (directory, searchedDepth, currentDepth = 0, articlesList = []) {
   const list = fs.readdirSync(directory) // TODO: sync function
 
-  for (const file of list) {
-    const filePath = path.join(directory, file)
-    const isDirectory = fs.statSync(filePath).isDirectory() // TODO: sync function
+  for (const item of list) {
+    const itemPath = path.join(directory, item)
+    const isDirectory = fs.statSync(itemPath).isDirectory() // TODO: sync function
 
     if (!isDirectory) continue
 
     if (currentDepth === searchedDepth) {
-      articlesList.push(filePath)
+      articlesList.push(itemPath)
     } else {
-      getArticlesDirectories(filePath, searchedDepth, currentDepth + 1, articlesList)
+      getArticlesDirectories(itemPath, searchedDepth, currentDepth + 1, articlesList)
     }
   }
 
@@ -136,9 +136,95 @@ function parseArticle (articlePath) {
   }
 }
 
+function getArticle (articlePath) {
+  const fileData = fs.readFileSync(path.join(articlePath, 'article.md'), 'utf8')
+  const data = frontMatter(fileData)
+
+  const metadata = data.attributes
+  const html = data.body
+
+  const articleStaticFilesPath = '/static/articles/' + // TODO: move to paths?
+    articlePath
+      // c:\some\path\article-dir -> article-dir
+      .replace(paths.articles, '')
+      .split(path.sep)
+      // remove empty values (\some\path creates ['', 'some', 'path'])
+      .filter(value => value)
+      // use '/' instead of path.sep, because that's what we are using in templates
+      .join('/')
+
+  // TODO: every time we make html transformation we take html
+  //       string and pass it into cheerio and create cheerio
+  //       object, then make transformations and then transform
+  //       back to html string. We could pass around cheerio
+  //       object so creation of cheerio object and transformation
+  //       to html string will be done only once
+  let article = html
+
+  // inside articles we are using <xmp> instead of <code>, so transform it to <code> before we
+  // run other transformations which might depend on <code> tag being used instead of <xmp>
+  article = utilsArticles.changeXmpToCode(article)
+  article = utilsArticles.trimCodeBlocks(article)
+  article = utilsArticles.removeIndentationInCodeBlocks(article)
+  article = utilsArticles.escapeAndHighlightCodeBlocks(article)
+
+  article = utilsArticles.addIdsToHeadings(article)
+
+  article = utilsArticles.relativeUrlToAbsolute(article, 'img', 'src', articleStaticFilesPath)
+
+  // TODO: think about merging these two together, or at least share css selector?
+  article = utilsArticles.enhanceSnippetLinks(article)
+  article = utilsArticles.relativeUrlToAbsolute(article, 'a[href^="./snippets/"]', 'href', articleStaticFilesPath)
+
+  article = htmlMinifier.minify(article, {
+    collapseWhitespace: true,
+    conservativeCollapse: true,
+    minifyCSS: true,
+    minifyJS: true,
+    removeComments: true,
+    removeRedundantAttributes: true,
+    sortAttributes: true,
+    sortClassName: true
+  })
+
+  return {
+    metadata,
+    html: article
+  }
+}
+
+function getSnippets (articlePath) {
+  const snippetsDir = path.join(articlePath, '/snippets')
+  let snippetFiles = {}
+  try {
+    snippetFiles = fs.readdirSync(snippetsDir) // TODO: sync function
+  } catch (e) {
+    return {}
+  }
+
+  const snippets = {}
+  for (const fileName of snippetFiles) {
+    const snippetName = fileName.split('.')[0]
+    const snippetPath = path.join(snippetsDir, fileName)
+    const html = fs.readFileSync(snippetPath, 'utf8') // TODO: sync function
+    snippets[snippetName] = html
+  }
+
+  return snippets
+}
+
+function getArticleData (pathToArticle) {
+  const article = getArticle(pathToArticle)
+  const snippets = getSnippets(pathToArticle)
+  console.log(snippets)
+
+  return article
+}
+
 module.exports = {
   findPathToArticle,
   getArticlesMetadata,
   getArticlesDirectories,
-  parseArticle
+  parseArticle,
+  getArticleData
 }

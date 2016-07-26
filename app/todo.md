@@ -1,6 +1,11 @@
 # TODO
 
 ## NEXT RELEASE
+- article data gathering refactoring
+  - function for gathering article directories
+  - function for gathering article directory by article name
+  - functions to get all data by article directory
+
 - break snippets into database or have it as static file? or both when we are displaying whole snippet?
 
 - 1 get snippet data

@@ -74,9 +74,13 @@ function uploadArticles () {
 
     database.getIdByArticleUrl(articleUrl).then(articleId => {
       const date = new Date(metadata.publication_date).toLocaleDateString('cs')
+      let id = articleId ? articleId.id : null
+
       if (articleId === null) { // new article which is not in db
         database.insertArticleMetadata(dbData).then(dbResponse => {
-          // id: dbResponse.insertId
+          // inserted aticle id: dbResponse.insertId
+          id = dbResponse.insertId
+
           console.log(`${date} article ${articleUrl} metadata INSERTED.`)
 
           // TODO: check if article html exists?

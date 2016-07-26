@@ -120,6 +120,17 @@ function updateArticleHtml (params) {
   return dbPromiseFactory(query, params)
 }
 
+function insertSnippet (params) {
+  const query = `
+    INSERT INTO snippets
+      (id_article, name, html_head, html_body, css, js)
+    VALUES
+      (?, ?, ?, ?, ?, ?)
+  `
+
+  return dbPromiseFactory(query, params)
+}
+
 function deleteArticles (urls) {
   urls = urls.join('", "')
   const query = `
@@ -170,6 +181,7 @@ module.exports = {
   updateArticleMetadata,
   insertArticleHtml,
   updateArticleHtml,
+  insertSnippet,
   deleteArticles,
   getRSS,
   getHumansTxt,

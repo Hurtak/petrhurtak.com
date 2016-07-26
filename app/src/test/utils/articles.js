@@ -256,3 +256,28 @@ test('isoStringToUtcDate', t => {
   t.deepEqual(fn('2000-1-1 00:00'), Date.UTC(2000, 0, 1, 0, 0))
   t.deepEqual(fn('2016-12-31 23:59'), Date.UTC(2016, 11, 31, 23, 59))
 })
+
+test('parseSnippet', t => {
+  const fn = utilsArticles.parseSnippet
+
+  t.deepEqual(fn(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Example snippet</title>
+        <style>h1 { color: red; }</style>
+      </head>
+      <body>
+        <h1>Hello</h1>
+        <script>console.log('hello')</script>
+      </body>
+    </html>
+  `),
+    {
+      head: '<title>Example snippet</title>',
+      html: '<h1>Hello</h1>',
+      css: 'h1 { color: red; }',
+      js: 'console.log(\'hello\')'
+    }
+  )
+})

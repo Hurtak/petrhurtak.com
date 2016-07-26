@@ -1,13 +1,6 @@
 # TODO
 
 ## NEXT RELEASE
-- new folder layout
-  - /layout
-  - /layout/snippets/layout
-  - /layout/images/layout.png
-
-- have snippets CSS of snippets ability to turn off decoration styles
-  - for example we are showing some css layout, but we also need to add some background color to the layout parts so it's easily reckognizable, but for the layout itself, which is what this example is about, the colors/paddings are not important. So having the ability to turn off these snippet decoration styles would be nice
 - break snippets into database or have it as static file? or both when we are displaying whole snippet?
 
 - 1 get snippet data
@@ -16,7 +9,8 @@
 - 4 write snippet data in templates
 - 5 js snippet tool will display data
 
-- think of a ways how to unify debug mode with production mode
+- have snippets CSS of snippets ability to turn off decoration styles
+  - for example we are showing some css layout, but we also need to add some background color to the layout parts so it's easily reckognizable, but for the layout itself, which is what this example is about, the colors/paddings are not important. So having the ability to turn off these snippet decoration styles would be nice
 
 - code snippet tool
   - show css / html / js / result
@@ -75,6 +69,7 @@
   - cron job to test
     - automatically git fetch changes and update new articles
   - think of how to unify scripts between package.json, scripts/ and .travis.yml
+  - think of a ways how to unify debug mode with production mode
 
 - CI
   - consider switching to some other ci tool (https://github.com/integrations), seems like Travis is not supporting multiple tasks

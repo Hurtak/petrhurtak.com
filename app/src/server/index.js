@@ -49,8 +49,8 @@ for (const filterName in nunjucksFilters) { // add custom filters
 // static files
 
 app.use('/static', express.static(paths.static))
-app.use('/static/articles', express.static(paths.articles))
-app.use('/static/node_modules', express.static(paths.nodeModules))
+app.use('/static/articles', express.static(paths.articles)) // TODO: make only avaliable in debug
+app.use('/static/node_modules', express.static(paths.nodeModules)) // TODO: make only avaliable in debug
 
 // pages
 

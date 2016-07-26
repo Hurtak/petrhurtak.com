@@ -179,6 +179,22 @@ function isoStringToUtcDate (isoString) {
   return Date.UTC(year, month - 1, day, hour, minute)
 }
 
+function parseSnippet (snippetHtml) {
+  const $ = cheerioLoadWithouEscaping(snippetHtml)
+
+  const css = $('head style').html()
+  const js = $('body script:last-of-type').html()
+  const html = $('body').html()
+  const head = $('head').html()
+
+  return {
+    css,
+    js,
+    html: html.replace(`<script>${js}</script>`, '').trim(),
+    head: head.replace(`<style>${css}</style>`, '').trim()
+  }
+}
+
 module.exports = {
   addIdsToHeadings,
   changeXmpToCode,
@@ -187,5 +203,6 @@ module.exports = {
   escapeAndHighlightCodeBlocks,
   relativeUrlToAbsolute,
   enhanceSnippetLinks,
-  isoStringToUtcDate
+  isoStringToUtcDate,
+  parseSnippet
 }

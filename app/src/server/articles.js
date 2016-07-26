@@ -10,11 +10,11 @@ const paths = require('./paths.js')
 const utilsArticles = require('./utils/articles.js')
 
 function findPathToArticle (directory, articleName, searchedDepth, currentDepth = 0) {
-  const list = fs.readdirSync(directory)
+  const list = fs.readdirSync(directory) // TODO: sync function
 
   for (const file of list) {
     const filePath = path.join(directory, file)
-    const isDirectory = fs.statSync(filePath).isDirectory()
+    const isDirectory = fs.statSync(filePath).isDirectory() // TODO: sync function
 
     if (!isDirectory) continue
     if (currentDepth === searchedDepth && file === articleName) return filePath
@@ -28,10 +28,10 @@ function findPathToArticle (directory, articleName, searchedDepth, currentDepth 
 }
 
 function getArticlesMetadata (directory, filename, gatheredMetadata = [], baseDirectory = directory) {
-  const list = fs.readdirSync(directory)
+  const list = fs.readdirSync(directory) // TODO: sync function
   for (const file of list) {
     const filePath = path.join(directory, file)
-    const isDirectory = fs.statSync(filePath).isDirectory()
+    const isDirectory = fs.statSync(filePath).isDirectory() // TODO: sync function
 
     if (isDirectory) {
       gatheredMetadata = getArticlesMetadata(filePath, filename, gatheredMetadata, baseDirectory)
@@ -41,7 +41,7 @@ function getArticlesMetadata (directory, filename, gatheredMetadata = [], baseDi
         .replace(filename, '')
         .replace(baseDirectory, '')
 
-      const metadata = frontMatter(fs.readFileSync(filePath, 'utf8')).attributes
+      const metadata = frontMatter(fs.readFileSync(filePath, 'utf8')).attributes // TODO: sync function
 
       metadata.directory = articleDirectory
       metadata.publication_date = utilsArticles.isoStringToUtcDate(metadata.publication_date)
@@ -60,11 +60,11 @@ function getArticlesMetadata (directory, filename, gatheredMetadata = [], baseDi
 }
 
 function getArticlesDirectories (directory, searchedDepth, currentDepth = 0, articlesList = []) {
-  const list = fs.readdirSync(directory)
+  const list = fs.readdirSync(directory) // TODO: sync function
 
   for (const file of list) {
     const filePath = path.join(directory, file)
-    const isDirectory = fs.statSync(filePath).isDirectory()
+    const isDirectory = fs.statSync(filePath).isDirectory() // TODO: sync function
 
     if (!isDirectory) continue
 

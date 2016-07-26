@@ -1,6 +1,10 @@
 # TODO
 
 ## NEXT RELEASE
+- CI
+  - move npm run lint in something like before_script?
+- install script
+  - mk dirs instead of .gitkeep
 - 1 get snippet data
 - 2 parse snippet data
 - 3 save snippet data

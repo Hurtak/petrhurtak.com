@@ -1,15 +1,15 @@
 # TODO
 
 ## NEXT RELEASE
-- CI
-  - move npm run lint in something like before_script?
-- install script
-  - mk dirs instead of .gitkeep
 - 1 get snippet data
 - 2 parse snippet data
 - 3 save snippet data
 - 4 write snippet data in templates
 - 5 js snippet tool will display data
+
+- CI
+  - move npm run lint in something like before_script?
+  - think of how to unify scripts between package.json, scripts/ and .travis.yml
 
 - think of a ways how to unify debug mode with production mode
 

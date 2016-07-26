@@ -24,7 +24,13 @@ function test {
     --watch
 }
 
+function lint {
+  ${NODE_BIN}/standard "scripts/**/*.js" "src/**/*.js" \
+    --verbose
+}
+
 ### START DEVELOPMENT SERVICES
 startServer \
-  & test
+  & test \
+  & lint
 wait

@@ -195,9 +195,9 @@ function getArticle (articlePath) {
 
 function getSnippets (articlePath) {
   const snippetsDir = path.join(articlePath, '/snippets')
-  let snippetFiles = {}
+  let snippetFiles = []
   try {
-    snippetFiles = fs.readdirSync(snippetsDir) // TODO: sync function
+    snippetFiles = fs.readdirSync(snippetsDir) // TODO: sync function;
   } catch (e) {
     return {}
   }
@@ -207,7 +207,7 @@ function getSnippets (articlePath) {
     const snippetName = fileName.split('.')[0]
     const snippetPath = path.join(snippetsDir, fileName)
     const html = fs.readFileSync(snippetPath, 'utf8') // TODO: sync function
-    snippets[snippetName] = html
+    snippets[snippetName] = utilsArticles.parseSnippet(html)
   }
 
   return snippets
@@ -216,9 +216,11 @@ function getSnippets (articlePath) {
 function getArticleData (pathToArticle) {
   const article = getArticle(pathToArticle)
   const snippets = getSnippets(pathToArticle)
-  console.log(snippets)
 
-  return article
+  return {
+    article,
+    snippets
+  }
 }
 
 module.exports = {

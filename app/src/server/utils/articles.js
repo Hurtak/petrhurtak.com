@@ -188,10 +188,11 @@ function parseSnippet (snippetHtml) {
   const head = $('head').html()
 
   return {
+    html: snippetHtml,
+    head: head.replace(`<style>${css}</style>`, '').trim(),
+    body: html.replace(`<script>${js}</script>`, '').trim(),
     css,
-    js,
-    html: html.replace(`<script>${js}</script>`, '').trim(),
-    head: head.replace(`<style>${css}</style>`, '').trim()
+    js
   }
 }
 

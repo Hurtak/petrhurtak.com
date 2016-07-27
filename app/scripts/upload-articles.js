@@ -23,7 +23,7 @@ function isDirectoryNameCorrect (metadataDate, directoryName) {
   const [directoryYear, directoryMonth] = getDirectoryDate(directoryName)
 
   if (publicationYear !== directoryYear || publicationMonth !== directoryMonth) {
-    console.error(`publication_date in article.md yaml header is different from year or month directory ${directoryName}`)
+    console.error(`publicationDate in article.md yaml header is different from year or month directory ${directoryName}`)
     return false
   }
 
@@ -48,32 +48,26 @@ function uploadArticles () {
   let promisesRunning = articlesDirectories.length + 1 // +1 for delete articles promise
 
   for (const articleDirectory of articlesDirectories) {
-    const articleUrl = [...articleDirectory.split(path.sep)].reverse()[0]
+    const data = articles.getArticleData(articleDirectory)
 
-    const data = articles.parseArticle(path.join(articleDirectory, 'article.md'))
-    const metadata = data.metadata
-    const articleHtml = data.html
-
-    if (!isDirectoryNameCorrect(metadata.publication_date, articleDirectory)) {
+    if (!isDirectoryNameCorrect(data.article.publicationDate, articleDirectory)) {
       return
     }
 
-    allArticlesUrls.push(articleUrl)
-
-    let directoryNameDb = getDirectoryDate(articleDirectory).join('/')
+    allArticlesUrls.push(data.article.url)
 
     let dbData = [
-      metadata.title,
-      metadata.description,
-      articleUrl,
-      directoryNameDb,
-      metadata.publication_date,
-      metadata.last_update,
-      metadata.visible
+      data.article.title,
+      data.article.description,
+      data.article.url,
+      data.article.directory,
+      data.article.publicationDate,
+      data.article.lastUpdate,
+      data.article.visible
     ]
 
-    database.getIdByArticleUrl(articleUrl).then(articleId => {
-      const date = new Date(metadata.publication_date).toLocaleDateString('cs')
+    database.getIdByArticleUrl(data.article.url).then(articleId => {
+      const date = new Date(data.article.publicationDate).toLocaleDateString('cs')
       let id = articleId ? articleId.id : null
 
       if (articleId === null) { // new article which is not in db
@@ -81,21 +75,21 @@ function uploadArticles () {
           // inserted aticle id: dbResponse.insertId
           id = dbResponse.insertId
 
-          console.log(`${date} article ${articleUrl} metadata INSERTED.`)
+          console.log(`${date} article ${data.article.url} metadata INSERTED.`)
 
           // TODO: check if article html exists?
-          database.insertArticleHtml([dbResponse.insertId, articleHtml]).then(dbResponse => {
-            console.log(`${date} article ${articleUrl} html INSERTED.`)
+          database.insertArticleHtml([dbResponse.insertId, data.article.html]).then(dbResponse => {
+            console.log(`${date} article ${data.article.url} html INSERTED.`)
             promisesRunning = checkIfDone(promisesRunning)
           })
         })
       } else {
         database.updateArticleMetadata([...dbData, articleId.id]).then(() => {
-          console.log(`${date} article ${articleUrl} metadata updated.`)
+          console.log(`${date} article ${data.article.url} metadata updated.`)
 
           // TODO: check if article html exists?
-          database.updateArticleHtml([articleHtml, articleId.id]).then(dbResponse => {
-            console.log(`${date} article ${articleUrl} html updated.`)
+          database.updateArticleHtml([data.article.html, articleId.id]).then(dbResponse => {
+            console.log(`${date} article ${data.article.url} html updated.`)
             promisesRunning = checkIfDone(promisesRunning)
           })
         })

@@ -192,6 +192,7 @@ function getArticle (articlePath) {
   return {
     title: metadata.title,
     url: articleUrl,
+    directory: articleFolder,
     description: metadata.description,
     publicationDate: utilsArticles.isoStringToUtcDate(metadata.publication_date),
     lastUpdate: utilsArticles.isoStringToUtcDate(metadata.last_update),

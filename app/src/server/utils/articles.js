@@ -176,7 +176,8 @@ function isoStringToUtcDate (isoString) {
   const [year, month, day] = date.split('-').map(Number)
   const [hour, minute] = time.split(':').map(Number)
 
-  return Date.UTC(year, month - 1, day, hour, minute)
+  const utcTimestamp = Date.UTC(year, month - 1, day, hour, minute)
+  return new Date(utcTimestamp)
 }
 
 function parseSnippet (snippetHtml) {

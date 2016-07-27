@@ -143,12 +143,17 @@ function getArticle (articlePath) {
   const metadata = data.attributes
   const html = data.body
 
-  const articleStaticFilesPath = '/static/articles/' + // TODO: move to paths?
-    articlePath
-      .replace(paths.articles, '') // c:\some\path\article-dir -> article-dir
-      .split(path.sep)
-      .filter(value => value) // remove empty values (\some\path creates ['', 'some', 'path'])
-      .join('/') // use '/' instead of path.sep, because that's what we are using in templates
+  // c:\some\path\2015\1\article-dir -> 2015\1\article-dir
+  const articleFolder = articlePath
+    .replace(paths.articles, '')
+    .split(path.sep)
+    .filter(x => x)
+    .join(path.sep)
+
+  const articleUrl = articleFolder.split(path.sep).reverse()[0]
+
+  // TODO: move to paths?
+  const articleStaticFilesPath = '/static/articles/' + articleFolder
 
   // TODO: every time we make html transformation we take html
   //       string and pass it into cheerio and create cheerio
@@ -186,9 +191,10 @@ function getArticle (articlePath) {
 
   return {
     title: metadata.title,
+    url: articleUrl,
     description: metadata.description,
-    publicationDate: new Date(metadata.publication_date),
-    lastUpdate: new Date(metadata.last_update),
+    publicationDate: utilsArticles.isoStringToUtcDate(metadata.publication_date),
+    lastUpdate: utilsArticles.isoStringToUtcDate(metadata.last_update),
     visible: metadata.visible,
     html: articleHtml
   }

@@ -4,12 +4,8 @@
 - article data gathering refactoring
   - function for gathering article directories
     - done?
-  - function for gathering article directory by article name
-    - todo
   - functions to get all data by article directory
     - done, cleanup
-  - snippet gathering function
-    - done, cleanup and revisit object structure
 
 - break snippets into database or have it as static file? or both when we are displaying whole snippet?
 

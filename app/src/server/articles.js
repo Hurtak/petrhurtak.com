@@ -145,13 +145,10 @@ function getArticle (articlePath) {
 
   const articleStaticFilesPath = '/static/articles/' + // TODO: move to paths?
     articlePath
-      // c:\some\path\article-dir -> article-dir
-      .replace(paths.articles, '')
+      .replace(paths.articles, '') // c:\some\path\article-dir -> article-dir
       .split(path.sep)
-      // remove empty values (\some\path creates ['', 'some', 'path'])
-      .filter(value => value)
-      // use '/' instead of path.sep, because that's what we are using in templates
-      .join('/')
+      .filter(value => value) // remove empty values (\some\path creates ['', 'some', 'path'])
+      .join('/') // use '/' instead of path.sep, because that's what we are using in templates
 
   // TODO: every time we make html transformation we take html
   //       string and pass it into cheerio and create cheerio
@@ -159,24 +156,24 @@ function getArticle (articlePath) {
   //       back to html string. We could pass around cheerio
   //       object so creation of cheerio object and transformation
   //       to html string will be done only once
-  let article = html
+  let articleHtml = html
 
   // inside articles we are using <xmp> instead of <code>, so transform it to <code> before we
   // run other transformations which might depend on <code> tag being used instead of <xmp>
-  article = utilsArticles.changeXmpToCode(article)
-  article = utilsArticles.trimCodeBlocks(article)
-  article = utilsArticles.removeIndentationInCodeBlocks(article)
-  article = utilsArticles.escapeAndHighlightCodeBlocks(article)
+  articleHtml = utilsArticles.changeXmpToCode(articleHtml)
+  articleHtml = utilsArticles.trimCodeBlocks(articleHtml)
+  articleHtml = utilsArticles.removeIndentationInCodeBlocks(articleHtml)
+  articleHtml = utilsArticles.escapeAndHighlightCodeBlocks(articleHtml)
 
-  article = utilsArticles.addIdsToHeadings(article)
+  articleHtml = utilsArticles.addIdsToHeadings(articleHtml)
 
-  article = utilsArticles.relativeUrlToAbsolute(article, 'img', 'src', articleStaticFilesPath)
+  articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'img', 'src', articleStaticFilesPath)
 
   // TODO: think about merging these two together, or at least share css selector?
-  article = utilsArticles.enhanceSnippetLinks(article)
-  article = utilsArticles.relativeUrlToAbsolute(article, 'a[href^="./snippets/"]', 'href', articleStaticFilesPath)
+  articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml)
+  articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'a[href^="./snippets/"]', 'href', articleStaticFilesPath)
 
-  article = htmlMinifier.minify(article, {
+  articleHtml = htmlMinifier.minify(articleHtml, {
     collapseWhitespace: true,
     conservativeCollapse: true,
     minifyCSS: true,
@@ -188,8 +185,12 @@ function getArticle (articlePath) {
   })
 
   return {
-    metadata,
-    html: article
+    title: metadata.title,
+    description: metadata.description,
+    publicationDate: new Date(metadata.publication_date),
+    lastUpdate: new Date(metadata.last_update),
+    visible: metadata.visible,
+    html: articleHtml
   }
 }
 

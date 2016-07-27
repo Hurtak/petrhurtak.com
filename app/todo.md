@@ -30,6 +30,7 @@
   - article header
   - articles list page
   - footer
+  - 404 page
   - inspiration
     - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/Material-I-II-opt.jpg
     - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/uefa-euro2016-belgium-opt.jpg

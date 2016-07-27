@@ -17,11 +17,11 @@
       </h2>
 
       <time
-        datetime="{{ article.last_update | datetimeAttribute }}"
-        title="{{ article.last_update | fullDate }}"
+        datetime="{{ article.lastUpdate | datetimeAttribute }}"
+        title="{{ article.lastUpdate | fullDate }}"
         class="article-preview__date"
       >
-        {{ article.last_update | dateHowLongBefore }}
+        {{ article.lastUpdate | dateHowLongBefore }}
       </time>
 
       <p class="article-preview__description">

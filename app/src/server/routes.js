@@ -1,7 +1,5 @@
 'use strict'
 
-const path = require('path')
-
 const lodash = require('lodash')
 
 const articles = require('./articles.js')
@@ -27,6 +25,12 @@ const notFound = (req, res) => {
 
 const index = (req, res) => {
   database.getArticles().then(databaseArticles => {
+    databaseArticles = databaseArticles.map(article => {
+      article.lastUpdate = article.last_update
+      delete article.last_update
+      return article
+    })
+
     const data = addCommonData({
       articles: databaseArticles
     })
@@ -52,15 +56,20 @@ const article = (req, res) => {
 }
 
 const debug = (req, res) => {
-  // get all metadata from article.md files
-  let metadata = articles.getArticlesMetadata(paths.articles, 'article.md')
+  const articleDirs = articles.getArticlesDirectories(paths.articles, 2)
 
-  // sort articles by publication_date descendant
-  metadata = lodash.sortBy(metadata, 'last_update')
-  metadata = lodash.reverse(metadata)
+  let articlesData = []
+  for (const articleDir of articleDirs) {
+    articlesData.push(articles.getArticleData(articleDir))
+  }
+
+  //s sort articles by publication_date descendant
+  articlesData = articlesData.map(x => x.article)
+  articlesData = lodash.sortBy(articlesData, 'lastUpdate')
+  articlesData = lodash.reverse(articlesData)
 
   const data = addCommonData({
-    articles: metadata,
+    articles: articlesData,
     debugUrlPrefix: 'debug/',
     debug: true
   })
@@ -77,11 +86,11 @@ const debugArticle = (req, res) => {
     return
   }
 
-  const fsArticle = articles.parseArticle(path.join(articlePath, 'article.md'))
+  const articleData = articles.getArticleData(articlePath)
   const data = addCommonData({
-    title: fsArticle.metadata.title,
-    date: fsArticle.metadata.publication_date,
-    article: fsArticle.html,
+    title: articleData.article.title,
+    date: articleData.article.publicationDate,
+    article: articleData.article.html,
     debug: true
   })
 

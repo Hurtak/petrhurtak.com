@@ -6,6 +6,7 @@ cd .. # cd into app director
 
 ### EXPORTED VARIABLES
 export NODE_ENV="development"
+# export DEBUG="express*"
 
 ### LOCAL VARIABLES
 NODE_BIN="node_modules/.bin"

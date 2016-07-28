@@ -107,7 +107,7 @@ const robotsTxt = (req, res) => {
 const humansTxt = (req, res) => {
   database.getHumansTxt().then(data => {
     const templateData = addCommonData({
-      lastUpdate: new Date(data.last_update).toGMTString()
+      lastUpdate: data.lastUpdate
     })
 
     res.type('text/plain')

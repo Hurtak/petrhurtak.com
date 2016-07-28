@@ -9,7 +9,7 @@ const db = mysql.createConnection(config.database)
 
 // factory function
 
-function dbPromiseFactory (queryString, params = [], returnOneResults = false) {
+function dbPromiseFactory (queryString, params = []) {
   params = Array.isArray(params) ? params : [params]
 
   return new Promise((resolve, reject) => {
@@ -19,12 +19,20 @@ function dbPromiseFactory (queryString, params = [], returnOneResults = false) {
         reject(err)
       }
 
-      if (returnOneResults) {
-        resolve(rows.length ? underscoreCaseObjectToCamelCase(rows[0]) : null)
-      }
-
-      resolve(rows.map(underscoreCaseObjectToCamelCase))
+      resolve(rows)
     })
+  })
+}
+
+function returnOneResult (result) {
+  return new Promise((resolve, reject) => {
+    resolve(result.length > 0 ? result[0] : null)
+  })
+}
+
+function mapToCamelCase (items) {
+  return new Promise((resolve, reject) => {
+    resolve(items.map(underscoreCaseObjectToCamelCase))
   })
 }
 
@@ -56,6 +64,7 @@ function getArticles () {
   `
 
   return dbPromiseFactory(query)
+    .then(mapToCamelCase)
 }
 
 function getArticle (articleUrl) {
@@ -71,7 +80,9 @@ function getArticle (articleUrl) {
     AND url = ?
   `
 
-  return dbPromiseFactory(query, articleUrl, true)
+  return dbPromiseFactory(query, articleUrl)
+    .then(mapToCamelCase)
+    .then(returnOneResult)
 }
 
 // upload articles script
@@ -82,7 +93,8 @@ function getIdByArticleUrl (articleUrl) {
     FROM articles
     WHERE url = ?
   `
-  return dbPromiseFactory(query, articleUrl, true)
+  return dbPromiseFactory(query, articleUrl)
+    .then(returnOneResult)
 }
 
 function insertArticleMetadata (params) {
@@ -133,6 +145,14 @@ function updateArticleHtml (params) {
   return dbPromiseFactory(query, params)
 }
 
+function removeSnippets () {
+  const query = `
+    DELETE FROM snippets
+  `
+
+  return dbPromiseFactory(query)
+}
+
 function insertSnippet (params) {
   const query = `
     INSERT INTO snippets
@@ -168,6 +188,7 @@ function getRSS () {
   `
 
   return dbPromiseFactory(query)
+    .then(mapToCamelCase)
 }
 
 function getHumansTxt () {
@@ -179,7 +200,9 @@ function getHumansTxt () {
     DESC LIMIT 1
   `
 
-  return dbPromiseFactory(query, [], true)
+  return dbPromiseFactory(query, [])
+    .then(mapToCamelCase)
+    .then(returnOneResult)
 }
 
 const closeConnection = () => {
@@ -194,6 +217,7 @@ module.exports = {
   updateArticleMetadata,
   insertArticleHtml,
   updateArticleHtml,
+  removeSnippets,
   insertSnippet,
   deleteArticles,
   getRSS,

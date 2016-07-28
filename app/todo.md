@@ -1,6 +1,8 @@
 # TODO
 
 ## NEXT RELEASE
+- fix snippet parsing
+
 - think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really akward
   - maybe have delete function and insert function only which would be little cleaner but it would increate a lot id's in the database
   - or is there some insert/update if exists in mysql?
@@ -152,6 +154,9 @@
     - check if indexes are set correctly
     - use transactions (in update script)
     - use named parameters and pass data as object instead of array?
+    - think about revisiting this:
+      .then(mapToCamelCase)
+      .then(returnOneResult)
   - log unhandle exceptions and uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
   - node_modules folder only in debug mode?
   - tests

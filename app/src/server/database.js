@@ -145,7 +145,7 @@ function updateArticleHtml (params) {
   return dbPromiseFactory(query, params)
 }
 
-function removeSnippets () {
+function deleteSnippets () {
   const query = `
     DELETE FROM snippets
   `
@@ -156,7 +156,7 @@ function removeSnippets () {
 function insertSnippet (params) {
   const query = `
     INSERT INTO snippets
-      (id_article, name, html_head, html_body, css, js)
+      (id_article, name, head, body, css, js)
     VALUES
       (?, ?, ?, ?, ?, ?)
   `
@@ -217,7 +217,7 @@ module.exports = {
   updateArticleMetadata,
   insertArticleHtml,
   updateArticleHtml,
-  removeSnippets,
+  deleteSnippets,
   insertSnippet,
   deleteArticles,
   getRSS,

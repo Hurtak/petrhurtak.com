@@ -30,22 +30,11 @@ function isDirectoryNameCorrect (metadataDate, directoryName) {
   return true
 }
 
-const checkIfDone = (promisesRunning) => {
-  promisesRunning--
-  if (promisesRunning <= 0) {
-    database.closeConnection()
-  } else {
-    return promisesRunning
-  }
-}
-
 function uploadArticles () {
   let allArticlesUrls = []
 
   const articlesDirectories = articles.getArticlesDirectories(paths.articles, 2)
   articlesDirectories.reverse()
-
-  let promisesRunning = articlesDirectories.length + 1 // +1 for delete articles promise
 
   for (const articleDirectory of articlesDirectories) {
     const data = articles.getArticleData(articleDirectory)
@@ -66,34 +55,47 @@ function uploadArticles () {
       data.article.visible
     ]
 
-    database.getIdByArticleUrl(data.article.url).then(articleId => {
+    database.getIdByArticleUrl(data.article.url).then(res => {
       const date = new Date(data.article.publicationDate).toLocaleDateString('cs')
-      let id = articleId ? articleId.id : null
+      let articleId = res ? res.id : null
 
-      if (articleId === null) { // new article which is not in db
+      if (res === null) { // new article which is not in db
         database.insertArticleMetadata(dbData).then(dbResponse => {
           // inserted aticle id: dbResponse.insertId
-          id = dbResponse.insertId
+          articleId = dbResponse.insertId
 
-          console.log(`${date} article ${data.article.url} metadata INSERTED.`)
+          console.log(`${date} | article ${data.article.url} | metadata INSERTED.`)
 
           // TODO: check if article html exists?
           database.insertArticleHtml([dbResponse.insertId, data.article.html]).then(dbResponse => {
-            console.log(`${date} article ${data.article.url} html INSERTED.`)
-            promisesRunning = checkIfDone(promisesRunning)
+            console.log(`${date} | article ${data.article.url} | html INSERTED.`)
           })
         })
       } else {
-        database.updateArticleMetadata([...dbData, articleId.id]).then(() => {
-          console.log(`${date} article ${data.article.url} metadata updated.`)
+        database.updateArticleMetadata([...dbData, res.id]).then(() => {
+          console.log(`${date} | article ${data.article.url} | metadata updated.`)
 
           // TODO: check if article html exists?
-          database.updateArticleHtml([data.article.html, articleId.id]).then(dbResponse => {
-            console.log(`${date} article ${data.article.url} html updated.`)
-            promisesRunning = checkIfDone(promisesRunning)
+          database.updateArticleHtml([data.article.html, res.id]).then(dbResponse => {
+            console.log(`${date} | article ${data.article.url} | html updated.`)
           })
         })
       }
+
+      database.deleteSnippets().then((x) => {
+        for (const key in data.snippets) {
+          database.insertSnippet([
+            articleId,
+            key,
+            data.snippets[key].head,
+            data.snippets[key].body,
+            data.snippets[key].css,
+            data.snippets[key].js
+          ]).then(() => {
+            console.log(`${date} | article ${data.article.url} | snippet ${key} INSERTED.`)
+          })
+        }
+      })
     })
   }
 
@@ -104,7 +106,6 @@ function uploadArticles () {
     } else {
       console.log('no articles deleted from db.')
     }
-    promisesRunning = checkIfDone(promisesRunning)
   })
 }
 

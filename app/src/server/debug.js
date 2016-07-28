@@ -1,7 +1,9 @@
 'use strict'
 
+const config = require('../config/config.js')
+
 module.exports = function () {
-  if (process.env.NODE_ENV === 'development') {
+  if (config.devel) {
     const PrettyError = require('pretty-error')
     const error = new PrettyError()
 

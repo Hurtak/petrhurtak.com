@@ -1,11 +1,6 @@
 # TODO
 
 ## NEXT RELEASE
-- debug reset
-  - add font size to super small
-  - change font to consolas or comic sans
-  - release as npm module
-
 - break snippets into database or have it as static file? or both when we are displaying whole snippet?
 
 - 1 get snippet data
@@ -76,6 +71,7 @@
     - automatically git fetch changes and update new articles
   - think of how to unify scripts between package.json, scripts/ and .travis.yml
   - think of a ways how to unify debug mode with production mode
+  - check for TODOs in code and resolve them
 
 - CI
   - consider switching to some other ci tool (https://github.com/integrations), seems like Travis is not supporting multiple tasks

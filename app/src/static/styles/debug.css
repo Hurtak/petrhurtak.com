@@ -6,6 +6,13 @@
  * look across browsers, since we are not relying on browser default styles.
  */
 
+/*
+ * TODO: add comments about each rule, why is it there and what is forces
+ *       us to do with potential benefits or forcing us to overwrite it
+ * TODO: release as npm module
+ * TODO: write article about this goodness
+ */
+
 @import '/static/node_modules/reset-css/reset.css';
 
 *,
@@ -17,4 +24,11 @@
 	border: 0;
 	outline: 0;
 	background: none;
+}
+
+*,
+*::after,
+*::before {
+  font-size: 5pt;
+  font-family: consolas;
 }

@@ -257,27 +257,86 @@ test('isoStringToUtcDate', t => {
   t.deepEqual(fn('2016-12-31 23:59'), new Date(Date.UTC(2016, 11, 31, 23, 59)))
 })
 
-test.skip('parseSnippet', t => {
+test('parseSnippet', t => {
   const fn = utilsArticles.parseSnippet
 
-  t.deepEqual(fn(`
+  // valid empty html
+  const emptyHtml = `
+    <!DOCTYPE html>
+    <html>
+      <head><title>title</title></head>
+      <body><h1>Hello</h1></body>
+    </html>
+  `
+  t.deepEqual(fn(emptyHtml), {
+    html: emptyHtml,
+    head: '<title>title</title>',
+    body: '<h1>Hello</h1>',
+    css: null,
+    js: null
+  })
+
+  // minimal html
+  const minimalHtml = `
+    <!DOCTYPE html>
+    <html>
+      <head><title>Example snippet</title><style>h1 { color: red; }</style></head>
+      <body><h1>Hello</h1><script>console.log('hello')</script></body>
+    </html>
+  `
+  t.deepEqual(fn(minimalHtml), {
+    html: minimalHtml,
+    head: '<title>Example snippet</title>',
+    body: '<h1>Hello</h1>',
+    css: 'h1 { color: red; }',
+    js: 'console.log(\'hello\')'
+  })
+
+  // regular html
+  const html = `
     <!DOCTYPE html>
     <html>
       <head>
         <title>Example snippet</title>
-        <style>h1 { color: red; }</style>
+        <style>
+          h1 {
+            color: red;
+          }
+        </style>
       </head>
       <body>
-        <h1>Hello</h1>
-        <script>console.log('hello')</script>
+        <div>
+          <h1>Hello</h1>
+        </div>
+        <script>
+          console.log('console log')
+        </script>
       </body>
     </html>
-  `),
-    {
-      head: '<title>Example snippet</title>',
-      html: '<h1>Hello</h1>',
-      css: 'h1 { color: red; }',
-      js: 'console.log(\'hello\')'
-    }
-  )
+  `
+  t.deepEqual(fn(html), {
+    html: html,
+    head:
+      '\n' +
+      '        <title>Example snippet</title>\n' +
+      '        \n' +
+      '      ',
+    body:
+      '\n' +
+      '        <div>\n' +
+      '          <h1>Hello</h1>\n' +
+      '        </div>\n' +
+      '        \n' +
+      '      ',
+    css:
+      '\n' +
+      '          h1 {\n' +
+      '            color: red;\n' +
+      '          }\n' +
+      '        ',
+    js:
+      '\n' +
+      '          console.log(\'console log\')\n' +
+      '        '
+  })
 })

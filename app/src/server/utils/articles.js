@@ -7,7 +7,7 @@ const highlight = require('highlight.js')
 const cheerio = require('cheerio')
 const lodash = require('lodash')
 
-function cheerioLoadWithouEscaping (htmlString) {
+function cheerioLoadWithoutEscaping (htmlString) {
   return cheerio.load(htmlString, { decodeEntities: false })
 }
 
@@ -16,7 +16,7 @@ function isElementInsideCodeBlock (cheerioElementObject) {
 }
 
 function addIdsToHeadings (htmlString) {
-  let $ = cheerioLoadWithouEscaping(htmlString)
+  let $ = cheerioLoadWithoutEscaping(htmlString)
   let sameHeadingsCount = 0
 
   $('h2, h3').each((index, element) => {
@@ -46,7 +46,7 @@ function addIdsToHeadings (htmlString) {
 }
 
 function changeXmpToCode (htmlString) {
-  let $ = cheerioLoadWithouEscaping(htmlString)
+  let $ = cheerioLoadWithoutEscaping(htmlString)
 
   $('xmp').each((index, element) => {
     const xmpEl = $(element)
@@ -64,7 +64,7 @@ function changeXmpToCode (htmlString) {
 }
 
 function trimCodeBlocks (htmlString) {
-  let $ = cheerioLoadWithouEscaping(htmlString)
+  let $ = cheerioLoadWithoutEscaping(htmlString)
 
   $('code').each((index, element) => {
     let html = $(element).html()
@@ -79,7 +79,7 @@ function trimCodeBlocks (htmlString) {
 }
 
 function removeIndentationInCodeBlocks (htmlString) {
-  let $ = cheerioLoadWithouEscaping(htmlString)
+  let $ = cheerioLoadWithoutEscaping(htmlString)
 
   $('code').each((index, element) => {
     let html = $(element).html()
@@ -104,7 +104,7 @@ function removeIndentationInCodeBlocks (htmlString) {
 }
 
 function escapeAndHighlightCodeBlocks (htmlString) {
-  let $ = cheerioLoadWithouEscaping(htmlString)
+  let $ = cheerioLoadWithoutEscaping(htmlString)
 
   $('code').each((index, element) => {
     const el = $(element)
@@ -131,7 +131,7 @@ function relativeUrlToAbsolute (htmlString, selector, attribute, absolutePath) {
     throw new Error('missing absolutePath paramenter')
   }
 
-  let $ = cheerioLoadWithouEscaping(htmlString)
+  let $ = cheerioLoadWithoutEscaping(htmlString)
 
   // replace relative paths with absolute paths
   $(selector).each((_, element) => {
@@ -155,7 +155,7 @@ function relativeUrlToAbsolute (htmlString, selector, attribute, absolutePath) {
 }
 
 function enhanceSnippetLinks (htmlString) {
-  let $ = cheerioLoadWithouEscaping(htmlString)
+  let $ = cheerioLoadWithoutEscaping(htmlString)
 
   $('a[href^="./snippets/"]').each((_, element) => {
     const el = $(element)
@@ -181,17 +181,17 @@ function isoStringToUtcDate (isoString) {
 }
 
 function parseSnippet (snippetHtml) {
-  const $ = cheerioLoadWithouEscaping(snippetHtml)
+  const $ = cheerioLoadWithoutEscaping(snippetHtml)
 
+  const head = $('head').html()
+  const body = $('body').html()
   const css = $('head style').html()
   const js = $('body script:last-of-type').html()
-  const html = $('body').html()
-  const head = $('head').html()
 
   return {
     html: snippetHtml,
-    head: head.replace(`<style>${css}</style>`, '').trim(),
-    body: html.replace(`<script>${js}</script>`, '').trim(),
+    head: head.replace(`<style>${css}</style>`, ''),
+    body: body.replace(`<script>${js}</script>`, ''),
     css,
     js
   }

@@ -11,7 +11,7 @@
         <title>{{ article.title }}</title>
         <link>{{ siteUrl }}/{{ article.url }}</link>
         <guid>{{ siteUrl }}/{{ article.url }}</guid>
-        <pubDate>{{ article.publication_date | gmt }}</pubDate>
+        <pubDate>{{ article.publicationDate | gmt }}</pubDate>
         <description>{{ article.description }}</description>
       </item>
     {% endfor %}

@@ -25,12 +25,6 @@ const notFound = (req, res) => {
 
 const index = (req, res) => {
   database.getArticles().then(databaseArticles => {
-    databaseArticles = databaseArticles.map(article => {
-      article.lastUpdate = article.last_update
-      delete article.last_update
-      return article
-    })
-
     const data = addCommonData({
       articles: databaseArticles
     })
@@ -43,9 +37,7 @@ const article = (req, res) => {
   database.getArticle(req.params.article).then(article => {
     if (article) {
       const data = addCommonData({
-        title: article.title,
-        date: article.publication_date,
-        article: article.html
+        article: article
       })
 
       res.render('pages/article.njk', data)
@@ -63,7 +55,7 @@ const debug = (req, res) => {
     articlesData.push(articles.getArticleData(articleDir))
   }
 
-  //s sort articles by publication_date descendant
+  // sort articles by publication_date descendant
   articlesData = articlesData.map(x => x.article)
   articlesData = lodash.sortBy(articlesData, 'lastUpdate')
   articlesData = lodash.reverse(articlesData)
@@ -88,9 +80,7 @@ const debugArticle = (req, res) => {
 
   const articleData = articles.getArticleData(articlePath)
   const data = addCommonData({
-    title: articleData.article.title,
-    date: articleData.article.publicationDate,
-    article: articleData.article.html,
+    article: articleData.article,
     debug: true
   })
 

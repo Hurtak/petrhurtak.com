@@ -1,7 +1,7 @@
 {% extends "../base.njk" %}
 
 {% block title -%}
-  &ndash; {{ title }}
+  &ndash; {{ article.title }}
 {%- endblock %}
 
 {% block content %}
@@ -10,19 +10,19 @@
 
     <div class="article__header">
       <h1 class="article__title">
-        {{ title }}
+        {{ article.title }}
       </h1>
       <time
         class="article__datetime"
-        datetime="{{ date | datetimeAttribute }}"
-        title="{{ date | fullDate }}"
+        datetime="{{ article.publicationDate  | datetimeAttribute }}"
+        title="{{ article.publicationDate | fullDate }}"
       >
-        {{ date | dateHowLongBefore }}
+        {{ article.publicationDate  | dateHowLongBefore }}
       </time>
     </div>
 
     <div class="article__content">
-      {{ article | safe }}
+      {{ article.html | safe }}
     </div>
 
   </article>

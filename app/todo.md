@@ -1,11 +1,10 @@
 # TODO
 
 ## NEXT RELEASE
-- article data gathering refactoring
-  - function for gathering article directories
-    - done?
-  - functions to get all data by article directory
-    - done, cleanup
+- debug reset
+  - add font size to super small
+  - change font to consolas or comic sans
+  - release as npm module
 
 - break snippets into database or have it as static file? or both when we are displaying whole snippet?
 

@@ -1,6 +1,8 @@
 'use strict'
 
 const mysql = require('mysql')
+const lodash = require('lodash')
+
 const config = require('../config/config.js')
 
 const db = mysql.createConnection(config.database)
@@ -13,17 +15,28 @@ function dbPromiseFactory (queryString, params = [], returnOneResults = false) {
   return new Promise((resolve, reject) => {
     db.query(queryString, params, (err, rows) => {
       if (err) {
-        console.log('err ', err)
+        console.log(err)
         reject(err)
       }
 
       if (returnOneResults) {
-        resolve(rows.length ? rows[0] : null)
+        resolve(rows.length ? underscoreCaseObjectToCamelCase(rows[0]) : null)
       }
 
-      resolve(rows)
+      resolve(rows.map(underscoreCaseObjectToCamelCase))
     })
   })
+}
+
+function underscoreCaseObjectToCamelCase (underscoreCaseObj) {
+  const camelCaseObj = {}
+
+  for (const underscoreCasekey in underscoreCaseObj) {
+    const camelCaseKey = lodash.camelCase(underscoreCasekey)
+    camelCaseObj[camelCaseKey] = underscoreCaseObj[underscoreCasekey]
+  }
+
+  return camelCaseObj
 }
 
 // articles functions

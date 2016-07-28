@@ -1,16 +1,27 @@
 # TODO
 
 ## NEXT RELEASE
-- break snippets into database or have it as static file? or both when we are displaying whole snippet?
 
 - 1 get snippet data
+  - done
 - 2 parse snippet data
-- 3 save snippet data
+  - done
+- 3 save snippet data into DB
 - 4 write snippet data in templates
 - 5 js snippet tool will display data
+- 6 link to raw static .html snippet file
 
 - have snippets CSS of snippets ability to turn off decoration styles
   - for example we are showing some css layout, but we also need to add some background color to the layout parts so it's easily reckognizable, but for the layout itself, which is what this example is about, the colors/paddings are not important. So having the ability to turn off these snippet decoration styles would be nice
+  - or is this too much hustle? simple new line with comment could do the job:
+    .content {
+      margin-left: 200;
+      float: left;
+
+      /* decoration */
+      background-color: red;
+      padding: 1em;
+    }
 
 - code snippet tool
   - show css / html / js / result

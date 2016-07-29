@@ -2,10 +2,12 @@ window.App.Log = (function () {
   'use strict'
 
   const config = {
-    url: '/api/log/error'
+    apiErrorUrl: '/api/log/error'
   }
 
   function init () {
+    // setTimeout(() => doesNotExist, 1000)
+
     window.addEventListener('error', function (e) {
       const data = {
         columnNumber: e.colno,
@@ -26,7 +28,15 @@ window.App.Log = (function () {
         // extra fields
         date: Date.now()
       }
-      console.log(data)
+
+      window.fetch(config.apiErrorUrl, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: new window.Headers({ 'Content-Type': 'application/json' }) // TODO: double check
+      })
+      .then(res => {
+        console.log(res)
+      })
     })
   }
 

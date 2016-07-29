@@ -32,10 +32,21 @@
 {% block scriptVariables %}
 
   <script>
-    /*
-    {{ snippets }}
+    (function () {
+      'use strict'
 
-    */
+      window.appData.snippets = [
+        {% for snippet in snippets %}
+          {
+            name: `{{ snippet.name }}`,
+            head: `{{ snippet.head }}`,
+            body: `{{ snippet.body }}`,
+            css: `{{ snippet.css }}`,
+            js: `{{ snippet.js }}`
+          }{% if loop.last == false %},{% endif %}
+        {% endfor %}
+      ]
+    }())
   </script>
 
 {% endblock %}

@@ -1,9 +1,24 @@
 window.App.Snippets = (function () {
   'use strict'
 
-  function init (data) {
-    console.log(data)
-    console.log(data)
+  const config = {
+    dom: {
+      snippetAttribute: 'data-snippet'
+    }
+  }
+
+  function init (data = []) {
+    if (!data || data.length < 1) return
+
+    for (const snippet of data) {
+      const snippetEl = document.querySelector(`[${config.dom.snippetAttribute}="${snippet.name}"]`)
+      if (!snippetEl) {
+        console.log('snippet saved in database not present in the dom')
+        return
+      }
+
+      console.log(snippetEl)
+    }
   }
 
   return {

@@ -22,15 +22,30 @@ CREATE TABLE `articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 
-DROP TABLE IF EXISTS `articles_content`;
-CREATE TABLE `articles_content` (
+DROP TABLE IF EXISTS `articles_html`;
+CREATE TABLE `articles_html` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_article` int(11) NOT NULL,
   `html` mediumtext NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_article` (`id_article`),
-  CONSTRAINT `articles_content_ibfk_1` FOREIGN KEY (`id_article`) REFERENCES `articles` (`id`) ON DELETE CASCADE
+  CONSTRAINT `articles_html_ibfk_2` FOREIGN KEY (`id_article`) REFERENCES `articles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- 2016-07-25 20:23:44
+DROP TABLE IF EXISTS `snippets`;
+CREATE TABLE `snippets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_article` int(11) NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL,
+  `head` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
+  `body` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
+  `css` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
+  `js` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
+  PRIMARY KEY (`id`),
+  KEY `id_article` (`id_article`),
+  CONSTRAINT `snippets_ibfk_2` FOREIGN KEY (`id_article`) REFERENCES `articles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- 2016-07-29 18:26:25

@@ -265,13 +265,13 @@ test('parseSnippet', t => {
     <!DOCTYPE html>
     <html>
       <head><title>title</title></head>
-      <body><h1>Hello</h1></body>
+      <body></body>
     </html>
   `
   t.deepEqual(fn(emptyHtml), {
     html: emptyHtml,
     head: '<title>title</title>',
-    body: '<h1>Hello</h1>',
+    body: null,
     css: null,
     js: null
   })

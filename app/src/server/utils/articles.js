@@ -183,15 +183,15 @@ function isoStringToUtcDate (isoString) {
 function parseSnippet (snippetHtml) {
   const $ = cheerioLoadWithoutEscaping(snippetHtml)
 
-  const head = $('head').html()
-  const body = $('body').html()
   const css = $('head style').html()
   const js = $('body script:last-of-type').html()
+  const head = $('head').html().replace(`<style>${css}</style>`, '') || null
+  const body = $('body').html().replace(`<script>${js}</script>`, '') || null
 
   return {
     html: snippetHtml,
-    head: head.replace(`<style>${css}</style>`, ''),
-    body: body.replace(`<script>${js}</script>`, ''),
+    head: head,
+    body: body,
     css,
     js
   }

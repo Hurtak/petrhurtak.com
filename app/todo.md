@@ -18,9 +18,11 @@
 - 3 save snippet data into DB
   - done
 - 4 write snippet data in templates
-  - TODO
+  - done
 - 5 js snippet tool will display data
+  - TODO
 - 6 link to raw static .html snippet file
+  - done
 
 - have snippets CSS of snippets ability to turn off decoration styles
   - for example we are showing some css layout, but we also need to add some background color to the layout parts so it's easily reckognizable, but for the layout itself, which is what this example is about, the colors/paddings are not important. So having the ability to turn off these snippet decoration styles would be nice
@@ -40,6 +42,8 @@
   - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippe which would be just used instead of inspected how it was done. On the other hand, some css layout example would be useful to have easily avaliable button to show what is the html / css, and also way to resize
   - have a way to display example fullscreen like kod.jecas.cz?
   - chapter about this into components
+
+- consider adding error logging like sentry?
 
 - think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really akward
   - maybe have delete function and insert function only which would be little cleaner but it would increate a lot id's in the database

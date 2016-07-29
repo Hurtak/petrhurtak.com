@@ -11,8 +11,6 @@
   - provide smooth scrolling
 
 ## NEXT RELEASE
-- fix snippet parsing
-
 - think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really akward
   - maybe have delete function and insert function only which would be little cleaner but it would increate a lot id's in the database
   - or is there some insert/update if exists in mysql?

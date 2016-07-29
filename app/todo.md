@@ -1,5 +1,15 @@
 # TODO
 
+- vs code
+  - issue about
+    {
+      "key": "ctrl+up",
+      "command": ["scrollLineUp", "scrollLineUp"],
+      "when": "editorTextFocus"
+    }
+  - scroll multiple lines up/down
+  - provide smooth scrolling
+
 ## NEXT RELEASE
 - fix snippet parsing
 

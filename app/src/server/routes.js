@@ -36,11 +36,14 @@ const index = (req, res) => {
 const article = (req, res) => {
   database.getArticle(req.params.article).then(article => {
     if (article) {
-      const data = addCommonData({
-        article: article
-      })
+      database.getArticleSnippets(article.id).then(snippets => {
+        const data = addCommonData({
+          article: article,
+          snippets: snippets
+        })
 
-      res.render('pages/article.njk', data)
+        res.render('pages/article.njk', data)
+      })
     } else {
       notFound(req, res)
     }

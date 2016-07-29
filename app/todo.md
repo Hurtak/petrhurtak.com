@@ -11,16 +11,14 @@
   - provide smooth scrolling
 
 ## NEXT RELEASE
-- think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really akward
-  - maybe have delete function and insert function only which would be little cleaner but it would increate a lot id's in the database
-  - or is there some insert/update if exists in mysql?
-
 - 1 get snippet data
   - done
 - 2 parse snippet data
   - done
 - 3 save snippet data into DB
+  - done
 - 4 write snippet data in templates
+  - TODO
 - 5 js snippet tool will display data
 - 6 link to raw static .html snippet file
 
@@ -42,6 +40,10 @@
   - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippe which would be just used instead of inspected how it was done. On the other hand, some css layout example would be useful to have easily avaliable button to show what is the html / css, and also way to resize
   - have a way to display example fullscreen like kod.jecas.cz?
   - chapter about this into components
+
+- think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really akward
+  - maybe have delete function and insert function only which would be little cleaner but it would increate a lot id's in the database
+  - or is there some insert/update if exists in mysql?
 
 - finish CSS design
   - page header
@@ -163,7 +165,7 @@
     - use transactions (in update script)
     - use named parameters and pass data as object instead of array?
     - think about revisiting this:
-      .then(mapToCamelCase)
+      .then(mapToCamelCase) - maybe in SQL name things directly? -> SELECT foo_bar as fooBar
       .then(returnOneResult)
   - log unhandle exceptions and uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
   - node_modules folder only in debug mode?

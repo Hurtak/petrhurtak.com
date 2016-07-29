@@ -70,6 +70,7 @@ function getArticles () {
 function getArticle (articleUrl) {
   const query = `
     SELECT
+      articles.id,
       title,
       publication_date,
       url,
@@ -83,6 +84,22 @@ function getArticle (articleUrl) {
   return dbPromiseFactory(query, articleUrl)
     .then(mapToCamelCase)
     .then(returnOneResult)
+}
+
+function getArticleSnippets (articleId) {
+  const query = `
+    SELECT
+      name,
+      head,
+      body,
+      css,
+      js
+    FROM snippets
+    WHERE id_article = ?
+  `
+
+  return dbPromiseFactory(query, articleId)
+    .then(mapToCamelCase)
 }
 
 // upload articles script
@@ -212,6 +229,7 @@ const closeConnection = () => {
 module.exports = {
   getArticles,
   getArticle,
+  getArticleSnippets,
   getIdByArticleUrl,
   insertArticleMetadata,
   updateArticleMetadata,

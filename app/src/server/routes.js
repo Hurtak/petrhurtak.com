@@ -118,6 +118,10 @@ const humansTxt = (req, res) => {
   })
 }
 
+const apiLogError = (req, res) => {
+  res.status(204).send() // TODO check if this is a correct way to do it
+}
+
 module.exports = {
   index,
   article,
@@ -125,5 +129,6 @@ module.exports = {
   debugArticle,
   rss,
   robotsTxt,
-  humansTxt
+  humansTxt,
+  apiLogError
 }

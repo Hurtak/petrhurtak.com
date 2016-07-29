@@ -55,9 +55,13 @@ app.use('/static/node_modules', express.static(paths.nodeModules)) // TODO: make
 // pages
 
 app.get('/', routes.index)
+
 app.get('/rss', routes.rss)
 app.get('/robots.txt', routes.robotsTxt)
 app.get('/humans.txt', routes.humansTxt)
+
+app.post('/api/log/error', routes.apiLogError)
+
 app.get('/debug', routes.debug)
 app.get('/debug/:article', routes.debugArticle)
 app.get('/:article', routes.article)

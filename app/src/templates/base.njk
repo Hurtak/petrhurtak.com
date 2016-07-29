@@ -37,11 +37,16 @@
         'use strict'
 
         window.appData = {}
+        window.App = {}
       }())
     </script>
     {% block scriptVariables %}{% endblock %}
 
-    <script type="text/javascript" src="/static/scripts/scripts.js"></script>
+    <script src="/static/scripts/components/snippets.js"></script>
+    <script src="/static/scripts/app.js"></script>
+    <script>
+      window.App.Main.init(window.appData)
+    </script>
 
   </body>
 </html>

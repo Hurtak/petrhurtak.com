@@ -12,6 +12,7 @@ const config = require('../config/config.js')
 const nunjucksFilters = require('./utils/nunjucks-filters.js')
 const paths = require('./paths.js')
 const routes = require('./routes.js')
+const api = require('./api.js')
 
 // app
 
@@ -50,7 +51,7 @@ app.get('/rss', routes.rss)
 app.get('/robots.txt', routes.robotsTxt)
 app.get('/humans.txt', routes.humansTxt)
 
-app.post('/api/log/exception', routes.apiLogException)
+app.post('/api/log/exception', api.logException)
 
 app.get('/debug', routes.debug)
 app.get('/debug/:article', routes.debugArticle)

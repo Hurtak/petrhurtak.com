@@ -7,7 +7,7 @@ window.App.Log = (function () {
   }
 
   function init () {
-    logExceptions()
+    window.addEventListener('error', logException)
 
     // setTimeout(() => throwError, 1000) // debug
   }
@@ -28,33 +28,31 @@ window.App.Log = (function () {
     })
   }
 
-  function logExceptions () {
-    window.addEventListener('error', (e) => {
-      const data = {
-        columnNumber: e.colno,
-        lineNumber: e.lineno,
-        fileName: e.filename,
-        message: e.message,
-        error: {
-          message: e.error.message, // Chrome FF IE Edge
-          stack: e.error.stack, // Chrome FF IE Edge
-          columnNumber: e.error.columnNumber, // FF
-          lineNumber: e.error.lineNumber, // FF
-          fileName: e.error.fileName, // FF
-          description: e.error.description, // IE Edge
-          number: e.error.number, // IE Edge - TODO: what is this?
-          name: e.error.name // IE Edge
-        },
-        timestamp: e.timeStamp,
-        // extra fields
-        date: new Date().toUTCString()
-      }
+  function logException (e) {
+    const data = {
+      columnNumber: e.colno,
+      lineNumber: e.lineno,
+      fileName: e.filename,
+      message: e.message,
+      error: {
+        message: e.error.message, // Chrome FF IE Edge
+        stack: e.error.stack, // Chrome FF IE Edge
+        columnNumber: e.error.columnNumber, // FF
+        lineNumber: e.error.lineNumber, // FF
+        fileName: e.error.fileName, // FF
+        description: e.error.description, // IE Edge
+        number: e.error.number, // IE Edge - TODO: what is this?
+        name: e.error.name // IE Edge
+      },
+      timestamp: e.timeStamp,
+      // extra fields
+      date: new Date().toUTCString()
+    }
 
-      window.fetch(config.apiLogExceptionUrl, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: new window.Headers({ 'Content-Type': 'application/json' }) // TODO: double check
-      })
+    window.fetch(config.apiLogExceptionUrl, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: new window.Headers({ 'Content-Type': 'application/json' }) // TODO: double check
     })
   }
 

@@ -2,12 +2,8 @@
 
 require('./debug.js')()
 
-const path = require('path')
-const fs = require('fs')
-
 const express = require('express')
 const helmet = require('helmet') // TODO: article about all header this provides
-const morgan = require('morgan')
 const responseTime = require('response-time')
 const compression = require('compression')
 const nunjucks = require('nunjucks')
@@ -23,13 +19,7 @@ const app = express()
 
 // middlewares
 
-const logWriteStream = fs.createWriteStream(
-  path.join(paths.log, new Date().toISOString().slice(0, 10)) + '.log',
-  { flags: 'a' }
-)
-
 app.use(helmet())
-app.use(morgan('short', { stream: logWriteStream }))
 app.use(responseTime())
 app.use(compression())
 

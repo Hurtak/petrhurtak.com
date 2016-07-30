@@ -13,12 +13,11 @@
     "highlight.js": "9.5.0",
     "html-minifier": "3.0.1",
     "is-absolute-url": "2.0.0",
-    "reset-css": "2.0.2011012603",
     "lodash": "4.13.1",
-    "morgan": "1.7.0",
     "mysql": "2.11.1",
     "normalize.css": "4.2.0",
     "nunjucks": "2.4.2",
+    "reset-css": "2.0.2011012603",
     "response-time": "2.3.1"
   },
   "devDependencies": {

@@ -503,11 +503,6 @@
       "from": "balanced-match@>=0.4.1 <0.5.0",
       "resolved": "https://registry.npmjs.org/balanced-match/-/balanced-match-0.4.1.tgz"
     },
-    "basic-auth": {
-      "version": "1.0.4",
-      "from": "basic-auth@>=1.0.3 <1.1.0",
-      "resolved": "https://registry.npmjs.org/basic-auth/-/basic-auth-1.0.4.tgz"
-    },
     "bignumber.js": {
       "version": "2.3.0",
       "from": "bignumber.js@2.3.0",
@@ -2432,11 +2427,6 @@
       "version": "0.5.1",
       "from": "mkdirp@>=0.5.1 <0.6.0",
       "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz"
-    },
-    "morgan": {
-      "version": "1.7.0",
-      "from": "morgan@1.7.0",
-      "resolved": "https://registry.npmjs.org/morgan/-/morgan-1.7.0.tgz"
     },
     "ms": {
       "version": "0.7.1",

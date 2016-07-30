@@ -12,9 +12,7 @@
 
 ## NEXT RELEASE
 - error logging
-  - save data to file
-    - new log/error folder
-    - also add this folder to install.sh
+  - add body-parser so we can access express http request body
   - our own console.wanr/error functions which will log & make a request to the api so we save this
     - only save to api if console error?
     - new api endpoint for this and new folder like log/console?

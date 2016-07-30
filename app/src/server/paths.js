@@ -22,7 +22,7 @@ const paths = {
 
   www: '../www',
   log: '../www/log',
-  articlesCache: '../www/articles',
+  logExceptions: '../www/log/exceptions',
 
   config: './config',
   server: './server',

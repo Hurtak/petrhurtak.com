@@ -1,5 +1,8 @@
 'use strict'
 
+const fs = require('fs')
+const path = require('path')
+
 const lodash = require('lodash')
 
 const articles = require('./articles.js')
@@ -119,12 +122,23 @@ const humansTxt = (req, res) => {
 }
 
 const apiLogException = (req, res) => {
-  // const logWriteStream = fs.createWriteStream(
-  //   path.join(paths.log, new Date().toISOString().slice(0, 10)) + '.log',
-  //   { flags: 'a' }
-  // )
+  const data = {
+    client: '',
+    server: {
+      userAgent: req.headers['user-agent'],
+      referer: req.headers.referer,
+      origin: req.headers.origin,
+      host: req.headers.host
+    }
+  }
 
-  res.status(204).send('xxx') // TODO check if this is a correct way to do it
+  const fileName = new Date().toISOString().slice(0, 10) + '.log'
+  fs.appendFile(
+    path.join(paths.logExceptions, fileName),
+    JSON.stringify(data, null, 2) + '\n\n'
+  )
+
+  res.status(204).send() // TODO check if this is a correct way to do it
 }
 
 module.exports = {

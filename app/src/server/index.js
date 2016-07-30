@@ -50,7 +50,7 @@ app.get('/rss', routes.rss)
 app.get('/robots.txt', routes.robotsTxt)
 app.get('/humans.txt', routes.humansTxt)
 
-app.post('/api/log/error', routes.apiLogError)
+app.post('/api/log/exception', routes.apiLogException)
 
 app.get('/debug', routes.debug)
 app.get('/debug/:article', routes.debugArticle)

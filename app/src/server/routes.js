@@ -118,8 +118,13 @@ const humansTxt = (req, res) => {
   })
 }
 
-const apiLogError = (req, res) => {
-  res.status(204).send() // TODO check if this is a correct way to do it
+const apiLogException = (req, res) => {
+  // const logWriteStream = fs.createWriteStream(
+  //   path.join(paths.log, new Date().toISOString().slice(0, 10)) + '.log',
+  //   { flags: 'a' }
+  // )
+
+  res.status(204).send('xxx') // TODO check if this is a correct way to do it
 }
 
 module.exports = {
@@ -130,5 +135,5 @@ module.exports = {
   rss,
   robotsTxt,
   humansTxt,
-  apiLogError
+  apiLogException
 }

@@ -2,13 +2,21 @@ window.App.Log = (function () {
   'use strict'
 
   const config = {
-    apiErrorUrl: '/api/log/error'
+    apiErrorUrl: '/api/log/exception'
   }
 
   function init () {
-    // setTimeout(() => doesNotExist, 1000)
+    logExceptions()
 
-    window.addEventListener('error', function (e) {
+    // setTimeout(() => throwError, 1000)
+  }
+
+  function error (message) {
+    console.error(message)
+  }
+
+  function logExceptions () {
+    window.addEventListener('error', (e) => {
       const data = {
         columnNumber: e.colno,
         lineNumber: e.lineno,
@@ -34,18 +42,11 @@ window.App.Log = (function () {
         body: JSON.stringify(data),
         headers: new window.Headers({ 'Content-Type': 'application/json' }) // TODO: double check
       })
-      .then(res => {
-        console.log(res)
-      })
     })
   }
 
-  function warning () {
-    return true
-  }
-
   return {
-    init: init,
-    warning: warning
+    init,
+    error
   }
 }())

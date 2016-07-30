@@ -204,6 +204,7 @@
   - 500
     - add error handler to display 500 pages
     - add .catch on promises inside router to display 500?
+    - log all 500 into file, how to do this in express?
 
 - Frontend
   - highlight.js

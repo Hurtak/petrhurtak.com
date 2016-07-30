@@ -2,17 +2,30 @@ window.App.Log = (function () {
   'use strict'
 
   const config = {
-    apiErrorUrl: '/api/log/exception'
+    apiLogExceptionUrl: '/api/log/exception',
+    apiLogAppMessageUrl: '/api/log/app-message'
   }
 
   function init () {
     logExceptions()
 
-    // setTimeout(() => throwError, 1000)
+    // setTimeout(() => throwError, 1000) // debug
   }
 
-  function error (message) {
+  function error (message, additionalData) {
     console.error(message)
+
+    const data = {
+      message: message,
+      additionalData: additionalData,
+      logType: 'error'
+    }
+
+    window.fetch(config.apiLogAppMessageUrl, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: new window.Headers({ 'Content-Type': 'application/json' }) // TODO: double check
+    })
   }
 
   function logExceptions () {
@@ -34,10 +47,10 @@ window.App.Log = (function () {
         },
         timestamp: e.timeStamp,
         // extra fields
-        date: Date.now()
+        date: new Date().toUTCString()
       }
 
-      window.fetch(config.apiErrorUrl, {
+      window.fetch(config.apiLogExceptionUrl, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: new window.Headers({ 'Content-Type': 'application/json' }) // TODO: double check

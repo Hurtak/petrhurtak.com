@@ -51,6 +51,7 @@ app.get('/rss', routes.rss)
 app.get('/robots.txt', routes.robotsTxt)
 app.get('/humans.txt', routes.humansTxt)
 
+app.post('/api/log/app-message', api.logAppMessage)
 app.post('/api/log/exception', api.logException)
 
 app.get('/debug', routes.debug)

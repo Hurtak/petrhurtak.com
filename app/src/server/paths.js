@@ -22,6 +22,7 @@ const paths = {
 
   www: '../www',
   log: '../www/log',
+  logAppMessage: '../www/log/app-message',
   logExceptions: '../www/log/exceptions',
 
   config: './config',

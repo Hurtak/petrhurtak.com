@@ -13,8 +13,7 @@ window.App.Snippets = (function () {
     for (const snippet of data) {
       const snippetEl = document.querySelector(`[${config.dom.snippetAttribute}="${snippet.name}"]`)
       if (!snippetEl) {
-        window.App.Log.error()
-        console.log('snippet saved in database not present in the dom') // TODO log into backend
+        window.App.Log.error(`[Snippets] Snippet with name "${snippet.name}" can't be found in the DOM.`)
         return
       }
 

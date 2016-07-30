@@ -178,8 +178,11 @@
     - use transactions (in update script)
     - use named parameters and pass data as object instead of array?
     - think about revisiting this:
-      .then(mapToCamelCase) - maybe in SQL name things directly? -> SELECT foo_bar as fooBar
-      .then(returnOneResult)
+      - .then(mapToCamelCase) - maybe in SQL name things directly? -> SELECT foo_bar as fooBar
+      - .then(returnOneResult)
+    - what is this from Adminer export?
+      - SET foreign_key_checks = 0;
+      - SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
   - log unhandle exceptions and uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
   - node_modules folder only in debug mode?
   - tests

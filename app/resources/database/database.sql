@@ -2,7 +2,11 @@
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
+DROP DATABASE IF EXISTS `hurtak_blog`;
+CREATE DATABASE `hurtak_blog` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_czech_ci */;
 USE `hurtak_blog`;
 
 DROP TABLE IF EXISTS `articles`;
@@ -43,9 +47,10 @@ CREATE TABLE `snippets` (
   `css` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
   `js` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `id_article_name` (`id_article`,`name`),
   KEY `id_article` (`id_article`),
   CONSTRAINT `snippets_ibfk_2` FOREIGN KEY (`id_article`) REFERENCES `articles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- 2016-07-29 18:26:25
+-- 2016-07-30 19:29:38

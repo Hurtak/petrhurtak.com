@@ -1,5 +1,6 @@
 # TODO
 
+## When home
 - vs code
   - issue about
     {
@@ -9,8 +10,6 @@
     }
   - scroll multiple lines up/down
   - provide smooth scrolling
-
-## NEXT RELEASE
 - error logging
   - add body-parser so we can access express http request body
   - log ip address
@@ -18,19 +17,18 @@
   - our own console.wanr/error functions which will log & make a request to the api so we save this
     - only save to api if console error?
     - new api endpoint for this and new folder like log/console?
+- fix broken CI build
 
-- 1 get snippet data
-  - done
-- 2 parse snippet data
-  - done
-- 3 save snippet data into DB
-  - done
-- 4 write snippet data in templates
-  - done
-- 5 js snippet tool will display data
-  - TODO
-- 6 link to raw static .html snippet file
-  - done
+## NEXT RELEASE
+
+- css snippets
+  - fix tests
+
+- consider transforming article so each element has it's own class?
+  - p -> p.article__p
+  - what do we do about nested components?
+  - what happens when we are in code/xmp element?
+  - do we do this automatically based on tag name or by hand?
 
 - have snippets CSS of snippets ability to turn off decoration styles
   - for example we are showing some css layout, but we also need to add some background color to the layout parts so it's easily reckognizable, but for the layout itself, which is what this example is about, the colors/paddings are not important. So having the ability to turn off these snippet decoration styles would be nice

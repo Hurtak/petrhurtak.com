@@ -160,11 +160,20 @@ function enhanceSnippetLinks (htmlString) {
   $('a[href^="./snippets/"]').each((_, element) => {
     const el = $(element)
 
-    const href = el.attr('href')
-    const fileName = href.split('/').reverse()[0]
-    const snippetName = fileName.split('.')[0]
+    const text = el.text()
+    const href = el.attr('href') // ./snippets/example.html
+    const pathSplit = href.split('/')
+    const fileName = pathSplit[pathSplit.length - 1] // example.html"
+    const snippetName = fileName.split('.')[0] // example
 
-    el.attr('data-snippet', snippetName)
+    const snippetEl = $(`
+      <div class="snippet" data-snippet="${snippetName}">
+        <a class="snippet__link" href="${href}">${text}</a>
+        <div class="snippet__content"></div>
+      </div>
+    `)
+
+    el.replaceWith(snippetEl)
   })
 
   return $.html()

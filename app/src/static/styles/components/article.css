@@ -215,6 +215,14 @@
 }
 
 /*
+ * other elements
+ */
+
+.article__content div {
+  margin: var(--paragraph-spacing) 0 0 0;
+}
+
+/*
  * spacing between paragraphs and headings
  */
 

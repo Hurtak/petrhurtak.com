@@ -19,6 +19,7 @@ node_js:
 
 before_install:
   - cd app
+  - chmod +x scripts/install.sh
 
 install:
   - ./scripts/install.sh

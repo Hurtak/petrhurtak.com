@@ -1,15 +1,7 @@
 # TODO
 
-## When home
-- vs code
-  - issue about
-    {
-      "key": "ctrl+up",
-      "command": ["scrollLineUp", "scrollLineUp"],
-      "when": "editorTextFocus"
-    }
-  - scroll multiple lines up/down
-  - provide smooth scrolling
+## NEXT RELEASE
+
 - error logging
   - add body-parser so we can access express http request body
   - log ip address
@@ -18,11 +10,10 @@
     - only save to api if console error?
     - new api endpoint for this and new folder like log/console?
 - fix broken CI build
-
-## NEXT RELEASE
-
 - css snippets
   - fix tests
+  - have certain properties customizale like here
+    - http://codepen.io/thebabydino/pen/pbVdPx/
 
 - consider transforming article so each element has it's own class?
   - p -> p.article__p

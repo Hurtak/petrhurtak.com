@@ -13,6 +13,8 @@ function addCommonData (req, clientData) {
       referer: req.headers.referer,
       origin: req.headers.origin,
       host: req.headers.host,
+      remoteAddress: req.socket.remoteAddress,
+      ip: req.ip,
       date: new Date().toUTCString()
     }
   }

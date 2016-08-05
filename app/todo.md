@@ -5,11 +5,7 @@
 - greenkeep.io
 
 - error logging
-  - log ip address
   - is it possible to log current linenumber or current function name?
-  - our own console.wanr/error functions which will log & make a request to the api so we save this
-    - only save to api if console error?
-    - new api endpoint for this and new folder like log/console?
 
 - css snippets
   - fix tests

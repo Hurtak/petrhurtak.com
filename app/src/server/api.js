@@ -30,23 +30,19 @@ function logJson (folder, data) {
 }
 
 function logAppMessage (req, res) {
-  const data = addCommonData(req, {
-    todo: ''
-  })
-
+  const data = addCommonData(req, req.body)
   logJson(paths.logAppMessage, data)
 
-  res.status(204).send() // TODO check if this is a correct way to do it
+  res.status(204)
+  res.send()
 }
 
 function logException (req, res) {
-  const data = addCommonData(req, {
-    todo: ''
-  })
-
+  const data = addCommonData(req, req.body)
   logJson(paths.logExceptions, data)
 
-  res.status(204).send() // TODO check if this is a correct way to do it
+  res.status(204)
+  res.send()
 }
 
 module.exports = {

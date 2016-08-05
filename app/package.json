@@ -4,6 +4,7 @@
   "description": "source code for hurtak.cc",
   "main": "src/server/index.js",
   "dependencies": {
+    "body-parser": "1.15.2",
     "cheerio": "0.20.0",
     "compression": "1.6.2",
     "escape-html": "1.0.3",

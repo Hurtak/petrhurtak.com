@@ -16,7 +16,7 @@ window.App.Snippets = (function () {
   function buildSnippet (snippet) {
     const snippetEl = document.querySelector(`[${config.dom.snippetAttribute}="${snippet.name}"]`)
     if (!snippetEl) {
-      window.App.Log.error(`[Snippets] Snippet with name "${snippet.name}" can't be found in the DOM.`)
+      window.App.Log.error('Snippets', `Snippet with name "${snippet.name}" can't be found in the DOM.`)
       return
     }
 

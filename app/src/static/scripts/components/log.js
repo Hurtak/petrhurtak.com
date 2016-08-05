@@ -12,10 +12,11 @@ window.App.Log = (function () {
     // setTimeout(() => throwError, 1000) // debug
   }
 
-  function error (message, additionalData) {
+  function error (module, message, additionalData) {
     console.error(message)
 
     const data = {
+      module: module,
       message: message,
       additionalData: additionalData,
       logType: 'error'

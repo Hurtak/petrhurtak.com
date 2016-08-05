@@ -4,6 +4,7 @@ require('./debug.js')()
 
 const express = require('express')
 const helmet = require('helmet') // TODO: article about all header this provides
+const bodyParser = require('body-parser')
 const responseTime = require('response-time')
 const compression = require('compression')
 const nunjucks = require('nunjucks')
@@ -21,6 +22,7 @@ const app = express()
 // middlewares
 
 app.use(helmet())
+app.use(bodyParser.json())
 app.use(responseTime())
 app.use(compression())
 

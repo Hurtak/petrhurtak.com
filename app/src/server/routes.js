@@ -9,7 +9,7 @@ const articles = require('./articles.js')
 const database = require('./database.js')
 const paths = require('./paths.js')
 
-const addCommonData = data => {
+function addCommonData (data) {
   const commonData = {
     currentYear: new Date().getFullYear(),
     siteUrl: 'https://hurtak.cc',
@@ -21,12 +21,12 @@ const addCommonData = data => {
   return Object.assign({}, commonData, data)
 }
 
-const notFound = (req, res) => {
+function notFound (req, res) {
   const data = addCommonData({})
   res.render('pages/404.njk', data)
 }
 
-const index = (req, res) => {
+function index (req, res) {
   database.getArticles().then(databaseArticles => {
     const data = addCommonData({
       articles: databaseArticles
@@ -36,7 +36,7 @@ const index = (req, res) => {
   })
 }
 
-const article = (req, res) => {
+function article (req, res) {
   database.getArticle(req.params.article).then(article => {
     if (article) {
       database.getArticleSnippets(article.id).then(snippets => {
@@ -53,7 +53,7 @@ const article = (req, res) => {
   })
 }
 
-const debug = (req, res) => {
+function debug (req, res) {
   const articleDirs = articles.getArticlesDirectories(paths.articles, 2)
 
   let articlesData = []
@@ -75,7 +75,7 @@ const debug = (req, res) => {
   res.render('pages/index.njk', data)
 }
 
-const debugArticle = (req, res) => {
+function debugArticle (req, res) {
   let articleName = req.params.article
 
   let articlePath = articles.findPathToArticle(paths.articles, articleName, 2)
@@ -93,7 +93,7 @@ const debugArticle = (req, res) => {
   res.render('pages/article.njk', data)
 }
 
-const rss = (req, res) => {
+function rss (req, res) {
   database.getRSS().then(databaseArticles => {
     const data = {articles: databaseArticles}
     for (let i = 0; i < data.articles.length; i++) {
@@ -105,12 +105,12 @@ const rss = (req, res) => {
   })
 }
 
-const robotsTxt = (req, res) => {
+function robotsTxt (req, res) {
   res.type('text/plain')
   res.render('special/robots.txt.njk')
 }
 
-const humansTxt = (req, res) => {
+function humansTxt (req, res) {
   database.getHumansTxt().then(data => {
     const templateData = addCommonData({
       lastUpdate: data.lastUpdate
@@ -121,7 +121,7 @@ const humansTxt = (req, res) => {
   })
 }
 
-const apiLogException = (req, res) => {
+function apiLogException (req, res) {
   const data = {
     client: '',
     server: {

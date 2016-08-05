@@ -1,18 +1,18 @@
 'use strict'
 
-const datetimeAttribute = (date) => {
+function datetimeAttribute (date) {
   // 1. date -> "Sat Jun 18 2016 17:08:32 GMT+0200 (Central Europe Daylight Time)"
   // 2. toISOString() -> "2016-06-18T15:08:32.598Z"
   // 3. substr(0,19) -> "2016-06-18T15:08:32"
   return date.toISOString().substr(0, 19)
 }
 
-const gmt = (date) => {
+function gmt (date) {
   // GMT string example "Mon, 27 Jun 2016 17:48:24 GMT"
   return date.toGMTString()
 }
 
-const fullDate = (date) => {
+function fullDate (date) {
   const months = [
     'January',
     'February',
@@ -44,7 +44,7 @@ const fullDate = (date) => {
   return `${day}${dayPostfix} ${month} ${year}`
 }
 
-const dateHowLongBefore = (date) => {
+function dateHowLongBefore (date) {
   date = new Date(date)
   const nowTimestamp = Date.now()
   const dateTimestamp = date.getTime()

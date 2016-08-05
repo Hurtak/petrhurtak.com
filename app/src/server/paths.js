@@ -2,7 +2,7 @@
 
 const path = require('path')
 
-const joinPathsInObject = (paths, rootDirectory) => {
+function joinPathsInObject (paths, rootDirectory) {
   const absolutePaths = {}
   for (const key in paths) {
     absolutePaths[key] = path.join(rootDirectory, paths[key])

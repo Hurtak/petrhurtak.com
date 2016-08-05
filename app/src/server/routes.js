@@ -1,6 +1,6 @@
 'use strict'
 
-const fs = require('fs')
+const fs = require('fs-promise')
 const path = require('path')
 
 const lodash = require('lodash')

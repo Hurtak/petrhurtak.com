@@ -74,6 +74,11 @@
       "from": "ansi-styles@>=2.2.1 <3.0.0",
       "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-2.2.1.tgz"
     },
+    "any-promise": {
+      "version": "1.3.0",
+      "from": "any-promise@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/any-promise/-/any-promise-1.3.0.tgz"
+    },
     "anymatch": {
       "version": "1.3.0",
       "from": "anymatch@>=1.3.0 <2.0.0",
@@ -529,11 +534,6 @@
           "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-2.0.6.tgz"
         }
       }
-    },
-    "bluebird": {
-      "version": "3.4.1",
-      "from": "bluebird@>=3.0.0 <4.0.0",
-      "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-3.4.1.tgz"
     },
     "boolbase": {
       "version": "1.0.0",
@@ -1572,6 +1572,16 @@
       "from": "front-matter@latest",
       "resolved": "https://registry.npmjs.org/front-matter/-/front-matter-2.1.0.tgz"
     },
+    "fs-extra": {
+      "version": "0.26.7",
+      "from": "fs-extra@>=0.26.5 <0.27.0",
+      "resolved": "https://registry.npmjs.org/fs-extra/-/fs-extra-0.26.7.tgz"
+    },
+    "fs-promise": {
+      "version": "0.5.0",
+      "from": "fs-promise@latest",
+      "resolved": "https://registry.npmjs.org/fs-promise/-/fs-promise-0.5.0.tgz"
+    },
     "fs.realpath": {
       "version": "1.0.0",
       "from": "fs.realpath@>=1.0.0 <2.0.0",
@@ -2107,6 +2117,11 @@
       "from": "json5@>=0.4.0 <0.5.0",
       "resolved": "https://registry.npmjs.org/json5/-/json5-0.4.0.tgz"
     },
+    "jsonfile": {
+      "version": "2.3.1",
+      "from": "jsonfile@>=2.1.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/jsonfile/-/jsonfile-2.3.1.tgz"
+    },
     "jsonify": {
       "version": "0.0.0",
       "from": "jsonify@>=0.0.0 <0.1.0",
@@ -2131,6 +2146,11 @@
       "version": "3.0.3",
       "from": "kind-of@>=3.0.2 <4.0.0",
       "resolved": "https://registry.npmjs.org/kind-of/-/kind-of-3.0.3.tgz"
+    },
+    "klaw": {
+      "version": "1.3.0",
+      "from": "klaw@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/klaw/-/klaw-1.3.0.tgz"
     },
     "last-line-stream": {
       "version": "1.0.0",
@@ -2459,6 +2479,11 @@
       "version": "2.11.1",
       "from": "mysql@2.11.1",
       "resolved": "https://registry.npmjs.org/mysql/-/mysql-2.11.1.tgz"
+    },
+    "mz": {
+      "version": "2.4.0",
+      "from": "mz@>=2.3.1 <3.0.0",
+      "resolved": "https://registry.npmjs.org/mz/-/mz-2.4.0.tgz"
     },
     "ncname": {
       "version": "1.0.0",
@@ -4365,6 +4390,16 @@
       "version": "1.0.0",
       "from": "the-argv@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/the-argv/-/the-argv-1.0.0.tgz"
+    },
+    "thenify": {
+      "version": "3.2.0",
+      "from": "thenify@>=3.1.0 <4.0.0",
+      "resolved": "https://registry.npmjs.org/thenify/-/thenify-3.2.0.tgz"
+    },
+    "thenify-all": {
+      "version": "1.6.0",
+      "from": "thenify-all@>=1.6.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/thenify-all/-/thenify-all-1.6.0.tgz"
     },
     "through": {
       "version": "2.3.8",

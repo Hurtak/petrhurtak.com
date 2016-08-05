@@ -2,11 +2,6 @@
 
 ## NEXT RELEASE
 
-- greenkeep.io
-
-- error logging
-  - is it possible to log current linenumber or current function name?
-
 - css snippets
   - fix tests
   - have certain properties customizale like here

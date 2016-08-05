@@ -13,7 +13,7 @@ window.App.Log = (function () {
   }
 
   function error (module, message, additionalData) {
-    console.error(message)
+    console.error(`[${module}] ${message}`)
 
     const data = {
       module: module,

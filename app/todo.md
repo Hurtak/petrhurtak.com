@@ -15,6 +15,8 @@
   - have certain properties customizale like here
     - http://codepen.io/thebabydino/pen/pbVdPx/
 
+- benchmark tool, use wrk?
+
 - consider transforming article so each element has it's own class?
   - p -> p.article__p
   - what do we do about nested components?

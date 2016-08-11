@@ -23,11 +23,11 @@
     "response-time": "2.3.1"
   },
   "devDependencies": {
-    "ava": "0.15.2",
+    "ava": "0.16.0",
     "babel-eslint": "6.1.2",
-    "coveralls": "2.11.11",
-    "nodemon": "1.9.2",
-    "nyc": "7.0.0",
+    "coveralls": "2.11.12",
+    "nodemon": "1.10.0",
+    "nyc": "7.1.0",
     "pretty-error": "2.0.0",
     "standard": "7.1.2"
   },

@@ -20,7 +20,7 @@ window.App.Snippets = (function () {
       return
     }
 
-    console.log(snippetEl)
+    console.log(snippet)
   }
 
   return {

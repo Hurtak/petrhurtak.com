@@ -13,8 +13,6 @@
   - have certain properties customizale like here
     - http://codepen.io/thebabydino/pen/pbVdPx/
 
-- consider adding error logging like sentry?
-
 - think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really akward
   - maybe have delete function and insert function only which would be little cleaner but it would increate a lot id's in the database
   - or is there some insert/update if exists in mysql?
@@ -45,6 +43,8 @@
   - why would we do this? what is the benefit over plain css -> maybe that we dont have css specififity problems?
 
 - benchmark tool, use wrk?
+
+- take a look at error logging tools like sentry?
 
 ## FUTURE RELEASES
 - General

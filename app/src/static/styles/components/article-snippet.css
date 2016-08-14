@@ -19,3 +19,13 @@
   background-color:lightblue;
   border: 0!important; /* TODO: remove important */
 }
+
+.snippet__content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+}
+

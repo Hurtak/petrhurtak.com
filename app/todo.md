@@ -2,37 +2,16 @@
 
 ## NEXT RELEASE
 
-- css snippets
-  - fix tests
-  - have certain properties customizale like here
-    - http://codepen.io/thebabydino/pen/pbVdPx/
-
-- benchmark tool, use wrk?
-
-- consider transforming article so each element has it's own class?
-  - p -> p.article__p
-  - what do we do about nested components?
-  - what happens when we are in code/xmp element?
-  - do we do this automatically based on tag name or by hand?
-
-- have snippets CSS of snippets ability to turn off decoration styles
-  - for example we are showing some css layout, but we also need to add some background color to the layout parts so it's easily reckognizable, but for the layout itself, which is what this example is about, the colors/paddings are not important. So having the ability to turn off these snippet decoration styles would be nice
-  - or is this too much hustle? simple new line with comment could do the job:
-    .content {
-      margin-left: 200;
-      float: left;
-
-      /* decoration */
-      background-color: red;
-      padding: 1em;
-    }
-
 - code snippet tool
   - show css / html / js / result
   - be able to resize
   - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippe which would be just used instead of inspected how it was done. On the other hand, some css layout example would be useful to have easily avaliable button to show what is the html / css, and also way to resize
   - have a way to display example fullscreen like kod.jecas.cz?
   - chapter about this into components
+
+- css snippets
+  - have certain properties customizale like here
+    - http://codepen.io/thebabydino/pen/pbVdPx/
 
 - consider adding error logging like sentry?
 
@@ -55,6 +34,17 @@
 - put this damn thing on the internet
 - add comments
 - add google analytics
+
+## Right after release
+
+- consider transforming article so each element has it's own class?
+  - p -> p.article__p
+  - what do we do about nested components?
+  - what happens when we are in code/xmp element?
+  - do we do this automatically based on tag name or by hand?
+  - why would we do this? what is the benefit over plain css -> maybe that we dont have css specififity problems?
+
+- benchmark tool, use wrk?
 
 ## FUTURE RELEASES
 - General

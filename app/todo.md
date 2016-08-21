@@ -38,6 +38,11 @@
 
 ## Right after release
 
+- update Twitter profile
+- domains
+  - buy hurtak.cc hurtak.io petrhurtak.com petrhurtak.cz hurtak.pe
+  - move to namecheap?
+- http://www.vzhurudolu.cz/prirucka/checklist
 - convert app to Docker
 - consider deploying through now https://zeit.co/now/
 - consider transforming article so each element has it's own class?
@@ -46,7 +51,7 @@
   - what happens when we are in code/xmp element?
   - do we do this automatically based on tag name or by hand?
   - why would we do this? what is the benefit over plain CSS -> maybe that we don't have CSS specificity problems?
-- benchmark tool, use wrk?
+- benchmark tool, use wrk? also benchmark after each commit in travis?
 - Synon.js for mocking api call a db functions?
 - Selenium testing?
 - take a look at error logging tools like sentry?
@@ -54,6 +59,7 @@
 - consider using https://github.com/VerbalExpressions/JSVerbalExpressions for regex
 - https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/ with this provide fallback to older browsers?
 - With each code live snippet have a warning if some feature is not supported in current browser
+- fork to multiple processes (strong-supervisor, there is also Isaac Schluter's old cluster-master, naught, cluster2, pm2, etc.)
 
 ## FUTURE RELEASES
 - General

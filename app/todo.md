@@ -3,25 +3,28 @@
 ## NEXT RELEASE
 
 - code snippet tool
-  - show css / html / js / result
+  - show CSS / html / js / result
   - be able to resize
-  - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippe which would be just used instead of inspected how it was done. On the other hand, some css layout example would be useful to have easily avaliable button to show what is the html / css, and also way to resize
+  - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippet which would be just used instead of inspected how it was done. On the other hand, some CSS layout example would be useful to have easily available button to show what is the html / css, and also way to resize
   - have a way to display example fullscreen like kod.jecas.cz?
   - chapter about this into components
+  - With snippets display what language they are from and maybe even version (with elm for example)
+  - have unified way to display feature support
 
 - css snippets
-  - have certain properties customizale like here
+  - have certain properties customizable like here
     - http://codepen.io/thebabydino/pen/pbVdPx/
 
-- think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really akward
-  - maybe have delete function and insert function only which would be little cleaner but it would increate a lot id's in the database
-  - or is there some insert/update if exists in mysql?
+- think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really awkward
+  - maybe have delete function and insert function only which would be little cleaner but it would increase a lot id's in the database
+  - or is there some insert/update if exists in MySQL?
 
 - finish CSS design
   - page header
   - article header
   - articles list page
   - footer
+  - separate styles for keyboard keys? eg.: ctrl + tab
   - 404 page
   - inspiration
     - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/Material-I-II-opt.jpg
@@ -35,22 +38,28 @@
 
 ## Right after release
 
+- convert app to Docker
+- consider deploying through now https://zeit.co/now/
 - consider transforming article so each element has it's own class?
   - p -> p.article__p
   - what do we do about nested components?
   - what happens when we are in code/xmp element?
   - do we do this automatically based on tag name or by hand?
-  - why would we do this? what is the benefit over plain css -> maybe that we dont have css specififity problems?
-
+  - why would we do this? what is the benefit over plain CSS -> maybe that we don't have CSS specificity problems?
 - benchmark tool, use wrk?
-
+- Synon.js for mocking api call a db functions?
+- Selenium testing?
 - take a look at error logging tools like sentry?
+- https://blog.cloudflare.com/accelerating-node-js-applications-with-http-2-server-push/
+- consider using https://github.com/VerbalExpressions/JSVerbalExpressions for regex
+- https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/ with this provide fallback to older browsers?
+- With each code live snippet have a warning if some feature is not supported in current browser
 
 ## FUTURE RELEASES
 - General
   - write README.md
   - sitemap
-  - api security? methods should be avaliable only from the same url
+  - api security? methods should be available only from the same url
   - take a look at medium, what components they use in articles
   - fine tune humans.txt
   - run blog through

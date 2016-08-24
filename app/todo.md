@@ -68,6 +68,7 @@
   - api security? methods should be available only from the same url
   - take a look at medium, what components they use in articles
   - fine tune humans.txt
+  - https://github.com/googlechrome/sw-precache
   - run blog through
     - CSS and HTML validator
     - use some tool to detect unused styles

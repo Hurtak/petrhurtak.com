@@ -170,10 +170,12 @@ function enhanceSnippetLinks (htmlString) {
     const snippetEl = $(`
       <div class="snippet" data-snippet="${snippetName}">
         <div class="snippet__header">
-          <div class="snippet__tab js-snippet-tab-html">HTML</div>
-          <div class="snippet__tab js-snippet-tab-css">CSS</div>
-          <div class="snippet__tab js-snippet-tab-js">JS</div>
-          <div class="snippet__tab js-snippet-tab-result">Result</div>
+          <div class="snippet__tabs-wrapper">
+            <div class="snippet__tab js-snippet-tab-html">HTML</div>
+            <div class="snippet__tab js-snippet-tab-css">CSS</div>
+            <div class="snippet__tab js-snippet-tab-js">JS</div>
+            <div class="snippet__tab js-snippet-tab-result">Result</div>
+          </div>
           <a class="snippet__link" href="${href}">${text}</a>
         </div>
         <div class="snippet__content-wrapper">

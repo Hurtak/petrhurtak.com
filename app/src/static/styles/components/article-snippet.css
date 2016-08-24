@@ -8,6 +8,7 @@
 
 .snippet__header {
   display: flex;
+  flex-direction: row;
   height: 5rem;
   background-color: lightblue;
 }
@@ -23,6 +24,23 @@
   flex: 1;
   position: relative;
   background-color: lightgreen;
+}
+
+.snippet__tabs-wrapper {
+  display: flex;
+}
+
+.snippet__tab {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1em;
+  margin-left: 1em;
+  background-color: orange;
+}
+
+.snippet__tab:first-child {
+  margin-left: 0
 }
 
 .snippet__content {

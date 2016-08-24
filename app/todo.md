@@ -43,6 +43,11 @@
   - buy hurtak.cc hurtak.io petrhurtak.com petrhurtak.cz hurtak.pe
   - move to namecheap?
 - http://www.vzhurudolu.cz/prirucka/checklist
+- rethink directory structure
+  - name article folders like this yyyy-mm-d--articlename
+  - place these folders into year subfolders in articles dir
+  - in compiled dir just have a flat structure?
+  - think more about this
 - convert app to Docker
 - consider deploying through now https://zeit.co/now/
 - consider transforming article so each element has it's own class?

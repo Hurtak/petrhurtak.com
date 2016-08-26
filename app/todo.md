@@ -49,7 +49,9 @@
   - in compiled dir just have a flat structure?
   - think more about this
 - convert app to Docker
-- consider deploying through now https://zeit.co/now/
+- consider deploying through
+  - now https://zeit.co/now/
+  - or hyper.sh
 - consider transforming article so each element has it's own class?
   - p -> p.article__p
   - what do we do about nested components?
@@ -80,6 +82,8 @@
   - consider unification of quotes (html ", js ')
   - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
   - take a look at ponyfoo.com for performance ideas
+  - performance testing
+    - https://css-tricks.com/use-webpagetest-api/
   - revisit package.json
   - progressively enhanced tweet quotations
   - consider having install script which would create www/ www/log/ and others, instead of having these folders in git with .gitkeep

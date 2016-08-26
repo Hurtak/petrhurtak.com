@@ -630,11 +630,6 @@
       "from": "base64id@0.1.0",
       "resolved": "https://registry.npmjs.org/base64id/-/base64id-0.1.0.tgz"
     },
-    "basic-auth": {
-      "version": "1.0.4",
-      "from": "basic-auth@>=1.0.4 <2.0.0",
-      "resolved": "https://registry.npmjs.org/basic-auth/-/basic-auth-1.0.4.tgz"
-    },
     "benchmark": {
       "version": "1.0.0",
       "from": "benchmark@1.0.0",
@@ -1610,9 +1605,9 @@
       "resolved": "https://registry.npmjs.org/express/-/express-4.14.0.tgz"
     },
     "express-status-monitor": {
-      "version": "0.0.11",
-      "from": "express-status-monitor@latest",
-      "resolved": "https://registry.npmjs.org/express-status-monitor/-/express-status-monitor-0.0.11.tgz"
+      "version": "0.1.0",
+      "from": "express-status-monitor@0.1.0",
+      "resolved": "https://registry.npmjs.org/express-status-monitor/-/express-status-monitor-0.1.0.tgz"
     },
     "extend": {
       "version": "3.0.0",

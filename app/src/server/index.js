@@ -41,23 +41,26 @@ for (const filterName in nunjucksFilters) { // add custom filters
   nunjucksEnv.addFilter(filterName, nunjucksFilters[filterName])
 }
 
-// static files
+// routes
 
+// static files
 app.use('/static', express.static(paths.static))
 app.use('/static/articles', express.static(paths.articles)) // TODO: make only avaliable in debug
 app.use('/static/node_modules', express.static(paths.nodeModules)) // TODO: make only avaliable in debug
 
 // pages
-
 app.get('/', routes.index)
 
+// special
 app.get('/rss', routes.rss)
 app.get('/robots.txt', routes.robotsTxt)
 app.get('/humans.txt', routes.humansTxt)
 
+// api
 app.post('/api/log/app-message', api.logAppMessage)
 app.post('/api/log/exception', api.logException)
 
+// articles
 app.get('/debug', routes.debug)
 app.get('/debug/:article', routes.debugArticle)
 app.get('/:article', routes.article)

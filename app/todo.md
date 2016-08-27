@@ -2,6 +2,8 @@
 
 ## NEXT RELEASE
 
+- use https://github.com/sindresorhus/hard-rejection in debug.js
+
 - code snippet tool
   - show CSS / html / js / result
   - be able to resize
@@ -20,6 +22,7 @@
   - or is there some insert/update if exists in MySQL?
 
 - finish CSS design
+  - inspiration: https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
   - page header
   - article header
   - articles list page

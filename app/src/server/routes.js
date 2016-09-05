@@ -29,7 +29,9 @@ function notFound (req, res) {
 function index (req, res) {
   database.getArticles().then(databaseArticles => {
     const data = addCommonData({
-      articles: databaseArticles
+      articles: databaseArticles,
+      debugUrlPrefix: '',
+      debug: false
     })
 
     res.render('pages/index.njk', data)

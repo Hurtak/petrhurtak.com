@@ -8,6 +8,9 @@ module.exports = {
     password: process.env.NODE_DB_PASS || '',
     multipleStatements: true
   },
+
   port: 8000,
-  devel: process.env.NODE_ENV !== 'production'
+
+  devel: process.env.NODE_ENV !== 'production',
+  production: process.env.NODE_ENV === 'production'
 }

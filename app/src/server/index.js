@@ -8,12 +8,11 @@ const helmet = require('helmet') // TODO: article about all header this provides
 const bodyParser = require('body-parser')
 const responseTime = require('response-time')
 const compression = require('compression')
-const nunjucks = require('nunjucks')
 
 const config = require('../config/config.js')
-const nunjucksFilters = require('./utils/nunjucks-filters.js')
 const paths = require('./paths.js')
 const routes = require('./routes.js')
+const nunjucksEnv = require('./nunjucks.js')
 const api = require('./api.js')
 
 // app
@@ -30,16 +29,7 @@ app.use(compression())
 
 // template config
 
-app.set('views', paths.templates)
-
-const nunjucksEnv = nunjucks.configure(app.get('views'), {
-  autoescape: true,
-  express: app
-})
-
-for (const filterName in nunjucksFilters) { // add custom filters
-  nunjucksEnv.addFilter(filterName, nunjucksFilters[filterName])
-}
+nunjucksEnv.express(app)
 
 // routes
 

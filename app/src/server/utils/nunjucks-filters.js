@@ -75,9 +75,14 @@ function dateHowLongBefore (date) {
   }
 }
 
+function stringifyObject (data, indentation = 4) {
+  return JSON.stringify(data, null, indentation)
+}
+
 module.exports = {
   datetimeAttribute,
   gmt,
   fullDate,
-  dateHowLongBefore
+  dateHowLongBefore,
+  stringifyObject
 }

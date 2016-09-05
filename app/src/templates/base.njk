@@ -32,6 +32,10 @@
 
     </div>
 
+    {% if devel %}
+      <code class="debug"><pre>{{ debugData | stringifyObject }}</pre></code>
+    {% endif %}
+
     <script>
       (function () {
         'use strict'

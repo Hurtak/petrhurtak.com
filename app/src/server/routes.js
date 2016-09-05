@@ -8,6 +8,7 @@ const lodash = require('lodash')
 const articles = require('./articles.js')
 const database = require('./database.js')
 const paths = require('./paths.js')
+const config = require('../config/config.js')
 
 function addCommonData (data) {
   const commonData = {
@@ -15,7 +16,9 @@ function addCommonData (data) {
     siteUrl: 'https://hurtak.cc',
     siteDomain: 'hurtak.cc',
     siteProtocol: 'https://',
-    debug: false
+    debug: false, // TODO: better naming
+    devel: config.devel,
+    debugData: config.devel ? data : {} // TODO: workaround for debugging until https://github.com/mozilla/nunjucks/issues/833 is resolved
   }
 
   return Object.assign({}, commonData, data)
@@ -30,8 +33,7 @@ function index (req, res) {
   database.getArticles().then(databaseArticles => {
     const data = addCommonData({
       articles: databaseArticles,
-      debugUrlPrefix: '',
-      debug: false
+      debugUrlPrefix: ''
     })
 
     res.render('pages/index.njk', data)
@@ -89,6 +91,7 @@ function debugArticle (req, res) {
   const articleData = articles.getArticleData(articlePath)
   const data = addCommonData({
     article: articleData.article,
+    snippets: articleData.snippets,
     debug: true
   })
 

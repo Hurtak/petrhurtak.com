@@ -3,7 +3,7 @@
 require('./debug.js')()
 
 const express = require('express')
-const expressStatusMonitor = require('express-status-monitor')
+// const expressStatusMonitor = require('express-status-monitor') // TODO: wait for it to be more stable
 const helmet = require('helmet') // TODO: article about all header this provides
 const bodyParser = require('body-parser')
 const responseTime = require('response-time')
@@ -22,7 +22,7 @@ const app = express()
 
 // middlewares
 
-app.use(expressStatusMonitor())
+// app.use(expressStatusMonitor()) // TODO: wait for it to be more stable
 app.use(helmet())
 app.use(bodyParser.json())
 app.use(responseTime())

@@ -8,6 +8,8 @@ const highlight = require('highlight.js')
 const cheerio = require('cheerio')
 const lodash = require('lodash')
 
+const nunjucksEnv = require('../nunjucks.js')
+
 function cheerioLoadWithoutEscaping (htmlString) {
   return cheerio.load(htmlString, { decodeEntities: false })
 }
@@ -167,25 +169,12 @@ function enhanceSnippetLinks (htmlString) {
     const fileName = pathSplit[pathSplit.length - 1] // example.html"
     const snippetName = fileName.split('.')[0] // example
 
-    const snippetEl = $(`
-      <div class="snippet" data-snippet="${snippetName}">
-        <div class="snippet__header">
-          <div class="snippet__tabs-wrapper">
-            <div class="snippet__tab js-snippet-tab-html">HTML</div>
-            <div class="snippet__tab js-snippet-tab-css">CSS</div>
-            <div class="snippet__tab js-snippet-tab-js">JS</div>
-            <div class="snippet__tab js-snippet-tab-result">Result</div>
-          </div>
-          <a class="snippet__link" href="${href}">${text}</a>
-        </div>
-        <div class="snippet__content-wrapper">
-          <textarea class="snippet__content snippet__content--textarea js-snippet-content-html"></textarea>
-          <textarea class="snippet__content snippet__content--textarea js-snippet-content-css"></textarea>
-          <textarea class="snippet__content snippet__content--textarea js-snippet-content-js"></textarea>
-          <iframe class="snippet__content snippet__content--iframe js-snippet-content-result"></iframe>
-        </div>
-      </div>
-    `)
+    const snippetHtml = nunjucksEnv.render('articles/snippet.njk', {
+      snippetName,
+      href,
+      text
+    })
+    const snippetEl = $(snippetHtml)
 
     el.replaceWith(snippetEl)
   })

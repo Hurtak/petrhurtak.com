@@ -10,6 +10,7 @@
   - chapter about this into components
   - With snippets display what language they are from and maybe even version (with elm for example)
   - have unified way to display feature support
+  - have borderless mode where we just display the content
 
 - code blocks redesign?
   - probably do not escape by default or have a way to
@@ -44,6 +45,8 @@
 
 ## Right after release
 
+- switch to Suit CSS
+- add css lint?
 - update Twitter profile
 - domains
   - buy hurtak.cc hurtak.io petrhurtak.com petrhurtak.cz hurtak.pe

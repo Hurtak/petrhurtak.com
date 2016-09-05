@@ -360,11 +360,13 @@
       "dependencies": {
         "babel-traverse": {
           "version": "6.13.0",
-          "from": "babel-traverse@>=6.13.0 <7.0.0"
+          "from": "babel-traverse@6.13.0",
+          "resolved": "https://registry.npmjs.org/babel-traverse/-/babel-traverse-6.13.0.tgz"
         },
         "babel-types": {
           "version": "6.13.0",
-          "from": "babel-types@>=6.13.0 <7.0.0"
+          "from": "babel-types@6.13.0",
+          "resolved": "https://registry.npmjs.org/babel-types/-/babel-types-6.13.0.tgz"
         }
       }
     },
@@ -1313,7 +1315,8 @@
       "dependencies": {
         "isarray": {
           "version": "1.0.0",
-          "from": "isarray@>=1.0.0 <1.1.0"
+          "from": "isarray@1.0.0",
+          "resolved": "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz"
         },
         "readable-stream": {
           "version": "2.1.4",
@@ -1822,7 +1825,8 @@
       "dependencies": {
         "isarray": {
           "version": "1.0.0",
-          "from": "isarray@>=1.0.0 <1.1.0"
+          "from": "isarray@1.0.0",
+          "resolved": "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz"
         },
         "readable-stream": {
           "version": "2.1.4",
@@ -1845,6 +1849,11 @@
       "version": "2.0.6",
       "from": "har-validator@>=2.0.6 <2.1.0",
       "resolved": "https://registry.npmjs.org/har-validator/-/har-validator-2.0.6.tgz"
+    },
+    "hard-rejection": {
+      "version": "0.1.0",
+      "from": "hard-rejection@latest",
+      "resolved": "https://registry.npmjs.org/hard-rejection/-/hard-rejection-0.1.0.tgz"
     },
     "has-ansi": {
       "version": "2.0.0",
@@ -2708,7 +2717,8 @@
       "dependencies": {
         "minimatch": {
           "version": "3.0.3",
-          "from": "minimatch@>=3.0.0 <4.0.0"
+          "from": "minimatch@3.0.3",
+          "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-3.0.3.tgz"
         }
       }
     },
@@ -4164,7 +4174,8 @@
         },
         "readable-stream": {
           "version": "2.1.5",
-          "from": "readable-stream@>=2.0.0 <3.0.0"
+          "from": "readable-stream@2.1.5",
+          "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-2.1.5.tgz"
         }
       }
     },
@@ -4355,7 +4366,8 @@
       "dependencies": {
         "glob": {
           "version": "7.0.5",
-          "from": "glob@>=7.0.5 <8.0.0"
+          "from": "glob@7.0.5",
+          "resolved": "https://registry.npmjs.org/glob/-/glob-7.0.5.tgz"
         },
         "minimatch": {
           "version": "3.0.2",

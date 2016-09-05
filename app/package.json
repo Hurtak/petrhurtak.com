@@ -12,6 +12,7 @@
     "express-status-monitor": "0.1.0",
     "front-matter": "2.1.0",
     "fs-promise": "0.5.0",
+    "hard-rejection": "0.1.0",
     "helmet": "2.1.2",
     "highlight": "0.2.4",
     "highlight.js": "9.6.0",

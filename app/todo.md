@@ -2,8 +2,6 @@
 
 ## NEXT RELEASE
 
-- use https://github.com/sindresorhus/hard-rejection in debug.js
-
 - code snippet tool
   - show CSS / html / js / result
   - be able to resize
@@ -12,6 +10,11 @@
   - chapter about this into components
   - With snippets display what language they are from and maybe even version (with elm for example)
   - have unified way to display feature support
+
+- code blocks redesign?
+  - probably do not escape by default or have a way to
+    - highlight code with <mark>?
+    - have a way to display diffs
 
 - css snippets
   - have certain properties customizable like here

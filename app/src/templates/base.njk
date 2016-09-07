@@ -18,6 +18,7 @@
   </head>
   <body>
 
+    {# page #}
     <div class="page-wrapper">
 
       <div class="content">
@@ -32,10 +33,7 @@
 
     </div>
 
-    {% if devel %}
-      <code class="debug"><pre>{{ debugData | stringifyObject }}</pre></code>
-    {% endif %}
-
+    {# data for scripts #}
     <script>
       (function () {
         'use strict'
@@ -46,12 +44,18 @@
     </script>
     {% block scriptVariables %}{% endblock %}
 
+    {# scripts #}
     <script src="/static/scripts/components/log.js"></script>
     <script src="/static/scripts/components/snippets.js"></script>
     <script src="/static/scripts/app.js"></script>
     <script>
       window.App.Main.init(window.appData)
     </script>
+
+    {# debug #}
+    {% if devel %}
+      <code class="debug"><pre>{{ getDebugData() | stringifyObject }}</pre></code>
+    {% endif %}
 
   </body>
 </html>

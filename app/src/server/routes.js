@@ -8,33 +8,18 @@ const lodash = require('lodash')
 const articles = require('./articles.js')
 const database = require('./database.js')
 const paths = require('./paths.js')
-const config = require('../config/config.js')
-
-function addCommonData (data) {
-  const commonData = {
-    currentYear: new Date().getFullYear(),
-    siteUrl: 'https://hurtak.cc',
-    siteDomain: 'hurtak.cc',
-    siteProtocol: 'https://',
-    debug: false, // TODO: better naming
-    devel: config.devel,
-    debugData: config.devel ? data : {} // TODO: workaround for debugging until https://github.com/mozilla/nunjucks/issues/833 is resolved
-  }
-
-  return Object.assign({}, commonData, data)
-}
 
 function notFound (req, res) {
-  const data = addCommonData({})
+  const data = {}
   res.render('pages/404.njk', data)
 }
 
 function index (req, res) {
   database.getArticles().then(databaseArticles => {
-    const data = addCommonData({
+    const data = {
       articles: databaseArticles,
       debugUrlPrefix: ''
-    })
+    }
 
     res.render('pages/index.njk', data)
   })
@@ -44,10 +29,10 @@ function article (req, res) {
   database.getArticle(req.params.article).then(article => {
     if (article) {
       database.getArticleSnippets(article.id).then(snippets => {
-        const data = addCommonData({
+        const data = {
           article: article,
           snippets: snippets
-        })
+        }
 
         res.render('pages/article.njk', data)
       })
@@ -70,11 +55,11 @@ function debug (req, res) {
   articlesData = lodash.sortBy(articlesData, 'lastUpdate')
   articlesData = lodash.reverse(articlesData)
 
-  const data = addCommonData({
+  const data = {
     articles: articlesData,
     debugUrlPrefix: 'debug/',
     debug: true
-  })
+  }
 
   res.render('pages/index.njk', data)
 }
@@ -89,11 +74,11 @@ function debugArticle (req, res) {
   }
 
   const articleData = articles.getArticleData(articlePath)
-  const data = addCommonData({
+  const data = {
     article: articleData.article,
     snippets: articleData.snippets,
     debug: true
-  })
+  }
 
   res.render('pages/article.njk', data)
 }
@@ -106,7 +91,7 @@ function rss (req, res) {
     }
 
     res.type('text/xml')
-    res.render('special/rss.njk', addCommonData(data))
+    res.render('special/rss.njk', data)
   })
 }
 
@@ -117,9 +102,9 @@ function robotsTxt (req, res) {
 
 function humansTxt (req, res) {
   database.getHumansTxt().then(data => {
-    const templateData = addCommonData({
+    const templateData = {
       lastUpdate: data.lastUpdate
-    })
+    }
 
     res.type('text/plain')
     res.render('special/humans.txt.njk', templateData)

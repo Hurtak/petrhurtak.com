@@ -8,7 +8,7 @@ const highlight = require('highlight.js')
 const cheerio = require('cheerio')
 const lodash = require('lodash')
 
-const nunjucksEnv = require('../nunjucks.js')
+const nunjucksEnv = require('../nunjucks/env.js')
 
 function cheerioLoadWithoutEscaping (htmlString) {
   return cheerio.load(htmlString, { decodeEntities: false })

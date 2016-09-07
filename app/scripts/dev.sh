@@ -15,7 +15,6 @@ NODE_BIN="node_modules/.bin"
 function startServer {
   ${NODE_BIN}/nodemon src/server/index.js \
     --ext js,json,njk \
-    --watch src/templates \
     --watch src/server \
     --watch src/config
 }

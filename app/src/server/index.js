@@ -12,7 +12,7 @@ const compression = require('compression')
 const config = require('../config/config.js')
 const paths = require('./paths.js')
 const routes = require('./routes.js')
-const nunjucksEnv = require('./nunjucks.js')
+const nunjucksEnv = require('./nunjucks/env.js')
 const api = require('./api.js')
 
 // app

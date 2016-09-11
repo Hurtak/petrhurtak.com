@@ -9,6 +9,18 @@
 /*
  * TODO: add comments about each rule, why is it there and what is forces
  *       us to do with potential benefits or forcing us to overwrite it
+ * TODO: rules which should be explicitely overvritten in app css should
+ *       have visible styles in debug.css like ridiculously big font sizes
+ * TODO: rules to overwrite:
+ *         - font size
+ *         - font family
+ *         - margin/padding on body
+ *         - outline on active/focus
+ *         - default input elements
+ *           - border
+ *           - padding (buttons?)
+ *           - outline (inputs)
+ *           - background (buttons)
  * TODO: release as npm module
  * TODO: write article about this goodness
  */

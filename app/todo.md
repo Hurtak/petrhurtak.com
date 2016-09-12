@@ -141,6 +141,7 @@
   - check if other page links are not 404
   - if all pages are html valid
   - npm outdated check
+  - html validator all pages (https://github.com/zrrrzzt/html-validator)
   - https://www.npmjs.com/package/sloc-for-jenkins
   - move npm run lint in something like before_script?
 

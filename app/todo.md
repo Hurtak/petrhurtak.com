@@ -11,6 +11,20 @@
   - With snippets display what language they are from and maybe even version (with elm for example)
   - have unified way to display feature support
   - have borderless mode where we just display the content
+  - have a way to add http header to the document response
+    - probably by adding some html comment in snippet html
+      - add html comment (http://stackoverflow.com/questions/941100/can-comments-appear-before-the-doctype-declaration)
+      - probably in yaml?
+      - parse that & save into database
+      - when serving this file add relevant headers
+      - do not add any other extra headers like powered by & security headers added by helmet??
+        - somebody could then display our content? maybe only add the one which disables displaying in iframe?
+      - also keep the original headers comment in html so reader can easily see what headers were added?
+
+- change urls in the following way:
+  - article lives on domain.com/article/ instead of domain.com/article
+  - images on domain.com/article/images/
+  - snippets on domain.com/aticle/snippets/
 
 - code blocks redesign?
   - probably do not escape by default or have a way to

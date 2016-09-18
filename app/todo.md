@@ -111,6 +111,8 @@
   - progressively enhanced tweet quotations
   - consider having install script which would create www/ www/log/ and others, instead of having these folders in git with .gitkeep
   - tags to articles
+  - consider switching to https://www.rethinkdb.com/ or to postgresql?
+  - node 6.6.0 promises: Unhandled rejections now emit a process warning after the first tick, so maybe we don't need hard-rejection module anymore
   - consider using execa, shelljs, cash for scripts once async/await lands
   - projects page
   - consider taking a look at some HTML elements and putting them in components article and using them
@@ -145,6 +147,11 @@
   - html validator all pages (https://github.com/zrrrzzt/html-validator)
   - https://www.npmjs.com/package/sloc-for-jenkins
   - move npm run lint in something like before_script?
+  - check
+  - https://github.com/stylelint/stylelint
+  - have task that run periodically every hour?
+    - https://github.com/RetireJS/retire.js
+    - npm outdated?
 
 - Articles
   - currently html of code blocks is parsed and we cannot get raw html? so `<h2>` will become `<h2></h2>`, maybe switch to jsdom?

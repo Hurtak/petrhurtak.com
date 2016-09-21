@@ -115,6 +115,7 @@
   - node 6.6.0 promises: Unhandled rejections now emit a process warning after the first tick, so maybe we don't need hard-rejection module anymore
   - consider using execa, shelljs, cash for scripts once async/await lands
   - projects page
+  - use & write article about https://github.com/nolanlawson/optimize-js
   - consider taking a look at some HTML elements and putting them in components article and using them
     - dl (dt dd)
     - date

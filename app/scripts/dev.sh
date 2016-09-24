@@ -31,6 +31,6 @@ function lint {
 
 ### START DEVELOPMENT SERVICES
 startServer \
-  & test \
+  # & test \
   & lint
 wait

@@ -1,14 +1,14 @@
-.header {
+.Header {
   display: flex;
   flex-direction: column;
 }
 
-.header__logo {
+.Header-logo {
   display: block;
   margin: auto;
   margin-top: 2em;
 }
 
-.header__menu {
+.Header-menu {
   margin-top: 1em;
 }

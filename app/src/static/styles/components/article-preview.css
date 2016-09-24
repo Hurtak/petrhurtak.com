@@ -1,25 +1,25 @@
-.article-preview {
+.ArticlePreview {
   font-family: var(--font-family-heading);
   margin-top: 3rem;
 }
 
-.article-preview:first-child {
+.ArticlePreview:first-child {
   margin-top: 0;
 }
 
-.article-preview__title {
+.ArticlePreview-title {
   font-size: var(--font-size-headline);
   text-decoration: none;
   font-weight: normal;
   color: black;
 }
 
-.article-preview__date {
+.ArticlePreview-date {
   font-size: var(--font-size-paragraph-small);
   font-family: var(--font-family-paragraph);
 }
 
-.article-preview__description {
+.ArticlePreview-description {
   font-size: var(--font-size-paragraph);
   font-family: var(--font-family-paragraph);
 }

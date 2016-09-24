@@ -6,14 +6,14 @@
 
 {% block content %}
 
-  <article class="article">
+  <article class="Article">
 
-    <div class="article__header">
-      <h1 class="article__title">
+    <div class="Article-header">
+      <h1 class="Article-title">
         {{ article.title }}
       </h1>
       <time
-        class="article__datetime"
+        class="Article-datetime"
         datetime="{{ article.publicationDate | datetimeAttribute }}"
         title="{{ article.publicationDate | fullDate }}"
       >
@@ -21,7 +21,7 @@
       </time>
     </div>
 
-    <div class="article__content">
+    <div class="Article-content">
       {{ article.html | safe }}
     </div>
 

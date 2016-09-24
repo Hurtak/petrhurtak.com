@@ -2,12 +2,12 @@
  * header
  */
 
-.article__header {
+.Article-header {
   display: flex;
   flex-direction: column;
 }
 
-.article__title {
+.Article-title {
   margin: 1.2em 0 0 0;
   font-size: var(--font-size-title);
   line-height: var(--font-line-height-title);
@@ -16,7 +16,7 @@
   color: var(--color-font);
 }
 
-.article__datetime {
+.Article-datetime {
   margin-top: 0.2em;
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
@@ -28,7 +28,7 @@
  * content
  */
 
-.article__content {
+.Article-content {
   margin-top: 2.8rem;
 }
 
@@ -36,7 +36,7 @@
  * headings
  */
 
-.article__content h2 {
+.Article-content h2 {
   margin: 0;
   padding: var(--font-padding-headline);
   font-size: var(--font-size-headline);
@@ -46,7 +46,7 @@
   color: var(--color-font);
 }
 
-.article__content h3 {
+.Article-content h3 {
   margin: 0;
   padding: var(--font-padding-headline-small);
   font-size: var(--font-size-headline-small);
@@ -60,7 +60,7 @@
  * paragraphs
  */
 
-.article__content p {
+.Article-content p {
   margin: var(--paragraph-spacing) 0 0 0;
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
@@ -71,7 +71,7 @@
  * small
  */
 
-.article__content small {
+.Article-content small {
   margin: var(--paragraph-spacing) 0 0 0;
   font-size: var(--font-size-paragraph-small);
   line-height: var(--font-line-height-paragraph-small);
@@ -83,18 +83,18 @@
  * Links
  */
 
-.article__content a {
+.Article-content a {
   color: black;
   border-bottom: 1px dotted var(--color-link-border);
   transition: 0.2s border ease-in-out;
   text-decoration: none;
 }
 
-.article__content a:visited {
+.Article-content a:visited {
   color: black;
 }
 
-.article__content a:hover {
+.Article-content a:hover {
   border-bottom: 1px dotted black;
 }
 
@@ -102,8 +102,8 @@
  * Lists
  */
 
-.article__content ul,
-.article__content ol {
+.Article-content ul,
+.Article-content ol {
   margin: var(--paragraph-spacing) 0 0 1em;
   padding: 0;
   font-size: var(--font-size-paragraph);
@@ -111,23 +111,23 @@
   font-family: var(--font-family-paragraph);
 }
 
-.article__content li > ul,
-.article__content li > ol {
+.Article-content li > ul,
+.Article-content li > ol {
   margin-top: 0;
 }
 
-.article__content ol {
+.Article-content ol {
   list-style-type: decimal;
 }
 
 /* unordered lists do not have list-style-type: dash, so we create it with absolute positioned ::before element */
-.article__content ul {
+.Article-content ul {
   position: relative;
   margin-left: 1em;
   list-style-type: none;
 }
 
-.article__content ul li::before {
+.Article-content ul li::before {
   content: "–";
   display: block;
   position: absolute;
@@ -138,11 +138,11 @@
  * code
  */
 
-.article__content pre {
+.Article-content pre {
   margin: var(--paragraph-spacing) 0 0 0;
 }
 
-.article__content code {
+.Article-content code {
   padding: 0.1em 0.2em;
   font-size: var(--font-size-code);
   line-height: var(--font-line-height-code);
@@ -154,7 +154,7 @@
   box-decoration-break: clone;
 }
 
-.article__content pre > code {
+.Article-content pre > code {
   display: block;
   overflow: auto;
   padding: 0.5em;
@@ -164,19 +164,19 @@
  * images
  */
 
-.article__content img {
+.Article-content img {
   display: block;
   margin: var(--paragraph-spacing) 0 0 0;
 }
 
-.article__content figure {
+.Article-content figure {
   margin: var(--paragraph-spacing) 0 0 0;
   font-family: var(--font-family-paragraph);
   font-size: var(--font-size-paragraph);
   line-height: var(--font-line-height-paragraph);
 }
 
-.article__content figure figcaption {
+.Article-content figure figcaption {
   font-size: var(--font-size-paragraph-small);
 }
 
@@ -184,7 +184,7 @@
  * quotes
  */
 
-.article__content blockquote {
+.Article-content blockquote {
   margin: var(--paragraph-spacing) 0 0 0;
   padding-left: 1.5em;
   padding-right: 1.5em;
@@ -194,12 +194,12 @@
   line-height: var(--font-line-height-paragraph);
 }
 
-.article__content blockquote p {
+.Article-content blockquote p {
   /* TODO: add paragraph spacing between paragraphs? */
   margin: 0;
 }
 
-.article__content blockquote footer {
+.Article-content blockquote footer {
   margin-top: 1em;
 }
 
@@ -207,7 +207,7 @@
  * table
  */
 
-.article__content table {
+.Article-content table {
   margin: var(--paragraph-spacing) 0 0 0;
   font-family: var(--font-family-paragraph);
   font-size: var(--font-size-paragraph);
@@ -218,7 +218,7 @@
  * other elements
  */
 
-.article__content .snippet {
+.Article-content .snippet {
   margin: var(--paragraph-spacing) 0 0 0;
 }
 
@@ -226,13 +226,13 @@
  * spacing between paragraphs and headings
  */
 
-.article__content > *:first-child {
+.Article-content > *:first-child {
   margin-top: 0;
   padding-top: 0;
 }
 
-.article__content h2 + *:not(h2):not(h3),
-.article__content h3 + *:not(h2):not(h3) {
+.Article-content h2 + *:not(h2):not(h3),
+.Article-content h3 + *:not(h2):not(h3) {
   /* remove margin after heading, since headins has margin bottom */
   margin-top: 0;
 }

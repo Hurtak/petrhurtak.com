@@ -19,9 +19,9 @@
   <body>
 
     {# page #}
-    <div class="page-wrapper">
+    <div class="PageWrapper">
 
-      <div class="content">
+      <div class="Content">
         {% include './base/header.njk' %}
 
         <main>
@@ -54,7 +54,7 @@
 
     {# debug #}
     {% if devel %}
-      <code class="debug"><pre>{{ getDebugData() | stringifyObject }}</pre></code>
+      <code class="Debug"><pre>{{ getDebugData() | stringifyObject }}</pre></code>
     {% endif %}
 
   </body>

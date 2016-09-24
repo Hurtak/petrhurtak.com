@@ -1,4 +1,4 @@
-.snippet {
+.Snippet {
   display: flex;
   flex-direction: column;
   height: 30rem;
@@ -6,31 +6,31 @@
   background-color:orange;
 }
 
-.snippet__header {
+.Snippet-header {
   display: flex;
   flex-direction: row;
   height: 5rem;
   background-color: lightblue;
 }
 
-.snippet__link {
+.Snippet-link {
   left: 0;
   top: 0;
   border: 0!important; /* TODO: remove important */
 }
 
-.snippet__content-wrapper {
+.Snippet-content-wrapper {
   display: flex;
   flex: 1;
   position: relative;
   background-color: lightgreen;
 }
 
-.snippet__tabs-wrapper {
+.Snippet-tabs-wrapper {
   display: flex;
 }
 
-.snippet__tab {
+.Snippet-tab {
   display: flex;
   align-items: center;
   height: 100%;
@@ -41,11 +41,11 @@
   font-size: var(--font-size-paragraph);
 }
 
-.snippet__tab:first-child {
+.Snippet-tab:first-child {
   margin-left: 0
 }
 
-.snippet__content {
+.Snippet-content {
   /*display: none;*/
   position: absolute;
   left: 0;
@@ -54,10 +54,10 @@
   height: 100%;
 }
 
-.snippet__content--textarea {
+.Snippet-content--textarea {
   resize: none;
 }
 
-.snippet__content--iframe {
+.Snippet-content--iframe {
   border: 0;
 }

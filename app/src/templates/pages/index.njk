@@ -5,12 +5,12 @@
   <h1>Recent articles</h1>
 
   {% for article in articles %}
-    <section class="article-preview">
+    <section class="ArticlePreview">
 
       <h2>
         <a
           href="/{{ debugUrlPrefix }}{{ article.url }}"
-          class="article-preview__title"
+          class="ArticlePreview-title"
         >
           {{ article.title }}
         </a>
@@ -19,12 +19,12 @@
       <time
         datetime="{{ article.lastUpdate | datetimeAttribute }}"
         title="{{ article.lastUpdate | fullDate }}"
-        class="article-preview__date"
+        class="ArticlePreview-date"
       >
         {{ article.lastUpdate | dateHowLongBefore }}
       </time>
 
-      <p class="article-preview__description">
+      <p class="ArticlePreview-description">
         {{ article.description }}
       </p>
 

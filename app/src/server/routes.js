@@ -58,7 +58,7 @@ function debug (req, res) {
   const data = {
     articles: articlesData,
     debugUrlPrefix: 'debug/',
-    debug: true
+    devel: true
   }
 
   res.render('pages/index.njk', data)
@@ -77,7 +77,7 @@ function debugArticle (req, res) {
   const data = {
     article: articleData.article,
     snippets: articleData.snippets,
-    debug: true
+    devel: true
   }
 
   res.render('pages/article.njk', data)

@@ -26,8 +26,7 @@ nunjucksEnv.addGlobal('currentYear', new Date().getUTCFullYear())
 nunjucksEnv.addGlobal('siteUrl', 'https://hurtak.cc')
 nunjucksEnv.addGlobal('siteDomain', 'hurtak.cc')
 nunjucksEnv.addGlobal('siteProtocol', 'https://')
-nunjucksEnv.addGlobal('debug', false) // TODO: better naming
-nunjucksEnv.addGlobal('devel', config.devel)
+nunjucksEnv.addGlobal('devel', false) // rewritten on route level
 nunjucksEnv.addGlobal('getDebugData', function () { return this })
 
 module.exports = nunjucksEnv

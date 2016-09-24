@@ -7,11 +7,13 @@
 
     <link rel="icon" type="image/png" href="/static/images/favicon.png" sizes="16x16">
 
-    {% if debug -%}
-      <link rel="stylesheet" type="text/css" href="/static/styles/debug.css">
+    {% if devel -%}
+      <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-reset.css">
+      <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-templates.css">
     {%- endif %}
     <link rel="stylesheet" type="text/css" href="/static/styles/styles.css">
 
+    {# TODO: update title url #}
     <link rel="alternate" type="application/rss+xml" title="hurtak.cz" href="/rss">
     <link type="text/plain" rel="author" href="/humans.txt">
 
@@ -54,7 +56,7 @@
 
     {# debug #}
     {% if devel %}
-      <code class="Debug"><pre>{{ getDebugData() | stringifyObject }}</pre></code>
+      <code class="DebugTemplates"><pre>{{ getDebugData() | stringifyObject }}</pre></code>
     {% endif %}
 
   </body>

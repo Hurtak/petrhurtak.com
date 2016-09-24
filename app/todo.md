@@ -90,6 +90,7 @@
 - https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/ with this provide fallback to older browsers?
 - With each code live snippet have a warning if some feature is not supported in current browser
 - fork to multiple processes (strong-supervisor, there is also Isaac Schluter's old cluster-master, naught, cluster2, pm2, etc.)
+- robots.txt review - make article
 
 ## FUTURE RELEASES
 - General

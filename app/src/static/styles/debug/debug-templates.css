@@ -1,0 +1,9 @@
+.DebugTemplates {
+  display: block;
+  width: 100%;
+  border-top: 8px solid orange;
+  padding: 1em;
+  font-size: 14px;
+  font-family: consolas;
+  overflow: auto;
+}

@@ -37,6 +37,8 @@
   padding: 0 1em;
   margin-left: 1em;
   background-color: orange;
+  font-family: var(--font-family-code);
+  font-size: var(--font-size-paragraph);
 }
 
 .snippet__tab:first-child {

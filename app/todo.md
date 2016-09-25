@@ -2,8 +2,6 @@
 
 ## NEXT RELEASE
 
-- hurtak.cc into variables?
-
 - code snippet tool
   - show CSS / html / js / result
   - be able to resize
@@ -58,6 +56,7 @@
 - put this damn thing on the internet
 - add comments
 - add google analytics
+- go through the templates and make sure url like hurtak.cz & hurtak.cc are all the same and correct
 
 ## Right after release
 
@@ -176,6 +175,7 @@
     - maybe when checking html, when we find error -> add console.log describing the error
   - post all articles to hacker news, reddit, twitter
     - provide links under article to hacker news and twitter discussion
+      - http://i.imgur.com/XIfTwcz.png (from http://jlongster.com)
     - have these links saved in front matter
     - have cron job which determines number of comments on giver articles
     - display number of comments under

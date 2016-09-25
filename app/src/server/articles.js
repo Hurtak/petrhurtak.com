@@ -120,12 +120,16 @@ function getSnippets (articlePath) {
     return {}
   }
 
-  const snippets = {}
+  const snippets = []
   for (const fileName of snippetFiles) {
     const snippetName = fileName.split('.')[0]
     const snippetPath = path.join(snippetsDir, fileName)
     const html = fs.readFileSync(snippetPath, 'utf8') // TODO: sync function
-    snippets[snippetName] = utilsArticles.parseSnippet(html)
+
+    const snippetData = utilsArticles.parseSnippet(html)
+    snippetData.name = snippetName
+
+    snippets.push(snippetData)
   }
 
   return snippets

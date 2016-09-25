@@ -2,6 +2,10 @@
 
 ## NEXT RELEASE
 
+- review env.js variables
+- test config
+- force debug mode with some query parameter?
+
 - code snippet tool
   - show CSS / html / js / result
   - be able to resize

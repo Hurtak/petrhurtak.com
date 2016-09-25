@@ -1,5 +1,7 @@
 'use strict'
 
+const perfStart = Date.now()
+
 require('./debug.js')()
 
 const express = require('express')
@@ -55,4 +57,10 @@ app.get('/:article', routes.article)
 
 // start server
 
-app.listen(config.port, () => console.log('server started at port ' + config.port))
+app.listen(config.port, () => {
+  const env = config.devel ? 'DEVELOPMENT' : 'PRODUCTION'
+  const perfEnd = Date.now()
+  const startupTime = perfEnd - perfStart
+
+  console.log(`server started | port ${config.port} | ${env} mode | startup time ${startupTime}ms`)
+})

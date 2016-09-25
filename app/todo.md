@@ -2,7 +2,6 @@
 
 ## NEXT RELEASE
 
-- review env.js variables
 - test config
 - force debug mode with some query parameter?
 

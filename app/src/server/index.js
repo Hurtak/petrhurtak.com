@@ -15,7 +15,6 @@ const config = require('../config/config.js')
 const paths = require('./paths.js')
 const routes = require('./routes.js')
 const nunjucksEnv = require('./nunjucks/env.js')
-const api = require('./api.js')
 
 // app
 
@@ -49,8 +48,8 @@ app.get('/robots.txt', routes.robotsTxt)
 app.get('/humans.txt', routes.humansTxt)
 
 // api
-app.post('/api/log/app-message', api.logAppMessage)
-app.post('/api/log/exception', api.logException)
+app.post('/api/log/app-message', routes.apiLogAppMessage)
+app.post('/api/log/exception', routes.apiLogException)
 
 // articles
 app.get('/:article', routes.article)

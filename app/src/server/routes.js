@@ -10,10 +10,7 @@ const articles = require('./articles.js')
 const database = require('./database.js')
 const paths = require('./paths.js')
 
-function notFound (req, res) {
-  const data = {}
-  res.render('pages/404.njk', data)
-}
+// Main routes
 
 function index (req, res) {
   if (config.production) {
@@ -81,6 +78,8 @@ function article (req, res) {
   }
 }
 
+// Special pages
+
 function rss (req, res) {
   database.getRSS().then(databaseArticles => {
     const data = {articles: databaseArticles}
@@ -109,31 +108,67 @@ function humansTxt (req, res) {
   })
 }
 
-function apiLogException (req, res) {
+// Error pages
+
+function notFound (req, res) {
+  const data = {}
+  res.render('pages/404.njk', data)
+}
+
+// API
+
+function addCommonApiData (req, clientData) {
   const data = {
-    client: '',
+    client: clientData,
     server: {
       userAgent: req.headers['user-agent'],
       referer: req.headers.referer,
       origin: req.headers.origin,
-      host: req.headers.host
+      host: req.headers.host,
+      remoteAddress: req.socket.remoteAddress,
+      ip: req.ip,
+      date: new Date().toUTCString()
     }
   }
 
+  return data
+}
+
+function logJson (folder, data) {
   const fileName = new Date().toISOString().slice(0, 10) + '.log'
+
   fs.appendFile(
-    path.join(paths.logExceptions, fileName),
+    path.join(folder, fileName),
     JSON.stringify(data, null, 2) + '\n\n'
   )
-
-  res.status(204).send() // TODO check if this is a correct way to do it
 }
+
+function apiLogAppMessage (req, res) {
+  const data = addCommonApiData(req, req.body)
+  logJson(paths.logAppMessage, data)
+
+  res.status(204)
+  res.send()
+}
+
+function apiLogException (req, res) {
+  const data = addCommonApiData(req, req.body)
+  logJson(paths.logExceptions, data)
+
+  res.status(204)
+  res.send()
+}
+
+// Export
 
 module.exports = {
   index,
   article,
+
   rss,
   robotsTxt,
   humansTxt,
+
+  apiLogAppMessage,
   apiLogException
 }

@@ -25,7 +25,6 @@ for (const filterName in filters) {
 nunjucksEnv.addGlobal('currentYear', new Date().getUTCFullYear())
 nunjucksEnv.addGlobal('siteUrl', 'https://hurtak.cc')
 nunjucksEnv.addGlobal('siteDomain', 'hurtak.cc')
-nunjucksEnv.addGlobal('siteProtocol', 'https://')
 nunjucksEnv.addGlobal('devel', config.devel)
 nunjucksEnv.addGlobal('production', config.production)
 nunjucksEnv.addGlobal('getDebugData', function () { return this })

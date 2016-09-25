@@ -88,13 +88,13 @@ function rss (req, res) {
     }
 
     res.type('text/xml')
-    res.render('special/rss.njk', data)
+    res.render('pages/rss.njk', data)
   })
 }
 
 function robotsTxt (req, res) {
   res.type('text/plain')
-  res.render('special/robots.txt.njk')
+  res.render('pages/robots.txt.njk')
 }
 
 function humansTxt (req, res) {
@@ -104,7 +104,7 @@ function humansTxt (req, res) {
     }
 
     res.type('text/plain')
-    res.render('special/humans.txt.njk', templateData)
+    res.render('pages/humans.txt.njk', templateData)
   })
 }
 

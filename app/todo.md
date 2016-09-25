@@ -2,8 +2,7 @@
 
 ## NEXT RELEASE
 
-- test config
-- force debug mode with some query parameter?
+- hurtak.cc into variables?
 
 - code snippet tool
   - show CSS / html / js / result
@@ -140,6 +139,13 @@
   - think of how to unify scripts between package.json, scripts/ and .travis.yml
   - think of a ways how to unify debug mode with production mode
   - check for TODOs in code and resolve them
+
+- Debug
+  - have a way to turn on debug mode in production
+    - at least show templates data
+    - maybe have some secret url which adds cookie and if user has this cookie it will override the devel variable
+    - probably introduce 3rd variable because devel also means it is from uncompiled files and we don't want that, we just want to show debug interface so probably add another debug variable?
+  - have a way to show unpublished articles to other people on secret url
 
 - CI
   - consider switching to some other ci tool (https://github.com/integrations), seems like Travis is not supporting multiple tasks

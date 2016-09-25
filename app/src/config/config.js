@@ -9,7 +9,7 @@ module.exports = {
     multipleStatements: true
   },
 
-  port: 8000,
+  port: process.env.NODE_PORT || 8000,
 
   devel: process.env.NODE_ENV !== 'production',
   production: process.env.NODE_ENV === 'production'

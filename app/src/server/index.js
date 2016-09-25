@@ -51,8 +51,6 @@ app.post('/api/log/app-message', api.logAppMessage)
 app.post('/api/log/exception', api.logException)
 
 // articles
-app.get('/debug', routes.debug)
-app.get('/debug/:article', routes.debugArticle)
 app.get('/:article', routes.article)
 
 // start server

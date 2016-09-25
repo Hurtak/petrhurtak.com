@@ -6,6 +6,7 @@ cd .. # cd into app director
 
 ### EXPORTED VARIABLES
 export NODE_ENV="development"
+# export NODE_ENV="production"
 # export DEBUG="express*"
 
 ### LOCAL VARIABLES

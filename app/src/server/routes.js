@@ -5,6 +5,7 @@ const path = require('path')
 
 const lodash = require('lodash')
 
+const config = require('../config/config.js')
 const articles = require('./articles.js')
 const database = require('./database.js')
 const paths = require('./paths.js')
@@ -15,19 +16,43 @@ function notFound (req, res) {
 }
 
 function index (req, res) {
-  database.getArticles().then(databaseArticles => {
+  if (config.production) {
+    database.getArticles().then(databaseArticles => {
+      const data = {
+        articles: databaseArticles
+      }
+
+      res.render('pages/index.njk', data)
+    })
+  } else {
+    const articleDirs = articles.getArticlesDirectories(paths.articles, 2)
+
+    let articlesData = []
+    for (const articleDir of articleDirs) {
+      articlesData.push(articles.getArticleData(articleDir))
+    }
+
+    // sort articles by publication_date descendant
+    articlesData = articlesData.map(x => x.article)
+    articlesData = lodash.sortBy(articlesData, 'lastUpdate')
+    articlesData = lodash.reverse(articlesData)
+
     const data = {
-      articles: databaseArticles,
-      debugUrlPrefix: ''
+      articles: articlesData
     }
 
     res.render('pages/index.njk', data)
-  })
+  }
 }
 
 function article (req, res) {
-  database.getArticle(req.params.article).then(article => {
-    if (article) {
+  if (config.production) {
+    database.getArticle(req.params.article).then(article => {
+      if (!article) {
+        notFound(req, res)
+        return
+      }
+
       database.getArticleSnippets(article.id).then(snippets => {
         const data = {
           article: article,
@@ -36,51 +61,24 @@ function article (req, res) {
 
         res.render('pages/article.njk', data)
       })
-    } else {
+    })
+  } else {
+    let articleName = req.params.article
+
+    let articlePath = articles.findPathToArticle(paths.articles, articleName, 2)
+    if (!articlePath) {
       notFound(req, res)
+      return
     }
-  })
-}
 
-function debug (req, res) {
-  const articleDirs = articles.getArticlesDirectories(paths.articles, 2)
+    const articleData = articles.getArticleData(articlePath)
+    const data = {
+      article: articleData.article,
+      snippets: articleData.snippets
+    }
 
-  let articlesData = []
-  for (const articleDir of articleDirs) {
-    articlesData.push(articles.getArticleData(articleDir))
+    res.render('pages/article.njk', data)
   }
-
-  // sort articles by publication_date descendant
-  articlesData = articlesData.map(x => x.article)
-  articlesData = lodash.sortBy(articlesData, 'lastUpdate')
-  articlesData = lodash.reverse(articlesData)
-
-  const data = {
-    articles: articlesData,
-    debugUrlPrefix: 'debug/',
-    devel: true
-  }
-
-  res.render('pages/index.njk', data)
-}
-
-function debugArticle (req, res) {
-  let articleName = req.params.article
-
-  let articlePath = articles.findPathToArticle(paths.articles, articleName, 2)
-  if (!articlePath) {
-    res.render('pages/404.njk')
-    return
-  }
-
-  const articleData = articles.getArticleData(articlePath)
-  const data = {
-    article: articleData.article,
-    snippets: articleData.snippets,
-    devel: true
-  }
-
-  res.render('pages/article.njk', data)
 }
 
 function rss (req, res) {
@@ -134,8 +132,6 @@ function apiLogException (req, res) {
 module.exports = {
   index,
   article,
-  debug,
-  debugArticle,
   rss,
   robotsTxt,
   humansTxt,

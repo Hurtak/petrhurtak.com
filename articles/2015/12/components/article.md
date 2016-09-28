@@ -94,15 +94,16 @@ visible: true
 <h2>Images</h2>
 
 <ul>
-  <li>when linking to article images use relative paths without <xmp>./</xmp> at the start of the url</li>
+  <li>when linking to article images use relative paths with <xmp>./</xmp> at the start of the url</li>
   <li>these relative url are then transformed into absolute paths <xmp>images/test.png</xmp> → <xmp>/static/articles/../images/test.png</xmp></li>
+  <li>always provide <xmp>alt</xmp>, <xmp>width</xmp> and <xmp>height</xmp> attributes</li>
 </ul>
 
 <h3>Code</h3>
 
 <pre><xmp data-lang="html">
   <!-- just image -->
-  <img src="./images/test.png" alt="image alt text">
+  <img src="./images/test.png" alt="image alt text" width="100" height="100">
 
   <!-- image with caption -->
   <figure>
@@ -115,7 +116,7 @@ visible: true
 
 <pre><xmp data-lang="html">
   <!-- just image -->
-  <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
+  <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text" width="100" height="100">
 
   <!-- image with caption -->
   <figure>
@@ -126,7 +127,8 @@ visible: true
 
 <h3>How it looks like</h3>
 
-<img src="./images/test.png" alt="image alt text">
+<!-- just image -->
+<img src="./images/test.png" alt="image alt text" width="100" height="100">
 
 <figure>
   <img src="./images/test.png" alt="image alt text">
@@ -217,6 +219,7 @@ visible: true
 
 <ul>
   <li>put code in <xmp>xmp</xmp> blocks instad of <xmp>code</xmp> blocks</li>
+  <li>if you need nested <xmp>xmp</xmp> blocks then only use <xmp>xmp</xmp> on the root level, and instead of any child <xmp>xmp</xmp> use <xmp>code</xmp> blocks</li>
   <li>this is so we can have nice previews on github without having to manually do HTML escaping</li>
   <li><xmp>xmp</xmp> blocks are the compiled indo <xmp>code</xmp></li>
   <li>content of code blocks is HTML escaped</li>
@@ -231,7 +234,7 @@ visible: true
 
 <pre><xmp data-lang="html">
   <!-- inline code -->
-  <p>Some text, <xmp><h1>hello</h1></xmp>.</p>
+  <p>Some text, <xmp data-lang="html"><h1>hello</h1></xmp>.</p>
 
   <!-- multiline code -->
   <pre><xmp data-lang="javascript">
@@ -245,7 +248,7 @@ visible: true
 
 <pre><xmp data-lang="html">
   <!-- inline code -->
-  <p>Some text, <code>&lt;h1&gt;hello&lt;/h1&gt;</code>.</p>
+  <p>Some text, <code data-lang="html">&lt;h1&gt;hello&lt;/h1&gt;</code>.</p>
 
   <!-- multiline code -->
   <pre><code data-lang="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
@@ -255,7 +258,7 @@ visible: true
 
 <h3>How it looks like</h3>
 
-<p>Some text, <xmp><h1>hello</h1></xmp>.</p>
+<p>Some text, <xmp data-lang="html"><h1>hello</h1></xmp>.</p>
 
 <pre><xmp data-lang="javascript">
   function foo (bar) {

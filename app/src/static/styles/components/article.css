@@ -135,6 +135,26 @@
 }
 
 /*
+ * formatting
+ */
+
+.Article-content em {
+  font-style: italic;
+}
+
+.Article-content strong {
+  font-weight: bold;
+}
+
+.Article-content mark {
+  background-color: var(--color-highlight);
+}
+
+.Article-content s {
+  text-decoration: line-through;
+}
+
+/*
  * code
  */
 

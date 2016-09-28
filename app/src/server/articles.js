@@ -3,8 +3,10 @@
 const fs = require('fs-promise')
 const path = require('path')
 
+const markdownIt = require('markdown-it')
 const frontMatter = require('front-matter')
 const htmlMinifier = require('html-minifier')
+const highlight = require('highlight.js')
 
 const paths = require('./paths.js')
 const utilsArticles = require('./utils/articles.js')
@@ -73,31 +75,33 @@ function getArticle (articlePath) {
   //       to html string will be done only once
   let articleHtml = html
 
-  // inside articles we are using <xmp> instead of <code>, so transform it to <code> before we
-  // run other transformations which might depend on <code> tag being used instead of <xmp>
-  articleHtml = utilsArticles.changeXmpToCode(articleHtml)
-  articleHtml = utilsArticles.trimCodeBlocks(articleHtml)
-  articleHtml = utilsArticles.removeIndentationInCodeBlocks(articleHtml)
-  articleHtml = utilsArticles.escapeAndHighlightCodeBlocks(articleHtml)
-
-  articleHtml = utilsArticles.addIdsToHeadings(articleHtml)
-
-  articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'img', 'src', articleStaticFilesPath)
-
-  // TODO: think about merging these two together, or at least share css selector?
-  articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml)
-  articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'a[href^="./snippets/"]', 'href', articleStaticFilesPath)
-
-  articleHtml = htmlMinifier.minify(articleHtml, {
-    collapseWhitespace: true,
-    conservativeCollapse: true,
-    minifyCSS: true,
-    minifyJS: true,
-    removeComments: true,
-    removeRedundantAttributes: true,
-    sortAttributes: true,
-    sortClassName: true
+  const markdown = markdownIt({
+    html: true,
+    highlight: (str, language) => highlight.highlight(language, str).value
   })
+
+  articleHtml = markdown.render(articleHtml)
+
+  // articleHtml = utilsArticles.escapeAndHighlightCodeBlocks(articleHtml)
+
+  // articleHtml = utilsArticles.addIdsToHeadings(articleHtml)
+
+  // articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'img', 'src', articleStaticFilesPath)
+
+  // // TODO: think about merging these two together, or at least share css selector?
+  // articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml)
+  // articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'a[href^="./snippets/"]', 'href', articleStaticFilesPath)
+
+  // articleHtml = htmlMinifier.minify(articleHtml, {
+  //   collapseWhitespace: true,
+  //   conservativeCollapse: true,
+  //   minifyCSS: true,
+  //   minifyJS: true,
+  //   removeComments: true,
+  //   removeRedundantAttributes: true,
+  //   sortAttributes: true,
+  //   sortClassName: true
+  // })
 
   return {
     title: metadata.title,

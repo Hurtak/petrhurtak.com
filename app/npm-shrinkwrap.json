@@ -2422,6 +2422,11 @@
       "from": "levn@>=0.3.0 <0.4.0",
       "resolved": "https://registry.npmjs.org/levn/-/levn-0.3.0.tgz"
     },
+    "linkify-it": {
+      "version": "2.0.0",
+      "from": "linkify-it@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/linkify-it/-/linkify-it-2.0.0.tgz"
+    },
     "load-json-file": {
       "version": "1.1.0",
       "from": "load-json-file@>=1.0.0 <2.0.0",
@@ -2621,6 +2626,11 @@
       "from": "map-stream@>=0.1.0 <0.2.0",
       "resolved": "https://registry.npmjs.org/map-stream/-/map-stream-0.1.0.tgz"
     },
+    "markdown-it": {
+      "version": "8.0.0",
+      "from": "markdown-it@latest",
+      "resolved": "https://registry.npmjs.org/markdown-it/-/markdown-it-8.0.0.tgz"
+    },
     "matcher": {
       "version": "0.1.2",
       "from": "matcher@>=0.1.1 <0.2.0",
@@ -2640,6 +2650,11 @@
       "version": "0.1.1",
       "from": "md5-o-matic@>=0.1.1 <0.2.0",
       "resolved": "https://registry.npmjs.org/md5-o-matic/-/md5-o-matic-0.1.1.tgz"
+    },
+    "mdurl": {
+      "version": "1.0.1",
+      "from": "mdurl@>=1.0.1 <2.0.0",
+      "resolved": "https://registry.npmjs.org/mdurl/-/mdurl-1.0.1.tgz"
     },
     "media-typer": {
       "version": "0.3.0",
@@ -4878,6 +4893,11 @@
       "version": "0.0.6",
       "from": "typedarray@>=0.0.5 <0.1.0",
       "resolved": "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
+    },
+    "uc.micro": {
+      "version": "1.0.3",
+      "from": "uc.micro@>=1.0.3 <2.0.0",
+      "resolved": "https://registry.npmjs.org/uc.micro/-/uc.micro-1.0.3.tgz"
     },
     "uglify-js": {
       "version": "2.7.3",

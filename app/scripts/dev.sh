@@ -4,6 +4,9 @@
 cd "$(dirname "$0")" # cd into directory where script is located
 cd .. # cd into app director
 
+rm -rv .nyc_output/
+rm -rv coverage/
+
 ### EXPORTED VARIABLES
 export NODE_ENV="development"
 # export NODE_ENV="production"

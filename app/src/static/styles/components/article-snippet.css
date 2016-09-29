@@ -56,8 +56,10 @@
 
 .Snippet-content--textarea {
   resize: none;
+  background: white;
 }
 
 .Snippet-content--iframe {
   border: 0;
+  background: white;
 }

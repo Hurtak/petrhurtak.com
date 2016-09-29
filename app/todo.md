@@ -3,7 +3,6 @@
 ## NEXT RELEASE
 
 - code snippet tool
-    - show CSS / html / js / result
     - be able to resize
     - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippet which would be just used instead of inspected how it was done. On the other hand, some CSS layout example would be useful to have easily available button to show what is the html / css, and also way to resize
     - have a way to display example fullscreen like kod.jecas.cz?
@@ -11,6 +10,9 @@
     - With snippets display what language they are from and maybe even version (with elm for example)
     - have unified way to display feature support
     - have borderless mode where we just display the content
+    - parsing
+        - have some more robust way how to parse -> split -> save -> reconnect snippet html
+        - maybe have customizable doctype?
     - have a way to add http header to the document response
         - probably by adding some html comment in snippet html
             - add html comment (http://stackoverflow.com/questions/941100/can-comments-appear-before-the-doctype-declaration)

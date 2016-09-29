@@ -132,7 +132,7 @@ __bold text__
 
 ### Code
 ```markdown
-<!-- unordered list -->
+<!-- un-ordered list -->
 - first item
 - second item
   - nested item
@@ -150,7 +150,7 @@ __bold text__
 ```
 
 ### How it looks like
-<!-- unordered list -->
+<!-- un-ordered list -->
 - first item
 - second item
   - nested item
@@ -215,48 +215,21 @@ function foo (bar) {
 
 ## Tables
 
-<ul>
-  <li>start headings and cell text with lower case letter</li>
-  <li>if there is heading row, wrap it in <xmp><thead></xmp> and regular rows in <xmp><tbody></xmp></li>
-  <li>in <xmp>thead</xmp> use <xmp>th</xmp> instead of <xmp>td</xmp></li>
-  <li>if there is not heading row, do not wrap rows in <xmp><tbody></xmp></li>
-</ul>
+- start headings and cell text with lower case letter
 
 ### Code
 
-<pre><xmp data-lang="html">
-<table>
-  <thead>
-    <tr>
-      <th>heading</th>
-      <th>heading</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Cell text</td>
-      <td>Cell text</td>
-    </tr>
-  </tbody>
-</table>
-</xmp></pre>
+```markdown
+| heading    | heading   |
+| ---------- | --------- |
+| cell text  | cell text |
+```
 
 ### How it looks like
 
-<table>
-  <thead>
-    <tr>
-      <th>heading</th>
-      <th>heading</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Cell text</td>
-      <td>Cell text</td>
-    </tr>
-  </tbody>
-</table>
+| heading    | heading   |
+| ---------- | --------- |
+| cell text  | cell text |
 
 
 

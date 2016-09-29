@@ -218,25 +218,21 @@ function foo (bar) {
 - start headings and cell text with lower case letter
 
 ### Code
-
 ```markdown
-| heading    | heading   |
-| ---------- | --------- |
-| cell text  | cell text |
+| default align | left aligned | centered  | right aligned |
+| ------------- | ------------ | --------- | ------------- |
+| cell text     | cell text    | cell text | cell text     |
 ```
 
 ### How it looks like
-
-| heading    | heading   |
-| ---------- | --------- |
-| cell text  | cell text |
-
+| default align | left aligned | centered  | right aligned |
+| ------------- | ------------ | --------- | ------------- |
+| cell text     | cell text    | cell text | cell text     |
 
 
 ## Quotes
 
 ### Code
-
 ```html
 <blockquote>
     <p>Citation text</p>

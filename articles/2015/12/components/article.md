@@ -13,6 +13,7 @@ visible: true
 - use 2 space indentation
 
 ## Article metadata
+
 - each article starts with YAML front matter block which specifies articles metadata
 - all properties are mandatory
 - dates are in UTC, seconds are omitted
@@ -21,6 +22,7 @@ visible: true
 - articles on the main page are sorted by the `last_update`
 
 ### Code
+
 ```yaml
 ---
 title: Title of the article
@@ -37,9 +39,10 @@ visible: true
 
 - use markdown
 - headings have automatically added id's for easier sharing
-- add 3 newlines before each `<h2>` heading
+- add 3 newlines before each `##` heading
 
 ### Code
+
 ```markdown
 ## Heading
 paragraph
@@ -52,11 +55,13 @@ paragraph
 ```html
 <h2 id="heading">Heading</h2>
 <p>paragraph</p>
+
 <h3 id="sub-heading">Sub-heading</h3>
 <p>paragraph</p>
 ```
 
 ### How it looks like
+
 ## Heading
 paragraph
 
@@ -68,6 +73,7 @@ paragraph
 ## Formatting
 
 ### Code
+
 ```markdown
 _italics text_
 __bold text__
@@ -76,6 +82,7 @@ __bold text__
 ```
 
 ### How it looks like
+
 - _italics text_
 - __bold text__
 - ~~striked text~~
@@ -90,6 +97,7 @@ __bold text__
 - always specify `alt`, `width` and `height` attributes
 
 ### Code
+
 ```html
 <!-- just image -->
 <img src="./images/test.png" alt="image alt text" width="100" height="100">
@@ -102,6 +110,7 @@ __bold text__
 ```
 
 ### Compiles to
+
 ```html
 <!-- just image -->
 <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text" width="100" height="100">
@@ -114,6 +123,7 @@ __bold text__
 ```
 
 ### How it looks like
+
 <!-- just image -->
 <img src="./images/test.png" alt="image alt text" width="100" height="100">
 
@@ -131,6 +141,7 @@ __bold text__
 - do not end list items with dot, use comma or parentheses
 
 ### Code
+
 ```markdown
 <!-- un-ordered list -->
 - first item
@@ -150,6 +161,7 @@ __bold text__
 ```
 
 ### How it looks like
+
 <!-- un-ordered list -->
 - first item
 - second item
@@ -190,6 +202,7 @@ function foo (bar) {
 ````
 
 ### Compiles to
+
 ```html
 <!-- inline code -->
 <p>Some text, <code>&lt;strong&gt;hello&lt;/strong&gt;</code></p>
@@ -201,6 +214,7 @@ function foo (bar) {
 ```
 
 ### How it looks like
+
 <!-- inline code -->
 Some text, `<strong>hello</strong>`
 
@@ -218,6 +232,7 @@ function foo (bar) {
 - start headings and cell text with lower case letter
 
 ### Code
+
 ```markdown
 | default align | left aligned | centered  | right aligned |
 | ------------- | ------------ | --------- | ------------- |
@@ -225,6 +240,7 @@ function foo (bar) {
 ```
 
 ### How it looks like
+
 | default align | left aligned | centered  | right aligned |
 | ------------- | ------------ | --------- | ------------- |
 | cell text     | cell text    | cell text | cell text     |
@@ -233,6 +249,7 @@ function foo (bar) {
 ## Quotes
 
 ### Code
+
 ```html
 <blockquote>
     <p>Citation text</p>
@@ -243,6 +260,7 @@ function foo (bar) {
 ```
 
 ### How it looks like
+
 <blockquote>
     <p>Citation text</p>
     <footer>

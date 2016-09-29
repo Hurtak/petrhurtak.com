@@ -3,25 +3,8 @@
 ## NEXT RELEASE
 
 - code snippet tool
-    - be able to resize
-    - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippet which would be just used instead of inspected how it was done. On the other hand, some CSS layout example would be useful to have easily available button to show what is the html / css, and also way to resize
-    - have a way to display example fullscreen like kod.jecas.cz?
-    - chapter about this into components
-    - With snippets display what language they are from and maybe even version (with elm for example)
-    - have unified way to display feature support
-    - have borderless mode where we just display the content
-    - parsing
-        - have some more robust way how to parse -> split -> save -> reconnect snippet html
-        - maybe have customizable doctype?
-    - have a way to add http header to the document response
-        - probably by adding some html comment in snippet html
-            - add html comment (http://stackoverflow.com/questions/941100/can-comments-appear-before-the-doctype-declaration)
-            - probably in yaml?
-            - parse that and save into database
-            - when serving this file add relevant headers
-            - do not add any other extra headers like powered by and security headers added by helmet??
-                - somebody could then display our content? maybe only add the one which disables displaying in iframe?
-            - also keep the original headers comment in html so reader can easily see what headers were added?
+    - finish styles
+    - reset button
 
 - change urls in the following way:
     - article lives on domain.com/article/ instead of domain.com/article
@@ -32,16 +15,19 @@
     - highlight code with <mark>?
     - have a way to display diffs
 
-- css snippets
-    - have certain properties customizable like here
-        - http://codepen.io/thebabydino/pen/pbVdPx/
-
 - think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really awkward
     - maybe have delete function and insert function only which would be little cleaner but it would increase a lot id's in the database
     - or is there some insert/update if exists in MySQL?
 
 - finish CSS design
-    - inspiration: https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
+    - inspiration:
+        - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
+        - http://phoboslab.org/log
+        - http://maketea.co.uk/2016/09/28/css-grid-layout-is-a-step-change.html
+        - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/Material-I-II-opt.jpg
+        - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/uefa-euro2016-belgium-opt.jpg
+        - https://www.google.cz/search?hl=cs&tbm=isch&sa=1&q=mirrors+edge+interior
+        - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
     - page header
     - article header
     - articles list page
@@ -49,10 +35,7 @@
     - separate styles for keyboard keys? eg.: ctrl + tab
     - 404 page
     - inspiration
-        - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/Material-I-II-opt.jpg
-        - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/uefa-euro2016-belgium-opt.jpg
-        - https://www.google.cz/search?hl=cs&tbm=isch&sa=1&q=mirrors+edge+interior
-        - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
+
 - buy domains
 - put this damn thing on the internet
 - add comments
@@ -61,7 +44,6 @@
 
 ## Right after release
 
-- switch to Suit CSS
 - add css lint?
 - update Twitter profile
 - domains
@@ -90,7 +72,6 @@
 - https://blog.cloudflare.com/accelerating-node-js-applications-with-http-2-server-push/
 - consider using https://github.com/VerbalExpressions/JSVerbalExpressions for regex
 - https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/ with this provide fallback to older browsers?
-- With each code live snippet have a warning if some feature is not supported in current browser
 - fork to multiple processes (strong-supervisor, there is also Isaac Schluter's old cluster-master, naught, cluster2, pm2, etc.)
 - robots.txt review - make article
 
@@ -139,6 +120,30 @@
     - think of how to unify scripts between package.json, scripts/ and .travis.yml
     - think of a ways how to unify debug mode with production mode
     - check for TODOs in code and resolve them
+
+- code snippet tool
+    - be able to resize
+    - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippet which would be just used instead of inspected how it was done. On the other hand, some CSS layout example would be useful to have easily available button to show what is the html / css, and also way to resize
+    - have a way to display example fullscreen like kod.jecas.cz?
+    - chapter about this into components
+    - With each code live snippet have a warning if some feature is not supported in current browser
+    - With snippets display what language they are from and maybe even version (with elm for example)
+    - have unified way to display feature support
+    - have borderless mode where we just display the content
+    - parsing
+        - have some more robust way how to parse -> split -> save -> reconnect snippet html
+        - maybe have customizable doctype?
+    - have certain properties customizable like here
+        - http://codepen.io/thebabydino/pen/pbVdPx/
+    - have a way to add http header to the document response
+        - probably by adding some html comment in snippet html
+            - add html comment (http://stackoverflow.com/questions/941100/can-comments-appear-before-the-doctype-declaration)
+            - probably in yaml?
+            - parse that and save into database
+            - when serving this file add relevant headers
+            - do not add any other extra headers like powered by and security headers added by helmet??
+                - somebody could then display our content? maybe only add the one which disables displaying in iframe?
+            - also keep the original headers comment in html so reader can easily see what headers were added?
 
 - Debug
     - have a way to turn on debug mode in production

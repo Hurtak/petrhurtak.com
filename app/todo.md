@@ -3,55 +3,54 @@
 ## NEXT RELEASE
 
 - code snippet tool
-  - show CSS / html / js / result
-  - be able to resize
-  - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippet which would be just used instead of inspected how it was done. On the other hand, some CSS layout example would be useful to have easily available button to show what is the html / css, and also way to resize
-  - have a way to display example fullscreen like kod.jecas.cz?
-  - chapter about this into components
-  - With snippets display what language they are from and maybe even version (with elm for example)
-  - have unified way to display feature support
-  - have borderless mode where we just display the content
-  - have a way to add http header to the document response
-    - probably by adding some html comment in snippet html
-      - add html comment (http://stackoverflow.com/questions/941100/can-comments-appear-before-the-doctype-declaration)
-      - probably in yaml?
-      - parse that & save into database
-      - when serving this file add relevant headers
-      - do not add any other extra headers like powered by & security headers added by helmet??
-        - somebody could then display our content? maybe only add the one which disables displaying in iframe?
-      - also keep the original headers comment in html so reader can easily see what headers were added?
+    - show CSS / html / js / result
+    - be able to resize
+    - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippet which would be just used instead of inspected how it was done. On the other hand, some CSS layout example would be useful to have easily available button to show what is the html / css, and also way to resize
+    - have a way to display example fullscreen like kod.jecas.cz?
+    - chapter about this into components
+    - With snippets display what language they are from and maybe even version (with elm for example)
+    - have unified way to display feature support
+    - have borderless mode where we just display the content
+    - have a way to add http header to the document response
+        - probably by adding some html comment in snippet html
+            - add html comment (http://stackoverflow.com/questions/941100/can-comments-appear-before-the-doctype-declaration)
+            - probably in yaml?
+            - parse that and save into database
+            - when serving this file add relevant headers
+            - do not add any other extra headers like powered by and security headers added by helmet??
+                - somebody could then display our content? maybe only add the one which disables displaying in iframe?
+            - also keep the original headers comment in html so reader can easily see what headers were added?
 
 - change urls in the following way:
-  - article lives on domain.com/article/ instead of domain.com/article
-  - images on domain.com/article/images/
-  - snippets on domain.com/aticle/snippets/
+    - article lives on domain.com/article/ instead of domain.com/article
+    - images on domain.com/article/images/
+    - snippets on domain.com/aticle/snippets/
 
 - code blocks redesign?
-  - probably do not escape by default or have a way to
     - highlight code with <mark>?
     - have a way to display diffs
 
 - css snippets
-  - have certain properties customizable like here
-    - http://codepen.io/thebabydino/pen/pbVdPx/
+    - have certain properties customizable like here
+        - http://codepen.io/thebabydino/pen/pbVdPx/
 
 - think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really awkward
-  - maybe have delete function and insert function only which would be little cleaner but it would increase a lot id's in the database
-  - or is there some insert/update if exists in MySQL?
+    - maybe have delete function and insert function only which would be little cleaner but it would increase a lot id's in the database
+    - or is there some insert/update if exists in MySQL?
 
 - finish CSS design
-  - inspiration: https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
-  - page header
-  - article header
-  - articles list page
-  - footer
-  - separate styles for keyboard keys? eg.: ctrl + tab
-  - 404 page
-  - inspiration
-    - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/Material-I-II-opt.jpg
-    - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/uefa-euro2016-belgium-opt.jpg
-    - https://www.google.cz/search?hl=cs&tbm=isch&sa=1&q=mirrors+edge+interior
-    - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
+    - inspiration: https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
+    - page header
+    - article header
+    - articles list page
+    - footer
+    - separate styles for keyboard keys? eg.: ctrl + tab
+    - 404 page
+    - inspiration
+        - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/Material-I-II-opt.jpg
+        - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/uefa-euro2016-belgium-opt.jpg
+        - https://www.google.cz/search?hl=cs&tbm=isch&sa=1&q=mirrors+edge+interior
+        - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
 - buy domains
 - put this damn thing on the internet
 - add comments
@@ -64,24 +63,24 @@
 - add css lint?
 - update Twitter profile
 - domains
-  - buy hurtak.cc hurtak.io petrhurtak.com petrhurtak.cz hurtak.pe
-  - move to namecheap?
+    - buy hurtak.cc hurtak.io petrhurtak.com petrhurtak.cz hurtak.pe
+    - move to namecheap?
 - http://www.vzhurudolu.cz/prirucka/checklist
 - rethink directory structure
-  - name article folders like this yyyy-mm-d--articlename
-  - place these folders into year subfolders in articles dir
-  - in compiled dir just have a flat structure?
-  - think more about this
+    - name article folders like this yyyy-mm-d--articlename
+    - place these folders into year subfolders in articles dir
+    - in compiled dir just have a flat structure?
+    - think more about this
 - convert app to Docker
 - consider deploying through
-  - now https://zeit.co/now/
-  - or hyper.sh
+    - now https://zeit.co/now/
+    - or hyper.sh
 - consider transforming article so each element has it's own class?
-  - p -> p.article__p
-  - what do we do about nested components?
-  - what happens when we are in code/xmp element?
-  - do we do this automatically based on tag name or by hand?
-  - why would we do this? what is the benefit over plain CSS -> maybe that we don't have CSS specificity problems?
+    - p -> p.article__p
+    - what do we do about nested components?
+    - what happens when we are in code/xmp element?
+    - do we do this automatically based on tag name or by hand?
+    - why would we do this? what is the benefit over plain CSS -> maybe that we don't have CSS specificity problems?
 - benchmark tool, use wrk? also benchmark after each commit in travis?
 - Synon.js for mocking api call a db functions?
 - Selenium testing?
@@ -95,201 +94,201 @@
 
 ## FUTURE RELEASES
 - General
-  - write README.md
-  - sitemap
-  - api security? methods should be available only from the same url
-  - take a look at medium, what components they use in articles
-  - fine tune humans.txt
-  - https://github.com/googlechrome/sw-precache
-  - run blog through
-    - CSS and HTML validator
-    - use some tool to detect unused styles
-  - consider unification of quotes (html ", js ')
-  - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
-  - take a look at ponyfoo.com for performance ideas
-  - performance testing
-    - https://css-tricks.com/use-webpagetest-api/
-  - revisit package.json
-  - progressively enhanced tweet quotations
-  - consider having install script which would create www/ www/log/ and others, instead of having these folders in git with .gitkeep
-  - tags to articles
-  - consider switching to https://www.rethinkdb.com/ or to postgresql?
-  - node 6.6.0 promises: Unhandled rejections now emit a process warning after the first tick, so maybe we don't need hard-rejection module anymore
-  - consider using execa, shelljs, cash for scripts once async/await lands
-  - projects page
-  - use & write article about https://github.com/nolanlawson/optimize-js
-  - consider taking a look at some HTML elements and putting them in components article and using them
-    - dl (dt dd)
-    - date
-    - hr, something like medium?
-    - kbd
-    - q (quotes: none; or have our own quotes with ::after and ::before, if we would have our own quotes, add note into typography chapter of components article)
-    - abbr (http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_txt_abbr&stacked=h)
-    - small
-    - itemprop attribute
-  - about page
-  - add search with suggest box
-  - add aria stuff and accessibility stuff, also add that accessibility menu when you press tab
-  - link to github/twitter
-  - decide what categories to use in commit messages
-  - check if we are not using sync (readFileSync) functions anywhere
-  - cron job to test
-    - automatically git fetch changes and update new articles
-  - think of how to unify scripts between package.json, scripts/ and .travis.yml
-  - think of a ways how to unify debug mode with production mode
-  - check for TODOs in code and resolve them
+    - write README.md
+    - sitemap
+    - api security? methods should be available only from the same url
+    - take a look at medium, what components they use in articles
+    - fine tune humans.txt
+    - https://github.com/googlechrome/sw-precache
+    - run blog through
+        - CSS and HTML validator
+        - use some tool to detect unused styles
+    - consider unification of quotes (html ", js ')
+    - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
+    - take a look at ponyfoo.com for performance ideas
+    - performance testing
+        - https://css-tricks.com/use-webpagetest-api/
+    - revisit package.json
+    - progressively enhanced tweet quotations
+    - consider having install script which would create www/ www/log/ and others, instead of having these folders in git with .gitkeep
+    - tags to articles
+    - consider switching to https://www.rethinkdb.com/ or to postgresql?
+    - node 6.6.0 promises: Unhandled rejections now emit a process warning after the first tick, so maybe we don't need hard-rejection module anymore
+    - consider using execa, shelljs, cash for scripts once async/await lands
+    - projects page
+    - use & write article about https://github.com/nolanlawson/optimize-js
+    - consider taking a look at some HTML elements and putting them in components article and using them
+        - dl (dt dd)
+        - date
+        - hr, something like medium?
+        - kbd
+        - q (quotes: none; or have our own quotes with ::after and ::before, if we would have our own quotes, add note into typography chapter of components article)
+        - abbr (http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_txt_abbr&stacked=h)
+        - small
+        - itemprop attribute
+    - about page
+    - add search with suggest box
+    - add aria stuff and accessibility stuff, also add that accessibility menu when you press tab
+    - link to github/twitter
+    - decide what categories to use in commit messages
+    - check if we are not using sync (readFileSync) functions anywhere
+    - cron job to test
+        - automatically git fetch changes and update new articles
+    - think of how to unify scripts between package.json, scripts/ and .travis.yml
+    - think of a ways how to unify debug mode with production mode
+    - check for TODOs in code and resolve them
 
 - Debug
-  - have a way to turn on debug mode in production
-    - at least show templates data
-    - maybe have some secret url which adds cookie and if user has this cookie it will override the devel variable
-    - probably introduce 3rd variable because devel also means it is from uncompiled files and we don't want that, we just want to show debug interface so probably add another debug variable?
-  - have a way to show unpublished articles to other people on secret url
+    - have a way to turn on debug mode in production
+        - at least show templates data
+        - maybe have some secret url which adds cookie and if user has this cookie it will override the devel variable
+        - probably introduce 3rd variable because devel also means it is from uncompiled files and we don't want that, we just want to show debug interface so probably add another debug variable?
+    - have a way to show unpublished articles to other people on secret url
 
 - CI
-  - consider switching to some other ci tool (https://github.com/integrations), seems like Travis is not supporting multiple tasks
-  - read docs https://docs.travis-ci.com/user/languages/javascript-with-nodejs (notifications when it fails?)
-  - have CI job which will run all article validity checks
-  - check if article links are not 404
-  - check if other page links are not 404
-  - if all pages are html valid
-  - npm outdated check
-  - html validator all pages (https://github.com/zrrrzzt/html-validator)
-  - https://www.npmjs.com/package/sloc-for-jenkins
-  - move npm run lint in something like before_script?
-  - check
-  - https://github.com/stylelint/stylelint
-  - have task that run periodically every hour?
-    - https://github.com/RetireJS/retire.js
-    - npm outdated?
+    - consider switching to some other ci tool (https://github.com/integrations), seems like Travis is not supporting multiple tasks
+    - read docs https://docs.travis-ci.com/user/languages/javascript-with-nodejs (notifications when it fails?)
+    - have CI job which will run all article validity checks
+    - check if article links are not 404
+    - check if other page links are not 404
+    - if all pages are html valid
+    - npm outdated check
+    - html validator all pages (https://github.com/zrrrzzt/html-validator)
+    - https://www.npmjs.com/package/sloc-for-jenkins
+    - move npm run lint in something like before_script?
+    - check
+    - https://github.com/stylelint/stylelint
+    - have task that run periodically every hour?
+        - https://github.com/RetireJS/retire.js
+        - npm outdated?
 
 - Articles
-  - currently html of code blocks is parsed and we cannot get raw html? so `<h2>` will become `<h2></h2>`, maybe switch to jsdom?
-  - add gradient overlay on code blocks that overflow to y
-  - in parseArticle function have functions which checks article for correctness
-    - check if paragraphs start with capital letter and end with dot
-    - check of headings start with capital letter
-    - check YAML header for correctness
-    - check that all relative url's start with `./` (or do not start with)
-    - maybe refactor this into separate module?
-    - maybe when checking html, when we find error -> add console.log describing the error
-  - post all articles to hacker news, reddit, twitter
-    - provide links under article to hacker news and twitter discussion
-      - http://i.imgur.com/XIfTwcz.png (from http://jlongster.com)
-    - have these links saved in front matter
-    - have cron job which determines number of comments on giver articles
-    - display number of comments under
-  - do not compile articles manually with script, compile them on the fly when requested
-    - measure how long this takes
-    - if it takes > 5ms, wrap the whole thing in caching function which will just save the result into file
-  - add checks in upload script so it checks if
-    - url's are unique
-    - id's are unique
-    - directory month/year fits the publication date directories
-  - flatten directory structure, just use years directories
-  - add rel="noopener" to links to other domains
-    - https://jakearchibald.com/2016/performance-benefits-of-rel-noopener/
-    - write article about this
-  - refactor styles
-  - add article footer with
-    - share on twitter and facebook
-    - edit this article on github
-      - or maybe what could be really cool would be if there was live edit and anyone could submit edit
-    - similar articles and next article
-  - refactor upload script, put id into articles so we have truly unique identificator?
-  - parse article function uses readFileSync, rewrite to use promises/cb
-  - replace @see links in code with my own articles
+    - currently html of code blocks is parsed and we cannot get raw html? so `<h2>` will become `<h2></h2>`, maybe switch to jsdom?
+    - add gradient overlay on code blocks that overflow to y
+    - in parseArticle function have functions which checks article for correctness
+        - check if paragraphs start with capital letter and end with dot
+        - check of headings start with capital letter
+        - check YAML header for correctness
+        - check that all relative url's start with `./` (or do not start with)
+        - maybe refactor this into separate module?
+        - maybe when checking html, when we find error -> add console.log describing the error
+    - post all articles to hacker news, reddit, twitter
+        - provide links under article to hacker news and twitter discussion
+            - http://i.imgur.com/XIfTwcz.png (from http://jlongster.com)
+        - have these links saved in front matter
+        - have cron job which determines number of comments on giver articles
+        - display number of comments under
+    - do not compile articles manually with script, compile them on the fly when requested
+        - measure how long this takes
+        - if it takes > 5ms, wrap the whole thing in caching function which will just save the result into file
+    - add checks in upload script so it checks if
+        - url's are unique
+        - id's are unique
+        - directory month/year fits the publication date directories
+    - flatten directory structure, just use years directories
+    - add rel="noopener" to links to other domains
+        - https://jakearchibald.com/2016/performance-benefits-of-rel-noopener/
+        - write article about this
+    - refactor styles
+    - add article footer with
+        - share on twitter and facebook
+        - edit this article on github
+            - or maybe what could be really cool would be if there was live edit and anyone could submit edit
+        - similar articles and next article
+    - refactor upload script, put id into articles so we have truly unique identificator?
+    - parse article function uses readFileSync, rewrite to use promises/cb
+    - replace @see links in code with my own articles
 
 - Backend
-  - when mysql server is not running, console log error and display 500
-  - figure out how to do dev/production enviroment
-    - right now we have /debug prefix for articles, but determining based on the enviroment variables would be better
-      - enviroment variable for debug mode
-    - displaying of hidden articles could be with secred query parameter
-  - https
-  - pretty 500 page, figure out how to do this in express
-  - https://www.sitepoint.com/how-to-create-a-node-js-cluster-for-speeding-up-your-apps/
-  - fork processes to number of processors http://shapeshed.com/uncaught-exceptions-in-node/
-  - database
-    - COLLATE=utf8_czech_ci; -> use something for english
-    - mediumtext type for article html, what is it?
-    - is the date column properly set in MySQL database? also is the database timezone correctly set?
-    - correctly set encoding on all tables
-    - check if indexes are set correctly
-    - use transactions (in update script)
-    - use named parameters and pass data as object instead of array?
-    - think about revisiting this:
-      - .then(mapToCamelCase) - maybe in SQL name things directly? -> SELECT foo_bar as fooBar
-      - .then(returnOneResult)
-    - what is this from Adminer export?
-      - SET foreign_key_checks = 0;
-      - SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
-  - log unhandle exceptions and uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
-  - node_modules folder only in debug mode?
-  - tests
-    - test express
-    - test routes
-      - https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/
-    - test database
-    - code coverage > 50%
-    - synon.js to moc db/api calls?
-    - selenium tests
-      - with CI
-      - periodically on distribution page
-  - merge article and debugArticle routes so they reuse most of the logic
-  - change /debug route to route configurable in deb config
-  - node turn on 'use strict' by default?
-  - decide when to use const x = () => {} and when to use function x () {}
-  - prereload headers
-  - redirect from /article/ to /article (301?)
-  - 404
-    - log 404s
-    - recommend some content based on searched query
-    - fix common typos?
-    - http://jecas.cz/oprava-url
-  - 500
-    - add error handler to display 500 pages
-    - add .catch on promises inside router to display 500?
-    - log all 500 into file, how to do this in express?
+    - when mysql server is not running, console log error and display 500
+    - figure out how to do dev/production enviroment
+        - right now we have /debug prefix for articles, but determining based on the enviroment variables would be better
+            - enviroment variable for debug mode
+        - displaying of hidden articles could be with secred query parameter
+    - https
+    - pretty 500 page, figure out how to do this in express
+    - https://www.sitepoint.com/how-to-create-a-node-js-cluster-for-speeding-up-your-apps/
+    - fork processes to number of processors http://shapeshed.com/uncaught-exceptions-in-node/
+    - database
+        - COLLATE=utf8_czech_ci; -> use something for english
+        - mediumtext type for article html, what is it?
+        - is the date column properly set in MySQL database? also is the database timezone correctly set?
+        - correctly set encoding on all tables
+        - check if indexes are set correctly
+        - use transactions (in update script)
+        - use named parameters and pass data as object instead of array?
+        - think about revisiting this:
+            - .then(mapToCamelCase) - maybe in SQL name things directly? -> SELECT foo_bar as fooBar
+            - .then(returnOneResult)
+        - what is this from Adminer export?
+            - SET foreign_key_checks = 0;
+            - SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+    - log unhandle exceptions and uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
+    - node_modules folder only in debug mode?
+    - tests
+        - test express
+        - test routes
+            - https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/
+        - test database
+        - code coverage > 50%
+        - synon.js to moc db/api calls?
+        - selenium tests
+            - with CI
+            - periodically on distribution page
+    - merge article and debugArticle routes so they reuse most of the logic
+    - change /debug route to route configurable in deb config
+    - node turn on 'use strict' by default?
+    - decide when to use const x = () => {} and when to use function x () {}
+    - prereload headers
+    - redirect from /article/ to /article (301?)
+    - 404
+        - log 404s
+        - recommend some content based on searched query
+        - fix common typos?
+        - http://jecas.cz/oprava-url
+    - 500
+        - add error handler to display 500 pages
+        - add .catch on promises inside router to display 500?
+        - log all 500 into file, how to do this in express?
 
 - Frontend
-  - highlight.js
-    - locally host css file
-    - only take css for languages that are really used
-  - http://mozilla.github.io/nunjucks/templating.html#whitespace-control
-  - minify scripts and css (debug mode in production still with unminified files)
-  - minify article images
-  - add favicon
-  - pass paths as variable into templates?
-  - load highlightjs css styles asynchronously
-  - revisit rss feed items
-  - sticky footer
-  - add compilation process for static files
-  - consider loading images with javascript with <noscript> fallback?
-  - fine tune "published x days ago"
-  - start using mixins css
-    - http://zeke.sikelianos.com/css-from-the-future/
-    - convert from typography variables to typography mixins
-    - some resets mixins?
-  - consider adding critical css
-  - sprites for images/icons
-  - provide rss1, rss2 and atom feeds
-  - responsive images (srcset, image element), also generate these automatically
-  - use sprites https://speakerdeck.com/bevacqua/high-performance-in-the-critical-path
-  - have all relevant metatags, inspire with jecas.cz and ponyfoo.com
-  - console easter egg, or perhaps something inside HTML? http://codepen.io/elijahmanor/pen/RPjeLz?editors=001
-  - consider switching to async templating engine with streaing support (markojs by ebay, dustjs by linkedin)
+    - highlight.js
+        - locally host css file
+        - only take css for languages that are really used
+    - http://mozilla.github.io/nunjucks/templating.html#whitespace-control
+    - minify scripts and css (debug mode in production still with unminified files)
+    - minify article images
+    - add favicon
+    - pass paths as variable into templates?
+    - load highlightjs css styles asynchronously
+    - revisit rss feed items
+    - sticky footer
+    - add compilation process for static files
+    - consider loading images with javascript with <noscript> fallback?
+    - fine tune "published x days ago"
+    - start using mixins css
+        - http://zeke.sikelianos.com/css-from-the-future/
+        - convert from typography variables to typography mixins
+        - some resets mixins?
+    - consider adding critical css
+    - sprites for images/icons
+    - provide rss1, rss2 and atom feeds
+    - responsive images (srcset, image element), also generate these automatically
+    - use sprites https://speakerdeck.com/bevacqua/high-performance-in-the-critical-path
+    - have all relevant metatags, inspire with jecas.cz and ponyfoo.com
+    - console easter egg, or perhaps something inside HTML? http://codepen.io/elijahmanor/pen/RPjeLz?editors=001
+    - consider switching to async templating engine with streaing support (markojs by ebay, dustjs by linkedin)
 
 ## NICE TO HAVE
 - switch to templating engine which supports streaming
 - own comment system?
 - evaluate switch from express to alternatives (koa, hapi)
-  - once async/await hits node consider switching to koa2
-  - https://github.com/llambda/koa-boiler (http2, caching...)
+    - once async/await hits node consider switching to koa2
+    - https://github.com/llambda/koa-boiler (http2, caching...)
 - serve static files from nginx
 
 ## LONG TERM
 - once standard supports ES6 + Async/Await:
-  - remove "standard" from package.json
-  - remove "babel-eslint" dependency
+    - remove "standard" from package.json
+    - remove "babel-eslint" dependency
 - once we have object spread operator replace Object.assign in addCommonData function in routes.js

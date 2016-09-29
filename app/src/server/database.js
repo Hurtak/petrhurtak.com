@@ -5,9 +5,9 @@ const lodash = require('lodash')
 
 const config = require('../config/config.js')
 
-const db = mysql.createConnection(config.database)
+let db
 
-// factory function
+// helper functions
 
 function dbPromiseFactory (queryString, params = []) {
   params = Array.isArray(params) ? params : [params]
@@ -45,6 +45,17 @@ function underscoreCaseObjectToCamelCase (underscoreCaseObj) {
   }
 
   return camelCaseObj
+}
+
+// connection
+
+function openConnection () {
+  db = mysql.createConnection(config.database)
+  db.connect()
+}
+
+function closeConnection () {
+  db.end()
 }
 
 // articles functions
@@ -222,11 +233,12 @@ function getHumansTxt () {
     .then(returnOneResult)
 }
 
-const closeConnection = () => {
-  db.end()
-}
+// exports
 
 module.exports = {
+  openConnection,
+  closeConnection,
+
   getArticles,
   getArticle,
   getArticleSnippets,
@@ -239,6 +251,5 @@ module.exports = {
   insertSnippet,
   deleteArticles,
   getRSS,
-  getHumansTxt,
-  closeConnection
+  getHumansTxt
 }

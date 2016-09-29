@@ -12,12 +12,14 @@ const responseTime = require('response-time')
 const compression = require('compression')
 
 const config = require('../config/config.js')
+const database = require('./database.js')
 const paths = require('./paths.js')
 const routes = require('./routes.js')
 const nunjucksEnv = require('./nunjucks/env.js')
 
 // app
 
+database.openConnection()
 const app = express()
 
 // middlewares

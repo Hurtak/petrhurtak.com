@@ -81,27 +81,23 @@ function getArticle (articlePath) {
   })
 
   articleHtml = markdown.render(articleHtml)
-
-  // articleHtml = utilsArticles.escapeAndHighlightCodeBlocks(articleHtml)
-
-  // articleHtml = utilsArticles.addIdsToHeadings(articleHtml)
-
-  // articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'img', 'src', articleStaticFilesPath)
+  articleHtml = utilsArticles.addIdsToHeadings(articleHtml)
+  articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'img', 'src', articleStaticFilesPath)
 
   // // TODO: think about merging these two together, or at least share css selector?
-  // articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml)
-  // articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'a[href^="./snippets/"]', 'href', articleStaticFilesPath)
+  articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml)
+  articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'a[href^="./snippets/"]', 'href', articleStaticFilesPath)
 
-  // articleHtml = htmlMinifier.minify(articleHtml, {
-  //   collapseWhitespace: true,
-  //   conservativeCollapse: true,
-  //   minifyCSS: true,
-  //   minifyJS: true,
-  //   removeComments: true,
-  //   removeRedundantAttributes: true,
-  //   sortAttributes: true,
-  //   sortClassName: true
-  // })
+  articleHtml = htmlMinifier.minify(articleHtml, {
+    collapseWhitespace: true,
+    conservativeCollapse: true,
+    minifyCSS: true,
+    minifyJS: true,
+    removeComments: true,
+    removeRedundantAttributes: true,
+    sortAttributes: true,
+    sortClassName: true
+  })
 
   return {
     title: metadata.title,

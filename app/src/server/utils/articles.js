@@ -48,87 +48,6 @@ function addIdsToHeadings (htmlString) {
   return $.html()
 }
 
-function changeXmpToCode (htmlString) {
-  let $ = cheerioLoadWithoutEscaping(htmlString)
-
-  $('xmp').each((index, element) => {
-    const xmpEl = $(element)
-    const codeEl = $('<code></code>')
-
-    codeEl.html(xmpEl.html())
-    for (const key in element.attribs) {
-      codeEl.attr(key, element.attribs[key])
-    }
-
-    xmpEl.replaceWith(codeEl)
-  })
-
-  return $.html()
-}
-
-function trimCodeBlocks (htmlString) {
-  let $ = cheerioLoadWithoutEscaping(htmlString)
-
-  $('code').each((index, element) => {
-    let html = $(element).html()
-
-    html = html.replace(/^(\n|\r\n)+/, '')
-    html = html.replace(/(\n|\r\n)+$/, '')
-
-    $(element).html(html)
-  })
-
-  return $.html()
-}
-
-function removeIndentationInCodeBlocks (htmlString) {
-  let $ = cheerioLoadWithoutEscaping(htmlString)
-
-  $('code').each((index, element) => {
-    let html = $(element).html()
-
-    html = html.split('\n')
-    if (html.length < 2) return
-
-    const indentationMatch = html[0].match(/^ +/)
-    if (!indentationMatch) return
-
-    const indentationLength = indentationMatch[0].length
-    if (indentationLength === 0) return
-
-    // remove indentation
-    html = html.map(line => line.substr(indentationLength))
-    html = html.join('\n')
-
-    $(element).html(html)
-  })
-
-  return $.html()
-}
-
-function escapeAndHighlightCodeBlocks (htmlString) {
-  let $ = cheerioLoadWithoutEscaping(htmlString)
-
-  $('code').each((index, element) => {
-    const el = $(element)
-    const html = el.html()
-
-    const language = el.attr('data-lang')
-    if (language) {
-      // syntax highlight (highlight.js does the escaping)
-      const highlightObj = highlight.highlight(language, html)
-
-      el.html(highlightObj.value)
-    } else {
-      // just escape the content
-      const escapedHtml = escapeHtml(html)
-      el.html(escapedHtml)
-    }
-  })
-
-  return $.html()
-}
-
 function relativeUrlToAbsolute (htmlString, selector, attribute, absolutePath) {
   if (!absolutePath) {
     throw new Error('missing absolutePath paramenter')
@@ -211,10 +130,6 @@ function parseSnippet (snippetHtml) {
 
 module.exports = {
   addIdsToHeadings,
-  changeXmpToCode,
-  trimCodeBlocks,
-  removeIndentationInCodeBlocks,
-  escapeAndHighlightCodeBlocks,
   relativeUrlToAbsolute,
   enhanceSnippetLinks,
   isoStringToUtcDate,

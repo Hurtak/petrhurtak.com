@@ -96,8 +96,8 @@ __bold text__
 
 <!-- image with caption -->
 <figure>
-  <img src="./images/test.png" alt="image alt text">
-  <figcaption>Image caption</figcaption>
+    <img src="./images/test.png" alt="image alt text">
+    <figcaption>Image caption</figcaption>
 </figure>
 ```
 
@@ -108,8 +108,8 @@ __bold text__
 
 <!-- image with caption -->
 <figure>
-  <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
-  <figcaption>Image caption</figcaption>
+    <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
+    <figcaption>Image caption</figcaption>
 </figure>
 ```
 
@@ -119,8 +119,8 @@ __bold text__
 
 <!-- image with caption -->
 <figure>
-  <img src="./images/test.png" alt="image alt text">
-  <figcaption>Image caption</figcaption>
+    <img src="./images/test.png" alt="image alt text">
+    <figcaption>Image caption</figcaption>
 </figure>
 
 

@@ -39,6 +39,11 @@
   background-color: orange;
   font-family: var(--font-family-code);
   font-size: var(--font-size-paragraph);
+  cursor: pointer;
+}
+
+.Snippet-tab.isSelected {
+  background-color: lightsteelblue;
 }
 
 .Snippet-tab:first-child {

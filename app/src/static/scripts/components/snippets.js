@@ -3,7 +3,8 @@ window.App.Snippets = (function () {
 
   const config = {
     dom: {
-      snippetAttribute: 'data-snippet'
+      snippetAttribute: 'data-snippet',
+      isSelectedClass: 'isSelected'
     }
   }
 
@@ -34,21 +35,24 @@ window.App.Snippets = (function () {
       js: snippetEl.querySelector('.js-snippet-tab-js')
     }
 
-    function showContent (contentToShow) {
-      content.result.style.zIndex = 0
-      content.html.style.zIndex = 0
-      content.css.style.zIndex = 0
-      content.js.style.zIndex = 0
-
+    function showContent (clickedTab, contentToShow) {
+      for (const key in content) {
+        content[key].style.zIndex = 0
+      }
       contentToShow.style.zIndex = 1337
+
+      for (const key in tabs) {
+        tabs[key].classList.remove(config.dom.isSelectedClass)
+      }
+      clickedTab.classList.add(config.dom.isSelectedClass)
     }
 
-    showContent(content.result)
+    showContent(tabs.result, content.result)
 
-    tabs.result.addEventListener('click', () => showContent(content.result))
-    tabs.html.addEventListener('click', () => showContent(content.html))
-    tabs.css.addEventListener('click', () => showContent(content.css))
-    tabs.js.addEventListener('click', () => showContent(content.js))
+    tabs.result.addEventListener('click', () => showContent(tabs.result, content.result))
+    tabs.html.addEventListener('click', () => showContent(tabs.html, content.html))
+    tabs.css.addEventListener('click', () => showContent(tabs.css, content.css))
+    tabs.js.addEventListener('click', () => showContent(tabs.js, content.js))
 
     const html = `
       <!DOCTYPE html>

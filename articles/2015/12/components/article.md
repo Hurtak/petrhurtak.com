@@ -237,90 +237,39 @@ function foo (bar) {
 
 ### Code
 
-<pre><xmp data-lang="html">
-  <blockquote>
+```html
+<blockquote>
     <p>Citation text</p>
     <footer>
-      &mdash; <a href="https://hurtak.cz"><cite>Petr Huřťák</cite></a></footer>
-  </blockquote>
-</xmp></pre>
+        &mdash; <a href="https://hurtak.cz"><cite>Petr Huřťák</cite></a>
+    </footer>
+</blockquote>
+```
 
 ### How it looks like
-
 <blockquote>
-  <p>Citation text</p>
-  <footer>&mdash; <a href="https://hurtak.cz"><cite>Petr Huřťák</cite></a></footer>
+    <p>Citation text</p>
+    <footer>
+        &mdash; <a href="https://hurtak.cz"><cite>Petr Huřťák</cite></a>
+    </footer>
 </blockquote>
 
 
 
 ## Typography
 
-<table>
-  <thead>
-    <tr>
-      <th>wrong</th>
-      <th>correct</th>
-      <th>HTML</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>"a 'quoted' text"</td>
-      <td>“a ‘quoted’ text”</td>
-      <td><xmp data-lang="html">&lsquo;</xmp> <xmp data-lang="html">&rsquo;</xmp> <xmp data-lang="html">&ldquo;</xmp> <xmp data-lang="html">&rdquo;</xmp></td>
-    </tr>
-    <tr>
-      <td>...</td>
-      <td>…</td>
-      <td><xmp data-lang="html">&hellip;</xmp></td>
-    </tr>
-    <tr>
-      <td>--, ---</td>
-      <td>–, —</td>
-      <td><xmp data-lang="html">&ndash;</xmp> <xmp data-lang="html">&mdash;</xmp></td>
-    </tr>
-    <tr>
-      <td>a -> b</td>
-      <td>a → b</td>
-      <td><xmp data-lang="html">&rarr;</xmp></td>
-    </tr>
-    <tr>
-      <td>2 - 1</td>
-      <td>2 − 4</td>
-      <td><xmp data-lang="html">&minus;</xmp></td>
-    </tr>
-    <tr>
-      <td>2 x 4</td>
-      <td>2 × 4</td>
-      <td><xmp data-lang="html">&times;</xmp></td>
-    </tr>
-    <tr>
-      <td>+-</td>
-      <td>±</td>
-      <td><xmp data-lang="html">&pm;</xmp></td>
-    </tr>
-    <tr>
-      <td>1/2, 1/4, 3/4</td>
-      <td>½, ¼, ¾</td>
-      <td><xmp data-lang="html">&half;</xmp> <xmp data-lang="html">&frac14;</xmp> <xmp data-lang="html">&frac34;</xmp></td>
-    </tr>
-    <tr>
-      <td>(c) (C)</td>
-      <td>©</td>
-      <td><xmp data-lang="html">&copy;</xmp></td>
-    </tr>
-    <tr>
-      <td>(tm) (TM)</td>
-      <td>™</td>
-      <td><xmp data-lang="html">&trade;</xmp></td>
-    </tr>
-    <tr>
-      <td>(r) (R)</td>
-      <td>®</td>
-      <td><xmp data-lang="html">&reg;</xmp></td>
-    </tr>
-  </tbody>
-</table>
+| wrong             | correct           | HTML                                    |
+| ----------------- | ----------------- | --------------------------------------- |
+| "a 'quoted' text" | “a ‘quoted’ text” | `&lsquo;` `&rsquo;` `&ldquo;` `&rdquo;` |
+| ...               | …                 | `&hellip;`                              |
+| --, ---           | –, —              | `&ndash;` `&mdash;`                     |
+| a -> b            | a → b             | `&rarr;`                                |
+| 2 - 1             | 2 − 4             | `&minus;`                               |
+| 2 x 4             | 2 × 4             | `&times;`                               |
+| +-                | ±                 | `&pm;`                                  |
+| 1/2, 1/4, 3/4     | ½, ¼, ¾           | `&half;` `&frac14;` `&frac34;`          |
+| (c) (C)           | ©                 | `&copy;`                                |
+| (tm) (TM)         | ™                 | `&trade;`                               |
+| (r) (R)           | ®                 | `&reg;`                                 |
 
 <a href="./snippets/example.html">Live code example snippet</a>

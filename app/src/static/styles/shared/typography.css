@@ -32,7 +32,7 @@
 }
 
 html {
-  /* with font-size: 62.5%, 1em is 10px
+  /* with font-size: 62.5%, 1rem is 10px
    * @see: http://snook.ca/archives/html_and_css/font-size-with-rem */
   font-size: 62.5%;
 }

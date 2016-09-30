@@ -1,0 +1,12 @@
+/*
+ * colors
+ */
+:root {
+  --color-gray-lighter: rgb(245, 245, 245);
+  --color-gray-light: #ddd;
+  --color-gray-dark: #333;
+
+  --color-yellow: #ff0;
+
+  --color-link-border: rgba(0, 0, 0, 0.3);
+}

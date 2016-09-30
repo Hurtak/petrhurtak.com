@@ -169,7 +169,7 @@
   font-family: var(--font-family-code);
   background-color: var(--color-gray-lighter);
   border: 1px solid var(--color-gray-light);
-  border-radius: 3px;
+  border-radius: var(--border-radius);
   -webkit-box-decoration-break: clone; /* TODO: remove once we no longer need it in chrome for development */
   box-decoration-break: clone;
 }

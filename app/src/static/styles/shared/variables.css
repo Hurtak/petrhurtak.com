@@ -1,12 +1,18 @@
-/*
- * colors
- */
 :root {
+  /*
+   * colors
+   */
   --color-gray-lighter: rgb(245, 245, 245);
   --color-gray-light: #ddd;
+  --color-gray-standard: #ccc;
   --color-gray-dark: #333;
 
   --color-yellow: #ff0;
 
   --color-link-border: rgba(0, 0, 0, 0.3);
+
+  /*
+   * dimensions
+   */
+  --border-radius: 3px;
 }

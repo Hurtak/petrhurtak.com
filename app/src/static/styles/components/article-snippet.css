@@ -2,15 +2,15 @@
   display: flex;
   flex-direction: column;
   height: 30rem;
-  border: 1px solid black;
-  background-color:orange;
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--border-radius);
 }
 
 .Snippet-header {
   display: flex;
   flex-direction: row;
   height: 5rem;
-  background-color: lightblue;
+  background-color: var(--color-gray-lighter);
 }
 
 .Snippet-link {
@@ -23,7 +23,6 @@
   display: flex;
   flex: 1;
   position: relative;
-  background-color: lightgreen;
 }
 
 .Snippet-tabs-wrapper {
@@ -35,19 +34,25 @@
   align-items: center;
   height: 100%;
   padding: 0 1em;
-  margin-left: 1em;
-  background-color: orange;
+  margin-left: 0em;
+  background-color: var(--color-gray-lighter);
   font-family: var(--font-family-code);
   font-size: var(--font-size-paragraph);
-  cursor: pointer;
+  -webkit-user-select: none; /* TODO: remove once supported without prefixes */
+  user-select: none;
 }
 
-.Snippet-tab.isSelected {
-  background-color: lightsteelblue;
+.Snippet-tab:hover {
+  background-color: var(--color-gray-light);
+  cursor: pointer;
 }
 
 .Snippet-tab:first-child {
   margin-left: 0
+}
+
+.Snippet-tab.isSelected {
+  background-color: var(--color-gray-standard);
 }
 
 .Snippet-content {

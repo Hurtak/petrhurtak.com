@@ -3,8 +3,6 @@
 const url = require('url')
 
 const isAbsoluteUrl = require('is-absolute-url')
-const escapeHtml = require('escape-html')
-const highlight = require('highlight.js')
 const cheerio = require('cheerio')
 const lodash = require('lodash')
 

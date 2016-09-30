@@ -5,16 +5,21 @@
     <meta charset="utf-8">
     <title>hurtak.cz {% block title %}{% endblock %}</title>
 
+    {# meta #}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {# icons #}
     <link rel="icon" type="image/png" href="/static/images/favicon.png" sizes="16x16">
 
+    {# styles #}
     {% if devel -%}
       <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-reset.css">
       <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-templates.css">
     {%- endif %}
     <link rel="stylesheet" type="text/css" href="/static/styles/styles.css">
 
-    {# TODO: update title url #}
-    <link rel="alternate" type="application/rss+xml" title="hurtak.cz" href="/rss">
+    {# extra #}
+    <link rel="alternate" type="application/rss+xml" title="hurtak.cz" href="/rss"> {# TODO: update title url #}
     <link type="text/plain" rel="author" href="/humans.txt">
 
   </head>

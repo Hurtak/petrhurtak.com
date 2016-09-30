@@ -234,16 +234,17 @@ function foo (bar) {
 ### Code
 
 ```markdown
-| default align | left aligned | centered  | right aligned |
-| ------------- | ------------ | --------- | ------------- |
-| cell text     | cell text    | cell text | cell text     |
+| default align       | left aligned        | centered            | right aligned       |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| cell text text text | cell text text text | cell text text text | cell text text text |
 ```
 
 ### How it looks like
 
-| default align | left aligned | centered  | right aligned |
-| ------------- | ------------ | --------- | ------------- |
-| cell text     | cell text    | cell text | cell text     |
+| default align       | left aligned        | centered            | right aligned       |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| cell text text text | cell text text text | cell text text text | cell text text text |
+
 
 
 ## Quotes

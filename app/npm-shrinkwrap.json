@@ -35,9 +35,9 @@
       "resolved": "https://registry.npmjs.org/after/-/after-0.8.1.tgz"
     },
     "ajv": {
-      "version": "4.7.4",
+      "version": "4.7.5",
       "from": "ajv@>=4.7.0 <5.0.0",
-      "resolved": "https://registry.npmjs.org/ajv/-/ajv-4.7.4.tgz"
+      "resolved": "https://registry.npmjs.org/ajv/-/ajv-4.7.5.tgz"
     },
     "ajv-keywords": {
       "version": "1.1.1",
@@ -1199,9 +1199,9 @@
       "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
     },
     "debug-log": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "from": "debug-log@>=1.0.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/debug-log/-/debug-log-1.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/debug-log/-/debug-log-1.0.1.tgz"
     },
     "decamelize": {
       "version": "1.2.0",
@@ -1539,14 +1539,14 @@
       }
     },
     "eslint-config-standard": {
-      "version": "6.1.0",
-      "from": "eslint-config-standard@6.1.0",
-      "resolved": "https://registry.npmjs.org/eslint-config-standard/-/eslint-config-standard-6.1.0.tgz"
+      "version": "6.2.0",
+      "from": "eslint-config-standard@6.2.0",
+      "resolved": "https://registry.npmjs.org/eslint-config-standard/-/eslint-config-standard-6.2.0.tgz"
     },
     "eslint-config-standard-jsx": {
-      "version": "3.1.0",
-      "from": "eslint-config-standard-jsx@3.1.0",
-      "resolved": "https://registry.npmjs.org/eslint-config-standard-jsx/-/eslint-config-standard-jsx-3.1.0.tgz"
+      "version": "3.2.0",
+      "from": "eslint-config-standard-jsx@3.2.0",
+      "resolved": "https://registry.npmjs.org/eslint-config-standard-jsx/-/eslint-config-standard-jsx-3.2.0.tgz"
     },
     "eslint-plugin-promise": {
       "version": "2.0.1",
@@ -1569,9 +1569,9 @@
       "resolved": "https://registry.npmjs.org/espower-location-detector/-/espower-location-detector-0.1.2.tgz"
     },
     "espree": {
-      "version": "3.3.1",
+      "version": "3.3.2",
       "from": "espree@>=3.3.1 <4.0.0",
-      "resolved": "https://registry.npmjs.org/espree/-/espree-3.3.1.tgz"
+      "resolved": "https://registry.npmjs.org/espree/-/espree-3.3.2.tgz"
     },
     "esprima": {
       "version": "2.7.2",
@@ -1661,9 +1661,9 @@
       "resolved": "https://registry.npmjs.org/extsprintf/-/extsprintf-1.0.2.tgz"
     },
     "fast-levenshtein": {
-      "version": "2.0.4",
+      "version": "2.0.5",
       "from": "fast-levenshtein@>=2.0.4 <2.1.0",
-      "resolved": "https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.4.tgz"
+      "resolved": "https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.5.tgz"
     },
     "figures": {
       "version": "1.7.0",
@@ -4367,11 +4367,6 @@
         }
       }
     },
-    "reset-css": {
-      "version": "2.2.0",
-      "from": "reset-css@2.2.0",
-      "resolved": "https://registry.npmjs.org/reset-css/-/reset-css-2.2.0.tgz"
-    },
     "resolve-cwd": {
       "version": "1.0.0",
       "from": "resolve-cwd@>=1.0.0 <2.0.0",
@@ -4634,9 +4629,9 @@
       "resolved": "https://registry.npmjs.org/stack-utils/-/stack-utils-0.4.0.tgz"
     },
     "standard": {
-      "version": "8.2.0",
-      "from": "standard@8.2.0",
-      "resolved": "https://registry.npmjs.org/standard/-/standard-8.2.0.tgz"
+      "version": "8.3.0",
+      "from": "standard@latest",
+      "resolved": "https://registry.npmjs.org/standard/-/standard-8.3.0.tgz"
     },
     "standard-engine": {
       "version": "5.1.0",

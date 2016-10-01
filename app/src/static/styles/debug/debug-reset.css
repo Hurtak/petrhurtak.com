@@ -25,7 +25,81 @@
  * TODO: write article about this goodness
  */
 
+/*
+Sources:
+  http://www.iecss.com/
+  https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/html.css
+  http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css
+  https://dxr.mozilla.org/mozilla-central/source/layout/style/res/html.css
+  http://hg.mozilla.org/mozilla-central/file/tip/layout/style/res/html.css
+  https://www.w3.org/TR/html5/rendering.html
+*/
+
 @import '/static/node_modules/reset-css/reset.css';
+
+:root {
+    --color1: magenta;
+    --color2: orange;
+    --color3: blue;
+    --color4: red;
+    --color5: green;
+}
+
+body {
+  /*
+    IE 6-7:
+      margin 15px 10px;
+    IE 8+:
+    Edge:
+    FF:
+    Chrome:
+      margin 8px;
+   */
+  margin: 20%;
+}
+
+/* Typography */
+
+*,
+*::after,
+*::before {
+    font-size: 30px;
+    font-family: "Comic Sans MS", consolas, monospace;
+}
+
+/* Buttons */
+
+button {
+    background-color: var(--color1);
+    border: 0.5em solid var(--color1);
+    padding: 0.5em 1em;
+    text-align: right;
+}
+
+button:hover {
+    background-color: var(--color2);
+    border: 0.5em solid var(--color2);
+}
+
+button:focus {
+    background-color: var(--color3);
+    border: 0.5em solid var(--color3);
+    outline: 0.5em solid var(--color3);
+}
+
+button:active {
+    background-color: var(--color4);
+    border: 0.5em solid var(--color4);
+    outline: 0.5em solid var(--color4);
+}
+
+button:active:focus {
+    background-color: var(--color5);
+    border: 0.5em solid var(--color5);
+    outline: 0.5em solid var(--color5);
+}
+
+/* OLD */
 
 *,
 *:focus,
@@ -36,11 +110,4 @@
 	border: 0;
 	outline: 0;
 	background: none;
-}
-
-*,
-*::after,
-*::before {
-  font-size: 6pt;
-  font-family: consolas;
 }

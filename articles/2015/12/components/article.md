@@ -137,9 +137,6 @@ __bold text__
 
 ## Lists
 
-- start list items with lower case letter
-- do not end list items with dot, use comma or parentheses
-
 ### Code
 
 ```markdown
@@ -206,6 +203,7 @@ function foo (bar) {
 ```html
 <!-- inline code -->
 <p>Some text, <code>&lt;strong&gt;hello&lt;/strong&gt;</code></p>
+
 <!-- multiline code -->
 <pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">bar</span>) </span>{
     <span class="hljs-keyword">return</span> bar * <span class="hljs-number">2</span>
@@ -229,20 +227,18 @@ function foo (bar) {
 
 ## Tables
 
-- start headings and cell text with lower case letter
-
 ### Code
 
 ```markdown
-| default align       | left aligned        | centered            | right aligned       |
-| ------------------- | ------------------- | ------------------- | ------------------- |
+| Default align       | Left aligned        | Centered            | Right aligned       |
+| ------------------- |:------------------- |:-------------------:| -------------------:|
 | cell text text text | cell text text text | cell text text text | cell text text text |
 ```
 
 ### How it looks like
 
-| default align       | left aligned        | centered            | right aligned       |
-| ------------------- | ------------------- | ------------------- | ------------------- |
+| Default align       | Left aligned        | Centered            | Right aligned       |
+| ------------------- |:------------------- |:-------------------:| -------------------:|
 | cell text text text | cell text text text | cell text text text | cell text text text |
 
 

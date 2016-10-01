@@ -35,7 +35,6 @@
     - footer
     - separate styles for keyboard keys? eg.: ctrl + tab
     - 404 page
-    - inspiration
 
 - buy domains
 - put this damn thing on the internet

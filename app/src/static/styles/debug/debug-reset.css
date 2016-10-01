@@ -112,9 +112,7 @@ body {
 
 /* Typography */
 
-*,
-*::after,
-*::before {
+body {
     font-size: 30px;
     font-family: "Comic Sans MS", consolas, monospace;
 }

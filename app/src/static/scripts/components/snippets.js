@@ -4,6 +4,7 @@ window.App.Snippets = (function () {
   const config = {
     snippetAttribute: 'data-snippet',
     isSelectedClass: 'isSelected',
+    isVisibleClass: 'isVisible',
     debounceIframeCreation: 300
   }
 
@@ -36,14 +37,14 @@ window.App.Snippets = (function () {
     }
 
     const state = {
-      html: snippet.body,
+      html: snippet.html,
       css: snippet.css,
       js: snippet.js,
       timeout: null
     }
 
     // switch to result tab
-    showContent(dom.content, dom.tabs, dom.tabs.result, dom.content.result, config.isSelectedClass)
+    showContent(dom.content, dom.tabs, dom.tabs.result, dom.content.result, config.isSelectedClass, config.isVisibleClass)
 
     // fill textareas
     dom.content.html.value = state.html
@@ -54,10 +55,10 @@ window.App.Snippets = (function () {
     createSnippetIframe(dom.content.result, snippet.head, state.html, state.css, state.js)
 
     // listeners for tab switching
-    dom.tabs.result.addEventListener('click', () => showContent(dom.content, dom.tabs, dom.tabs.result, dom.content.result, config.isSelectedClass))
-    dom.tabs.html.addEventListener('click', () => showContent(dom.content, dom.tabs, dom.tabs.html, dom.content.html, config.isSelectedClass))
-    dom.tabs.css.addEventListener('click', () => showContent(dom.content, dom.tabs, dom.tabs.css, dom.content.css, config.isSelectedClass))
-    dom.tabs.js.addEventListener('click', () => showContent(dom.content, dom.tabs, dom.tabs.js, dom.content.js, config.isSelectedClass))
+    dom.tabs.result.addEventListener('click', () => showContent(dom.content, dom.tabs, dom.tabs.result, dom.content.result, config.isSelectedClass, config.isVisibleClass))
+    dom.tabs.html.addEventListener('click', () => showContent(dom.content, dom.tabs, dom.tabs.html, dom.content.html, config.isSelectedClass, config.isVisibleClass))
+    dom.tabs.css.addEventListener('click', () => showContent(dom.content, dom.tabs, dom.tabs.css, dom.content.css, config.isSelectedClass, config.isVisibleClass))
+    dom.tabs.js.addEventListener('click', () => showContent(dom.content, dom.tabs, dom.tabs.js, dom.content.js, config.isSelectedClass, config.isVisibleClass))
 
     // listen on textarea change and update snippet result
     function debounceSnippetIframeUpdate (textareaToUpdate, value) {
@@ -73,16 +74,16 @@ window.App.Snippets = (function () {
     dom.content.js.addEventListener('input', (e) => debounceSnippetIframeUpdate('js', e.target.value))
   }
 
-  function showContent (content, tabs, clickedTab, contentToShow, className) {
+  function showContent (content, tabs, clickedTab, contentToShow, classSelected, classVisible) {
     for (const key in content) {
-      content[key].style.zIndex = 0
+      content[key].classList.remove(classVisible)
     }
-    contentToShow.style.zIndex = 1337
+    contentToShow.classList.add(classVisible)
 
     for (const key in tabs) {
-      tabs[key].classList.remove(className)
+      tabs[key].classList.remove(classSelected)
     }
-    clickedTab.classList.add(className)
+    clickedTab.classList.add(classSelected)
   }
 
   function createSnippetIframe (target, head, html, css, js) {

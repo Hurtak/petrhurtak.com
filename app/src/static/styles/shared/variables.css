@@ -15,4 +15,10 @@
    * dimensions
    */
   --border-radius: 3px;
+
+  /*
+   * z-indexes
+   */
+   --z-index-snippet-content-visible: 20;
+   --z-index-snippet-content: 10;
 }

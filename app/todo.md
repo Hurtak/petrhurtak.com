@@ -7,8 +7,6 @@
     - finish styles
     - reset button
     - rerun button
-    - source button
-        - opens to new window
 
 - change urls in the following way:
     - article lives on domain.com/article/ instead of domain.com/article

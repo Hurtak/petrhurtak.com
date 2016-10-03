@@ -80,16 +80,14 @@ function enhanceSnippetLinks (htmlString) {
   $('a[href^="./snippets/"]').each((_, element) => {
     const el = $(element)
 
-    const text = el.text()
-    const href = el.attr('href') // ./snippets/example.html
-    const pathSplit = href.split('/')
+    const rawSnippetUrl = el.attr('href') // ./snippets/example.html
+    const pathSplit = rawSnippetUrl.split('/')
     const fileName = pathSplit[pathSplit.length - 1] // example.html"
     const snippetName = fileName.split('.')[0] // example
 
     const snippetHtml = nunjucksEnv.render('components/snippet.njk', {
       snippetName,
-      href,
-      text
+      rawSnippetUrl
     })
     const snippetEl = $(snippetHtml)
 

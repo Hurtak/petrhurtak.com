@@ -3,8 +3,12 @@
 ## NEXT RELEASE
 
 - code snippet tool
+    - refactor livee snippets
+    - remove indentation from snippets
     - finish styles
     - reset button
+    - source button
+        - opens to new window
 
 - change urls in the following way:
     - article lives on domain.com/article/ instead of domain.com/article

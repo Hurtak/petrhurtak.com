@@ -8,18 +8,19 @@
 
 .Menu-item {
   width: 25%;
-  font-size: var(--font-size-headline-small);
-  line-height: 2.4;
   text-align: center;
 }
 
 .Menu-item-link {
   display: block;
   color: black;
+  font-size: var(--font-size-headline-small);
+  font-family: var(--font-family-heading);
+  line-height: 2.4;
+  border-radius: var(--border-radius);
   text-decoration: none;
 }
 
 .Menu-item-link:hover {
-  border-radius: 3px;
   background-color: rgba(80, 80, 0, 0.08);
 }

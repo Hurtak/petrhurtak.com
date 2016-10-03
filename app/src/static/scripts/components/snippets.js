@@ -47,33 +47,72 @@ window.App.Snippets = (function () {
       clickedTab.classList.add(config.dom.isSelectedClass)
     }
 
-    showContent(tabs.result, content.result)
 
     tabs.result.addEventListener('click', () => showContent(tabs.result, content.result))
     tabs.html.addEventListener('click', () => showContent(tabs.html, content.html))
     tabs.css.addEventListener('click', () => showContent(tabs.css, content.css))
     tabs.js.addEventListener('click', () => showContent(tabs.js, content.js))
 
-    const html = `
-      <!DOCTYPE html>
-      <head>
-        ${snippet.head}
-        <style>${snippet.css}</style>
-      </head>
-      <body>
-        ${snippet.body}
-        <script>${snippet.js}</script>
-      </body>
-    `
+    showContent(tabs.result, content.result)
 
-    const iframeDoc = content.result.contentDocument
-    iframeDoc.open()
-    iframeDoc.write(html)
-    iframeDoc.close()
+    const state = {
+      html: snippet.body,
+      css: snippet.css,
+      js: snippet.js
+    }
 
-    content.html.innerHTML = snippet.body
-    content.css.innerHTML = snippet.css
-    content.js.innerHTML = snippet.js
+    let timeout = null
+
+    function buildDelayed () {
+
+      const html = `
+        <!DOCTYPE html>
+        <head>
+          ${snippet.head}
+          <style>${state.css}</style>
+        </head>
+        <body>
+          ${state.html}
+          <script>${state.js}</script>
+        </body>
+      `
+      const iframe = document.createElement('iframe')
+      content.result.innerHTML = ''
+
+      content.result.appendChild(iframe)
+
+      const iframeDoc = iframe.contentDocument
+      iframeDoc.open()
+      iframeDoc.write(html)
+      iframeDoc.close()
+    }
+
+    function build () {
+      window.clearTimeout(timeout)
+      timeout = window.setTimeout(() => {
+        buildDelayed()
+      }, 250)
+    }
+
+    content.html.value = state.html
+    content.css.value = state.css
+    content.js.value = state.js
+
+    build()
+
+    content.html.addEventListener('input', (e) => {
+      state.html = e.target.value
+      build()
+    })
+    content.css.addEventListener('input', (e) => {
+      state.css = e.target.value
+      build()
+    })
+    content.js.addEventListener('input', (e) => {
+      state.js = e.target.value
+      build()
+    })
+
   }
 
   return {

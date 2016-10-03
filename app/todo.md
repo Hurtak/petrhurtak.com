@@ -3,8 +3,6 @@
 ## NEXT RELEASE
 
 - code snippet tool
-    - refactor livee snippets - try to rewrite to class
-    - rename body to html - alson in DB
     - remove indentation from snippets
     - finish styles
     - reset button

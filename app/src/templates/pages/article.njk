@@ -40,7 +40,7 @@
           {
             name: {{ snippet.name | dump | safe }},
             head: {{ snippet.head | dump | safe }},
-            body: {{ snippet.body | dump | safe }},
+            html: {{ snippet.html | dump | safe }},
             css: {{ snippet.css | dump | safe }},
             js: {{ snippet.js | dump | safe }}
           }{% if loop.last == false %},{% endif %}

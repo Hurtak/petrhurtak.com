@@ -102,7 +102,7 @@ function getArticleSnippets (articleId) {
     SELECT
       name,
       head,
-      body,
+      html,
       css,
       js
     FROM snippets
@@ -184,7 +184,7 @@ function deleteSnippets () {
 function insertSnippet (params) {
   const query = `
     INSERT INTO snippets
-      (id_article, name, head, body, css, js)
+      (id_article, name, head, html, css, js)
     VALUES
       (?, ?, ?, ?, ?, ?)
   `

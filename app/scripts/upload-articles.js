@@ -88,7 +88,7 @@ function uploadArticles () {
             articleId,
             key,
             data.snippets[key].head,
-            data.snippets[key].body,
+            data.snippets[key].html,
             data.snippets[key].css,
             data.snippets[key].js
           ]).then(() => {

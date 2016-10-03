@@ -118,9 +118,9 @@ test('parseSnippet', t => {
     </html>
   `
   t.deepEqual(fn(emptyHtml), {
-    html: emptyHtml,
+    wholeHtml: emptyHtml,
     head: '<title>title</title>',
-    body: null,
+    html: null,
     css: null,
     js: null
   })
@@ -134,9 +134,9 @@ test('parseSnippet', t => {
     </html>
   `
   t.deepEqual(fn(minimalHtml), {
-    html: minimalHtml,
+    wholeHtml: minimalHtml,
     head: '<title>Example snippet</title>',
-    body: '<h1>Hello</h1>',
+    html: '<h1>Hello</h1>',
     css: 'h1 { color: red; }',
     js: 'console.log(\'hello\')'
   })
@@ -164,13 +164,13 @@ test('parseSnippet', t => {
     </html>
   `
   t.deepEqual(fn(html), {
-    html: html,
+    wholeHtml: html,
     head:
       '\n' +
       '        <title>Example snippet</title>\n' +
       '        \n' +
       '      ',
-    body:
+    html:
       '\n' +
       '        <div>\n' +
       '          <h1>Hello</h1>\n' +

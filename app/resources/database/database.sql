@@ -43,7 +43,7 @@ CREATE TABLE `snippets` (
   `id_article` int(11) NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL,
   `head` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
-  `body` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
+  `html` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
   `css` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
   `js` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
   PRIMARY KEY (`id`),

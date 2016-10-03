@@ -109,18 +109,18 @@ function isoStringToUtcDate (isoString) {
   return new Date(utcTimestamp)
 }
 
-function parseSnippet (snippetHtml) {
-  const $ = cheerioLoadWithoutEscaping(snippetHtml)
+function parseSnippet (wholeHtml) {
+  const $ = cheerioLoadWithoutEscaping(wholeHtml)
 
   const css = $('head style').html()
   const js = $('body script:last-of-type').html()
   const head = $('head').html().replace(`<style>${css}</style>`, '') || null
-  const body = $('body').html().replace(`<script>${js}</script>`, '') || null
+  const html = $('body').html().replace(`<script>${js}</script>`, '') || null
 
   return {
-    html: snippetHtml,
-    head: head,
-    body: body,
+    wholeHtml,
+    head,
+    html,
     css,
     js
   }

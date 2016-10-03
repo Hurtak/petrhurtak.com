@@ -3,10 +3,12 @@
 ## NEXT RELEASE
 
 - code snippet tool
-    - refactor livee snippets
+    - refactor livee snippets - try to rewrite to class
+    - rename body to html - alson in DB
     - remove indentation from snippets
     - finish styles
     - reset button
+    - rerun button
     - source button
         - opens to new window
 

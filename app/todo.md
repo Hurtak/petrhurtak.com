@@ -300,7 +300,4 @@
 - serve static files from nginx
 
 ## LONG TERM
-- once standard supports ES6 + Async/Await:
-    - remove "standard" from package.json
-    - remove "babel-eslint" dependency
 - once we have object spread operator replace Object.assign in addCommonData function in routes.js

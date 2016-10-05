@@ -60,6 +60,7 @@
 - convert app to Docker
 - consider deploying through
     - now https://zeit.co/now/
+    - https://zeit.co/blog/now-dockerfile
     - or hyper.sh
 - consider transforming article so each element has it's own class?
     - p -> p.article__p
@@ -95,6 +96,8 @@
         - https://css-tricks.com/use-webpagetest-api/
     - revisit package.json
     - progressively enhanced tweet quotations
+    - enable brotli compression
+        - https://www.smashingmagazine.com/2016/10/next-generation-server-compression-with-brotli/
     - consider having install script which would create www/ www/log/ and others, instead of having these folders in git with .gitkeep
     - tags to articles
     - consider switching to https://www.rethinkdb.com/ or to postgresql?

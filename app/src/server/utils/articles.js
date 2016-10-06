@@ -107,20 +107,61 @@ function isoStringToUtcDate (isoString) {
   return new Date(utcTimestamp)
 }
 
+function removeIndentation (str) {
+  // 1. split text into lines
+  let lines = str.split('\n')
+
+  // 2. remove empty lines from the stard and the end of the text
+  const firstNonEmptyLine = lines => {
+    let currentIndex = 0
+    for (let i = 0; i < lines.length; i++) {
+      const isWhitespaceOnly = /^\s*$/.test(lines[i])
+      if (!isWhitespaceOnly) return currentIndex
+
+      currentIndex++
+    }
+    return currentIndex
+  }
+
+  const startIndex = firstNonEmptyLine(lines)
+  const endIndex = firstNonEmptyLine(lodash.reverse([...lines]))
+
+  lines = lodash.slice(lines, startIndex, lines.length - endIndex)
+
+  // 3. determine indentation
+  let shortestIndent = 0
+  for (const line of lines) {
+    const indentMatch = line.match(/^\s+/)
+    const indent = indentMatch ? indentMatch[0] : ''
+
+    if (shortestIndent === 0) {
+      shortestIndent = indent.length
+    } else if (indent.length < shortestIndent) {
+      shortestIndent = indent.length
+    }
+  }
+
+  // 4. remove indentation
+  const indentationToRemove = lodash.repeat(' ', shortestIndent)
+  lines = lodash.map(lines, line => lodash.replace(line, indentationToRemove, ''))
+
+  return lodash.join(lines, '\n')
+}
+
 function parseSnippet (wholeHtml) {
   const $ = cheerioLoadWithoutEscaping(wholeHtml)
 
-  const css = $('head style').html()
-  const js = $('body script:last-of-type').html()
-  const head = $('head').html().replace(`<style>${css}</style>`, '') || null
-  const html = $('body').html().replace(`<script>${js}</script>`, '') || null
+  const css = $('head > style').html() || ''
+  const js = $('body > script:last-of-type').html() || ''
+  const head = $('head').html().replace(`<style>${css}</style>`, '') || ''
+  const html = $('body').html().replace(`<script>${js}</script>`, '') || ''
 
   return {
     wholeHtml,
-    head,
-    html,
-    css,
-    js
+    head: removeIndentation(head),
+    html: removeIndentation(html),
+    css: removeIndentation(css),
+    js: removeIndentation(js)
   }
 }
 
@@ -129,5 +170,6 @@ module.exports = {
   relativeUrlToAbsolute,
   enhanceSnippetLinks,
   isoStringToUtcDate,
+  removeIndentation,
   parseSnippet
 }

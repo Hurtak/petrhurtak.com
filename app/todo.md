@@ -3,7 +3,6 @@
 ## NEXT RELEASE
 
 - code snippet tool
-    - remove indentation from snippets
     - finish styles
     - reset button
     - rerun button
@@ -168,11 +167,12 @@
     - html validator all pages (https://github.com/zrrrzzt/html-validator)
     - https://www.npmjs.com/package/sloc-for-jenkins
     - move npm run lint in something like before_script?
-    - check
     - https://github.com/stylelint/stylelint
     - have task that run periodically every hour?
         - https://github.com/RetireJS/retire.js
         - npm outdated?
+        - https://github.com/nodesecurity/nsp
+        - https://github.com/Snyk/snyk
 
 - Articles
     - currently html of code blocks is parsed and we cannot get raw html? so `<h2>` will become `<h2></h2>`, maybe switch to jsdom?

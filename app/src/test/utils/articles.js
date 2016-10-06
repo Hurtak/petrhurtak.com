@@ -106,6 +106,66 @@ test('isoStringToUtcDate', t => {
   t.deepEqual(fn('2016-12-31 23:59'), new Date(Date.UTC(2016, 11, 31, 23, 59)))
 })
 
+test('removeIndentation', t => {
+  const fn = utilsArticles.removeIndentation
+
+  t.deepEqual(fn(''), '')
+  t.deepEqual(fn('\n'), '')
+
+  t.deepEqual(fn('x'), 'x')
+  t.deepEqual(fn('x  '), 'x  ')
+  t.deepEqual(fn('    x'), 'x')
+  t.deepEqual(fn('    x    '), 'x    ')
+
+  t.deepEqual(fn(
+    'x\n' +
+    '  x\n' +
+    'x'
+  ),
+    'x\n' +
+    '  x\n' +
+    'x'
+  )
+
+  t.deepEqual(fn(
+    '\n' +
+    'x\n' +
+    '  x\n' +
+    'x\n' +
+    '\n'
+  ),
+    'x\n' +
+    '  x\n' +
+    'x'
+  )
+
+  t.deepEqual(fn(
+    '\n' +
+    '  x\n' +
+    '    x\n' +
+    '  x\n' +
+    '\n'
+  ),
+    'x\n' +
+    '  x\n' +
+    'x'
+  )
+
+  t.deepEqual(fn(
+    '\n' +
+    '  x\n' +
+    '\n' +
+    '\n' +
+    '  x\n' +
+    '\n'
+  ),
+    'x\n' +
+    '\n' +
+    '\n' +
+    'x'
+  )
+})
+
 test('parseSnippet', t => {
   const fn = utilsArticles.parseSnippet
 
@@ -120,9 +180,9 @@ test('parseSnippet', t => {
   t.deepEqual(fn(emptyHtml), {
     wholeHtml: emptyHtml,
     head: '<title>title</title>',
-    html: null,
-    css: null,
-    js: null
+    html: '',
+    css: '',
+    js: ''
   })
 
   // minimal html
@@ -166,26 +226,16 @@ test('parseSnippet', t => {
   t.deepEqual(fn(html), {
     wholeHtml: html,
     head:
-      '\n' +
-      '        <title>Example snippet</title>\n' +
-      '        \n' +
-      '      ',
+      '<title>Example snippet</title>',
     html:
-      '\n' +
-      '        <div>\n' +
-      '          <h1>Hello</h1>\n' +
-      '        </div>\n' +
-      '        \n' +
-      '      ',
+      '<div>\n' +
+      '  <h1>Hello</h1>\n' +
+      '</div>',
     css:
-      '\n' +
-      '          h1 {\n' +
-      '            color: red;\n' +
-      '          }\n' +
-      '        ',
+      'h1 {\n' +
+      '  color: red;\n' +
+      '}',
     js:
-      '\n' +
-      '          console.log(\'console log\')\n' +
-      '        '
+      'console.log(\'console log\')'
   })
 })

@@ -3,9 +3,8 @@
 ## NEXT RELEASE
 
 - code snippet tool
-    - finish styles
     - reset button
-    - rerun button
+    - finish styles
 
 - change urls in the following way:
     - article lives on domain.com/article/ instead of domain.com/article

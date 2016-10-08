@@ -2633,9 +2633,9 @@
       "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.7.tgz"
     },
     "nodemon": {
-      "version": "1.10.2",
-      "from": "nodemon@1.10.2",
-      "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-1.10.2.tgz",
+      "version": "1.11.0",
+      "from": "nodemon@latest",
+      "resolved": "https://registry.npmjs.org/nodemon/-/nodemon-1.11.0.tgz",
       "dependencies": {
         "configstore": {
           "version": "1.4.0",

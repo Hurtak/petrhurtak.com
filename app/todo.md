@@ -3,7 +3,6 @@
 ## NEXT RELEASE
 
 - code snippet tool
-    - reset button
     - finish styles
 
 - change urls in the following way:

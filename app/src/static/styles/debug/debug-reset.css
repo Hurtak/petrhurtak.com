@@ -112,6 +112,9 @@ body {
 ol,
 ul {
     list-style-type:hiragana;
+    padding-left: 15%;
+    margin-top: 15%;
+    margin-bottom: 15%;
 }
 
 /* Buttons */

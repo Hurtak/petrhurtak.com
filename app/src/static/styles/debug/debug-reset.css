@@ -68,17 +68,7 @@ footer, header, hgroup, main, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -117,47 +107,42 @@ body {
     font-family: "Comic Sans MS", consolas, monospace;
 }
 
+/* Lists */
+
+ol,
+ul {
+    list-style-type:hiragana;
+}
+
 /* Buttons */
 
 button {
     background-color: var(--color1);
     border: 0.5em solid var(--color1);
     padding: 0.5em 1em;
-    text-align: right;
-}
-
-button:hover {
-    background-color: var(--color2);
-    border: 0.5em solid var(--color2);
 }
 
 button:focus {
-    background-color: var(--color3);
-    border: 0.5em solid var(--color3);
-    outline: 0.5em solid var(--color3);
+    outline: 0.5em solid var(--color2);
 }
 
-button:active {
-    background-color: var(--color4);
-    border: 0.5em solid var(--color4);
-    outline: 0.5em solid var(--color4);
+/* Input & Textarea */
+
+/* TODO: overvrite default widths and heights? */
+input {
+    border: 1px solid red;
+    padding: 15%; /* chrome: padding: 1px 0px; */
 }
 
-button:active:focus {
-    background-color: var(--color5);
-    border: 0.5em solid var(--color5);
-    outline: 0.5em solid var(--color5);
+input:focus {
+    outline: 3px solid orange;
 }
 
-/* OLD */
+textarea {
+    border: 1px solid red;
+    padding: 15%; /* chrome: padding: 2px; */
+}
 
-*,
-*:focus,
-*:active,
-*:hover {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	background: none;
+textarea:focus {
+    outline: 3px solid orange;
 }

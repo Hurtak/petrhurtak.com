@@ -95,7 +95,7 @@ window.App.Snippets = (function () {
     clickedTab.classList.add(classSelected)
   }
 
-  function createSnippetIframe (target, head, html, css, js) {
+  function createSnippetIframe (targetEl, head, html, css, js) {
     const snippetHtml = `
       <!DOCTYPE html>
       <head>
@@ -110,8 +110,8 @@ window.App.Snippets = (function () {
 
     const iframe = document.createElement('iframe')
 
-    target.innerHTML = ''
-    target.appendChild(iframe)
+    targetEl.innerHTML = ''
+    targetEl.appendChild(iframe)
 
     const iframeDocument = iframe.contentDocument
     iframeDocument.open()

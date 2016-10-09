@@ -1,22 +1,20 @@
 <div class="Snippet" data-snippet="{{ snippetName }}">
   <div class="Snippet-header">
-    <div class="Snippet-tabs-wrapper">
-      <button class="Snippet-tab js-snippet-tab-html">HTML</button>
-      <button class="Snippet-tab js-snippet-tab-css">CSS</button>
-      <button class="Snippet-tab js-snippet-tab-js">JS</button>
-      <button class="Snippet-tab js-snippet-tab-result">Result</button>
-    </div>
+    <button class="Snippet-button js-snippet-tab-html">HTML</button>
+    <button class="Snippet-button js-snippet-tab-css">CSS</button>
+    <button class="Snippet-button js-snippet-tab-js">JS</button>
+    <button class="Snippet-button js-snippet-tab-result">Result</button>
+    <button class="Snippet-button js-snippet-reset">Reset</button>
     <a
-      class="Snippet-link"
+      class="Snippet-button"
       href="{{ rawSnippetUrl }}"
       target="_blank"
       title="Open raw snippet in new tab"
     >
       Source
     </a>
-    <button class="js-snippet-reset">Reset</button>
   </div>
-  <div class="Snippet-content-wrapper">
+  <div class="Snippet-contentWrapper">
     <textarea class="Snippet-content Snippet-content--textarea js-snippet-content-html"></textarea>
     <textarea class="Snippet-content Snippet-content--textarea js-snippet-content-css"></textarea>
     <textarea class="Snippet-content Snippet-content--textarea js-snippet-content-js"></textarea>

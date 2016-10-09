@@ -11,48 +11,42 @@
   flex-direction: row;
   height: 5rem;
   background-color: var(--color-gray-lighter);
-}
-
-.Snippet-link {
-  left: 0;
-  top: 0;
-  border: 0!important; /* TODO: remove important */
-}
-
-.Snippet-content-wrapper {
-  display: flex;
-  flex: 1;
-  position: relative;
-}
-
-.Snippet-tabs-wrapper {
-  display: flex;
-}
-
-.Snippet-tab {
-  display: flex;
   align-items: center;
-  height: 100%;
-  padding: 0 1em;
-  margin-left: 0em;
-  background-color: var(--color-gray-lighter);
-  font-family: var(--font-family-code);
-  font-size: var(--font-size-paragraph);
   -webkit-user-select: none; /* TODO: remove once supported without prefixes */
   user-select: none;
 }
 
-.Snippet-tab:hover {
+.Snippet-button {
+  display: block;
+  height: 100%;
+  padding: 0 1em;
+  background: transparent;
+  font-family: var(--font-family-code);
+  font-size: var(--font-size-paragraph);
+  outline: 0;
+  border: 0;
+}
+.Snippet-button:first-child {
+  margin-left: 0
+}
+.Snippet-button:hover {
   background-color: var(--color-gray-light);
   cursor: pointer;
 }
-
-.Snippet-tab:first-child {
-  margin-left: 0
+.Snippet-button:focus {
+  outline: 0;
+}
+.Snippet-button:active {
+  padding-top: 0.2rem;
+}
+.Snippet-button.isSelected {
+  background-color: var(--color-gray-standard);
 }
 
-.Snippet-tab.isSelected {
-  background-color: var(--color-gray-standard);
+.Snippet-contentWrapper {
+  display: flex;
+  flex: 1;
+  position: relative;
 }
 
 .Snippet-content {
@@ -63,21 +57,25 @@
   height: 100%;
   z-index: var(--z-index-snippet-content);
 }
-
 .Snippet-content.isVisible {
   z-index: var(--z-index-snippet-content-visible);
 }
-
 .Snippet-content--textarea {
   resize: none;
   background: white;
+  border: 0;
+  padding: 1em;
+  font-family: var(--font-family-code);
+  font-size: var(--font-size-paragraph);
 }
-
+.Snippet-content--textarea:focus {
+  outline: 0;
+}
 .Snippet-content--iframe {
   background: white;
 }
-
 .Snippet-content--iframe iframe {
+  /* TODO */
   display: block;
   width: 100%;
   height: 100%;

@@ -250,6 +250,9 @@
     - node turn on 'use strict' by default?
     - decide when to use const x = () => {} and when to use function x () {}
     - prereload headers
+    - switch to https
+        - https://jakdelatseo.cz/checklist-pro-prechod-z-http-na-https/
+        - https://docs.google.com/spreadsheets/d/1XB26X_wFoBBlQEqecj7HB79hQ7DTLIPo97SS5irwsK8/edit#gid=1975121463
     - redirect from /article/ to /article (301?)
     - 404
         - log 404s

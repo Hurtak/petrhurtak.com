@@ -87,7 +87,8 @@ function getArticle (articleUrl) {
       url,
       html
     FROM articles
-    LEFT JOIN articles_html ON articles.id = articles_html.id_article
+    INNER JOIN articles_html
+      ON articles.id = articles_html.id_article
     WHERE visible = 1
     AND url = ?
   `

@@ -244,16 +244,12 @@
 }
 
 /*
- * other elements
- */
-
-.Article-content .snippet {
-  margin: var(--paragraph-spacing) 0 0 0;
-}
-
-/*
  * spacing between paragraphs and headings
  */
+
+.Article-content > * {
+  margin: var(--paragraph-spacing) 0 0 0;
+}
 
 .Article-content > *:first-child {
   margin-top: 0;

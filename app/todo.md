@@ -3,7 +3,8 @@
 ## NEXT RELEASE
 
 - code snippet tool
-    - finish styles
+    - inline snippets without tabs switching
+    - https://jakearchibald.com/2016/svg-media-queries/
 
 - change urls in the following way:
     - article lives on domain.com/article/ instead of domain.com/article

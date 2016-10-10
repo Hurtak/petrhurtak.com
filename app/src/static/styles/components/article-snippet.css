@@ -9,22 +9,29 @@
 .Snippet-header {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   height: 5rem;
   background-color: var(--color-gray-lighter);
   align-items: center;
   -webkit-user-select: none; /* TODO: remove once supported without prefixes */
   user-select: none;
 }
+.Snippet-headerGroup {
+  display: flex;
+  height: 100%;
+}
 
 .Snippet-button {
-  display: block;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   height: 100%;
   padding: 0 1em;
   background: transparent;
   font-family: var(--font-family-code);
   font-size: var(--font-size-paragraph);
   outline: 0;
-  border: 0;
+  border: 0!important; /* TODO: remove */
 }
 .Snippet-button:first-child {
   margin-left: 0
@@ -66,7 +73,7 @@
   border: 0;
   padding: 1em;
   font-family: var(--font-family-code);
-  font-size: var(--font-size-paragraph);
+  font-size: var(--font-size-paragraph-small);
 }
 .Snippet-content--textarea:focus {
   outline: 0;

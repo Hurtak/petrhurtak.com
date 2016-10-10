@@ -185,9 +185,9 @@ function deleteSnippets () {
 function insertSnippet (params) {
   const query = `
     INSERT INTO snippets
-      (id_article, name, head, html, css, js)
+      (id_article, name, inline, head, html, css, js)
     VALUES
-      (?, ?, ?, ?, ?, ?)
+      (?, ?, ?, ?, ?, ?, ?)
   `
 
   return dbPromiseFactory(query, params)

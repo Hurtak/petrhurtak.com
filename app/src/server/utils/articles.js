@@ -5,6 +5,7 @@ const url = require('url')
 const isAbsoluteUrl = require('is-absolute-url')
 const cheerio = require('cheerio')
 const lodash = require('lodash')
+const yaml = require('js-yaml')
 
 const nunjucksEnv = require('../nunjucks/env.js')
 
@@ -151,6 +152,19 @@ function removeIndentation (str) {
 function parseSnippet (wholeHtml) {
   const $ = cheerioLoadWithoutEscaping(wholeHtml)
 
+  // TODO: use html parser?
+  const configMatch = wholeHtml.match(/^<!--((?:.|\n)+?)-->$/m)
+  const maybeConfig = configMatch ? (configMatch[1] || null) : null
+  let parsedConfig = null
+  try {
+    parsedConfig = yaml.safeLoad(maybeConfig)
+  } catch (e) {}
+
+  const defaultConfig = {
+    inlineSnippet: false
+  }
+  const config = Object.assign({}, defaultConfig, parsedConfig)
+
   const css = $('head > style').html() || ''
   const js = $('body > script:last-of-type').html() || ''
   const head = $('head').html().replace(`<style>${css}</style>`, '') || ''
@@ -161,7 +175,8 @@ function parseSnippet (wholeHtml) {
     head: removeIndentation(head),
     html: removeIndentation(html),
     css: removeIndentation(css),
-    js: removeIndentation(js)
+    js: removeIndentation(js),
+    config
   }
 }
 

@@ -83,16 +83,17 @@ function uploadArticles () {
       }
 
       database.deleteSnippets().then((x) => {
-        for (const key in data.snippets) {
+        for (const snippet of data.snippets) {
           database.insertSnippet([
             articleId,
-            key,
-            data.snippets[key].head,
-            data.snippets[key].html,
-            data.snippets[key].css,
-            data.snippets[key].js
+            snippet.name,
+            snippet.config.inlineSnippet,
+            snippet.head,
+            snippet.html,
+            snippet.css,
+            snippet.js
           ]).then(() => {
-            console.log(`${date} | article ${data.article.url} | snippet ${key} INSERTED.`)
+            console.log(`${date} | article ${data.article.url} | snippet ${snippet.name} INSERTED.`)
           })
         }
       })
@@ -103,10 +104,12 @@ function uploadArticles () {
   database.deleteArticles(allArticlesUrls).then(deletedArticles => {
     if (deletedArticles.affectedRows > 0) {
       console.log(`${deletedArticles.affectedRows} articles, which were not in articles directory, deleted from db.`)
+      console.log(allArticlesUrls)
     } else {
       console.log('no articles deleted from db.')
     }
   })
 }
 
+database.openConnection()
 uploadArticles()

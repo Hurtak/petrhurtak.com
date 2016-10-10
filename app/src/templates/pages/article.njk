@@ -42,7 +42,8 @@
             head: {{ snippet.head | dump | safe }},
             html: {{ snippet.html | dump | safe }},
             css: {{ snippet.css | dump | safe }},
-            js: {{ snippet.js | dump | safe }}
+            js: {{ snippet.js | dump | safe }},
+            config: {{ snippet.config | dump | safe }},
           }{% if loop.last == false %},{% endif %}
         {% endfor %}
       ]

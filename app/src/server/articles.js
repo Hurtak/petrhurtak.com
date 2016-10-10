@@ -115,9 +115,10 @@ function getSnippets (articlePath) {
   const snippetsDir = path.join(articlePath, '/snippets')
   let snippetFiles = []
   try {
+    // TOOD: better way to do this than try catch?
     snippetFiles = fs.readdirSync(snippetsDir) // TODO: sync function;
   } catch (e) {
-    return {}
+    return snippetFiles
   }
 
   const snippets = []

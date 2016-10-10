@@ -3,6 +3,9 @@
 ## NEXT RELEASE
 
 - code snippet tool
+    - fix tests
+    - finish inline snippets
+    - Source link doesent align with button
     - inline snippets without tabs switching
     - https://jakearchibald.com/2016/svg-media-queries/
 

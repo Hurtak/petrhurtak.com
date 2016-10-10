@@ -283,4 +283,62 @@ function foo (bar) {
 | (tm) (TM)         | ™                 | `&trade;`                               |
 | (r) (R)           | ®                 | `&reg;`                                 |
 
-<a href="./snippets/example.html">Live code example snippet</a>
+
+
+## Snippets
+
+- snippets are pure `HTML` files
+- they are stored in `./snippets` directory
+- additional snippet configuration is done inside HTML comment located in snippet right bellow the doctype definition
+
+### Snippet configuration
+
+- `inlineSnippet`
+    - `true` or `false` (default `false`)
+    - when set to `true`, no snippet controls are displayed, only the content
+
+### Code in article
+
+```html
+<!-- regular snippet -->
+<a href="./snippets/example.html">
+    Live code example snippet
+</a>
+
+<!-- inline snippet -->
+<a href="./snippets/example2.html">
+    Inline code example snippet
+</a>
+```
+
+### Code in snippet
+
+```html
+<!DOCTYPE html>
+<!--
+  inlineSnippet: true
+-->
+<html>
+<head>
+    <title>Snippet tite</title>
+    <style>/* snippet styles */</style>
+</head>
+<body>
+    <!-- snippet html -->
+    <h1>Hello world</h1>
+    <script>/* snippet scripts */</script>
+</body>
+</html>
+```
+
+### How it looks like
+
+<!-- regular snippet -->
+<a href="./snippets/example.html">
+    Live code example snippet
+</a>
+
+<!-- inline snippet -->
+<a href="./snippets/example2.html">
+    Inline code example snippet
+</a>

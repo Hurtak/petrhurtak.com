@@ -182,7 +182,8 @@ test('parseSnippet', t => {
     head: '<title>title</title>',
     html: '',
     css: '',
-    js: ''
+    js: '',
+    config: { inlineSnippet: false }
   })
 
   // minimal html
@@ -198,7 +199,8 @@ test('parseSnippet', t => {
     head: '<title>Example snippet</title>',
     html: '<h1>Hello</h1>',
     css: 'h1 { color: red; }',
-    js: 'console.log(\'hello\')'
+    js: 'console.log(\'hello\')',
+    config: { inlineSnippet: false }
   })
 
   // regular html
@@ -236,6 +238,27 @@ test('parseSnippet', t => {
       '  color: red;\n' +
       '}',
     js:
-      'console.log(\'console log\')'
+      'console.log(\'console log\')',
+    config: { inlineSnippet: false }
+  })
+
+  // config
+  const htmlWithConfig = `
+    <!DOCTYPE html>
+    <!--
+      inlineSnippet: true
+    -->
+    <html>
+      <head><title>title</title></head>
+      <body></body>
+    </html>
+  `
+  t.deepEqual(fn(htmlWithConfig), {
+    wholeHtml: htmlWithConfig,
+    head: '<title>title</title>',
+    html: '',
+    css: '',
+    js: '',
+    config: { inlineSnippet: true }
   })
 })

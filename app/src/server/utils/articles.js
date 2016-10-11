@@ -153,7 +153,7 @@ function parseSnippet (wholeHtml) {
   const $ = cheerioLoadWithoutEscaping(wholeHtml)
 
   // TODO: use html parser?
-  const configMatch = wholeHtml.match(/^<!--((?:.|\n)+?)-->$/m)
+  const configMatch = wholeHtml.match(/<!--((?:.|\n)+?)-->/m)
   const maybeConfig = configMatch ? (configMatch[1] || null) : null
   let parsedConfig = null
   try {

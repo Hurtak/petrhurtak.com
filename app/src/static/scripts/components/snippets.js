@@ -5,6 +5,7 @@ window.App.Snippets = (function () {
     snippetAttribute: 'data-snippet',
     isSelectedClass: 'isSelected',
     isVisibleClass: 'isVisible',
+    iframeClass: 'Snippet-iframe',
     debounceIframeCreation: 300
   }
 
@@ -22,9 +23,23 @@ window.App.Snippets = (function () {
       }
 
       for (const snippetEl of snippetElms) {
-        buildSnippet(snippetData, snippetEl)
+        if (snippetData.config.inlineSnippet) {
+          buildInlineSnippet(snippetData, snippetEl)
+        } else {
+          buildSnippet(snippetData, snippetEl)
+        }
       }
     }
+  }
+
+  function buildInlineSnippet (snippetData, snippetEl) {
+    createSnippetIframe(
+      snippetEl,
+      snippetData.head,
+      snippetData.html,
+      snippetData.css,
+      snippetData.js
+    )
   }
 
   function buildSnippet (snippetData, snippetEl) {
@@ -116,6 +131,7 @@ window.App.Snippets = (function () {
     `
 
     const iframe = document.createElement('iframe')
+    iframe.classList.add(config.iframeClass)
 
     targetEl.innerHTML = ''
     targetEl.appendChild(iframe)

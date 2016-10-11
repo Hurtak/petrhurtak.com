@@ -48,7 +48,7 @@ function getArticlesDirectories (directory, searchedDepth, currentDepth = 0, art
   return articlesList
 }
 
-function getArticle (articlePath) {
+function getArticle (articlePath, snippets) {
   const fileData = fs.readFileSync(path.join(articlePath, 'article.md'), 'utf8')
   const data = frontMatter(fileData)
 
@@ -85,7 +85,7 @@ function getArticle (articlePath) {
   articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'img', 'src', articleStaticFilesPath)
 
   // // TODO: think about merging these two together, or at least share css selector?
-  articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml)
+  articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml, snippets)
   articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'a[href^="./snippets/"]', 'href', articleStaticFilesPath)
 
   articleHtml = htmlMinifier.minify(articleHtml, {
@@ -137,8 +137,8 @@ function getSnippets (articlePath) {
 }
 
 function getArticleData (pathToArticle) {
-  const article = getArticle(pathToArticle)
   const snippets = getSnippets(pathToArticle)
+  const article = getArticle(pathToArticle, snippets)
 
   return {
     article,

@@ -1,27 +1,31 @@
-<div class="Snippet" data-snippet="{{ snippetName }}">
-  <div class="Snippet-header">
-    <div class="Snippet-headerGroup">
-      <button class="Snippet-button js-snippet-tab-html">HTML</button>
-      <button class="Snippet-button js-snippet-tab-css">CSS</button>
-      <button class="Snippet-button js-snippet-tab-js">JS</button>
-      <button class="Snippet-button js-snippet-tab-result">Result</button>
+{% if config.inlineSnippet %}
+  <div class="Snippet Snippet--inline" data-snippet="{{ snippetName }}"></div>
+{% else %}
+  <div class="Snippet" data-snippet="{{ snippetName }}">
+    <div class="Snippet-header">
+      <div class="Snippet-headerGroup">
+        <button class="Snippet-button js-snippet-tab-html">HTML</button>
+        <button class="Snippet-button js-snippet-tab-css">CSS</button>
+        <button class="Snippet-button js-snippet-tab-js">JS</button>
+        <button class="Snippet-button js-snippet-tab-result">Result</button>
+      </div>
+      <div class="Snippet-headerGroup">
+        <button class="Snippet-button js-snippet-reset">Reset</button>
+        <a
+          class="Snippet-button"
+          href="{{ rawSnippetUrl }}"
+          target="_blank"
+          title="Open raw snippet in new tab"
+        >
+          Source
+        </a>
+      </div>
     </div>
-    <div class="Snippet-headerGroup">
-      <button class="Snippet-button js-snippet-reset">Reset</button>
-      <a
-        class="Snippet-button"
-        href="{{ rawSnippetUrl }}"
-        target="_blank"
-        title="Open raw snippet in new tab"
-      >
-        Source
-      </a>
+    <div class="Snippet-contentWrapper">
+      <textarea class="Snippet-content Snippet-content--textarea js-snippet-content-html"></textarea>
+      <textarea class="Snippet-content Snippet-content--textarea js-snippet-content-css"></textarea>
+      <textarea class="Snippet-content Snippet-content--textarea js-snippet-content-js"></textarea>
+      <div class="Snippet-content js-snippet-content-result"></div>
     </div>
   </div>
-  <div class="Snippet-contentWrapper">
-    <textarea class="Snippet-content Snippet-content--textarea js-snippet-content-html"></textarea>
-    <textarea class="Snippet-content Snippet-content--textarea js-snippet-content-css"></textarea>
-    <textarea class="Snippet-content Snippet-content--textarea js-snippet-content-js"></textarea>
-    <div class="Snippet-content Snippet-content--iframe js-snippet-content-result"></div>
-  </div>
-</div>
+{% endif %}

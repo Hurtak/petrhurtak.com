@@ -75,7 +75,7 @@ function relativeUrlToAbsolute (htmlString, selector, attribute, absolutePath) {
   return $.html()
 }
 
-function enhanceSnippetLinks (htmlString) {
+function enhanceSnippetLinks (htmlString, snippets) {
   let $ = cheerioLoadWithoutEscaping(htmlString)
 
   $('a[href^="./snippets/"]').each((_, element) => {
@@ -86,9 +86,12 @@ function enhanceSnippetLinks (htmlString) {
     const fileName = pathSplit[pathSplit.length - 1] // example.html"
     const snippetName = fileName.split('.')[0] // example
 
+    const snippetData = snippets.find(snippet => snippet.name === snippetName)
+
     const snippetHtml = nunjucksEnv.render('components/snippet.njk', {
       snippetName,
-      rawSnippetUrl
+      rawSnippetUrl,
+      config: snippetData.config
     })
     const snippetEl = $(snippetHtml)
 

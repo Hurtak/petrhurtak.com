@@ -2,18 +2,12 @@
 
 ## NEXT RELEASE
 
-- code snippet tool
-    - Source link doesent align with button
-    - https://jakearchibald.com/2016/svg-media-queries/
-
 - change urls in the following way:
     - article lives on domain.com/article/ instead of domain.com/article
     - images on domain.com/article/images/
     - snippets on domain.com/aticle/snippets/
-
-- code blocks redesign?
-    - highlight code with <mark>?
-    - have a way to display diffs
+    - once we have this, snippets can be directly rendered in temlates
+    - chagne directory structure to /2016-12-20-Hello-world
 
 - think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really awkward
     - maybe have delete function and insert function only which would be little cleaner but it would increase a lot id's in the database
@@ -126,6 +120,10 @@
 
 - code snippet tool
     - be able to resize
+    - Source link doesent align with button - http://i.imgur.com/AIKK2K2.png (only in chrome)
+    - highlight code with <mark>?
+    - have a way to display diffs
+    - inspiration: https://jakearchibald.com/2016/svg-media-queries/
     - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippet which would be just used instead of inspected how it was done. On the other hand, some CSS layout example would be useful to have easily available button to show what is the html / css, and also way to resize
     - have a way to display example fullscreen like kod.jecas.cz?
     - chapter about this into components

@@ -116,7 +116,7 @@ function getSnippets (articlePath) {
   let snippetFiles = []
   try {
     // TOOD: better way to do this than try catch?
-    snippetFiles = fs.readdirSync(snippetsDir) // TODO: sync function;
+    snippetFiles = fs.readdirSync(snippetsDir) // TODO: sync function
   } catch (e) {
     return snippetFiles
   }

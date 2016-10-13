@@ -3,8 +3,6 @@
 const fs = require('fs-promise')
 const path = require('path')
 
-const lodash = require('lodash')
-
 const config = require('../config/config.js')
 const articles = require('./articles.js')
 const database = require('./database.js')
@@ -13,33 +11,13 @@ const paths = require('./paths.js')
 // Main routes
 
 function index (req, res) {
-  if (config.production) {
-    database.getArticles().then(databaseArticles => {
-      const data = {
-        articles: databaseArticles
-      }
-
-      res.render('pages/index.njk', data)
-    })
-  } else {
-    const articleDirs = articles.getArticlesDirectories(paths.articles, 2)
-
-    let articlesData = []
-    for (const articleDir of articleDirs) {
-      articlesData.push(articles.getArticleData(articleDir))
-    }
-
-    // sort articles by publication_date descendant
-    articlesData = articlesData.map(x => x.article)
-    articlesData = lodash.sortBy(articlesData, 'lastUpdate')
-    articlesData = lodash.reverse(articlesData)
-
+  database.getArticles().then(databaseArticles => {
     const data = {
-      articles: articlesData
+      articles: databaseArticles
     }
 
     res.render('pages/index.njk', data)
-  }
+  })
 }
 
 function article (req, res) {
@@ -61,7 +39,6 @@ function article (req, res) {
     })
   } else {
     let articleName = req.params.article
-
     let articlePath = articles.findPathToArticle(paths.articles, articleName, 2)
     if (!articlePath) {
       notFound(req, res)

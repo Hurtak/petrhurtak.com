@@ -5,10 +5,6 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-DROP DATABASE IF EXISTS `hurtak_blog`;
-CREATE DATABASE `hurtak_blog` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_czech_ci */;
-USE `hurtak_blog`;
-
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE `articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -42,6 +38,7 @@ CREATE TABLE `snippets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_article` int(11) NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL,
+  `inline` tinyint(4) NOT NULL DEFAULT '0',
   `head` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
   `html` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
   `css` mediumtext CHARACTER SET utf8 COLLATE utf8_czech_ci,
@@ -53,4 +50,4 @@ CREATE TABLE `snippets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- 2016-07-30 19:29:38
+-- 2016-10-13 19:54:42

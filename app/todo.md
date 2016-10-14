@@ -6,6 +6,9 @@
     - article lives on domain.com/article/ instead of domain.com/article
     - images on domain.com/article/images/
     - snippets on domain.com/aticle/snippets/
+    - in
+        - dev mode we walk the directory to get the article
+        - production we have the path saved in the database
     - once we have this, snippets can be directly rendered in temlates
     - chagne directory structure to /2016-12-20-Hello-world
 

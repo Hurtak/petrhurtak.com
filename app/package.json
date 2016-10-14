@@ -19,7 +19,7 @@
     "html-minifier": "3.1.0",
     "is-absolute-url": "2.0.0",
     "js-yaml": "3.6.1",
-    "lodash": "4.16.3",
+    "lodash": "4.16.4",
     "markdown-it": "8.0.0",
     "mysql": "2.11.1",
     "normalize.css": "5.0.0",
@@ -33,7 +33,7 @@
     "nodemon": "1.11.0",
     "nyc": "7.1.0",
     "pretty-error": "2.0.1",
-    "standard": "8.3.0"
+    "standard": "8.4.0"
   },
   "repository": {
     "type": "git",

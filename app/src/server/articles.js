@@ -3,6 +3,7 @@
 const fs = require('fs-promise')
 const path = require('path')
 
+const lodash = require('lodash')
 const markdownIt = require('markdown-it')
 const frontMatter = require('front-matter')
 const htmlMinifier = require('html-minifier')
@@ -11,22 +12,27 @@ const highlight = require('highlight.js')
 const paths = require('./paths.js')
 const utilsArticles = require('./utils/articles.js')
 
-function findPathToArticle (directory, articleName, searchedDepth, currentDepth = 0) {
-  const list = fs.readdirSync(directory) // TODO: sync function
+function debugGetPathByArticleName (directory, articleUrl) {
+  const directoryItems = fs.readdirSync(directory) // TODO: sync function
+  console.log(directoryItems)
 
-  for (const file of list) {
-    const filePath = path.join(directory, file)
-    const isDirectory = fs.statSync(filePath).isDirectory() // TODO: sync function
+  for (const directoryItem of directoryItems) {
+    const fullPath = path.join(directory, directoryItem)
+    const isDirectory = fs.statSync(fullPath).isDirectory() // TODO: sync function
 
     if (!isDirectory) continue
-    if (currentDepth === searchedDepth && file === articleName) return filePath
-    if (currentDepth >= searchedDepth) continue
 
-    const result = findPathToArticle(filePath, articleName, searchedDepth, currentDepth + 1)
-    if (result) return result
+    // 2016-10-10-hello -> hello
+    let currentArticleUrl = lodash.split(directoryItem, '-')
+    currentArticleUrl = lodash.slice(currentArticleUrl, 3)
+    currentArticleUrl = lodash.join(currentArticleUrl, '-')
+
+    if (currentArticleUrl === articleUrl) {
+      return fullPath
+    }
   }
 
-  return false
+  return null
 }
 
 function getArticlesDirectories (directory, searchedDepth, currentDepth = 0, articlesList = []) {
@@ -147,7 +153,7 @@ function getArticleData (pathToArticle) {
 }
 
 module.exports = {
-  findPathToArticle,
+  debugGetPathByArticleName,
   getArticlesDirectories,
   getArticleData
 }

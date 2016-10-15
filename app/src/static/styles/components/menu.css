@@ -9,6 +9,8 @@
 .Menu-item {
   width: 25%;
   text-align: center;
+  -webkit-user-select: none; /* TODO: remove once supported without prefixes */
+  user-select: none;
 }
 
 .Menu-item-link {

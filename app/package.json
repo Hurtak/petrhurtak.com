@@ -41,7 +41,7 @@
   },
   "scripts": {
     "start": "export NODE_ENV=production && node dist/server/index.js",
-    "test": "nyc --all ava src/test/**/*.js",
+    "test": "nyc --all --exclude=node_modules ava src/test/**/*.js",
     "lint": "standard --verbose \"scripts/**/*.js\" \"src/**/*.js\"",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },

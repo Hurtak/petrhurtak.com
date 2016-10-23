@@ -39,7 +39,7 @@ for (let day = 1; day <= 31; day++) {
 }
 
 for (let month = 0; month <= 11; month++) {
-// 0-11 months (months start from 0)
+  // 0-11 months (months start from 0)
   datesToTest.push(new Date(2016, month, 1, 0, 0, 0))
 }
 

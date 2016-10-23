@@ -3,7 +3,7 @@
 ## NEXT RELEASE
 
 - change urls in the following way:
-    - snippets - only gather data from .html files
+    - put trailing slash into the articles links
     - add variaous layers of validation, like that when snippets dir exists, there is at least on .html file in there
     - have one nice function which just gathers all the data from article directory
     - images on domain.com/article/images/

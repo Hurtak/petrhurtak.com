@@ -85,6 +85,8 @@ function enhanceSnippetLinks (htmlString, snippets) {
     const fileName = pathSplit[pathSplit.length - 1] // example.html"
     const snippetName = fileName.split('.')[0] // example
 
+    if (!snippets[snippetName]) return
+
     const snippetHtml = nunjucksEnv.render('components/snippet.njk', {
       snippetName,
       rawSnippetUrl,

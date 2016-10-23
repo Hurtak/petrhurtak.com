@@ -122,7 +122,13 @@ function getSnippetsData (articlePath) {
   }
 
   for (const fileName of snippetFiles) {
-    const snippetName = fileName.split('.')[0]
+    const isFile = fs.statSync(path.join(snippetsDir, fileName)).isFile() // TODO: sync function
+    if (!isFile) continue
+
+    const extension = path.extname(fileName)
+    if (extension !== '.html') continue
+
+    const snippetName = lodash.trimEnd(fileName, extension)
     const snippetPath = path.join(snippetsDir, fileName)
     const html = fs.readFileSync(snippetPath, 'utf8') // TODO: sync function
 

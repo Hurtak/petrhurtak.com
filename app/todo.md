@@ -3,16 +3,15 @@
 ## NEXT RELEASE
 
 - change urls in the following way:
-    - rename "wholeHtml" in snippets structure to something which doesent colide with "html"
     - json schema for metadata.yaml validation?
     - put url inside metadata.yaml?
     - tags
     - snippets - only gather data from .html files
     - add variaous layers of validation, like that when snippets dir exists, there is at least on .html file in there
-    - chagne directory structure to /2016-12-20-hello-world
     - have one nice function which just gathers all the data from article directory
     - article lives on domain.com/article/ instead of domain.com/article
     - images on domain.com/article/images/
+    - initi iframes on backend by putting content into srcdoc
     - snippets on domain.com/aticle/snippets/
     - in
         - dev mode we walk the directory to get the article

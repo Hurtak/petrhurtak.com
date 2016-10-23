@@ -152,7 +152,6 @@ function parseSnippet (wholeHtml) {
   const nullIfEmptyString = str => typeof str === 'string' && str.trim() === '' ? null : str
 
   return {
-    wholeHtml,
     head: nullIfEmptyString(removeIndentation(head)),
     html: nullIfEmptyString(removeIndentation(html)),
     css: nullIfEmptyString(removeIndentation(css)),

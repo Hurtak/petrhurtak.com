@@ -3,21 +3,20 @@
 ## NEXT RELEASE
 
 - change urls in the following way:
-    - put trailing slash into the articles links
-    - add variaous layers of validation, like that when snippets dir exists, there is at least on .html file in there
-    - have one nice function which just gathers all the data from article directory
-    - images on domain.com/article/images/
-    - initi iframes on backend by putting content into srcdoc (but still specify src attribute because ie doesent support it)
-    - snippets on domain.com/aticle/snippets/
     - in
         - dev mode we walk the directory to get the article
         - production we have the path saved in the database
-    - once we have this, snippets can be directly rendered in temlates
+    - render iframes on backend by putting content into srcdoc (but still specify src attribute because ie doesent support it)
+    - images on domain.com/article/images/
+        - dev mode - directly serve from articles dir
+        - production mode
+            - serve from www
+            - have a compilation script which takes images and puts them in relevant directories and optimalizes them
+    - snippets on domain.com/aticle/snippets/
     - introduce _unpublished directory
         - think of where to put componetns article?
         - what about visible field for each article, is it really needed?
             - just move article in the _unpublished dir?
-    - also unify /rss and /about routes to have trailing slash?
 
 - think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really awkward
     - maybe have delete function and insert function only which would be little cleaner but it would increase a lot id's in the database
@@ -127,8 +126,11 @@
     - think of how to unify scripts between package.json, scripts/ and .travis.yml
     - think of a ways how to unify debug mode with production mode
     - check for TODOs in code and resolve them
+    - also unify /rss and /about routes to have trailing slash?
+
 
 - code snippet tool
+    - add variaous layers of validation, like that when snippets dir exists, there is at least on .html file in there
     - be able to resize
     - Source link doesent align with button - http://i.imgur.com/AIKK2K2.png (only in chrome)
     - highlight code with <mark>?

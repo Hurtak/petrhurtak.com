@@ -1,0 +1,16 @@
+title: Components
+
+description:
+  Collection of UI components used on this page
+
+url: components
+
+date:
+  publication: 2016-10-10 10:00:00
+  lastUpdate: 2016-10-10 10:00:00
+
+published: true
+
+snippetsConfig:
+  example2:
+    inlineSnippet: true

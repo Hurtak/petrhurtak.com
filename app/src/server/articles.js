@@ -4,17 +4,15 @@ const fs = require('fs-promise')
 const path = require('path')
 
 const lodash = require('lodash')
+const yaml = require('js-yaml')
 const markdownIt = require('markdown-it')
-const frontMatter = require('front-matter')
 const htmlMinifier = require('html-minifier')
 const highlight = require('highlight.js')
 
-const paths = require('./paths.js')
 const utilsArticles = require('./utils/articles.js')
 
 function debugGetPathByArticleName (directory, articleUrl) {
   const directoryItems = fs.readdirSync(directory) // TODO: sync function
-  console.log(directoryItems)
 
   for (const directoryItem of directoryItems) {
     const fullPath = path.join(directory, directoryItem)
@@ -35,43 +33,52 @@ function debugGetPathByArticleName (directory, articleUrl) {
   return null
 }
 
-function getArticlesDirectories (directory, searchedDepth, currentDepth = 0, articlesList = []) {
-  const list = fs.readdirSync(directory) // TODO: sync function
+function getArticlesDirectories (directory) {
+  const directoryItems = fs.readdirSync(directory) // TODO: sync function
+  const articleDirectories = []
 
-  for (const item of list) {
-    const itemPath = path.join(directory, item)
-    const isDirectory = fs.statSync(itemPath).isDirectory() // TODO: sync function
+  for (const directoryItem of directoryItems) {
+    const fullPath = path.join(directory, directoryItem)
+    const isDirectory = fs.statSync(fullPath).isDirectory() // TODO: sync function
 
     if (!isDirectory) continue
-
-    if (currentDepth === searchedDepth) {
-      articlesList.push(itemPath)
-    } else {
-      getArticlesDirectories(itemPath, searchedDepth, currentDepth + 1, articlesList)
-    }
+    articleDirectories.push(fullPath)
   }
 
-  return articlesList
+  return articleDirectories
 }
 
-function getArticle (articlePath, snippets) {
-  const fileData = fs.readFileSync(path.join(articlePath, 'article.md'), 'utf8')
-  const data = frontMatter(fileData)
+function getArticleData (articleFolderPath) {
+  const metadataPath = path.join(articleFolderPath, '/metadata.yaml')
+  const metadataContent = fs.readFileSync(metadataPath, 'utf-8')
+  const metadata = yaml.safeLoad(metadataContent)
 
-  const metadata = data.attributes
-  const html = data.body
+  const snippetsData = getSnippetsData(articleFolderPath, metadata.snippetsConfig)
+  const snippets = enhanceSnippetsDataWithConfig(snippetsData, metadata.snippetsConfig)
+  const articleHtml = getArticleHtml(articleFolderPath, snippets)
+  const fsData = {
+    directory: lodash.last(articleFolderPath.split(path.sep)),
+    path: articleFolderPath
+  }
 
-  // c:\some\path\2015\1\article-dir -> 2015\1\article-dir
-  const articleFolder = articlePath
-    .replace(paths.articles, '')
-    .split(path.sep)
-    .filter(x => x)
-    .join(path.sep)
+  const data = {
+    fs: fsData,
+    metadata: metadata,
+    snippets: snippets,
+    articleHtml: articleHtml
+  }
 
-  const articleUrl = articleFolder.split(path.sep).reverse()[0]
+  return data
+}
 
+function getArticleHtml (articlePath, snippets) {
   // TODO: move to paths?
-  const articleStaticFilesPath = '/static/articles/' + articleFolder
+  const articleStaticFilesPath = '/static/articles/' // TODO
+
+  const markdown = markdownIt({
+    html: true,
+    highlight: (str, language) => highlight.highlight(language, str).value
+  })
 
   // TODO: every time we make html transformation we take html
   //       string and pass it into cheerio and create cheerio
@@ -79,18 +86,12 @@ function getArticle (articlePath, snippets) {
   //       back to html string. We could pass around cheerio
   //       object so creation of cheerio object and transformation
   //       to html string will be done only once
-  let articleHtml = html
-
-  const markdown = markdownIt({
-    html: true,
-    highlight: (str, language) => highlight.highlight(language, str).value
-  })
-
+  let articleHtml = fs.readFileSync(path.join(articlePath, 'article.md'), 'utf8')
   articleHtml = markdown.render(articleHtml)
   articleHtml = utilsArticles.addIdsToHeadings(articleHtml)
   articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'img', 'src', articleStaticFilesPath)
 
-  // // TODO: think about merging these two together, or at least share css selector?
+  // TODO: think about merging these two together, or at least share css selector?
   articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml, snippets)
   articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'a[href^="./snippets/"]', 'href', articleStaticFilesPath)
 
@@ -105,51 +106,56 @@ function getArticle (articlePath, snippets) {
     sortClassName: true
   })
 
-  return {
-    title: metadata.title,
-    url: articleUrl,
-    directory: articleFolder,
-    description: metadata.description,
-    publicationDate: utilsArticles.isoStringToUtcDate(metadata.publication_date),
-    lastUpdate: utilsArticles.isoStringToUtcDate(metadata.last_update),
-    visible: metadata.visible,
-    html: articleHtml
-  }
+  return articleHtml
 }
 
-function getSnippets (articlePath) {
+function getSnippetsData (articlePath) {
   const snippetsDir = path.join(articlePath, '/snippets')
+  const snippets = {}
+
   let snippetFiles = []
   try {
     // TOOD: better way to do this than try catch?
     snippetFiles = fs.readdirSync(snippetsDir) // TODO: sync function
   } catch (e) {
-    return snippetFiles
+    return snippets
   }
 
-  const snippets = []
   for (const fileName of snippetFiles) {
     const snippetName = fileName.split('.')[0]
     const snippetPath = path.join(snippetsDir, fileName)
     const html = fs.readFileSync(snippetPath, 'utf8') // TODO: sync function
 
-    const snippetData = utilsArticles.parseSnippet(html)
-    snippetData.name = snippetName
+    const snippetMetadata = {
+      path: snippetPath,
+      filename: fileName
+    }
 
-    snippets.push(snippetData)
+    const snippetData = utilsArticles.parseSnippet(html)
+
+    snippets[snippetName] = Object.assign({}, snippetMetadata, snippetData)
   }
 
   return snippets
 }
 
-function getArticleData (pathToArticle) {
-  const snippets = getSnippets(pathToArticle)
-  const article = getArticle(pathToArticle, snippets)
-
-  return {
-    article,
-    snippets
+function enhanceSnippetsDataWithConfig (snippetsData, snippetsConfig) {
+  const defaultConfig = {
+    inlineSnippet: false
   }
+
+  const snippets = Object.assign({}, snippetsData)
+
+  for (const snippetName in snippetsData) {
+    // TODO check if key in snippetsConfig match snippet names from snippetData
+    snippets[snippetName].config = Object.assign(
+      {},
+      defaultConfig,
+      snippetsConfig[snippetName]
+    )
+  }
+
+  return snippets
 }
 
 module.exports = {

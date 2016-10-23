@@ -5,7 +5,6 @@ const url = require('url')
 const isAbsoluteUrl = require('is-absolute-url')
 const cheerio = require('cheerio')
 const lodash = require('lodash')
-const yaml = require('js-yaml')
 
 const nunjucksEnv = require('../nunjucks/env.js')
 
@@ -86,12 +85,10 @@ function enhanceSnippetLinks (htmlString, snippets) {
     const fileName = pathSplit[pathSplit.length - 1] // example.html"
     const snippetName = fileName.split('.')[0] // example
 
-    const snippetData = snippets.find(snippet => snippet.name === snippetName)
-
     const snippetHtml = nunjucksEnv.render('components/snippet.njk', {
       snippetName,
       rawSnippetUrl,
-      config: snippetData.config
+      config: snippets[snippetName].config
     })
     const snippetEl = $(snippetHtml)
 
@@ -101,17 +98,9 @@ function enhanceSnippetLinks (htmlString, snippets) {
   return $.html()
 }
 
-function isoStringToUtcDate (isoString) {
-  const [date, time] = isoString.split(' ')
-
-  const [year, month, day] = date.split('-').map(Number)
-  const [hour, minute] = time.split(':').map(Number)
-
-  const utcTimestamp = Date.UTC(year, month - 1, day, hour, minute)
-  return new Date(utcTimestamp)
-}
-
 function removeIndentation (str) {
+  if (typeof str !== 'string') return null
+
   // 1. split text into lines
   let lines = str.split('\n')
 
@@ -155,31 +144,19 @@ function removeIndentation (str) {
 function parseSnippet (wholeHtml) {
   const $ = cheerioLoadWithoutEscaping(wholeHtml)
 
-  // TODO: use html parser?
-  const configMatch = wholeHtml.match(/<!--((?:.|\n)+?)-->/m)
-  const maybeConfig = configMatch ? (configMatch[1] || null) : null
-  let parsedConfig = null
-  try {
-    parsedConfig = yaml.safeLoad(maybeConfig)
-  } catch (e) {}
+  const css = $('head > style').html()
+  const js = $('body > script:last-of-type').html()
+  const head = $('head').html().replace(`<style>${css}</style>`, '')
+  const html = $('body').html().replace(`<script>${js}</script>`, '')
 
-  const defaultConfig = {
-    inlineSnippet: false
-  }
-  const config = Object.assign({}, defaultConfig, parsedConfig)
-
-  const css = $('head > style').html() || ''
-  const js = $('body > script:last-of-type').html() || ''
-  const head = $('head').html().replace(`<style>${css}</style>`, '') || ''
-  const html = $('body').html().replace(`<script>${js}</script>`, '') || ''
+  const nullIfEmptyString = str => typeof str === 'string' && str.trim() === '' ? null : str
 
   return {
     wholeHtml,
-    head: removeIndentation(head),
-    html: removeIndentation(html),
-    css: removeIndentation(css),
-    js: removeIndentation(js),
-    config
+    head: nullIfEmptyString(removeIndentation(head)),
+    html: nullIfEmptyString(removeIndentation(html)),
+    css: nullIfEmptyString(removeIndentation(css)),
+    js: nullIfEmptyString(removeIndentation(js))
   }
 }
 
@@ -187,7 +164,6 @@ module.exports = {
   addIdsToHeadings,
   relativeUrlToAbsolute,
   enhanceSnippetLinks,
-  isoStringToUtcDate,
   removeIndentation,
   parseSnippet
 }

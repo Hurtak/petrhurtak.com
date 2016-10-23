@@ -3,6 +3,14 @@
 ## NEXT RELEASE
 
 - change urls in the following way:
+    - rename "wholeHtml" in snippets structure to something which doesent colide with "html"
+    - json schema for metadata.yaml validation?
+    - put url inside metadata.yaml?
+    - tags
+    - snippets - only gather data from .html files
+    - add variaous layers of validation, like that when snippets dir exists, there is at least on .html file in there
+    - chagne directory structure to /2016-12-20-hello-world
+    - have one nice function which just gathers all the data from article directory
     - article lives on domain.com/article/ instead of domain.com/article
     - images on domain.com/article/images/
     - snippets on domain.com/aticle/snippets/
@@ -10,7 +18,10 @@
         - dev mode we walk the directory to get the article
         - production we have the path saved in the database
     - once we have this, snippets can be directly rendered in temlates
-    - chagne directory structure to /2016-12-20-Hello-world
+    - introduce _unpublished directory
+        - think of where to put componetns article?
+        - what about visible field for each article, is it really needed?
+            - just move article in the _unpublished dir?
 
 - think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really awkward
     - maybe have delete function and insert function only which would be little cleaner but it would increase a lot id's in the database
@@ -26,6 +37,7 @@
         - https://www.google.cz/search?hl=cs&tbm=isch&sa=1&q=mirrors+edge+interior
         - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
         - http://prolost.com/
+        - https://www.briangilham.com/articles/
     - page header
     - article header
     - articles list page

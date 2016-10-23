@@ -1,62 +1,31 @@
 'use strict'
 
-const path = require('path')
-
 require('../src/server/debug.js')()
 const paths = require('../src/server/paths.js')
 const articles = require('../src/server/articles.js')
 const database = require('../src/server/database.js')
 
-function getDirectoryDate (directoryPath) {
-  return directoryPath
-    .split(path.sep)
-    .filter(dir => dir)
-    .map(Number)
-    .filter(dir => !Number.isNaN(dir))
-}
-
-function isDirectoryNameCorrect (metadataDate, directoryName) {
-  const publicationDate = new Date(metadataDate)
-  const publicationYear = publicationDate.getFullYear()
-  const publicationMonth = publicationDate.getMonth() + 1
-
-  const [directoryYear, directoryMonth] = getDirectoryDate(directoryName)
-
-  if (publicationYear !== directoryYear || publicationMonth !== directoryMonth) {
-    console.error(`publicationDate in article.md yaml header is different from year or month directory ${directoryName}`)
-    return false
-  }
-
-  return true
-}
-
 function uploadArticles () {
-  let allArticlesUrls = []
+  const allArticlesUrls = []
 
-  const articlesDirectories = articles.getArticlesDirectories(paths.articles, 2)
-  articlesDirectories.reverse()
+  const articleDirectories = articles.getArticlesDirectories(paths.articles)
 
-  for (const articleDirectory of articlesDirectories) {
-    const data = articles.getArticleData(articleDirectory)
-
-    if (!isDirectoryNameCorrect(data.article.publicationDate, articleDirectory)) {
-      return
-    }
-
-    allArticlesUrls.push(data.article.url)
+  for (const articlePath of articleDirectories) {
+    const article = articles.getArticleData(articlePath)
+    allArticlesUrls.push(article.metadata.url)
 
     let dbData = [
-      data.article.title,
-      data.article.description,
-      data.article.url,
-      data.article.directory,
-      data.article.publicationDate,
-      data.article.lastUpdate,
-      data.article.visible
+      article.metadata.title,
+      article.metadata.description,
+      article.metadata.url,
+      article.fs.directory,
+      article.metadata.date.publication,
+      article.metadata.date.lastUpdate,
+      article.metadata.published
     ]
 
-    database.getIdByArticleUrl(data.article.url).then(res => {
-      const date = new Date(data.article.publicationDate).toLocaleDateString('cs')
+    database.getIdByArticleUrl(article.metadata.url).then(res => {
+      const date = new Date(article.metadata.date.publication).toLocaleDateString('cs')
       let articleId = res ? res.id : null
 
       if (res === null) { // new article which is not in db
@@ -64,36 +33,37 @@ function uploadArticles () {
           // inserted aticle id: dbResponse.insertId
           articleId = dbResponse.insertId
 
-          console.log(`${date} | article ${data.article.url} | metadata INSERTED.`)
+          console.log(`${date} | article ${article.metadata.url} | metadata INSERTED.`)
 
           // TODO: check if article html exists?
-          database.insertArticleHtml([dbResponse.insertId, data.article.html]).then(dbResponse => {
-            console.log(`${date} | article ${data.article.url} | html INSERTED.`)
+          database.insertArticleHtml([dbResponse.insertId, article.articleHtml]).then(dbResponse => {
+            console.log(`${date} | article ${article.metadata.url} | html INSERTED.`)
           })
         })
       } else {
         database.updateArticleMetadata([...dbData, res.id]).then(() => {
-          console.log(`${date} | article ${data.article.url} | metadata updated.`)
+          console.log(`${date} | article ${article.metadata.url} | metadata updated.`)
 
           // TODO: check if article html exists?
-          database.updateArticleHtml([data.article.html, res.id]).then(dbResponse => {
-            console.log(`${date} | article ${data.article.url} | html updated.`)
+          database.updateArticleHtml([article.articleHtml, res.id]).then(dbResponse => {
+            console.log(`${date} | article ${article.metadata.url} | html updated.`)
           })
         })
       }
 
-      database.deleteSnippets().then((x) => {
-        for (const snippet of data.snippets) {
+      database.deleteSnippets().then(() => {
+        for (const snippetName in article.snippets) {
+          const snippet = article.snippets[snippetName]
           database.insertSnippet([
             articleId,
-            snippet.name,
+            snippetName,
             snippet.config.inlineSnippet,
             snippet.head,
             snippet.html,
             snippet.css,
             snippet.js
           ]).then(() => {
-            console.log(`${date} | article ${data.article.url} | snippet ${snippet.name} INSERTED.`)
+            console.log(`${date} | article ${article.metadata.url} | snippet ${snippet.name} INSERTED.`)
           })
         }
       })

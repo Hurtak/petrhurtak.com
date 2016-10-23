@@ -2228,9 +2228,9 @@
       "resolved": "https://registry.npmjs.org/levn/-/levn-0.3.0.tgz"
     },
     "linkify-it": {
-      "version": "2.0.1",
+      "version": "2.0.2",
       "from": "linkify-it@>=2.0.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/linkify-it/-/linkify-it-2.0.1.tgz"
+      "resolved": "https://registry.npmjs.org/linkify-it/-/linkify-it-2.0.2.tgz"
     },
     "load-json-file": {
       "version": "1.1.0",
@@ -2430,9 +2430,9 @@
       "resolved": "https://registry.npmjs.org/map-stream/-/map-stream-0.1.0.tgz"
     },
     "markdown-it": {
-      "version": "8.0.0",
-      "from": "markdown-it@8.0.0",
-      "resolved": "https://registry.npmjs.org/markdown-it/-/markdown-it-8.0.0.tgz"
+      "version": "8.0.1",
+      "from": "markdown-it@latest",
+      "resolved": "https://registry.npmjs.org/markdown-it/-/markdown-it-8.0.1.tgz"
     },
     "matcher": {
       "version": "0.1.2",

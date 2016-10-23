@@ -98,14 +98,6 @@ test('relativeUrlToAbsolute', t => {
   )
 })
 
-test('isoStringToUtcDate', t => {
-  const fn = utilsArticles.isoStringToUtcDate
-
-  t.deepEqual(fn('2000-10-5 10:20'), new Date(Date.UTC(2000, 9, 5, 10, 20)))
-  t.deepEqual(fn('2000-1-1 00:00'), new Date(Date.UTC(2000, 0, 1, 0, 0)))
-  t.deepEqual(fn('2016-12-31 23:59'), new Date(Date.UTC(2016, 11, 31, 23, 59)))
-})
-
 test('removeIndentation', t => {
   const fn = utilsArticles.removeIndentation
 
@@ -180,10 +172,9 @@ test('parseSnippet', t => {
   t.deepEqual(fn(emptyHtml), {
     wholeHtml: emptyHtml,
     head: '<title>title</title>',
-    html: '',
-    css: '',
-    js: '',
-    config: { inlineSnippet: false }
+    html: null,
+    css: null,
+    js: null
   })
 
   // minimal html
@@ -199,8 +190,7 @@ test('parseSnippet', t => {
     head: '<title>Example snippet</title>',
     html: '<h1>Hello</h1>',
     css: 'h1 { color: red; }',
-    js: 'console.log(\'hello\')',
-    config: { inlineSnippet: false }
+    js: 'console.log(\'hello\')'
   })
 
   // regular html
@@ -238,27 +228,6 @@ test('parseSnippet', t => {
       '  color: red;\n' +
       '}',
     js:
-      'console.log(\'console log\')',
-    config: { inlineSnippet: false }
-  })
-
-  // config
-  const htmlWithConfig = `
-    <!DOCTYPE html>
-    <!--
-      inlineSnippet: true
-    -->
-    <html>
-      <head><title>title</title></head>
-      <body></body>
-    </html>
-  `
-  t.deepEqual(fn(htmlWithConfig), {
-    wholeHtml: htmlWithConfig,
-    head: '<title>title</title>',
-    html: '',
-    css: '',
-    js: '',
-    config: { inlineSnippet: true }
+      'console.log(\'console log\')'
   })
 })

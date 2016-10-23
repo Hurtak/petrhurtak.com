@@ -21,8 +21,10 @@ function index (req, res) {
 }
 
 function article (req, res) {
+  const articleName = req.params.article
+
   if (config.production) {
-    database.getArticle(req.params.article).then(article => {
+    database.getArticle(articleName).then(article => {
       if (!article) {
         notFound(req, res)
         return
@@ -38,19 +40,13 @@ function article (req, res) {
       })
     })
   } else {
-    let articleName = req.params.article
-    let articlePath = articles.findPathToArticle(paths.articles, articleName, 2)
+    const articlePath = articles.debugGetPathByArticleName(paths.articles, articleName)
     if (!articlePath) {
       notFound(req, res)
       return
     }
 
-    const articleData = articles.getArticleData(articlePath)
-    const data = {
-      article: articleData.article,
-      snippets: articleData.snippets
-    }
-
+    const data = articles.getArticleData(articlePath)
     res.render('pages/article.njk', data)
   }
 }

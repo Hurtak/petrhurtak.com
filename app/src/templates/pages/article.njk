@@ -1,7 +1,7 @@
 {% extends "../base.njk" %}
 
 {% block title -%}
-  &ndash; {{ article.title }}
+  &ndash; {{ metadata.title }}
 {%- endblock %}
 
 {% block content %}
@@ -10,19 +10,19 @@
 
     <div class="Article-header">
       <h1 class="Article-title">
-        {{ article.title }}
+        {{ metadata.title }}
       </h1>
       <time
         class="Article-datetime"
-        datetime="{{ article.publicationDate | datetimeAttribute }}"
-        title="{{ article.publicationDate | fullDate }}"
+        datetime="{{ metadata.date.publication | datetimeAttribute }}"
+        title="{{ metadata.date.publication | fullDate }}"
       >
-        {{ article.publicationDate | dateHowLongBefore }}
+        {{ metadata.date.publication | dateHowLongBefore }}
       </time>
     </div>
 
     <div class="Article-content">
-      {{ article.html | safe }}
+      {{ articleHtml | safe }}
     </div>
 
   </article>
@@ -36,9 +36,9 @@
       'use strict'
 
       window.appData.snippets = [
-        {% for snippet in snippets %}
+        {% for snippetName, snippet in snippets %}
           {
-            name: {{ snippet.name | dump | safe }},
+            name: {{ snippetName | dump | safe }},
             head: {{ snippet.head | dump | safe }},
             html: {{ snippet.html | dump | safe }},
             css: {{ snippet.css | dump | safe }},

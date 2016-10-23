@@ -1,20 +1,11 @@
----
-title: Components
-description: Collection of UI components used on this page
-publication_date: 2015-12-01 13:37
-last_update: 2015-05-28 19:22
-visible: true
----
-
-
-
 ## General
 
-- use 2 space indentation
+- use 4 space indentation
+
+
 
 ## Article metadata
 
-- each article starts with YAML front matter block which specifies articles metadata
 - all properties are mandatory
 - dates are in UTC, seconds are omitted
 - when article is created `last_update` is set to the same val `publication_date`
@@ -24,13 +15,23 @@ visible: true
 ### Code
 
 ```yaml
----
-title: Title of the article
-description: Short description of article
-publication_date: 2015-07-02 13:37
-last_update: 2015-05-28 19:20
-visible: true
----
+title: Components
+
+description:
+  Collection of UI components used on this page
+
+url: componetns
+
+date:
+  publication: 2016-10-10 10:00:00
+  lastUpdate: 2016-10-10 10:00:00
+
+published: true
+
+snippetsConfig:
+  example2:
+    inlineSnippet: true
+
 ```
 
 

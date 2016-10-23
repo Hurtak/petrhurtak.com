@@ -69,7 +69,7 @@ function getArticles () {
       directory,
       last_update
     FROM articles
-    WHERE visible = 1
+    WHERE published = 1
     ORDER BY publication_date
     DESC LIMIT 10
   `
@@ -89,7 +89,7 @@ function getArticle (articleUrl) {
     FROM articles
     INNER JOIN articles_html
       ON articles.id = articles_html.id_article
-    WHERE visible = 1
+    WHERE published = 1
     AND url = ?
   `
 
@@ -129,7 +129,7 @@ function getIdByArticleUrl (articleUrl) {
 function insertArticleMetadata (params) {
   const query = `
     INSERT INTO articles
-      (title, description, url, directory, publication_date, last_update, visible)
+      (title, description, url, directory, publication_date, last_update, published)
     VALUES
       (?, ?, ?, ?, ?, ?, ?)
   `
@@ -146,7 +146,7 @@ function updateArticleMetadata (params) {
       directory = ?,
       publication_date = ?,
       last_update = ?,
-      visible = ?
+      published = ?
     WHERE id = ?
   `
 
@@ -211,7 +211,7 @@ function getRSS () {
       directory,
       publication_date
     FROM articles
-    WHERE visible = 1
+    WHERE published = 1
     ORDER BY publication_date
     DESC LIMIT 10
   `
@@ -224,7 +224,7 @@ function getHumansTxt () {
   const query = `
     SELECT last_update
     FROM articles
-    WHERE visible = 1
+    WHERE published = 1
     ORDER BY last_update
     DESC LIMIT 1
   `

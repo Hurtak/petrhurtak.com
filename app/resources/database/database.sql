@@ -14,11 +14,11 @@ CREATE TABLE `articles` (
   `directory` varchar(50) COLLATE utf8_czech_ci NOT NULL,
   `publication_date` datetime NOT NULL,
   `last_update` datetime NOT NULL,
-  `visible` tinyint(1) NOT NULL DEFAULT '0',
+  `published` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `url` (`url`),
   KEY `publication_date` (`publication_date`),
-  KEY `visible` (`visible`)
+  KEY `published` (`published`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 
@@ -50,4 +50,4 @@ CREATE TABLE `snippets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- 2016-10-13 19:54:42
+-- 2016-10-23 19:09:17

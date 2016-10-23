@@ -3,15 +3,11 @@
 ## NEXT RELEASE
 
 - change urls in the following way:
-    - json schema for metadata.yaml validation?
-    - put url inside metadata.yaml?
-    - tags
     - snippets - only gather data from .html files
     - add variaous layers of validation, like that when snippets dir exists, there is at least on .html file in there
     - have one nice function which just gathers all the data from article directory
-    - article lives on domain.com/article/ instead of domain.com/article
     - images on domain.com/article/images/
-    - initi iframes on backend by putting content into srcdoc
+    - initi iframes on backend by putting content into srcdoc (but still specify src attribute because ie doesent support it)
     - snippets on domain.com/aticle/snippets/
     - in
         - dev mode we walk the directory to get the article
@@ -21,6 +17,7 @@
         - think of where to put componetns article?
         - what about visible field for each article, is it really needed?
             - just move article in the _unpublished dir?
+    - also unify /rss and /about routes to have trailing slash?
 
 - think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really awkward
     - maybe have delete function and insert function only which would be little cleaner but it would increase a lot id's in the database
@@ -59,7 +56,6 @@
     - move to namecheap?
 - http://www.vzhurudolu.cz/prirucka/checklist
 - rethink directory structure
-    - name article folders like this yyyy-mm-d--articlename
     - place these folders into year subfolders in articles dir
     - in compiled dir just have a flat structure?
     - think more about this
@@ -136,6 +132,7 @@
     - be able to resize
     - Source link doesent align with button - http://i.imgur.com/AIKK2K2.png (only in chrome)
     - highlight code with <mark>?
+    - json schema for metadata.yaml validation?
     - have a way to display diffs
     - inspiration: https://jakearchibald.com/2016/svg-media-queries/
     - also have a way to put code in page for people just to play with, not to take a look how it was done? like lorem ipsum generator would be the type of snippet which would be just used instead of inspected how it was done. On the other hand, some CSS layout example would be useful to have easily available button to show what is the html / css, and also way to resize

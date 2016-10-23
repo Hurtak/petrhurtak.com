@@ -1486,11 +1486,6 @@
       "from": "express@4.14.0",
       "resolved": "https://registry.npmjs.org/express/-/express-4.14.0.tgz"
     },
-    "express-slash": {
-      "version": "2.0.1",
-      "from": "express-slash@latest",
-      "resolved": "https://registry.npmjs.org/express-slash/-/express-slash-2.0.1.tgz"
-    },
     "express-status-monitor": {
       "version": "0.1.5",
       "from": "express-status-monitor@0.1.5",

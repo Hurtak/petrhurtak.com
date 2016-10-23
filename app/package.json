@@ -9,7 +9,6 @@
     "compression": "1.6.2",
     "escape-html": "1.0.3",
     "express": "4.14.0",
-    "express-slash": "2.0.1",
     "express-status-monitor": "0.1.5",
     "fs-promise": "0.5.0",
     "hard-rejection": "0.1.0",

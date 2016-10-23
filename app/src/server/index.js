@@ -6,7 +6,6 @@ require('./debug.js')()
 
 const express = require('express')
 // const expressStatusMonitor = require('express-status-monitor') // TODO: wait for it to be more stable
-const expressSlash = require('express-slash')
 const helmet = require('helmet') // TODO: article about all header this provides
 const bodyParser = require('body-parser')
 const responseTime = require('response-time')
@@ -21,13 +20,13 @@ const nunjucksEnv = require('./nunjucks/env.js')
 // app
 
 database.openConnection()
+
 const app = express()
 app.enable('strict routing') // treats '/foo' and '/foo/' as different routes
 
 // middlewares
 
 // app.use(expressStatusMonitor()) // TODO: wait for it to be more stable
-app.use(expressSlash())
 app.use(helmet())
 app.use(bodyParser.json())
 app.use(responseTime())
@@ -57,7 +56,8 @@ app.post('/api/log/app-message', routes.apiLogAppMessage)
 app.post('/api/log/exception', routes.apiLogException)
 
 // articles
-app.get('/:article', routes.article)
+app.get('/:article', (req, res) => res.redirect(301, req.path + '/'))
+app.get('/:article/', routes.article)
 
 // start server
 

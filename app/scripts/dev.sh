@@ -7,6 +7,8 @@ cd .. # cd into app director
 rm -rfv .nyc_output/
 rm -rfv coverage/
 
+./scripts/prepare-dirs.sh
+
 ### EXPORTED VARIABLES
 export NODE_ENV="development"
 # export NODE_ENV="production"

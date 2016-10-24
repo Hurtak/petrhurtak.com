@@ -3,16 +3,23 @@
 ## NEXT RELEASE
 
 - change urls in the following way:
-    - in
-        - dev mode we walk the directory to get the article
-        - production we have the path saved in the database
-    - render iframes on backend by putting content into srcdoc (but still specify src attribute because ie doesent support it)
-    - images on domain.com/article/images/
-        - dev mode - directly serve from articles dir
-        - production mode
-            - serve from www
-            - have a compilation script which takes images and puts them in relevant directories and optimalizes them
-    - snippets on domain.com/aticle/snippets/
+    - images
+        - fix paths so they are like this ./images/x.png
+        - in dev server image from articles/2016-10-10-article-name/images/x.png
+        - in production
+            - have a compile script which optimalizes images - www/articles/article-name/images/x.png
+            - serve images - www/articles/article-name/images/x.png
+    - snippets
+        - snippet links ./snippets/x.html
+        - render iframes on backend by putting content into srcdoc (but still specify src attribute because ie doesent support it)
+        - in dev server raw snippet from articles/2016-10-10-article-name/snippets/x.html
+        - in production
+            - have a compile script which copies - www/articles/article-name/snippets/snippet.png
+            - serve snippets - www/snippets/article-name/snippets/x.html
+        - what about snippet external files like images? (snippets/img/x.png)
+            - again we will have relative links from snipepts.html
+            - how that would work, will there be problems with paths?
+            - what about using base tag?
     - introduce _unpublished directory
         - think of where to put componetns article?
         - what about visible field for each article, is it really needed?
@@ -119,6 +126,9 @@
     - add search with suggest box
     - add aria stuff and accessibility stuff, also add that accessibility menu when you press tab
     - link to github/twitter
+    - investigate nginx and caddy https://caddyserver.com/
+    - https://securityheaders.io/
+        - also article about this
     - decide what categories to use in commit messages
     - check if we are not using sync (readFileSync) functions anywhere
     - cron job to test

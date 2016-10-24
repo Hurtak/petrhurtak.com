@@ -12,12 +12,12 @@ CREATE TABLE `articles` (
   `description` varchar(250) COLLATE utf8_czech_ci NOT NULL,
   `url` varchar(50) COLLATE utf8_czech_ci NOT NULL,
   `directory` varchar(50) COLLATE utf8_czech_ci NOT NULL,
-  `publication_date` datetime NOT NULL,
-  `last_update` datetime NOT NULL,
+  `date_publication` datetime NOT NULL,
+  `date_last_update` datetime NOT NULL,
   `published` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `url` (`url`),
-  KEY `publication_date` (`publication_date`),
+  KEY `date_publication` (`date_publication`),
   KEY `published` (`published`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 

@@ -55,20 +55,21 @@ function getArticleData (articleFolderPath) {
 
   const snippetsData = getSnippetsData(articleFolderPath, metadata.snippetsConfig)
   const snippets = enhanceSnippetsDataWithConfig(snippetsData, metadata.snippetsConfig)
+
   const articleHtml = getArticleHtml(articleFolderPath, snippets)
   const fsData = {
     directory: lodash.last(articleFolderPath.split(path.sep)),
     path: articleFolderPath
   }
 
-  const data = {
+  const article = {
     fs: fsData,
     metadata: metadata,
     snippets: snippets,
     articleHtml: articleHtml
   }
 
-  return data
+  return article
 }
 
 function getArticleHtml (articlePath, snippets) {
@@ -111,7 +112,7 @@ function getArticleHtml (articlePath, snippets) {
 
 function getSnippetsData (articlePath) {
   const snippetsDir = path.join(articlePath, '/snippets')
-  const snippets = {}
+  const snippets = []
 
   let snippetFiles = []
   try {
@@ -133,13 +134,18 @@ function getSnippetsData (articlePath) {
     const html = fs.readFileSync(snippetPath, 'utf8') // TODO: sync function
 
     const snippetMetadata = {
+      name: snippetName,
       path: snippetPath,
       filename: fileName
     }
-
     const snippetData = utilsArticles.parseSnippet(html)
+    const snippet = Object.assign(
+      {},
+      snippetMetadata,
+      snippetData
+    )
 
-    snippets[snippetName] = Object.assign({}, snippetMetadata, snippetData)
+    snippets.push(snippet)
   }
 
   return snippets
@@ -150,16 +156,12 @@ function enhanceSnippetsDataWithConfig (snippetsData, snippetsConfig) {
     inlineSnippet: false
   }
 
-  const snippets = Object.assign({}, snippetsData)
+  const snippets = snippetsData.map(snippet => {
+    const config = Object.assign({}, defaultConfig, snippetsConfig[snippet.name])
+    snippet.config = config
 
-  for (const snippetName in snippetsData) {
-    // TODO check if key in snippetsConfig match snippet names from snippetData
-    snippets[snippetName].config = Object.assign(
-      {},
-      defaultConfig,
-      snippetsConfig[snippetName]
-    )
-  }
+    return snippet
+  })
 
   return snippets
 }

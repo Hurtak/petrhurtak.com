@@ -14,10 +14,10 @@
       </h1>
       <time
         class="Article-datetime"
-        datetime="{{ metadata.date.publication | datetimeAttribute }}"
-        title="{{ metadata.date.publication | fullDate }}"
+        datetime="{{ metadata.datePublication | datetimeAttribute }}"
+        title="{{ metadata.datePublication | fullDate }}"
       >
-        {{ metadata.date.publication | dateHowLongBefore }}
+        {{ metadata.datePublication | dateHowLongBefore }}
       </time>
     </div>
 
@@ -36,9 +36,9 @@
       'use strict'
 
       window.appData.snippets = [
-        {% for snippetName, snippet in snippets %}
+        {% for snippet in snippets %}
           {
-            name: {{ snippetName | dump | safe }},
+            name: {{ snippet.name | dump | safe }},
             head: {{ snippet.head | dump | safe }},
             html: {{ snippet.html | dump | safe }},
             css: {{ snippet.css | dump | safe }},

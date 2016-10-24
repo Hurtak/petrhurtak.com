@@ -24,6 +24,7 @@ function article (req, res) {
   const articleName = req.params.article
 
   if (config.production) {
+    // TODO: merge these 2 queries into one?
     database.getArticle(articleName).then(article => {
       if (!article) {
         notFound(req, res)
@@ -31,9 +32,26 @@ function article (req, res) {
       }
 
       database.getArticleSnippets(article.id).then(snippets => {
+        // TODO: consider moving this logic into database.js
+        // basically this is data transformation to fit our own article object
+        // type which is returned by articles.getArticleData and we need
+        // to do this transformation because of how data are stored in database
         const data = {
-          article: article,
-          snippets: snippets
+          metadata: {
+            title: article.title,
+            datePublication: article.datePublication
+          },
+          articleHtml: article.html,
+          snippets: snippets.map(snippet => ({
+            name: snippet.name,
+            head: snippet.head,
+            html: snippet.html,
+            css: snippet.css,
+            js: snippet.js,
+            config: {
+              inlineSnippet: Boolean(snippet.inline)
+            }
+          }))
         }
 
         res.render('pages/article.njk', data)

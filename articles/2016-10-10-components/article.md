@@ -22,9 +22,8 @@ description:
 
 url: componetns
 
-date:
-  publication: 2016-10-10 10:00:00
-  lastUpdate: 2016-10-10 10:00:00
+datePublication: 2016-10-10 10:00:00
+dateLastUpdate: 2016-10-10 10:00:00
 
 published: true
 

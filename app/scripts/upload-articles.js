@@ -19,13 +19,13 @@ function uploadArticles () {
       article.metadata.description,
       article.metadata.url,
       article.fs.directory,
-      article.metadata.date.publication,
-      article.metadata.date.lastUpdate,
+      article.metadata.datePublication,
+      article.metadata.dateLastUpdate,
       article.metadata.published
     ]
 
     database.getIdByArticleUrl(article.metadata.url).then(res => {
-      const date = new Date(article.metadata.date.publication).toLocaleDateString('cs')
+      const date = new Date(article.metadata.datePublication).toLocaleDateString('cs')
       let articleId = res ? res.id : null
 
       if (res === null) { // new article which is not in db
@@ -52,11 +52,10 @@ function uploadArticles () {
       }
 
       database.deleteSnippets().then(() => {
-        for (const snippetName in article.snippets) {
-          const snippet = article.snippets[snippetName]
+        for (const snippet of article.snippets) {
           database.insertSnippet([
             articleId,
-            snippetName,
+            snippet.name,
             snippet.config.inlineSnippet,
             snippet.head,
             snippet.html,

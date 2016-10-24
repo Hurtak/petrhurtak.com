@@ -67,10 +67,10 @@ function getArticles () {
       title,
       description,
       directory,
-      last_update
+      date_last_update
     FROM articles
     WHERE published = 1
-    ORDER BY publication_date
+    ORDER BY date_publication
     DESC LIMIT 10
   `
 
@@ -83,7 +83,7 @@ function getArticle (articleUrl) {
     SELECT
       articles.id,
       title,
-      publication_date,
+      date_publication,
       url,
       html
     FROM articles
@@ -102,6 +102,7 @@ function getArticleSnippets (articleId) {
   const query = `
     SELECT
       name,
+      inline,
       head,
       html,
       css,
@@ -129,7 +130,7 @@ function getIdByArticleUrl (articleUrl) {
 function insertArticleMetadata (params) {
   const query = `
     INSERT INTO articles
-      (title, description, url, directory, publication_date, last_update, published)
+      (title, description, url, directory, date_publication, date_last_update, published)
     VALUES
       (?, ?, ?, ?, ?, ?, ?)
   `
@@ -144,8 +145,8 @@ function updateArticleMetadata (params) {
       description = ?,
       url = ?,
       directory = ?,
-      publication_date = ?,
-      last_update = ?,
+      date_publication = ?,
+      date_last_update = ?,
       published = ?
     WHERE id = ?
   `
@@ -209,10 +210,10 @@ function getRSS () {
       title,
       description,
       directory,
-      publication_date
+      date_publication
     FROM articles
     WHERE published = 1
-    ORDER BY publication_date
+    ORDER BY date_publication
     DESC LIMIT 10
   `
 
@@ -222,10 +223,10 @@ function getRSS () {
 
 function getHumansTxt () {
   const query = `
-    SELECT last_update
+    SELECT date_last_update
     FROM articles
     WHERE published = 1
-    ORDER BY last_update
+    ORDER BY date_last_update
     DESC LIMIT 1
   `
 

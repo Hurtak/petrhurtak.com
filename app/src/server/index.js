@@ -40,7 +40,6 @@ nunjucksEnv.express(app)
 
 // static files
 app.use('/static', express.static(paths.static))
-app.use('/static/articles', express.static(paths.articles)) // TODO: make only avaliable in debug
 app.use('/static/node_modules', express.static(paths.nodeModules)) // TODO: make only avaliable in debug
 
 // pages
@@ -58,6 +57,10 @@ app.post('/api/log/exception', routes.apiLogException)
 // articles
 app.get('/:article', (req, res) => res.redirect(301, req.path + '/'))
 app.get('/:article/', routes.article)
+app.get('/:article/:folder/:fileName', routes.articleStaticFiles)
+
+// 404 on the rest
+app.get('*', routes.notFound)
 
 // start server
 

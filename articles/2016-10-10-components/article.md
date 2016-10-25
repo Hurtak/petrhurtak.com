@@ -92,32 +92,19 @@ __bold text__
 
 ## Images
 
-- when linking to article images use relative paths with `./` at the start of the url
-- these relative url are then transformed into absolute paths `images/test.png` → `/static/articles/../images/test.png`
+- when linking to article images use relative paths
+- put all images into the `images` directory placed in the same folder as `article.md`
 - always specify `alt`, `width` and `height` attributes
 
 ### Code
 
 ```html
 <!-- just image -->
-<img src="./images/test.png" alt="image alt text" width="100" height="100">
+<img src="images/test.png" alt="image alt text" width="100" height="100">
 
 <!-- image with caption -->
 <figure>
-    <img src="./images/test.png" alt="image alt text">
-    <figcaption>Image caption</figcaption>
-</figure>
-```
-
-### Compiles to
-
-```html
-<!-- just image -->
-<img src="/static/articles/2015/12/components/images/test.png" alt="image alt text" width="100" height="100">
-
-<!-- image with caption -->
-<figure>
-    <img src="/static/articles/2015/12/components/images/test.png" alt="image alt text">
+    <img src="images/test.png" alt="image alt text">
     <figcaption>Image caption</figcaption>
 </figure>
 ```
@@ -125,11 +112,11 @@ __bold text__
 ### How it looks like
 
 <!-- just image -->
-<img src="./images/test.png" alt="image alt text" width="100" height="100">
+<img src="images/test.png" alt="image alt text" width="100" height="100">
 
 <!-- image with caption -->
 <figure>
-    <img src="./images/test.png" alt="image alt text">
+    <img src="images/test.png" alt="image alt text">
     <figcaption>Image caption</figcaption>
 </figure>
 

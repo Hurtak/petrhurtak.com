@@ -3,14 +3,8 @@
 ## NEXT RELEASE
 
 - change urls in the following way:
-    - images
-        - fix paths so they are like this ./images/x.png
-        - in dev server image from articles/2016-10-10-article-name/images/x.png
-        - in production
-            - have a compile script which optimalizes images - www/articles/article-name/images/x.png
-            - serve images - www/articles/article-name/images/x.png
+    - wwwArticles rename
     - snippets
-        - snippet links ./snippets/x.html
         - render iframes on backend by putting content into srcdoc (but still specify src attribute because ie doesent support it)
         - in dev server raw snippet from articles/2016-10-10-article-name/snippets/x.html
         - in production
@@ -90,6 +84,7 @@
 - General
     - write README.md
     - sitemap
+    - 301 redirects from uppercase urls? /arTicle -> /article
     - api security? methods should be available only from the same url
     - take a look at medium, what components they use in articles
     - fine tune humans.txt

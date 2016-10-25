@@ -69,6 +69,17 @@ function article (req, res) {
   }
 }
 
+function articleStaticFiles (req, res) {
+  if (config.production) {
+    const imagePath = path.join(paths.wwwArticles, '/', req.params.article, req.params.folder, req.params.fileName)
+    res.sendFile(imagePath, err => error(err, req, res))
+  } else {
+    const articlePath = articles.debugGetPathByArticleName(paths.articles, req.params.article)
+    const imagePath = path.join(articlePath, '/', req.params.folder, req.params.fileName)
+    res.sendFile(imagePath, err => error(err, req, res))
+  }
+}
+
 // Special pages
 
 function rss (req, res) {
@@ -97,13 +108,6 @@ function humansTxt (req, res) {
     res.type('text/plain')
     res.render('pages/humans.txt.njk', templateData)
   })
-}
-
-// Error pages
-
-function notFound (req, res) {
-  const data = {}
-  res.render('pages/404.njk', data)
 }
 
 // API
@@ -150,16 +154,37 @@ function apiLogException (req, res) {
   res.send()
 }
 
+// Error pages
+
+function notFound (req, res) {
+  const data = {}
+  res.render('pages/404.njk', data)
+}
+
+function error (err, req, res) {
+  if (!err) return
+
+  // TODO: add generic error handler
+  if (err.status === 404) {
+    notFound(req, res)
+  } else {
+    res.status(err.status).end()
+  }
+}
+
 // Export
 
 module.exports = {
   index,
   article,
+  articleStaticFiles,
 
   rss,
   robotsTxt,
   humansTxt,
 
   apiLogAppMessage,
-  apiLogException
+  apiLogException,
+
+  notFound
 }

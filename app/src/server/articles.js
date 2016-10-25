@@ -73,9 +73,6 @@ function getArticleData (articleFolderPath) {
 }
 
 function getArticleHtml (articlePath, snippets) {
-  // TODO: move to paths?
-  const articleStaticFilesPath = '/static/articles/' // TODO
-
   const markdown = markdownIt({
     html: true,
     highlight: (str, language) => highlight.highlight(language, str).value
@@ -90,11 +87,9 @@ function getArticleHtml (articlePath, snippets) {
   let articleHtml = fs.readFileSync(path.join(articlePath, 'article.md'), 'utf8')
   articleHtml = markdown.render(articleHtml)
   articleHtml = utilsArticles.addIdsToHeadings(articleHtml)
-  articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'img', 'src', articleStaticFilesPath)
 
   // TODO: think about merging these two together, or at least share css selector?
   articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml, snippets)
-  articleHtml = utilsArticles.relativeUrlToAbsolute(articleHtml, 'a[href^="./snippets/"]', 'href', articleStaticFilesPath)
 
   articleHtml = htmlMinifier.minify(articleHtml, {
     collapseWhitespace: true,

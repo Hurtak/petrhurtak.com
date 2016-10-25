@@ -1,8 +1,5 @@
 'use strict'
 
-const url = require('url')
-
-const isAbsoluteUrl = require('is-absolute-url')
 const cheerio = require('cheerio')
 const lodash = require('lodash')
 
@@ -41,34 +38,6 @@ function addIdsToHeadings (htmlString) {
     }
 
     el.attr('id', id + postfix)
-  })
-
-  return $.html()
-}
-
-function relativeUrlToAbsolute (htmlString, selector, attribute, absolutePath) {
-  if (!absolutePath) {
-    throw new Error('missing absolutePath paramenter')
-  }
-
-  let $ = cheerioLoadWithoutEscaping(htmlString)
-
-  // replace relative paths with absolute paths
-  $(selector).each((_, element) => {
-    const el = $(element)
-    const src = el.attr(attribute)
-
-    if (isElementInsideCodeBlock(el)) return
-    if (isAbsoluteUrl(src)) return
-
-    if (!absolutePath.endsWith('/')) {
-      absolutePath = absolutePath + '/'
-    }
-    if (!absolutePath.startsWith('/')) {
-      absolutePath = '/' + absolutePath
-    }
-
-    el.attr(attribute, url.resolve(absolutePath, src))
   })
 
   return $.html()
@@ -164,7 +133,6 @@ function parseSnippet (wholeHtml) {
 
 module.exports = {
   addIdsToHeadings,
-  relativeUrlToAbsolute,
   enhanceSnippetLinks,
   removeIndentation,
   parseSnippet

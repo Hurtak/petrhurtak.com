@@ -21,6 +21,7 @@ const paths = {
   nodeModules: '../node_modules',
 
   www: '../www',
+  wwwArticles: '../www/articles',
   log: '../www/log',
   logAppMessage: '../www/log/app-message',
   logExceptions: '../www/log/exceptions',

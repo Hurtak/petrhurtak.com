@@ -62,42 +62,6 @@ test('addIdsToHeadings', t => {
   `)
 })
 
-test('relativeUrlToAbsolute', t => {
-  const fn = utilsArticles.relativeUrlToAbsolute
-
-  t.throws(() => { fn('', '', '', '') })
-
-  // path combinations
-  t.deepEqual(fn('<img src="foo.png">', 'img', 'src', 'static'), '<img src="/static/foo.png">')
-  t.deepEqual(fn('<img src="foo.png">', 'img', 'src', '/static'), '<img src="/static/foo.png">')
-  t.deepEqual(fn('<img src="foo.png">', 'img', 'src', '/static/'), '<img src="/static/foo.png">')
-  t.deepEqual(fn('<img src="./foo.png">', 'img', 'src', 'static'), '<img src="/static/foo.png">')
-  t.deepEqual(fn('<img src="./foo.png">', 'img', 'src', '/static'), '<img src="/static/foo.png">')
-  t.deepEqual(fn('<img src="./foo.png">', 'img', 'src', '/static/'), '<img src="/static/foo.png">')
-
-  // absolute paths ignored
-  t.deepEqual(fn('<img src="/foo.png">', 'img', 'src', '/static'), '<img src="/foo.png">')
-  t.deepEqual(fn('<img src="https://google.com/foo.png">', 'img', 'src', '/static'), '<img src="https://google.com/foo.png">')
-
-  // do not do any transformations in <code> blocks
-  t.deepEqual(fn(
-    '<code><img src="foo.png"></code>', 'img', 'src', '/static'),
-    '<code><img src="foo.png"></code>'
-  )
-
-  // multiple elements
-  t.deepEqual(fn(
-    '<img src="foo.png"><a href="bar.html">bar</a>', 'img', 'src', '/static/'),
-    '<img src="/static/foo.png"><a href="bar.html">bar</a>'
-  )
-
-  // more complicated selector
-  t.deepEqual(fn(
-    '<img src="img.png"><a href="example/foo.html">bar</a>', 'a[href^="example/"]', 'href', '/static'),
-    '<img src="img.png"><a href="/static/example/foo.html">bar</a>'
-  )
-})
-
 test('removeIndentation', t => {
   const fn = utilsArticles.removeIndentation
 

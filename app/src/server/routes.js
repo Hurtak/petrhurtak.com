@@ -71,7 +71,7 @@ function article (req, res) {
 
 function articleStaticFiles (req, res) {
   if (config.production) {
-    const imagePath = path.join(paths.wwwArticles, '/', req.params.article, req.params.folder, req.params.fileName)
+    const imagePath = path.join(paths.www.articles, '/', req.params.article, req.params.folder, req.params.fileName)
     res.sendFile(imagePath, err => error(err, req, res))
   } else {
     const articlePath = articles.debugGetPathByArticleName(paths.articles, req.params.article)
@@ -140,7 +140,7 @@ function logJson (folder, data) {
 
 function apiLogAppMessage (req, res) {
   const data = addCommonApiData(req, req.body)
-  logJson(paths.logAppMessage, data)
+  logJson(paths.www.logAppMessage, data)
 
   res.status(204)
   res.send()
@@ -148,7 +148,7 @@ function apiLogAppMessage (req, res) {
 
 function apiLogException (req, res) {
   const data = addCommonApiData(req, req.body)
-  logJson(paths.logExceptions, data)
+  logJson(paths.www.logExceptions, data)
 
   res.status(204)
   res.send()

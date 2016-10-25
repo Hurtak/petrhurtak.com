@@ -3,7 +3,8 @@
 ## NEXT RELEASE
 
 - change urls in the following way:
-    - wwwArticles rename
+    - do properly compile script
+        - rename?
     - snippets
         - render iframes on backend by putting content into srcdoc (but still specify src attribute because ie doesent support it)
         - in dev server raw snippet from articles/2016-10-10-article-name/snippets/x.html

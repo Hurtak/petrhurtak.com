@@ -40,7 +40,7 @@
   "scripts": {
     "start": "export NODE_ENV=production && node dist/server/index.js",
     "test": "ava src/test/**/*.js",
-    "text+coverage": "nyc --all --exclude=node_modules ava src/test/**/*.js",
+    "test+coverage": "nyc --all --exclude=node_modules ava src/test/**/*.js",
     "lint": "standard --verbose \"scripts/**/*.js\" \"src/**/*.js\"",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },

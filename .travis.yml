@@ -8,7 +8,8 @@ os:
 
 node_js:
   - "node" # latest node
-  - "6" # latest 6.x.x node
+  - "7" # latest 7.x.x node
+  - "6"
 
 # Build lifecycle
 

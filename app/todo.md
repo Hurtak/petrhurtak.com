@@ -34,6 +34,8 @@
         - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
         - http://prolost.com/
         - https://www.briangilham.com/articles/
+        - http://phoboslab.org/log/2014/07/xibalba-a-webgl-first-person-shooter
+        - http://blog.rstankov.com/
     - page header
     - article header
     - articles list page
@@ -50,6 +52,7 @@
 ## Right after release
 
 - add css lint?
+- animated demos (videos) - https://news.ycombinator.com/item?id=12789862
 - update Twitter profile
 - domains
     - buy hurtak.cc hurtak.io petrhurtak.com petrhurtak.cz hurtak.pe

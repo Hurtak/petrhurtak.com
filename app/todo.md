@@ -36,6 +36,7 @@
         - https://www.briangilham.com/articles/
         - http://phoboslab.org/log/2014/07/xibalba-a-webgl-first-person-shooter
         - http://blog.rstankov.com/
+        - http://david.heinemeierhansson.com
     - page header
     - article header
     - articles list page

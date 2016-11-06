@@ -25,6 +25,7 @@
 
 - finish CSS design
     - inspiration:
+        - https://automattic.com/
         - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
         - http://phoboslab.org/log
         - http://maketea.co.uk/2016/09/28/css-grid-layout-is-a-step-change.html

@@ -53,6 +53,7 @@
 
 ## Right after release
 
+- consider using node:alpine image
 - add css lint?
 - animated demos (videos) - https://news.ycombinator.com/item?id=12789862
 - update Twitter profile

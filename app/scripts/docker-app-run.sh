@@ -8,6 +8,7 @@ sudo docker run \
   --rm \
   --user "node" \
   --env "NODE_ENV=development" \
-  --publish 49160:8080 \
+  --publish 49160:8000 \
+  --volume $(pwd)/src:/usr/src/app/src \
   --name blog \
   blog

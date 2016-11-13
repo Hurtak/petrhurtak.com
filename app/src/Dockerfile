@@ -14,5 +14,5 @@ COPY npm-shrinkwrap.json /usr/src/app/
 RUN npm install
 
 # Start the app
-EXPOSE 8080
+EXPOSE 8000
 CMD [ "node", "src/server/index.js" ]

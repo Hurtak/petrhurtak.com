@@ -53,6 +53,7 @@
 
 ## Right after release
 
+- revisit all docker related stuff to make sure it is properly set & secure
 - consider using node:alpine image
 - add css lint?
 - animated demos (videos) - https://news.ycombinator.com/item?id=12789862

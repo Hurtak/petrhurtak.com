@@ -3,12 +3,16 @@ version: '2.1'
 services:
   blog-app:
     container_name: blog-app
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     restart: always
-    # volumes:
-    #   - ./src:/usr/src/blog/app/src
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./scripts:/usr/src/app/scripts
+      - ./articles:/usr/src/app/articles
     environment:
       NODE_ENV: development
 

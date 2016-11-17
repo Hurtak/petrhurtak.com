@@ -4,6 +4,7 @@
   "description": "source code for hurtak.cc",
   "main": "src/server/index.js",
   "dependencies": {
+    "ava": "0.17.0",
     "body-parser": "1.15.2",
     "cheerio": "0.22.0",
     "compression": "1.6.2",
@@ -37,7 +38,7 @@
     "url": "https://github.com/Hurtak/hurtak.cc"
   },
   "scripts": {
-    "start": "export NODE_ENV=production && node dist/server/index.js",
+    "start": "export NODE_ENV=production && node src/server/index.js",
     "test": "ava src/test/**/*.js",
     "test+coverage": "nyc --all --exclude=node_modules ava src/test/**/*.js",
     "lint": "standard --verbose \"scripts/**/*.js\" \"src/**/*.js\"",

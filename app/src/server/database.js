@@ -5,7 +5,7 @@ const lodash = require('lodash')
 
 const config = require('../config/config.js')
 
-let db
+let connection
 
 // helper functions
 
@@ -13,7 +13,7 @@ function dbPromiseFactory (queryString, params = []) {
   params = Array.isArray(params) ? params : [params]
 
   return new Promise((resolve, reject) => {
-    db.query(queryString, params, (err, rows) => {
+    connection.query(queryString, params, (err, rows) => {
       if (err) {
         console.log(err)
         reject(err)
@@ -50,12 +50,12 @@ function underscoreCaseObjectToCamelCase (underscoreCaseObj) {
 // connection
 
 function openConnection () {
-  db = mysql.createConnection(config.database)
-  db.connect()
+  connection = mysql.createConnection(config.database)
+  connection.connect()
 }
 
 function closeConnection () {
-  db.end()
+  connection.end()
 }
 
 // articles functions

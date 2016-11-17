@@ -24,8 +24,9 @@ const paths = {
   config: './config',
   server: './server',
   templates: './templates',
+  static: './static',
 
-  articles: '../../articles',
+  articles: '../articles',
 
   nodeModules: '../node_modules',
 
@@ -35,9 +36,7 @@ const paths = {
     log: '../www/log',
     logAppMessage: '../www/log/app-message',
     logExceptions: '../www/log/exceptions'
-  },
-
-  static: './static'
+  }
 }
 
 const absolutePaths = joinPathsInObject(paths, appDirectory)

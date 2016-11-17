@@ -1,31 +1,22 @@
-# version: '2'
-version: '2'
+version: '2.1'
 
 services:
-  blog:
+  blog-app:
+    # container_name: xxx
     build: .
-    # depends_on:
-    #   - blog_db
-    links:
-      - blog_db
     ports:
       - "8000:8000"
-    restart: on-failure:6
+    restart: always
     # volumes:
     #   - ./src:/usr/src/blog/app/src
     environment:
       NODE_ENV: development
 
-  blog_db:
+  blog-db:
     image: mysql:5.7.16
     # volumes:
     #   - "./.data/db:/var/lib/mysql"
     # restart: always
-    # expose:
-    #   - "3306:3306"
-    expose:
-      - "3306"
     environment:
-      MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: hurtak_blog

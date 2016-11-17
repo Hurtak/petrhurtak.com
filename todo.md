@@ -326,3 +326,115 @@
 
 ## LONG TERM
 - once we have object spread operator replace Object.assign in addCommonData function in routes.js
+
+## OTHER
+
+- talk to customers, have email list but also you can talk to them by posting article where you ask them to write you something to comments section
+    - Example ask them for interesting gulp plugins or what RSS feed they are subscribed to.
+- Přidat možnost si subscribnout k updatům o nových článcích
+- Zjistit, jak přidat do gmailu tlačítko see article a případně jaký věci tam můžu přidávat (a napsat o tomhle článek)
+    - http://imgur.com/iz4wIcW
+- images
+    - responsive images
+        - Srcset, Image element
+        - https://developers.google.com/web/updates/2015/09/automating-resource-selection-with-client-hints?hl=en
+        - also write article about this
+    - use webp for iamges?
+- page transition animations
+    - http://codyhouse.co/demo/page-scroll-effects/parallax.html
+- try these
+    ```css
+    body, img {
+        -webkit-user-drag: none;
+    }
+    body {
+        -webkit-animation-name: fontfix;
+        -webkit-font-smoothing: antialiased;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+    }
+    ```
+- logo inspiration
+	- http://imgur.com/WWvA4MP
+    - http://codepen.io/zadvorsky/pen/xVrMMO
+    - make favicon
+    - animate icon with sprite?
+    - animate logo with this https://vimeo.com/185587462 ?
+    - animate favicon
+	- http://speckyboy.com/2015/11/09/subtly-animated-logos/
+	- http://crystal-lang.org/
+    - http://blog.wearecolony.com/a-year-without-jquery/
+- https://uimovement.com/ui/2181/link-behavior/
+- https://webmasters.googleblog.com/2011/09/pagination-with-relnext-and-relprev.html?m=1
+- footer inspiration
+    - https://www.bramstein.com/speaking/
+- folder organization
+    - https://doc.nette.org/en/2.3/quickstart/getting-started#toc-sandbox-s-content
+    - Taky obrázky z článků by měly být we www složce nebo někde + je proháhět nějakym optimalizátorem a používat
+- make projects section
+	- TOMATOTIM
+	- PHPAUTOCOLOR
+    - work stuff?
+        - obrazky.cz
+        - videa.seznam.cz
+        - admin proxy?
+- http://uimovement.com/ui/440/challenge-accepted/
+- https://blog.risingstack.com/node-js-security-checklist/
+- https://www.joyent.com/node-js/production/debug
+- inspiration
+    - http://shapeshed.com/writing-cross-platform-node/
+    - https://dockyard.com/blog/2015/10/14/best-practices-data-down-actions-up
+    - http://bramstein.com/writing/
+    - http://tesarek.me
+    - http://tympanus.net/Tutorials/FullscreenBookBlock/
+    - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
+    - http://zellwk.com/blog/why-vertical-rhythms/
+    - http://zellwk.com/blog/media-query-units/
+    - http://pebblecode.com/
+    - https://shapeshed.com/the-future-of-jobs/
+    - http://fvsch.com/articles/push-and-wait/
+    - http://html5up.net/twenty
+    - http://html5up.net/prologue
+    - http://www.mgadams.com/2015/06/30/the-software-engineers-guide-to-negotiating-a-raise/
+    - http://www.rouvre.com/fr/gallery/9/portraits/359
+    - https://nervous.io/clojure/clojurescript/aws/lambda/node/lein/2015/07/05/lambda/
+    - http://www.michaelvillar.com/
+    - https://yobriefca.se/articles/
+    - http://perfectionkills.com/
+    - http://blog.jenkster.com/
+    - http://uimovement.com/ui/1922/menu-item-selection/
+    - http://feross.org/resume/
+    - http://fvsch.com/code/svg-icons/how-to/
+- chrome scrollbar styling?
+    - http://www.maxiprani.cz/
+- when somebody doesent have adblock, show warning :D
+    - https://twitter.com/gcluley/status/704980787716866048
+- http://jecas.cz/toc
+- jecas.cz/seo-rychle
+- http://practice.typekit.com/lesson/caring-about-opentype-features/
+- add sitemap
+    - http://jecas.cz/sitemap
+- http://www.html5rocks.com/en/tutorials/appcache/beginner/
+- http://www.html5rocks.com/en/tutorials/service-worker/introduction/
+- search
+    - http://uimovement.com/ui/1125/magazine-search/
+- Prechod mezi strankama
+    - http://uimovement.com/ui/1127/product-page/
+- how to do gifs
+    - http://wesbos.com/animated-gif-workflow/
+- https://serviceworke.rs/
+- initial animation
+    - http://blog.izs.me/
+- header shadow animation
+    - http://flexbox.io/
+- menu http://tympanus.net/codrops/2016/01/06/inspiration-for-line-menu-styles/
+- výborná typografie https://automattic.com/
+- http://formidable.com/blog/2016/05/24/announcing-spectacle-editor-a-work-in-progress/
+- Share button
+    - http://uimovement.com/ui/1398/share-hover/
+- http://tomwoods.com/d/websitebookpdf.pdf
+- https://github.com/hemanth/awesome-pwa/blob/master/README.md
+- https://css-tricks.com/essential-meta-tags-social-media/
+- https://www.zdrojak.cz/clanky/orientacni-body-wai-aria-pro-pristupnejsi-web/
+- https://css-tricks.com/essential-meta-tags-social-media/

@@ -23,7 +23,7 @@ for (const filterName in filters) {
 
 // add custom globals
 nunjucksEnv.addGlobal('currentYear', new Date().getUTCFullYear())
-nunjucksEnv.addGlobal('siteUrl', 'https://hurtak.cc')
+nunjucksEnv.addGlobal('siteUrl', 'https://hurtak.cc') // TODO: move these into some config?
 nunjucksEnv.addGlobal('siteDomain', 'hurtak.cc')
 nunjucksEnv.addGlobal('devel', config.devel)
 nunjucksEnv.addGlobal('production', config.production)

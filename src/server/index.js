@@ -1,73 +1,60 @@
 'use strict'
 
-const perfStart = Date.now()
-
-require('./debug.js')()
-
 const express = require('express')
-// const expressStatusMonitor = require('express-status-monitor') // TODO: wait for it to be more stable
-const helmet = require('helmet') // TODO: article about all header this provides
-const bodyParser = require('body-parser')
-const responseTime = require('response-time')
-const compression = require('compression')
+const PrettyError = require('pretty-error')
+const hardRejection = require('hard-rejection')
 
 const config = require('../config/config.js')
-const database = require('./database.js')
 const paths = require('./paths.js')
 const routes = require('./routes.js')
 const nunjucksEnv = require('./nunjucks/env.js')
 
-database.openConnection(() => {
-  // app
+// debug
 
-  const app = express()
-  app.enable('strict routing') // treats '/foo' and '/foo/' as different routes
+const error = new PrettyError()
+error.skipNodeFiles()
+error.skipPackage(
+  'express',
+  'mysql',
+  'nunjucks'
+)
+error.start()
 
-  // middlewares
+hardRejection()
 
-  // app.use(expressStatusMonitor()) // TODO: wait for it to be more stable
-  app.use(helmet())
-  app.use(bodyParser.json())
-  app.use(responseTime())
-  app.use(compression())
+// app
 
-  // template config
+const app = express()
+app.enable('strict routing') // treats '/foo' and '/foo/' as different routes
 
-  nunjucksEnv.express(app)
+// template config
 
-  // routes
+nunjucksEnv.express(app)
 
-  // static files
-  app.use('/static', express.static(paths.static))
-  app.use('/static/node_modules', express.static(paths.nodeModules)) // TODO: make only avaliable in debug
+// routes
 
-  // pages
-  app.get('/', routes.index)
+// static files
+app.use('/static', express.static(paths.static))
+app.use('/static/node_modules', express.static(paths.nodeModules))
 
-  // special
-  app.get('/rss', routes.rss)
-  app.get('/robots.txt', routes.robotsTxt)
-  app.get('/humans.txt', routes.humansTxt)
+// pages
+// app.get('/', routes.index)
 
-  // api
-  app.post('/api/log/app-message', routes.apiLogAppMessage)
-  app.post('/api/log/exception', routes.apiLogException)
+// special
+// app.get('/rss', routes.rss)
+app.get('/robots.txt', routes.robotsTxt)
+// app.get('/humans.txt', routes.humansTxt)
 
-  // articles
-  app.get('/:article', (req, res) => res.redirect(301, req.path + '/'))
-  app.get('/:article/', routes.article)
-  app.get('/:article/:folder/:fileName', routes.articleStaticFiles)
+// articles
+app.get('/:article', (req, res) => res.redirect(301, req.path + '/'))
+app.get('/:article/', routes.article)
+app.get('/:article/:folder/:fileName', routes.articleStaticFiles)
 
-  // 404 on the rest
-  app.get('*', routes.notFound)
+// 404 on the rest
+app.get('*', routes.notFound)
 
-  // start server
+// start server
 
-  app.listen(config.port, () => {
-    const env = config.devel ? 'DEVELOPMENT' : 'PRODUCTION'
-    const perfEnd = Date.now()
-    const startupTime = perfEnd - perfStart
-
-    console.log(`server started | port ${config.port} | ${env} mode | startup time ${startupTime}ms`)
-  })
+app.listen(config.port, () => {
+  console.log(`server started on port ${config.port}`)
 })

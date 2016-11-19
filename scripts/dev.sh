@@ -12,7 +12,6 @@ rm -rfv coverage/
 ### EXPORTED VARIABLES
 export NODE_ENV="development"
 # export NODE_ENV="production"
-# export DEBUG="express*"
 
 ### LOCAL VARIABLES
 NODE_BIN="node_modules/.bin"

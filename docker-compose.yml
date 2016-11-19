@@ -1,39 +1,27 @@
 version: '2.1'
 
 services:
-  blog-app:
-    container_name: blog-app
+  blog-nginx:
+    container_name: blog-nginx
     build:
       context: .
-      dockerfile: src/Dockerfile
+      dockerfile: Dockerfile.nginx
     ports:
       - "8000:8000"
-    # restart: always
     volumes:
       - ./src:/usr/src/app/src
       - ./scripts:/usr/src/app/scripts
       - ./articles:/usr/src/app/articles
     environment:
       NODE_ENV: development
-      APP_DB_HOST: blog-db
-      APP_DB_NAME: hurtak_blog
-      APP_DB_USER: root
-      APP_DB_PASS: root
       APP_PORT: 8000
 
-  blog-db:
-    container_name: blog-db
-    build:
-      context: .
-      dockerfile: database/Dockerfile
-    # volumes_from:
-    #   - blog-db-data
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: hurtak_blog
-
-  # blog-db-data:
-  #   container_name: blog-db-data
-  #   image: tianon/true
+  # blog-node:
+  #   container_name: blog-node
+  #   build:
+  #     context: .
+  #     dockerfile: database/Dockerfile
   #   volumes:
-  #     - /var/lib/mysql
+  #     - ./src:/usr/src/app/src
+  #     - ./scripts:/usr/src/app/scripts
+  #     - ./articles:/usr/src/app/articles

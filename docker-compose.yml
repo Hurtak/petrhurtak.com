@@ -5,10 +5,10 @@ services:
     container_name: blog-app
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.app
     ports:
       - "8000:8000"
-    restart: always
+    # restart: always
     volumes:
       - ./src:/usr/src/app/src
       - ./scripts:/usr/src/app/scripts
@@ -18,10 +18,17 @@ services:
 
   blog-db:
     container_name: blog-db
-    image: mysql:5.7.16
-    # volumes:
-    #   - "./.data/db:/var/lib/mysql"
-    # restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    # volumes_from:
+    #   - blog-db-data
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: hurtak_blog
+
+  # blog-db-data:
+  #   container_name: blog-db-data
+  #   image: tianon/true
+  #   volumes:
+  #     - /var/lib/mysql

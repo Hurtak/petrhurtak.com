@@ -17,9 +17,9 @@ const paths = require('./paths.js')
 const routes = require('./routes.js')
 const nunjucksEnv = require('./nunjucks/env.js')
 
-// app
-
 database.openConnection(() => {
+  // app
+
   const app = express()
   app.enable('strict routing') // treats '/foo' and '/foo/' as different routes
 

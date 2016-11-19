@@ -88,6 +88,7 @@
 - robots.txt review - make article
 
 ## FUTURE RELEASES
+
 - General
     - write README.md
     - sitemap
@@ -140,12 +141,11 @@
     - check for TODOs in code and resolve them
     - also unify /rss and /about routes to have trailing slash?
 
-
 - code snippet tool
     - add variaous layers of validation, like that when snippets dir exists, there is at least on .html file in there
     - be able to resize
     - Source link doesent align with button - http://i.imgur.com/AIKK2K2.png (only in chrome)
-    - highlight code with <mark>?
+    - highlight code with `<mark>`?
     - json schema for metadata.yaml validation?
     - have a way to display diffs
     - inspiration: https://jakearchibald.com/2016/svg-media-queries/
@@ -301,7 +301,7 @@
     - revisit rss feed items
     - sticky footer
     - add compilation process for static files
-    - consider loading images with javascript with <noscript> fallback?
+    - consider loading images with javascript with `<noscript>` fallback?
     - fine tune "published x days ago"
     - start using mixins css
         - http://zeke.sikelianos.com/css-from-the-future/
@@ -317,6 +317,7 @@
     - consider switching to async templating engine with streaing support (markojs by ebay, dustjs by linkedin)
 
 ## NICE TO HAVE
+
 - switch to templating engine which supports streaming
 - own comment system?
 - evaluate switch from express to alternatives (koa, hapi)
@@ -325,6 +326,7 @@
 - serve static files from nginx
 
 ## LONG TERM
+
 - once we have object spread operator replace Object.assign in addCommonData function in routes.js
 
 ## OTHER
@@ -356,14 +358,14 @@
     }
     ```
 - logo inspiration
-	- http://imgur.com/WWvA4MP
+    - http://imgur.com/WWvA4MP
     - http://codepen.io/zadvorsky/pen/xVrMMO
     - make favicon
     - animate icon with sprite?
     - animate logo with this https://vimeo.com/185587462 ?
     - animate favicon
-	- http://speckyboy.com/2015/11/09/subtly-animated-logos/
-	- http://crystal-lang.org/
+    - http://speckyboy.com/2015/11/09/subtly-animated-logos/
+    - http://crystal-lang.org/
     - http://blog.wearecolony.com/a-year-without-jquery/
 - https://uimovement.com/ui/2181/link-behavior/
 - https://webmasters.googleblog.com/2011/09/pagination-with-relnext-and-relprev.html?m=1
@@ -373,8 +375,8 @@
     - https://doc.nette.org/en/2.3/quickstart/getting-started#toc-sandbox-s-content
     - Taky obrázky z článků by měly být we www složce nebo někde + je proháhět nějakym optimalizátorem a používat
 - make projects section
-	- TOMATOTIM
-	- PHPAUTOCOLOR
+    - TOMATOTIM
+    - PHPAUTOCOLOR
     - work stuff?
         - obrazky.cz
         - videa.seznam.cz

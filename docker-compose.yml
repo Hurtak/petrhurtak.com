@@ -5,7 +5,7 @@ services:
     container_name: blog-app
     build:
       context: .
-      dockerfile: Dockerfile.app
+      dockerfile: src/Dockerfile
     ports:
       - "8000:8000"
     # restart: always
@@ -15,12 +15,17 @@ services:
       - ./articles:/usr/src/app/articles
     environment:
       NODE_ENV: development
+      APP_DB_HOST: blog-db
+      APP_DB_NAME: hurtak_blog
+      APP_DB_USER: root
+      APP_DB_PASS: root
+      APP_PORT: 8000
 
   blog-db:
     container_name: blog-db
     build:
       context: .
-      dockerfile: Dockerfile.db
+      dockerfile: database/Dockerfile
     # volumes_from:
     #   - blog-db-data
     environment:

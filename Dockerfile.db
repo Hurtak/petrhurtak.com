@@ -1,3 +1,0 @@
-FROM mysql:5.7.16
-
-COPY resources/database/schema.sql /docker-entrypoint-initdb.d/

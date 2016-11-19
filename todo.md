@@ -2,6 +2,14 @@
 
 ## NEXT RELEASE
 
+- add debug route which will load specific article from FS - like /debug/article/xxx
+- disable config.multiple statements - use transactions instead
+- use transactions in articles upload script
+- cron
+    - https://github.com/node-schedule/node-schedule
+    - https://github.com/kelektiv/node-cron
+- consider using config file instead of enviroment variables for passwords
+
 - change urls in the following way:
     - move paths into config?
     - snippets

@@ -49,9 +49,27 @@ function underscoreCaseObjectToCamelCase (underscoreCaseObj) {
 
 // connection
 
-function openConnection () {
+function openConnection (callback, retry = 1) {
+  console.log(`[db] connecting to database, try number ${retry}`)
   connection = mysql.createConnection(config.database)
-  connection.connect()
+
+  connection.connect((err) => {
+    if (err) {
+      console.log('[db] error connecting')
+      console.log(err.stack)
+      if (retry >= 5) {
+        console.log('[db] number of retries >= 5, giving up')
+        process.exit(1)
+        return
+      }
+
+      console.log('[db] retrying in 3000 ms')
+      setTimeout(() => { openConnection(callback, retry + 1) }, 3000)
+    } else {
+      console.log('[db] connected as id ' + connection.threadId)
+      callback()
+    }
+  })
 }
 
 function closeConnection () {

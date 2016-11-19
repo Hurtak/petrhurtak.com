@@ -19,55 +19,55 @@ const nunjucksEnv = require('./nunjucks/env.js')
 
 // app
 
-database.openConnection()
+database.openConnection(() => {
+  const app = express()
+  app.enable('strict routing') // treats '/foo' and '/foo/' as different routes
 
-const app = express()
-app.enable('strict routing') // treats '/foo' and '/foo/' as different routes
+  // middlewares
 
-// middlewares
+  // app.use(expressStatusMonitor()) // TODO: wait for it to be more stable
+  app.use(helmet())
+  app.use(bodyParser.json())
+  app.use(responseTime())
+  app.use(compression())
 
-// app.use(expressStatusMonitor()) // TODO: wait for it to be more stable
-app.use(helmet())
-app.use(bodyParser.json())
-app.use(responseTime())
-app.use(compression())
+  // template config
 
-// template config
+  nunjucksEnv.express(app)
 
-nunjucksEnv.express(app)
+  // routes
 
-// routes
+  // static files
+  app.use('/static', express.static(paths.static))
+  app.use('/static/node_modules', express.static(paths.nodeModules)) // TODO: make only avaliable in debug
 
-// static files
-app.use('/static', express.static(paths.static))
-app.use('/static/node_modules', express.static(paths.nodeModules)) // TODO: make only avaliable in debug
+  // pages
+  app.get('/', routes.index)
 
-// pages
-app.get('/', routes.index)
+  // special
+  app.get('/rss', routes.rss)
+  app.get('/robots.txt', routes.robotsTxt)
+  app.get('/humans.txt', routes.humansTxt)
 
-// special
-app.get('/rss', routes.rss)
-app.get('/robots.txt', routes.robotsTxt)
-app.get('/humans.txt', routes.humansTxt)
+  // api
+  app.post('/api/log/app-message', routes.apiLogAppMessage)
+  app.post('/api/log/exception', routes.apiLogException)
 
-// api
-app.post('/api/log/app-message', routes.apiLogAppMessage)
-app.post('/api/log/exception', routes.apiLogException)
+  // articles
+  app.get('/:article', (req, res) => res.redirect(301, req.path + '/'))
+  app.get('/:article/', routes.article)
+  app.get('/:article/:folder/:fileName', routes.articleStaticFiles)
 
-// articles
-app.get('/:article', (req, res) => res.redirect(301, req.path + '/'))
-app.get('/:article/', routes.article)
-app.get('/:article/:folder/:fileName', routes.articleStaticFiles)
+  // 404 on the rest
+  app.get('*', routes.notFound)
 
-// 404 on the rest
-app.get('*', routes.notFound)
+  // start server
 
-// start server
+  app.listen(config.port, () => {
+    const env = config.devel ? 'DEVELOPMENT' : 'PRODUCTION'
+    const perfEnd = Date.now()
+    const startupTime = perfEnd - perfStart
 
-app.listen(config.port, () => {
-  const env = config.devel ? 'DEVELOPMENT' : 'PRODUCTION'
-  const perfEnd = Date.now()
-  const startupTime = perfEnd - perfStart
-
-  console.log(`server started | port ${config.port} | ${env} mode | startup time ${startupTime}ms`)
+    console.log(`server started | port ${config.port} | ${env} mode | startup time ${startupTime}ms`)
+  })
 })

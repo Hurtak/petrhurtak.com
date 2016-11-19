@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "source code for hurtak.cc",
   "main": "src/server/index.js",
+  "engines": {
+    "node": ">=6"
+  },
   "dependencies": {
     "ava": "0.17.0",
     "body-parser": "1.15.2",

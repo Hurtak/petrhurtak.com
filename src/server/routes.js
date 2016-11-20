@@ -2,6 +2,7 @@
 
 const fs = require('fs-promise')
 const path = require('path')
+const lodash = require('lodash')
 
 const config = require('./config.js')
 const articles = require('./articles.js')
@@ -9,15 +10,23 @@ const paths = require('./paths.js')
 
 // Main routes
 
-// function index (req, res) {
-//   database.getArticles().then(databaseArticles => {
-//     const data = {
-//       articles: databaseArticles
-//     }
+function index (req, res) {
+  console.time(1)
+  const articleDirectories = articles.getArticlesDirectories(paths.articles)
+  console.timeEnd(1)
 
-//     res.render('pages/index.njk', data)
-//   })
-// }
+  let relevantArticles = articleDirectories
+  relevantArticles = lodash.sortBy(relevantArticles)
+  relevantArticles = lodash.slice(relevantArticles, 0, config.articles.articlesPerPage)
+
+  // database.getArticles().then(databaseArticles => {
+  //   const data = {
+  //     articles: databaseArticles
+  //   }
+
+  //   res.render('pages/index.njk', data)
+  // })
+}
 
 function article (req, res) {
   const articleName = req.params.article
@@ -33,14 +42,9 @@ function article (req, res) {
 }
 
 function articleStaticFiles (req, res) {
-  if (config.production) {
-    const imagePath = path.join(paths.www.articles, '/', req.params.article, req.params.folder, req.params.fileName)
-    res.sendFile(imagePath, err => error(err, req, res))
-  } else {
-    const articlePath = articles.debugGetPathByArticleName(paths.articles, req.params.article)
-    const imagePath = path.join(articlePath, '/', req.params.folder, req.params.fileName)
-    res.sendFile(imagePath, err => error(err, req, res))
-  }
+  const articlePath = articles.debugGetPathByArticleName(paths.articles, req.params.article)
+  const imagePath = path.join(articlePath, '/', req.params.folder, req.params.fileName)
+  res.sendFile(imagePath)
 }
 
 // Special pages
@@ -94,7 +98,7 @@ function error (err, req, res) {
 // Export
 
 module.exports = {
-  // index,
+  index,
   article,
   articleStaticFiles,
 

@@ -7,6 +7,10 @@ module.exports = {
 
   siteUrl: url.parse(process.env.APP_URL || 'https://hurtak.cc'),
 
+  articles: {
+    articlesPerPage: 10
+  },
+
   nunjucks: {
     autoescape: true, // (default: true) controls if output with dangerous characters are escaped automatically.
     throwOnUndefined: true, // (default: false) throw errors when outputting a null/undefined value

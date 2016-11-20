@@ -38,7 +38,7 @@ app.use('/static', express.static(paths.static))
 app.use('/static/node_modules', express.static(paths.nodeModules))
 
 // pages
-// app.get('/', routes.index)
+app.get('/', routes.index)
 
 // special
 // app.get('/rss', routes.rss)

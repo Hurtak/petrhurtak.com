@@ -28,3 +28,14 @@ for (const item of articleItems) {
 }
 
 console.log('Compile script finished')
+
+// articleHtml = htmlMinifier.minify(articleHtml, {
+//   collapseWhitespace: true,
+//   conservativeCollapse: true,
+//   minifyCSS: true,
+//   minifyJS: true,
+//   removeComments: true,
+//   removeRedundantAttributes: true,
+//   sortAttributes: true,
+//   sortClassName: true
+// })

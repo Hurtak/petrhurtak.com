@@ -10,7 +10,7 @@ const highlight = require('highlight.js')
 
 const utilsArticles = require('./utils/articles.js')
 
-function debugGetPathByArticleName (directory, articleUrl) {
+function getPathByArticleName (directory, articleUrl) {
   const directoryItems = fs.readdirSync(directory)
 
   for (const directoryItem of directoryItems) {
@@ -149,7 +149,7 @@ function enhanceSnippetsDataWithConfig (snippetsData, snippetsConfig) {
 }
 
 module.exports = {
-  debugGetPathByArticleName,
+  getPathByArticleName,
   getArticlesDirectories,
   getArticleData
 }

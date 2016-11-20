@@ -1,6 +1,5 @@
 'use strict'
 
-const fs = require('fs-promise')
 const path = require('path')
 const lodash = require('lodash')
 
@@ -11,27 +10,29 @@ const paths = require('./paths.js')
 // Main routes
 
 function index (req, res) {
-  console.time(1)
   const articleDirectories = articles.getArticlesDirectories(paths.articles)
-  console.timeEnd(1)
 
   let relevantArticles = articleDirectories
   relevantArticles = lodash.sortBy(relevantArticles)
   relevantArticles = lodash.slice(relevantArticles, 0, config.articles.articlesPerPage)
 
-  // database.getArticles().then(databaseArticles => {
-  //   const data = {
-  //     articles: databaseArticles
-  //   }
+  const articlesData = []
+  for (const articlePath of relevantArticles) {
+    // TODO: once async/await lands, make this concurrent
+    articlesData.push(articles.getArticleData(articlePath))
+  }
 
-  //   res.render('pages/index.njk', data)
-  // })
+  const data = {
+    articles: articlesData
+  }
+
+  res.render('pages/index.njk', data)
 }
 
 function article (req, res) {
   const articleName = req.params.article
 
-  const articlePath = articles.debugGetPathByArticleName(paths.articles, articleName)
+  const articlePath = articles.getPathByArticleName(paths.articles, articleName)
   if (!articlePath) {
     notFound(req, res)
     return
@@ -42,9 +43,9 @@ function article (req, res) {
 }
 
 function articleStaticFiles (req, res) {
-  const articlePath = articles.debugGetPathByArticleName(paths.articles, req.params.article)
+  const articlePath = articles.getPathByArticleName(paths.articles, req.params.article)
   const imagePath = path.join(articlePath, '/', req.params.folder, req.params.fileName)
-  res.sendFile(imagePath)
+  res.sendFile(imagePath, (err) => error(err, req, res))
 }
 
 // Special pages
@@ -81,13 +82,12 @@ function robotsTxt (req, res) {
 
 function notFound (req, res) {
   const data = {}
-  res.render('pages/404.njk', data)
+  res.status(404).render('pages/404.njk', data)
 }
 
 function error (err, req, res) {
   if (!err) return
 
-  // TODO: add generic error handler
   if (err.status === 404) {
     notFound(req, res)
   } else {

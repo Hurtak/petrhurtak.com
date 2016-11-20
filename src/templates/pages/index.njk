@@ -10,23 +10,23 @@
       {# TODO: think about unifying these data structures with article.njk #}
       <h2>
         <a
-          href="/{{ article.url }}/"
+          href="/{{ article.metadata.url }}/"
           class="ArticlePreview-title"
         >
-          {{ article.title }}
+          {{ article.metadata.title }}
         </a>
       </h2>
 
       <time
-        datetime="{{ article.dateLastUpdate | datetimeAttribute }}"
-        title="{{ article.dateLastUpdate | fullDate }}"
+        datetime="{{ article.metadata.dateLastUpdate | datetimeAttribute }}"
+        title="{{ article.metadata.dateLastUpdate | fullDate }}"
         class="ArticlePreview-date"
       >
-        {{ article.dateLastUpdate | dateHowLongBefore }}
+        {{ article.metadata.dateLastUpdate | dateHowLongBefore }}
       </time>
 
       <p class="ArticlePreview-description">
-        {{ article.description }}
+        {{ article.metadata.description }}
       </p>
 
     </section>

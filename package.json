@@ -7,12 +7,9 @@
     "node": ">=6"
   },
   "dependencies": {
-    "ava": "0.17.0",
     "cheerio": "0.22.0",
     "escape-html": "1.0.3",
-    "express": "4.14.0",
     "fs-promise": "0.5.0",
-    "hard-rejection": "0.1.0",
     "highlight.js": "9.7.0",
     "html-minifier": "3.1.0",
     "js-yaml": "3.6.1",
@@ -22,10 +19,8 @@
     "nunjucks": "2.5.2"
   },
   "devDependencies": {
-    "ava": "0.16.0",
-    "babel-eslint": "7.0.0",
+    "ava": "0.17.0",
     "coveralls": "2.11.14",
-    "nodemon": "1.11.0",
     "nyc": "7.1.0",
     "pretty-error": "2.0.2",
     "standard": "8.4.0"

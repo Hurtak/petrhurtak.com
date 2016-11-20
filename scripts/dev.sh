@@ -1,9 +1,16 @@
 #!/bin/bash
 
+### DIRECTORY SETUP
+
 cd "$(dirname "$0")/.."
 
 rm -rfv .nyc_output/
 rm -rfv coverage/
+
+### EXPORTED VARIABLES
+
+export NODE_ENV="development"
+# export NODE_ENV="production"
 
 ### FUNCTIONS
 

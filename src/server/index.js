@@ -45,6 +45,10 @@ app.get('/rss', routes.rss)
 app.get('/robots.txt', routes.robotsTxt)
 app.get('/humans.txt', routes.humansTxt)
 
+// debug
+app.get('/debug', routes.debug)
+app.get('/debug/', routes.debug)
+
 // articles
 app.get('/:article', (req, res) => res.redirect(301, req.path + '/'))
 app.get('/:article/', routes.article)
@@ -58,3 +62,6 @@ app.get('*', routes.notFound)
 app.listen(config.port, () => {
   console.log(`server started on port ${config.port}`)
 })
+
+// init articles cache
+

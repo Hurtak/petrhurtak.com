@@ -3,24 +3,23 @@
 const path = require('path')
 const lodash = require('lodash')
 
-const config = require('./config.js')
 const articles = require('./articles.js')
 const paths = require('./paths.js')
 
 // Main routes
 
 function index (req, res) {
+  console.time(1)
   const articleDirectories = articles.getArticlesDirectories(paths.articles)
 
-  let relevantArticles = articleDirectories
-  relevantArticles = lodash.sortBy(relevantArticles)
-  relevantArticles = lodash.slice(relevantArticles, 0, config.articles.articlesPerPage)
-
   const articlesData = []
-  for (const articlePath of relevantArticles) {
+  let i = 0
+  for (const articlePath of articleDirectories) {
+    console.log(i++ + '/' + articleDirectories.length)
     // TODO: once async/await lands, make this concurrent
     articlesData.push(articles.getArticleData(articlePath))
   }
+  console.timeEnd(1)
 
   const data = {
     articles: articlesData
@@ -109,6 +108,16 @@ function error (err, req, res) {
   }
 }
 
+// Debug
+
+function debug (req, res) {
+  console.log('hello')
+  const data = {
+  }
+
+  res.render('debug/debug.njk', data)
+}
+
 // Export
 
 module.exports = {
@@ -120,5 +129,7 @@ module.exports = {
   robotsTxt,
   humansTxt,
 
-  notFound
+  notFound,
+
+  debug
 }

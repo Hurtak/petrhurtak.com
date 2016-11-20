@@ -41,9 +41,9 @@ app.use('/static/node_modules', express.static(paths.nodeModules))
 app.get('/', routes.index)
 
 // special
-// app.get('/rss', routes.rss)
+app.get('/rss', routes.rss)
 app.get('/robots.txt', routes.robotsTxt)
-// app.get('/humans.txt', routes.humansTxt)
+app.get('/humans.txt', routes.humansTxt)
 
 // articles
 app.get('/:article', (req, res) => res.redirect(301, req.path + '/'))

@@ -50,33 +50,47 @@ function articleStaticFiles (req, res) {
 
 // Special pages
 
-// function rss (req, res) {
-//   database.getRSS().then(databaseArticles => {
-//     const data = {articles: databaseArticles}
-//     for (let i = 0; i < data.articles.length; i++) {
-//       data.articles[i].pubData = new Date(data.articles.publication_date).toGMTString()
-//     }
+function rss (req, res) {
+  const articleDirectories = articles.getArticlesDirectories(paths.articles)
 
-//     res.type('text/xml')
-//     res.render('pages/rss.njk', data)
-//   })
-// }
+  let relevantArticles = articleDirectories
+  relevantArticles = lodash.sortBy(relevantArticles)
+
+  const articlesData = []
+  for (const articlePath of relevantArticles) {
+    // TODO: once async/await lands, make this concurrent
+    articlesData.push(articles.getArticleData(articlePath))
+  }
+
+  const data = {
+    articles: articlesData
+  }
+  // TODO: pubData - what happens if we update article and it gets moved to the top? is there something like last update?
+
+  res.type('text/xml')
+  res.render('pages/rss.njk', data)
+}
 
 function robotsTxt (req, res) {
   res.type('text/plain')
   res.render('pages/robots.txt.njk')
 }
 
-// function humansTxt (req, res) {
-//   database.getHumansTxt().then(data => {
-//     const templateData = {
-//       lastUpdate: data.lastUpdate
-//     }
+function humansTxt (req, res) {
+  const articleDirectories = articles.getArticlesDirectories(paths.articles)
 
-//     res.type('text/plain')
-//     res.render('pages/humans.txt.njk', templateData)
-//   })
-// }
+  let relevantArticle = articleDirectories
+  relevantArticle = lodash.sortBy(relevantArticle)
+  relevantArticle = relevantArticle[0]
+  relevantArticle = articles.getArticleData(relevantArticle)
+
+  const data = {
+    lastUpdate: relevantArticle.metadata.dateLastUpdate
+  }
+
+  res.type('text/plain')
+  res.render('pages/humans.txt.njk', data)
+}
 
 // Error pages
 
@@ -102,9 +116,9 @@ module.exports = {
   article,
   articleStaticFiles,
 
-  // rss,
+  rss,
   robotsTxt,
-  // humansTxt,
+  humansTxt,
 
   notFound
 }

@@ -4,7 +4,7 @@ const express = require('express')
 const PrettyError = require('pretty-error')
 const hardRejection = require('hard-rejection')
 
-const config = require('../config/config.js')
+const config = require('./config.js')
 const paths = require('./paths.js')
 const routes = require('./routes.js')
 const nunjucksEnv = require('./nunjucks/env.js')

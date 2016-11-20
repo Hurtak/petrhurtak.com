@@ -1,22 +1,14 @@
 #!/bin/bash
 
-### DIRECTORY SETUP
-cd "$(dirname "$0")" # cd into directory where script is located
-cd .. # cd into app director
+cd "$(dirname "$0")/.."
 
 rm -rfv .nyc_output/
 rm -rfv coverage/
 
-./scripts/prepare-dirs.sh
+### FUNCTIONS
 
-### EXPORTED VARIABLES
-export NODE_ENV="development"
-# export NODE_ENV="production"
-
-### LOCAL VARIABLES
 NODE_BIN="node_modules/.bin"
 
-### FUNCTIONS
 function startServer {
   ${NODE_BIN}/nodemon src/server/index.js \
     --ext js,json,njk \
@@ -35,6 +27,7 @@ function lint {
 }
 
 ### START DEVELOPMENT SERVICES
+
 startServer \
   & test \
   & lint

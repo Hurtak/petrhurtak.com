@@ -3,7 +3,7 @@
 const fs = require('fs-promise')
 const path = require('path')
 
-const config = require('../config/config.js')
+const config = require('./config.js')
 const articles = require('./articles.js')
 const paths = require('./paths.js')
 

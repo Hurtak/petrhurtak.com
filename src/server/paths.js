@@ -21,22 +21,13 @@ const appDirectory = path.join(__dirname, '../')
 const paths = {
   root: '../',
 
-  config: './config',
   server: './server',
   templates: './templates',
   static: './static',
 
   articles: '../articles',
 
-  nodeModules: '../node_modules',
-
-  www: {
-    articles: '../www/articles',
-
-    log: '../www/log',
-    logAppMessage: '../www/log/app-message',
-    logExceptions: '../www/log/exceptions'
-  }
+  nodeModules: '../node_modules'
 }
 
 const absolutePaths = joinPathsInObject(paths, appDirectory)

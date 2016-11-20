@@ -13,11 +13,7 @@ node_js:
 
 # Build lifecycle
 
-before_install:
-  - chmod +x scripts/prepare-dirs.sh
-
 install:
-  - ./scripts/prepare-dirs.sh
   - npm install
 
 script:

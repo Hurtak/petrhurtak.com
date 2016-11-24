@@ -2,6 +2,10 @@
 
 ## NEXT RELEASE
 
+- for dev, there could be just symlinks for statics?
+- handle /static/node_modules paths
+- redirects https://www.netlify.com/docs/redirects/
+
 - deploy with netlify
 
 - change urls in the following way:

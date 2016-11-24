@@ -41,12 +41,6 @@ function article (req, res) {
   res.render('pages/article.njk', data)
 }
 
-function articleStaticFiles (req, res) {
-  const articlePath = articles.getPathByArticleName(paths.articles, req.params.article)
-  const imagePath = path.join(articlePath, '/', req.params.folder, req.params.fileName)
-  res.sendFile(imagePath, (err) => error(err, req, res))
-}
-
 // Special pages
 
 function rss (req, res) {
@@ -70,11 +64,6 @@ function rss (req, res) {
   res.render('pages/rss.njk', data)
 }
 
-function robotsTxt (req, res) {
-  res.type('text/plain')
-  res.render('pages/robots.txt.njk')
-}
-
 function humansTxt (req, res) {
   const articleDirectories = articles.getArticlesDirectories(paths.articles)
 
@@ -91,45 +80,13 @@ function humansTxt (req, res) {
   res.render('pages/humans.txt.njk', data)
 }
 
-// Error pages
-
-function notFound (req, res) {
-  const data = {}
-  res.status(404).render('pages/404.njk', data)
-}
-
-function error (err, req, res) {
-  if (!err) return
-
-  if (err.status === 404) {
-    notFound(req, res)
-  } else {
-    res.status(err.status).end()
-  }
-}
-
-// Debug
-
-function debug (req, res) {
-  console.log('hello')
-  const data = {
-  }
-
-  res.render('debug/debug.njk', data)
-}
 
 // Export
 
 module.exports = {
   index,
   article,
-  articleStaticFiles,
 
   rss,
-  robotsTxt,
-  humansTxt,
-
-  notFound,
-
-  debug
+  humansTxt
 }

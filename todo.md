@@ -21,10 +21,6 @@
         - what about visible field for each article, is it really needed?
             - just move article in the _unpublished dir?
 
-- think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really awkward
-    - maybe have delete function and insert function only which would be little cleaner but it would increase a lot id's in the database
-    - or is there some insert/update if exists in MySQL?
-
 - finish CSS design
     - inspiration:
         - https://automattic.com/
@@ -270,10 +266,6 @@
     - have all relevant metatags, inspire with jecas.cz and ponyfoo.com
     - console easter egg, or perhaps something inside HTML? http://codepen.io/elijahmanor/pen/RPjeLz?editors=001
     - consider switching to async templating engine with streaing support (markojs by ebay, dustjs by linkedin)
-
-## LONG TERM
-
-- once we have object spread operator replace Object.assign in addCommonData function in routes.js
 
 ## OTHER
 

@@ -26,7 +26,7 @@ const paths = {
   static: './static',
 
   articles: '../articles',
-
+  dist: '../dist',
   nodeModules: '../node_modules'
 }
 

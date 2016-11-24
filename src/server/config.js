@@ -17,6 +17,12 @@ module.exports = {
     articlesPerPage: 10
   },
 
+  debugSkipPackages: [
+    'express',
+    'mysql',
+    'nunjucks'
+  ],
+
   nunjucks: {
     autoescape: true, // (default: true) controls if output with dangerous characters are escaped automatically.
     throwOnUndefined: devel, // (default: false) throw errors when outputting a null/undefined value

@@ -1,67 +1,63 @@
 'use strict'
 
-const express = require('express')
-const PrettyError = require('pretty-error')
-const hardRejection = require('hard-rejection')
-
-const config = require('./config.js')
+const fs = require('fs-promise')
+// const path = require('path')
+// const config = require('./config.js')
 const paths = require('./paths.js')
-const routes = require('./routes.js')
-const nunjucksEnv = require('./nunjucks/env.js')
+const debug = require('./debug.js')
+// const routes = require('./routes.js')
+// const nunjucksEnv = require('./nunjucks/env.js')
 
-// debug
 
-const error = new PrettyError()
-error.skipNodeFiles()
-error.skipPackage(
-  'express',
-  'mysql',
-  'nunjucks'
-)
-error.start()
+// nunjucksEnv.express(app)
 
-hardRejection()
+debug()
+console.log('Starting compile script')
+prepareDirs()
+compileIndex()
+console.log('Compile script finished')
 
-// app
+function prepareDirs () {
+  fs.ensureDirSync(paths.dist)
+}
 
-const app = express()
-app.enable('strict routing') // treats '/foo' and '/foo/' as different routes
+function compileIndex () {
 
-// template config
+}
 
-nunjucksEnv.express(app)
+// const articleItems = fs.readdirSync(paths.articles)
 
-// routes
+// for (const item of articleItems) {
+//   const isDirectory = fs.statSync(path.join(paths.articles, item)).isDirectory()
+//   if (!isDirectory) continue
 
-// static files
-app.use('/static', express.static(paths.static))
-app.use('/static/node_modules', express.static(paths.nodeModules))
+//   const articleName = item.substr(11) // TODO move this function into src/lib/articles
+//   console.log(`Processing "${articleName}"`)
+//   const distArticleDirName = path.join(paths.dist.articles, articleName)
 
-// pages
-app.get('/', routes.index)
+//   fs.ensureDir(distArticleDirName)
+//   fs.ensureDir(path.join(distArticleDirName, '/images'))
 
-// special
-app.get('/rss', routes.rss)
-app.get('/robots.txt', routes.robotsTxt)
-app.get('/humans.txt', routes.humansTxt)
+//   const imagesFolder = path.join(paths.articles, item, '/images')
+//   const images = fs.readdirSync(imagesFolder)
+//   for (const image of images) {
+//     const from = path.join(imagesFolder, image)
+//     const to = path.join(distArticleDirName, '/images', image)
+//     fs.copySync(from, to)
+//   }
+// }
 
-// debug
-app.get('/debug', routes.debug)
-app.get('/debug/', routes.debug)
 
-// articles
-app.get('/:article', (req, res) => res.redirect(301, req.path + '/'))
-app.get('/:article/', routes.article)
-app.get('/:article/:folder/:fileName', routes.articleStaticFiles)
 
-// 404 on the rest
-app.get('*', routes.notFound)
 
-// start server
-
-app.listen(config.port, () => {
-  console.log(`server started on port ${config.port}`)
-})
-
-// init articles cache
+// articleHtml = htmlMinifier.minify(articleHtml, {
+//   collapseWhitespace: true,
+//   conservativeCollapse: true,
+//   minifyCSS: true,
+//   minifyJS: true,
+//   removeComments: true,
+//   removeRedundantAttributes: true,
+//   sortAttributes: true,
+//   sortClassName: true
+// })
 

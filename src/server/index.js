@@ -1,8 +1,11 @@
 'use strict'
 
+const path = require('path')
 const fs = require('fs-promise')
+
 // const path = require('path')
 // const config = require('./config.js')
+const nunjucks = require('./nunjucks/env.js')
 const paths = require('./paths.js')
 const debug = require('./debug.js')
 // const routes = require('./routes.js')
@@ -11,18 +14,23 @@ const debug = require('./debug.js')
 
 // nunjucksEnv.express(app)
 
-debug()
 console.log('Starting compile script')
+
+debug()
 prepareDirs()
-compileIndex()
+compile404()
+
 console.log('Compile script finished')
 
 function prepareDirs () {
+  fs.removeSync(paths.dist)
   fs.ensureDirSync(paths.dist)
 }
 
-function compileIndex () {
-
+function compile404 () {
+  const html = nunjucks.render('pages/404.njk')
+  const destination = path.join(paths.dist, '404.html')
+  fs.writeFileSync(destination, html)
 }
 
 // const articleItems = fs.readdirSync(paths.articles)

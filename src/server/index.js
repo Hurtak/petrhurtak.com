@@ -9,18 +9,21 @@ const nunjucks = require('./nunjucks/env.js')
 const paths = require('./paths.js')
 const debug = require('./debug.js')
 // const routes = require('./routes.js')
-// const nunjucksEnv = require('./nunjucks/env.js')
 
-
-// nunjucksEnv.express(app)
+// compilation
 
 console.log('Starting compile script')
+const start = Date.now()
 
 debug()
 prepareDirs()
 compile404()
+compileRobotsTxt()
 
-console.log('Compile script finished')
+const took = Date.now() - start
+console.log(`Compile script finished in ${took}ms`)
+
+// functions
 
 function prepareDirs () {
   fs.removeSync(paths.dist)
@@ -30,6 +33,12 @@ function prepareDirs () {
 function compile404 () {
   const html = nunjucks.render('pages/404.njk')
   const destination = path.join(paths.dist, '404.html')
+  fs.writeFileSync(destination, html)
+}
+
+function compileRobotsTxt () {
+  const html = nunjucks.render('pages/robots.txt.njk')
+  const destination = path.join(paths.dist, 'robots.txt')
   fs.writeFileSync(destination, html)
 }
 

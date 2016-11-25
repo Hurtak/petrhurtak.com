@@ -2,6 +2,7 @@
 
 const path = require('path')
 const fs = require('fs-promise')
+const lodash = require('lodash')
 const chokidar = require('chokidar')
 
 // const config = require('./config.js')
@@ -86,6 +87,11 @@ for (const article of articlesData) {
   )
 }
 
+// 7) RSS
+// TODO: pubData - what happens if we update article and it gets moved to the top? is there something like last update?
+const lastTenArticles = lodash.slice(articlesData, 0, 10)
+const rss = nunjucks.render('pages/rss.njk', {articles: lastTenArticles})
+fs.writeFileSync(path.join(paths.dist, 'rss.xml'), rss)
 
 console.log(`Compile script finished in ${Date.now() - start}ms`)
 

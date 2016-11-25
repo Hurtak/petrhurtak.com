@@ -2,10 +2,11 @@
 
 ## NEXT RELEASE
 
+- dev server reverse proxy, that understands _redirects and _headers files
 - maybe do not have snippets object at all, but inject snippets directly into the iframe and then with js parse the snippet content and make it live
 - fix tests
 - redirects https://www.netlify.com/docs/redirects/
-
+- headers https://www.netlify.com/docs/headers-and-basic-auth/
 - deploy with netlify
 
 - change urls in the following way:

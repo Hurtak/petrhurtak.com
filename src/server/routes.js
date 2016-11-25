@@ -5,21 +5,6 @@ const lodash = require('lodash')
 const articles = require('./articles.js')
 const paths = require('./paths.js')
 
-// Main routes
-
-function article (req, res) {
-  const articleName = req.params.article
-
-  const articlePath = articles.getPathByArticleName(paths.articles, articleName)
-  if (!articlePath) {
-    notFound(req, res)
-    return
-  }
-
-  const data = articles.getArticleData(articlePath)
-  res.render('pages/article.njk', data)
-}
-
 // Special pages
 
 function rss (req, res) {
@@ -63,7 +48,6 @@ function humansTxt (req, res) {
 // Export
 
 module.exports = {
-  article,
   rss,
   humansTxt
 }

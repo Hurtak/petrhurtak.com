@@ -58,8 +58,33 @@ for (const articlePath of articleDirectories) {
 const htmlIndex = nunjucks.render('pages/index.njk', {articles: articlesData})
 fs.writeFileSync(path.join(paths.dist, 'index.html'), htmlIndex)
 
-console.log(`Compile script finished in ${Date.now() - start}ms`)
+// 6) articles
+for (const article of articlesData) {
+  // TODO: once async/await lands, make this concurrent
 
+  // 6.1) article directory
+  const folder = path.join(paths.dist, article.metadata.url)
+  fs.mkdirSync(folder)
+
+  // 6.2) article html
+  const htmlArticle = nunjucks.render('pages/article.njk', article)
+  fs.writeFileSync(path.join(folder, 'index.html'), htmlArticle)
+
+  // 6.3) article images
+  fs.symlinkSync(
+    path.join(article.fs.path, paths.articleImages),
+    path.join(folder, paths.articleImages)
+  )
+
+  // 6.4) article snippets
+  fs.symlinkSync(
+    path.join(article.fs.path, paths.articleSnippets),
+    path.join(folder, paths.articleSnippets)
+  )
+}
+
+
+console.log(`Compile script finished in ${Date.now() - start}ms`)
 
 // function watch () {
 //   const watcher = chokidar.watch(paths.static, {

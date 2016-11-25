@@ -4,12 +4,11 @@ const path = require('path')
 const fs = require('fs-promise')
 const chokidar = require('chokidar')
 
-// const path = require('path')
 // const config = require('./config.js')
-const nunjucks = require('./nunjucks/env.js')
-const paths = require('./paths.js')
 const debug = require('./debug.js')
-// const routes = require('./routes.js')
+const paths = require('./paths.js')
+const articles = require('./articles.js')
+const nunjucks = require('./nunjucks/env.js')
 
 debug()
 
@@ -18,32 +17,48 @@ debug()
 console.log('Starting compile script')
 const start = Date.now()
 
-// prepare dirs
+// 1) prepare dirs
+
 fs.removeSync(paths.dist)
 fs.mkdirSync(paths.dist)
 fs.mkdirSync(paths.distStatic)
 
-// 404
+// 2) Static pages
+
+// 2.1) 404
 const html404 = nunjucks.render('pages/404.njk')
 fs.writeFileSync(path.join(paths.dist, '404.html'), html404)
 
-// robots txt
+// 2.2) robots.txt
 const htmlRobotsTxt = nunjucks.render('pages/robots.txt.njk')
 fs.writeFileSync(path.join(paths.dist, 'robots.txt'), htmlRobotsTxt)
 
-// styles
+// 3) static files
+
+// 3.1) styles
 fs.symlinkSync(paths.styles, paths.distStyles)
 
-// scripts
+// 3.2) scripts
 fs.symlinkSync(paths.scripts, paths.distScripts)
 
-// images
+// 3.3) images
 fs.symlinkSync(paths.images, paths.distImages)
 
-// watch()
+// 4) gather articles data
 
-const took = Date.now() - start
-console.log(`Compile script finished in ${took}ms`)
+const articleDirectories = articles.getArticlesDirectories(paths.articles)
+
+const articlesData = []
+for (const articlePath of articleDirectories) {
+  // TODO: once async/await lands, make this concurrent
+  articlesData.push(articles.getArticleData(articlePath))
+}
+
+// 5) index page
+const htmlIndex = nunjucks.render('pages/index.njk', {articles: articlesData})
+fs.writeFileSync(path.join(paths.dist, 'index.html'), htmlIndex)
+
+console.log(`Compile script finished in ${Date.now() - start}ms`)
 
 
 // function watch () {

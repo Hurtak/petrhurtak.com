@@ -1,32 +1,11 @@
 'use strict'
 
-const path = require('path')
 const lodash = require('lodash')
 
 const articles = require('./articles.js')
 const paths = require('./paths.js')
 
 // Main routes
-
-function index (req, res) {
-  console.time(1)
-  const articleDirectories = articles.getArticlesDirectories(paths.articles)
-
-  const articlesData = []
-  let i = 0
-  for (const articlePath of articleDirectories) {
-    console.log(i++ + '/' + articleDirectories.length)
-    // TODO: once async/await lands, make this concurrent
-    articlesData.push(articles.getArticleData(articlePath))
-  }
-  console.timeEnd(1)
-
-  const data = {
-    articles: articlesData
-  }
-
-  res.render('pages/index.njk', data)
-}
 
 function article (req, res) {
   const articleName = req.params.article
@@ -84,9 +63,7 @@ function humansTxt (req, res) {
 // Export
 
 module.exports = {
-  index,
   article,
-
   rss,
   humansTxt
 }

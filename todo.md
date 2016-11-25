@@ -3,6 +3,7 @@
 ## NEXT RELEASE
 
 - handle /static/node_modules paths
+- maybe do not have snippets object at all, but inject snippets directly into the iframe and then with js parse the snippet content and make it live
 - fix tests
 - redirects https://www.netlify.com/docs/redirects/
 

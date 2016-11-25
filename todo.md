@@ -2,8 +2,8 @@
 
 ## NEXT RELEASE
 
-- for dev, there could be just symlinks for statics?
 - handle /static/node_modules paths
+- fix tests
 - redirects https://www.netlify.com/docs/redirects/
 
 - deploy with netlify

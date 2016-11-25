@@ -23,10 +23,21 @@ const paths = {
 
   server: './server',
   templates: './templates',
+
   static: './static',
+  styles: './static/styles',
+  scripts: './static/scripts',
+  images: './static/images',
+
+  dist: '../dist',
+  distStatic: '../dist/static',
+  distStyles: '../dist/static/styles',
+  distScripts: '../dist/static/scripts',
+  distImages: '../dist/static/images',
 
   articles: '../articles',
-  dist: '../dist',
+
+
   nodeModules: '../node_modules'
 }
 

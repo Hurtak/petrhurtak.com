@@ -21,6 +21,7 @@ const paths = {
   distStyles: absolutePath('../dist/static/styles'),
   distScripts: absolutePath('../dist/static/scripts'),
   distImages: absolutePath('../dist/static/images'),
+  distNodeModules: absolutePath('../dist/static/node_modules'),
 
   articles: absolutePath('../articles'),
   articleImages: 'images',

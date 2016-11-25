@@ -44,6 +44,9 @@ fs.symlinkSync(paths.scripts, paths.distScripts)
 // 3.3) images
 fs.symlinkSync(paths.images, paths.distImages)
 
+// 3.4) node_modules dir linked to /static/node_modules in development
+fs.symlinkSync(paths.nodeModules, paths.distNodeModules)
+
 // 4) gather articles data
 
 const articleDirectories = articles.getArticlesDirectories(paths.articles)

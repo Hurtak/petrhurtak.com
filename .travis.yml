@@ -1,17 +1,12 @@
 language: node_js
 
-# Build matrix
-
 os:
   - linux
   - osx
 
 node_js:
-  - "node" # latest node
-  - "7" # latest 7.x.x node
+  - "7"
   - "6"
-
-# Build lifecycle
 
 install:
   - npm install

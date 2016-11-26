@@ -2,6 +2,11 @@
   "name": "hurtak.cc",
   "version": "1.0.0",
   "dependencies": {
+    "a-sync-waterfall": {
+      "version": "1.0.0",
+      "from": "a-sync-waterfall@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/a-sync-waterfall/-/a-sync-waterfall-1.0.0.tgz"
+    },
     "abbrev": {
       "version": "1.0.9",
       "from": "abbrev@>=1.0.0 <2.0.0",
@@ -2652,9 +2657,9 @@
       "resolved": "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.1.tgz"
     },
     "nunjucks": {
-      "version": "2.5.2",
-      "from": "nunjucks@2.5.2",
-      "resolved": "https://registry.npmjs.org/nunjucks/-/nunjucks-2.5.2.tgz",
+      "version": "3.0.0",
+      "from": "nunjucks@3.0.0",
+      "resolved": "https://registry.npmjs.org/nunjucks/-/nunjucks-3.0.0.tgz",
       "dependencies": {
         "camelcase": {
           "version": "2.1.1",

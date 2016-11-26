@@ -51,11 +51,16 @@ fs.symlinkSync(paths.nodeModules, paths.distNodeModules)
 
 const articleDirectories = articles.getArticlesDirectories(paths.articles)
 
-const articlesData = []
+let articlesData = []
 for (const articlePath of articleDirectories) {
   // TODO: once async/await lands, make this concurrent
   articlesData.push(articles.getArticleData(articlePath))
 }
+
+articlesData = lodash.sortBy(articlesData, 'metadata.dateLastUpdate')
+articlesData = articlesData.reverse()
+articlesData = lodash.filter(articlesData, (article) => article.metadata.published === true)
+articlesData = lodash.filter(articlesData, (article) => article.metadata.dateLastUpdate <= new Date())
 
 // 5) index page
 const indexArticles = lodash.slice(articlesData, 0, config.articles.perPage)

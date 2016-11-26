@@ -61,7 +61,7 @@
 
     {# debug #}
     {% if devel %}
-      <code class="DebugTemplates"><pre>{{ getDebugData() | stringifyObject }}</pre></code>
+      <code class="DebugTemplates"><pre>{{ getDebugData() | dump(4) }}</pre></code>
     {% endif %}
 
   </body>

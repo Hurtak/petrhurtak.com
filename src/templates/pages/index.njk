@@ -4,10 +4,9 @@
 
   <h1>Recent articles</h1>
 
-  {% for article in articles %}
+  {% for article in articles | limit(10) %}
     <section class="ArticlePreview">
 
-      {# TODO: think about unifying these data structures with article.njk #}
       <h2>
         <a
           href="/{{ article.metadata.url }}/"

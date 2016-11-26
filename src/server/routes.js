@@ -21,7 +21,6 @@ function humansTxt (req, res) {
   res.render('pages/humans.txt.njk', data)
 }
 
-
 // Export
 
 module.exports = {

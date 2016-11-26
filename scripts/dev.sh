@@ -21,7 +21,8 @@ function compile {
     --ext js,json,njk \
     --watch src/server \
     --watch src/templates \
-    --watch src/config
+    --watch src/config \
+    --watch articles
 }
 
 function serve {

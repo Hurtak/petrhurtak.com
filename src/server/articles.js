@@ -33,25 +33,39 @@ function getPathByArticleName (directory, articleUrl) {
   return null
 }
 
-function getArticlesDirectories (directory) {
-  const directoryItems = fs.readdirSync(directory)
-  const articleDirectories = []
+function getArticles (postsDirectory, draftsDirectory) {
+  // TODO: once async/await lands, make this more concurrent
 
-  for (const directoryItem of directoryItems) {
-    const fullPath = path.join(directory, directoryItem)
+  const articlesData = []
+
+  for (const directoryItem of fs.readdirSync(postsDirectory)) {
+    const fullPath = path.join(postsDirectory, directoryItem)
+    if (fullPath === draftsDirectory) continue
+
     const isDirectory = fs.statSync(fullPath).isDirectory()
-
     if (!isDirectory) continue
-    articleDirectories.push(fullPath)
+
+    articlesData.push(getArticleData(fullPath, true))
   }
 
-  return articleDirectories
+  for (const directoryItem of fs.readdirSync(draftsDirectory)) {
+    const fullPath = path.join(draftsDirectory, directoryItem)
+    const isDirectory = fs.statSync(fullPath).isDirectory()
+    if (!isDirectory) continue
+
+    articlesData.push(getArticleData(fullPath, false))
+  }
+
+  return articlesData
 }
 
-function getArticleData (articleFolderPath) {
+function getArticleData (articleFolderPath, isPublished) {
   const metadataPath = path.join(articleFolderPath, paths.articleMetadata)
   const metadataContent = fs.readFileSync(metadataPath, 'utf-8')
-  const metadata = yaml.safeLoad(metadataContent)
+  const metadata = Object.assign(
+    yaml.safeLoad(metadataContent),
+    { published: isPublished }
+  )
 
   const snippetsData = getSnippetsData(articleFolderPath, metadata.snippetsConfig)
   const snippets = enhanceSnippetsDataWithConfig(snippetsData, metadata.snippetsConfig)
@@ -150,7 +164,7 @@ function enhanceSnippetsDataWithConfig (snippetsData, snippetsConfig) {
 }
 
 module.exports = {
+  getArticles,
   getPathByArticleName,
-  getArticlesDirectories,
   getArticleData
 }

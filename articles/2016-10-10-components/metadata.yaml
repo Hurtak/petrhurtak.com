@@ -8,8 +8,6 @@ url: components
 datePublication: 2016-10-10 10:00:00
 dateLastUpdate: 2016-10-10 10:00:00
 
-published: true
-
 snippetsConfig:
   example2:
     inlineSnippet: true

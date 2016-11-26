@@ -2,12 +2,12 @@
 
 ## NEXT RELEASE
 
-- dev server reverse proxy, that understands _redirects and _headers files
+- handle config.article.perPage - pass these into templates
+- nunjucks move global variables into global namespace
+- templates move pages items into root, move base into _base_ dir or something
+- what to do about times like 'just now', 'one week ago'?
+
 - maybe do not have snippets object at all, but inject snippets directly into the iframe and then with js parse the snippet content and make it live
-- fix tests
-- redirects https://www.netlify.com/docs/redirects/
-- headers https://www.netlify.com/docs/headers-and-basic-auth/
-- deploy with netlify
 
 - change urls in the following way:
     - move paths into config?
@@ -21,10 +21,6 @@
             - again we will have relative links from snipepts.html
             - how that would work, will there be problems with paths?
             - what about using base tag?
-    - introduce _unpublished directory
-        - think of where to put componetns article?
-        - what about visible field for each article, is it really needed?
-            - just move article in the _unpublished dir?
 
 - finish CSS design
     - inspiration:

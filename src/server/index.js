@@ -49,21 +49,14 @@ fs.symlinkSync(paths.nodeModules, paths.distNodeModules)
 
 // 4) gather articles data
 
-const articleDirectories = articles.getArticlesDirectories(paths.articles)
-
-let articlesData = []
-for (const articlePath of articleDirectories) {
-  // TODO: once async/await lands, make this concurrent
-  articlesData.push(articles.getArticleData(articlePath))
-}
-
+let articlesData = articles.getArticles(paths.articles, paths.articlesDrafts)
 articlesData = lodash.sortBy(articlesData, 'metadata.dateLastUpdate')
 articlesData = articlesData.reverse()
-articlesData = lodash.filter(articlesData, (article) => article.metadata.published === true)
-articlesData = lodash.filter(articlesData, (article) => article.metadata.dateLastUpdate <= new Date())
 
 // 5) index page
-const indexArticles = lodash.slice(articlesData, 0, config.articles.perPage)
+let indexArticles = lodash.filter(articlesData, article => article.metadata.published === true)
+indexArticles = lodash.filter(indexArticles, article => article.metadata.dateLastUpdate <= new Date())
+indexArticles = lodash.slice(indexArticles, 0, config.articles.perPage)
 const htmlIndex = nunjucks.render('pages/index.njk', {articles: indexArticles})
 fs.writeFileSync(path.join(paths.dist, 'index.html'), htmlIndex)
 

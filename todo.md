@@ -41,7 +41,6 @@
     - 404 page
 
 - buy domains
-- put this damn thing on the internet
 - add comments
 - add google analytics
 - go through the templates and make sure url like hurtak.cz & hurtak.cc are all the same and correct

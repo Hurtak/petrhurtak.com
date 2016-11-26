@@ -2,7 +2,7 @@
 
 ## NEXT RELEASE
 
-- move unpublished articles into _drafts namespece also in url
+- finish humanstxt
 - reset button doesent work in snippets
 - what to do about times like 'just now', 'one week ago'?
 

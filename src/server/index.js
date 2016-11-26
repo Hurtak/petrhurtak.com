@@ -21,6 +21,7 @@ const start = Date.now()
 
 fs.removeSync(paths.dist)
 fs.mkdirSync(paths.dist)
+fs.mkdirSync(paths.distDrafts)
 fs.mkdirSync(paths.distStatic)
 
 // 2) Static pages
@@ -66,7 +67,10 @@ for (const article of articlesData) {
   // TODO: once async/await lands, make this concurrent
 
   // 6.1) article directory
-  const folder = path.join(paths.dist, article.metadata.url)
+  const folder = path.join(
+    article.metadata.published ? paths.dist : paths.distDrafts,
+    article.metadata.url
+  )
   fs.mkdirSync(folder)
 
   // 6.2) article html

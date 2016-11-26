@@ -3,7 +3,7 @@
 ## NEXT RELEASE
 
 - move unpublished articles into _drafts namespece also in url
-- templates move pages items into root, move base into _base_ dir or something
+- reset button doesent work in snippets
 - what to do about times like 'just now', 'one week ago'?
 
 - maybe do not have snippets object at all, but inject snippets directly into the iframe and then with js parse the snippet content and make it live

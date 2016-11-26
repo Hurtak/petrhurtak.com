@@ -18,7 +18,7 @@ function humansTxt (req, res) {
   }
 
   res.type('text/plain')
-  res.render('pages/humans.txt.njk', data)
+  res.render('humans.txt.njk', data)
 }
 
 // Export

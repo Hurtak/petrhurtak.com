@@ -26,11 +26,11 @@ fs.mkdirSync(paths.distStatic)
 // 2) Static pages
 
 // 2.1) 404
-const html404 = nunjucks.render('pages/404.njk')
+const html404 = nunjucks.render('404.njk')
 fs.writeFileSync(path.join(paths.dist, '404.html'), html404)
 
 // 2.2) robots.txt
-const htmlRobotsTxt = nunjucks.render('pages/robots.txt.njk')
+const htmlRobotsTxt = nunjucks.render('robots.txt.njk')
 fs.writeFileSync(path.join(paths.dist, 'robots.txt'), htmlRobotsTxt)
 
 // 3) static files
@@ -58,7 +58,7 @@ let indexArticles = lodash.filter(articlesData, article => article.metadata.publ
 indexArticles = lodash.filter(indexArticles, article => article.metadata.dateLastUpdate <= new Date())
 indexArticles = lodash.slice(indexArticles, 0, config.articles.perPage)
 
-const htmlIndex = nunjucks.render('pages/index.njk', {articles: indexArticles})
+const htmlIndex = nunjucks.render('index.njk', {articles: indexArticles})
 fs.writeFileSync(path.join(paths.dist, 'index.html'), htmlIndex)
 
 // 6) articles
@@ -70,7 +70,7 @@ for (const article of articlesData) {
   fs.mkdirSync(folder)
 
   // 6.2) article html
-  const htmlArticle = nunjucks.render('pages/article.njk', article)
+  const htmlArticle = nunjucks.render('article.njk', article)
   fs.writeFileSync(path.join(folder, 'index.html'), htmlArticle)
 
   // 6.3) article images
@@ -89,7 +89,7 @@ for (const article of articlesData) {
 // 7) RSS
 // TODO: pubData - what happens if we update article and it gets moved to the top? is there something like last update?
 const rssArticles = lodash.slice(articlesData, 0, config.articles.perRssFeed)
-const rssFeed = nunjucks.render('pages/rss.njk', {articles: rssArticles})
+const rssFeed = nunjucks.render('rss.njk', {articles: rssArticles})
 fs.writeFileSync(path.join(paths.dist, 'rss.xml'), rssFeed)
 
 console.log(`Compile script finished in ${Date.now() - start}ms`)

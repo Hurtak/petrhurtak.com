@@ -4,11 +4,9 @@
 
 - reset button doesent work in snippets
 - what to do about times like 'just now', 'one week ago'?
-
 - maybe do not have snippets object at all, but inject snippets directly into the iframe and then with js parse the snippet content and make it live
 
 - change urls in the following way:
-    - move paths into config?
     - snippets
         - render iframes on backend by putting content into srcdoc (but still specify src attribute because ie doesent support it)
         - in dev server raw snippet from articles/2016-10-10-article-name/snippets/x.html

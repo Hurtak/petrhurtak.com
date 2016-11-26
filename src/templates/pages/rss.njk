@@ -2,15 +2,15 @@
 <rss version="2.0">
   <channel>
 
-    <title>{{ siteDomain }}</title>
-    <link>{{ siteUrl }}</link>
+    <title>{{ globals.siteDomain }}</title>
+    <link>{{ globals.siteUrl }}</link>
     <description>Blog about web design and technologies</description>
 
     {% for article in articles %}
       <item>
         <title>{{ article.metadata.title }}</title>
-        <link>{{ siteUrl }}/{{ article.metadata.url }}</link>
-        <guid>{{ siteUrl }}/{{ article.metadata.url }}</guid>
+        <link>{{ globals.siteUrl }}/{{ article.metadata.url }}</link>
+        <guid>{{ globals.siteUrl }}/{{ article.metadata.url }}</guid>
         <pubDate>{{ article.metadata.dateLastUpdate | gmt }}</pubDate>
         <description>{{ article.metadata.description }}</description>
       </item>

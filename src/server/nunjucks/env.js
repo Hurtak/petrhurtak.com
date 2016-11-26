@@ -14,11 +14,13 @@ for (const filterName in filters) {
 }
 
 // add custom globals
-nunjucksEnv.addGlobal('currentYear', new Date().getUTCFullYear())
-nunjucksEnv.addGlobal('siteUrl', config.siteUrl.href)
-nunjucksEnv.addGlobal('siteDomain', config.siteUrl.host)
-nunjucksEnv.addGlobal('devel', config.devel)
-nunjucksEnv.addGlobal('production', config.production)
+nunjucksEnv.addGlobal('globals', {
+  currentYear: new Date().getUTCFullYear(),
+  siteUrl: config.siteUrl.href,
+  siteDomain: config.siteUrl.host,
+  devel: config.devel,
+  production: config.production
+})
 nunjucksEnv.addGlobal('getDebugData', function () { return this })
 
 module.exports = nunjucksEnv

@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="/static/images/favicon.png" sizes="16x16">
 
     {# styles #}
-    {% if devel -%}
+    {% if globals.devel -%}
       <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-reset.css">
       <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-templates.css">
     {%- endif %}
@@ -60,7 +60,7 @@
     </script>
 
     {# debug #}
-    {% if devel %}
+    {% if globals.devel %}
       <code class="DebugTemplates"><pre>{{ getDebugData() | dump(4) }}</pre></code>
     {% endif %}
 

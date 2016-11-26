@@ -25,7 +25,8 @@ function compile {
 }
 
 function serve {
-  ${NODE_BIN}/http-server dist
+  ${NODE_BIN}/http-server dist \
+    --silent
 }
 
 function test {

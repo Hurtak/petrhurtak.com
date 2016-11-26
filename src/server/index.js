@@ -3,7 +3,6 @@
 const path = require('path')
 const fs = require('fs-promise')
 const lodash = require('lodash')
-const chokidar = require('chokidar')
 
 // const config = require('./config.js')
 const debug = require('./debug.js')
@@ -127,9 +126,6 @@ console.log(`Compile script finished in ${Date.now() - start}ms`)
 //   }
 // }
 
-
-
-
 // articleHtml = htmlMinifier.minify(articleHtml, {
 //   collapseWhitespace: true,
 //   conservativeCollapse: true,
@@ -140,4 +136,3 @@ console.log(`Compile script finished in ${Date.now() - start}ms`)
 //   sortAttributes: true,
 //   sortClassName: true
 // })
-

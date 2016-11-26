@@ -6,17 +6,16 @@ const path = require('path')
 const lodash = require('lodash')
 const yaml = require('js-yaml')
 const markdownIt = require('markdown-it')
-const htmlMinifier = require('html-minifier')
 const highlight = require('highlight.js')
 
 const utilsArticles = require('./utils/articles.js')
 
-function debugGetPathByArticleName (directory, articleUrl) {
-  const directoryItems = fs.readdirSync(directory) // TODO: sync function
+function getPathByArticleName (directory, articleUrl) {
+  const directoryItems = fs.readdirSync(directory)
 
   for (const directoryItem of directoryItems) {
     const fullPath = path.join(directory, directoryItem)
-    const isDirectory = fs.statSync(fullPath).isDirectory() // TODO: sync function
+    const isDirectory = fs.statSync(fullPath).isDirectory()
 
     if (!isDirectory) continue
 
@@ -34,12 +33,12 @@ function debugGetPathByArticleName (directory, articleUrl) {
 }
 
 function getArticlesDirectories (directory) {
-  const directoryItems = fs.readdirSync(directory) // TODO: sync function
+  const directoryItems = fs.readdirSync(directory)
   const articleDirectories = []
 
   for (const directoryItem of directoryItems) {
     const fullPath = path.join(directory, directoryItem)
-    const isDirectory = fs.statSync(fullPath).isDirectory() // TODO: sync function
+    const isDirectory = fs.statSync(fullPath).isDirectory()
 
     if (!isDirectory) continue
     articleDirectories.push(fullPath)
@@ -88,19 +87,7 @@ function getArticleHtml (articlePath, snippets) {
   articleHtml = markdown.render(articleHtml)
   articleHtml = utilsArticles.addIdsToHeadings(articleHtml)
 
-  // TODO: think about merging these two together, or at least share css selector?
   articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml, snippets)
-
-  articleHtml = htmlMinifier.minify(articleHtml, {
-    collapseWhitespace: true,
-    conservativeCollapse: true,
-    minifyCSS: true,
-    minifyJS: true,
-    removeComments: true,
-    removeRedundantAttributes: true,
-    sortAttributes: true,
-    sortClassName: true
-  })
 
   return articleHtml
 }
@@ -112,13 +99,13 @@ function getSnippetsData (articlePath) {
   let snippetFiles = []
   try {
     // TOOD: better way to do this than try catch?
-    snippetFiles = fs.readdirSync(snippetsDir) // TODO: sync function
+    snippetFiles = fs.readdirSync(snippetsDir)
   } catch (e) {
     return snippets
   }
 
   for (const fileName of snippetFiles) {
-    const isFile = fs.statSync(path.join(snippetsDir, fileName)).isFile() // TODO: sync function
+    const isFile = fs.statSync(path.join(snippetsDir, fileName)).isFile()
     if (!isFile) continue
 
     const extension = path.extname(fileName)
@@ -126,7 +113,7 @@ function getSnippetsData (articlePath) {
 
     const snippetName = lodash.trimEnd(fileName, extension)
     const snippetPath = path.join(snippetsDir, fileName)
-    const html = fs.readFileSync(snippetPath, 'utf8') // TODO: sync function
+    const html = fs.readFileSync(snippetPath, 'utf8')
 
     const snippetMetadata = {
       name: snippetName,
@@ -162,7 +149,7 @@ function enhanceSnippetsDataWithConfig (snippetsData, snippetsConfig) {
 }
 
 module.exports = {
-  debugGetPathByArticleName,
+  getPathByArticleName,
   getArticlesDirectories,
   getArticleData
 }

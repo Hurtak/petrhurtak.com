@@ -1,73 +1,138 @@
 'use strict'
 
-const perfStart = Date.now()
+const path = require('path')
+const fs = require('fs-promise')
+const lodash = require('lodash')
 
-require('./debug.js')()
-
-const express = require('express')
-// const expressStatusMonitor = require('express-status-monitor') // TODO: wait for it to be more stable
-const helmet = require('helmet') // TODO: article about all header this provides
-const bodyParser = require('body-parser')
-const responseTime = require('response-time')
-const compression = require('compression')
-
-const config = require('../config/config.js')
-const database = require('./database.js')
+// const config = require('./config.js')
+const debug = require('./debug.js')
 const paths = require('./paths.js')
-const routes = require('./routes.js')
-const nunjucksEnv = require('./nunjucks/env.js')
+const articles = require('./articles.js')
+const nunjucks = require('./nunjucks/env.js')
 
-// app
+debug()
 
-database.openConnection()
+// compilation
 
-const app = express()
-app.enable('strict routing') // treats '/foo' and '/foo/' as different routes
+console.log('Starting compile script')
+const start = Date.now()
 
-// middlewares
+// 1) prepare dirs
 
-// app.use(expressStatusMonitor()) // TODO: wait for it to be more stable
-app.use(helmet())
-app.use(bodyParser.json())
-app.use(responseTime())
-app.use(compression())
+fs.removeSync(paths.dist)
+fs.mkdirSync(paths.dist)
+fs.mkdirSync(paths.distStatic)
 
-// template config
+// 2) Static pages
 
-nunjucksEnv.express(app)
+// 2.1) 404
+const html404 = nunjucks.render('pages/404.njk')
+fs.writeFileSync(path.join(paths.dist, '404.html'), html404)
 
-// routes
+// 2.2) robots.txt
+const htmlRobotsTxt = nunjucks.render('pages/robots.txt.njk')
+fs.writeFileSync(path.join(paths.dist, 'robots.txt'), htmlRobotsTxt)
 
-// static files
-app.use('/static', express.static(paths.static))
-app.use('/static/node_modules', express.static(paths.nodeModules)) // TODO: make only avaliable in debug
+// 3) static files
 
-// pages
-app.get('/', routes.index)
+// 3.1) styles
+fs.symlinkSync(paths.styles, paths.distStyles)
 
-// special
-app.get('/rss', routes.rss)
-app.get('/robots.txt', routes.robotsTxt)
-app.get('/humans.txt', routes.humansTxt)
+// 3.2) scripts
+fs.symlinkSync(paths.scripts, paths.distScripts)
 
-// api
-app.post('/api/log/app-message', routes.apiLogAppMessage)
-app.post('/api/log/exception', routes.apiLogException)
+// 3.3) images
+fs.symlinkSync(paths.images, paths.distImages)
 
-// articles
-app.get('/:article', (req, res) => res.redirect(301, req.path + '/'))
-app.get('/:article/', routes.article)
-app.get('/:article/:folder/:fileName', routes.articleStaticFiles)
+// 3.4) node_modules dir linked to /static/node_modules in development
+fs.symlinkSync(paths.nodeModules, paths.distNodeModules)
 
-// 404 on the rest
-app.get('*', routes.notFound)
+// 4) gather articles data
 
-// start server
+const articleDirectories = articles.getArticlesDirectories(paths.articles)
 
-app.listen(config.port, () => {
-  const env = config.devel ? 'DEVELOPMENT' : 'PRODUCTION'
-  const perfEnd = Date.now()
-  const startupTime = perfEnd - perfStart
+const articlesData = []
+for (const articlePath of articleDirectories) {
+  // TODO: once async/await lands, make this concurrent
+  articlesData.push(articles.getArticleData(articlePath))
+}
 
-  console.log(`server started | port ${config.port} | ${env} mode | startup time ${startupTime}ms`)
-})
+// 5) index page
+const htmlIndex = nunjucks.render('pages/index.njk', {articles: articlesData})
+fs.writeFileSync(path.join(paths.dist, 'index.html'), htmlIndex)
+
+// 6) articles
+for (const article of articlesData) {
+  // TODO: once async/await lands, make this concurrent
+
+  // 6.1) article directory
+  const folder = path.join(paths.dist, article.metadata.url)
+  fs.mkdirSync(folder)
+
+  // 6.2) article html
+  const htmlArticle = nunjucks.render('pages/article.njk', article)
+  fs.writeFileSync(path.join(folder, 'index.html'), htmlArticle)
+
+  // 6.3) article images
+  fs.symlinkSync(
+    path.join(article.fs.path, paths.articleImages),
+    path.join(folder, paths.articleImages)
+  )
+
+  // 6.4) article snippets
+  fs.symlinkSync(
+    path.join(article.fs.path, paths.articleSnippets),
+    path.join(folder, paths.articleSnippets)
+  )
+}
+
+// 7) RSS
+// TODO: pubData - what happens if we update article and it gets moved to the top? is there something like last update?
+const lastTenArticles = lodash.slice(articlesData, 0, 10)
+const rss = nunjucks.render('pages/rss.njk', {articles: lastTenArticles})
+fs.writeFileSync(path.join(paths.dist, 'rss.xml'), rss)
+
+console.log(`Compile script finished in ${Date.now() - start}ms`)
+
+// function watch () {
+//   const watcher = chokidar.watch(paths.static, {
+//   })
+
+//   watcher.on('change', (path, b) => {
+//     console.log(path)
+//     console.log(b)
+//   })
+// }
+
+// const articleItems = fs.readdirSync(paths.articles)
+
+// for (const item of articleItems) {
+//   const isDirectory = fs.statSync(path.join(paths.articles, item)).isDirectory()
+//   if (!isDirectory) continue
+
+//   const articleName = item.substr(11) // TODO move this function into src/lib/articles
+//   console.log(`Processing "${articleName}"`)
+//   const distArticleDirName = path.join(paths.dist.articles, articleName)
+
+//   fs.ensureDir(distArticleDirName)
+//   fs.ensureDir(path.join(distArticleDirName, '/images'))
+
+//   const imagesFolder = path.join(paths.articles, item, '/images')
+//   const images = fs.readdirSync(imagesFolder)
+//   for (const image of images) {
+//     const from = path.join(imagesFolder, image)
+//     const to = path.join(distArticleDirName, '/images', image)
+//     fs.copySync(from, to)
+//   }
+// }
+
+// articleHtml = htmlMinifier.minify(articleHtml, {
+//   collapseWhitespace: true,
+//   conservativeCollapse: true,
+//   minifyCSS: true,
+//   minifyJS: true,
+//   removeComments: true,
+//   removeRedundantAttributes: true,
+//   sortAttributes: true,
+//   sortClassName: true
+// })

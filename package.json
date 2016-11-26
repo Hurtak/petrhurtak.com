@@ -3,41 +3,36 @@
   "version": "1.0.0",
   "description": "source code for hurtak.cc",
   "main": "src/server/index.js",
+  "engines": {
+    "node": ">=6"
+  },
   "dependencies": {
-    "body-parser": "1.15.2",
     "cheerio": "0.22.0",
-    "compression": "1.6.2",
     "escape-html": "1.0.3",
-    "express": "4.14.0",
-    "express-status-monitor": "0.1.6",
     "fs-promise": "1.0.0",
-    "hard-rejection": "0.1.0",
-    "helmet": "3.1.0",
     "highlight.js": "9.8.0",
-    "html-minifier": "3.1.1",
+    "html-minifier": "3.2.3",
     "js-yaml": "3.7.0",
     "lodash": "4.17.2",
     "markdown-it": "8.1.0",
-    "mysql": "2.12.0",
     "normalize.css": "5.0.0",
-    "nunjucks": "3.0.0",
-    "response-time": "2.3.2"
+    "nunjucks": "3.0.0"
   },
   "devDependencies": {
     "ava": "0.17.0",
-    "babel-eslint": "7.1.0",
     "coveralls": "2.11.15",
+    "http-server": "0.9.0",
     "nodemon": "1.11.0",
     "nyc": "9.0.1",
     "pretty-error": "2.0.2",
-    "standard": "8.5.0"
+    "standard": "8.6.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Hurtak/hurtak.cc"
   },
   "scripts": {
-    "start": "export NODE_ENV=production && node dist/server/index.js",
+    "start": "export NODE_ENV=production && node src/server/index.js",
     "test": "ava src/test/**/*.js",
     "test+coverage": "nyc --all --exclude=node_modules ava src/test/**/*.js",
     "lint": "standard --verbose \"scripts/**/*.js\" \"src/**/*.js\"",

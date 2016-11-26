@@ -1,9 +1,5 @@
 .vscode/
-app/node_modules/
-app/.nyc_output/
-app/coverage/
-app/www/
-node_modules/
 .nyc_output/
+node_modules/
 coverage/
-www/
+dist/

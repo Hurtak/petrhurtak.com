@@ -2,43 +2,32 @@
 
 const path = require('path')
 
-function joinPathsInObject (paths, rootDirectory) {
-  const absolutePaths = {}
-  for (const key in paths) {
-    const value = paths[key]
-    if (typeof value === 'string') {
-      absolutePaths[key] = path.join(rootDirectory, paths[key])
-    } else {
-      absolutePaths[key] = joinPathsInObject(paths[key], rootDirectory)
-    }
-  }
-  return absolutePaths
+function absolutePath (relativePath) {
+  return path.join(__dirname, '../', relativePath)
 }
-
-const appDirectory = path.join(__dirname, '../')
 
 // paths relative to src directory
 const paths = {
-  root: '../',
+  server: absolutePath('./server'),
+  templates: absolutePath('./templates'),
 
-  config: './config',
-  server: './server',
-  templates: './templates',
-  static: './static',
+  static: absolutePath('./static'),
+  styles: absolutePath('./static/styles'),
+  scripts: absolutePath('./static/scripts'),
+  images: absolutePath('./static/images'),
 
-  articles: '../articles',
+  dist: absolutePath('../dist'),
+  distStatic: absolutePath('../dist/static'),
+  distStyles: absolutePath('../dist/static/styles'),
+  distScripts: absolutePath('../dist/static/scripts'),
+  distImages: absolutePath('../dist/static/images'),
+  distNodeModules: absolutePath('../dist/static/node_modules'),
 
-  nodeModules: '../node_modules',
+  articles: absolutePath('../articles'),
+  articleImages: 'images',
+  articleSnippets: 'snippets',
 
-  www: {
-    articles: '../www/articles',
-
-    log: '../www/log',
-    logAppMessage: '../www/log/app-message',
-    logExceptions: '../www/log/exceptions'
-  }
+  nodeModules: absolutePath('../node_modules')
 }
 
-const absolutePaths = joinPathsInObject(paths, appDirectory)
-
-module.exports = absolutePaths
+module.exports = paths

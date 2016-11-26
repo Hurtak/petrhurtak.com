@@ -2,6 +2,13 @@
 
 ## NEXT RELEASE
 
+- dev server reverse proxy, that understands _redirects and _headers files
+- maybe do not have snippets object at all, but inject snippets directly into the iframe and then with js parse the snippet content and make it live
+- fix tests
+- redirects https://www.netlify.com/docs/redirects/
+- headers https://www.netlify.com/docs/headers-and-basic-auth/
+- deploy with netlify
+
 - change urls in the following way:
     - move paths into config?
     - snippets
@@ -18,10 +25,6 @@
         - think of where to put componetns article?
         - what about visible field for each article, is it really needed?
             - just move article in the _unpublished dir?
-
-- think about how to insert/update data in db, at the moment we have 2 functions, one for update one for insert which is really awkward
-    - maybe have delete function and insert function only which would be little cleaner but it would increase a lot id's in the database
-    - or is there some insert/update if exists in MySQL?
 
 - finish CSS design
     - inspiration:
@@ -53,8 +56,6 @@
 
 ## Right after release
 
-- revisit all docker related stuff to make sure it is properly set & secure
-- consider using node:alpine image
 - add css lint?
 - animated demos (videos) - https://news.ycombinator.com/item?id=12789862
 - update Twitter profile
@@ -62,15 +63,6 @@
     - buy hurtak.cc hurtak.io petrhurtak.com petrhurtak.cz hurtak.pe
     - move to namecheap?
 - http://www.vzhurudolu.cz/prirucka/checklist
-- rethink directory structure
-    - place these folders into year subfolders in articles dir
-    - in compiled dir just have a flat structure?
-    - think more about this
-- convert app to Docker
-- consider deploying through
-    - now https://zeit.co/now/
-    - https://zeit.co/blog/now-dockerfile
-    - or hyper.sh
 - consider transforming article so each element has it's own class?
     - p -> p.article__p
     - what do we do about nested components?
@@ -88,12 +80,11 @@
 - robots.txt review - make article
 
 ## FUTURE RELEASES
+
 - General
     - write README.md
     - sitemap
     - 301 redirects from uppercase urls? /arTicle -> /article
-    - api security? methods should be available only from the same url
-    - take a look at medium, what components they use in articles
     - fine tune humans.txt
     - https://github.com/googlechrome/sw-precache
     - run blog through
@@ -108,9 +99,7 @@
     - progressively enhanced tweet quotations
     - enable brotli compression
         - https://www.smashingmagazine.com/2016/10/next-generation-server-compression-with-brotli/
-    - consider having install script which would create www/ www/log/ and others, instead of having these folders in git with .gitkeep
     - tags to articles
-    - consider switching to https://www.rethinkdb.com/ or to postgresql?
     - node 6.6.0 promises: Unhandled rejections now emit a process warning after the first tick, so maybe we don't need hard-rejection module anymore
     - consider using execa, shelljs, cash for scripts once async/await lands
     - projects page
@@ -131,7 +120,6 @@
     - investigate nginx and caddy https://caddyserver.com/
     - https://securityheaders.io/
         - also article about this
-    - decide what categories to use in commit messages
     - check if we are not using sync (readFileSync) functions anywhere
     - cron job to test
         - automatically git fetch changes and update new articles
@@ -140,12 +128,11 @@
     - check for TODOs in code and resolve them
     - also unify /rss and /about routes to have trailing slash?
 
-
 - code snippet tool
     - add variaous layers of validation, like that when snippets dir exists, there is at least on .html file in there
     - be able to resize
     - Source link doesent align with button - http://i.imgur.com/AIKK2K2.png (only in chrome)
-    - highlight code with <mark>?
+    - highlight code with `<mark>`?
     - json schema for metadata.yaml validation?
     - have a way to display diffs
     - inspiration: https://jakearchibald.com/2016/svg-media-queries/
@@ -172,10 +159,6 @@
             - also keep the original headers comment in html so reader can easily see what headers were added?
 
 - Debug
-    - have a way to turn on debug mode in production
-        - at least show templates data
-        - maybe have some secret url which adds cookie and if user has this cookie it will override the devel variable
-        - probably introduce 3rd variable because devel also means it is from uncompiled files and we don't want that, we just want to show debug interface so probably add another debug variable?
     - have a way to show unpublished articles to other people on secret url
 
 - CI
@@ -234,45 +217,18 @@
     - replace @see links in code with my own articles
 
 - Backend
-    - when mysql server is not running, console log error and display 500
-    - figure out how to do dev/production enviroment
-        - right now we have /debug prefix for articles, but determining based on the enviroment variables would be better
-            - enviroment variable for debug mode
-        - displaying of hidden articles could be with secred query parameter
-    - https
     - pretty 500 page, figure out how to do this in express
     - https://www.sitepoint.com/how-to-create-a-node-js-cluster-for-speeding-up-your-apps/
     - fork processes to number of processors http://shapeshed.com/uncaught-exceptions-in-node/
-    - database
-        - COLLATE=utf8_czech_ci; -> use something for english
-        - mediumtext type for article html, what is it?
-        - is the date column properly set in MySQL database? also is the database timezone correctly set?
-        - correctly set encoding on all tables
-        - check if indexes are set correctly
-        - use transactions (in update script)
-        - use named parameters and pass data as object instead of array?
-        - think about revisiting this:
-            - .then(mapToCamelCase) - maybe in SQL name things directly? -> SELECT foo_bar as fooBar
-            - .then(returnOneResult)
-        - what is this from Adminer export?
-            - SET foreign_key_checks = 0;
-            - SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
     - log unhandle exceptions and uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
-    - node_modules folder only in debug mode?
     - tests
-        - test express
         - test routes
             - https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/
-        - test database
         - code coverage > 50%
         - synon.js to moc db/api calls?
         - selenium tests
             - with CI
             - periodically on distribution page
-    - merge article and debugArticle routes so they reuse most of the logic
-    - change /debug route to route configurable in deb config
-    - node turn on 'use strict' by default?
-    - decide when to use const x = () => {} and when to use function x () {}
     - prereload headers
     - switch to https
         - https://jakdelatseo.cz/checklist-pro-prechod-z-http-na-https/
@@ -301,7 +257,7 @@
     - revisit rss feed items
     - sticky footer
     - add compilation process for static files
-    - consider loading images with javascript with <noscript> fallback?
+    - consider loading images with javascript with `<noscript>` fallback?
     - fine tune "published x days ago"
     - start using mixins css
         - http://zeke.sikelianos.com/css-from-the-future/
@@ -316,13 +272,114 @@
     - console easter egg, or perhaps something inside HTML? http://codepen.io/elijahmanor/pen/RPjeLz?editors=001
     - consider switching to async templating engine with streaing support (markojs by ebay, dustjs by linkedin)
 
-## NICE TO HAVE
-- switch to templating engine which supports streaming
-- own comment system?
-- evaluate switch from express to alternatives (koa, hapi)
-    - once async/await hits node consider switching to koa2
-    - https://github.com/llambda/koa-boiler (http2, caching...)
-- serve static files from nginx
+## OTHER
 
-## LONG TERM
-- once we have object spread operator replace Object.assign in addCommonData function in routes.js
+- talk to customers, have email list but also you can talk to them by posting article where you ask them to write you something to comments section
+    - Example ask them for interesting gulp plugins or what RSS feed they are subscribed to.
+- Přidat možnost si subscribnout k updatům o nových článcích
+- Zjistit, jak přidat do gmailu tlačítko see article a případně jaký věci tam můžu přidávat (a napsat o tomhle článek)
+    - http://imgur.com/iz4wIcW
+- images
+    - responsive images
+        - Srcset, Image element
+        - https://developers.google.com/web/updates/2015/09/automating-resource-selection-with-client-hints?hl=en
+        - also write article about this
+    - use webp for iamges?
+- page transition animations
+    - http://codyhouse.co/demo/page-scroll-effects/parallax.html
+- try these
+    ```css
+    body, img {
+        -webkit-user-drag: none;
+    }
+    body {
+        -webkit-animation-name: fontfix;
+        -webkit-font-smoothing: antialiased;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+    }
+    ```
+- logo inspiration
+    - http://imgur.com/WWvA4MP
+    - http://codepen.io/zadvorsky/pen/xVrMMO
+    - make favicon
+    - animate icon with sprite?
+    - animate logo with this https://vimeo.com/185587462 ?
+    - animate favicon
+    - http://speckyboy.com/2015/11/09/subtly-animated-logos/
+    - http://crystal-lang.org/
+    - http://blog.wearecolony.com/a-year-without-jquery/
+- https://uimovement.com/ui/2181/link-behavior/
+- https://webmasters.googleblog.com/2011/09/pagination-with-relnext-and-relprev.html?m=1
+- footer inspiration
+    - https://www.bramstein.com/speaking/
+- folder organization
+    - https://doc.nette.org/en/2.3/quickstart/getting-started#toc-sandbox-s-content
+    - Taky obrázky z článků by měly být we www složce nebo někde + je proháhět nějakym optimalizátorem a používat
+- make projects section
+    - TOMATOTIM
+    - PHPAUTOCOLOR
+    - work stuff?
+        - obrazky.cz
+        - videa.seznam.cz
+        - admin proxy?
+- http://uimovement.com/ui/440/challenge-accepted/
+- https://blog.risingstack.com/node-js-security-checklist/
+- https://www.joyent.com/node-js/production/debug
+- inspiration
+    - http://shapeshed.com/writing-cross-platform-node/
+    - https://dockyard.com/blog/2015/10/14/best-practices-data-down-actions-up
+    - http://bramstein.com/writing/
+    - http://tesarek.me
+    - http://tympanus.net/Tutorials/FullscreenBookBlock/
+    - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
+    - http://zellwk.com/blog/why-vertical-rhythms/
+    - http://zellwk.com/blog/media-query-units/
+    - http://pebblecode.com/
+    - https://shapeshed.com/the-future-of-jobs/
+    - http://fvsch.com/articles/push-and-wait/
+    - http://html5up.net/twenty
+    - http://html5up.net/prologue
+    - http://www.mgadams.com/2015/06/30/the-software-engineers-guide-to-negotiating-a-raise/
+    - http://www.rouvre.com/fr/gallery/9/portraits/359
+    - https://nervous.io/clojure/clojurescript/aws/lambda/node/lein/2015/07/05/lambda/
+    - http://www.michaelvillar.com/
+    - https://yobriefca.se/articles/
+    - http://perfectionkills.com/
+    - http://blog.jenkster.com/
+    - http://uimovement.com/ui/1922/menu-item-selection/
+    - http://feross.org/resume/
+    - http://fvsch.com/code/svg-icons/how-to/
+- chrome scrollbar styling?
+    - http://www.maxiprani.cz/
+- when somebody doesent have adblock, show warning :D
+    - https://twitter.com/gcluley/status/704980787716866048
+- http://jecas.cz/toc
+- jecas.cz/seo-rychle
+- http://practice.typekit.com/lesson/caring-about-opentype-features/
+- add sitemap
+    - http://jecas.cz/sitemap
+- http://www.html5rocks.com/en/tutorials/appcache/beginner/
+- http://www.html5rocks.com/en/tutorials/service-worker/introduction/
+- search
+    - http://uimovement.com/ui/1125/magazine-search/
+- Prechod mezi strankama
+    - http://uimovement.com/ui/1127/product-page/
+- how to do gifs
+    - http://wesbos.com/animated-gif-workflow/
+- https://serviceworke.rs/
+- initial animation
+    - http://blog.izs.me/
+- header shadow animation
+    - http://flexbox.io/
+- menu http://tympanus.net/codrops/2016/01/06/inspiration-for-line-menu-styles/
+- výborná typografie https://automattic.com/
+- http://formidable.com/blog/2016/05/24/announcing-spectacle-editor-a-work-in-progress/
+- Share button
+    - http://uimovement.com/ui/1398/share-hover/
+- http://tomwoods.com/d/websitebookpdf.pdf
+- https://github.com/hemanth/awesome-pwa/blob/master/README.md
+- https://css-tricks.com/essential-meta-tags-social-media/
+- https://www.zdrojak.cz/clanky/orientacni-body-wai-aria-pro-pristupnejsi-web/
+- https://css-tricks.com/essential-meta-tags-social-media/

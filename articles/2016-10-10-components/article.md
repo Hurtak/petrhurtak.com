@@ -2,8 +2,6 @@
 
 - use 4 space indentation
 
-
-
 ## Article metadata
 
 - all properties are mandatory

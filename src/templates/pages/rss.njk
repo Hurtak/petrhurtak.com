@@ -8,11 +8,11 @@
 
     {% for article in articles %}
       <item>
-        <title>{{ article.title }}</title>
-        <link>{{ siteUrl }}/{{ article.url }}</link>
-        <guid>{{ siteUrl }}/{{ article.url }}</guid>
-        <pubDate>{{ article.publicationDate | gmt }}</pubDate>
-        <description>{{ article.description }}</description>
+        <title>{{ article.metadata.title }}</title>
+        <link>{{ siteUrl }}/{{ article.metadata.url }}</link>
+        <guid>{{ siteUrl }}/{{ article.metadata.url }}</guid>
+        <pubDate>{{ article.metadata.dateLastUpdate | gmt }}</pubDate>
+        <description>{{ article.metadata.description }}</description>
       </item>
     {% endfor %}
 

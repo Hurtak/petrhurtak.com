@@ -1,28 +1,32 @@
 #!/bin/bash
 
 ### DIRECTORY SETUP
-cd "$(dirname "$0")" # cd into directory where script is located
-cd .. # cd into app director
+
+cd "$(dirname "$0")/.."
 
 rm -rfv .nyc_output/
 rm -rfv coverage/
 
-./scripts/prepare-dirs.sh
-
 ### EXPORTED VARIABLES
+
 export NODE_ENV="development"
 # export NODE_ENV="production"
-# export DEBUG="express*"
-
-### LOCAL VARIABLES
-NODE_BIN="node_modules/.bin"
 
 ### FUNCTIONS
-function startServer {
+
+NODE_BIN="node_modules/.bin"
+
+function compile {
   ${NODE_BIN}/nodemon src/server/index.js \
     --ext js,json,njk \
     --watch src/server \
+    --watch src/templates \
     --watch src/config
+}
+
+function serve {
+  ${NODE_BIN}/http-server dist \
+    --silent
 }
 
 function test {
@@ -36,7 +40,9 @@ function lint {
 }
 
 ### START DEVELOPMENT SERVICES
-startServer \
+
+compile \
+  & serve \
   & test \
   & lint
 wait

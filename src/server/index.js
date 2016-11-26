@@ -57,6 +57,7 @@ articlesData = articlesData.reverse()
 let indexArticles = lodash.filter(articlesData, article => article.metadata.published === true)
 indexArticles = lodash.filter(indexArticles, article => article.metadata.dateLastUpdate <= new Date())
 indexArticles = lodash.slice(indexArticles, 0, config.articles.perPage)
+
 const htmlIndex = nunjucks.render('pages/index.njk', {articles: indexArticles})
 fs.writeFileSync(path.join(paths.dist, 'index.html'), htmlIndex)
 

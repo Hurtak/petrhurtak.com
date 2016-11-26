@@ -2,6 +2,7 @@
 
 ## NEXT RELEASE
 
+- move unpublished articles into _drafts namespece also in url
 - handle config.article.perPage - pass these into templates
 - nunjucks move global variables into global namespace
 - templates move pages items into root, move base into _base_ dir or something

@@ -6,7 +6,7 @@
     <link>{{ siteUrl }}</link>
     <description>Blog about web design and technologies</description>
 
-    {% for article in articles | limit(20) %}
+    {% for article in articles %}
       <item>
         <title>{{ article.metadata.title }}</title>
         <link>{{ siteUrl }}/{{ article.metadata.url }}</link>

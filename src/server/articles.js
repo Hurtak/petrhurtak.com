@@ -9,6 +9,7 @@ const markdownIt = require('markdown-it')
 const highlight = require('highlight.js')
 
 const utilsArticles = require('./utils/articles.js')
+const paths = require('./paths.js')
 
 function getPathByArticleName (directory, articleUrl) {
   const directoryItems = fs.readdirSync(directory)
@@ -48,7 +49,7 @@ function getArticlesDirectories (directory) {
 }
 
 function getArticleData (articleFolderPath) {
-  const metadataPath = path.join(articleFolderPath, '/metadata.yaml')
+  const metadataPath = path.join(articleFolderPath, paths.articleMetadata)
   const metadataContent = fs.readFileSync(metadataPath, 'utf-8')
   const metadata = yaml.safeLoad(metadataContent)
 
@@ -83,7 +84,7 @@ function getArticleHtml (articlePath, snippets) {
   //       back to html string. We could pass around cheerio
   //       object so creation of cheerio object and transformation
   //       to html string will be done only once
-  let articleHtml = fs.readFileSync(path.join(articlePath, 'article.md'), 'utf8')
+  let articleHtml = fs.readFileSync(path.join(articlePath, paths.articleMarkdown), 'utf8')
   articleHtml = markdown.render(articleHtml)
   articleHtml = utilsArticles.addIdsToHeadings(articleHtml)
 
@@ -93,7 +94,7 @@ function getArticleHtml (articlePath, snippets) {
 }
 
 function getSnippetsData (articlePath) {
-  const snippetsDir = path.join(articlePath, '/snippets')
+  const snippetsDir = path.join(articlePath, paths.articleSnippets)
   const snippets = []
 
   let snippetFiles = []

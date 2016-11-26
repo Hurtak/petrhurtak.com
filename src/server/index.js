@@ -4,9 +4,9 @@ const path = require('path')
 const fs = require('fs-promise')
 const lodash = require('lodash')
 
-// const config = require('./config.js')
 const debug = require('./debug.js')
 const paths = require('./paths.js')
+const config = require('./config.js')
 const articles = require('./articles.js')
 const nunjucks = require('./nunjucks/env.js')
 
@@ -58,7 +58,8 @@ for (const articlePath of articleDirectories) {
 }
 
 // 5) index page
-const htmlIndex = nunjucks.render('pages/index.njk', {articles: articlesData})
+const indexArticles = lodash.slice(articlesData, 0, config.articles.perPage)
+const htmlIndex = nunjucks.render('pages/index.njk', {articles: indexArticles})
 fs.writeFileSync(path.join(paths.dist, 'index.html'), htmlIndex)
 
 // 6) articles
@@ -88,9 +89,9 @@ for (const article of articlesData) {
 
 // 7) RSS
 // TODO: pubData - what happens if we update article and it gets moved to the top? is there something like last update?
-const lastTenArticles = lodash.slice(articlesData, 0, 10)
-const rss = nunjucks.render('pages/rss.njk', {articles: lastTenArticles})
-fs.writeFileSync(path.join(paths.dist, 'rss.xml'), rss)
+const rssArticles = lodash.slice(articlesData, 0, config.articles.perRssFeed)
+const rssFeed = nunjucks.render('pages/rss.njk', {articles: rssArticles})
+fs.writeFileSync(path.join(paths.dist, 'rss.xml'), rssFeed)
 
 console.log(`Compile script finished in ${Date.now() - start}ms`)
 
@@ -102,28 +103,6 @@ console.log(`Compile script finished in ${Date.now() - start}ms`)
 //     console.log(path)
 //     console.log(b)
 //   })
-// }
-
-// const articleItems = fs.readdirSync(paths.articles)
-
-// for (const item of articleItems) {
-//   const isDirectory = fs.statSync(path.join(paths.articles, item)).isDirectory()
-//   if (!isDirectory) continue
-
-//   const articleName = item.substr(11) // TODO move this function into src/lib/articles
-//   console.log(`Processing "${articleName}"`)
-//   const distArticleDirName = path.join(paths.dist.articles, articleName)
-
-//   fs.ensureDir(distArticleDirName)
-//   fs.ensureDir(path.join(distArticleDirName, '/images'))
-
-//   const imagesFolder = path.join(paths.articles, item, '/images')
-//   const images = fs.readdirSync(imagesFolder)
-//   for (const image of images) {
-//     const from = path.join(imagesFolder, image)
-//     const to = path.join(distArticleDirName, '/images', image)
-//     fs.copySync(from, to)
-//   }
 // }
 
 // articleHtml = htmlMinifier.minify(articleHtml, {

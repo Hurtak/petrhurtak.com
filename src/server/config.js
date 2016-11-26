@@ -14,7 +14,8 @@ module.exports = {
   siteUrl: url.parse(process.env.APP_URL || 'https://hurtak.cc'),
 
   articles: {
-    articlesPerPage: 10
+    perPage: 10,
+    perRssFeed: 20
   },
 
   debugSkipPackages: [

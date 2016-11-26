@@ -24,6 +24,8 @@ const paths = {
   distNodeModules: absolutePath('../dist/static/node_modules'),
 
   articles: absolutePath('../articles'),
+  articleMarkdown: 'article.md',
+  articleMetadata: 'metadata.yaml',
   articleImages: 'images',
   articleSnippets: 'snippets',
 

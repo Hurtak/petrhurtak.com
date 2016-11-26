@@ -54,11 +54,11 @@ let articlesData = articles.getArticles(paths.articles, paths.articlesDrafts)
 articlesData = lodash.sortBy(articlesData, 'metadata.dateLastUpdate')
 articlesData = articlesData.reverse()
 
-// 5) index page
-let indexArticles = lodash.filter(articlesData, article => article.metadata.published === true)
-indexArticles = lodash.filter(indexArticles, article => article.metadata.dateLastUpdate <= new Date())
-indexArticles = lodash.slice(indexArticles, 0, config.articles.perPage)
+let articlesPublishedData = lodash.filter(articlesData, article => article.metadata.published === true)
+articlesPublishedData = lodash.filter(articlesPublishedData, article => article.metadata.dateLastUpdate <= new Date())
 
+// 5) index page
+const indexArticles = lodash.slice(articlesPublishedData, 0, config.articles.perPage)
 const htmlIndex = nunjucks.render('index.njk', {articles: indexArticles})
 fs.writeFileSync(path.join(paths.dist, 'index.html'), htmlIndex)
 
@@ -95,6 +95,11 @@ for (const article of articlesData) {
 const rssArticles = lodash.slice(articlesData, 0, config.articles.perRssFeed)
 const rssFeed = nunjucks.render('rss.njk', {articles: rssArticles})
 fs.writeFileSync(path.join(paths.dist, 'rss.xml'), rssFeed)
+
+// 8) humans.txt
+const lastUpdate = articlesPublishedData[0].metadata.dateLastUpdate
+const humansTxt = nunjucks.render('humans.txt.njk', {lastUpdate: lastUpdate})
+fs.writeFileSync(path.join(paths.dist, 'humans.txt'), humansTxt)
 
 console.log(`Compile script finished in ${Date.now() - start}ms`)
 

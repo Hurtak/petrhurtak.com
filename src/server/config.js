@@ -12,6 +12,7 @@ module.exports = {
   port: process.env.APP_PORT || 8000,
 
   siteUrl: url.parse(process.env.APP_URL || 'https://hurtak.cc'),
+  yearFounded: 2015,
 
   articles: {
     perPage: 10,

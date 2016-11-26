@@ -2,7 +2,6 @@
 
 ## NEXT RELEASE
 
-- finish humanstxt
 - reset button doesent work in snippets
 - what to do about times like 'just now', 'one week ago'?
 

@@ -16,11 +16,16 @@ export NODE_ENV="development"
 
 NODE_BIN="node_modules/.bin"
 
-function startServer {
+function compile {
   ${NODE_BIN}/nodemon src/server/index.js \
     --ext js,json,njk \
     --watch src/server \
+    --watch src/templates \
     --watch src/config
+}
+
+function serve {
+  ${NODE_BIN}/http-server dist
 }
 
 function test {
@@ -35,7 +40,8 @@ function lint {
 
 ### START DEVELOPMENT SERVICES
 
-startServer \
+compile \
+  & serve \
   & test \
   & lint
 wait

@@ -72,7 +72,10 @@ window.App.Snippets = (function () {
 
     // listen for reset button click
     dom.controls.reset.addEventListener('click', () => {
-      createSnippetIframe(dom.content.result, snippetData.head, state.originalHtml, state.originalCss, state.originalJs)
+      dom.content.html.value = snippetData.html
+      dom.content.css.value = snippetData.css
+      dom.content.js.value = snippetData.js
+      createSnippetIframe(dom.content.result, snippetData.head, snippetData.html, snippetData.css, snippetData.js)
     })
 
     // listen on textarea change and update snippet result

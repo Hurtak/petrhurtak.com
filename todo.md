@@ -7,8 +7,12 @@
         - again we will have relative links from snipepts.html
         - how that would work, will there be problems with paths?
         - what about using base tag?
-
-- reset button doesent work in snippets
+    - think more about inline snippets and how to display them (iframes have fixed height)
+    - add bigger snippets where we can display html & css & js next to each other (on bigger screen widths)
+    - maybe we do not need inline snippets?
+    - in config
+        - have a way to disable some controls / hide some tabs that are not necessary
+        - have a way to set height of snippet (probably in config?)
 
 - what to do about times like 'just now', 'one week ago'?
 

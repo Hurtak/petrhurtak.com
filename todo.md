@@ -2,8 +2,6 @@
 
 ## NEXT RELEASE
 
-- reset button doesent work in snippets
-- what to do about times like 'just now', 'one week ago'?
 - maybe do not have snippets object at all, but inject snippets directly into the iframe and then with js parse the snippet content and make it live
 
 - change urls in the following way:
@@ -17,6 +15,10 @@
             - again we will have relative links from snipepts.html
             - how that would work, will there be problems with paths?
             - what about using base tag?
+
+- reset button doesent work in snippets
+
+- what to do about times like 'just now', 'one week ago'?
 
 - finish CSS design
     - inspiration:

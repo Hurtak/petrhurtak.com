@@ -3,6 +3,7 @@
 const path = require('path')
 const fs = require('fs-promise')
 const lodash = require('lodash')
+// const htmlMinifier = require('html-minifier')
 
 const debug = require('./debug.js')
 const paths = require('./paths.js')

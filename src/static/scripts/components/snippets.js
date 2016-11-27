@@ -23,23 +23,10 @@ window.App.Snippets = (function () {
       }
 
       for (const snippetEl of snippetElms) {
-        if (snippetData.config.inlineSnippet) {
-          buildInlineSnippet(snippetData, snippetEl)
-        } else {
-          buildSnippet(snippetData, snippetEl)
-        }
+        if (snippetData.config.inlineSnippet) continue
+        buildSnippet(snippetData, snippetEl)
       }
     }
-  }
-
-  function buildInlineSnippet (snippetData, snippetEl) {
-    createSnippetIframe(
-      snippetEl,
-      snippetData.head,
-      snippetData.html,
-      snippetData.css,
-      snippetData.js
-    )
   }
 
   function buildSnippet (snippetData, snippetEl) {
@@ -76,9 +63,6 @@ window.App.Snippets = (function () {
     dom.content.html.value = state.html
     dom.content.css.value = state.css
     dom.content.js.value = state.js
-
-    // build snippet result
-    createSnippetIframe(dom.content.result, snippetData.head, state.html, state.css, state.js)
 
     // listeners for tab switching
     dom.controls.result.addEventListener('click', () => showContent(dom.content, dom.controls, dom.controls.result, dom.content.result, config.isSelectedClass, config.isVisibleClass))

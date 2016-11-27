@@ -5,6 +5,8 @@
   border: 1px solid var(--color-gray-light);
   border-radius: var(--border-radius);
 }
+.Snippet--inline {
+}
 
 .Snippet-header {
   display: flex;

@@ -2,7 +2,9 @@
 
 const path = require('path')
 
-const absolutePath = relativePath => path.join(__dirname, '../../', relativePath)
+function absolutePath (relativePath) {
+  return path.join(__dirname, '../../', relativePath)
+}
 
 // paths relative to the repository root directory
 const paths = {

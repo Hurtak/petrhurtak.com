@@ -1,7 +1,17 @@
-{% if config.inlineSnippet %}
-  <div class="Snippet Snippet--inline" data-snippet="{{ snippetName }}"></div>
+{% if snippet.config.inlineSnippet %}
+  <div
+    class="Snippet Snippet--inline js-snippet-content-result"
+    data-snippet="{{ snippet.metadata.name }}"
+  >
+    <iframe
+      class="Snippet-iframe"
+      srcdoc="{{ snippet.content.whole }}"
+      src="{{ relativeUrl }}"
+    >
+    </iframe>
+  </div>
 {% else %}
-  <div class="Snippet" data-snippet="{{ snippetName }}">
+  <div class="Snippet" data-snippet="{{ snippet.metadata.name }}">
     <div class="Snippet-header">
       <div class="Snippet-headerGroup">
         <button class="Snippet-button js-snippet-tab-html">HTML</button>
@@ -13,7 +23,7 @@
         <button class="Snippet-button js-snippet-reset">Reset</button>
         <a
           class="Snippet-button"
-          href="{{ rawSnippetUrl }}"
+          href="{{ relativeUrl }}"
           target="_blank"
           title="Open raw snippet in new tab"
         >
@@ -25,7 +35,14 @@
       <textarea class="Snippet-content Snippet-content--textarea js-snippet-content-html"></textarea>
       <textarea class="Snippet-content Snippet-content--textarea js-snippet-content-css"></textarea>
       <textarea class="Snippet-content Snippet-content--textarea js-snippet-content-js"></textarea>
-      <div class="Snippet-content js-snippet-content-result"></div>
+      <div class="Snippet-content js-snippet-content-result">
+        <iframe
+          class="Snippet-iframe"
+          srcdoc="{{ snippet.content.whole }}"
+          src="{{ relativeUrl }}"
+        >
+        </iframe>
+      </div>
     </div>
   </div>
 {% endif %}

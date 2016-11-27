@@ -54,13 +54,12 @@ function enhanceSnippetLinks (htmlString, snippets) {
     const fileName = pathSplit[pathSplit.length - 1] // example.html"
     const snippetName = fileName.split('.')[0] // example
 
-    const snippet = snippets.find(({ name }) => name === snippetName)
+    const snippet = snippets.find(snippet => snippet.metadata.name === snippetName)
     if (!snippet) return
 
     const snippetHtml = nunjucksEnv.render('components/snippet.njk', {
-      snippetName,
-      rawSnippetUrl,
-      config: snippet.config
+      snippet,
+      relativeUrl: rawSnippetUrl
     })
     const snippetEl = $(snippetHtml)
 
@@ -76,7 +75,7 @@ function removeIndentation (str) {
   // 1. split text into lines
   let lines = str.split('\n')
 
-  // 2. remove empty lines from the stard and the end of the text
+  // 2. remove empty lines from the start and the end of the text
   const firstNonEmptyLine = lines => {
     let currentIndex = 0
     for (let i = 0; i < lines.length; i++) {
@@ -124,6 +123,7 @@ function parseSnippet (wholeHtml) {
   const nullIfEmptyString = str => typeof str === 'string' && str.trim() === '' ? null : str
 
   return {
+    whole: wholeHtml,
     head: nullIfEmptyString(removeIndentation(head)),
     html: nullIfEmptyString(removeIndentation(html)),
     css: nullIfEmptyString(removeIndentation(css)),

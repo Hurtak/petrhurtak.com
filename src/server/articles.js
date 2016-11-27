@@ -68,7 +68,7 @@ function getArticleData (articleFolderPath, isPublished) {
   )
 
   const snippetsData = getSnippetsData(articleFolderPath, metadata.snippetsConfig)
-  const snippets = enhanceSnippetsDataWithConfig(snippetsData, metadata.snippetsConfig)
+  const snippets = enhanceSnippetsDataWithConfig(snippetsData)
 
   const articleHtml = getArticleHtml(articleFolderPath, snippets)
   const fsData = {
@@ -101,13 +101,12 @@ function getArticleHtml (articlePath, snippets) {
   let articleHtml = fs.readFileSync(path.join(articlePath, paths.articleMarkdown), 'utf8')
   articleHtml = markdown.render(articleHtml)
   articleHtml = utilsArticles.addIdsToHeadings(articleHtml)
-
   articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml, snippets)
 
   return articleHtml
 }
 
-function getSnippetsData (articlePath) {
+function getSnippetsData (articlePath, config) {
   const snippetsDir = path.join(articlePath, paths.articleSnippets)
   const snippets = []
 
@@ -130,17 +129,15 @@ function getSnippetsData (articlePath) {
     const snippetPath = path.join(snippetsDir, fileName)
     const html = fs.readFileSync(snippetPath, 'utf8')
 
-    const snippetMetadata = {
-      name: snippetName,
-      path: snippetPath,
-      filename: fileName
+    const snippet = {
+      metadata: {
+        name: snippetName,
+        path: snippetPath,
+        filename: fileName
+      },
+      content: utilsArticles.parseSnippet(html),
+      config: config
     }
-    const snippetData = utilsArticles.parseSnippet(html)
-    const snippet = Object.assign(
-      {},
-      snippetMetadata,
-      snippetData
-    )
 
     snippets.push(snippet)
   }
@@ -148,13 +145,17 @@ function getSnippetsData (articlePath) {
   return snippets
 }
 
-function enhanceSnippetsDataWithConfig (snippetsData, snippetsConfig) {
+function enhanceSnippetsDataWithConfig (snippetsData) {
   const defaultConfig = {
     inlineSnippet: false
   }
 
   const snippets = snippetsData.map(snippet => {
-    const config = Object.assign({}, defaultConfig, snippetsConfig[snippet.name])
+    const config = Object.assign(
+      {},
+      defaultConfig,
+      snippet.config[snippet.metadata.name]
+    )
     snippet.config = config
 
     return snippet

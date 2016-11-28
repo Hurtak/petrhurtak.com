@@ -67,7 +67,7 @@ function getArticleData (articleFolderPath, isPublished) {
     { published: isPublished }
   )
 
-  const snippetsData = getSnippetsData(articleFolderPath, metadata.snippetsConfig)
+  const snippetsData = getSnippetsData(articleFolderPath, metadata.url, metadata.snippetsConfig)
   const snippets = enhanceSnippetsDataWithConfig(snippetsData)
 
   const articleHtml = getArticleHtml(articleFolderPath, snippets)
@@ -106,7 +106,7 @@ function getArticleHtml (articlePath, snippets) {
   return articleHtml
 }
 
-function getSnippetsData (articlePath, config) {
+function getSnippetsData (articlePath, articleFolder, config) {
   const snippetsDir = path.join(articlePath, paths.articleSnippets)
   const snippets = []
 
@@ -133,7 +133,8 @@ function getSnippetsData (articlePath, config) {
       metadata: {
         name: snippetName,
         path: snippetPath,
-        filename: fileName
+        base: `/${articleFolder}/${paths.articleSnippets}/`,
+        fileName: fileName
       },
       content: utilsArticles.parseSnippet(html),
       config: config

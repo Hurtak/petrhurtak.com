@@ -13,11 +13,11 @@ window.App.Snippets = (function () {
     if (!data || data.length < 1) return
 
     for (const snippetData of data) {
-      const snippetElms = document.querySelectorAll(`[${config.snippetAttribute}="${snippetData.name}"]`)
+      const snippetElms = document.querySelectorAll(`[${config.snippetAttribute}="${snippetData.metadata.name}"]`)
       if (!snippetElms.length) {
         window.App.Log.error(
           'Snippets',
-          `Snippet with name "${snippetData.name}" can't be found in the DOM.`
+          `Snippet with name "${snippetData.metadata.name}" can't be found in the DOM.`
         )
         continue
       }
@@ -47,17 +47,18 @@ window.App.Snippets = (function () {
     }
 
     const state = {
-      originalHtml: snippetData.html,
-      originalCss: snippetData.css,
-      originalJs: snippetData.js,
-      html: snippetData.html,
-      css: snippetData.css,
-      js: snippetData.js,
+      html: snippetData.content.html,
+      css: snippetData.content.css,
+      js: snippetData.content.js,
       timeout: null
     }
 
+    function showContentCurried (clickedTab, contentToShow) {
+      showContent(dom.content, dom.controls, clickedTab, contentToShow, config.isSelectedClass, config.isVisibleClass)
+    }
+
     // switch to result tab
-    showContent(dom.content, dom.controls, dom.controls.result, dom.content.result, config.isSelectedClass, config.isVisibleClass)
+    showContentCurried(dom.controls.result, dom.content.result)
 
     // fill textareas
     dom.content.html.value = state.html
@@ -65,17 +66,25 @@ window.App.Snippets = (function () {
     dom.content.js.value = state.js
 
     // listeners for tab switching
-    dom.controls.result.addEventListener('click', () => showContent(dom.content, dom.controls, dom.controls.result, dom.content.result, config.isSelectedClass, config.isVisibleClass))
-    dom.controls.html.addEventListener('click', () => showContent(dom.content, dom.controls, dom.controls.html, dom.content.html, config.isSelectedClass, config.isVisibleClass))
-    dom.controls.css.addEventListener('click', () => showContent(dom.content, dom.controls, dom.controls.css, dom.content.css, config.isSelectedClass, config.isVisibleClass))
-    dom.controls.js.addEventListener('click', () => showContent(dom.content, dom.controls, dom.controls.js, dom.content.js, config.isSelectedClass, config.isVisibleClass))
+    dom.controls.result.addEventListener('click', () => showContentCurried(dom.controls.result, dom.content.result))
+    dom.controls.html.addEventListener('click', () => showContentCurried(dom.controls.html, dom.content.html))
+    dom.controls.css.addEventListener('click', () => showContentCurried(dom.controls.css, dom.content.css))
+    dom.controls.js.addEventListener('click', () => showContentCurried(dom.controls.js, dom.content.js))
 
     // listen for reset button click
     dom.controls.reset.addEventListener('click', () => {
-      dom.content.html.value = snippetData.html
-      dom.content.css.value = snippetData.css
-      dom.content.js.value = snippetData.js
-      createSnippetIframe(dom.content.result, snippetData.head, snippetData.html, snippetData.css, snippetData.js)
+      dom.content.html.value = snippetData.content.html
+      dom.content.css.value = snippetData.content.css
+      dom.content.js.value = snippetData.content.js
+
+      createSnippetIframe(
+        dom.content.result,
+        snippetData.metadata.base,
+        snippetData.content.head,
+        snippetData.content.html,
+        snippetData.content.css,
+        snippetData.content.js
+      )
     })
 
     // listen on textarea change and update snippet result
@@ -83,7 +92,14 @@ window.App.Snippets = (function () {
       window.clearTimeout(state.timeout)
       state.timeout = window.setTimeout(() => {
         state[textareaToUpdate] = value
-        createSnippetIframe(dom.content.result, snippetData.head, state.html, state.css, state.js)
+        createSnippetIframe(
+          dom.content.result,
+          snippetData.metadata.base,
+          snippetData.content.head,
+          state.html,
+          state.css,
+          state.js
+        )
       }, config.debounceIframeCreation)
     }
 
@@ -104,17 +120,21 @@ window.App.Snippets = (function () {
     clickedTab.classList.add(classSelected)
   }
 
-  function createSnippetIframe (targetEl, head, html, css, js) {
+  function createSnippetIframe (targetEl, base, head, html, css, js) {
+    // TODO: keep in sync with server side ./utils/articles.js
     const snippetHtml = `
       <!DOCTYPE html>
-      <head>
-        ${head}
-        <style>${css}</style>
-      </head>
-      <body>
-        ${html}
-        <script>${js}</script>
-      </body>
+      <html>
+        <head>
+          <base href="${base}">
+          ${head}
+          <style>${css}</style>
+        </head>
+        <body>
+          ${html}
+          <script>${js}</script>
+        </body>
+      </html>
     `
 
     const iframe = document.createElement('iframe')

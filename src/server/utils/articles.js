@@ -59,7 +59,14 @@ function enhanceSnippetLinks (htmlString, snippets) {
 
     const snippetHtml = nunjucksEnv.render('components/snippet.njk', {
       snippet,
-      relativeUrl: rawSnippetUrl
+      relativeUrl: rawSnippetUrl,
+      snippetHtml: buildSnippetHtml({
+        base: snippet.metadata.base,
+        head: snippet.content.head,
+        html: snippet.content.html,
+        css: snippet.content.css,
+        js: snippet.content.js
+      })
     })
     const snippetEl = $(snippetHtml)
 
@@ -67,6 +74,24 @@ function enhanceSnippetLinks (htmlString, snippets) {
   })
 
   return $.html()
+}
+
+function buildSnippetHtml ({base, head, css, html, js}) {
+  // TODO: keep in sync with client side snippets.js
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <base href="${base}">
+        ${head}
+        <style>${css}</style>
+      </head>
+      <body>
+        ${html}
+        <script>${js}</script>
+      </body>
+    </html>
+  `
 }
 
 function removeIndentation (str) {

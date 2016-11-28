@@ -38,12 +38,17 @@
       window.appData.snippets = [
         {% for snippet in snippets %}
           {
-            name: {{ snippet.metadata.name | dump | safe }},
-            head: {{ snippet.content.head | dump | safe }},
-            html: {{ snippet.content.html | dump | safe }},
-            css: {{ snippet.content.css | dump | safe }},
-            js: {{ snippet.content.js | dump | safe }},
-            config: {{ snippet.config | dump | safe }},
+            metadata: {
+              name: {{ snippet.metadata.name | dump | safe }},
+              base: {{ snippet.metadata.base | dump | safe }},
+            },
+            content: {
+              head: {{ snippet.content.head | dump | safe }},
+              html: {{ snippet.content.html | dump | safe }},
+              css: {{ snippet.content.css | dump | safe }},
+              js: {{ snippet.content.js | dump | safe }},
+            },
+            config: {{ snippet.config | dump | safe }}
           }{% if loop.last == false %},{% endif %}
         {% endfor %}
       ]

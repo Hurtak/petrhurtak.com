@@ -294,6 +294,11 @@ function foo (bar) {
 <a href="./snippets/example2.html">
     Inline code example snippet
 </a>
+
+<!-- relative urls in snippets -->
+<a href="./snippets/example3.html">
+    Relative urls in snippets
+</a>
 ```
 
 ### Code in snippet
@@ -326,4 +331,9 @@ function foo (bar) {
 <!-- inline snippet -->
 <a href="./snippets/example2.html">
     Inline code example snippet
+</a>
+
+<!-- relative urls in snippets -->
+<a href="./snippets/example3.html">
+    Relative urls in snippets
 </a>

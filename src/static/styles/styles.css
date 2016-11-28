@@ -28,7 +28,6 @@
 
 .PageWrapper {
   min-height: 100%;
-  border-top: 6px solid black;
   text-rendering: optimizeLegibility; /* TODO: is this doing anyting? */
 }
 

@@ -19,7 +19,8 @@
     <link rel="stylesheet" type="text/css" href="/static/styles/styles.css">
 
     {# extra #}
-    <link rel="alternate" type="application/rss+xml" title="hurtak.cz" href="/rss"> {# TODO: update title url #}
+    <link rel="alternate" type="application/rss+xml" title="hurtak.cz" href="/rss.xml">
+    {# TODO: update title url #}
     <link type="text/plain" rel="author" href="/humans.txt">
 
   </head>
@@ -55,9 +56,6 @@
     <script src="/static/scripts/components/log.js"></script>
     <script src="/static/scripts/components/snippets.js"></script>
     <script src="/static/scripts/app.js"></script>
-    <script>
-      window.App.Main.init(window.appData)
-    </script>
 
     {# debug #}
     {% if globals.devel %}

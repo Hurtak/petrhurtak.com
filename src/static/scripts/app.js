@@ -1,12 +1,8 @@
-window.App.Main = (function () {
+(function main () {
   'use strict'
 
-  function init (data) {
-    window.App.Log.init()
-    window.App.Snippets.init(data.snippets)
-  }
+  const data = window.appData
 
-  return {
-    init: init
-  }
+  window.App.Log.init()
+  window.App.Snippets.init(data.snippets)
 }())

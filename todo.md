@@ -31,6 +31,7 @@
         - http://phoboslab.org/log/2014/07/xibalba-a-webgl-first-person-shooter
         - http://blog.rstankov.com/
         - http://david.heinemeierhansson.com
+        - http://oops.re/
     - page header
     - article header
     - articles list page
@@ -42,6 +43,8 @@
 - add comments
 - add google analytics
 - go through the templates and make sure url like hurtak.cz & hurtak.cc are all the same and correct
+- go through TODOs
+- ship it
 
 ## Right after release
 

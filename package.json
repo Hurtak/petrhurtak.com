@@ -21,8 +21,9 @@
   },
   "devDependencies": {
     "ava": "0.17.0",
+    "browser-sync": "2.18.2",
     "coveralls": "2.11.15",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "git://github.com/gulpjs/gulp.git#e9e5ab7e70080e1bfb5650a4fdc4c8849e70b3e0",
     "nyc": "9.0.1",
     "standard": "8.6.0"
   },

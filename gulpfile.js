@@ -14,6 +14,8 @@ const nunjucks = require('./src/server/nunjucks/env.js')
 
 debug()
 
+// tasks
+
 gulp.task('prepare-dirs', function (done) {
   fs.remove(paths.dist)
     .then(() => {
@@ -126,15 +128,29 @@ gulp.task('articles', function (done) {
     .then(() => done())
 })
 
-gulp.task('default', gulp.series(
+// main tasks
+
+gulp.task('watch', function () {
+  return gulp.watch(['./articles/**/*', './src/**/*'], gulp.series('prepare-dirs', 'compile'))
+})
+
+gulp.task('compile', gulp.parallel(
+  '404',
+  'robots.txt',
+  'static',
+  'articles',
+  'watch'
+))
+
+gulp.task('dev', gulp.series(
   'prepare-dirs',
   gulp.parallel(
-    '404',
-    'robots.txt',
-    'static',
-    'articles'
+    'compile',
+    'watch'
   )
 ))
+
+gulp.task('default', gulp.series('dev'))
 
 // articleHtml = htmlMinifier.minify(articleHtml, {
 //   collapseWhitespace: true,

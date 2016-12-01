@@ -13,11 +13,6 @@ const nunjucks = require('./nunjucks/env.js')
 
 debug()
 
-// compilation
-
-console.log('Starting compile script')
-const start = Date.now()
-
 // 1) prepare dirs
 
 fs.removeSync(paths.dist)
@@ -101,18 +96,6 @@ fs.writeFileSync(path.join(paths.dist, 'rss.xml'), rssFeed)
 const lastUpdate = articlesPublishedData[0].metadata.dateLastUpdate
 const humansTxt = nunjucks.render('humans.txt.njk', {lastUpdate: lastUpdate})
 fs.writeFileSync(path.join(paths.dist, 'humans.txt'), humansTxt)
-
-console.log(`Compile script finished in ${Date.now() - start}ms`)
-
-// function watch () {
-//   const watcher = chokidar.watch(paths.static, {
-//   })
-
-//   watcher.on('change', (path, b) => {
-//     console.log(path)
-//     console.log(b)
-//   })
-// }
 
 // articleHtml = htmlMinifier.minify(articleHtml, {
 //   collapseWhitespace: true,

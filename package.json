@@ -14,7 +14,7 @@
     "html-minifier": "3.2.3",
     "js-yaml": "3.7.0",
     "lodash": "4.17.2",
-    "markdown-it": "8.2.0",
+    "markdown-it": "8.2.1",
     "normalize.css": "5.0.0",
     "nunjucks": "3.0.0",
     "pretty-error": "2.0.2"

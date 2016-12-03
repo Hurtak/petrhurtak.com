@@ -2,9 +2,6 @@
 
 ## NEXT RELEASE
 
-- browser sync
-- files watching
-- dist forlder serving
 - cleanup package.json commangs - convert them to gulp tasks?
 - netlify.toml convert task to gulp
 - cleanup config - do not use enviroment variables????

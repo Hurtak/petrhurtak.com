@@ -5,6 +5,7 @@
 - cleanup package.json commangs - convert them to gulp tasks?
 - netlify.toml convert task to gulp
 - cleanup config - do not use enviroment variables????
+- prepare distribution build
 
 - snippets
     - base with srcdoc does not work so what do we do?

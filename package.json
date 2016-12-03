@@ -34,7 +34,7 @@
   "scripts": {
     "start": "export NODE_ENV=production && node src/server/index.js",
     "test": "ava src/test/**/*.js",
-    "test+coverage": "nyc --all --exclude=node_modules ava src/test/**/*.js",
+    "test+coverage": "nyc --all ava src/test/**/*.js",
     "lint": "standard --verbose \"scripts/**/*.js\" \"src/**/*.js\"",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
@@ -45,8 +45,8 @@
   },
   "nyc": {
     "exclude": [
-      "src/test",
-      "src/config"
+      "dist",
+      "src/test"
     ]
   },
   "homepage": "http://hurtak.cz"

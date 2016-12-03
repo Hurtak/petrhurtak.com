@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import * as utilsArticles from '../../server/utils/articles.js'
+import * as utilsArticles from '../../compile/utils/articles.js'
 
 test('addIdsToHeadings', t => {
   const fn = utilsArticles.addIdsToHeadings

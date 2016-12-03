@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import * as nunjucksFilters from '../../server/nunjucks/filters.js'
+import * as nunjucksFilters from '../../compile/nunjucks/filters.js'
 
 // helper functions
 

@@ -7,11 +7,11 @@ const lodash = require('lodash')
 const browserSync = require('browser-sync').create()
 // const htmlMinifier = require('html-minifier')
 
-const debug = require('./src/server/debug.js')
-const paths = require('./src/server/paths.js')
-const config = require('./src/server/config.js')
-const articles = require('./src/server/articles.js')
-const nunjucks = require('./src/server/nunjucks/env.js')
+const debug = require('./src/compile/debug.js')
+const paths = require('./src/compile/paths.js')
+const config = require('./src/compile/config.js')
+const articles = require('./src/compile/articles.js')
+const nunjucks = require('./src/compile/nunjucks/env.js')
 
 debug()
 

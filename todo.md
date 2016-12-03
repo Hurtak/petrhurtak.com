@@ -9,10 +9,6 @@
 - netlify.toml convert task to gulp
 - cleanup config - do not use enviroment variables????
 
-- reason
-    - m4
-    - menhir
-
 - snippets
     - base with srcdoc does not work so what do we do?
     - firefox - when you change something and then reload and reload again it will not come back to previous state

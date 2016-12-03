@@ -4,6 +4,7 @@ const gulp = require('gulp')
 const path = require('path')
 const fs = require('fs-promise')
 const lodash = require('lodash')
+const browserSync = require('browser-sync').create()
 // const htmlMinifier = require('html-minifier')
 
 const debug = require('./src/server/debug.js')
@@ -119,34 +120,47 @@ gulp.task('articles', function (done) {
       return fs.writeFileSync(path.join(paths.dist, 'humans.txt'), humansTxt)
     })
 
-  Promise
-    .all([
-      articlePromises,
-      rssPromise,
-      humansTxtPromise
-    ])
-    .then(() => done())
+  Promise.all([
+    articlePromises,
+    rssPromise,
+    humansTxtPromise
+  ]).then(() => done())
+})
+
+gulp.task('server:start', function (done) {
+  browserSync.init({
+    server: './dist',
+    port: 8000,
+    open: false,
+    https: true,
+    reloadOnRestart: true
+  }, done)
+})
+
+gulp.task('server:reload', function (done) {
+  browserSync.reload()
+  done()
 })
 
 // main tasks
 
 gulp.task('watch', function () {
-  return gulp.watch(['./articles/**/*', './src/**/*'], gulp.series('prepare-dirs', 'compile'))
+  return gulp.watch(['./articles/**/*', './src/**/*'], gulp.series('prepare-dirs', 'compile', 'server:reload'))
 })
 
 gulp.task('compile', gulp.parallel(
   '404',
   'robots.txt',
   'static',
-  'articles',
-  'watch'
+  'articles'
 ))
 
 gulp.task('dev', gulp.series(
   'prepare-dirs',
   gulp.parallel(
     'compile',
-    'watch'
+    'watch',
+    'server:start'
   )
 ))
 

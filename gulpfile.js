@@ -150,6 +150,13 @@ gulp.task('test', function (done) {
     .pipe(gulpAva())
 })
 
+gulp.task('test:coverage', function (done) {
+  return gulp.src('./src/test/**/*.js')
+    .pipe(gulpAva({
+      nyc: true
+    }))
+})
+
 // main tasks
 
 gulp.task('watch:articles', function () {

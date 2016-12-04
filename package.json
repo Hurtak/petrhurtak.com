@@ -35,7 +35,6 @@
   "scripts": {
     "dev": "gulp",
     "test": "gulp test",
-    "test+coverage": "nyc --all ava src/test/**/*.js",
     "lint": "standard --verbose \"scripts/**/*.js\" \"src/**/*.js\"",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
@@ -45,8 +44,11 @@
     "url": "https://github.com/Hurtak/hurtak.cc/issues"
   },
   "nyc": {
+    "all": true,
+    "include": [
+      "src"
+    ],
     "exclude": [
-      "dist",
       "src/test"
     ]
   },

@@ -1,6 +1,7 @@
 'use strict'
 
 const gulp = require('gulp')
+const gulpAva = require('gulp-ava')
 const path = require('path')
 const fs = require('fs-promise')
 const lodash = require('lodash')
@@ -15,7 +16,7 @@ const nunjucks = require('./src/compile/nunjucks/env.js')
 
 debug()
 
-// tasks
+// compilation tasks
 
 gulp.task('prepare-dirs', function (done) {
   fs.remove(paths.dist)
@@ -127,7 +128,9 @@ gulp.task('articles', function (done) {
   ]).then(() => done())
 })
 
-gulp.task('server:start', function (done) {
+// other tasks
+
+gulp.task('server', function (done) {
   browserSync.init({
     server: './dist',
     port: 8000,
@@ -137,15 +140,24 @@ gulp.task('server:start', function (done) {
   }, done)
 })
 
-gulp.task('server:reload', function (done) {
+gulp.task('browser-reload', function (done) {
   browserSync.reload()
   done()
 })
 
+gulp.task('test', function (done) {
+  return gulp.src('./src/test/**/*.js')
+    .pipe(gulpAva())
+})
+
 // main tasks
 
-gulp.task('watch', function () {
-  return gulp.watch(['./articles/**/*', './src/**/*'], gulp.series('prepare-dirs', 'compile', 'server:reload'))
+gulp.task('watch:articles', function () {
+  return gulp.watch(['./articles/**/*', './src/**/*'], gulp.series('prepare-dirs', 'compile', 'browser-reload'))
+})
+
+gulp.task('watch:test', function () {
+  return gulp.watch(['./src/**/*.js'], gulp.series('test'))
 })
 
 gulp.task('compile', gulp.parallel(
@@ -155,14 +167,15 @@ gulp.task('compile', gulp.parallel(
   'articles'
 ))
 
-gulp.task('dev', gulp.series(
-  'prepare-dirs',
+gulp.task('dev',
   gulp.parallel(
-    'compile',
-    'watch',
-    'server:start'
+    'watch:articles',
+    'watch:test',
+    'server',
+    'test',
+    gulp.series('prepare-dirs', 'compile')
   )
-))
+)
 
 gulp.task('default', gulp.series('dev'))
 

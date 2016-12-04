@@ -24,6 +24,7 @@
     "browser-sync": "2.18.2",
     "coveralls": "2.11.15",
     "gulp": "git://github.com/gulpjs/gulp.git#e9e5ab7e70080e1bfb5650a4fdc4c8849e70b3e0",
+    "gulp-ava": "0.15.0",
     "nyc": "10.0.0",
     "standard": "8.6.0"
   },
@@ -33,7 +34,7 @@
   },
   "scripts": {
     "dev": "gulp",
-    "test": "ava src/test/**/*.js",
+    "test": "gulp test",
     "test+coverage": "nyc --all ava src/test/**/*.js",
     "lint": "standard --verbose \"scripts/**/*.js\" \"src/**/*.js\"",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"

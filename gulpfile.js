@@ -1,10 +1,12 @@
 'use strict'
 
-const gulp = require('gulp')
-const gulpAva = require('gulp-ava')
 const path = require('path')
 const fs = require('fs-promise')
+
+const gulp = require('gulp')
+const gulpAva = require('gulp-ava')
 const lodash = require('lodash')
+const execa = require('execa')
 const browserSync = require('browser-sync').create()
 // const htmlMinifier = require('html-minifier')
 
@@ -150,11 +152,16 @@ gulp.task('test', function (done) {
     .pipe(gulpAva())
 })
 
-gulp.task('test:coverage', function (done) {
+gulp.task('test:with-coverage', function (done) {
   return gulp.src('./src/test/**/*.js')
     .pipe(gulpAva({
       nyc: true
     }))
+})
+
+gulp.task('test:coveralls', function (done) {
+  execa.shell('nyc report --reporter=text-lcov | coveralls')
+    .then(() => done())
 })
 
 // main tasks

@@ -23,6 +23,7 @@
     "ava": "0.17.0",
     "browser-sync": "2.18.2",
     "coveralls": "2.11.15",
+    "execa": "0.5.0",
     "gulp": "git://github.com/gulpjs/gulp.git#e9e5ab7e70080e1bfb5650a4fdc4c8849e70b3e0",
     "gulp-ava": "0.15.0",
     "nyc": "10.0.0",
@@ -35,8 +36,7 @@
   "scripts": {
     "dev": "gulp",
     "test": "gulp test",
-    "lint": "standard --verbose \"scripts/**/*.js\" \"src/**/*.js\"",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "lint": "standard --verbose \"scripts/**/*.js\" \"src/**/*.js\""
   },
   "author": "Petr Huřťák",
   "license": "MIT",

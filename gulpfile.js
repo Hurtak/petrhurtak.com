@@ -146,11 +146,20 @@ gulp.task('browser-reload', function (done) {
   done()
 })
 
-gulp.task('test:run', function (done) {
+gulp.task('test:unit', function (done) {
   execa.shell('ava src/test/**/*.js')
     .then(() => done())
     .catch((res) => {
       console.log(res.stderr)
+      done()
+    })
+})
+
+gulp.task('test:lint', function (done) {
+  execa.shell('standard --verbose "scripts/**/*.js" "src/**/*.js"')
+    .then(() => done())
+    .catch((res) => {
+      console.log(res.stdout)
       done()
     })
 })
@@ -184,10 +193,9 @@ gulp.task('watch:test', function () {
   return gulp.watch(['./src/**/*.js'], gulp.series('test'))
 })
 
-gulp.task('test', gulp.series(
-  'test:run',
-  'test:coverage',
-  'test:coverage-report'
+gulp.task('test', gulp.parallel(
+  'test:lint',
+  gulp.series('test:unit', 'test:coverage', 'test:coverage-report')
 ))
 
 gulp.task('compile', gulp.parallel(

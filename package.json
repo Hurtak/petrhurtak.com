@@ -33,9 +33,7 @@
     "url": "https://github.com/Hurtak/hurtak.cc"
   },
   "scripts": {
-    "dev": "gulp",
-    "test": "gulp test",
-    "lint": "standard --verbose \"scripts/**/*.js\" \"src/**/*.js\""
+    "dev": "gulp"
   },
   "author": "Petr Huřťák",
   "license": "MIT",

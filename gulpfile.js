@@ -4,7 +4,6 @@ const path = require('path')
 const fs = require('fs-promise')
 
 const gulp = require('gulp')
-const gulpAva = require('gulp-ava')
 const lodash = require('lodash')
 const execa = require('execa')
 const browserSync = require('browser-sync').create()
@@ -147,16 +146,27 @@ gulp.task('browser-reload', function (done) {
   done()
 })
 
-gulp.task('test', function (done) {
-  return gulp.src('./src/test/**/*.js')
-    .pipe(gulpAva())
+gulp.task('test:run', function (done) {
+  execa.shell('ava src/test/**/*.js')
+    .then(() => done())
+    .catch((res) => {
+      console.log(res.stderr)
+      done()
+    })
 })
 
-gulp.task('test:with-coverage', function (done) {
-  return gulp.src('./src/test/**/*.js')
-    .pipe(gulpAva({
-      nyc: true
-    }))
+gulp.task('test:coverage', function (done) {
+  execa.shell('nyc --all --include="src" --exclude="src/test" ava src/test/**/*.js')
+    .then(() => done())
+    .catch((res) => {
+      console.log(res.stderr)
+      done()
+    })
+})
+
+gulp.task('test:coverage-report', function (done) {
+  execa.shell('nyc report --reporter=lcov')
+    .then(() => done())
 })
 
 gulp.task('test:coveralls', function (done) {
@@ -173,6 +183,12 @@ gulp.task('watch:articles', function () {
 gulp.task('watch:test', function () {
   return gulp.watch(['./src/**/*.js'], gulp.series('test'))
 })
+
+gulp.task('test', gulp.series(
+  'test:run',
+  'test:coverage',
+  'test:coverage-report'
+))
 
 gulp.task('compile', gulp.parallel(
   '404',

@@ -12,7 +12,7 @@ install:
   - npm install
 
 script:
-  - ./node_modules/.bin/gulp test:with-coverage
+  - ./node_modules/.bin/gulp test:coverage
 
 after_success:
   - ./node_modules/.bin/gulp test:coveralls

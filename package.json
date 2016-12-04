@@ -25,7 +25,6 @@
     "coveralls": "2.11.15",
     "execa": "0.5.0",
     "gulp": "git://github.com/gulpjs/gulp.git#e9e5ab7e70080e1bfb5650a4fdc4c8849e70b3e0",
-    "gulp-ava": "0.15.0",
     "nyc": "10.0.0",
     "standard": "8.6.0"
   },
@@ -42,15 +41,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Hurtak/hurtak.cc/issues"
-  },
-  "nyc": {
-    "all": true,
-    "include": [
-      "src"
-    ],
-    "exclude": [
-      "src/test"
-    ]
   },
   "homepage": "http://hurtak.cz"
 }

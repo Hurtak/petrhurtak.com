@@ -7,6 +7,7 @@
     "node": ">=6"
   },
   "dependencies": {
+    "archiver": "1.2.0",
     "cheerio": "0.22.0",
     "escape-html": "1.0.3",
     "fs-promise": "1.0.0",
@@ -26,6 +27,7 @@
     "execa": "0.5.0",
     "gulp": "git://github.com/gulpjs/gulp.git#e9e5ab7e70080e1bfb5650a4fdc4c8849e70b3e0",
     "nyc": "10.0.0",
+    "request": "https://registry.npmjs.org/request/-/request-2.65.0.tgz",
     "standard": "8.6.0"
   },
   "repository": {

@@ -4,8 +4,10 @@ const path = require('path')
 const fs = require('fs-promise')
 
 const gulp = require('gulp')
-const lodash = require('lodash')
 const execa = require('execa')
+const lodash = require('lodash')
+const request = require('request')
+const archiver = require('archiver')
 const browserSync = require('browser-sync').create()
 // const htmlMinifier = require('html-minifier')
 
@@ -17,7 +19,11 @@ const nunjucks = require('./src/compile/nunjucks/env.js')
 
 debug()
 
-// compilation tasks
+//
+//
+// Articles compilation
+//
+//
 
 gulp.task('prepare-dirs', function (done) {
   fs.remove(paths.dist)
@@ -129,7 +135,11 @@ gulp.task('articles', function (done) {
   ]).then(() => done())
 })
 
-// other tasks
+//
+//
+// Server
+//
+//
 
 gulp.task('server', function (done) {
   browserSync.init({
@@ -145,6 +155,12 @@ gulp.task('browser-reload', function (done) {
   browserSync.reload()
   done()
 })
+
+//
+//
+// Tests
+//
+//
 
 gulp.task('test:unit', function (done) {
   execa.shell('ava src/test/**/*.js')
@@ -183,7 +199,48 @@ gulp.task('test:coveralls', function (done) {
     .then(() => done())
 })
 
-// main tasks
+//
+//
+// Deploy
+//
+//
+
+gulp.task('deploy', function (done) {
+  const archive = archiver('zip')
+
+  archive.on('error', err => {
+    console.error(err)
+    done()
+  })
+
+  archive.pipe(
+    request({
+      method: 'POST',
+      url: 'https://api.netlify.com/api/v1/sites/hurtak.netlify.com/deploys',
+      headers: {
+        'Content-Type': 'application/zip',
+        Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`
+      }
+    },
+    function (error, response, body) {
+      if (error) {
+        console.error('upload failed:', error)
+      } else {
+        console.log('Upload successful!  Server responded with:', body)
+      }
+      done()
+    })
+  )
+
+  archive.directory(paths.dist)
+  archive.finalize()
+})
+
+//
+//
+// Watches
+//
+//
 
 gulp.task('watch:articles', function () {
   return gulp.watch(['./articles/**/*', './src/**/*'], gulp.series('prepare-dirs', 'compile', 'browser-reload'))
@@ -192,6 +249,12 @@ gulp.task('watch:articles', function () {
 gulp.task('watch:test', function () {
   return gulp.watch(['./src/**/*.js'], gulp.series('test'))
 })
+
+//
+//
+// Task collections
+//
+//
 
 gulp.task('test', gulp.parallel(
   'test:lint',
@@ -204,6 +267,12 @@ gulp.task('compile', gulp.parallel(
   'static',
   'articles'
 ))
+
+//
+//
+// Main tasks
+//
+//
 
 gulp.task('dev',
   gulp.parallel(

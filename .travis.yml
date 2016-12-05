@@ -4,21 +4,23 @@ os:
   - linux
   - osx
 
+node_js:
+  - "7"
+  - "6"
+
 env:
   global:
     - CI_BUILD=1
+    - TEST_SUITE=test
 
 matrix:
   include:
-  - node_js: "7"
-    env: TEST_SUITE=node7
-    script: ./node_modules/.bin/gulp ci:test
-  - node_js: "6"
-    env: TEST_SUITE=node6
-    script: ./node_modules/.bin/gulp ci:test
   - node_js: "7.2.0"
     env: TEST_SUITE=deploy
     script: ./node_modules/.bin/gulp ci:deploy
 
 install:
   - npm install
+
+script:
+  - ./node_modules/.bin/gulp ci:test

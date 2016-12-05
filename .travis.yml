@@ -15,5 +15,7 @@ script:
   - ./node_modules/.bin/gulp test:coverage
   - ./node_modules/.bin/gulp prepare-dirs
   - ./node_modules/.bin/gulp compile
+
+after_success:
   - ./node_modules/.bin/gulp deploy
   - ./node_modules/.bin/gulp test:coveralls

@@ -206,6 +206,7 @@ gulp.task('test:coveralls', function (done) {
 //
 
 gulp.task('deploy', function (done) {
+  console.log(process.env.NETLIFY_ACCESS_TOKEN.length)
   const archive = archiver('zip')
 
   archive.on('error', err => {

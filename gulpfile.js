@@ -17,7 +17,11 @@ const config = require('./src/compile/config.js')
 const articles = require('./src/compile/articles.js')
 const nunjucks = require('./src/compile/nunjucks/env.js')
 
-debug()
+const CI_BUILD = process.env.CI_BUILD === '1'
+console.log(CI_BUILD)
+if (!CI_BUILD) {
+  debug()
+}
 
 //
 //
@@ -206,7 +210,6 @@ gulp.task('test:coveralls', function (done) {
 //
 
 gulp.task('deploy', function (done) {
-  console.log(process.env.NETLIFY_ACCESS_TOKEN.length)
   const archive = archiver('zip')
 
   archive.on('error', err => {

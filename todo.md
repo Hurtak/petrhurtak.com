@@ -158,6 +158,7 @@
     - have a way to show unpublished articles to other people on secret url
 
 - CI
+    - https://percy.io/
     - consider switching to some other ci tool (https://github.com/integrations), seems like Travis is not supporting multiple tasks
     - read docs https://docs.travis-ci.com/user/languages/javascript-with-nodejs (notifications when it fails?)
     - have CI job which will run all article validity checks

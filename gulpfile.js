@@ -17,9 +17,7 @@ const config = require('./src/compile/config.js')
 const articles = require('./src/compile/articles.js')
 const nunjucks = require('./src/compile/nunjucks/env.js')
 
-const CI_BUILD = process.env.CI_BUILD === '1'
-console.log(CI_BUILD)
-if (!CI_BUILD) {
+if (!process.env.CI_BUILD) {
   debug()
 }
 
@@ -285,6 +283,24 @@ gulp.task('dev',
     'server',
     'test',
     gulp.series('prepare-dirs', 'compile')
+  )
+)
+
+gulp.task('ci:test',
+  gulp.series(
+    'test:run',
+    'prepare-dirs',
+    'compile'
+  )
+)
+
+gulp.task('ci:deploy',
+  gulp.series(
+    'test:coverage',
+    'prepare-dirs',
+    'compile',
+    'deploy',
+    'test:coveralls'
   )
 )
 

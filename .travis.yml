@@ -16,3 +16,10 @@ script:
 
 after_success:
   - ./node_modules/.bin/gulp test:coveralls
+
+before-deploy:
+  - ./node_modules/.bin/gulp prepare-dirs
+  - ./node_modules/.bin/gulp compile
+
+deploy:
+  - ./node_modules/.bin/gulp deploy

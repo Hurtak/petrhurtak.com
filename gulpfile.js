@@ -17,7 +17,9 @@ const config = require('./src/compile/config.js')
 const articles = require('./src/compile/articles.js')
 const nunjucks = require('./src/compile/nunjucks/env.js')
 
-if (!process.env.CI_BUILD) {
+console.log(process.env.CI)
+console.log(typeof process.env.CI)
+if (!process.env.CI) {
   debug()
 }
 

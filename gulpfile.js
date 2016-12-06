@@ -223,8 +223,7 @@ gulp.task('deploy', function (done) {
         'Content-Type': 'application/zip',
         Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`
       }
-    },
-    function (error, response, body) {
+    }, function (error, response, body) {
       if (error) {
         console.error('upload failed:', error)
       } else {
@@ -286,9 +285,15 @@ gulp.task('dev',
   )
 )
 
+//
+//
+// Continuous integration tasks
+//
+//
+
 gulp.task('ci:test',
   gulp.series(
-    'test:run',
+    'test:unit',
     'prepare-dirs',
     'compile'
   )

@@ -2,7 +2,6 @@
 
 ## NEXT RELEASE
 
-- upload to netlify with travis yml
 - cleanup config - do not use enviroment variables????
 - prepare distribution build
 

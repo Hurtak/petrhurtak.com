@@ -17,8 +17,6 @@ const config = require('./src/compile/config.js')
 const articles = require('./src/compile/articles.js')
 const nunjucks = require('./src/compile/nunjucks/env.js')
 
-console.log(process.env.CI)
-console.log(typeof process.env.CI)
 if (!process.env.CI) {
   debug()
 }
@@ -58,12 +56,21 @@ gulp.task('robots.txt', function (done) {
 })
 
 gulp.task('static', function (done) {
-  Promise.all([
-    fs.symlink(paths.styles, paths.distStyles),
-    fs.symlink(paths.scripts, paths.distScripts),
-    fs.symlink(paths.images, paths.distImages),
-    fs.symlink(paths.nodeModules, paths.distNodeModules)
-  ]).then(() => done())
+  if (config.devel) {
+    Promise.all([
+      fs.symlink(paths.styles, paths.distStyles),
+      fs.symlink(paths.scripts, paths.distScripts),
+      fs.symlink(paths.images, paths.distImages),
+      fs.symlink(paths.nodeModules, paths.distNodeModules)
+    ]).then(() => done())
+  } else {
+    Promise.all([
+      fs.copy(paths.styles, paths.distStyles),
+      fs.copy(paths.scripts, paths.distScripts),
+      fs.copy(paths.images, paths.distImages),
+      fs.copy(paths.nodeModules, paths.distNodeModules)
+    ]).then(() => done())
+  }
 })
 
 gulp.task('articles', function (done) {
@@ -96,14 +103,28 @@ gulp.task('articles', function (done) {
         const htmlArticle = nunjucks.render('article.njk', article)
 
         const indexHtml = fs.writeFile(path.join(folder, 'index.html'), htmlArticle)
-        const images = fs.symlink(
-          path.join(article.fs.path, paths.articleImages),
-          path.join(folder, paths.articleImages)
-        )
-        const snippets = fs.symlink(
-          path.join(article.fs.path, paths.articleSnippets),
-          path.join(folder, paths.articleSnippets)
-        )
+        let images
+        let snippets
+        if (config.devel) {
+          images = fs.symlink(
+            path.join(article.fs.path, paths.articleImages),
+            path.join(folder, paths.articleImages)
+          )
+          snippets = fs.symlink(
+            path.join(article.fs.path, paths.articleSnippets),
+            path.join(folder, paths.articleSnippets)
+          )
+        } else {
+          const imagesPath = path.join(article.fs.path, paths.articleImages)
+          if (fs.existsSync(imagesPath)) {
+            images = fs.copy(imagesPath, path.join(folder, paths.articleImages))
+          }
+
+          const snippetsPath = path.join(article.fs.path, paths.articleSnippets)
+          if (fs.existsSync(snippetsPath)) {
+            snippets = fs.copy(snippetsPath, path.join(folder, paths.articleSnippets))
+          }
+        }
 
         return Promise.all([
           indexHtml,
@@ -287,6 +308,8 @@ gulp.task('dev',
   )
 )
 
+gulp.task('default', gulp.series('dev'))
+
 //
 //
 // Continuous integration tasks
@@ -310,8 +333,6 @@ gulp.task('ci:deploy',
     'test:coveralls'
   )
 )
-
-gulp.task('default', gulp.series('dev'))
 
 // articleHtml = htmlMinifier.minify(articleHtml, {
 //   collapseWhitespace: true,

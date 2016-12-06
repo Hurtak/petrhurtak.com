@@ -15,11 +15,20 @@ const debug = require('./src/compile/debug.js')
 const paths = require('./src/compile/paths.js')
 const config = require('./src/compile/config.js')
 const articles = require('./src/compile/articles.js')
-const nunjucks = require('./src/compile/nunjucks/env.js')
+const nunjucksEnv = require('./src/compile/nunjucks/env.js')
 
 if (!process.env.CI) {
   debug()
 }
+
+//
+//
+// Local state
+//
+//
+
+let nunjucks = nunjucksEnv(false)
+let productionBuild = false
 
 //
 //
@@ -56,19 +65,19 @@ gulp.task('robots.txt', function (done) {
 })
 
 gulp.task('static', function (done) {
-  if (config.devel) {
-    Promise.all([
-      fs.symlink(paths.styles, paths.distStyles),
-      fs.symlink(paths.scripts, paths.distScripts),
-      fs.symlink(paths.images, paths.distImages),
-      fs.symlink(paths.nodeModules, paths.distNodeModules)
-    ]).then(() => done())
-  } else {
+  if (productionBuild) {
     Promise.all([
       fs.copy(paths.styles, paths.distStyles),
       fs.copy(paths.scripts, paths.distScripts),
       fs.copy(paths.images, paths.distImages),
       fs.copy(paths.nodeModules, paths.distNodeModules)
+    ]).then(() => done())
+  } else {
+    Promise.all([
+      fs.symlink(paths.styles, paths.distStyles),
+      fs.symlink(paths.scripts, paths.distScripts),
+      fs.symlink(paths.images, paths.distImages),
+      fs.symlink(paths.nodeModules, paths.distNodeModules)
     ]).then(() => done())
   }
 })
@@ -105,16 +114,7 @@ gulp.task('articles', function (done) {
         const indexHtml = fs.writeFile(path.join(folder, 'index.html'), htmlArticle)
         let images
         let snippets
-        if (config.devel) {
-          images = fs.symlink(
-            path.join(article.fs.path, paths.articleImages),
-            path.join(folder, paths.articleImages)
-          )
-          snippets = fs.symlink(
-            path.join(article.fs.path, paths.articleSnippets),
-            path.join(folder, paths.articleSnippets)
-          )
-        } else {
+        if (productionBuild) {
           const imagesPath = path.join(article.fs.path, paths.articleImages)
           if (fs.existsSync(imagesPath)) {
             images = fs.copy(imagesPath, path.join(folder, paths.articleImages))
@@ -124,6 +124,15 @@ gulp.task('articles', function (done) {
           if (fs.existsSync(snippetsPath)) {
             snippets = fs.copy(snippetsPath, path.join(folder, paths.articleSnippets))
           }
+        } else {
+          images = fs.symlink(
+            path.join(article.fs.path, paths.articleImages),
+            path.join(folder, paths.articleImages)
+          )
+          snippets = fs.symlink(
+            path.join(article.fs.path, paths.articleSnippets),
+            path.join(folder, paths.articleSnippets)
+          )
         }
 
         return Promise.all([
@@ -333,6 +342,18 @@ gulp.task('ci:deploy',
     'test:coveralls'
   )
 )
+
+gulp.task('xxx', function (done) {
+  productionBuild = true
+  nunjucks = nunjucksEnv(productionBuild)
+
+  return () => {
+    return gulp.series(
+      'prepare-dirs',
+      'compile'
+    )
+  }
+})
 
 // articleHtml = htmlMinifier.minify(articleHtml, {
 //   collapseWhitespace: true,

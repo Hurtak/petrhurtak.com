@@ -1,5 +1,13 @@
 language: node_js
 
+# build on specific versions intended for deployment
+
+matrix:
+  include:
+  - os: linux
+    node_js: "7.2.0"
+    script: ./node_modules/.bin/gulp ci:deploy
+
 # build matrix for testing tasks
 
 os:
@@ -16,11 +24,3 @@ install:
 
 script:
   - ./node_modules/.bin/gulp ci:test
-
-# build on specific versions intended for deployment
-
-matrix:
-  include:
-  - os: linux
-    node_js: "7.2.0"
-    script: ./node_modules/.bin/gulp ci:deploy

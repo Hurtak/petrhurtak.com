@@ -1,5 +1,5 @@
 # TODO
-- CSFD synchronicity ohodnotit
+
 ## NEXT RELEASE
 
 - cleanup config - do not use enviroment variables????

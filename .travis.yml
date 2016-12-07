@@ -1,26 +1,26 @@
 language: node_js
 
+# build matrix for testing tasks
+
 os:
   - linux
   - osx
 
 node_js:
+  - "node" # latest stable Node.js release
   - "7"
   - "6"
-
-env:
-  global:
-    - CI_BUILD=1
-    - TEST_SUITE=test
-
-matrix:
-  include:
-  - node_js: "7.2.0"
-    env: TEST_SUITE=deploy
-    script: ./node_modules/.bin/gulp ci:deploy
 
 install:
   - npm install
 
 script:
   - ./node_modules/.bin/gulp ci:test
+
+# build on specific versions intended for deployment
+
+matrix:
+  include:
+  - os: linux
+    node_js: "7.2.0"
+    script: ./node_modules/.bin/gulp ci:deploy

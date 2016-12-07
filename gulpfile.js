@@ -15,11 +15,20 @@ const debug = require('./src/compile/debug.js')
 const paths = require('./src/compile/paths.js')
 const config = require('./src/compile/config.js')
 const articles = require('./src/compile/articles.js')
-const nunjucks = require('./src/compile/nunjucks/env.js')
+const nunjucksEnv = require('./src/compile/nunjucks/env.js')
 
-if (!process.env.CI_BUILD) {
+if (!process.env.CI) {
   debug()
 }
+
+//
+//
+// Local state
+//
+//
+
+let nunjucks = nunjucksEnv(false)
+let productionBuild = false
 
 //
 //
@@ -56,12 +65,21 @@ gulp.task('robots.txt', function (done) {
 })
 
 gulp.task('static', function (done) {
-  Promise.all([
-    fs.symlink(paths.styles, paths.distStyles),
-    fs.symlink(paths.scripts, paths.distScripts),
-    fs.symlink(paths.images, paths.distImages),
-    fs.symlink(paths.nodeModules, paths.distNodeModules)
-  ]).then(() => done())
+  if (productionBuild) {
+    Promise.all([
+      fs.copy(paths.styles, paths.distStyles),
+      fs.copy(paths.scripts, paths.distScripts),
+      fs.copy(paths.images, paths.distImages),
+      fs.copy(paths.nodeModules, paths.distNodeModules)
+    ]).then(() => done())
+  } else {
+    Promise.all([
+      fs.symlink(paths.styles, paths.distStyles),
+      fs.symlink(paths.scripts, paths.distScripts),
+      fs.symlink(paths.images, paths.distImages),
+      fs.symlink(paths.nodeModules, paths.distNodeModules)
+    ]).then(() => done())
+  }
 })
 
 gulp.task('articles', function (done) {
@@ -94,14 +112,28 @@ gulp.task('articles', function (done) {
         const htmlArticle = nunjucks.render('article.njk', article)
 
         const indexHtml = fs.writeFile(path.join(folder, 'index.html'), htmlArticle)
-        const images = fs.symlink(
-          path.join(article.fs.path, paths.articleImages),
-          path.join(folder, paths.articleImages)
-        )
-        const snippets = fs.symlink(
-          path.join(article.fs.path, paths.articleSnippets),
-          path.join(folder, paths.articleSnippets)
-        )
+        let images
+        let snippets
+        if (productionBuild) {
+          const imagesPath = path.join(article.fs.path, paths.articleImages)
+          if (fs.existsSync(imagesPath)) {
+            images = fs.copy(imagesPath, path.join(folder, paths.articleImages))
+          }
+
+          const snippetsPath = path.join(article.fs.path, paths.articleSnippets)
+          if (fs.existsSync(snippetsPath)) {
+            snippets = fs.copy(snippetsPath, path.join(folder, paths.articleSnippets))
+          }
+        } else {
+          images = fs.symlink(
+            path.join(article.fs.path, paths.articleImages),
+            path.join(folder, paths.articleImages)
+          )
+          snippets = fs.symlink(
+            path.join(article.fs.path, paths.articleSnippets),
+            path.join(folder, paths.articleSnippets)
+          )
+        }
 
         return Promise.all([
           indexHtml,
@@ -223,8 +255,7 @@ gulp.task('deploy', function (done) {
         'Content-Type': 'application/zip',
         Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`
       }
-    },
-    function (error, response, body) {
+    }, function (error, response, body) {
       if (error) {
         console.error('upload failed:', error)
       } else {
@@ -286,9 +317,17 @@ gulp.task('dev',
   )
 )
 
+gulp.task('default', gulp.series('dev'))
+
+//
+//
+// Continuous integration tasks
+//
+//
+
 gulp.task('ci:test',
   gulp.series(
-    'test:run',
+    'test:unit',
     'prepare-dirs',
     'compile'
   )
@@ -304,7 +343,17 @@ gulp.task('ci:deploy',
   )
 )
 
-gulp.task('default', gulp.series('dev'))
+gulp.task('xxx', function (done) {
+  productionBuild = true
+  nunjucks = nunjucksEnv(productionBuild)
+
+  return () => {
+    return gulp.series(
+      'prepare-dirs',
+      'compile'
+    )
+  }
+})
 
 // articleHtml = htmlMinifier.minify(articleHtml, {
 //   collapseWhitespace: true,

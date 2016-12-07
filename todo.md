@@ -2,8 +2,6 @@
 - CSFD synchronicity ohodnotit
 ## NEXT RELEASE
 
-- netlify.toml convert task to gulp
-- upload to netlify with travis yml
 - cleanup config - do not use enviroment variables????
 - prepare distribution build
 

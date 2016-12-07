@@ -1,5 +1,5 @@
 # TODO
-
+- CSFD synchronicity ohodnotit
 ## NEXT RELEASE
 
 - netlify.toml convert task to gulp
@@ -45,6 +45,7 @@
 
 - buy domains
 - add comments
+    - https://css-tricks.com/lazy-loading-disqus-comments/
 - add google analytics
 - go through the templates and make sure url like hurtak.cz & hurtak.cc are all the same and correct
 - go through TODOs

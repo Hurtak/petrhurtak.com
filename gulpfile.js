@@ -61,24 +61,21 @@ gulp.task('site:prepare-dirs', done => {
     .then(() => done())
 })
 
-gulp.task('site:404', done => {
-  let html404 = nunjucks.render('404.njk')
-  if (productionBuild) {
-    html404 = minify(html404)
+gulp.task('site:static-pages', done => {
+  const pages = [
+    { from: '404.njk', to: '404.html' },
+    { from: 'robots.txt.njk', to: 'robots.txt' }
+  ]
+
+  for (const page of pages) {
+    let html = nunjucks.render(page.from)
+    if (productionBuild) {
+      html = minify(html)
+    }
+
+    fs.writeFile(path.join(paths.dist, page.to), html)
+      .then(done)
   }
-
-  fs.writeFile(path.join(paths.dist, '404.html'), html404)
-    .then(done)
-})
-
-gulp.task('site:robots.txt', done => {
-  let htmlRobotsTxt = nunjucks.render('robots.txt.njk')
-  if (productionBuild) {
-    htmlRobotsTxt = minify(htmlRobotsTxt)
-  }
-
-  fs.writeFile(path.join(paths.dist, 'robots.txt'), htmlRobotsTxt)
-    .then(done)
 })
 
 gulp.task('site:styles', done => {
@@ -277,8 +274,7 @@ gulp.task('site:collection:compile',
   gulp.series(
     'site:prepare-dirs',
     gulp.parallel(
-      'site:404',
-      'site:robots.txt',
+      'site:static-pages',
       'site:static',
       'site:styles:dev',
       'site:articles'

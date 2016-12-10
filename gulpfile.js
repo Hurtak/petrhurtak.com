@@ -326,7 +326,6 @@ gulp.task('test:collection:all', gulp.parallel(
 gulp.task('watch:articles', () =>
   gulp.watch(['./articles/**/*', './src/**/*'],
     gulp.series(
-      'site:prepare-dirs',
       'site:collection:compile',
       'browser-sync:reload-browser'
     )

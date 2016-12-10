@@ -79,6 +79,12 @@ gulp.task('site:static-pages', done => {
 })
 
 gulp.task('site:styles', done => {
+  if (!productionBuild) {
+    fs.symlink(paths.styles, paths.distStyles)
+      .then(() => done())
+    return
+  }
+
   var postCss = require('postcss')
   var postCssImport = require('postcss-import')
   var postCssNext = require('postcss-cssnext')
@@ -112,23 +118,26 @@ gulp.task('site:styles', done => {
     })
 })
 
-gulp.task('site:styles:dev', done => {
-  fs.symlink(paths.styles, paths.distStyles)
-    .then(() => done())
-})
-
 gulp.task('site:static', done => {
   if (productionBuild) {
     Promise.all([
-      fs.copy(paths.scripts, paths.distScripts),
-      fs.copy(paths.images, paths.distImages)
+      fs.copy(paths.scripts, paths.distScripts)
     ]).then(() => done())
   } else {
     Promise.all([
       fs.symlink(paths.scripts, paths.distScripts),
-      fs.symlink(paths.images, paths.distImages),
       fs.symlink(paths.nodeModules, paths.distNodeModules)
     ]).then(() => done())
+  }
+})
+
+gulp.task('site:images', done => {
+  if (productionBuild) {
+    fs.copy(paths.images, paths.distImages)
+      .then(() => done())
+  } else {
+    fs.symlink(paths.images, paths.distImages)
+      .then(() => done())
   }
 })
 
@@ -275,8 +284,9 @@ gulp.task('site:collection:compile',
     'site:prepare-dirs',
     gulp.parallel(
       'site:static-pages',
+      'site:styles',
       'site:static',
-      'site:styles:dev',
+      'site:images',
       'site:articles'
     )
   )

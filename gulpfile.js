@@ -7,6 +7,7 @@ const gulp = require('gulp')
 const execa = require('execa')
 const lodash = require('lodash')
 const request = require('request')
+const prettyBytes = require('pretty-bytes')
 const archiver = require('archiver')
 const browserSync = require('browser-sync').create()
 const htmlMinifier = require('html-minifier')
@@ -200,34 +201,53 @@ gulp.task('site:deploy', done => {
     done()
   })
 
-  archive.pipe(
-    request({
-      method: 'POST',
-      url: 'https://api.netlify.com/api/v1/sites/hurtak.netlify.com/deploys',
-      headers: {
-        'Content-Type': 'application/zip',
-        Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`
-      }
-    }, (error, response, body) => {
-      if (error) {
-        console.error('upload failed:', error)
-      } else {
-        console.log('Upload successful!  Server responded with:', body)
-      }
+  const logFileSize = archive => {
+    console.log('archive size:', prettyBytes(archive.pointer()))
+  }
+
+  if (productionBuild) {
+    archive.pipe(
+      request({
+        method: 'POST',
+        url: 'https://api.netlify.com/api/v1/sites/hurtak.netlify.com/deploys',
+        headers: {
+          'Content-Type': 'application/zip',
+          Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`
+        }
+      }, (error, _, body) => {
+        logFileSize(archive)
+        if (error) {
+          console.error('upload failed:', error)
+        } else {
+          console.log('upload successful, server responded with:', body)
+        }
+        done()
+      })
+    )
+  } else {
+    const writeStream = fs.createWriteStream(path.join(paths.dist, 'site.zip'))
+    writeStream.on('close', () => {
+      logFileSize(archive)
       done()
     })
-  )
+    archive.pipe(writeStream)
+  }
 
-  archive.directory(paths.dist)
+  archive.directory(paths.dist, '/')
   archive.finalize()
 })
 
-gulp.task('site:collection:compile', gulp.parallel(
-  'site:404',
-  'site:robots.txt',
-  'site:static',
-  'site:articles'
-))
+gulp.task('site:collection:compile',
+  gulp.series(
+    'site:prepare-dirs',
+    gulp.parallel(
+      'site:404',
+      'site:robots.txt',
+      'site:static',
+      'site:articles'
+    )
+  )
+)
 
 //
 //
@@ -323,28 +343,34 @@ gulp.task('watch:test', () =>
 //
 //
 
-gulp.task('dev',
-  gulp.parallel(
-    gulp.series('site:prepare-dirs', 'site:collection:compile', 'browser-sync:server'),
-    'test:collection:all',
-    'watch:articles',
-    'watch:test'
-  )
-)
-
-gulp.task('default', gulp.series('dev'))
-
 gulp.task('env:production', done => {
   productionBuild = true
   nunjucks = nunjucksEnv(productionBuild)
   done()
 })
 
-gulp.task('xxx', gulp.series(
-  'site:prepare-dirs',
-  'site:collection:compile',
-  'browser-sync:server'
-))
+gulp.task('dev',
+  gulp.parallel(
+    gulp.series('site:collection:compile', 'browser-sync:server'),
+    'test:collection:all',
+    'watch:articles',
+    'watch:test'
+  )
+)
+
+gulp.task('dist',
+  gulp.series(
+    'env:production',
+    gulp.parallel(
+      gulp.series('site:collection:compile', 'browser-sync:server'),
+      'test:collection:all',
+      'watch:articles',
+      'watch:test'
+    )
+  )
+)
+
+gulp.task('default', gulp.series('dev'))
 
 //
 //
@@ -354,14 +380,12 @@ gulp.task('xxx', gulp.series(
 
 gulp.task('ci:test', gulp.series(
   'test:unit',
-  'site:prepare-dirs',
   'site:collection:compile'
 ))
 
 gulp.task('ci:deploy', gulp.series(
   'env:production',
   'test:coverage',
-  'site:prepare-dirs',
   'site:collection:compile',
   'site:deploy',
   'test:coveralls'

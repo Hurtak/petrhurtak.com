@@ -4906,6 +4906,11 @@
       "from": "preserve@>=0.2.0 <0.3.0",
       "resolved": "https://registry.npmjs.org/preserve/-/preserve-0.2.0.tgz"
     },
+    "pretty-bytes": {
+      "version": "4.0.2",
+      "from": "pretty-bytes@latest",
+      "resolved": "https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-4.0.2.tgz"
+    },
     "pretty-error": {
       "version": "2.0.2",
       "from": "pretty-error@2.0.2",

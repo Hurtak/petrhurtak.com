@@ -53,9 +53,14 @@
     {% block scriptVariables %}{% endblock %}
 
     {# scripts #}
-    <script src="/static/scripts/components/log.js"></script>
-    <script src="/static/scripts/components/snippets.js"></script>
-    <script src="/static/scripts/app.js"></script>
+    {% if globals.devel %}
+      {# get rid of data-dev thing #}
+      <script data-dev src="/static/scripts/components/log.js"></script>
+      <script data-dev src="/static/scripts/components/snippets.js"></script>
+      <script data-dev src="/static/scripts/app.js"></script>
+    {% else %}
+      <script src="/static/scripts/scripts.js"></script>
+    {% endif %}
 
     {# debug #}
     {% if globals.devel %}

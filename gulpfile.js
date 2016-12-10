@@ -3,12 +3,16 @@
 const path = require('path')
 const fs = require('fs-promise')
 
+
 const gulp = require('gulp')
 const execa = require('execa')
 const lodash = require('lodash')
 const request = require('request')
-const prettyBytes = require('pretty-bytes')
 const archiver = require('archiver')
+const uglifyJS = require('uglify-js')
+const babelCore = require('babel-core')
+const scriptTags = require('script-tags')
+const prettyBytes = require('pretty-bytes')
 const browserSync = require('browser-sync').create()
 const htmlMinifier = require('html-minifier')
 const minify = html => htmlMinifier.minify(html, {
@@ -58,6 +62,13 @@ gulp.task('site:prepare-dirs', done => {
         fs.mkdir(paths.distStatic)
       ])
     })
+    .then(() => {
+      return Promise.all([
+        fs.mkdir(paths.distImages),
+        fs.mkdir(paths.distStyles),
+        fs.mkdir(paths.distScripts)
+      ])
+    })
     .then(() => done())
 })
 
@@ -94,13 +105,7 @@ gulp.task('site:styles', done => {
 
   postCss([
     postCssImport(),
-    postCssNext({
-      browsers: [
-        'last 2 versions',
-        'Firefox ESR',
-        '> 2%'
-      ]
-    }),
+    postCssNext({ browsers: config.supportedBrowsers }),
     cssnano({ autoprefixer: false })
   ])
     .process(fs.readFileSync(from, 'utf-8'), {
@@ -118,16 +123,46 @@ gulp.task('site:styles', done => {
     })
 })
 
-gulp.task('site:static', done => {
-  if (productionBuild) {
-    Promise.all([
-      fs.copy(paths.scripts, paths.distScripts)
-    ]).then(() => done())
-  } else {
-    Promise.all([
-      fs.symlink(paths.scripts, paths.distScripts)
-    ]).then(() => done())
+gulp.task('site:scripts', done => {
+  if (!productionBuild) {
+    fs.symlink(paths.scripts, paths.distScripts)
+      .then(() => done())
+    return
   }
+
+  const baseTemplate = fs.readFileSync(path.join(paths.templates, '/extends/base.njk'), 'utf-8')
+
+  let tags = scriptTags(baseTemplate)
+  tags = lodash.filter(tags, script => script.attrs.src)
+  tags = lodash.filter(tags, script => 'data-dev' in script.attrs)
+  tags = lodash.map(tags, script => script.attrs.src)
+  tags = lodash.map(tags, url => {
+    const scriptPath = path.join(paths.src, url)
+    return {
+      src: url,
+      path: scriptPath,
+      content: babelCore.transform(fs.readFileSync(scriptPath, 'utf-8'), {
+        sourceMaps: 'inline',
+        presets: [
+          ['env', { targets: { browsers: config.supportedBrowsers } }]
+        ]
+      }).code
+    }
+  })
+  tags = lodash.reduce(tags, (obj, tag) => {
+    obj[tag.src] = tag.content
+    return obj
+  }, {})
+
+  const result = uglifyJS.minify(tags, {
+    outSourceMap: 'scripts.map.js',
+    fromString: true
+  })
+
+  fs.writeFileSync(path.join(paths.distScripts, 'scripts.js'), result.code)
+  fs.writeFileSync(path.join(paths.distScripts, 'scripts.map.js'), result.map)
+
+  done()
 })
 
 gulp.task('site:images', done => {
@@ -144,6 +179,8 @@ gulp.task('site:node-modules', done => {
   if (!productionBuild) {
     fs.symlink(paths.nodeModules, paths.distNodeModules)
       .then(() => done())
+  } else {
+    done()
   }
 })
 
@@ -291,7 +328,7 @@ gulp.task('site:collection:compile',
     gulp.parallel(
       'site:static-pages',
       'site:styles',
-      'site:static',
+      'site:scripts',
       'site:images',
       'site:node-modules',
       'site:articles'

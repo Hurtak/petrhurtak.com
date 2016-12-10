@@ -13,6 +13,12 @@ module.exports = {
     perRssFeed: 20
   },
 
+  supportedBrowsers: [
+    'last 2 versions',
+    'Firefox ESR',
+    '> 2%'
+  ],
+
   debugSkipPackages: [
     'nunjucks',
     'gulp'

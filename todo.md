@@ -3,6 +3,12 @@
 ## NEXT RELEASE
 
 - prepare distribution build
+    - test source maps
+        - js - does not work
+    - hash compiled files
+        - css
+        - js
+    - change templates so they point to hashed files
 
 - snippets
     - base with srcdoc does not work so what do we do?

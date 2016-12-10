@@ -33,7 +33,7 @@ function getPathByArticleName (directory, articleUrl) {
   return null
 }
 
-function getArticles (postsDirectory, draftsDirectory) {
+function getArticles (postsDirectory, draftsDirectory, nunjucks) {
   // TODO: once async/await lands, make this more concurrent
 
   const articlesData = []
@@ -45,7 +45,7 @@ function getArticles (postsDirectory, draftsDirectory) {
     const isDirectory = fs.statSync(fullPath).isDirectory()
     if (!isDirectory) continue
 
-    articlesData.push(getArticleData(fullPath, true))
+    articlesData.push(getArticleData(fullPath, true, nunjucks))
   }
 
   for (const directoryItem of fs.readdirSync(draftsDirectory)) {
@@ -53,13 +53,13 @@ function getArticles (postsDirectory, draftsDirectory) {
     const isDirectory = fs.statSync(fullPath).isDirectory()
     if (!isDirectory) continue
 
-    articlesData.push(getArticleData(fullPath, false))
+    articlesData.push(getArticleData(fullPath, false, nunjucks))
   }
 
   return articlesData
 }
 
-function getArticleData (articleFolderPath, isPublished) {
+function getArticleData (articleFolderPath, isPublished, nunjucks) {
   const metadataPath = path.join(articleFolderPath, paths.articleMetadata)
   const metadataContent = fs.readFileSync(metadataPath, 'utf-8')
   const metadata = Object.assign(
@@ -70,7 +70,7 @@ function getArticleData (articleFolderPath, isPublished) {
   const snippetsData = getSnippetsData(articleFolderPath, metadata.url, metadata.snippetsConfig)
   const snippets = enhanceSnippetsDataWithConfig(snippetsData)
 
-  const articleHtml = getArticleHtml(articleFolderPath, snippets)
+  const articleHtml = getArticleHtml(articleFolderPath, snippets, nunjucks)
   const fsData = {
     directory: lodash.last(articleFolderPath.split(path.sep)),
     path: articleFolderPath
@@ -86,7 +86,7 @@ function getArticleData (articleFolderPath, isPublished) {
   return article
 }
 
-function getArticleHtml (articlePath, snippets) {
+function getArticleHtml (articlePath, snippets, nunjucks) {
   const markdown = markdownIt({
     html: true,
     highlight: (str, language) => highlight.highlight(language, str).value
@@ -101,7 +101,7 @@ function getArticleHtml (articlePath, snippets) {
   let articleHtml = fs.readFileSync(path.join(articlePath, paths.articleMarkdown), 'utf8')
   articleHtml = markdown.render(articleHtml)
   articleHtml = utilsArticles.addIdsToHeadings(articleHtml)
-  articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml, snippets)
+  articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml, snippets, nunjucks)
 
   return articleHtml
 }

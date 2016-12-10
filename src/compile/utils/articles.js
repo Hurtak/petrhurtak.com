@@ -3,8 +3,6 @@
 const cheerio = require('cheerio')
 const lodash = require('lodash')
 
-const nunjucksEnv = require('../nunjucks/env.js')
-
 function cheerioLoadWithoutEscaping (htmlString) {
   return cheerio.load(htmlString, { decodeEntities: false })
 }
@@ -43,7 +41,7 @@ function addIdsToHeadings (htmlString) {
   return $.html()
 }
 
-function enhanceSnippetLinks (htmlString, snippets) {
+function enhanceSnippetLinks (htmlString, snippets, nunjucks) {
   let $ = cheerioLoadWithoutEscaping(htmlString)
 
   $('a[href^="./snippets/"]').each((_, element) => {
@@ -57,7 +55,7 @@ function enhanceSnippetLinks (htmlString, snippets) {
     const snippet = snippets.find(snippet => snippet.metadata.name === snippetName)
     if (!snippet) return
 
-    const snippetHtml = nunjucksEnv.render('components/snippet.njk', {
+    const snippetHtml = nunjucks.render('components/snippet.njk', {
       snippet,
       relativeUrl: rawSnippetUrl,
       snippetHtml: buildSnippetHtml({

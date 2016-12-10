@@ -14,7 +14,8 @@ module.exports = {
   },
 
   debugSkipPackages: [
-    'nunjucks'
+    'nunjucks',
+    'gulp'
   ],
 
   nunjucks: (productionBuild) => {

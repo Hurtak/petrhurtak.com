@@ -144,7 +144,10 @@ gulp.task('site:scripts', done => {
       content: babelCore.transform(fs.readFileSync(scriptPath, 'utf-8'), {
         sourceMaps: 'inline',
         presets: [
-          ['env', { targets: { browsers: config.supportedBrowsers } }]
+          ['env', {
+            targets: { browsers: config.supportedBrowsers },
+            loose: true
+          }]
         ]
       }).code
     }

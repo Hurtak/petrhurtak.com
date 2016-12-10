@@ -125,8 +125,7 @@ gulp.task('site:static', done => {
     ]).then(() => done())
   } else {
     Promise.all([
-      fs.symlink(paths.scripts, paths.distScripts),
-      fs.symlink(paths.nodeModules, paths.distNodeModules)
+      fs.symlink(paths.scripts, paths.distScripts)
     ]).then(() => done())
   }
 })
@@ -137,6 +136,13 @@ gulp.task('site:images', done => {
       .then(() => done())
   } else {
     fs.symlink(paths.images, paths.distImages)
+      .then(() => done())
+  }
+})
+
+gulp.task('site:node-modules', done => {
+  if (!productionBuild) {
+    fs.symlink(paths.nodeModules, paths.distNodeModules)
       .then(() => done())
   }
 })
@@ -287,6 +293,7 @@ gulp.task('site:collection:compile',
       'site:styles',
       'site:static',
       'site:images',
+      'site:node-modules',
       'site:articles'
     )
   )

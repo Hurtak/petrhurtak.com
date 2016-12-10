@@ -86,8 +86,7 @@ gulp.task('site:static', done => {
     Promise.all([
       fs.copy(paths.styles, paths.distStyles),
       fs.copy(paths.scripts, paths.distScripts),
-      fs.copy(paths.images, paths.distImages),
-      fs.copy(paths.nodeModules, paths.distNodeModules)
+      fs.copy(paths.images, paths.distImages)
     ]).then(() => done())
   } else {
     Promise.all([

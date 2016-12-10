@@ -81,16 +81,53 @@ gulp.task('site:robots.txt', done => {
     .then(done)
 })
 
+gulp.task('site:styles', done => {
+  var postCss = require('postcss')
+  var postCssImport = require('postcss-import')
+  var postCssNext = require('postcss-cssnext')
+  var cssnano = require('cssnano')
+
+  const from = path.join(paths.styles, 'styles.css')
+
+  postCss([
+    postCssImport(),
+    postCssNext({
+      browsers: [
+        'last 2 versions',
+        'Firefox ESR',
+        '> 2%'
+      ]
+    }),
+    cssnano({ autoprefixer: false })
+  ])
+    .process(fs.readFileSync(from, 'utf-8'), {
+      from: from,
+      map: {
+        inline: false,
+        annotation: 'styles.map.css'
+      }
+    })
+    .then(function (result) {
+      fs.writeFileSync(path.join(paths.distStyles, 'styles.css'), result.css)
+      fs.writeFileSync(path.join(paths.distStyles, 'styles.map.css'), result.map)
+
+      done()
+    })
+})
+
+gulp.task('site:styles:dev', done => {
+  fs.symlink(paths.styles, paths.distStyles)
+    .then(() => done())
+})
+
 gulp.task('site:static', done => {
   if (productionBuild) {
     Promise.all([
-      fs.copy(paths.styles, paths.distStyles),
       fs.copy(paths.scripts, paths.distScripts),
       fs.copy(paths.images, paths.distImages)
     ]).then(() => done())
   } else {
     Promise.all([
-      fs.symlink(paths.styles, paths.distStyles),
       fs.symlink(paths.scripts, paths.distScripts),
       fs.symlink(paths.images, paths.distImages),
       fs.symlink(paths.nodeModules, paths.distNodeModules)
@@ -243,6 +280,7 @@ gulp.task('site:collection:compile',
       'site:404',
       'site:robots.txt',
       'site:static',
+      'site:styles:dev',
       'site:articles'
     )
   )

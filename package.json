@@ -25,10 +25,14 @@
     "ava": "0.17.0",
     "browser-sync": "2.18.2",
     "coveralls": "2.11.15",
+    "cssnano": "3.8.2",
     "execa": "0.5.0",
     "gulp": "git://github.com/gulpjs/gulp.git#e9e5ab7e70080e1bfb5650a4fdc4c8849e70b3e0",
     "nyc": "10.0.0",
-    "request": "https://registry.npmjs.org/request/-/request-2.65.0.tgz",
+    "postcss": "5.2.6",
+    "postcss-cssnext": "2.9.0",
+    "postcss-import": "9.0.0",
+    "request": "2.79.0",
     "standard": "8.6.0"
   },
   "repository": {

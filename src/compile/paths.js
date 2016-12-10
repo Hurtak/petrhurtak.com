@@ -8,6 +8,9 @@ function absolutePath (relativePath) {
 
 // paths relative to the repository root directory
 const paths = {
+  root: absolutePath('.'),
+  src: absolutePath('./src'),
+
   server: absolutePath('./src/server'),
 
   templates: absolutePath('./src/templates'),
@@ -23,7 +26,7 @@ const paths = {
   distStyles: absolutePath('./dist/static/styles'),
   distScripts: absolutePath('./dist/static/scripts'),
   distImages: absolutePath('./dist/static/images'),
-  distNodeModules: absolutePath('./dist/static/node_modules'),
+  distNodeModules: absolutePath('./dist/node_modules'),
 
   articles: absolutePath('./articles'),
   articlesDrafts: absolutePath('./articles/_drafts'),

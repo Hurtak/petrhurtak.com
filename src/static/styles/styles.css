@@ -1,25 +1,25 @@
 /*
  * libraries
  */
-@import '/static/node_modules/normalize.css/normalize.css';
-@import '/static/node_modules/highlight.js/styles/xcode.css';
+@import '../../../node_modules/normalize.css/normalize.css';
+@import '../../../node_modules/highlight.js/styles/xcode.css';
 
 /*
  * resets & shared styles
  */
-@import '/static/styles/shared/resets.css';
-@import '/static/styles/shared/variables.css';
-@import '/static/styles/shared/typography.css';
+@import 'shared/resets.css';
+@import 'shared/variables.css';
+@import 'shared/typography.css';
 
 /*
  * page components
  */
-@import '/static/styles/components/header.css';
-@import '/static/styles/components/menu.css';
-@import '/static/styles/components/article.css';
-@import '/static/styles/components/article-preview.css';
-@import '/static/styles/components/article-snippet.css';
-@import '/static/styles/components/footer.css';
+@import 'components/header.css';
+@import 'components/menu.css';
+@import 'components/article.css';
+@import 'components/article-preview.css';
+@import 'components/article-snippet.css';
+@import 'components/footer.css';
 
 /*
  * general

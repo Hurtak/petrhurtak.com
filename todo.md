@@ -2,7 +2,6 @@
 
 ## NEXT RELEASE
 
-- cleanup config - do not use enviroment variables????
 - prepare distribution build
 
 - snippets

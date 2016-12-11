@@ -487,7 +487,7 @@ gulp.task('ci:test', gulp.series(
 gulp.task('ci:deploy', gulp.series(
   'env:production',
   'test:coverage',
-  'site:compile',
+  'site:compile:dist',
   'site:deploy',
   'test:coveralls'
 ))

@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/Hurtak/hurtak.cc.svg?branch=master)](https://travis-ci.org/Hurtak/hurtak.cc)
 [![Coverage Status](https://coveralls.io/repos/github/Hurtak/hurtak.cc/badge.svg?branch=master)](https://coveralls.io/github/Hurtak/hurtak.cc?branch=master)
-[![Dependency Status](https://david-dm.org/Hurtak/hurtak.cc.svg)](https://david-dm.org/Hurtak/hurtak.cc)
 [![devDependency Status](https://david-dm.org/Hurtak/hurtak.cc/dev-status.svg)](https://david-dm.org/Hurtak/hurtak.cc#info=devDependencies)
 
 # blog

@@ -834,15 +834,15 @@
       "dev": true
     },
     "browser-sync": {
-      "version": "2.18.4",
-      "from": "browser-sync@2.18.4",
-      "resolved": "https://registry.npmjs.org/browser-sync/-/browser-sync-2.18.4.tgz",
+      "version": "2.18.5",
+      "from": "browser-sync@2.18.5",
+      "resolved": "https://registry.npmjs.org/browser-sync/-/browser-sync-2.18.5.tgz",
       "dev": true
     },
     "browser-sync-client": {
-      "version": "2.4.3",
-      "from": "browser-sync-client@>=2.3.3 <3.0.0",
-      "resolved": "https://registry.npmjs.org/browser-sync-client/-/browser-sync-client-2.4.3.tgz",
+      "version": "2.4.4",
+      "from": "browser-sync-client@2.4.4",
+      "resolved": "https://registry.npmjs.org/browser-sync-client/-/browser-sync-client-2.4.4.tgz",
       "dev": true
     },
     "browser-sync-ui": {

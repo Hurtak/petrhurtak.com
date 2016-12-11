@@ -5979,6 +5979,12 @@
       "resolved": "https://registry.npmjs.org/restore-cursor/-/restore-cursor-1.0.1.tgz",
       "dev": true
     },
+    "rev-hash": {
+      "version": "1.0.0",
+      "from": "rev-hash@latest",
+      "resolved": "https://registry.npmjs.org/rev-hash/-/rev-hash-1.0.0.tgz",
+      "dev": true
+    },
     "rgb": {
       "version": "0.1.0",
       "from": "rgb@>=0.1.0 <0.2.0",

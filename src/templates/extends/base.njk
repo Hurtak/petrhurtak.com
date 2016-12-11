@@ -12,11 +12,13 @@
     <link rel="icon" type="image/png" href="/static/images/favicon.png" sizes="16x16">
 
     {# styles #}
-    {% if globals.devel -%}
+    {% if globals.production %}
+      <link rel="stylesheet" type="text/css" href="/static/styles/styles-{{ hashCss }}.css">
+    {% else %}
       <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-reset.css">
       <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-templates.css">
-    {%- endif %}
-    <link rel="stylesheet" type="text/css" href="/static/styles/styles.css">
+      <link rel="stylesheet" type="text/css" href="/static/styles/styles.css">
+    {% endif %}
 
     {# extra #}
     <link rel="alternate" type="application/rss+xml" title="hurtak.cz" href="/rss.xml">
@@ -53,18 +55,20 @@
     {% block scriptVariables %}{% endblock %}
 
     {# scripts #}
-    {% if globals.devel %}
+    {% if globals.production %}
+      <script src="/static/scripts/scripts-{{ hashJs }}.js"></script>
+    {% else %}
       {# get rid of data-dev thing #}
       <script data-dev src="/static/scripts/components/log.js"></script>
       <script data-dev src="/static/scripts/components/snippets.js"></script>
       <script data-dev src="/static/scripts/app.js"></script>
-    {% else %}
-      <script src="/static/scripts/scripts.js"></script>
     {% endif %}
 
     {# debug #}
-    {% if globals.devel %}
+    {% if not globals.production %}
+      {#
       <pre class="DebugTemplates"><code>{{ getDebugData() | dump(4) }}</code></pre>
+      #}
     {% endif %}
 
   </body>

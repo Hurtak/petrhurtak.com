@@ -3,11 +3,11 @@
 const path = require('path')
 const fs = require('fs-promise')
 
-
 const gulp = require('gulp')
 const execa = require('execa')
 const lodash = require('lodash')
 const request = require('request')
+const revHash = require('rev-hash')
 const archiver = require('archiver')
 const uglifyJS = require('uglify-js')
 const babelCore = require('babel-core')
@@ -15,7 +15,7 @@ const scriptTags = require('script-tags')
 const prettyBytes = require('pretty-bytes')
 const browserSync = require('browser-sync').create()
 const htmlMinifier = require('html-minifier')
-const minify = html => htmlMinifier.minify(html, {
+const minifyHtml = html => htmlMinifier.minify(html, {
   collapseWhitespace: true,
   conservativeCollapse: true,
   minifyCSS: true,
@@ -81,7 +81,7 @@ gulp.task('site:static-pages', done => {
   for (const page of pages) {
     let html = nunjucks.render(page.from)
     if (productionBuild) {
-      html = minify(html)
+      html = minifyHtml(html)
     }
 
     fs.writeFile(path.join(paths.dist, page.to), html)
@@ -91,7 +91,8 @@ gulp.task('site:static-pages', done => {
 
 gulp.task('site:styles', done => {
   if (!productionBuild) {
-    fs.symlink(paths.styles, paths.distStyles)
+    fs.remove(paths.distStyles)
+      .then(() => fs.symlink(paths.styles, paths.distStyles))
       .then(() => done())
     return
   }
@@ -108,7 +109,7 @@ gulp.task('site:styles', done => {
     postCssNext({ browsers: config.supportedBrowsers }),
     cssnano({ autoprefixer: false })
   ])
-    .process(fs.readFileSync(from, 'utf-8'), {
+    .process(fs.readFileSync(from, 'utf8'), {
       from: from,
       map: {
         inline: false,
@@ -116,7 +117,10 @@ gulp.task('site:styles', done => {
       }
     })
     .then(function (result) {
-      fs.writeFileSync(path.join(paths.distStyles, 'styles.css'), result.css)
+      const hashCss = revHash(Buffer.from(result.css))
+      nunjucks.addGlobal('hashCss', hashCss)
+
+      fs.writeFileSync(path.join(paths.distStyles, `styles-${hashCss}.css`), result.css)
       fs.writeFileSync(path.join(paths.distStyles, 'styles.map.css'), result.map)
 
       done()
@@ -125,45 +129,35 @@ gulp.task('site:styles', done => {
 
 gulp.task('site:scripts', done => {
   if (!productionBuild) {
-    fs.symlink(paths.scripts, paths.distScripts)
+    fs.remove(paths.distScripts)
+      .then(() => fs.symlink(paths.scripts, paths.distScripts))
       .then(() => done())
     return
   }
 
-  const baseTemplate = fs.readFileSync(path.join(paths.templates, '/extends/base.njk'), 'utf-8')
+  const baseTemplate = fs.readFileSync(path.join(paths.templates, '/extends/base.njk'), 'utf8')
 
-  let tags = scriptTags(baseTemplate)
-  tags = lodash.filter(tags, script => script.attrs.src)
-  tags = lodash.filter(tags, script => 'data-dev' in script.attrs)
-  tags = lodash.map(tags, script => script.attrs.src)
-  tags = lodash.map(tags, url => {
-    const scriptPath = path.join(paths.src, url)
-    return {
-      src: url,
-      path: scriptPath,
-      content: babelCore.transform(fs.readFileSync(scriptPath, 'utf-8'), {
-        sourceMaps: 'inline',
-        presets: [
-          ['env', {
-            targets: { browsers: config.supportedBrowsers },
-            loose: true
-          }]
-        ]
-      }).code
-    }
-  })
-  tags = lodash.reduce(tags, (obj, tag) => {
-    obj[tag.src] = tag.content
-    return obj
-  }, {})
+  let code = scriptTags(baseTemplate)
+  code = lodash.filter(code, script => script.attrs.src)
+  code = lodash.filter(code, script => 'data-dev' in script.attrs)
+  code = lodash.map(code, script => script.attrs.src)
+  code = lodash.map(code, src => path.join(paths.src, src))
+  code = lodash.map(code, path => fs.readFileSync(path, 'utf8'))
+  code = lodash.join(code, ';\n')
+  code = babelCore.transform(code, {
+    presets: [
+      ['env', {
+        targets: { browsers: config.supportedBrowsers },
+        loose: true
+      }]
+    ]
+  }).code
+  code = uglifyJS.minify(code, { fromString: true }).code
 
-  const result = uglifyJS.minify(tags, {
-    outSourceMap: 'scripts.map.js',
-    fromString: true
-  })
+  const hashJs = revHash(Buffer.from(code))
+  nunjucks.addGlobal('hashJs', hashJs)
 
-  fs.writeFileSync(path.join(paths.distScripts, 'scripts.js'), result.code)
-  fs.writeFileSync(path.join(paths.distScripts, 'scripts.map.js'), result.map)
+  fs.writeFileSync(path.join(paths.distScripts, `scripts-${hashJs}.js`), code)
 
   done()
 })
@@ -173,7 +167,8 @@ gulp.task('site:images', done => {
     fs.copy(paths.images, paths.distImages)
       .then(() => done())
   } else {
-    fs.symlink(paths.images, paths.distImages)
+    fs.remove(paths.distImages)
+      .then(() => fs.symlink(paths.images, paths.distImages))
       .then(() => done())
   }
 })
@@ -189,7 +184,6 @@ gulp.task('site:node-modules', done => {
 
 gulp.task('site:articles', done => {
   // gather articles data
-
   let articlesData = articles.getArticles(paths.articles, paths.articlesDrafts, nunjucks)
   articlesData = lodash.sortBy(articlesData, 'metadata.dateLastUpdate')
   articlesData = articlesData.reverse()
@@ -201,7 +195,7 @@ gulp.task('site:articles', done => {
   const indexArticles = lodash.slice(articlesPublishedData, 0, config.articles.perPage)
   let htmlIndex = nunjucks.render('index.njk', {articles: indexArticles})
   if (productionBuild) {
-    htmlIndex = minify(htmlIndex)
+    htmlIndex = minifyHtml(htmlIndex)
   }
 
   fs.writeFileSync(path.join(paths.dist, 'index.html'), htmlIndex)
@@ -220,7 +214,7 @@ gulp.task('site:articles', done => {
         // article html
         let htmlArticle = nunjucks.render('article.njk', article)
         if (productionBuild) {
-          htmlArticle = minify(htmlArticle)
+          htmlArticle = minifyHtml(htmlArticle)
         }
 
         const promiseHtml = fs.writeFile(path.join(folder, 'index.html'), htmlArticle)
@@ -260,7 +254,6 @@ gulp.task('site:articles', done => {
   const rssPromise = Promise.resolve()
     .then(() => {
       const rssArticles = lodash.slice(articlesData, 0, config.articles.perRssFeed)
-
       const rssFeed = nunjucks.render('rss.njk', {articles: rssArticles})
 
       return fs.writeFile(path.join(paths.dist, 'rss.xml'), rssFeed)
@@ -325,7 +318,7 @@ gulp.task('site:deploy', done => {
   archive.finalize()
 })
 
-gulp.task('site:collection:compile',
+gulp.task('site:compile',
   gulp.series(
     'site:prepare-dirs',
     gulp.parallel(
@@ -335,6 +328,25 @@ gulp.task('site:collection:compile',
       'site:images',
       'site:node-modules',
       'site:articles'
+    )
+  )
+)
+
+gulp.task('site:compile:dist',
+  gulp.series(
+    'site:prepare-dirs',
+    gulp.parallel(
+      gulp.series(
+        gulp.parallel(
+          'site:styles',
+          'site:scripts'
+        ),
+        gulp.parallel(
+          'site:static-pages',
+          'site:articles'
+        )
+      ),
+      'site:images'
     )
   )
 )
@@ -417,7 +429,7 @@ gulp.task('test:collection:all', gulp.parallel(
 gulp.task('watch:articles', () =>
   gulp.watch(['./articles/**/*', './src/**/*'],
     gulp.series(
-      'site:collection:compile',
+      'site:compile',
       'browser-sync:reload-browser'
     )
 ))
@@ -440,7 +452,7 @@ gulp.task('env:production', done => {
 
 gulp.task('dev',
   gulp.parallel(
-    gulp.series('site:collection:compile', 'browser-sync:server'),
+    gulp.series('site:compile', 'browser-sync:server'),
     'test:collection:all',
     'watch:articles',
     'watch:test'
@@ -451,7 +463,7 @@ gulp.task('dist',
   gulp.series(
     'env:production',
     gulp.parallel(
-      gulp.series('site:collection:compile', 'browser-sync:server'),
+      gulp.series('site:compile:dist', 'browser-sync:server'),
       'test:collection:all',
       'watch:articles',
       'watch:test'
@@ -469,13 +481,13 @@ gulp.task('default', gulp.series('dev'))
 
 gulp.task('ci:test', gulp.series(
   'test:unit',
-  'site:collection:compile'
+  'site:compile'
 ))
 
 gulp.task('ci:deploy', gulp.series(
   'env:production',
   'test:coverage',
-  'site:collection:compile',
+  'site:compile',
   'site:deploy',
   'test:coveralls'
 ))

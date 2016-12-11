@@ -25,6 +25,10 @@ module.exports = function (productionBuild) {
     siteDomain: config.siteUrl.host,
     production: productionBuild
   })
+
+  nunjucksEnv.addGlobal('hashCss', '') // used in production mode compilation
+  nunjucksEnv.addGlobal('hashJs', '')
+
   nunjucksEnv.addGlobal('getDebugData', function () { return this })
 
   return nunjucksEnv

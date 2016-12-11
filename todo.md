@@ -2,13 +2,7 @@
 
 ## NEXT RELEASE
 
-- prepare distribution build
-    - test source maps
-        - js - does not work
-    - hash compiled files
-        - css
-        - js
-    - change templates so they point to hashed files
+- fix DebugTemplates
 
 - snippets
     - base with srcdoc does not work so what do we do?
@@ -57,6 +51,10 @@
 ## Right after release
 
 - add css lint?
+- fix css source maps
+    - source map file does not have hash
+    - update sourceMapURL so it points to the file with hash
+    - make sourcemapped file paths correct
 - animated demos (videos) - https://news.ycombinator.com/item?id=12789862
 - update Twitter profile
 - domains
@@ -246,6 +244,11 @@
         - log all 500 into file, how to do this in express?
 
 - Frontend
+    - once JS modules work in Chrome
+        - switch to that
+        - refactor global namespace in base.njk and how data are feeded into the app
+        - add support for sourcemaps
+        - consider using babili instead of uglifyjs
     - highlight.js
         - locally host css file
         - only take css for languages that are really used

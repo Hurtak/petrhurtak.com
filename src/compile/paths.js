@@ -10,9 +10,7 @@ function absolutePath (relativePath) {
 const paths = {
   root: absolutePath('.'),
   src: absolutePath('./src'),
-
   server: absolutePath('./src/server'),
-
   templates: absolutePath('./src/templates'),
 
   static: absolutePath('./src/static'),

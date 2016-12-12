@@ -3,6 +3,7 @@
 
   const data = window.appData
 
-  window.App.Log.init()
+  window.App.DateConvertor.init()
   window.App.Snippets.init(data.snippets)
+  window.App.Log.init()
 }())

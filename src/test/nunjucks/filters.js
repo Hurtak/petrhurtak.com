@@ -105,13 +105,3 @@ test('fullDate', t => {
     t.deepEqual(fn(date), dateToFullDate(date))
   }
 })
-
-test('dateHowLongBefore', t => {
-  const fn = nunjucksFilters.dateHowLongBefore
-
-  t.deepEqual(fn(new Date()), 'just now')
-
-  for (const date of datesToTest) {
-    t.true(fn(date).length > 1)
-  }
-})

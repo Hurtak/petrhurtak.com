@@ -2,8 +2,6 @@
 
 ## NEXT RELEASE
 
-- javascript - change dates to x days ago
-
 - snippets
     - base with srcdoc does not work so what do we do?
     - firefox - when you change something and then reload and reload again it will not come back to previous state
@@ -14,8 +12,6 @@
     - in config
         - have a way to disable some controls / hide some tabs that are not necessary
         - have a way to set height of snippet (probably in config?)
-
-- what to do about times like 'just now', 'one week ago'?
 
 - finish CSS design
     - inspiration:

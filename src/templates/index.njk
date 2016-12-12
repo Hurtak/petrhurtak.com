@@ -9,19 +9,20 @@
 
       <h2>
         <a
-          href="/{{ article.metadata.url }}/"
           class="ArticlePreview-title"
+          href="/{{ article.metadata.url }}/"
         >
           {{ article.metadata.title }}
         </a>
       </h2>
 
       <time
-        datetime="{{ article.metadata.dateLastUpdate | datetimeAttribute }}"
-        title="{{ article.metadata.dateLastUpdate | fullDate }}"
         class="ArticlePreview-date"
+        title="{{ article.metadata.dateLastUpdate | fullDate }}"
+        datetime="{{ article.metadata.dateLastUpdate | datetimeAttribute }}"
+        data-date-convert
       >
-        {{ article.metadata.dateLastUpdate | dateHowLongBefore }}
+        {{ article.metadata.dateLastUpdate | fullDate }}
       </time>
 
       <p class="ArticlePreview-description">

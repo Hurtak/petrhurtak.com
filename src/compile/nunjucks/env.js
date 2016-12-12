@@ -7,10 +7,7 @@ const filters = require('./filters.js')
 
 module.exports = function (productionBuild) {
   // configure https://mozilla.github.io/nunjucks/api.html#configure
-  const nunjucksEnv = nunjucks.configure(
-    paths.templates,
-    config.nunjucks(productionBuild)
-  )
+  const nunjucksEnv = nunjucks.configure(paths.templates, config.nunjucks)
 
   // add custom filters
   for (const filterName in filters) {

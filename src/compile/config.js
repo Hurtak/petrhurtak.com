@@ -24,11 +24,9 @@ module.exports = {
     'gulp'
   ],
 
-  nunjucks: (productionBuild) => {
-    return {
-      autoescape: true, // (default: true) controls if output with dangerous characters are escaped automatically.
-      throwOnUndefined: true, // (default: false) throw errors when outputting a null/undefined value
-      noCache: true // (default: false) never use a cache and recompile templates each time (server-side)
-    }
+  nunjucks: {
+    autoescape: true, // (default: true) controls if output with dangerous characters are escaped automatically.
+    throwOnUndefined: true, // (default: false) throw errors when outputting a null/undefined value
+    noCache: true // (default: false) never use a cache and recompile templates each time (server-side)
   }
 }

@@ -2,7 +2,6 @@
 
 ## NEXT RELEASE
 
-- fix DebugTemplates
 - javascript - change dates to x days ago
 
 - snippets

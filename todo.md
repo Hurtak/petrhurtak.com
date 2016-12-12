@@ -3,12 +3,11 @@
 ## NEXT RELEASE
 
 - snippets
+    - remove srcdoc
     - base with srcdoc does not work so what do we do?
-    - firefox - when you change something and then reload and reload again it will not come back to previous state
-        - maybe add some caching headers?
     - think more about inline snippets and how to display them (iframes have fixed height)
-    - add bigger snippets where we can display html & css & js next to each other (on bigger screen widths)
     - maybe we do not need inline snippets?
+    - add bigger snippets where we can display html & css & js next to each other (on bigger screen widths)
     - in config
         - have a way to disable some controls / hide some tabs that are not necessary
         - have a way to set height of snippet (probably in config?)

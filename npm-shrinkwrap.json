@@ -1400,9 +1400,9 @@
       "dev": true
     },
     "cssnano": {
-      "version": "3.8.2",
-      "from": "cssnano@3.8.2",
-      "resolved": "https://registry.npmjs.org/cssnano/-/cssnano-3.8.2.tgz",
+      "version": "3.9.1",
+      "from": "cssnano@3.9.1",
+      "resolved": "https://registry.npmjs.org/cssnano/-/cssnano-3.9.1.tgz",
       "dev": true
     },
     "csso": {
@@ -2631,9 +2631,9 @@
       "dev": true
     },
     "is-absolute-url": {
-      "version": "2.0.0",
+      "version": "2.1.0",
       "from": "is-absolute-url@>=2.0.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/is-absolute-url/-/is-absolute-url-2.0.0.tgz",
+      "resolved": "https://registry.npmjs.org/is-absolute-url/-/is-absolute-url-2.1.0.tgz",
       "dev": true
     },
     "is-arrayish": {
@@ -5350,9 +5350,9 @@
       "dev": true
     },
     "postcss-merge-rules": {
-      "version": "2.0.10",
+      "version": "2.0.11",
       "from": "postcss-merge-rules@>=2.0.3 <3.0.0",
-      "resolved": "https://registry.npmjs.org/postcss-merge-rules/-/postcss-merge-rules-2.0.10.tgz",
+      "resolved": "https://registry.npmjs.org/postcss-merge-rules/-/postcss-merge-rules-2.0.11.tgz",
       "dev": true
     },
     "postcss-message-helpers": {

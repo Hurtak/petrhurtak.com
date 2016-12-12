@@ -56,6 +56,8 @@
     - source map file does not have hash
     - update sourceMapURL so it points to the file with hash
     - make sourcemapped file paths correct
+- handle images cache busting
+    - https://blog.risingstack.com/automatic-cache-busting-for-your-css/
 - animated demos (videos) - https://news.ycombinator.com/item?id=12789862
 - update Twitter profile
 - domains

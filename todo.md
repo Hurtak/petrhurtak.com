@@ -14,6 +14,7 @@
 
 - finish CSS design
     - inspiration:
+        - http://usabilitypost.com/
         - https://automattic.com/
         - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
         - http://phoboslab.org/log

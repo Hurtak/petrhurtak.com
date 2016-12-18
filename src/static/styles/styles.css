@@ -29,6 +29,7 @@
 .PageWrapper {
   min-height: 100%;
   text-rendering: optimizeLegibility; /* TODO: is this doing anyting? */
+  /* http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/ */
 }
 
 .Content {

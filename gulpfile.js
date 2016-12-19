@@ -415,7 +415,7 @@ gulp.task('test:coveralls', done => {
     .then(() => done())
 })
 
-gulp.task('test:collection:all', gulp.parallel(
+gulp.task('test:all', gulp.parallel(
   'test:lint',
   gulp.series('test:unit', 'test:coverage', 'test:coverage-report')
 ))
@@ -435,7 +435,7 @@ gulp.task('watch:articles', () =>
 ))
 
 gulp.task('watch:test', () =>
-  gulp.watch(['./src/**/*.js'], gulp.series('test:collection:all')
+  gulp.watch(['./src/**/*.js'], gulp.series('test:all')
 ))
 
 //
@@ -453,7 +453,7 @@ gulp.task('env:production', done => {
 gulp.task('dev',
   gulp.parallel(
     gulp.series('site:compile', 'browser-sync:server'),
-    'test:collection:all',
+    'test:all',
     'watch:articles',
     'watch:test'
   )
@@ -464,7 +464,7 @@ gulp.task('dist',
     'env:production',
     gulp.parallel(
       gulp.series('site:compile:dist', 'browser-sync:server'),
-      'test:collection:all',
+      'test:all',
       'watch:articles',
       'watch:test'
     )

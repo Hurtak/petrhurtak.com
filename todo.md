@@ -2,15 +2,7 @@
 
 ## NEXT RELEASE
 
-- snippets
-    - remove srcdoc
-    - base with srcdoc does not work so what do we do?
-    - think more about inline snippets and how to display them (iframes have fixed height)
-    - maybe we do not need inline snippets?
-    - add bigger snippets where we can display html & css & js next to each other (on bigger screen widths)
-    - in config
-        - have a way to disable some controls / hide some tabs that are not necessary
-        - have a way to set height of snippet (probably in config?)
+- remove srcdoc
 
 - finish CSS design
     - inspiration:
@@ -125,6 +117,10 @@
     - also unify /rss and /about routes to have trailing slash?
 
 - code snippet tool
+    - add bigger snippets where we can display html & css & js next to each other (on bigger screen widths)
+    - in config
+        - have a way to disable some controls / hide some tabs that are not necessary
+        - have a way to set height of snippet (probably in config?)
     - add variaous layers of validation, like that when snippets dir exists, there is at least on .html file in there
     - be able to resize
     - Source link doesent align with button - http://i.imgur.com/AIKK2K2.png (only in chrome)

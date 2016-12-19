@@ -26,6 +26,15 @@
     - separate styles for keyboard keys? eg.: ctrl + tab
     - 404 page
 
+- add `about` page with basic contact
+    - twitter
+    - email
+    - hobby
+    - current work
+        - seznam
+        - ui programmer
+    -
+
 - buy domains
 - add comments
     - https://css-tricks.com/lazy-loading-disqus-comments/

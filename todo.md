@@ -2,8 +2,6 @@
 
 ## NEXT RELEASE
 
-- remove srcdoc
-
 - finish CSS design
     - inspiration:
         - http://usabilitypost.com/

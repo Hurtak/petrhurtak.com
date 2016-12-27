@@ -1,0 +1,17 @@
+.Page {
+  --padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0 var(--padding);
+  max-width: calc( var(--content-width) + var(--padding) * 2 );
+  margin: auto;
+  text-rendering: optimizeLegibility; /* TODO: is this doing anyting? */
+  /* TODO http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/ */
+}
+
+.Page-content {
+  /* to make footer sticky https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/*/
+  flex: 1;
+}

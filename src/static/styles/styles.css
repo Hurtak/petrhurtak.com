@@ -14,31 +14,10 @@
 /*
  * page components
  */
+@import 'components/page.css';
 @import 'components/header.css';
 @import 'components/menu.css';
 @import 'components/article.css';
 @import 'components/article-preview.css';
 @import 'components/article-snippet.css';
 @import 'components/footer.css';
-
-/*
- * general
- * TODO: move into separate component?
- */
-
-.Page {
-  --padding: 10px;
-
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 0 var(--padding);
-  max-width: calc( var(--content-width) + var(--padding) * 2 );
-  margin: auto;
-  text-rendering: optimizeLegibility; /* TODO: is this doing anyting? */
-  /* TODO http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/ */
-}
-
-.Page-content {
-  flex: 1;
-}

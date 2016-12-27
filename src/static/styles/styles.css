@@ -26,26 +26,19 @@
  * TODO: move into separate component?
  */
 
-.PageWrapper {
-  min-height: 100%;
-  text-rendering: optimizeLegibility; /* TODO: is this doing anyting? */
-  /* http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/ */
-}
-
-.Content {
+.Page {
   --padding: 10px;
 
-  max-width: calc( var(--content-width) + var(--padding) * 2 );
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   padding: 0 var(--padding);
+  max-width: calc( var(--content-width) + var(--padding) * 2 );
   margin: auto;
+  text-rendering: optimizeLegibility; /* TODO: is this doing anyting? */
+  /* TODO http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/ */
 }
 
-/*
- * prevents the jump between scrollbar and no-scrollbar pages
- * @see: https://aykevl.nl/2014/09/fix-jumping-scrollbar
-@media (max-width: 800px) {
-  .page-wrapper {
-    margin-left: -calc(100vw - 100%);
-  }
+.Page-content {
+  flex: 1;
 }
- */

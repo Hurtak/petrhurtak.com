@@ -29,19 +29,22 @@
   <body>
 
     {# page #}
-    <div class="PageWrapper">
+    <div class="Page">
 
-      <div class="Content">
-        {% include 'components/header.njk' %}
+      {% include 'components/header.njk' %}
 
-        <main>
-          {% block content %}{% endblock %}
-        </main>
+      <main class="Page-content">
+        {% block content %}{% endblock %}
+      </main>
 
-        {% include 'components/footer.njk' %}
-      </div>
+      {% include 'components/footer.njk' %}
 
     </div>
+
+    {# debug #}
+    {% if not globals.production %}
+      {#<pre class="DebugTemplates"><code>{{ getDebugData() | dump(4) }}</code></pre>#}
+    {% endif %}
 
     {# data for scripts #}
     <script>
@@ -58,16 +61,11 @@
     {% if globals.production %}
       <script src="/static/scripts/scripts-{{ hashJs }}.js"></script>
     {% else %}
-      {# get rid of data-dev thing #}
+      {# TODO: get rid of data-dev thing #}
       <script data-dev src="/static/scripts/components/date-convertor.js"></script>
       <script data-dev src="/static/scripts/components/snippets.js"></script>
       <script data-dev src="/static/scripts/components/log.js"></script>
       <script data-dev src="/static/scripts/app.js"></script>
-    {% endif %}
-
-    {# debug #}
-    {% if not globals.production %}
-      <pre class="DebugTemplates"><code>{{ getDebugData() | dump(4) }}</code></pre>
     {% endif %}
 
   </body>

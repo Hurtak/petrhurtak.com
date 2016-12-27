@@ -26,6 +26,9 @@
     - separate styles for keyboard keys? eg.: ctrl + tab
     - 404 page
 
+- responsive
+- mobile first?
+
 - buy domains
 - add comments
     - https://css-tricks.com/lazy-loading-disqus-comments/
@@ -258,7 +261,6 @@
     - pass paths as variable into templates?
     - load highlightjs css styles asynchronously
     - revisit rss feed items
-    - sticky footer
     - add compilation process for static files
     - consider loading images with javascript with `<noscript>` fallback?
     - fine tune "published x days ago"

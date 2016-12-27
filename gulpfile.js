@@ -46,7 +46,6 @@ const productionBuild = process.env.BUILD_ENV === 'production'
 const nunjucks = nunjucksEnv(productionBuild)
 
 console.log(`production build: ${productionBuild}`)
-console.log(`NODE_ENV: ${process.env.NODE_ENV}`)
 
 //
 //
@@ -289,6 +288,9 @@ gulp.task('site:deploy', done => {
     console.log('archive size:', prettyBytes(archive.pointer()))
   }
 
+  archive.directory(paths.dist, '/')
+  archive.finalize()
+
   if (productionBuild) {
     archive.pipe(
       request({
@@ -316,9 +318,6 @@ gulp.task('site:deploy', done => {
     })
     archive.pipe(writeStream)
   }
-
-  archive.directory(paths.dist, '/')
-  archive.finalize()
 })
 
 gulp.task('site:compile',

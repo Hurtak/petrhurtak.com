@@ -2,6 +2,8 @@ language: node_js
 
 # build matrix for testing tasks
 
+sudo: required
+
 os:
   - linux
   - osx
@@ -20,8 +22,7 @@ cache:
     - node_modules
 
 install:
-  - npm install
-  - apt-get install tree
+  - npm install && sudo apt-get install tree
 
 script:
   - ./node_modules/.bin/gulp ci:test

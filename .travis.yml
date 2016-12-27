@@ -30,7 +30,6 @@ script:
 matrix:
   include:
     - os: linux
-      env:
-        - BUILD_ENV=production
+      env: BUILD_ENV=production
       node_js: "7.3.0"
-      script: ./node_modules/.bin/gulp ci:deploy && ls -la dist/components/ && ls -la dist/components/snippets/
+      script: ./node_modules/.bin/gulp ci:deploy

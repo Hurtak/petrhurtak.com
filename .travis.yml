@@ -34,4 +34,4 @@ matrix:
       env:
         - BUILD_ENV=production
       node_js: "7.3.0"
-      script: ./node_modules/.bin/gulp ci:deploy && tree
+      script: ./node_modules/.bin/gulp ci:deploy && tree dist

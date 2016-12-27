@@ -3,7 +3,6 @@
 ## NEXT RELEASE
 
 - fix deploy job
-- reconsider using env variables again?
 
 - finish CSS design
     - inspiration:
@@ -88,6 +87,7 @@
 - domains
     - buy hurtak.cc hurtak.io petrhurtak.com petrhurtak.cz hurtak.pe
     - move to namecheap?
+- https://www.smashingmagazine.com/2016/08/using-a-static-site-generator-at-scale-lessons-learned/
 - http://www.vzhurudolu.cz/prirucka/checklist
 - consider transforming article so each element has it's own class?
     - p -> p.article__p

@@ -42,8 +42,11 @@ if (!process.env.CI) { // Travis adds this env variable
 //
 //
 
-let nunjucks = nunjucksEnv(false)
-let productionBuild = false
+const productionBuild = process.env.BUILD_ENV === 'production'
+const nunjucks = nunjucksEnv(productionBuild)
+
+console.log(`production build: ${productionBuild}`)
+console.log(`NODE_ENV: ${process.env.NODE_ENV}`)
 
 //
 //
@@ -442,30 +445,12 @@ gulp.task('watch:test', () =>
 //
 //
 
-gulp.task('env:production', done => {
-  productionBuild = true
-  nunjucks = nunjucksEnv(productionBuild)
-  done()
-})
-
 gulp.task('dev',
   gulp.parallel(
     gulp.series('site:compile', 'browser-sync:server'),
     'test:all',
     'watch:articles',
     'watch:test'
-  )
-)
-
-gulp.task('dist',
-  gulp.series(
-    'env:production',
-    gulp.parallel(
-      gulp.series('site:compile', 'browser-sync:server'),
-      'test:all',
-      'watch:articles',
-      'watch:test'
-    )
   )
 )
 
@@ -483,7 +468,6 @@ gulp.task('ci:test', gulp.series(
 ))
 
 gulp.task('ci:deploy', gulp.series(
-  'env:production',
   'test:coverage',
   'site:compile',
   'site:deploy',

@@ -26,6 +26,33 @@
     - separate styles for keyboard keys? eg.: ctrl + tab
     - 404 page
 
+- footer inspiration
+    - https://www.bramstein.com/speaking/
+- inspiration
+    - http://shapeshed.com/writing-cross-platform-node/
+    - https://dockyard.com/blog/2015/10/14/best-practices-data-down-actions-up
+    - http://bramstein.com/writing/
+    - http://tesarek.me
+    - http://tympanus.net/Tutorials/FullscreenBookBlock/
+    - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
+    - http://zellwk.com/blog/why-vertical-rhythms/
+    - http://zellwk.com/blog/media-query-units/
+    - http://pebblecode.com/
+    - https://shapeshed.com/the-future-of-jobs/
+    - http://fvsch.com/articles/push-and-wait/
+    - http://html5up.net/twenty
+    - http://html5up.net/prologue
+    - http://www.mgadams.com/2015/06/30/the-software-engineers-guide-to-negotiating-a-raise/
+    - http://www.rouvre.com/fr/gallery/9/portraits/359
+    - https://nervous.io/clojure/clojurescript/aws/lambda/node/lein/2015/07/05/lambda/
+    - http://www.michaelvillar.com/
+    - https://yobriefca.se/articles/
+    - http://perfectionkills.com/
+    - http://blog.jenkster.com/
+    - http://uimovement.com/ui/1922/menu-item-selection/
+    - http://feross.org/resume/
+    - http://fvsch.com/code/svg-icons/how-to/
+
 - responsive
 - mobile first?
 
@@ -317,8 +344,6 @@
     - http://blog.wearecolony.com/a-year-without-jquery/
 - https://uimovement.com/ui/2181/link-behavior/
 - https://webmasters.googleblog.com/2011/09/pagination-with-relnext-and-relprev.html?m=1
-- footer inspiration
-    - https://www.bramstein.com/speaking/
 - folder organization
     - https://doc.nette.org/en/2.3/quickstart/getting-started#toc-sandbox-s-content
     - Taky obrázky z článků by měly být we www složce nebo někde + je proháhět nějakym optimalizátorem a používat
@@ -332,30 +357,6 @@
 - http://uimovement.com/ui/440/challenge-accepted/
 - https://blog.risingstack.com/node-js-security-checklist/
 - https://www.joyent.com/node-js/production/debug
-- inspiration
-    - http://shapeshed.com/writing-cross-platform-node/
-    - https://dockyard.com/blog/2015/10/14/best-practices-data-down-actions-up
-    - http://bramstein.com/writing/
-    - http://tesarek.me
-    - http://tympanus.net/Tutorials/FullscreenBookBlock/
-    - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
-    - http://zellwk.com/blog/why-vertical-rhythms/
-    - http://zellwk.com/blog/media-query-units/
-    - http://pebblecode.com/
-    - https://shapeshed.com/the-future-of-jobs/
-    - http://fvsch.com/articles/push-and-wait/
-    - http://html5up.net/twenty
-    - http://html5up.net/prologue
-    - http://www.mgadams.com/2015/06/30/the-software-engineers-guide-to-negotiating-a-raise/
-    - http://www.rouvre.com/fr/gallery/9/portraits/359
-    - https://nervous.io/clojure/clojurescript/aws/lambda/node/lein/2015/07/05/lambda/
-    - http://www.michaelvillar.com/
-    - https://yobriefca.se/articles/
-    - http://perfectionkills.com/
-    - http://blog.jenkster.com/
-    - http://uimovement.com/ui/1922/menu-item-selection/
-    - http://feross.org/resume/
-    - http://fvsch.com/code/svg-icons/how-to/
 - chrome scrollbar styling?
     - http://www.maxiprani.cz/
 - when somebody doesent have adblock, show warning :D

@@ -289,15 +289,20 @@ gulp.task('site:deploy', done => {
 
   const logFileSize = archive => console.log('archive size:', prettyBytes(archive.pointer()))
 
-  if (productionBuild) {
-    archive.pipe(
+  const writeStream = fs.createWriteStream(path.join(paths.root, 'site.zip'))
+  writeStream.on('close', () => {
+    logFileSize(archive)
+
+    if (productionBuild) {
+      const content = fs.readFileSync(path.join(paths.root, 'site.zip'))
       request({
         method: 'POST',
         url: 'https://api.netlify.com/api/v1/sites/hurtak.netlify.com/deploys',
         headers: {
           'Content-Type': 'application/zip',
           Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`
-        }
+        },
+        body: content
       }, (error, _, body) => {
         logFileSize(archive)
         if (error) {
@@ -307,15 +312,9 @@ gulp.task('site:deploy', done => {
         }
         done()
       })
-    )
-  } else {
-    const writeStream = fs.createWriteStream(path.join(paths.root, 'site.zip'))
-    writeStream.on('close', () => {
-      logFileSize(archive)
-      done()
-    })
-    archive.pipe(writeStream)
-  }
+    }
+  })
+  archive.pipe(writeStream)
 })
 
 gulp.task('site:compile',

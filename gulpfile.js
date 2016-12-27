@@ -306,7 +306,7 @@ gulp.task('site:deploy', done => {
       })
     )
   } else {
-    const writeStream = fs.createWriteStream(path.join(paths.dist, 'site.zip'))
+    const writeStream = fs.createWriteStream(path.join(paths.root, 'site.zip'))
     writeStream.on('close', () => {
       logFileSize(archive)
       done()

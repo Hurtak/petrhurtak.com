@@ -2,8 +2,6 @@ language: node_js
 
 # build matrix for testing tasks
 
-sudo: required
-
 os:
   - linux
   - osx
@@ -22,7 +20,7 @@ cache:
     - node_modules
 
 install:
-  - npm install && sudo apt-get install tree
+  - npm install
 
 script:
   - ./node_modules/.bin/gulp ci:test
@@ -35,4 +33,4 @@ matrix:
       env:
         - BUILD_ENV=production
       node_js: "7.3.0"
-      script: ./node_modules/.bin/gulp ci:deploy && tree dist
+      script: ./node_modules/.bin/gulp ci:deploy && ls -la dist/components/

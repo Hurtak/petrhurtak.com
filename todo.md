@@ -2,6 +2,9 @@
 
 ## NEXT RELEASE
 
+- fix deploy job
+- reconsider using env variables again?
+
 - finish CSS design
     - inspiration:
         - http://usabilitypost.com/

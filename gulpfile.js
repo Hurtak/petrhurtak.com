@@ -319,36 +319,34 @@ gulp.task('site:deploy', done => {
 })
 
 gulp.task('site:compile',
-  gulp.series(
-    'site:prepare-dirs',
-    gulp.parallel(
-      'site:static-pages',
-      'site:styles',
-      'site:scripts',
-      'site:images',
-      'site:node-modules',
-      'site:articles'
-    )
-  )
-)
-
-gulp.task('site:compile:dist',
-  gulp.series(
-    'site:prepare-dirs',
-    gulp.parallel(
-      gulp.series(
+  productionBuild
+    ? gulp.series(
+        'site:prepare-dirs',
         gulp.parallel(
-          'site:styles',
-          'site:scripts'
-        ),
+          gulp.series(
+            gulp.parallel(
+              'site:styles',
+              'site:scripts'
+            ),
+            gulp.parallel(
+              'site:static-pages',
+              'site:articles'
+            )
+          ),
+          'site:images'
+        )
+      )
+    : gulp.series(
+        'site:prepare-dirs',
         gulp.parallel(
           'site:static-pages',
+          'site:styles',
+          'site:scripts',
+          'site:images',
+          'site:node-modules',
           'site:articles'
         )
-      ),
-      'site:images'
-    )
-  )
+      )
 )
 
 //
@@ -463,7 +461,7 @@ gulp.task('dist',
   gulp.series(
     'env:production',
     gulp.parallel(
-      gulp.series('site:compile:dist', 'browser-sync:server'),
+      gulp.series('site:compile', 'browser-sync:server'),
       'test:all',
       'watch:articles',
       'watch:test'
@@ -487,7 +485,7 @@ gulp.task('ci:test', gulp.series(
 gulp.task('ci:deploy', gulp.series(
   'env:production',
   'test:coverage',
-  'site:compile:dist',
+  'site:compile',
   'site:deploy',
   'test:coveralls'
 ))

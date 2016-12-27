@@ -148,6 +148,7 @@
         - also article about this
     - check if we are not using sync (readFileSync) functions anywhere
     - cron job to test
+        - https://docs.travis-ci.com/user/cron-jobs/
         - automatically git fetch changes and update new articles
     - think of how to unify scripts between package.json, scripts/ and .travis.yml
     - think of a ways how to unify debug mode with production mode

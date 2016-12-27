@@ -284,12 +284,10 @@ gulp.task('site:deploy', done => {
     done()
   })
 
-  const logFileSize = archive => {
-    console.log('archive size:', prettyBytes(archive.pointer()))
-  }
-
   archive.directory(paths.dist, '/')
   archive.finalize()
+
+  const logFileSize = archive => console.log('archive size:', prettyBytes(archive.pointer()))
 
   if (productionBuild) {
     archive.pipe(

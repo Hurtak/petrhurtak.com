@@ -4,6 +4,8 @@
 
 - fix deploy job
 
+- are snippets content initialized?
+
 - finish CSS design
     - inspiration:
         - http://usabilitypost.com/

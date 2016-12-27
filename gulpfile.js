@@ -44,8 +44,23 @@ if (!process.env.CI) { // Travis adds this env variable
 
 const productionBuild = process.env.BUILD_ENV === 'production'
 const nunjucks = nunjucksEnv(productionBuild)
+const articlesData = gatherArticlesData()
 
 console.log(`production build: ${productionBuild}`)
+
+function gatherArticlesData () {
+  let allArticles = articles.getArticles(paths.articles, paths.articlesDrafts, nunjucks)
+  allArticles = lodash.sortBy(allArticles, 'metadata.dateLastUpdate')
+  allArticles = allArticles.reverse()
+
+  let publishedArticles = lodash.filter(allArticles, article => article.metadata.published === true)
+  publishedArticles = lodash.filter(publishedArticles, article => article.metadata.dateLastUpdate <= new Date())
+
+  return {
+    all: allArticles,
+    published: publishedArticles
+  }
+}
 
 //
 //
@@ -72,23 +87,6 @@ gulp.task('site:prepare-dirs', done => {
       ])
     })
     .then(() => done())
-})
-
-gulp.task('site:static-pages', done => {
-  const pages = [
-    { from: '404.njk', to: '404.html' },
-    { from: 'robots.txt.njk', to: 'robots.txt' }
-  ]
-
-  for (const page of pages) {
-    let html = nunjucks.render(page.from)
-    if (productionBuild) {
-      html = minifyHtml(html)
-    }
-
-    fs.writeFile(path.join(paths.dist, page.to), html)
-      .then(done)
-  }
 })
 
 gulp.task('site:styles', done => {
@@ -184,96 +182,77 @@ gulp.task('site:node-modules', done => {
   }
 })
 
-gulp.task('site:articles', done => {
-  // gather articles data
-  let articlesData = articles.getArticles(paths.articles, paths.articlesDrafts, nunjucks)
-  articlesData = lodash.sortBy(articlesData, 'metadata.dateLastUpdate')
-  articlesData = articlesData.reverse()
+gulp.task('site:pages', done => {
+  const pages = [
+    { from: '404.njk', to: '404.html', data: null },
+    { from: 'robots.txt.njk', to: 'robots.txt', data: null },
+    { from: 'index.njk',
+      to: 'index.html',
+      data: {articles: lodash.slice(articlesData.published, 0, config.articles.perPage)}
+    },
+    { from: 'rss.njk',
+      to: 'rss.xml',
+      data: {articles: lodash.slice(articlesData.published, 0, config.articles.perRssFeed)}
+    },
+    { from: 'humans.txt.njk',
+      to: 'humans.txt',
+      data: {lastUpdate: articlesData.published[0].metadata.dateLastUpdate}
+    }
+  ]
 
-  let articlesPublishedData = lodash.filter(articlesData, article => article.metadata.published === true)
-  articlesPublishedData = lodash.filter(articlesPublishedData, article => article.metadata.dateLastUpdate <= new Date())
+  for (const page of pages) {
+    let html = nunjucks.render(page.from, page.data)
+    const isHtml = path.extname(page.to) === '.html'
+    if (isHtml && productionBuild) {
+      html = minifyHtml(html)
+    }
 
-  // index page
-  const indexArticles = lodash.slice(articlesPublishedData, 0, config.articles.perPage)
-  let htmlIndex = nunjucks.render('index.njk', {articles: indexArticles})
-  if (productionBuild) {
-    htmlIndex = minifyHtml(htmlIndex)
+    fs.writeFileSync(path.join(paths.dist, page.to), html)
   }
 
-  fs.writeFileSync(path.join(paths.dist, 'index.html'), htmlIndex)
+  done()
+})
 
-  // articles
-  const articlePromises = []
-  for (const article of articlesData) {
+gulp.task('site:articles', done => {
+  for (const article of articlesData.all) {
     // article directory
     const folder = path.join(
       article.metadata.published ? paths.dist : paths.distDrafts,
       article.metadata.url
     )
 
-    const promise = fs.mkdir(folder)
-      .then(() => {
-        // article html
-        let htmlArticle = nunjucks.render('article.njk', article)
-        if (productionBuild) {
-          htmlArticle = minifyHtml(htmlArticle)
-        }
+    fs.mkdirSync(folder)
 
-        const promiseHtml = fs.writeFile(path.join(folder, 'index.html'), htmlArticle)
-        let promiseImages
-        let promiseSnippets
-        if (productionBuild) {
-          const imagesPath = path.join(article.fs.path, paths.articleImages)
-          if (fs.existsSync(imagesPath)) {
-            promiseImages = fs.copy(imagesPath, path.join(folder, paths.articleImages))
-          }
+    // article html
+    let htmlArticle = nunjucks.render('article.njk', article)
+    if (productionBuild) {
+      htmlArticle = minifyHtml(htmlArticle)
+    }
 
-          const snippetsPath = path.join(article.fs.path, paths.articleSnippets)
-          if (fs.existsSync(snippetsPath)) {
-            promiseSnippets = fs.copy(snippetsPath, path.join(folder, paths.articleSnippets))
-          }
-        } else {
-          promiseImages = fs.symlink(
-            path.join(article.fs.path, paths.articleImages),
-            path.join(folder, paths.articleImages)
-          )
-          promiseSnippets = fs.symlink(
-            path.join(article.fs.path, paths.articleSnippets),
-            path.join(folder, paths.articleSnippets)
-          )
-        }
+    fs.writeFileSync(path.join(folder, 'index.html'), htmlArticle)
+    if (productionBuild) {
+      const imagesPath = path.join(article.fs.path, paths.articleImages)
+      if (fs.existsSync(imagesPath)) {
+        fs.copySync(imagesPath, path.join(folder, paths.articleImages))
+      }
 
-        return Promise.all([
-          promiseHtml,
-          promiseImages,
-          promiseSnippets
-        ])
-      })
-
-    articlePromises.push(promise)
+      const snippetsPath = path.join(article.fs.path, paths.articleSnippets)
+      if (fs.existsSync(snippetsPath)) {
+        fs.copySync(snippetsPath, path.join(folder, paths.articleSnippets))
+      }
+    } else {
+      fs.symlinkSync(
+        path.join(article.fs.path, paths.articleImages),
+        path.join(folder, paths.articleImages)
+      )
+      fs.symlinkSync(
+        path.join(article.fs.path, paths.articleSnippets),
+        path.join(folder, paths.articleSnippets)
+      )
+    }
   }
 
-  const rssPromise = Promise.resolve()
-    .then(() => {
-      const rssArticles = lodash.slice(articlesData, 0, config.articles.perRssFeed)
-      const rssFeed = nunjucks.render('rss.njk', {articles: rssArticles})
-
-      return fs.writeFile(path.join(paths.dist, 'rss.xml'), rssFeed)
-    })
-
-  const humansTxtPromise = Promise.resolve()
-    .then(() => {
-      const lastUpdate = articlesPublishedData[0].metadata.dateLastUpdate
-      const humansTxt = nunjucks.render('humans.txt.njk', {lastUpdate: lastUpdate})
-
-      return fs.writeFileSync(path.join(paths.dist, 'humans.txt'), humansTxt)
-    })
-
-  Promise.all([
-    articlePromises,
-    rssPromise,
-    humansTxtPromise
-  ]).then(() => done())
+  done()
 })
 
 gulp.task('site:deploy', done => {
@@ -289,20 +268,15 @@ gulp.task('site:deploy', done => {
 
   const logFileSize = archive => console.log('archive size:', prettyBytes(archive.pointer()))
 
-  const writeStream = fs.createWriteStream(path.join(paths.root, 'site.zip'))
-  writeStream.on('close', () => {
-    logFileSize(archive)
-
-    if (productionBuild) {
-      const content = fs.readFileSync(path.join(paths.root, 'site.zip'))
+  if (productionBuild) {
+    archive.pipe(
       request({
         method: 'POST',
         url: 'https://api.netlify.com/api/v1/sites/hurtak.netlify.com/deploys',
         headers: {
           'Content-Type': 'application/zip',
           Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`
-        },
-        body: content
+        }
       }, (error, _, body) => {
         logFileSize(archive)
         if (error) {
@@ -312,9 +286,15 @@ gulp.task('site:deploy', done => {
         }
         done()
       })
-    }
-  })
-  archive.pipe(writeStream)
+    )
+  } else {
+    const writeStream = fs.createWriteStream(path.join(paths.root, 'site.zip'))
+    writeStream.on('close', () => {
+      logFileSize(archive)
+      done()
+    })
+    archive.pipe(writeStream)
+  }
 })
 
 gulp.task('site:compile',
@@ -328,7 +308,7 @@ gulp.task('site:compile',
               'site:scripts'
             ),
             gulp.parallel(
-              'site:static-pages',
+              'site:pages',
               'site:articles'
             )
           ),
@@ -338,11 +318,11 @@ gulp.task('site:compile',
     : gulp.series(
         'site:prepare-dirs',
         gulp.parallel(
-          'site:static-pages',
           'site:styles',
           'site:scripts',
           'site:images',
           'site:node-modules',
+          'site:pages',
           'site:articles'
         )
       )

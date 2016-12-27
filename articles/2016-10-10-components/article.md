@@ -50,6 +50,7 @@ paragraph
 ```
 
 ### Compiles to
+
 ```html
 <h2 id="heading">Heading</h2>
 <p>paragraph</p>
@@ -61,9 +62,11 @@ paragraph
 ### How it looks like
 
 ## Heading
+
 paragraph
 
 ### Sub-heading
+
 paragraph
 
 

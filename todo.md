@@ -2,12 +2,11 @@
 
 ## NEXT RELEASE
 
-- fix deploy job
-
 - are snippets content initialized?
 
 - finish CSS design
     - inspiration:
+        - http://alves.im/blog/before-dive-into-react.html
         - http://usabilitypost.com/
         - https://automattic.com/
         - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/

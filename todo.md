@@ -7,21 +7,18 @@
 - finish CSS design
     - inspiration:
         - http://alves.im/blog/before-dive-into-react.html
-        - http://usabilitypost.com/
-        - https://automattic.com/
-        - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
-        - http://phoboslab.org/log
-        - http://maketea.co.uk/2016/09/28/css-grid-layout-is-a-step-change.html
-        - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/Material-I-II-opt.jpg
-        - https://media-mediatemple.netdna-ssl.com/wp-content/uploads/2016/07/uefa-euro2016-belgium-opt.jpg
-        - https://www.google.cz/search?hl=cs&tbm=isch&sa=1&q=mirrors+edge+interior
-        - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
-        - http://prolost.com/
-        - https://www.briangilham.com/articles/
-        - http://phoboslab.org/log/2014/07/xibalba-a-webgl-first-person-shooter
         - http://blog.rstankov.com/
         - http://david.heinemeierhansson.com
+        - http://maketea.co.uk/2016/09/28/css-grid-layout-is-a-step-change.html
         - http://oops.re/
+        - http://phoboslab.org/log
+        - http://prolost.com/
+        - http://usabilitypost.com/
+        - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
+        - https://automattic.com/
+        - https://www.briangilham.com/articles/
+        - https://www.google.cz/search?hl=cs&tbm=isch&sa=1&q=mirrors+edge+interior
+        - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
     - page header
     - article header
     - articles list page
@@ -29,35 +26,11 @@
     - separate styles for keyboard keys? eg.: ctrl + tab
     - 404 page
 
-- footer inspiration
-    - https://www.bramstein.com/speaking/
-- inspiration
-    - http://shapeshed.com/writing-cross-platform-node/
-    - https://dockyard.com/blog/2015/10/14/best-practices-data-down-actions-up
-    - http://bramstein.com/writing/
-    - http://tesarek.me
-    - http://tympanus.net/Tutorials/FullscreenBookBlock/
-    - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
-    - http://zellwk.com/blog/why-vertical-rhythms/
-    - http://zellwk.com/blog/media-query-units/
-    - http://pebblecode.com/
-    - https://shapeshed.com/the-future-of-jobs/
-    - http://fvsch.com/articles/push-and-wait/
-    - http://html5up.net/twenty
-    - http://html5up.net/prologue
-    - http://www.mgadams.com/2015/06/30/the-software-engineers-guide-to-negotiating-a-raise/
-    - http://www.rouvre.com/fr/gallery/9/portraits/359
-    - https://nervous.io/clojure/clojurescript/aws/lambda/node/lein/2015/07/05/lambda/
-    - http://www.michaelvillar.com/
-    - https://yobriefca.se/articles/
-    - http://perfectionkills.com/
-    - http://blog.jenkster.com/
-    - http://uimovement.com/ui/1922/menu-item-selection/
-    - http://feross.org/resume/
-    - http://fvsch.com/code/svg-icons/how-to/
-
 - responsive
 - mobile first?
+
+- favicon, at least temporary one
+    - http://imgur.com/UCoQCny
 
 - buy domains
 - add comments
@@ -105,6 +78,30 @@
 - https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/ with this provide fallback to older browsers?
 - fork to multiple processes (strong-supervisor, there is also Isaac Schluter's old cluster-master, naught, cluster2, pm2, etc.)
 - robots.txt review - make article
+- inspiration
+    - http://blog.jenkster.com/
+    - http://bramstein.com/writing/
+    - http://feross.org/resume/
+    - http://fvsch.com/articles/push-and-wait/
+    - http://fvsch.com/code/svg-icons/how-to/
+    - http://html5up.net/prologue
+    - http://html5up.net/twenty
+    - http://pebblecode.com/
+    - http://perfectionkills.com/
+    - http://shapeshed.com/writing-cross-platform-node/
+    - http://tesarek.me
+    - http://uimovement.com/ui/1922/menu-item-selection/
+    - http://www.mgadams.com/2015/06/30/the-software-engineers-guide-to-negotiating-a-raise/
+    - http://www.michaelvillar.com/
+    - http://www.rouvre.com/fr/gallery/9/portraits/359
+    - http://zellwk.com/blog/media-query-units/
+    - http://zellwk.com/blog/why-vertical-rhythms/
+    - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
+    - https://dockyard.com/blog/2015/10/14/best-practices-data-down-actions-up
+    - https://nervous.io/clojure/clojurescript/aws/lambda/node/lein/2015/07/05/lambda/
+    - https://shapeshed.com/the-future-of-jobs/
+    - https://yobriefca.se/articles/
+    - http://tympanus.net/Tutorials/FullscreenBookBlock/
 
 ## FUTURE RELEASES
 

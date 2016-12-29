@@ -3,6 +3,8 @@
 ## NEXT RELEASE
 
 - color schemes
+    - #69D2E7
+
     - http://www.colourlovers.com/palette/1473/Ocean_Five
     - http://www.colourlovers.com/palette/92095/Giant_Goldfish
     - http://www.colourlovers.com/palette/373610/mellon_ball_surprise

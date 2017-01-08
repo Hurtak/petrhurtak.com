@@ -7,8 +7,13 @@ const gulp = require('gulp')
 const execa = require('execa')
 const lodash = require('lodash')
 const request = require('request')
-const revHash = require('rev-hash')
 const archiver = require('archiver')
+
+const postCss = require('postcss')
+const postCssNext = require('postcss-cssnext')
+const postCssImport = require('postcss-import')
+const cssnano = require('cssnano')
+const revHash = require('rev-hash')
 const uglifyJS = require('uglify-js')
 const babelCore = require('babel-core')
 const scriptTags = require('script-tags')
@@ -94,11 +99,6 @@ gulp.task('site:styles', done => {
       .then(() => done())
     return
   }
-
-  var postCss = require('postcss')
-  var postCssImport = require('postcss-import')
-  var postCssNext = require('postcss-cssnext')
-  var cssnano = require('cssnano')
 
   const from = path.join(paths.styles, 'styles.css')
 
@@ -343,7 +343,12 @@ gulp.task('browser-sync:server', done => {
 })
 
 gulp.task('browser-sync:reload-browser', done => {
-  browserSync.reload()
+  browserSync.reload('*.html')
+  done()
+})
+
+gulp.task('browser-sync:inject-css', done => {
+  browserSync.reload('*.css')
   done()
 })
 
@@ -402,7 +407,7 @@ gulp.task('test:all', gulp.parallel(
 //
 
 gulp.task('watch:articles', () =>
-  gulp.watch(['./articles/**/*', './src/**/*'],
+  gulp.watch(['./articles/**/*', './src/templates/**/*'],
     gulp.series(
       'site:compile',
       'browser-sync:reload-browser'
@@ -411,6 +416,10 @@ gulp.task('watch:articles', () =>
 
 gulp.task('watch:test', () =>
   gulp.watch(['./src/**/*.js'], gulp.series('test:all')
+))
+
+gulp.task('watch:styles', () =>
+  gulp.watch(['./src/**/*.css'], gulp.series('browser-sync:inject-css')
 ))
 
 //
@@ -424,6 +433,7 @@ gulp.task('dev',
     gulp.series('site:compile', 'browser-sync:server'),
     'test:all',
     'watch:articles',
+    'watch:styles',
     'watch:test'
   )
 )

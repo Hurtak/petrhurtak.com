@@ -27,7 +27,6 @@
     - inspiration:
         - http://alves.im/blog/before-dive-into-react.html
         - http://blog.rstankov.com/
-        - http://david.heinemeierhansson.com
         - http://maketea.co.uk/2016/09/28/css-grid-layout-is-a-step-change.html
         - http://oops.re/
         - http://phoboslab.org/log
@@ -36,7 +35,6 @@
         - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
         - https://automattic.com/
         - https://www.briangilham.com/articles/
-        - https://www.google.cz/search?hl=cs&tbm=isch&sa=1&q=mirrors+edge+interior
         - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
     - page header
     - article header

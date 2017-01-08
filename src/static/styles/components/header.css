@@ -9,6 +9,16 @@
   margin-top: 2rem;
 }
 
+.Header-logo-link {
+  display: block;
+}
+
+.Header-logo-image {
+  display: block;
+  width: 120px;
+  height: 120px;
+}
+
 .Header-menu {
   margin-top: 1rem;
 }

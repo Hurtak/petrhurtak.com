@@ -44,11 +44,7 @@ if (!process.env.CI) { // Travis adds this env variable
 
 const productionBuild = process.env.BUILD_ENV === 'production'
 const nunjucks = nunjucksEnv(productionBuild)
-const articlesData = gatherArticlesData()
-
-console.log(`production build: ${productionBuild}`)
-
-function gatherArticlesData () {
+const articlesData = (function () {
   let allArticles = articles.getArticles(paths.articles, paths.articlesDrafts, nunjucks)
   allArticles = lodash.sortBy(allArticles, 'metadata.dateLastUpdate')
   allArticles = allArticles.reverse()
@@ -60,7 +56,9 @@ function gatherArticlesData () {
     all: allArticles,
     published: publishedArticles
   }
-}
+}())
+
+console.log(`production build: ${productionBuild}`)
 
 //
 //

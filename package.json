@@ -17,7 +17,7 @@
     "coveralls": "2.11.15",
     "cssnano": "3.10.0",
     "escape-html": "1.0.3",
-    "execa": "0.5.0",
+    "execa": "0.5.1",
     "fs-promise": "1.0.0",
     "gulp": "git://github.com/gulpjs/gulp.git#e9e5ab7e70080e1bfb5650a4fdc4c8849e70b3e0",
     "highlight.js": "9.9.0",

@@ -30,7 +30,7 @@
     "nyc": "10.0.0",
     "postcss": "5.2.9",
     "postcss-cssnext": "2.9.0",
-    "postcss-import": "9.0.0",
+    "postcss-import": "9.1.0",
     "pretty-bytes": "4.0.2",
     "pretty-error": "2.0.2",
     "request": "2.79.0",

@@ -1,16 +1,12 @@
 .Header {
   display: flex;
   flex-direction: column;
+  background-color: lightblue;
+  align-items: center;
 }
 
 .Header-logo {
-  display: block;
-  margin: auto;
   margin-top: 2rem;
-}
-
-.Header-logo-link {
-  display: block;
 }
 
 .Header-logo-image {
@@ -21,4 +17,5 @@
 
 .Header-menu {
   margin-top: 1rem;
+  width: 100%;
 }

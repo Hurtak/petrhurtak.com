@@ -30,15 +30,17 @@
 
     {# page #}
     <div class="Page">
+      <div class="Page-content">
 
-      {% include 'components/header.njk' %}
+        {% include 'components/header.njk' %}
 
-      <main class="Page-content">
-        {% block content %}{% endblock %}
-      </main>
+        <main class="Page-main">
+          {% block content %}{% endblock %}
+        </main>
 
-      {% include 'components/footer.njk' %}
+        {% include 'components/footer.njk' %}
 
+      </div>
     </div>
 
     {# debug #}

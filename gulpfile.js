@@ -336,7 +336,6 @@ gulp.task('browser-sync:server', done => {
   browserSync.init({
     server: './dist',
     port: 8000,
-    open: false,
     https: true,
     reloadOnRestart: true
   }, done)

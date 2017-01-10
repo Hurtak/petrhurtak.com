@@ -1,6 +1,6 @@
 .Page {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   min-height: 100vh;
   text-rendering: optimizeLegibility; /* TODO: is this doing anyting? */
   /* TODO http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/ */
@@ -9,8 +9,13 @@
 .Page-content {
   --padding: 10px;
 
-  flex: 1; /* to make footer sticky */
+  display: flex;
+  flex-direction: column;
   padding: 0 var(--padding);
-  max-width: calc( var(--content-width) + var(--padding) * 2 );
-  margin: auto;
+  width: 100%;
+  max-width: calc(var(--content-width) + 2 * var(--padding));
+}
+
+.Page-main {
+  flex: 1; /* to make footer sticky */
 }

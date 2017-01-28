@@ -21,7 +21,7 @@ install:
 script:
   - ./node_modules/.bin/gulp ci:test
 
-# build on specific versions intended for deployment
+# build on specific version for deployment task
 
 matrix:
   include:

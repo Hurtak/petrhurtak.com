@@ -71,7 +71,7 @@ console.log(`production build: ${productionBuild}`)
 //
 //
 
-gulp.task('site:prepare-dirs', done => {
+function prepareDirs (done) {
   fs.remove(paths.dist)
     .then(() => {
       return fs.mkdir(paths.dist)
@@ -90,9 +90,9 @@ gulp.task('site:prepare-dirs', done => {
       ])
     })
     .then(() => done())
-})
+}
 
-gulp.task('site:styles', done => {
+function compileStyles (done, productionBuild) {
   if (!productionBuild) {
     fs.remove(paths.distStyles)
       .then(() => fs.symlink(paths.styles, paths.distStyles))
@@ -123,9 +123,9 @@ gulp.task('site:styles', done => {
 
       done()
     })
-})
+}
 
-gulp.task('site:scripts', done => {
+function compileScripts (done, productionBuild) {
   if (!productionBuild) {
     fs.remove(paths.distScripts)
       .then(() => fs.symlink(paths.scripts, paths.distScripts))
@@ -158,9 +158,9 @@ gulp.task('site:scripts', done => {
   fs.writeFileSync(path.join(paths.distScripts, `scripts-${hashJs}.js`), code)
 
   done()
-})
+}
 
-gulp.task('site:images', done => {
+function processImages (done, productionBuild) {
   if (productionBuild) {
     fs.copy(paths.images, paths.distImages)
       .then(() => done())
@@ -169,18 +169,14 @@ gulp.task('site:images', done => {
       .then(() => fs.symlink(paths.images, paths.distImages))
       .then(() => done())
   }
-})
+}
 
-gulp.task('site:node-modules', done => {
-  if (!productionBuild) {
-    fs.symlink(paths.nodeModules, paths.distNodeModules)
-      .then(() => done())
-  } else {
-    done()
-  }
-})
+function linkNodeModules (done) {
+  fs.symlink(paths.nodeModules, paths.distNodeModules)
+    .then(() => done())
+}
 
-gulp.task('site:pages', done => {
+function compilePages (done) {
   const pages = [
     { from: '404.njk', to: '404.html', data: null },
     { from: 'robots.txt.njk', to: 'robots.txt', data: null },
@@ -209,9 +205,9 @@ gulp.task('site:pages', done => {
   }
 
   done()
-})
+}
 
-gulp.task('site:articles', done => {
+function compileArticles (done, productionBuild) {
   for (const article of articlesData.all) {
     // article directory
     const folder = path.join(
@@ -251,9 +247,13 @@ gulp.task('site:articles', done => {
   }
 
   done()
-})
+}
 
-gulp.task('site:deploy', done => {
+function logArchiveSize (archive) {
+  console.log('archive size:', prettyBytes(archive.pointer()))
+}
+
+function deploy (done, productionBuild) {
   const archive = archiver('zip')
 
   archive.on('error', err => {
@@ -263,8 +263,6 @@ gulp.task('site:deploy', done => {
 
   archive.directory(paths.dist, '/')
   archive.finalize()
-
-  const logFileSize = archive => console.log('archive size:', prettyBytes(archive.pointer()))
 
   if (productionBuild) {
     archive.pipe(
@@ -276,7 +274,7 @@ gulp.task('site:deploy', done => {
           Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`
         }
       }, (error, _, body) => {
-        logFileSize(archive)
+        logArchiveSize(archive)
         if (error) {
           console.error('upload failed:', error)
         } else {
@@ -288,43 +286,12 @@ gulp.task('site:deploy', done => {
   } else {
     const writeStream = fs.createWriteStream(path.join(paths.root, 'site.zip'))
     writeStream.on('close', () => {
-      logFileSize(archive)
+      logArchiveSize(archive)
       done()
     })
     archive.pipe(writeStream)
   }
-})
-
-gulp.task('site:compile',
-  productionBuild
-    ? gulp.series(
-        'site:prepare-dirs',
-        gulp.parallel(
-          gulp.series(
-            gulp.parallel(
-              'site:styles',
-              'site:scripts'
-            ),
-            gulp.parallel(
-              'site:pages',
-              'site:articles'
-            )
-          ),
-          'site:images'
-        )
-      )
-    : gulp.series(
-        'site:prepare-dirs',
-        gulp.parallel(
-          'site:styles',
-          'site:scripts',
-          'site:images',
-          'site:node-modules',
-          'site:pages',
-          'site:articles'
-        )
-      )
-)
+}
 
 //
 //
@@ -332,24 +299,24 @@ gulp.task('site:compile',
 //
 //
 
-gulp.task('browser-sync:server', done => {
+function browserSyncStart (done) {
   browserSync.init({
     server: './dist',
     port: 8000,
     https: true,
     reloadOnRestart: true
   }, done)
-})
+}
 
-gulp.task('browser-sync:reload-browser', done => {
+function browserSyncReloadBrowser (done) {
   browserSync.reload('*.html')
   done()
-})
+}
 
-gulp.task('browser-sync:inject-css', done => {
+function browserSyncInjectCss (done) {
   browserSync.reload('*.css')
   done()
-})
+}
 
 //
 //
@@ -357,69 +324,108 @@ gulp.task('browser-sync:inject-css', done => {
 //
 //
 
-gulp.task('test:unit', done => {
+function testUnit (done) {
   execa.shell('ava src/test/**/*.js')
     .then(() => done())
     .catch((res) => {
       console.log(res.stderr)
       done()
     })
-})
+}
 
-gulp.task('test:lint', done => {
+function testLint (done) {
   execa.shell('standard --verbose "scripts/**/*.js" "src/**/*.js"')
     .then(() => done())
     .catch((res) => {
       console.log(res.stdout)
       done()
     })
-})
+}
 
-gulp.task('test:coverage', done => {
+function testCoverage (done) {
   execa.shell('nyc --all --include="src" --exclude="src/test" ava src/test/**/*.js')
     .then(() => done())
     .catch((res) => {
       console.log(res.stderr)
       done()
     })
-})
+}
 
-gulp.task('test:coverage-report', done => {
+function testCoverageReport (done) {
   execa.shell('nyc report --reporter=lcov')
     .then(() => done())
-})
+}
 
-gulp.task('test:coveralls', done => {
+function testCoveralls (done) {
   execa.shell('nyc report --reporter=text-lcov | coveralls')
     .then(() => done())
-})
+}
+
+//
+//
+// Tasks
+//
+//
+
+gulp.task('site:prepare-dirs', done => prepareDirs(done))
+gulp.task('site:styles', done => compileStyles(done, false))
+gulp.task('site:styles:production', done => compileStyles(done, true))
+gulp.task('site:scripts', done => compileScripts(done, false))
+gulp.task('site:scripts:production', done => compileScripts(done, true))
+gulp.task('site:images', done => processImages(done, false))
+gulp.task('site:images:production', done => processImages(done, true))
+gulp.task('site:node-modules', done => linkNodeModules(done))
+gulp.task('site:pages', done => compilePages(done))
+gulp.task('site:articles', done => compileArticles(done, false))
+gulp.task('site:articles:production', done => compileArticles(done, true))
+gulp.task('site:deploy', done => deploy(done, false))
+gulp.task('site:deploy:production', done => deploy(done, true))
+
+gulp.task('site:compile', gulp.series(
+  'site:prepare-dirs',
+  gulp.parallel(
+    'site:styles',
+    'site:scripts',
+    'site:images',
+    'site:node-modules',
+    'site:pages',
+    'site:articles'
+  )
+))
+
+gulp.task('site:compile:production', gulp.series(
+  'site:prepare-dirs',
+  gulp.parallel(
+    gulp.series(
+      gulp.parallel('site:styles:production', 'site:scripts:production'),
+      gulp.parallel('site:pages', 'site:articles:production')
+    ),
+    'site:images:production'
+  )
+))
+
+gulp.task('browser-sync:server', done => browserSyncStart(done))
+gulp.task('browser-sync:reload-browser', done => browserSyncReloadBrowser(done))
+gulp.task('browser-sync:inject-css', done => browserSyncInjectCss(done))
+
+gulp.task('test:unit', done => testUnit(done))
+gulp.task('test:lint', done => testLint(done))
+gulp.task('test:coverage', done => testCoverage(done))
+gulp.task('test:coverage-report', done => testCoverageReport(done))
+gulp.task('test:coveralls', done => testCoveralls(done))
 
 gulp.task('test:all', gulp.parallel(
   'test:lint',
   gulp.series('test:unit', 'test:coverage', 'test:coverage-report')
 ))
 
-//
-//
-// Watches
-//
-//
-
+// TODO: try it without () =>
 gulp.task('watch:articles', () =>
   gulp.watch(['./articles/**/*', './src/templates/**/*'],
-    gulp.series(
-      'site:compile',
-      'browser-sync:reload-browser'
-    )
-))
-
-gulp.task('watch:test', () =>
-  gulp.watch(['./src/**/*.js'], gulp.series('test:all')
-))
-
-gulp.task('watch:styles', () =>
-  gulp.watch(['./src/**/*.css'], gulp.series('browser-sync:inject-css')
-))
+  gulp.series('site:compile', 'browser-sync:reload-browser'))
+)
+gulp.task('watch:test', () => gulp.watch(['./src/**/*.js'], gulp.series('test:all')))
+gulp.task('watch:styles', () => gulp.watch(['./src/**/*.css'], gulp.series('browser-sync:inject-css')))
 
 //
 //
@@ -427,32 +433,25 @@ gulp.task('watch:styles', () =>
 //
 //
 
-gulp.task('dev',
-  gulp.parallel(
-    gulp.series('site:compile', 'browser-sync:server'),
-    'test:all',
-    'watch:articles',
-    'watch:styles',
-    'watch:test'
-  )
-)
+gulp.task('dev', gulp.parallel(
+  gulp.series('site:compile', 'browser-sync:server'),
+  'test:all',
+  'watch:articles',
+  'watch:styles',
+  'watch:test'
+))
 
 gulp.task('default', gulp.series('dev'))
 
-//
-//
-// Continuous integration tasks
-//
-//
-
 gulp.task('ci:test', gulp.series(
   'test:unit',
-  'site:compile'
+  'site:compile',
+  'site:compile:production'
 ))
 
 gulp.task('ci:deploy', gulp.series(
   'test:coverage',
-  'site:compile',
-  'site:deploy',
+  'site:compile:production',
+  'site:deploy:production',
   'test:coveralls'
 ))

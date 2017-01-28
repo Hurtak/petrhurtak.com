@@ -2,9 +2,17 @@
 
 ## NEXT RELEASE
 
+cleanup prepare dirs
+    eg look at images task
+
+- ava - do not run from execa but directly?
+
+- vscode
+    - investigate snippets (standard snippets?)
+    - indent on paste
+
 - gulp
     - move some stuff into config?
-    - cleanup gulpfile - do not use enviroment variable, just use separate tasks, one for dev one for prod. for shared stuff use parametrized functions `function compileCss (production) { ... }`
 
 - color schemes
     - #69D2E7
@@ -20,7 +28,6 @@
     - https://coolors.co/231f20-bb4430-7ebdc2-f3dfa2-efe6dd
 
     - http://javier.xyz/cohesive-colors/
-
 
 - add link to twitter in main menu
 - main menu add icons

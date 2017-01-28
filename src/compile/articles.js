@@ -61,7 +61,7 @@ function getArticles (postsDirectory, draftsDirectory, nunjucks) {
 
 function getArticleData (articleFolderPath, isPublished, nunjucks) {
   const metadataPath = path.join(articleFolderPath, paths.articleMetadata)
-  const metadataContent = fs.readFileSync(metadataPath, 'utf-8')
+  const metadataContent = fs.readFileSync(metadataPath, 'utf8')
   const metadata = Object.assign(
     yaml.safeLoad(metadataContent),
     { published: isPublished }

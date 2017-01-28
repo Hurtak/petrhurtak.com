@@ -103,7 +103,7 @@ function compileStyles (done, productionBuild) {
       const hashCss = revHash(Buffer.from(result.css))
       nunjucks.addGlobal('hashCss', hashCss)
 
-      fs.writeFileSync(path.join(paths.distStyles, `styles-${hashCss}.css`), result.css)
+      fs.writeFileSync(path.join(paths.distStyles, `styles.${hashCss}.css`), result.css)
       fs.writeFileSync(path.join(paths.distStyles, 'styles.map.css'), result.map)
 
       done()
@@ -140,7 +140,7 @@ function compileScripts (done, productionBuild) {
   const hashJs = revHash(Buffer.from(code))
   nunjucks.addGlobal('hashJs', hashJs)
 
-  fs.writeFileSync(path.join(paths.distScripts, `scripts-${hashJs}.js`), code)
+  fs.writeFileSync(path.join(paths.distScripts, `scripts.${hashJs}.js`), code)
 
   done()
 }
@@ -276,6 +276,7 @@ function deploy (done, productionBuild) {
         url: 'https://api.netlify.com/api/v1/sites/hurtak.netlify.com/deploys',
         headers: {
           'Content-Type': 'application/zip',
+          // passed in from Travis CI
           Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`
         }
       }, (error, _, body) => {
@@ -305,12 +306,12 @@ function deploy (done, productionBuild) {
 //
 
 function browserSyncStart (done) {
-  browserSync.init({
-    server: './dist',
-    port: 8000,
-    https: true,
-    reloadOnRestart: true
-  }, done)
+  const browserSyncConfig = Object.assign(
+    { server: paths.dist },
+    config.browserSync
+  )
+
+  browserSync.init(browserSyncConfig, done)
 }
 
 function browserSyncReloadBrowser (done) {
@@ -391,7 +392,7 @@ gulp.task('site:deploy:production', done => deploy(done, true))
 
 gulp.task('site:compile', gulp.series(
   'site:prepare-dirs',
-  'site:gather-articles-data', // @TODO: could run in pararell
+  'site:gather-articles-data', // TODO: could run in pararell
   gulp.parallel(
     'site:styles',
     'site:scripts',
@@ -407,7 +408,7 @@ gulp.task('site:compile:production', gulp.series(
   gulp.parallel(
     gulp.series(
       'site:set-production-env',
-      'site:gather-articles-data', // @TODO: could run in pararell
+      'site:gather-articles-data', // TODO: could run in pararell
       // before we can compile templates we need to know hash of
       // css and js files because these are passed into templates
       gulp.parallel('site:styles:production', 'site:scripts:production'),

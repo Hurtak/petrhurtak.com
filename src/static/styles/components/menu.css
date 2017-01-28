@@ -1,7 +1,6 @@
 .Menu {
   display: flex;
   list-style-type: none;
-  justify-content: center; /* TODO remove when items fill 100% */
   margin: 0;
   padding: 0;
 }
@@ -9,7 +8,6 @@
 .Menu-item {
   width: 25%;
   text-align: center;
-  -webkit-user-select: none; /* TODO: remove once supported without prefixes */
   user-select: none;
 }
 
@@ -18,7 +16,7 @@
   color: black;
   font-size: var(--font-size-headline-small);
   font-family: var(--font-family-heading);
-  line-height: 2.4;
+  line-height: var(--font-line-height-headline);
   border-radius: var(--border-radius);
   text-decoration: none;
 }

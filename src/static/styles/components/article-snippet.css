@@ -15,7 +15,6 @@
   height: 5rem;
   background-color: var(--color-gray-lighter);
   align-items: center;
-  -webkit-user-select: none; /* TODO: remove once supported without prefixes */
   user-select: none;
 }
 .Snippet-headerGroup {

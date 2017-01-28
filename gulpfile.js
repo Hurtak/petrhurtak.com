@@ -85,7 +85,7 @@ function compileStyles (done, productionBuild) {
     return
   }
 
-  const from = path.join(paths.styles, 'styles.css')
+  const from = path.join(paths.styles, 'main.css')
 
   postCss([
     postCssImport(),

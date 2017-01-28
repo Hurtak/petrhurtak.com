@@ -20,16 +20,6 @@ const scriptTags = require('script-tags')
 const prettyBytes = require('pretty-bytes')
 const browserSync = require('browser-sync').create()
 const htmlMinifier = require('html-minifier')
-const minifyHtml = html => htmlMinifier.minify(html, {
-  collapseWhitespace: true,
-  conservativeCollapse: true,
-  minifyCSS: true,
-  minifyJS: true,
-  removeComments: true,
-  removeRedundantAttributes: true,
-  sortAttributes: true,
-  sortClassName: true
-})
 
 const debug = require('./src/compile/debug.js')
 const paths = require('./src/compile/paths.js')
@@ -40,6 +30,17 @@ const nunjucks = require('./src/compile/nunjucks/env.js')
 if (!process.env.CI) { // Travis adds this env variable
   debug()
 }
+
+const minifyHtml = html => htmlMinifier.minify(html, {
+  collapseWhitespace: true,
+  conservativeCollapse: true,
+  minifyCSS: true,
+  minifyJS: true,
+  removeComments: true,
+  removeRedundantAttributes: true,
+  sortAttributes: true,
+  sortClassName: true
+})
 
 //
 //

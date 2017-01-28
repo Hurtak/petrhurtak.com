@@ -17,6 +17,7 @@
   font-size: var(--font-size-headline-small);
   font-family: var(--font-family-heading);
   line-height: var(--font-line-height-headline);
+  padding: 2.4rem 0;
   border-radius: var(--border-radius);
   text-decoration: none;
 }

@@ -432,13 +432,26 @@ gulp.task('test:all', gulp.parallel(
   gulp.series('test:unit', 'test:coverage', 'test:coverage-report')
 ))
 
-// TODO: try it without () =>
-gulp.task('watch:articles', () =>
-  gulp.watch(['./articles/**/*', './src/templates/**/*'],
-  gulp.series('site:compile', 'browser-sync:reload-browser'))
-)
-gulp.task('watch:test', () => gulp.watch(['./src/**/*.js'], gulp.series('test:all')))
-gulp.task('watch:styles', () => gulp.watch(['./src/**/*.css'], gulp.series('browser-sync:inject-css')))
+gulp.task('watch:articles', () => gulp.watch(
+  ['./articles/**/*', './src/templates/**/*'],
+  gulp.series('site:compile', 'browser-sync:reload-browser')
+))
+gulp.task('watch:test', () => gulp.watch(
+  ['./src/**/*.js'],
+  gulp.series('test:all')
+))
+gulp.task('watch:styles', () => gulp.watch(
+  ['./src/**/*.css'],
+  gulp.series('browser-sync:inject-css')
+))
+
+gulp.task('watch:production', () => gulp.watch(
+  ['./src/**/*', './articles/**/*'],
+  gulp.series(
+    'site:compile:production',
+    gulp.parallel('browser-sync:reload-browser', 'site:deploy')
+  )
+))
 
 //
 //
@@ -459,7 +472,8 @@ gulp.task('production', gulp.parallel(
     'site:compile:production',
     gulp.parallel('site:deploy', 'browser-sync:server')
   ),
-  'test:all'
+  'test:all',
+  'watch:production'
 ))
 
 gulp.task('ci:test', gulp.series(

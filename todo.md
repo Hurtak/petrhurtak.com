@@ -2,7 +2,6 @@
 
 ## NEXT RELEASE
 
-- watch for production
 - what to do with site.zip?
 
 - cleanup prepare dirs

@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="/static/images/favicon.png" sizes="16x16">
 
     {# styles #}
-    {% if globals.production %}
+    {% if production %}
       <link rel="stylesheet" type="text/css" href="/static/styles/styles-{{ hashCss }}.css">
     {% else %}
       <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-reset.css">
@@ -44,7 +44,7 @@
     </div>
 
     {# debug #}
-    {% if not globals.production %}
+    {% if not production %}
       <pre class="DebugTemplates"><code>{{ getDebugData() | dump(4) }}</code></pre>
     {% endif %}
 
@@ -60,7 +60,7 @@
     {% block scriptVariables %}{% endblock %}
 
     {# scripts #}
-    {% if globals.production %}
+    {% if production %}
       <script src="/static/scripts/scripts-{{ hashJs }}.js"></script>
     {% else %}
       {# TODO: get rid of data-dev thing #}

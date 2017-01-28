@@ -35,7 +35,7 @@ const debug = require('./src/compile/debug.js')
 const paths = require('./src/compile/paths.js')
 const config = require('./src/compile/config.js')
 const articles = require('./src/compile/articles.js')
-const nunjucksEnv = require('./src/compile/nunjucks/env.js')
+const nunjucks = require('./src/compile/nunjucks/env.js')
 
 if (!process.env.CI) { // Travis adds this env variable
   debug()
@@ -47,23 +47,7 @@ if (!process.env.CI) { // Travis adds this env variable
 //
 //
 
-const productionBuild = process.env.BUILD_ENV === 'production'
-const nunjucks = nunjucksEnv(productionBuild)
-const articlesData = (function () {
-  let allArticles = articles.getArticles(paths.articles, paths.articlesDrafts, nunjucks)
-  allArticles = lodash.sortBy(allArticles, 'metadata.dateLastUpdate')
-  allArticles = allArticles.reverse()
-
-  let publishedArticles = lodash.filter(allArticles, article => article.metadata.published === true)
-  publishedArticles = lodash.filter(publishedArticles, article => article.metadata.dateLastUpdate <= new Date())
-
-  return {
-    all: allArticles,
-    published: publishedArticles
-  }
-}())
-
-console.log(`production build: ${productionBuild}`)
+let articlesData = null
 
 //
 //
@@ -176,7 +160,27 @@ function linkNodeModules (done) {
     .then(() => done())
 }
 
-function compilePages (done) {
+function setProductionEnv (done) {
+  nunjucks.addGlobal('production', true)
+  done()
+}
+
+function gatherArticlesData (done) {
+  let allArticles = articles.getArticles(paths.articles, paths.articlesDrafts, nunjucks)
+  allArticles = lodash.sortBy(allArticles, 'metadata.dateLastUpdate')
+  allArticles = allArticles.reverse()
+
+  let publishedArticles = lodash.filter(allArticles, article => article.metadata.published === true)
+  publishedArticles = lodash.filter(publishedArticles, article => article.metadata.dateLastUpdate <= new Date())
+
+  articlesData = {
+    all: allArticles,
+    published: publishedArticles
+  }
+  done()
+}
+
+function compilePages (done, productionBuild) {
   const pages = [
     { from: '404.njk', to: '404.html', data: null },
     { from: 'robots.txt.njk', to: 'robots.txt', data: null },
@@ -284,7 +288,7 @@ function deploy (done, productionBuild) {
       })
     )
   } else {
-    const writeStream = fs.createWriteStream(path.join(paths.root, 'site.zip'))
+    const writeStream = fs.createWriteStream(path.join(paths.dist, 'site.zip'))
     writeStream.on('close', () => {
       logArchiveSize(archive)
       done()
@@ -375,7 +379,10 @@ gulp.task('site:scripts:production', done => compileScripts(done, true))
 gulp.task('site:images', done => processImages(done, false))
 gulp.task('site:images:production', done => processImages(done, true))
 gulp.task('site:node-modules', done => linkNodeModules(done))
-gulp.task('site:pages', done => compilePages(done))
+gulp.task('site:set-production-env', done => setProductionEnv(done))
+gulp.task('site:gather-articles-data', done => gatherArticlesData(done))
+gulp.task('site:pages', done => compilePages(done, false))
+gulp.task('site:pages:production', done => compilePages(done, true))
 gulp.task('site:articles', done => compileArticles(done, false))
 gulp.task('site:articles:production', done => compileArticles(done, true))
 gulp.task('site:deploy', done => deploy(done, false))
@@ -383,6 +390,7 @@ gulp.task('site:deploy:production', done => deploy(done, true))
 
 gulp.task('site:compile', gulp.series(
   'site:prepare-dirs',
+  'site:gather-articles-data', // @TODO: could run in pararell
   gulp.parallel(
     'site:styles',
     'site:scripts',
@@ -397,8 +405,12 @@ gulp.task('site:compile:production', gulp.series(
   'site:prepare-dirs',
   gulp.parallel(
     gulp.series(
+      'site:set-production-env',
+      'site:gather-articles-data', // @TODO: could run in pararell
+      // before we can compile templates we need to know hash of
+      // css and js files because these are passed into templates
       gulp.parallel('site:styles:production', 'site:scripts:production'),
-      gulp.parallel('site:pages', 'site:articles:production')
+      gulp.parallel('site:pages:production', 'site:articles:production')
     ),
     'site:images:production'
   )
@@ -441,7 +453,13 @@ gulp.task('dev', gulp.parallel(
   'watch:test'
 ))
 
-gulp.task('default', gulp.series('dev'))
+gulp.task('production', gulp.parallel(
+  gulp.series(
+    'site:compile:production',
+    gulp.parallel('site:deploy', 'browser-sync:server')
+  ),
+  'test:all'
+))
 
 gulp.task('ci:test', gulp.series(
   'test:unit',

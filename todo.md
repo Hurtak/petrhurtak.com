@@ -2,14 +2,18 @@
 
 ## NEXT RELEASE
 
-cleanup prepare dirs
-    eg look at images task
+- watch for production
+- what to do with site.zip?
+
+- cleanup prepare dirs
+    - eg look at images task
 
 - ava - do not run from execa but directly?
 
 - vscode
     - investigate snippets (standard snippets?)
     - indent on paste
+    - highlight TODO, @TODO
 
 - gulp
     - move some stuff into config?

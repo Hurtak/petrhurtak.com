@@ -21,7 +21,3 @@
 @import 'components/article-preview.css';
 @import 'components/article-snippet.css';
 @import 'components/footer.css';
-
-body {
-  background-color: orange;
-}

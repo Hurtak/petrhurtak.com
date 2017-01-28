@@ -1,11 +1,24 @@
 .Header {
   display: flex;
+  width: 100%;
   flex-direction: column;
-  background-color: lightblue;
   align-items: center;
+  background-color: lightblue;
+}
+
+.Header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  /* TODO: move into mixin once they are avaliable - same code used in header.css & page.css */
+  padding: 0 var(--content-spacing);
+  max-width: var(--content-max-width);
 }
 
 .Header-logo {
+  display: block;
   margin-top: 2rem;
 }
 

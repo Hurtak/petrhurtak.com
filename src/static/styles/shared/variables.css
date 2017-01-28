@@ -17,6 +17,10 @@
   --content-width: 700px;
   --border-radius: 3px;
 
+  /* TODO: move into mixin once they are avaliable - same code used in header.css & page.css */
+  --content-spacing: 10px;
+  --content-max-width: calc(var(--content-width) + 2 * var(--content-spacing));
+
   /*
    * z-indexes
    */

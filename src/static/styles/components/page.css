@@ -1,19 +1,20 @@
 .Page {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   min-height: 100vh;
   text-rendering: optimizeLegibility; /* TODO: is this doing anyting? */
   /* TODO http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/ */
 }
 
-.Page-content {
-  --padding: 10px;
-
+.Page-centered {
   display: flex;
   flex-direction: column;
-  padding: 0 var(--padding);
   width: 100%;
-  max-width: calc(var(--content-width) + 2 * var(--padding));
+
+  /* TODO: move into mixin once they are avaliable - same code used in header.css & page.css */
+  padding: 0 var(--content-spacing);
+  max-width: var(--content-max-width);
 }
 
 .Page-main {

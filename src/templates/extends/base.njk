@@ -28,18 +28,14 @@
   </head>
   <body>
 
-    {# page #}
+    {# content #}
     <div class="Page">
-      <div class="Page-content">
-
-        {% include 'components/header.njk' %}
-
+      {% include 'components/header.njk' %}
+      <div class="Page-centered">
         <main class="Page-main">
           {% block content %}{% endblock %}
         </main>
-
         {% include 'components/footer.njk' %}
-
       </div>
     </div>
 

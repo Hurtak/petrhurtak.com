@@ -14,7 +14,7 @@
     "babel-preset-env": "1.1.8",
     "browser-sync": "2.18.7",
     "cheerio": "0.22.0",
-    "coveralls": "2.11.15",
+    "coveralls": "2.11.16",
     "cssnano": "3.10.0",
     "escape-html": "1.0.3",
     "execa": "0.6.0",

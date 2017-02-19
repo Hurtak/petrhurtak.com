@@ -11,9 +11,10 @@ node_js:
   - "7"
   - "6"
 
-cache:
-  directories:
-    - node_modules
+# caching was unreliable
+# cache:
+#   directories:
+#     - node_modules
 
 install:
   - npm install

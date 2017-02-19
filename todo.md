@@ -25,17 +25,22 @@
 
 - finish CSS design
     - inspiration:
-        - http://alves.im/blog/before-dive-into-react.html
-        - http://blog.rstankov.com/
-        - http://maketea.co.uk/2016/09/28/css-grid-layout-is-a-step-change.html
-        - http://oops.re/
-        - http://phoboslab.org/log
-        - http://prolost.com/
-        - http://usabilitypost.com/
-        - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
-        - https://automattic.com/
-        - https://www.briangilham.com/articles/
-        - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
+        - new
+            - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
+            - https://www.robinwieruch.de/mobx-react/
+            - https://www.bramstein.com/writing/web-font-loading-patterns.html
+        - old
+            - http://alves.im/blog/before-dive-into-react.html
+            - http://blog.rstankov.com/
+            - http://maketea.co.uk/2016/09/28/css-grid-layout-is-a-step-change.html
+            - http://oops.re/
+            - http://phoboslab.org/log
+            - http://prolost.com/
+            - http://usabilitypost.com/
+            - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
+            - https://automattic.com/
+            - https://www.briangilham.com/articles/
+            - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
     - page header
     - article header
     - articles list page
@@ -56,6 +61,7 @@
 - go through the templates and make sure url like hurtak.cz & hurtak.cc are all the same and correct
 - go through TODOs
 - ship it
+- http://i.imgur.com/A6gQxoM.jpg
 
 ## Right after release
 

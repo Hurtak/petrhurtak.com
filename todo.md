@@ -79,6 +79,9 @@
         - seznam
         - ui programmer
 - add css lint?
+- https://news.ycombinator.com/item?id=13733790
+    - 1. find somebody who blogs and review articles to each other
+    - 2. have a mailing list where i will just send preview of article to people that are interested
 - fix css source maps
     - source map file does not have hash
     - update sourceMapURL so it points to the file with hash

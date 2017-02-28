@@ -1,6 +1,14 @@
 .Footer {
-  padding: 4em 0 2em;
-  font-size: var(--font-size-paragraph-small);
+  padding: 6.4rem 0 1.6rem;
+}
+
+.Footer-paragraph {
+  margin: 0;
   font-family: var(--font-family-paragraph);
+  font-size: var(--font-size-paragraph-small);
   text-align: center;
+}
+
+.Footer-paragraph--author {
+  margin-top: 0.4rem;
 }

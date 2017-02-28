@@ -21,7 +21,7 @@
     "fs-promise": "2.0.0",
     "gulp": "git://github.com/gulpjs/gulp.git#e9e5ab7e70080e1bfb5650a4fdc4c8849e70b3e0",
     "highlight.js": "9.9.0",
-    "html-minifier": "3.3.2",
+    "html-minifier": "3.4.0",
     "js-yaml": "3.8.0",
     "lodash": "4.17.4",
     "markdown-it": "8.3.0",

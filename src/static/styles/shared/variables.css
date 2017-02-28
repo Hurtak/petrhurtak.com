@@ -2,14 +2,15 @@
   /*
    * colors
    */
-  --color-gray-lighter: rgb(245, 245, 245);
-  --color-gray-light: #ddd;
-  --color-gray-standard: #ccc;
-  --color-gray-dark: #333;
+  --color-gray-lighter:  #f5f5f5;
+  --color-gray-light:    #dddddd;
+  --color-gray-standard: #cccccc;
+  --color-gray-dark:     #333333;
 
-  --color-yellow: #ff0;
+  --color-yellow:        #ffff00;
+  --color-blue-main:     #69d2e7;
 
-  --color-link-border: rgba(0, 0, 0, 0.3);
+  --color-link-border:   rgba(0, 0, 0, 0.3);
 
   /*
    * dimensions

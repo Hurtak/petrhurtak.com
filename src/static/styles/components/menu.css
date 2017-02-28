@@ -22,6 +22,37 @@
   text-decoration: none;
 }
 
+.Menu-item-link::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+
+.Menu-item-link--articles::before {
+  background-size: 1.9rem;
+  background-image: url('/static/images/article.svg');
+}
+.Menu-item-link--twitter::before  {
+  background-image: url('/static/images/twitter.svg');
+}
+.Menu-item-link--github::before   {
+  background-size: 1.8rem;
+  background-image: url('/static/images/github.svg');
+}
+.Menu-item-link--rss::before      {
+  background-size: 1.6rem;
+  background-image: url('/static/images/rss.svg');
+}
+
+.Menu-item-link--articles:hover::before { background-image: url('/static/images/article-white.svg') }
+.Menu-item-link--twitter:hover::before  { background-image: url('/static/images/twitter-white.svg') }
+.Menu-item-link--github:hover::before   { background-image: url('/static/images/github-white.svg') }
+.Menu-item-link--rss:hover::before      { background-image: url('/static/images/rss-white.svg')    }
+
 .Menu-item-link:hover {
-  background-color: rgba(80, 80, 0, 0.08);
+  color: white;
 }

@@ -21,13 +21,13 @@
     "fs-promise": "2.0.0",
     "gulp": "git://github.com/gulpjs/gulp.git#e9e5ab7e70080e1bfb5650a4fdc4c8849e70b3e0",
     "highlight.js": "9.9.0",
-    "html-minifier": "3.3.2",
-    "js-yaml": "3.8.0",
+    "html-minifier": "^3.4.0",
+    "js-yaml": "^3.8.1",
     "lodash": "4.17.4",
     "markdown-it": "8.3.0",
     "normalize.css": "5.0.0",
     "nunjucks": "3.0.0",
-    "nyc": "10.1.0",
+    "nyc": "^10.1.2",
     "postcss": "5.2.15",
     "postcss-cssnext": "2.9.0",
     "postcss-import": "9.1.0",
@@ -42,9 +42,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Hurtak/hurtak.cc"
-  },
-  "scripts": {
-    "dev": "gulp"
   },
   "author": "Petr Huřťák",
   "license": "MIT",

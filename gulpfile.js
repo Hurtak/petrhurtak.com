@@ -56,65 +56,59 @@ let articlesData = null
 //
 //
 
-function prepareDirs (done) {
-  fs.remove(paths.dist)
-    .then(() => {
-      return fs.mkdir(paths.dist)
-    })
-    .then(() => {
-      return Promise.all([
-        fs.mkdir(paths.distDrafts),
-        fs.mkdir(paths.distStatic)
-      ])
-    })
-    .then(() => {
-      return Promise.all([
-        fs.mkdir(paths.distImages),
-        fs.mkdir(paths.distStyles),
-        fs.mkdir(paths.distScripts)
-      ])
-    })
-    .then(() => done())
+async function prepareDirs (done) {
+  await fs.remove(paths.dist)
+  await fs.mkdir(paths.dist)
+
+  await Promise.all([
+    fs.mkdir(paths.distDrafts),
+    fs.mkdir(paths.distStatic)
+  ])
+  await Promise.all([
+    fs.mkdir(paths.distImages),
+    fs.mkdir(paths.distStyles),
+    fs.mkdir(paths.distScripts)
+  ])
+
+  done()
 }
 
-function compileStyles (done, productionBuild) {
+async function compileStyles (done, productionBuild) {
   if (!productionBuild) {
-    fs.remove(paths.distStyles)
-      .then(() => fs.symlink(paths.styles, paths.distStyles))
-      .then(() => done())
+    await fs.remove(paths.distStyles)
+    await fs.symlink(paths.styles, paths.distStyles)
+    done()
     return
   }
 
   const from = path.join(paths.styles, 'main.css')
 
-  postCss([
+  const result = await postCss([
     postCssImport(),
     postCssNext({ browsers: config.supportedBrowsers }),
     cssnano({ autoprefixer: false })
   ])
-    .process(fs.readFileSync(from, 'utf8'), {
-      from: from,
-      map: {
-        inline: false,
-        annotation: 'styles.map.css'
-      }
-    })
-    .then(function (result) {
-      const hashCss = revHash(Buffer.from(result.css))
-      nunjucks.addGlobal('hashCss', hashCss)
+  .process(await fs.readFile(from, 'utf8'), {
+    from: from,
+    map: { inline: false, annotation: 'styles.map.css' }
+  })
 
-      fs.writeFileSync(path.join(paths.distStyles, `styles.${hashCss}.css`), result.css)
-      fs.writeFileSync(path.join(paths.distStyles, 'styles.map.css'), result.map)
+  const hashCss = revHash(Buffer.from(result.css))
+  nunjucks.addGlobal('hashCss', hashCss)
 
-      done()
-    })
+  await Promise.all([
+    fs.writeFile(path.join(paths.distStyles, `styles.${hashCss}.css`), result.css),
+    fs.writeFile(path.join(paths.distStyles, 'styles.map.css'), result.map)
+  ])
+
+  done()
 }
 
-function compileScripts (done, productionBuild) {
+async function compileScripts (done, productionBuild) {
   if (!productionBuild) {
-    fs.remove(paths.distScripts)
-      .then(() => fs.symlink(paths.scripts, paths.distScripts))
-      .then(() => done())
+    await fs.remove(paths.distScripts)
+    await fs.symlink(paths.scripts, paths.distScripts)
+    done()
     return
   }
 
@@ -140,25 +134,25 @@ function compileScripts (done, productionBuild) {
   const hashJs = revHash(Buffer.from(code))
   nunjucks.addGlobal('hashJs', hashJs)
 
-  fs.writeFileSync(path.join(paths.distScripts, `scripts.${hashJs}.js`), code)
+  await fs.writeFile(path.join(paths.distScripts, `scripts.${hashJs}.js`), code)
 
   done()
 }
 
-function processImages (done, productionBuild) {
+async function processImages (done, productionBuild) {
   if (productionBuild) {
-    fs.copy(paths.images, paths.distImages)
-      .then(() => done())
+    await fs.copy(paths.images, paths.distImages)
+    done()
   } else {
-    fs.remove(paths.distImages)
-      .then(() => fs.symlink(paths.images, paths.distImages))
-      .then(() => done())
+    await fs.remove(paths.distImages)
+    await fs.symlink(paths.images, paths.distImages)
+    done()
   }
 }
 
-function linkNodeModules (done) {
-  fs.symlink(paths.nodeModules, paths.distNodeModules)
-    .then(() => done())
+async function linkNodeModules (done) {
+  await fs.symlink(paths.nodeModules, paths.distNodeModules)
+  done()
 }
 
 function setProductionEnv (done) {
@@ -181,7 +175,7 @@ function gatherArticlesData (done) {
   done()
 }
 
-function compilePages (done, productionBuild) {
+async function compilePages (done, productionBuild) {
   const pages = [
     { from: '404.njk', to: '404.html', data: null },
     { from: 'robots.txt.njk', to: 'robots.txt', data: null },
@@ -199,6 +193,7 @@ function compilePages (done, productionBuild) {
     }
   ]
 
+  const pagePromises = []
   for (const page of pages) {
     let html = nunjucks.render(page.from, page.data)
     const isHtml = path.extname(page.to) === '.html'
@@ -206,13 +201,15 @@ function compilePages (done, productionBuild) {
       html = minifyHtml(html)
     }
 
-    fs.writeFileSync(path.join(paths.dist, page.to), html)
+    const pagePromise = fs.writeFile(path.join(paths.dist, page.to), html)
+    pagePromises.push(pagePromise)
   }
+  await Promise.all(pagePromises)
 
   done()
 }
 
-function compileArticles (done, productionBuild) {
+async function compileArticles (done, productionBuild) {
   for (const article of articlesData.all) {
     // article directory
     const folder = path.join(
@@ -220,7 +217,7 @@ function compileArticles (done, productionBuild) {
       article.metadata.url
     )
 
-    fs.mkdirSync(folder)
+    await fs.mkdir(folder)
 
     // article html
     let htmlArticle = nunjucks.render('article.njk', article)
@@ -228,26 +225,28 @@ function compileArticles (done, productionBuild) {
       htmlArticle = minifyHtml(htmlArticle)
     }
 
-    fs.writeFileSync(path.join(folder, 'index.html'), htmlArticle)
+    await fs.writeFile(path.join(folder, 'index.html'), htmlArticle)
     if (productionBuild) {
       const imagesPath = path.join(article.fs.path, paths.articleImages)
-      if (fs.existsSync(imagesPath)) {
-        fs.copySync(imagesPath, path.join(folder, paths.articleImages))
+      if (await fs.exists(imagesPath)) {
+        await fs.copy(imagesPath, path.join(folder, paths.articleImages))
       }
 
       const snippetsPath = path.join(article.fs.path, paths.articleSnippets)
-      if (fs.existsSync(snippetsPath)) {
-        fs.copySync(snippetsPath, path.join(folder, paths.articleSnippets))
+      if (await fs.exists(snippetsPath)) {
+        await fs.copy(snippetsPath, path.join(folder, paths.articleSnippets))
       }
     } else {
-      fs.symlinkSync(
-        path.join(article.fs.path, paths.articleImages),
-        path.join(folder, paths.articleImages)
-      )
-      fs.symlinkSync(
-        path.join(article.fs.path, paths.articleSnippets),
-        path.join(folder, paths.articleSnippets)
-      )
+      await Promise.all([
+        fs.symlink(
+          path.join(article.fs.path, paths.articleImages),
+          path.join(folder, paths.articleImages)
+        ),
+        fs.symlink(
+          path.join(article.fs.path, paths.articleSnippets),
+          path.join(folder, paths.articleSnippets)
+        )
+      ])
     }
   }
 
@@ -330,41 +329,41 @@ function browserSyncInjectCss (done) {
 //
 //
 
-function testUnit (done) {
-  execa.shell('ava src/test/**/*.js')
-    .then(() => done())
-    .catch((res) => {
-      console.log(res.stderr)
-      done()
-    })
+async function testUnit (done) {
+  try {
+    await execa.shell('ava src/test/**/*.js')
+  } catch (e) {
+    console.log(e.stderr)
+  }
+  done()
 }
 
-function testLint (done) {
-  execa.shell('standard --verbose "scripts/**/*.js" "src/**/*.js"')
-    .then(() => done())
-    .catch((res) => {
-      console.log(res.stdout)
-      done()
-    })
+async function testLint (done) {
+  try {
+    await execa.shell('standard --verbose "scripts/**/*.js" "src/**/*.js"')
+  } catch (e) {
+    console.log(e.stdout)
+  }
+  done()
 }
 
-function testCoverage (done) {
-  execa.shell('nyc --all --include="src" --exclude="src/test" ava src/test/**/*.js')
-    .then(() => done())
-    .catch((res) => {
-      console.log(res.stderr)
-      done()
-    })
+async function testCoverage (done) {
+  try {
+    await execa.shell('nyc --all --include="src" --exclude="src/test" ava src/test/**/*.js')
+  } catch (e) {
+    console.log(e.stderr)
+  }
+  done()
 }
 
-function testCoverageReport (done) {
-  execa.shell('nyc report --reporter=lcov')
-    .then(() => done())
+async function testCoverageReport (done) {
+  await execa.shell('nyc report --reporter=lcov')
+  done()
 }
 
-function testCoveralls (done) {
-  execa.shell('nyc report --reporter=text-lcov | coveralls')
-    .then(() => done())
+async function testCoveralls (done) {
+  await execa.shell('nyc report --reporter=text-lcov | coveralls')
+  done()
 }
 
 //
@@ -373,16 +372,16 @@ function testCoveralls (done) {
 //
 //
 
-gulp.task('site:prepare-dirs', done => prepareDirs(done))
+gulp.task('site:prepare-dirs', prepareDirs)
 gulp.task('site:styles', done => compileStyles(done, false))
 gulp.task('site:styles:production', done => compileStyles(done, true))
 gulp.task('site:scripts', done => compileScripts(done, false))
 gulp.task('site:scripts:production', done => compileScripts(done, true))
 gulp.task('site:images', done => processImages(done, false))
 gulp.task('site:images:production', done => processImages(done, true))
-gulp.task('site:node-modules', done => linkNodeModules(done))
-gulp.task('site:set-production-env', done => setProductionEnv(done))
-gulp.task('site:gather-articles-data', done => gatherArticlesData(done))
+gulp.task('site:node-modules', linkNodeModules)
+gulp.task('site:set-production-env', setProductionEnv)
+gulp.task('site:gather-articles-data', gatherArticlesData)
 gulp.task('site:pages', done => compilePages(done, false))
 gulp.task('site:pages:production', done => compilePages(done, true))
 gulp.task('site:articles', done => compileArticles(done, false))
@@ -418,15 +417,15 @@ gulp.task('site:compile:production', gulp.series(
   )
 ))
 
-gulp.task('browser-sync:server', done => browserSyncStart(done))
-gulp.task('browser-sync:reload-browser', done => browserSyncReloadBrowser(done))
-gulp.task('browser-sync:inject-css', done => browserSyncInjectCss(done))
+gulp.task('browser-sync:server', browserSyncStart)
+gulp.task('browser-sync:reload-browser', browserSyncReloadBrowser)
+gulp.task('browser-sync:inject-css', browserSyncInjectCss)
 
-gulp.task('test:unit', done => testUnit(done))
-gulp.task('test:lint', done => testLint(done))
-gulp.task('test:coverage', done => testCoverage(done))
-gulp.task('test:coverage-report', done => testCoverageReport(done))
-gulp.task('test:coveralls', done => testCoveralls(done))
+gulp.task('test:unit', testUnit)
+gulp.task('test:lint', testLint)
+gulp.task('test:coverage', testCoverage)
+gulp.task('test:coverage-report', testCoverageReport)
+gulp.task('test:coveralls', testCoveralls)
 
 gulp.task('test:all', gulp.parallel(
   'test:lint',

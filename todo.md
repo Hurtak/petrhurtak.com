@@ -2,8 +2,28 @@
 
 ## NEXT RELEASE
 
+- links???
 
-- are snippets content initialized?
+- 404 page
+
+- responsive
+
+- is snippets content initialized?
+
+- favicon, at least temporary one
+    - http://imgur.com/UCoQCny
+
+- buy domains
+- add comments
+    - https://css-tricks.com/lazy-loading-disqus-comments/
+- add google analytics
+- go through the templates and make sure url like hurtak.cz & hurtak.cc are all the same and correct
+- go through TODOs
+- ship it
+- write first article
+- http://i.imgur.com/A6gQxoM.jpg
+
+## Right after release
 
 - finish CSS design
     - add cool efect to buttons like in https://www.keithcirkel.co.uk/
@@ -24,30 +44,8 @@
             - https://automattic.com/
             - https://www.briangilham.com/articles/
             - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
-    - page header
-    - article header
-    - articles list page
-    - footer
-    - separate styles for keyboard keys? eg.: ctrl + tab
-    - 404 page
 
-- responsive
-- mobile first?
-
-- favicon, at least temporary one
-    - http://imgur.com/UCoQCny
-
-- buy domains
-- add comments
-    - https://css-tricks.com/lazy-loading-disqus-comments/
-- add google analytics
-- go through the templates and make sure url like hurtak.cz & hurtak.cc are all the same and correct
-- go through TODOs
-- ship it
-- http://i.imgur.com/A6gQxoM.jpg
-
-## Right after release
-
+- add components/styles for keyboard shortcuts - in case we want to write them in the article
 - add "updated 20/10/2015" - date of last update of the article
     - figure out where to put this date
         - in article

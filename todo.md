@@ -25,6 +25,7 @@
 
 ## Right after release
 
+- consider moving metadata.title to the article itself?
 - finish CSS design
     - add cool efect to buttons like in https://www.keithcirkel.co.uk/
     - inspiration:

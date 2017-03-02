@@ -28,8 +28,27 @@ published: true
 snippetsConfig:
   example2:
     inlineSnippet: true
-
 ```
+
+
+
+## Links
+
+### Code
+
+```markdown
+Some text with [link](https://example.com) in it.
+```
+
+### Compiles to
+
+```html
+<p>Some text with <a href="https://example.com">link</a> in it.</p>
+```
+
+### How it looks like
+
+Some text with [link](https://example.com) in it.
 
 
 

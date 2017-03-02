@@ -118,18 +118,12 @@
  */
 
 .Article-content a {
-  color: black;
-  border-bottom: 1px dotted var(--color-link-border);
+  color: var(--color-blue-dark);
   transition: 0.2s border ease-in-out;
-  text-decoration: none;
 }
 
 .Article-content a:visited {
-  color: black;
-}
-
-.Article-content a:hover {
-  border-bottom: 1px dotted black;
+  color: var(--color-blue-dark);
 }
 
 /*

@@ -1,8 +1,7 @@
 .Header {
   display: flex;
   width: 100%;
-  padding-top: 4.0rem;
-  padding-bottom: 0.8rem;
+  padding-top: 6.0rem;
   flex-direction: column;
   align-items: center;
   background-color: var(--color-blue-main);
@@ -27,10 +26,9 @@
   display: block;
   width: 13.0rem;
   height: 5.5rem;
-  margin: 4rem 8rem;
+  margin: 2rem 8rem;
 }
 
 .Header-menu {
-  margin-top: 1rem;
   width: 100%;
 }

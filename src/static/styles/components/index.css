@@ -1,0 +1,16 @@
+.Index {
+
+}
+
+.Index-heading {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-title);
+  font-weight: normal;
+  margin: 0;
+  padding-top: 5.6rem;
+}
+
+.Index-articles {
+  padding-top: 2.4rem;
+}
+

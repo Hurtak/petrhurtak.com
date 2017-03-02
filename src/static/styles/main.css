@@ -15,6 +15,7 @@
  * page components
  */
 @import 'components/page.css';
+@import 'components/index.css';
 @import 'components/header.css';
 @import 'components/menu.css';
 @import 'components/article.css';

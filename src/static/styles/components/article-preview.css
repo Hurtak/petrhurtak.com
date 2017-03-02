@@ -1,5 +1,4 @@
 .ArticlePreview {
-  font-family: var(--font-family-heading);
   margin-top: 3rem;
 }
 
@@ -8,18 +7,38 @@
 }
 
 .ArticlePreview-title {
+  margin: 0;
+}
+
+.ArticlePreview-title-link {
+  display: inlnie-block;
+  position: relative;
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-headline);
   text-decoration: none;
   font-weight: normal;
-  color: black;
+  color: var(--color-blue-main);
+}
+.ArticlePreview-title-link:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-blue-main);
 }
 
 .ArticlePreview-date {
-  font-size: var(--font-size-paragraph-small);
   font-family: var(--font-family-paragraph);
+  font-size: var(--font-size-paragraph-small);
+  display: block;
 }
 
 .ArticlePreview-description {
-  font-size: var(--font-size-paragraph);
   font-family: var(--font-family-paragraph);
+  font-size: var(--font-size-paragraph);
+  margin: 0;
+  margin-top: 1.6rem;
 }

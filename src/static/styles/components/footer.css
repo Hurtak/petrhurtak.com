@@ -12,3 +12,10 @@
 .Footer-paragraph--author {
   margin-top: 0.4rem;
 }
+
+.Footer-paragraph-link {
+  font-family: var(--font-family-paragraph);
+  font-size: var(--font-size-paragraph-small);
+  color: black; /* TODO */
+  text-decoration: none;
+}

@@ -2,34 +2,40 @@
 
 {% block content %}
 
-  <h1>Recent articles</h1>
+  <div class="Index">
 
-  {% for article in articles %}
-    <section class="ArticlePreview">
+    <h1 class="Index-heading">Recent articles</h1>
 
-      <h2>
-        <a
-          class="ArticlePreview-title"
-          href="/{{ article.metadata.url }}/"
-        >
-          {{ article.metadata.title }}
-        </a>
-      </h2>
+    <section class="Index-articles">
+      {% for article in articles %}
+        <article class="ArticlePreview">
 
-      <time
-        class="ArticlePreview-date"
-        title="{{ article.metadata.dateLastUpdate | fullDate }}"
-        datetime="{{ article.metadata.dateLastUpdate | datetimeAttribute }}"
-        data-date-convert
-      >
-        {{ article.metadata.dateLastUpdate | fullDate }}
-      </time>
+          <h2 class="ArticlePreview-title">
+            <a
+              class="ArticlePreview-title-link"
+              href="/{{ article.metadata.url }}/"
+            >
+              {{ article.metadata.title }}
+            </a>
+          </h2>
 
-      <p class="ArticlePreview-description">
-        {{ article.metadata.description }}
-      </p>
+          <time
+            class="ArticlePreview-date"
+            title="{{ article.metadata.dateLastUpdate | fullDate }}"
+            datetime="{{ article.metadata.dateLastUpdate | datetimeAttribute }}"
+            data-date-convert
+          >
+            {{ article.metadata.dateLastUpdate | fullDate }}
+          </time>
 
+          <p class="ArticlePreview-description">
+            {{ article.metadata.description }}
+          </p>
+
+        </article>
+      {% endfor %}
     </section>
-  {% endfor %}
+
+  </div>
 
 {% endblock %}

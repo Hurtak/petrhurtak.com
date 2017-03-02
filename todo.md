@@ -2,28 +2,11 @@
 
 ## NEXT RELEASE
 
-- color schemes
-    - #69D2E7
-
-    - http://www.colourlovers.com/palette/1473/Ocean_Five
-    - http://www.colourlovers.com/palette/92095/Giant_Goldfish
-    - http://www.colourlovers.com/palette/373610/mellon_ball_surprise
-    - http://www.colourlovers.com/palette/694737/Thought_Provoking
-    - https://coolors.co/6699cc-fff275-ff8c42-ff3c38-a23e48
-    - https://coolors.co/011627-f71735-41ead4-fdfffc-ff9f1c
-    - https://coolors.co/2a2b2a-706c61-f8f4e3-e5446d-ff8966
-    - https://coolors.co/003049-d62828-f77f00-fcbf49-eae2b7
-    - https://coolors.co/231f20-bb4430-7ebdc2-f3dfa2-efe6dd
-
-    - http://javier.xyz/cohesive-colors/
-
-- add link to twitter in main menu
-- main menu add icons
-- add cool efect to buttons like in https://www.keithcirkel.co.uk/
 
 - are snippets content initialized?
 
 - finish CSS design
+    - add cool efect to buttons like in https://www.keithcirkel.co.uk/
     - inspiration:
         - new
             - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/

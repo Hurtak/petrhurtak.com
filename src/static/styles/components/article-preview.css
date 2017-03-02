@@ -1,5 +1,6 @@
 .ArticlePreview {
   margin-top: 3rem;
+  font-size: 0;
 }
 
 .ArticlePreview:first-child {
@@ -11,7 +12,7 @@
 }
 
 .ArticlePreview-title-link {
-  display: inlnie-block;
+  display: inline-block;
   position: relative;
   font-family: var(--font-family-heading);
   font-size: var(--font-size-headline);
@@ -19,14 +20,16 @@
   font-weight: normal;
   color: var(--color-blue-main);
 }
+
 .ArticlePreview-title-link:hover::after {
   content: '';
   position: absolute;
+  display: inline-block;
   left: 0;
   bottom: 2px;
-  display: inline-block;
   width: 100%;
   height: 1px;
+  user-select: none;
   background-color: var(--color-blue-main);
 }
 
@@ -34,6 +37,7 @@
   font-family: var(--font-family-paragraph);
   font-size: var(--font-size-paragraph-small);
   display: block;
+  margin-top: 0.2rem;
 }
 
 .ArticlePreview-description {

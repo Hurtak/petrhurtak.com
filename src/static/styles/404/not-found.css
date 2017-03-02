@@ -1,0 +1,18 @@
+.NotFound {}
+
+.NotFound-title {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-title);
+  line-height: var(--font-line-height-title);
+  font-weight: normal;
+  padding-top: 6.2rem;
+  margin: 0;
+}
+
+.NotFound-text {
+  font-family: var(--font-family-paragraph);
+  font-size: var(--font-size-paragraph);
+  line-height: var(--font-line-height-paragraph);
+  padding-top: 0.8rem;
+  margin: 0;
+}

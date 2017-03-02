@@ -2,8 +2,6 @@
 
 ## NEXT RELEASE
 
-- links???
-
 - 404 page
 
 - responsive
@@ -25,6 +23,7 @@
 
 ## Right after release
 
+- add less, and maybe try sass
 - consider moving metadata.title to the article itself?
 - finish CSS design
     - add cool efect to buttons like in https://www.keithcirkel.co.uk/

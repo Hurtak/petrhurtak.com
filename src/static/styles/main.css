@@ -7,18 +7,23 @@
 /*
  * resets & shared styles
  */
-@import 'shared/resets.css';
-@import 'shared/variables.css';
-@import 'shared/typography.css';
+@import 'general/resets.css';
+@import 'general/variables.css';
+@import 'general/typography.css';
 
 /*
- * page components
+ * page specific components
+ */
+@import 'index/index.css';
+@import 'index/article-preview.css';
+@import 'article/article.css';
+@import 'article/article-snippet.css';
+@import '404/not-found.css';
+
+/*
+ * shared components
  */
 @import 'components/page.css';
-@import 'components/index.css';
 @import 'components/header.css';
 @import 'components/menu.css';
-@import 'components/article.css';
-@import 'components/article-preview.css';
-@import 'components/article-snippet.css';
 @import 'components/footer.css';

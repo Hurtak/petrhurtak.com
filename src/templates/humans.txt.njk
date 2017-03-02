@@ -10,6 +10,8 @@
 /* SITE */
   Site Url: {{ globals.siteUrl }}
   Online: since {{ globals.yearFounded }}
-  Last update: {{ lastUpdate | fullDate }}
+  {% if lastUpdate -%}
+    Last update: {{ lastUpdate | fullDate }}
+  {%- endif %}
   Language: English
   Editor: VS Code

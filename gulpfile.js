@@ -189,7 +189,11 @@ async function compilePages (done, productionBuild) {
     },
     { from: 'humans.txt.njk',
       to: 'humans.txt',
-      data: {lastUpdate: articlesData.published[0].metadata.dateLastUpdate}
+      data: {
+        lastUpdate: articlesData.published.length > 0
+          ? articlesData.published[0].metadata.dateLastUpdate
+          : null
+      }
     }
   ]
 

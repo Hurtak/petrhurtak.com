@@ -3,9 +3,10 @@
 .Index-heading {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-title);
+  line-height: var(--font-line-height-title);
   font-weight: normal;
   margin: 0;
-  padding-top: 5.6rem;
+  padding-top: 6.2rem;
 }
 
 .Index-articles {

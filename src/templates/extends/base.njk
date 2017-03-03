@@ -9,7 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {# icons #}
-    <link rel="icon" type="image/png" href="/static/images/favicon.png" sizes="16x16">
+    {% if production %}
+      {{ faviconsHtml | safe }}
+    {% else %}
+      <link rel="icon" type="image/png" href="/static/favicons/favicon.png" sizes="16x16">
+    {% endif %}
 
     {# styles #}
     {% if production %}
@@ -41,7 +45,7 @@
 
     {# debug #}
     {% if not production %}
-      {#<pre class="DebugTemplates"><code>{{ getDebugData() | dump(4) }}</code></pre>#}
+      <pre class="DebugTemplates"><code>{{ getDebugData() | dump(4) }}</code></pre>
     {% endif %}
 
     {# data for scripts #}

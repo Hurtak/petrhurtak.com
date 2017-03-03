@@ -20,6 +20,7 @@ const scriptTags = require('script-tags')
 const prettyBytes = require('pretty-bytes')
 const browserSync = require('browser-sync').create()
 const htmlMinifier = require('html-minifier')
+const realFavicon = require('gulp-real-favicon')
 
 const debug = require('./src/compile/debug.js')
 const paths = require('./src/compile/paths.js')
@@ -285,7 +286,9 @@ function deploy (done, productionBuild) {
       }, (error, _, body) => {
         logArchiveSize(archive)
         if (error) {
-          console.error('upload failed:', error)
+          throw error
+        } else if (body.code !== 200) {
+          throw body
         } else {
           console.log('upload successful, server responded with:', body)
         }
@@ -300,6 +303,95 @@ function deploy (done, productionBuild) {
     })
     archive.pipe(writeStream)
   }
+}
+
+async function generateFavicons (done, productionBuild) {
+  if (!productionBuild) {
+    await fs.remove(paths.distFavicons)
+    await fs.symlink(paths.favicons, paths.distFavicons)
+    done()
+    return
+  }
+
+  await new Promise((resolve, reject) => {
+    const faviconTmpDataPath = path.join(__dirname, '_faviconsData.json')
+
+    realFavicon.generateFavicon({
+      masterPicture: path.join(paths.favicons, 'favicon.svg'),
+      dest: paths.distFavicons,
+      iconsPath: '/static/favicons/',
+      design: {
+        ios: {
+          pictureAspect: 'backgroundAndMargin',
+          backgroundColor: '#69d2e7',
+          margin: '0%',
+          assets: {
+            ios6AndPriorIcons: false,
+            ios7AndLaterIcons: false,
+            precomposedIcons: false,
+            declareOnlyDefaultIcon: true
+          }
+        },
+        desktopBrowser: {},
+        windows: {
+          pictureAspect: 'noChange',
+          backgroundColor: '#2b5797',
+          onConflict: 'override',
+          assets: {
+            windows80Ie10Tile: false,
+            windows10Ie11EdgeTiles: {
+              small: false,
+              medium: true,
+              big: false,
+              rectangle: false
+            }
+          }
+        },
+        androidChrome: {
+          pictureAspect: 'shadow',
+          themeColor: '#69d2e7',
+          manifest: {
+            display: 'standalone',
+            orientation: 'notSet',
+            onConflict: 'override',
+            declared: true
+          },
+          assets: {
+            legacyIcon: false,
+            lowResolutionIcons: false
+          }
+        },
+        safariPinnedTab: {
+          pictureAspect: 'blackAndWhite',
+          threshold: 80,
+          themeColor: '#5bbad5'
+        }
+      },
+      settings: {
+        scalingAlgorithm: 'Mitchell',
+        errorOnImageTooSmall: false
+      },
+      markupFile: faviconTmpDataPath
+    }, async function () {
+      const faviconsDataRaw = await fs.readFile(faviconTmpDataPath, 'utf8')
+      await fs.remove(faviconTmpDataPath)
+
+      const faviconsData = JSON.parse(faviconsDataRaw)
+
+      await new Promise((resolve, reject) => {
+        realFavicon.checkForUpdates(faviconsData.version, err => {
+          if (err) throw err
+          resolve()
+        })
+      })
+      const faviconsHtml = faviconsData.favicon.html_code
+      nunjucks.addGlobal('faviconsHtml', faviconsHtml)
+
+      resolve()
+    })
+  })
+
+  done()
 }
 
 //
@@ -392,14 +484,19 @@ gulp.task('site:articles', done => compileArticles(done, false))
 gulp.task('site:articles:production', done => compileArticles(done, true))
 gulp.task('site:deploy', done => deploy(done, false))
 gulp.task('site:deploy:production', done => deploy(done, true))
+gulp.task('site:favicons', done => generateFavicons(done, false))
+gulp.task('site:favicons:production', done => generateFavicons(done, true))
 
 gulp.task('site:compile', gulp.series(
-  'site:prepare-dirs',
-  'site:gather-articles-data', // TODO: could run in pararell
+  gulp.parallel(
+    'site:prepare-dirs',
+    'site:gather-articles-data'
+  ),
   gulp.parallel(
     'site:styles',
     'site:scripts',
     'site:images',
+    'site:favicons',
     'site:node-modules',
     'site:pages',
     'site:articles'
@@ -410,11 +507,12 @@ gulp.task('site:compile:production', gulp.series(
   'site:prepare-dirs',
   gulp.parallel(
     gulp.series(
-      'site:set-production-env',
-      'site:gather-articles-data', // TODO: could run in pararell
-      // before we can compile templates we need to know hash of
-      // css and js files because these are passed into templates
-      gulp.parallel('site:styles:production', 'site:scripts:production'),
+      gulp.parallel(
+        'site:set-production-env',
+        'site:gather-articles-data',
+        'site:favicons:production',
+        gulp.parallel('site:styles:production', 'site:scripts:production')
+      ),
       gulp.parallel('site:pages:production', 'site:articles:production')
     ),
     'site:images:production'
@@ -481,13 +579,13 @@ gulp.task('production', gulp.parallel(
 ))
 
 gulp.task('ci:test', gulp.series(
-  'test:unit',
+  gulp.parallel('test:lint', 'test:unit'),
   'site:compile',
   'site:compile:production'
 ))
 
 gulp.task('ci:deploy', gulp.series(
-  'test:coverage',
+  'test:all',
   'site:compile:production',
   'site:deploy:production',
   'test:coveralls'

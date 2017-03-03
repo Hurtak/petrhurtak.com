@@ -26,6 +26,7 @@ nunjucksEnv.addGlobal('globals', {
 nunjucksEnv.addGlobal('production', false)
 nunjucksEnv.addGlobal('hashCss', '')
 nunjucksEnv.addGlobal('hashJs', '')
+nunjucksEnv.addGlobal('faviconsHtml', '')
 
 // debug
 nunjucksEnv.addGlobal('getDebugData', function () { return this })

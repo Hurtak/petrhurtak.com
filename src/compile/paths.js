@@ -17,6 +17,7 @@ const paths = {
   styles: absolutePath('./src/static/styles'),
   scripts: absolutePath('./src/static/scripts'),
   images: absolutePath('./src/static/images'),
+  favicons: absolutePath('./src/static/favicons'),
 
   dist: absolutePath('./dist'),
   distDrafts: absolutePath('./dist/_drafts'),
@@ -24,6 +25,7 @@ const paths = {
   distStyles: absolutePath('./dist/static/styles'),
   distScripts: absolutePath('./dist/static/scripts'),
   distImages: absolutePath('./dist/static/images'),
+  distFavicons: absolutePath('./dist/static/favicons'),
   distNodeModules: absolutePath('./dist/node_modules'),
 
   articles: absolutePath('./articles'),

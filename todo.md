@@ -6,9 +6,6 @@
 
 - is snippets content initialized?
 
-- favicon, at least temporary one
-    - http://imgur.com/UCoQCny
-
 - buy domains
 - add comments
     - https://css-tricks.com/lazy-loading-disqus-comments/

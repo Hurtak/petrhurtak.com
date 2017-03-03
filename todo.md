@@ -2,8 +2,6 @@
 
 ## NEXT RELEASE
 
-- 404 page
-
 - responsive
 
 - is snippets content initialized?

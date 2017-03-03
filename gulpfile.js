@@ -287,7 +287,9 @@ function deploy (done, productionBuild) {
         logArchiveSize(archive)
         if (error) {
           throw error
-        } else if (body.code !== 200) {
+        } else if (body.code && body.code !== 200) {
+          // 401 Access Denied will not be error so we throw body.
+          // Also and succes will not have 'code' property.
           throw body
         } else {
           console.log('upload successful, server responded with:', body)

@@ -2,15 +2,11 @@
 
 ## NEXT RELEASE
 
-- go through TODOs
-
-- responsive
-
-- is snippets content initialized?
-
 - add comments
     - https://css-tricks.com/lazy-loading-disqus-comments/
 - add google analytics
+- responsive
+- is snippets content initialized?
 - write first article
     - http://i.imgur.com/A6gQxoM.jpg
 

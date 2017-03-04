@@ -2,8 +2,8 @@
 
 ## NEXT RELEASE
 
-- add comments
-    - https://css-tricks.com/lazy-loading-disqus-comments/
+- https://css-tricks.com/lazy-loading-disqus-comments/
+- style discus comments
 - add google analytics
 - responsive
 - is snippets content initialized?

@@ -28,6 +28,8 @@
 
   </article>
 
+  <section id="disqus_thread"></section>
+
 {% endblock %}
 
 {% block scriptVariables %}
@@ -54,6 +56,26 @@
         {% endfor %}
       ]
     }())
+  </script>
+
+{% endblock %}
+
+{% block afterScripts %}
+
+  <script>
+
+    (function() {
+      window.disqus_config = function () {
+        this.page.url = "{{ globals.siteUrl }}/{{ metadata.url }}"
+        this.page.identifier = "{{ metadata.url }}"
+      }
+
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hurtak.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })()
+
   </script>
 
 {% endblock %}

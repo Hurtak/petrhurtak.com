@@ -2,7 +2,6 @@
 
 ## NEXT RELEASE
 
-- https://css-tricks.com/lazy-loading-disqus-comments/
 - style discus comments
 - add google analytics
 - responsive
@@ -12,6 +11,9 @@
 
 ## Right after release
 
+- lazy load disqus
+    - https://css-tricks.com/lazy-loading-disqus-comments/
+    - maybe detect hardware and if we are on mobile, only lazyload then
 - add less, and maybe try sass
 - update rss, package.json descriptions
 - consider moving metadata.title to the article itself?

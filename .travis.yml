@@ -18,5 +18,5 @@ script:
 matrix:
   include:
     - os: linux
-      node_js: "7.6.0"
+      node_js: "7.7.1"
       script: ./node_modules/.bin/gulp ci:deploy

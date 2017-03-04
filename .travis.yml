@@ -20,8 +20,5 @@ matrix:
     - os: linux
       node_js: "7.6.0"
       script: |
-        if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-          ./node_modules/.bin/gulp ci:deploy
-        else
-          echo "Branch is not master or it is pull request, deployment skipped"
-        fi
+        ./node_modules/.bin/gulp ci:deploy
+

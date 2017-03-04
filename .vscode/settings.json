@@ -1,0 +1,6 @@
+{
+  "search.exclude": {
+    ".nyc_output": true,
+    "coverage": true
+  }
+}

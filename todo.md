@@ -2,6 +2,8 @@
 
 ## NEXT RELEASE
 
+- go through TODOs
+
 - responsive
 
 - is snippets content initialized?
@@ -9,10 +11,8 @@
 - add comments
     - https://css-tricks.com/lazy-loading-disqus-comments/
 - add google analytics
-- go through TODOs
-- ship it
 - write first article
-- http://i.imgur.com/A6gQxoM.jpg
+    - http://i.imgur.com/A6gQxoM.jpg
 
 ## Right after release
 

@@ -28,7 +28,7 @@ const config = require('./src/compile/config.js')
 const articles = require('./src/compile/articles.js')
 const nunjucks = require('./src/compile/nunjucks/env.js')
 
-if (!process.env.CI) { // Travis adds this env variable
+if (!process.env.TRAVIS) {
   debug()
 }
 
@@ -273,14 +273,20 @@ function deploy (done, productionBuild) {
   archive.directory(paths.dist, '/')
   archive.finalize()
 
-  if (productionBuild) {
+  if (productionBuild &&
+    process.env.TRAVIS === 'true' &&
+    process.env.TRAVIS_BRANCH === 'master' &&
+    process.env.TRAVIS_PULL_REQUEST === 'false'
+  ) {
     archive.pipe(
       request({
         method: 'POST',
         url: 'https://api.netlify.com/api/v1/sites/hurtak.netlify.com/deploys',
         headers: {
           'Content-Type': 'application/zip',
-          // passed in from Travis CI
+          // Passed in from Travis CI only when user us member of the repo,
+          // so we do not have to worry about pull requests stealing the token
+          // or updating the content of the site.
           Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`
         }
       }, (error, _, body) => {

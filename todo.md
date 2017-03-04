@@ -6,11 +6,9 @@
 
 - is snippets content initialized?
 
-- buy domains
 - add comments
     - https://css-tricks.com/lazy-loading-disqus-comments/
 - add google analytics
-- go through the templates and make sure url like hurtak.cz & hurtak.cc are all the same and correct
 - go through TODOs
 - ship it
 - write first article
@@ -19,6 +17,7 @@
 ## Right after release
 
 - add less, and maybe try sass
+- update rss, package.json descriptions
 - consider moving metadata.title to the article itself?
 - finish CSS design
     - add cool efect to buttons like in https://www.keithcirkel.co.uk/

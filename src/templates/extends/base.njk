@@ -3,7 +3,7 @@
   <head>
 
     <meta charset="utf-8">
-    <title>hurtak.cz {% block title %}{% endblock %}</title>
+    <title>{{ globals.siteUrlShort | capitalize }} {% block title %}{% endblock %}</title>
 
     {# meta #}
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,8 +25,7 @@
     {% endif %}
 
     {# extra #}
-    <link rel="alternate" type="application/rss+xml" title="hurtak.cz" href="/rss.xml">
-    {# TODO: update title url #}
+    <link rel="alternate" type="application/rss+xml" href="/rss.xml">
     <link type="text/plain" rel="author" href="/humans.txt">
 
   </head>

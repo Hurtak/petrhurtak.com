@@ -1,13 +1,12 @@
 'use strict'
 
-const url = require('url')
-
 module.exports = {
   //
   // Blog configuration
   //
 
-  siteUrl: url.parse('https://hurtak.cc'),
+  siteUrl: 'https://www.hurtak.me',
+  siteUrlShort: 'hurtak.me',
   yearFounded: 2015,
 
   articles: {

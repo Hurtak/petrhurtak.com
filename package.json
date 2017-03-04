@@ -1,7 +1,7 @@
 {
-  "name": "hurtak.cc",
+  "name": "hurtak.me",
   "version": "1.0.0",
-  "description": "source code for hurtak.cc",
+  "description": "source code for hurtak.me",
   "main": "gulpfile.js",
   "engines": {
     "node": ">=7.6"
@@ -42,12 +42,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Hurtak/hurtak.cc"
+    "url": "https://github.com/Hurtak/hurtak.me"
   },
   "author": "Petr Huřťák",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Hurtak/hurtak.cc/issues"
+    "url": "https://github.com/Hurtak/hurtak.me/issues"
   },
-  "homepage": "http://hurtak.cz"
+  "homepage": "https://www.hurtak.me"
 }

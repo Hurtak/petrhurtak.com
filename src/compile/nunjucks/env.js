@@ -17,8 +17,8 @@ for (const filterName in filters) {
 nunjucksEnv.addGlobal('globals', {
   yearCurrent: new Date().getUTCFullYear(),
   yearFounded: config.yearFounded,
-  siteUrl: config.siteUrl.href,
-  siteDomain: config.siteUrl.host
+  siteUrl: config.siteUrl,
+  siteUrlShort: config.siteUrlShort
 })
 
 // @INCONSISTENT: these are also globals

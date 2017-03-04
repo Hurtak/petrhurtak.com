@@ -24,4 +24,5 @@ matrix:
       node_js: "7.6.0"
       script: ./node_modules/.bin/gulp ci:deploy
       branches:
-        only: master
+        only:
+          - master

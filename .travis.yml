@@ -23,8 +23,6 @@ matrix:
     - os: linux
       node_js: "7.6.0"
       before_install: |
-        echo "$TRAVIS_BRANCH"
-        echo "$TRAVIS_PULL_REQUEST"
         if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
           echo "Branch is master and it is not pull request, starting deployment"
         else

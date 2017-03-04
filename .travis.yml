@@ -22,12 +22,14 @@ matrix:
   include:
     - os: linux
       node_js: "7.6.0"
-      script: >
+      before_install: |
         echo "$TRAVIS_BRANCH"
         echo "$TRAVIS_PULL_REQUEST"
         if [ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == "false" ]; then
           echo "Branch is master and it is not pull request, starting deployment"
-          ./node_modules/.bin/gulp ci:deploy
         else
           echo "Branch is not master or it is pull request, deployment skipped"
+          exit 1
         fi
+      script:
+        ./node_modules/.bin/gulp ci:deploy

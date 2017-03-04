@@ -289,13 +289,11 @@ function deploy (done, productionBuild) {
           // or updating the content of the site.
           Authorization: `Bearer ${process.env.NETLIFY_ACCESS_TOKEN}`
         }
-      }, (error, _, body) => {
+      }, (error, response, body) => {
         logArchiveSize(archive)
         if (error) {
           throw error
-        } else if (body.code && body.code !== 200) {
-          // 401 Access Denied will not be error so we throw body.
-          // Also and succes will not have 'code' property.
+        } else if (response.statusCode !== 200) {
           throw body
         } else {
           console.log('upload successful, server responded with:', body)

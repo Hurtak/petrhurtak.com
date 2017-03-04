@@ -302,6 +302,7 @@ function deploy (done, productionBuild) {
       })
     )
   } else {
+    console.log('Deploy skipped')
     const writeStream = fs.createWriteStream(path.join(paths.dist, 'site.zip'))
     writeStream.on('close', () => {
       logArchiveSize(archive)

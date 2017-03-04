@@ -319,6 +319,7 @@ async function generateFavicons (done, productionBuild) {
     const faviconTmpDataPath = path.join(__dirname, '_faviconsData.json')
 
     realFavicon.generateFavicon({
+      // config generated from http://realfavicongenerator.net
       masterPicture: path.join(paths.favicons, 'favicon.svg'),
       dest: paths.distFavicons,
       iconsPath: '/static/favicons/',

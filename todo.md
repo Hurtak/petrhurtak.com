@@ -262,6 +262,7 @@
     - tests
         - test routes
             - https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/
+        - test if favicons are present in final build
         - code coverage > 50%
         - synon.js to moc db/api calls?
         - selenium tests

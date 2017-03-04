@@ -18,9 +18,11 @@ script:
 
 # build on specific version for deployment task
 
-master:
-  matrix:
-    include:
-      - os: linux
-        node_js: "7.6.0"
-        script: ./node_modules/.bin/gulp ci:deploy
+matrix:
+  include:
+    - os: linux
+      node_js: "7.6.0"
+      script:
+        if [ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == "false" ]; then
+          ./node_modules/.bin/gulp ci:deploy
+        fi

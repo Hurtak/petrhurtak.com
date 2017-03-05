@@ -5,8 +5,8 @@ module.exports = {
   // Blog configuration
   //
 
-  siteUrl: 'https://www.hurtak.me',
-  siteUrlShort: 'hurtak.me',
+  siteUrl: 'https://www.hurtak.cc',
+  siteUrlShort: 'hurtak.cc',
   yearFounded: 2015,
 
   articles: {

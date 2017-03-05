@@ -258,7 +258,7 @@ function foo (bar) {
 <blockquote>
     <p>Citation text</p>
     <footer>
-        &mdash; <a href="https://www.hurtak.me"><cite>Petr Huřťák</cite></a>
+        &mdash; <a href="https://www.hurtak.cc"><cite>Petr Huřťák</cite></a>
     </footer>
 </blockquote>
 ```
@@ -268,7 +268,7 @@ function foo (bar) {
 <blockquote>
     <p>Citation text</p>
     <footer>
-        &mdash; <a href="https://www.hurtak.me"><cite>Petr Huřťák</cite></a>
+        &mdash; <a href="https://www.hurtak.cc"><cite>Petr Huřťák</cite></a>
     </footer>
 </blockquote>
 

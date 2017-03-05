@@ -12,7 +12,7 @@
   font-size: var(--font-size-title);
   line-height: var(--font-line-height-title);
   font-family: var(--font-family-heading);
-  font-weight: 400;
+  font-weight: normal;
   color: var(--color-gray-dark);
 }
 
@@ -33,6 +33,23 @@
 }
 
 /*
+ * comments
+ */
+
+.Article-comments {
+}
+
+.Article-comments-heading {
+  margin: 0;
+  padding: var(--font-padding-headline);
+  font-size: var(--font-size-headline);
+  line-height: var(--font-line-height-headline);
+  font-family: var(--font-family-heading);
+  font-weight: normal;
+  color: var(--color-gray-dark);
+}
+
+/*
  * headings
  */
 
@@ -42,7 +59,7 @@
   font-size: var(--font-size-headline);
   line-height: var(--font-line-height-headline);
   font-family: var(--font-family-heading);
-  font-weight: 400;
+  font-weight: normal;
   color: var(--color-gray-dark);
 }
 
@@ -52,7 +69,7 @@
   font-size: var(--font-size-headline-small);
   line-height: var(--font-line-height-headline-small);
   font-family: var(--font-family-heading);
-  font-weight: 400;
+  font-weight: normal;
   color: var(--color-gray-dark);
 }
 

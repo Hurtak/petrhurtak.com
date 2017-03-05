@@ -8,7 +8,7 @@
 
   <article class="Article">
 
-    <div class="Article-header">
+    <section class="Article-header">
       <h1 class="Article-title">
         {{ metadata.title }}
       </h1>
@@ -20,15 +20,18 @@
       >
         {{ metadata.datePublication | fullDate }}
       </time>
-    </div>
+    </section>
 
-    <div class="Article-content">
+    <section class="Article-content">
       {{ articleHtml | safe }}
-    </div>
+    </section>
+
+    <section class="Article-comments">
+      <h2 class="Article-comments-heading">Comments</h2>
+      <div id="disqus_thread"></div>
+    </section>
 
   </article>
-
-  <section id="disqus_thread"></section>
 
 {% endblock %}
 

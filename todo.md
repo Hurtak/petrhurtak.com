@@ -2,7 +2,6 @@
 
 ## NEXT RELEASE
 
-- style discus comments
 - add google analytics
 - responsive
 - is snippets content initialized?

@@ -2,8 +2,8 @@
 
 ## NEXT RELEASE
 
+- migrate to hurtak.cc
 - add google analytics
-- is snippets content initialized?
 - write first article
     - http://i.imgur.com/A6gQxoM.jpg
 

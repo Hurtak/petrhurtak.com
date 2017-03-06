@@ -29,6 +29,20 @@
   --paragraph-spacing: 3.0rem;
 }
 
+@media (max-width: 600px) {
+  :root {
+    --font-padding-headline:       calc(5.6rem * 0.8) 0 calc(1.2rem * 0.8) 0;
+    --font-padding-headline-small: calc(3.2rem * 0.8) 0 calc(1.0rem * 0.8) 0;
+
+    --font-size-title:           calc(5.2rem * 0.8);
+    --font-size-headline:        calc(3.3rem * 0.8);
+    --font-size-headline-small:  calc(2.5rem * 0.8);
+    --font-size-paragraph:       calc(2.0rem * 0.8);
+    --font-size-paragraph-small: calc(1.6rem * 0.8);
+    --font-size-code:            calc(1.6rem * 0.8);
+  }
+}
+
 html {
   /* with font-size: 62.5%, 1rem is 10px
    * @see: http://snook.ca/archives/html_and_css/font-size-with-rem */

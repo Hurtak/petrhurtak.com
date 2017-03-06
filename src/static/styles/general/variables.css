@@ -20,7 +20,7 @@
   --border-radius: 3px;
 
   /* TODO: move into mixin once they are avaliable - same code used in header.css & page.css */
-  --content-spacing: 10px;
+  --content-spacing: 16px;
   --content-max-width: calc(var(--content-width) + 2 * var(--content-spacing));
 
   /*
@@ -28,4 +28,10 @@
    */
    --z-index-snippet-content-visible: 20;
    --z-index-snippet-content: 10;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --content-spacing: 8px;
+  }
 }

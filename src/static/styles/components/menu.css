@@ -48,6 +48,17 @@
   background-image: url('/static/images/rss.svg');
 }
 
+@media (max-width: 600px) {
+  .Menu-item-link {
+    padding: 1.6rem 0;
+  }
+
+  .Menu-item-link::before {
+    display: block;
+    margin: 0 auto 0.8rem;
+  }
+}
+
 .Menu-item-link--articles:hover::before { background-image: url('/static/images/article-white.svg') }
 .Menu-item-link--twitter:hover::before  { background-image: url('/static/images/twitter-white.svg') }
 .Menu-item-link--github:hover::before   { background-image: url('/static/images/github-white.svg') }

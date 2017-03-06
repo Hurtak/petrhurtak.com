@@ -1,6 +1,7 @@
 .Snippet {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   height: 30rem;
   border: 1px solid var(--color-gray-light);
   border-radius: var(--border-radius);
@@ -48,6 +49,12 @@
 }
 .Snippet-button.isSelected {
   background-color: var(--color-gray-standard);
+}
+@media (max-width: 600px) {
+  .Snippet-button {
+    padding: 0 0.5em;
+    font-size: var(--font-size-paragraph-small);
+  }
 }
 
 .Snippet-contentWrapper {

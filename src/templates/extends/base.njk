@@ -71,5 +71,16 @@
 
     {% block afterScripts %}{% endblock %}
 
+    {# google analytics #}
+    {# https://phpfashion.com/rychlejsi-stranky-s-google-universal-analytics #}
+    <script>
+      ga = function () { ga.q.push(arguments) }
+      ga.q = []
+      ga.l = +new Date
+      ga('create', 'UA-93333552-1', 'auto')
+      ga('send','pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
   </body>
 </html>

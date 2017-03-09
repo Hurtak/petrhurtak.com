@@ -2,8 +2,6 @@
 
 ## NEXT RELEASE
 
-- migrate to hurtak.cc
-- add google analytics
 - write first article
     - http://i.imgur.com/A6gQxoM.jpg
 
@@ -63,7 +61,6 @@
 - update Twitter profile
 - domains
     - buy hurtak.cc hurtak.io petrhurtak.com petrhurtak.cz hurtak.pe
-    - move to namecheap?
 - https://www.smashingmagazine.com/2016/08/using-a-static-site-generator-at-scale-lessons-learned/
 - http://www.vzhurudolu.cz/prirucka/checklist
 - consider transforming article so each element has it's own class?

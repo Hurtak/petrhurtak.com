@@ -76,7 +76,7 @@
     <script>
       ga = function () { ga.q.push(arguments) }
       ga.q = []
-      ga.l = +new Date
+      ga.l = new Date().getTime()
       ga('create', 'UA-93333552-1', 'auto')
       ga('send','pageview')
     </script>

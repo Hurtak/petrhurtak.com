@@ -547,7 +547,7 @@ gulp.task('watch:articles', () => gulp.watch(
   gulp.series('site:compile', 'browser-sync:reload-browser')
 ))
 gulp.task('watch:test', () => gulp.watch(
-  ['./src/**/*.js'],
+  ['./src/**/*.js', './articles/**/*'],
   gulp.series('test:all')
 ))
 gulp.task('watch:styles', () => gulp.watch(

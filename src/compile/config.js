@@ -18,6 +18,9 @@ module.exports = {
   // Development configuration
   //
 
+  cssDebug: false,
+  templateDebug: false,
+
   // https://www.browsersync.io/docs/options
   browserSync: {
     port: 8000,

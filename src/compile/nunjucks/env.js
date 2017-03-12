@@ -18,7 +18,9 @@ nunjucksEnv.addGlobal('globals', {
   yearCurrent: new Date().getUTCFullYear(),
   yearFounded: config.yearFounded,
   siteUrl: config.siteUrl,
-  siteUrlShort: config.siteUrlShort
+  siteUrlShort: config.siteUrlShort,
+  cssDebug: config.cssDebug,
+  templateDebug: config.templateDebug
 })
 
 // @INCONSISTENT: these are also globals

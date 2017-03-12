@@ -19,8 +19,12 @@
     {% if production %}
       <link rel="stylesheet" type="text/css" href="/static/styles/styles.{{ hashCss }}.css">
     {% else %}
-      <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-reset.css">
-      <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-templates.css">
+      {% if globals.cssDebug %}
+        <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-reset.css">
+      {% endif %}
+      {% if globals.templateDebug %}
+        <link rel="stylesheet" type="text/css" href="/static/styles/debug/debug-templates.css">
+      {% endif %}
       <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
     {% endif %}
 
@@ -43,7 +47,7 @@
     </div>
 
     {# debug #}
-    {% if not production %}
+    {% if globals.templateDebug and not production %}
       <pre class="DebugTemplates"><code>{{ getDebugData() | dump(4) }}</code></pre>
     {% endif %}
 

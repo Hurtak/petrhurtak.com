@@ -543,7 +543,7 @@ gulp.task('test:all', gulp.parallel(
 ))
 
 gulp.task('watch:articles', () => gulp.watch(
-  ['./articles/**/*', './src/templates/**/*'],
+  ['./articles/**/*', './src/templates/**/*', './src/compile/**/*'],
   gulp.series('site:compile', 'browser-sync:reload-browser')
 ))
 gulp.task('watch:test', () => gulp.watch(

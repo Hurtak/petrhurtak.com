@@ -152,12 +152,13 @@ function enhanceSnippetsDataWithConfig (snippetsData) {
   }
 
   const snippets = snippetsData.map(snippet => {
-    const config = Object.assign(
+    snippet.config = snippet.config || {}
+
+    snippet.config = Object.assign(
       {},
       defaultConfig,
       snippet.config[snippet.metadata.name]
     )
-    snippet.config = config
 
     return snippet
   })

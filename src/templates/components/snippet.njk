@@ -1,5 +1,5 @@
 {% if snippet.config.inlineSnippet %}
-  <div
+  <section
     class="Snippet Snippet--inline js-snippet-content-result"
     data-snippet="{{ snippet.metadata.name }}"
   >
@@ -8,9 +8,9 @@
       src="{{ relativeUrl }}"
     >
     </iframe>
-  </div>
+  </section>
 {% else %}
-  <div class="Snippet" data-snippet="{{ snippet.metadata.name }}">
+  <section class="Snippet" data-snippet="{{ snippet.metadata.name }}">
     <div class="Snippet-header">
       <div class="Snippet-headerGroup">
         <button class="Snippet-button js-snippet-tab-html">HTML</button>
@@ -42,5 +42,5 @@
         </iframe>
       </div>
     </div>
-  </div>
+  </section>
 {% endif %}

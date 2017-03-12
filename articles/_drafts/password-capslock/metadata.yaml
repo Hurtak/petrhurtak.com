@@ -9,3 +9,7 @@ datePublication: 2017-03-12 12:00:00
 dateLastUpdate: 2017-03-12 12:00:00
 
 id: 80078670c181fc17407ac0ee6d917289
+
+snippetsConfig:
+  easy-way:
+    inlineSnippet: true

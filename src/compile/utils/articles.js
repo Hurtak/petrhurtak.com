@@ -139,9 +139,9 @@ function parseSnippet (wholeHtml) {
   const $ = cheerioLoadWithoutEscaping(wholeHtml)
 
   const css = $('head > style').html()
-  const js = $('body > script:last-of-type').html()
-  const head = $('head').html().replace(`<style>${css}</style>`, '')
-  const html = $('body').html().replace(`<script>${js}</script>`, '')
+  const js = $('body > script').html()
+  const head = ($('head').html() || '').replace(`<style>${css}</style>`, '')
+  const html = ($('body').html() || '').replace(`<script>${js}</script>`, '')
 
   const nullIfEmptyString = str => typeof str === 'string' && str.trim() === '' ? null : str
 

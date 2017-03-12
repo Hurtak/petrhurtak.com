@@ -2,12 +2,15 @@
 
 ## NEXT RELEASE
 
+- can i use links
 - skip deploy task from periodic builds
 - write first article
     - http://i.imgur.com/A6gQxoM.jpg
 
 ## Right after release
 
+- headings should have links to the hashes
+- insert <link preload> on all links in the page?
 - lazy load disqus
     - https://css-tricks.com/lazy-loading-disqus-comments/
     - maybe detect hardware and if we are on mobile, only lazyload then

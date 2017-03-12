@@ -21,3 +21,7 @@ html {
 *:after {
   box-sizing: inherit;
 }
+
+.snippet {
+  font-size: 100%;
+}

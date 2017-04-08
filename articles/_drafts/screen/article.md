@@ -39,8 +39,10 @@ sudo apt-get install screen
     ```
     - Or just connect to the screen with `screen -R name` and type run `exit`
 
-
-- Get screen session name
+- Get screen session id and name
+    - Take a look at the `$STY` environment variable.
+    - STY stands for `Alternate socket name`.
+    - If screen is invoked, `$STY` is set, otherwise it is empty.
     - `echo $STY`
     ```bash
     $ echo $STY
@@ -57,9 +59,7 @@ sudo apt-get install screen
 
 ### Am I running in screen?
 
-- Take a look at the `$STY` environment variable.
-- STY stands for `Alternate socket name`.
-- If screen is invoked, `$STY` is set, otherwise it is empty.
+#### STY environment variable
 
 ```bash
 $ echo $STY
@@ -69,7 +69,7 @@ $ echo $STY
 6825.test
 ```
 
-- Another way is taking a look at the `$TERM` variable
+#### TERM environment variable
 
 ```bash
 $ echo $TERM

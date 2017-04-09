@@ -14,6 +14,20 @@ sudo apt-get install screen
 
 ### Basic workflow
 
+- start the screen session with `screen` command
+- once you are in a screen you can exit it just as you would exit regular shell by typing `exit`
+- or you can `detach` from the screen session, which will bring you back to the original shell. Later on, you can reattach to the detached screen
+
+### Keyboard shortcuts
+
+- Shortcuts
+    - Disconnect
+        - Ctrl+a d
+    - Kill
+        - Ctrl+a K
+
+### Basic commands
+
 - New session
     - `screen`
 - New session with name
@@ -23,9 +37,9 @@ sudo apt-get install screen
 - Reattach to already running screen with name or id
     - screen -r name
 - Reattach to already running screen with name or id, if not exists create new
-    - `screen -R name`
+    - `screen -R [id or name]`
 - Kill running session
-    - `screen -X -S [session # you want to kill] quit`
+    - `screen -X -S [id or name] quit`
     ```bash
     $ screen -ls
     There is a screen on:
@@ -37,7 +51,7 @@ sudo apt-get install screen
     $ screen -ls
     No Sockets found in /var/run/screen/S-hurtak.
     ```
-    - Or just connect to the screen with `screen -R name` and type run `exit`
+    - Or just connect to the screen with `screen -r [id or name]` and then just run `exit`
 
 - Get screen session id and name
     - Take a look at the `$STY` environment variable.
@@ -48,14 +62,6 @@ sudo apt-get install screen
     $ echo $STY
     10921.test
     ```
-
-### Keyboard shortcuts
-
-- Shortcuts
-    - Disconnect
-        - Ctrl+a d
-    - Kill
-        - Ctrl+a K
 
 ### Am I running in screen?
 

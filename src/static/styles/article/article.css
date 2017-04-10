@@ -157,7 +157,9 @@
 }
 
 .Article-content li > ul,
-.Article-content li > ol {
+.Article-content li > ol,
+.Article-content li > pre,
+.Article-content li > p {
   margin-top: 0;
 }
 

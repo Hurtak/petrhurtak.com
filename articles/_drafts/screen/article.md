@@ -1,41 +1,45 @@
-## Screen
+## Basic information
 
 - Screen is window session manager
-- It allows you to
+- It allows you to:
     - Use multiple shell windows from a single session.
+    - Run a processes in separate shell on the background and later on, connect back to that backgroud shell.
     - Disconnect and reconnect to a shell sessions from multiple locations.
-    - Run a processes without maintaining an active shell session.
 
-### Instalation
+## Instalation
 
 ```bash
 sudo apt-get install screen
 ```
 
-### Basic workflow
+## Workflow
 
 - start the screen session with `screen` command
 - once you are in a screen you can exit it just as you would exit regular shell by typing `exit`
 - or you can `detach` from the screen session, which will bring you back to the original shell. Later on, you can reattach to the detached screen
 
-### Keyboard shortcuts
+## Keyboard shortcuts
 
-- Shortcuts
+- Controlling the screen is mainly through keyboard shortcuts
+- Most common shortcuts:
+    - Help
+        - `ctrl+a ?`
     - Disconnect
-        - Ctrl+a d
+        - `ctrl+a d`
     - Kill
-        - Ctrl+a K
+        - `ctrl+a K`
+        - or just type `exit`
 
-### Basic commands
+## Commands
 
 - New session
     - `screen`
 - New session with name
-    - screen -S name
+    - `screen -S name`
 - List of running screens
     - `screen -ls`
 - Reattach to already running screen with name or id
-    - screen -r name
+    - `screen -r name`
 - Reattach to already running screen with name or id, if not exists create new
     - `screen -R [id or name]`
 - Kill running session
@@ -52,20 +56,18 @@ sudo apt-get install screen
     No Sockets found in /var/run/screen/S-hurtak.
     ```
     - Or just connect to the screen with `screen -r [id or name]` and then just run `exit`
-
 - Get screen session id and name
     - Take a look at the `$STY` environment variable.
     - STY stands for `Alternate socket name`.
     - If screen is invoked, `$STY` is set, otherwise it is empty.
-    - `echo $STY`
     ```bash
     $ echo $STY
     10921.test
     ```
 
-### Am I running in screen?
+## Am I running in screen?
 
-#### STY environment variable
+### STY environment variable
 
 ```bash
 $ echo $STY
@@ -75,7 +77,7 @@ $ echo $STY
 6825.test
 ```
 
-#### TERM environment variable
+### TERM environment variable
 
 ```bash
 $ echo $TERM
@@ -85,8 +87,8 @@ $ echo $TERM
 screen
 ```
 
-### Sources
+## Sources
 
-- https://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/
-- http://stackoverflow.com/questions/5392618/how-can-i-tell-whether-im-in-a-screen
-- http://stackoverflow.com/questions/1509677/kill-detached-screen-session
+- [https://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/](https://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/)
+- [http://stackoverflow.com/questions/5392618/how-can-i-tell-whether-im-in-a-screen](http://stackoverflow.com/questions/5392618/how-can-i-tell-whether-im-in-a-screen)
+- [http://stackoverflow.com/questions/1509677/kill-detached-screen-session](http://stackoverflow.com/questions/1509677/kill-detached-screen-session)

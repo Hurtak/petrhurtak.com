@@ -1,10 +1,11 @@
+
 ## Basic information
 
 - Screen is window session manager
 - It allows you to:
     - Use multiple shell windows from a single session.
-    - Run a processes in separate shell on the background and later on, connect back to that backgroud shell.
-    - Disconnect and reconnect to a shell sessions from multiple locations.
+    - Run a process in a separate shell in the background and later on, connect back to that background shell.
+    - Disconnect and reconnect to shell sessions from multiple locations.
 
 ## Instalation
 
@@ -15,7 +16,7 @@ sudo apt-get install screen
 ## Workflow
 
 - start the screen session with `screen` command
-- once you are in a screen you can exit it just as you would exit regular shell by typing `exit`
+- once you are in a screen, you can exit it just as you would exit regular shell by typing `exit`
 - or you can `detach` from the screen session, which will bring you back to the original shell. Later on, you can reattach to the detached screen
 
 ## Keyboard shortcuts

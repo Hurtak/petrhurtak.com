@@ -241,6 +241,11 @@ async function compileArticles (done, productionBuild) {
       if (await fs.exists(snippetsPath)) {
         await fs.copy(snippetsPath, path.join(folder, paths.articleSnippets))
       }
+
+      const videosPath = path.join(article.fs.path, paths.articleVideos)
+      if (await fs.exists(videosPath)) {
+        await fs.copy(videosPath, path.join(folder, paths.articleVideos))
+      }
     } else {
       await Promise.all([
         fs.symlink(
@@ -250,6 +255,10 @@ async function compileArticles (done, productionBuild) {
         fs.symlink(
           path.join(article.fs.path, paths.articleSnippets),
           path.join(folder, paths.articleSnippets)
+        ),
+        fs.symlink(
+          path.join(article.fs.path, paths.articleVideos),
+          path.join(folder, paths.articleVideos)
         )
       ])
     }

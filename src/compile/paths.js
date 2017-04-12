@@ -34,6 +34,7 @@ const paths = {
   articleMetadata: 'metadata.yaml',
   articleImages: 'images',
   articleSnippets: 'snippets',
+  articleVideos: 'videos',
 
   nodeModules: absolutePath('./node_modules')
 }

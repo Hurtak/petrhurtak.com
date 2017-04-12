@@ -1,11 +1,12 @@
+Screen is window session manager that allows you to:
 
-## Basic information
+- Run a process in a separate shell in the background and later on, connect back to that background shell.
+- Use multiple shell windows from a single session.
+- Disconnect and reconnect to shell sessions from multiple locations.
 
-- Screen is window session manager
-- It allows you to:
-    - Use multiple shell windows from a single session.
-    - Run a process in a separate shell in the background and later on, connect back to that background shell.
-    - Disconnect and reconnect to shell sessions from multiple locations.
+<video width="626" width="274" controls autoplay loop>
+  <source src="./videos/screen.mkv" type="video/mp4">
+</video>
 
 ## Instalation
 

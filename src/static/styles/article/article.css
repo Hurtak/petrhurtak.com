@@ -156,6 +156,7 @@
   font-family: var(--font-family-paragraph);
 }
 
+.Article-content p + ul,
 .Article-content li > ul,
 .Article-content li > ol,
 .Article-content li > pre,
@@ -254,6 +255,16 @@
 .Article-content table td {
   border: 1px solid var(--color-gray-light);
   padding: 0.4em 0.8em;
+}
+
+/*
+ * videos
+ */
+
+.Article-content video {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*

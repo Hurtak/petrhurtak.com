@@ -1,6 +1,6 @@
 The Screen is screen manager with terminal emulation that allows you to:
 
-- Run a process in a terminal on the background, and later on connect back.
+- Run a process in a terminal on background, and later on connect back.
 - Use multiple terminal windows from a single session.
 - Reconnect to a terminal session from various locations.
 

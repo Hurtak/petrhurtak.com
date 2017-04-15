@@ -32,7 +32,7 @@ window.App.DateConvertor = (function () {
     if (minutes <= 10) {
       return 'just now'
     } else if (minutes <= 60) {
-      return `before ${minutes} ${plural('minute', minutes)}`
+      return `${minutes} ${plural('minute', minutes)} ago`
     } else if (hours <= 6) {
       return `${hours} ${plural('hour', minutes)} ago`
     } else if (hours <= 24) {

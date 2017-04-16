@@ -78,8 +78,12 @@ $ echo $TERM
 screen
 ```
 
-## Sources
+## Conclusion
+
+I use Screen mainly for running processes in the background &ndash; for the ease of coming back to them, seeing what they logged into the console, and terminating them.
+With the window management stuff, I am fine with just using regular tabs in my terminal. But if you ever needed something more powerful than that, you should consider either Screen or its more powerful competitor [Tmux](https://tmux.github.io/).
+
+## Links
 
 - [https://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/](https://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/)
-- [http://stackoverflow.com/questions/5392618/how-can-i-tell-whether-im-in-a-screen](http://stackoverflow.com/questions/5392618/how-can-i-tell-whether-im-in-a-screen)
-- [http://stackoverflow.com/questions/1509677/kill-detached-screen-session](http://stackoverflow.com/questions/1509677/kill-detached-screen-session)
+- [https://tmux.github.io/](https://tmux.github.io/)

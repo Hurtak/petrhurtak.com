@@ -9,6 +9,7 @@
 
 ## Right after release
 
+- when displaying '2 days ago' dates - round dates to latest midnight
 - headings should have links to the hashes
 - insert <link preload> on all links in the page?
 - lazy load disqus

@@ -14,11 +14,11 @@
       </h1>
       <time
         class="Article-datetime"
-        title="{{ metadata.datePublication | fullDate }}"
-        datetime="{{ metadata.datePublication | datetimeAttribute }}"
+        title="{{ metadata.dateLastUpdate | fullDate }}"
+        datetime="{{ metadata.dateLastUpdate | datetimeAttribute }}"
         data-date-convert
       >
-        {{ metadata.datePublication | fullDate }}
+        {{ metadata.dateLastUpdate | fullDate }}
       </time>
     </section>
 

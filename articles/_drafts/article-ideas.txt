@@ -1,9 +1,3 @@
-- shebang
-  - https://en.wikipedia.org/wiki/Shebang_(Unix)
-  - nodejs, python
-  - chmod u+x script
-  - list of most common shebangs so we can easily copy paste
-
 - hover image preloading
   - how browser decides what is fetched
   - js to preload images

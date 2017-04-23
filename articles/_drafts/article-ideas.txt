@@ -1,3 +1,10 @@
+- web video
+  - how to record on linux
+    - vokoscreen
+    - kdenlive
+  - how to display in page
+    - video element stuff
+
 - hover image preloading
   - how browser decides what is fetched
   - js to preload images

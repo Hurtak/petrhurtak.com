@@ -1,17 +1,16 @@
-
 Under Unix-like operating systems you can either run scripts by specifying the
-interpreter along with the path, for example: `python test.py`. Or you can run them as programs with `./program` and have the interpreter specified in the shebang on the first line of the script
+interpreter along with the path `python test.py`, or you can run them as programs `./test.py` and have the interpreter specified in the shebang on the first line of the script.
 
 ## Syntax
 
 ```bash
 #! interpreter [optional-arg]
 
-the script run by specified interpreter
+the script content run by specified interpreter
 ```
 
-- The interpreter must be a valid pathname for an executable - therefore something like `#!python` will not work, because python is not path name. Use full path like `#!/usr/bin/env python`.
-- It usually takes only one argument, so you cannot do `#!/usr/bin/env node --harmony`
+- The interpreter must be a valid pathname for an executable, therefore something like `#!python` will not work, because python is not path name. Use full path like `#!/usr/bin/env python`.
+- It usually takes only one argument, so you cannot do `#!/usr/bin/env node --harmony`.
 
 ### Example
 
@@ -21,7 +20,7 @@ echo "Hello"
 ```
 
 <video width="626" width="274" controls autoplay loop>
-  <source src="./videos/shebang.mkv" type="video/mkv">
+  <source src="./videos/shebang.mkv" type="video/mp4">
   <source src="./videos/shebang.webm" type="video/webm">
 </video>
 

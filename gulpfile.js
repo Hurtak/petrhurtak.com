@@ -578,12 +578,15 @@ gulp.task('watch:production', () => gulp.watch(
 //
 //
 
-gulp.task('dev', gulp.parallel(
-  gulp.series('site:compile', 'browser-sync:server'),
-  'test:all',
-  'watch:articles',
-  'watch:styles',
-  'watch:test'
+gulp.task('dev', gulp.series(
+  'site:compile',
+  'browser-sync:server',
+  gulp.parallel(
+    'test:all',
+    'watch:articles',
+    'watch:styles',
+    'watch:test'
+  )
 ))
 
 gulp.task('production', gulp.parallel(

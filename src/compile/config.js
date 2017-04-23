@@ -26,7 +26,8 @@ module.exports = {
     port: 8000,
     https: true,
     reloadOnRestart: true,
-    open: false
+    open: true,
+    online: true
   },
 
   debugSkipPackages: [

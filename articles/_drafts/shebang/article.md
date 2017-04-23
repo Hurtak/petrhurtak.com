@@ -20,7 +20,10 @@ the script run by specified interpreter
 echo "Hello"
 ```
 
-TODO --------- video
+<video width="626" width="274" controls autoplay loop>
+  <source src="./videos/shebang.mkv" type="video/mkv">
+  <source src="./videos/shebang.webm" type="video/webm">
+</video>
 
 ### usr/bin/env
 
@@ -49,5 +52,6 @@ Although #!/usr/bin/python will work on a default Ubuntu system, it is therefore
 | Interpreter | Shebang                 |
 | ----------- | ----------------------- |
 | Bash        | `#!/usr/bin/env bash`   |
+| Shell       | `#!/usr/bin/env sh`     |
 | Python      | `#!/usr/bin/env python` |
 | Node.js     | `#!/usr/bin/env node`   |

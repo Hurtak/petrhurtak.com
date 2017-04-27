@@ -9,7 +9,7 @@ interpreter along with the path `python test.py`, or you can run them as program
 the script content run by the specified interpreter
 ```
 
-- The interpreter must be a valid pathname for an executable. Therefore something like `#!python` will not work because "python" is not a path name. Use full path like `#!/usr/bin/env python`.
+- The interpreter must be a valid pathname for an executable. Therefore something like `#!python` will not work because `python` is not a path name. Use full path like `#!/usr/bin/env python`.
 - The interpreted usually takes only one argument, so you cannot do something like`#!/usr/bin/env node --harmony`.
 
 ### Example
@@ -24,13 +24,11 @@ echo "Hello"
   <source src="./videos/shebang.webm" type="video/webm">
 </video>
 
-### /usr/bin/env
+### usr/bin/env
 
-Env is a shell command in Unix-like operating systems that, among other things, is often used by shell scripts to launch the correct interpreter.
-
-Env is executable and can be found at `/usr/bin/enb`
-
-It is recommended to use `#!/usr/bin/env` instead of the absolute path like `#!/usr/bin/python`. Although #!/usr/bin/python will work on a default Ubuntu system, it is good practice to use  `#!/usr/bin/env python` instead. Same thing can be said about shells, you should use `#!/usr/bin/env bash` instead of `#!/bin/bash` for portability reasons. Different *nixes put bash in different places, and using /usr/bin/env is a workaround to run the first bash found on the PATH.
+Env is an executable in Unix-like operating systems that, among other things, is often used by shell scripts to launch the correct interpreter.  Env is located at `/usr/bin/env`.
+It is recommended to use `#!/usr/bin/env` instead of the absolute path like `#!/usr/bin/python`. Although #!/usr/bin/python will work on a default Ubuntu system, it is good practice to use  `#!/usr/bin/env python` instead.
+Same thing can be said about shells, you should use `#!/usr/bin/env bash` instead of `#!/bin/bash` for portability reasons. Different *nixes put the bash in various places, and using `/usr/bin/env` is a workaround to run the first bash found on the PATH.
 
 ## Common shebangs
 

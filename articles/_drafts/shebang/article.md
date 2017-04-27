@@ -24,7 +24,7 @@ echo "Hello"
   <source src="./videos/shebang.webm" type="video/webm">
 </video>
 
-### usr/bin/env
+### /usr/bin/env
 
 Env is a shell command in Unix-like operating systems that, among other things, is often used by shell scripts to launch the correct interpreter.
 

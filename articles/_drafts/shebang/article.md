@@ -6,11 +6,11 @@ interpreter along with the path `python test.py`, or you can run them as program
 ```bash
 #! interpreter [optional-arg]
 
-the script content run by specified interpreter
+the script content run by the specified interpreter
 ```
 
-- The interpreter must be a valid pathname for an executable, therefore something like `#!python` will not work, because python is not path name. Use full path like `#!/usr/bin/env python`.
-- It usually takes only one argument, so you cannot do `#!/usr/bin/env node --harmony`.
+- The interpreter must be a valid pathname for an executable. Therefore something like `#!python` will not work because "python" is not a path name. Use full path like `#!/usr/bin/env python`.
+- The interpreted usually takes only one argument, so you cannot do something like`#!/usr/bin/env node --harmony`.
 
 ### Example
 
@@ -26,25 +26,11 @@ echo "Hello"
 
 ### usr/bin/env
 
-- It is recomended to use `#!/usr/bin/env` instead of the absolute path like `#!/usr/bin/python`
-- to make sure python (or any other language's interpreter) is found, in case it might not be in exactly the same location across different systems.
-- env is an executable in `/usr/bin`, is in pretty much all Linux distributions and it
-    runs a program in a modified environment
+Env is a shell command in Unix-like operating systems that, among other things, is often used by shell scripts to launch the correct interpreter.
 
+Env is executable and can be found at `/usr/bin/enb`
 
-env is a shell command for Unix and Unix-like operating systems. It is used to either print a list of environment variables or run another utility in an altered environment without having to modify the currently existing environment. Using env, variables may be added or removed, and existing variables may be changed by assigning new values to them.
-
-and in relation to your question:
-
-In practice, env has another common use. It is often used by shell scripts to launch the correct interpreter. In this usage, the environment is typically not changed
-
-
-You should use #!/usr/bin/env bash for portability: different *nixes put bash in different places, and using /usr/bin/env is a workaround to run the first bash found on the PATH. And sh is not bash.
-
-/bin/sh is usually a link to the system's default shell, which many or most places will be/usr/bin/bash. However, the original Bourne shell is sh, so if your script uses some bash (2nd generation, "Bourne Again sh"), then you should be more specific and use the later. This way, on systems where bash is not installed, your script won't run.
-
-
-Although #!/usr/bin/python will work on a default Ubuntu system, it is therefore good practice to use  #!/usr/bin/env python instead.
+It is recommended to use `#!/usr/bin/env` instead of the absolute path like `#!/usr/bin/python`. Although #!/usr/bin/python will work on a default Ubuntu system, it is good practice to use  `#!/usr/bin/env python` instead. Same thing can be said about shells, you should use `#!/usr/bin/env bash` instead of `#!/bin/bash` for portability reasons. Different *nixes put bash in different places, and using /usr/bin/env is a workaround to run the first bash found on the PATH.
 
 ## Common shebangs
 

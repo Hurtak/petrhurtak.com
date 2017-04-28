@@ -1,11 +1,11 @@
 title: Shebang
 
 description:
-  Description
+  Under Unix-like operating systems you can either run scripts by specifying the interpreter along with the path or you can run them as programs and have the interpreter specified in the shebang on the first line of the script.
 
 url: shebang
 
-datePublication: 2017-04-28 09:00:00
-dateLastUpdate: 2017-04-28 09:00:00
+datePublication: 2017-04-28 11:00:00
+dateLastUpdate: 2017-04-28 11:00:00
 
 id: eb4b3f6abee9c723d9ab91391039a356

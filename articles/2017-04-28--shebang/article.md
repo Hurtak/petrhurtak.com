@@ -18,9 +18,8 @@ the script content run by the specified interpreter
 echo "Hello"
 ```
 
-<video width="626" width="274" controls autoplay loop>
-  <source src="./videos/shebang.mkv" type="video/mp4">
-  <source src="./videos/shebang.webm" type="video/webm">
+<video width="626" height="274" controls autoplay loop>
+  <source src="./videos/shebang.mp4" type="video/mp4">
 </video>
 
 ### usr/bin/env

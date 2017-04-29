@@ -197,14 +197,14 @@ __bold text__
 ### Code
 
 ```html
-<video width="698" width="256" controls autoplay loop>
+<video width="698" height="256" controls autoplay loop>
   <source src="./videos/video.mp4" type="video/mp4">
 </video>
 ```
 
 ### How it looks like
 
-<video width="698" width="256" controls autoplay loop>
+<video width="698" height="256" controls autoplay loop>
   <source src="./videos/video.mp4" type="video/mp4">
 </video>
 

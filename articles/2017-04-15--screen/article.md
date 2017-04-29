@@ -4,9 +4,8 @@ The Screen is screen manager with terminal emulation that allows you to:
 - Use multiple terminal windows from a single session.
 - Reconnect to a terminal session from various locations.
 
-<video width="626" width="274" controls autoplay loop>
-  <source src="./videos/screen.mkv" type="video/mp4">
-  <source src="./videos/screen.webm" type="video/webm">
+<video width="626" height="274" controls autoplay loop>
+  <source src="./videos/screen.mp4" type="video/mp4">
 </video>
 
 ## Instalation

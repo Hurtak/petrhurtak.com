@@ -186,8 +186,8 @@ __bold text__
 
 ## Video
 
-- default width: `626`
-- default height: `274`
+- default width: `698`
+- default height: `256`
 - attributes: `controls autoplay loop`
 - recorded with `Vokoscreen`
     - frames: `30`
@@ -197,14 +197,14 @@ __bold text__
 ### Code
 
 ```html
-<video width="626" width="274" controls autoplay loop>
+<video width="698" width="256" controls autoplay loop>
   <source src="./videos/video.mp4" type="video/mp4">
 </video>
 ```
 
 ### How it looks like
 
-<video width="626" width="274" controls autoplay loop>
+<video width="698" width="256" controls autoplay loop>
   <source src="./videos/video.mp4" type="video/mp4">
 </video>
 

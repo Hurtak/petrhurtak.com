@@ -184,6 +184,32 @@ __bold text__
 
 
 
+## Video
+
+- default width: `626`
+- default height: `274`
+- attributes: `controls autoplay loop`
+- recorded with `Vokoscreen`
+    - frames: `30`
+    - format: `mkv`
+    - videocodec: `libx264`
+
+### Code
+
+```html
+<video width="626" width="274" controls autoplay loop>
+  <source src="./videos/video.mp4" type="video/mp4">
+</video>
+```
+
+### How it looks like
+
+<video width="626" width="274" controls autoplay loop>
+  <source src="./videos/video.mp4" type="video/mp4">
+</video>
+
+
+
 ## Code blocks
 
 - in multiline code blocks always specify what language it is written in

@@ -124,7 +124,7 @@ __bold text__
 
 <!-- image with caption -->
 <figure>
-    <img src="images/test.png" alt="image alt text">
+    <img src="images/test.png" alt="image alt text" width="100" height="100">
     <figcaption>Image caption</figcaption>
 </figure>
 ```
@@ -136,7 +136,7 @@ __bold text__
 
 <!-- image with caption -->
 <figure>
-    <img src="images/test.png" alt="image alt text">
+    <img src="images/test.png" alt="image alt text" width="100" height="100">
     <figcaption>Image caption</figcaption>
 </figure>
 

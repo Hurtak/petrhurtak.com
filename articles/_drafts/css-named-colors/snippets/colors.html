@@ -794,34 +794,36 @@
 	function sortTablesByLightness () {
 		const tables = [...document.querySelectorAll('tbody')]
 		for (const table of tables) {
-		const sortedRows = [...table.querySelectorAll('tr')]
-			.map(row => {
-			const rgbColor = row.children[2].innerHTML
-				.trim()
-				.replace('rgb(', '')
-				.replace(')', '')
-				.split(',')
-				.map(Number)
+      const sortedRows = [...table.querySelectorAll('tr')]
+        .map(row => {
+          const rgbColor = row.children[2].innerHTML
+            .trim()
+            .replace('rgb(', '')
+            .replace(')', '')
+            .split(',')
+            .map(Number)
 
-			const [r, g, b] = rgbColor
+          const [r, g, b] = rgbColor
 
-			return {
-				rowEl: row,
-				lightness: getLightness(r, g, b)
-			}
-			})
-			.sort((a, b) => {
-			if (a.lightness < b.lightness) return  1
-			if (a.lightness > b.lightness) return -1
-			else                           return  0
-			})
+          return {
+            rowEl: row,
+            lightness: getLightness(r, g, b)
+          }
+        })
+        .sort((a, b) => {
+          if (a.lightness < b.lightness) return  1
+          if (a.lightness > b.lightness) return -1
+          else                           return  0
+        })
 
-		table.innerHTML = ''
-		sortedRows
-			.map(row => row.rowEl)
-			.forEach(row => table.appendChild(row))
+      table.innerHTML = ''
+      sortedRows
+        .map(row => row.rowEl)
+        .forEach(row => table.appendChild(row))
 		}
 	}
+
+  sortTablesByLightness()
   </script>
 
 </body>

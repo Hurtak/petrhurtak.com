@@ -34,7 +34,6 @@ gray vs grey
     - https://www.w3.org/TR/css3-color/
     - https://developer.mozilla.org/en/docs/Web/CSS/color_value
 
-
 ## Named colors list
 
 - colors are grouped by basic colors and then sorted by their lightness with the HSP Color Model

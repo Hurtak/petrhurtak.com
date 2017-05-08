@@ -1,3 +1,6 @@
+- determine lightness of color
+  - http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color/24213274#24213274
+
 - web video
   - how to record on linux
     - vokoscreen

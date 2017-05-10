@@ -21,8 +21,6 @@ In CSS there are multiple ways to specify colors, you can do it with hex definit
     <span style="background: teal; color: white">teal</span>.
 Most of the rest came from one version of the X11 color system, which is used in Unix systems to specify colors for the console.
 
-Currently, there are 441 named colors in the CSS.
-
 ### Latest addition
 
 In 2014 [Eric A. Meyer's](https://en.wikipedia.org/wiki/Eric_A._Meyer) daughter Rebecca died on her 6th birthday, less than a year after her diagnosis of a brain tumor. The hex color `#663399` was named <span style="background: rebeccapurple; color: white;">rebeccapurple</span> and added to the CSS color list in her memory.
@@ -47,7 +45,8 @@ There are several cases where named colors might be useful:
 
 ## Named colors list
 
-Here is list of all css named color grouped by basic color and then sorted by their lightness with the [HSP Color Model](http://alienryderflex.com/hsp.html).
+Here is a list of all CSS named color grouped by basic color and then sorted by their lightness with the [HSP Color Model](http://alienryderflex.com/hsp.html).
+Currently, there are 441 named colors.
 
 ### Pink colors
 

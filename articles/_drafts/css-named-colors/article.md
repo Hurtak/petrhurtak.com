@@ -1,43 +1,53 @@
-In CSS there are multiple ways to specify colors, you can do it with hex definition `#f00`, functional definition like `rgb(255, 0, 0)` or `hsl(0, 100%, 50%)`. Or in simpler cases you can use keyword definitions like `red`.
-
-Today we are going to talk about the keyword definitions of css colors, their history, recent additions, what keywords are supported and where it might be useful.
+In CSS there are multiple ways to specify colors, you can do it with hex definition `#f00`, functional definition like `rgb(255, 0, 0)` or `hsl(0, 100%, 50%)`. Or in simpler cases, you can use keyword definitions like `red`.
 
 ## History
 
-16 of CSS’s named colors come from HTML originally: aqua, black, blue, fuchsia, gray, green, lime, maroon, navy, olive, purple, red, silver, teal, white, and yellow. Most of the rest come from one version of the X11 color system, used in Unix-derived systems to specify colors for the console.
+16 of CSS’s named colors came from HTML originally:
+    <span style="background: white">white</span>,
+    <span style="background: blue">blue</span>,
+    <span style="background: aqua">aqua</span>,
+    <span style="background: fuchsia">fuchsia</span>,
+    <span style="background: red">red</span>,
+    <span style="background: lime">lime</span>,
+    <span style="background: yellow">yellow</span>,
+    <span style="background: silver">silver</span>,
+    <span style="background: gray; color: white">gray</span>,
+    <span style="background: black; color: white">black</span>,
+    <span style="background: maroon; color: white">maroon</span>,
+    <span style="background: navy; color: white">navy</span>,
+    <span style="background: olive; color: white">olive</span>,
+    <span style="background: purple; color: white">purple</span>,
+    <span style="background: green; color: white">green</span>,
+    <span style="background: teal; color: white">teal</span>.
+Most of the rest came from one version of the X11 color system, used in Unix systems to specify colors for the console (it differs for certain color names).
 
-441 colors
+Currently, there are 441 named colors in the CSS.
 
-### Recent additions
+### Latest additions
 
-rebecca purple
+In 2014 [Eric A. Meyer's](https://en.wikipedia.org/wiki/Eric_A._Meyer) daughter Rebecca died on her 6th birthday, less than a year after her diagnosis of a brain tumor. The hex color `#663399` was named <span style="background: rebeccapurple; color: white;">rebeccapurple</span> and added to the CSS color list in her memory.
 
 ### Duplicate colors
 
-gray/grey added in 2015 to chrome?
-gray vs grey
-    LightGray LightGrey
-    DarkGray DarkGrey
-    Gray Grey
-    DimGGray DimGrey
+There are four duplicates in the named colors, and all of them are related to gray (English) &ndash; grey (UK) spelling differences.
 
+The duplicates are:
+    <span style="background: gray">gray</span> &ndash; <span style="background: grey">grey</span>,
+    <span style="background: lightgray">lightgray</span> &ndash; <span style="background: lightgrey">lightgrey</span>,
+    <span style="background: darkgray">darkgray</span> &ndash; <span style="background: darkgrey">darkgrey</span>,
+    <span style="background: dimgray">dimgray</span> &ndash; <span style="background: dimgrey">dimgrey</span>.
 
-## Is this actually useful?
+## Are named colors useful?
 
-- white/black might be more readable than #fff #000 - I have to always think for a second if #fff of rgb(255, 255, 255) is black or white.
-- in real app, not really useful (except for white/black)
-- where it might be useful? in example apps or some jsfiddle examples where you do not have exact colors from graphic designer, you just want some nice color to make it more colourful
+There are several cases where named colors might be useful:
 
-## Links
-    - https://www.youtube.com/watch?v=HmStJQzclHc
-    - https://www.w3.org/TR/css-color-4/
-    - https://www.w3.org/TR/css3-color/
-    - https://developer.mozilla.org/en/docs/Web/CSS/color_value
+- `white`/`black` is more readable than `#fff`/`#000`.
+- CSS minifiers optimize for filesize and in some cases named color is the shortest possible value. For example `red` is shorter than `#f00` or `rgb(255,0,0)`.
+- In example apps where the exact shade of color is not important.
 
 ## Named colors list
 
-- colors are grouped by basic colors and then sorted by their lightness with the HSP Color Model
-http://alienryderflex.com/hsp.html
+- Colors are grouped by basic colors and then sorted by their lightness with the [HSP Color Model](http://alienryderflex.com/hsp.html)
 
 ### Pink colors
 
@@ -825,3 +835,9 @@ http://alienryderflex.com/hsp.html
         <td style="background: rgb(0, 0, 0)">rgb(0, 0, 0)</td>
     </tr>
 </table>
+
+## Links
+
+- [https://www.youtube.com/watch?v=HmStJQzclHc](https://www.youtube.com/watch?v=HmStJQzclHc)
+- [https://developer.mozilla.org/en/docs/Web/CSS/color_value](https://developer.mozilla.org/en/docs/Web/CSS/color_value)
+- [https://www.w3.org/TR/css-color-4/](https://www.w3.org/TR/css-color-4/)

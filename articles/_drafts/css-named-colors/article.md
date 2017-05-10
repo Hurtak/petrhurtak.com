@@ -4,7 +4,6 @@ In CSS there are multiple ways to specify colors, you can do it with hex definit
 
 16 of CSS’s named colors came from HTML originally:
     <span style="background: white">white</span>,
-    <span style="background: blue">blue</span>,
     <span style="background: aqua">aqua</span>,
     <span style="background: fuchsia">fuchsia</span>,
     <span style="background: red">red</span>,
@@ -14,6 +13,7 @@ In CSS there are multiple ways to specify colors, you can do it with hex definit
     <span style="background: gray; color: white">gray</span>,
     <span style="background: black; color: white">black</span>,
     <span style="background: maroon; color: white">maroon</span>,
+    <span style="background: blue; color: white">blue</span>,
     <span style="background: navy; color: white">navy</span>,
     <span style="background: olive; color: white">olive</span>,
     <span style="background: purple; color: white">purple</span>,
@@ -30,10 +30,10 @@ In 2014 [Eric A. Meyer's](https://en.wikipedia.org/wiki/Eric_A._Meyer) daughter 
 There are four duplicates between the named colors, and all of them are related to gray (English) &ndash; grey (UK) spelling differences.
 
 The duplicates are:
-    <span style="background: gray">gray</span> &ndash; <span style="background: grey">grey</span>,
     <span style="background: lightgray">lightgray</span> &ndash; <span style="background: lightgrey">lightgrey</span>,
     <span style="background: darkgray">darkgray</span> &ndash; <span style="background: darkgrey">darkgrey</span>,
-    <span style="background: dimgray">dimgray</span> &ndash; <span style="background: dimgrey">dimgrey</span>.
+    <span style="background: gray; color: white">gray</span> &ndash; <span style="background: grey; color: white">grey</span>,
+    <span style="background: dimgray; color: white">dimgray</span> &ndash; <span style="background: dimgrey; color: white">dimgrey</span>.
 
 ## Are named colors useful?
 

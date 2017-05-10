@@ -23,13 +23,13 @@ Most of the rest came from one version of the X11 color system, used in Unix sys
 
 Currently, there are 441 named colors in the CSS.
 
-### Latest additions
+### Latest addition
 
 In 2014 [Eric A. Meyer's](https://en.wikipedia.org/wiki/Eric_A._Meyer) daughter Rebecca died on her 6th birthday, less than a year after her diagnosis of a brain tumor. The hex color `#663399` was named <span style="background: rebeccapurple; color: white;">rebeccapurple</span> and added to the CSS color list in her memory.
 
 ### Duplicate colors
 
-There are four duplicates in the named colors, and all of them are related to gray (English) &ndash; grey (UK) spelling differences.
+There are four duplicates between the named colors, and all of them are related to gray (English) &ndash; grey (UK) spelling differences.
 
 The duplicates are:
     <span style="background: gray">gray</span> &ndash; <span style="background: grey">grey</span>,
@@ -47,7 +47,7 @@ There are several cases where named colors might be useful:
 
 ## Named colors list
 
-- Colors are grouped by basic colors and then sorted by their lightness with the [HSP Color Model](http://alienryderflex.com/hsp.html)
+Here is list of all css named color grouped by basic color and then sorted by their lightness with the [HSP Color Model](http://alienryderflex.com/hsp.html).
 
 ### Pink colors
 

@@ -19,7 +19,7 @@ In CSS there are multiple ways to specify colors, you can do it with hex definit
     <span style="background: purple; color: white">purple</span>,
     <span style="background: green; color: white">green</span>,
     <span style="background: teal; color: white">teal</span>.
-Most of the rest came from one version of the X11 color system, used in Unix systems to specify colors for the console (it differs for certain color names).
+Most of the rest came from one version of the X11 color system, which is used in Unix systems to specify colors for the console.
 
 Currently, there are 441 named colors in the CSS.
 

@@ -19,13 +19,13 @@ In CSS there are multiple ways to specify colors, you can do it with hex definit
     <span style="background: purple; color: white">purple</span>,
     <span style="background: green; color: white">green</span>,
     <span style="background: teal; color: white">teal</span>.
-Most of the rest came from one version of the X11 color system, which is used in Unix systems to specify colors for the console.
+Most of the rest came from one version of the [X11 color system](https://en.wikipedia.org/wiki/X11_color_names).
 
 ### Latest addition
 
 In 2014 [Eric A. Meyer's](https://en.wikipedia.org/wiki/Eric_A._Meyer) daughter Rebecca died on her 6th birthday, less than a year after her diagnosis of a brain tumor. The hex color `#663399` was named <span style="background: rebeccapurple; color: white;">rebeccapurple</span> and added to the CSS color list in her memory.
 
-### Duplicate colors
+## Duplicate colors
 
 There are four duplicates between the named colors, and all of them are related to gray (English) &ndash; grey (UK) spelling differences.
 
@@ -34,6 +34,73 @@ The duplicates are:
     <span style="background: darkgray">darkgray</span> &ndash; <span style="background: darkgrey">darkgrey</span>,
     <span style="background: gray; color: white">gray</span> &ndash; <span style="background: grey; color: white">grey</span>,
     <span style="background: dimgray; color: white">dimgray</span> &ndash; <span style="background: dimgrey; color: white">dimgrey</span>.
+
+## Inconsistencies
+
+- <span style="background: darkgray">darkgray</span> `#a9a9a9` is lighter than <span style="background: gray; color: white">gray</span> `#808080`.
+- light/dark variants of colors are not available with all basic colors:
+
+<table>
+    <thead>
+        <tr>
+            <th>Basic color</th>
+            <th>Dark variant</th>
+            <th>Light variant</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="background: blue; color: white">blue</td>
+            <td style="background: darkblue; color: white">darkblue</td>
+            <td style="background: lightblue">lightblue</td>
+        </tr>
+        <tr>
+            <td style="background: green; color: white">green</td>
+            <td style="background: darkgreen; color: white">darkgreen</td>
+            <td style="background: lightgreen">lightgreen</td>
+        </tr>
+        <tr>
+            <td style="background: red; color: white">red</td>
+            <td style="background: darkred; color: white">darkred</td>
+            <td style="text-align: center">✖</td>
+        </tr>
+        <tr>
+            <td style="background: orange">orange</td>
+            <td style="background: darkorange; color: white">darkorange</td>
+            <td style="text-align: center">✖</td>
+        </tr>
+        <tr>
+            <td style="background: yellow">yellow</td>
+            <td style="text-align: center">✖</td>
+            <td style="background: lightyellow">lightyellow</td>
+        </tr>
+        <tr>
+            <td style="background: pink">pink</td>
+            <td style="text-align: center">✖</td>
+            <td style="background: lightpink">lightpink</td>
+        </tr>
+        <tr>
+            <td style="background: brown; color: white">brown</td>
+            <td style="text-align: center">✖</td>
+            <td style="text-align: center">✖</td>
+        </tr>
+        <tr>
+            <td style="background: purple; color: white">purple</td>
+            <td style="text-align: center">✖</td>
+            <td style="text-align: center">✖</td>
+        </tr>
+        <tr>
+            <td style="background: cyan">cyan</td>
+            <td style="background: darkcyan; color: white">darkcyan</td>
+            <td style="background: lightcyan">lightcyan</td>
+        </tr>
+        <tr>
+            <td style="background: gray; color: white">gray</td>
+            <td style="background: darkgray">darkgray</td>
+            <td style="background: lightgray">lightgray</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Are named colors useful?
 
@@ -760,7 +827,7 @@ Currently, there are 441 named colors.
     </tr>
 </table>
 
-### Gray and black colors
+### White, Gray, and black colors
 
 <table>
     <tr style="color:black">

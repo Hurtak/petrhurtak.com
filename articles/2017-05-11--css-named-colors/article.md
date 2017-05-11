@@ -113,7 +113,7 @@ There are several cases where named colors might be useful:
 ## Named colors list
 
 Here is a list of all CSS named color grouped by basic color and then sorted by their lightness with the [HSP Color Model](http://alienryderflex.com/hsp.html).
-Currently, there are 441 named colors.
+Currently, there are 147 named colors.
 
 ### Pink colors
 

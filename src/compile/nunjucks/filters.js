@@ -42,6 +42,9 @@ function fullDate (date) {
     case 3: dayPostfix = 'rd'; break
     default: dayPostfix = 'th'; break
   }
+  if (day >= 4 && day <= 20) {
+    dayPostfix = 'th'
+  }
 
   return `${day}${dayPostfix} ${month} ${year}`
 }

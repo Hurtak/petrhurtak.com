@@ -1,6 +1,18 @@
 - determine lightness of color
   - http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color/24213274#24213274
 
+- debian packaging
+
+- what every page should contain
+  - <html lang="cs">
+  - <meta charset="utf-8">
+  - <meta name="viewport" content="width=device-width,initial-scale=1">
+  - css border box reset
+  - css body margin 0 stuff?
+  - maybe mention
+    - <title>Je čas.cz – moderní tvorba webových stránek</title>
+    - <meta name="description" content="Poznámky o moderním webdesignu, hotová řešení, experimenty a návody.">
+
 - web video
   - how to record on linux
     - vokoscreen

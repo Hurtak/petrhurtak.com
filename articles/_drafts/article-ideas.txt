@@ -1,7 +1,18 @@
+- bash script basics
+  - shebang
+  - chmod u+x file
+  - set -e
+  - variables
+  - cd to current directory
+  - source file vs ./file
+  - if else
+  - functions
+  - cli arguments
+  - running stuff in background &
+  - capturing pid and then killing background stuff
+
 - determine lightness of color
   - http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color/24213274#24213274
-
-- debian packaging
 
 - what every page should contain
   - <html lang="cs">

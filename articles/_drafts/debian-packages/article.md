@@ -1,7 +1,8 @@
 ## Title
 
-- Empty article
-
+- from the point of view of frontend developer
+- at Seznam.cz we use debian packages for decent amount of application of distribution, here are some notes about how we do it
+- ATM we are in the transition to use Docker ofc.
 
 Main files:
     control – meta-data about the package (dependencies, etc.)

@@ -13,6 +13,9 @@ Main files:
 ### Start
 
 - create debian directory in the root of your project
+- make sure these dependencies are installed
+    - `apt-get install --yes git build-essential devscripts`
+    - TODO: double check if both of these are really used
 - `mkdir debian`
 - add `DEBEMAIL` and `DEBFULLNAME` env variables to `.bashrc` to make sure your name and email is filled properly when you are using `dch`.
 
@@ -50,8 +53,7 @@ Source: package-name
 Maintainer: Petr Huřťák <petr.hurtak@firma.seznam.cz>
 Section: fulltext/Seznam
 Priority: extra
-Build-Depends: debhelper (>= 9.0.0),
-               nodejs (>= 6.0.0)
+Build-Depends: debhelper (>= 9.0.0)
 Standards-Version: 3.9.3
 
 Package: package-name
@@ -86,4 +88,42 @@ Description: Krasty static files
 
 TODO: links to docs for all fields
 
-#### Source
+### Debian rules
+
+Now we need to take a look at the exact rules which dpkg-buildpackage(1) will use to actually create the package. This file is in fact another Makefile, but different from the one(s) in the upstream source. Unlike other files in debian, this one is marked as executable.
+
+This is makefile
+
+
+```make
+#!/usr/bin/make -f
+
+%:
+	dh $@
+```
+
+`#!/usr/bin/make -f`
+    this is sheband
+    TODO make -f?
+    link artice
+
+`%:`
+    The general rule is % is used as a wildcard in a pattern, (roughly similar to the * glob pattern in a Unix shell) and a placeholder for a match in a related pattern.
+
+`$@`
+    The file name of the target of the rule. If the target is an archive member, then ‘$@’ is the name of the archive file. In a pattern rule that has multiple targets (see Introduction to Pattern Rules), ‘$@’ is the name of whichever target caused the rule’s recipe to be run.
+    https://www.gnu.org/software/make/manual/make.html#Automatic-Variables
+
+`dh`
+    debhelper
+
+### Debian install script
+
+- creat file named `package-name.install`
+- put there what you want to copy into the debian package
+- from file stystem : into debian package - then during installation these files will be installed in the right specified path
+- directory is relative to the parent of `debian` directory, eg if you have `project/debian/package-name.install`, paths will be relative to `project` dir.
+
+```text
+dist/* /www/fulltext/package-name/
+```

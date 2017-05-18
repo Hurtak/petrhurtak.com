@@ -117,6 +117,16 @@ This is makefile
 `dh`
     debhelper
 
+
+
+Ahoj,
+1) % je wildchar zastupující všechna pravidla,
+2) proměnná obsahující název aktuálního pravidla,
+3) cmd make standardně hledá soubor Makefile, -f umožňuje zadat jiný soubor, takže v tomhle případě lze rules volat jako skript.
+
+Jinak spešl proměnné jsou popsané tady: https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
+
+
 ### Debian install script
 
 - creat file named `package-name.install`

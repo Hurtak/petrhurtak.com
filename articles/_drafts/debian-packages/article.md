@@ -1,52 +1,66 @@
-## Title
+At [Seznam.cz](https://www.seznam.cz/) we use debian packages for packaging and distribution of decent amount of applications. While we are in the process of transitioning to Docker based solutions, Debian packages still play important role.
 
-- from the point of view of frontend developer
-- at Seznam.cz we use debian packages for decent amount of application of distribution, here are some notes about how we do it
-- ATM we are in the transition to use Docker ofc.
+In this article I will tell you the basics about how to make simple debian package with static website application. Also note that this article is written from the frontend developer point of view so some parts of creating packages might be ommited simply because they are not needed for simple frontend apps.
 
-Main files:
-    control – meta-data about the package (dependencies, etc.)
-    rules – specifies how to build the package
-    copyright – copyright information for the package
-    changelog – history of the Debian package
+## Basics
 
-### Start
-
-- create debian directory in the root of your project
+- create directory callend `debian` in the root of your project
+    - `mkdir debian`
 - make sure these dependencies are installed
     - `apt-get install --yes git build-essential devscripts`
     - TODO: double check if both of these are really used
-- `mkdir debian`
-- add `DEBEMAIL` and `DEBFULLNAME` env variables to `.bashrc` to make sure your name and email is filled properly when you are using `dch`.
+- add `DEBEMAIL` and `DEBFULLNAME` env variables to `.bashrc` to make sure your name and email is filled properly when you will be manipulating with changelog with `dch` tool.
 
 ```bash
-export DEBEMAIL="petr.hurtak@gmail.com"
+export DEBEMAIL="petr.hurtak@firma.seznam.cz"
 export DEBFULLNAME="Petr Huřťák"
 ```
 
-### Create debian changelog
+## Folder structure
 
-- either by `dch --create`
-- or manually
+- inside the `debian` folder you will need to create these five files
+
+| Filename             | Description |
+| -------------------- | ----------- |
+| control              | Meta data about the package, like its name, maintainers or dependencies |
+| rules                | Specifies how to build the package    |
+| compat               | Defines the debhelper (tool used to create the package) compatibility level |
+| changelog            | Changes and release date of each version of your package  |
+| package-name.install | If there are files that need to be copied into your package, put them here |
+
+### Changelog file
+
+- create file `debian/cangelog`
+- either by running `dch --create` or manually
+- This is how it should look like:
 
 ```text
 PACKAGE (0.0.1) UNRELEASED; urgency=medium
 
   * Initial release.
 
- -- Petr Huřťák <petr.hurtak@gmail.com>  Mon, 15 May 2017 21:38:29 +0200
+ -- Petr Huřťák <petr.hurtak@firma.seznam.cz>  Mon, 15 May 2017 21:38:29 +0200
 ```
 
-- `dch` will start editing the latest entry if latest entry is unreleased or it will add new entry
-- `dch -r` to change from UNRELEASED to released state and updating the date od last entry
+#### Working with the changelog
 
-### Debian compat
+| Command              | Description |
+| -------------------- | ----------- |
+| `dch --create`       | Creates new changelog file with "Initial release" entry TODO: quotes |
+| `dch`                | Meta data about the package, like its name, maintainers or dependencies |
+| `dch -r`             | Changes from `UNRELEASED` to released state and updates the date od last entry |
+| just use your editor | Works fine most of the time |
 
-- The compat file defines the debhelper compatibility level. Currently, you should set it to the debhelper v9 as follows:
+At Seznam.cz when we release package we also do not use the official distributions, instead we do something like `dch -r --force-distribution --distribution Seznam`
+
+### Compat file
+
+- The compat file defines the debhelper compatibility level. [Currently, you should set it to the debhelper v9](https://www.debian.org/doc/manuals/maint-guide/dother.en.html#compat)
 - `echo 9 > debian/compat`
-- https://www.debian.org/doc/manuals/maint-guide/dother.en.html#compat
 
-### Debian control
+### Control file
+
+- Here is how `control` file could look like
 
 ```text
 Source: package-name
@@ -54,46 +68,46 @@ Maintainer: Petr Huřťák <petr.hurtak@firma.seznam.cz>
 Section: fulltext/Seznam
 Priority: extra
 Build-Depends: debhelper (>= 9.0.0)
-Standards-Version: 3.9.3
+Standards-Version: 3.9.4
 
 Package: package-name
-Architecture: any
+Architecture: all
 Section: fulltext/Seznam
 Priority: extra
 Depends: ${misc:Depends}
-Description: Krasty static files
+Description: Package description
 ```
 
-#### Main stuff
+#### Main fields
 
 | Field             | Type        | Description |
 | ----------------- | ----------- | ----------- |
-| Source            | mandatory   | The source package name.  must consist only of lower case letters (a-z), digits (0-9), plus (+) and minus (-) signs, and periods (.). `package-name` |
-| Mantainer         | mandatory   | The package maintainer's name and email address. `Name Surename <email@domain.com>` |
-| Section           | recommended | An application area into which the package has been classified. List of avaliable sections https://www.debian.org/doc/debian-policy/ch-archive.html#s-subsections , at seznam we use something like `fulltext/Seznam` |
-| Priority          | recommended | How important it is that the user have the package installed. https://www.debian.org/doc/debian-policy/ch-archive.html#s-priorities , package priorities `required`, `important`, `standard`, `optional`, `extra` |
-| Build-Depends     | optional    | TODO |
-| Standards-Version | recommended | The most recent version of the standards (the policy manual and associated texts) with which the package complies. TODO Couldnt find much about this field. |
+| [Source](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Source)                       | mandatory   | The source package name. Must consist only of lower case letters (a-z), digits (0-9), plus (+) and minus (-) signs, and periods (.). `package-name` |
+| [Mantainer](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Maintainer)                | mandatory   | The package maintainer's name and email address. `Name Surename <name@email.com>` |
+| [Section](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Section)                     | recommended | An [application area](https://www.debian.org/doc/debian-policy/ch-archive.html#s-subsections) into which the package has been classified. At Seznam.cz we use something like `fulltext/Seznam` |
+| [Priority](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Priority)                   | recommended | How important it is that the user have the package installed. The [priorities](https://www.debian.org/doc/debian-policy/ch-archive.html#s-priorities) are (in descending order): `required`, `important`, `standard`, `optional`, `extra` |
+| [Build-Depends](https://www.debian.org/doc/debian-policy/ch-relationships.html#s-sourcebinarydeps)        | optional    | What packages need to be installed before we can start building your package. |
+| [Standards-Version](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Standards-Version) | recommended | The most recent version of the standards (the policy manual and associated texts) with which the package complies. I couldnt find much more about this field but [official Debians maintainer's guide](https://www.debian.org/doc/manuals/maint-guide/dreq.en.html#control) recommends putting `3.9.4` in there. |
 
-#### Binary package stuff
+#### Binary package fields
 
 | Field             | Type        | Description |
 | ----------------- | ----------- | ----------- |
-| Package           | mandatory   | The name of the binary package. Binary package names must follow the same syntax and restrictions as source package names. `package-name` |
-| Architecture      | mandatory   | `all` for static file stuff https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Architecture |
-| Section           | recommended | same as Section above |
-| Priority          | recommended | same as Priority above |
-| Depends           | optional    | TODO |
-| Description       | mandatory   | Description |
+| [Package](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Package)           | mandatory   | The name of the binary package. Binary package names must follow the same syntax and restrictions as source package names. `package-name` |
+| [Architecture](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Architecture) | mandatory   | This value is usually one of the following depending on the type of the binary package: `any` - architecture dependent one usually in a compiled language, `all` - architecture independent one usually consisting of text, images, or scripts in an interpreted language. |
+| [Section](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Section)           | recommended | Same as Section of source package |
+| [Priority](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Priority)         | recommended | Same as Priority of source package |
+| [Depends](https://www.debian.org/doc/debian-policy/ch-relationships.html#s-binarydeps)          | optional    | Some debhelper commands may cause the generated package to depend on some additional packages. All such commands generate a list of required packages for each binary package, this list is used for substituting `${misc:Depends}`. |
+| [Description](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Description)   | mandatory   | Description |
 
-TODO: links to docs for all fields
+### Rules file
 
-### Debian rules
+- Now we need to take a look at the exact rules which `dpkg-buildpackage` command will use to actually create the package.
+- This file is in fact another Makefile so make sure to:
+    - mark this file as executable `chmod u+x debian/rules`
+    - use only tabs as indentation
 
-Now we need to take a look at the exact rules which dpkg-buildpackage(1) will use to actually create the package. This file is in fact another Makefile, but different from the one(s) in the upstream source. Unlike other files in debian, this one is marked as executable.
-
-This is makefile
-
+Minimal rules file:
 
 ```make
 #!/usr/bin/make -f
@@ -101,31 +115,6 @@ This is makefile
 %:
 	dh $@
 ```
-
-`#!/usr/bin/make -f`
-    this is sheband
-    TODO make -f?
-    link artice
-
-`%:`
-    The general rule is % is used as a wildcard in a pattern, (roughly similar to the * glob pattern in a Unix shell) and a placeholder for a match in a related pattern.
-
-`$@`
-    The file name of the target of the rule. If the target is an archive member, then ‘$@’ is the name of the archive file. In a pattern rule that has multiple targets (see Introduction to Pattern Rules), ‘$@’ is the name of whichever target caused the rule’s recipe to be run.
-    https://www.gnu.org/software/make/manual/make.html#Automatic-Variables
-
-`dh`
-    debhelper
-
-
-
-Ahoj,
-1) % je wildchar zastupující všechna pravidla,
-2) proměnná obsahující název aktuálního pravidla,
-3) cmd make standardně hledá soubor Makefile, -f umožňuje zadat jiný soubor, takže v tomhle případě lze rules volat jako skript.
-
-Jinak spešl proměnné jsou popsané tady: https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
-
 
 ### Debian install script
 
@@ -135,5 +124,45 @@ Jinak spešl proměnné jsou popsané tady: https://www.gnu.org/software/make/ma
 - directory is relative to the parent of `debian` directory, eg if you have `project/debian/package-name.install`, paths will be relative to `project` dir.
 
 ```text
-dist/* /www/fulltext/package-name/
+dist/* /www/package-name/
+```
+
+## Static files build dependencies
+
+So far we have only covered how to take some `dist` directory and package it up in debian package but how do we express dependencies needed for building the `dist` directory? I found two reasonable approaches
+
+If we have some CI build pipeline, it makes more sense to have one build task for building the static files, and another one for building the debian package - and just passing the build artifacts from the first task to the other. This will allow use to use differend docker images (eg `node:7` for the static files, and `debian:8` for the packaging) where lots of needed stuff will be preinstalled and we will not have to manage it ourselves.
+
+In case we would want to express the static files build dependencies and building itseld in the debian directory here is how it could look like
+
+### Control file
+
+Extend `Build-Depends` from
+
+```text
+Build-Depends: debhelper (>= 9.0.0)
+```
+
+to
+
+```text
+Build-Depends: debhelper (>= 9.0.0),
+               nodejs (>= 6.0.0)
+```
+
+### Rules file
+
+Add override to build step where we will do the installation of dependencies from other package managers and also the building itself
+
+```make
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	cd src && \
+	npm install && \
+	./build-script
+
 ```

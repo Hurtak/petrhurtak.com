@@ -34,7 +34,7 @@ export DEBFULLNAME="Petr Huřťák"
 - either by running `dch --create` or manually
 - This is how it should look like:
 
-```text
+```
 PACKAGE (0.0.1) UNRELEASED; urgency=medium
 
   * Initial release.
@@ -62,7 +62,7 @@ At Seznam.cz when we release package we also do not use the official distributio
 
 - Here is how `control` file could look like
 
-```text
+```
 Source: package-name
 Maintainer: Petr Huřťák <petr.hurtak@firma.seznam.cz>
 Section: fulltext/Seznam
@@ -109,7 +109,7 @@ Description: Package description
 
 Minimal rules file:
 
-```make
+```makefile
 #!/usr/bin/make -f
 
 %:
@@ -123,7 +123,7 @@ Minimal rules file:
 - from file stystem : into debian package - then during installation these files will be installed in the right specified path
 - directory is relative to the parent of `debian` directory, eg if you have `project/debian/package-name.install`, paths will be relative to `project` dir.
 
-```text
+```
 dist/* /www/package-name/
 ```
 
@@ -139,13 +139,13 @@ In case we would want to express the static files build dependencies and buildin
 
 Extend `Build-Depends` from
 
-```text
+```
 Build-Depends: debhelper (>= 9.0.0)
 ```
 
 to
 
-```text
+```
 Build-Depends: debhelper (>= 9.0.0),
                nodejs (>= 6.0.0)
 ```
@@ -154,7 +154,7 @@ Build-Depends: debhelper (>= 9.0.0),
 
 Add override to build step where we will do the installation of dependencies from other package managers and also the building itself
 
-```make
+```makefile
 #!/usr/bin/make -f
 
 %:

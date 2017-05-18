@@ -89,7 +89,7 @@ function getArticleData (articleFolderPath, isPublished, nunjucks) {
 function getArticleHtml (articlePath, snippets, nunjucks) {
   const markdown = markdownIt({
     html: true,
-    highlight: (str, language) => highlight.highlight(language, str).value
+    highlight: (str, language) => language ? highlight.highlight(language, str).value : str
   })
 
   // TODO: every time we make html transformation we take html

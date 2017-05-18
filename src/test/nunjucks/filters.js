@@ -77,31 +77,3 @@ test('gmt', t => {
     t.deepEqual(fn(date), dateToGmt(date))
   }
 })
-
-test('fullDate', t => {
-  const fn = nunjucksFilters.fullDate
-
-  const dateToFullDate = givenDate => {
-    const d = getDateData(givenDate)
-    const monthNames = [
-      'January', 'February', 'March', 'April',
-      'May', 'June', 'July', 'August',
-      'September', 'October', 'November', 'December'
-    ]
-
-    const lastDigitInDay = d.day % 10
-    let dayPostfix
-    switch (lastDigitInDay) {
-      case 1: dayPostfix = 'st'; break
-      case 2: dayPostfix = 'nd'; break
-      case 3: dayPostfix = 'rd'; break
-      default: dayPostfix = 'th'; break
-    }
-
-    return `${d.day}${dayPostfix} ${monthNames[d.month - 1]} ${d.year}`
-  }
-
-  for (const date of datesToTest) {
-    t.deepEqual(fn(date), dateToFullDate(date))
-  }
-})

@@ -11,6 +11,56 @@
   - running stuff in background &
   - capturing pid and then killing background stuff
 
+- simple cors proxy
+  #!/usr/bin/env node
+
+  const request = require('request')
+  const express = require('express')
+  const bodyParser = require('body-parser')
+  const cors = require('cors')
+
+  const port = process.env.REACT_APP_DEV_PROXY_PORT || 3001
+
+  const app = express()
+  app.use(bodyParser.json())
+  app.use(
+    cors({
+      origin: (origin, callback) => callback(null, true),
+      optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    })
+  )
+
+  app.post('/', function (req, res) {
+    const origin = req.get('origin')
+
+    // TODO: might not be needed in the future as soon as dev api will stop
+    // returning Access-Control-Allow-Origin header
+    res.setHeader('Access-Control-Allow-Origin', origin)
+
+    request({
+      method: 'POST',
+      url: req.body.apiUrl,
+      json: true,
+      body: {
+        plugins: req.body.apiModules || [],
+        url: req.body.queryUrl
+      }
+    })
+      .on('response', response => {
+        if (response.statusCode === 204) {
+          response.statusCode = 200
+        }
+
+        // TODO: might not be needed in the future as soon as dev api will stop
+        // returning Access-Control-Allow-Origin header
+        response.headers['Access-Control-Allow-Origin'] = origin
+      })
+      .on('error', err => console.error('[PROXY]', err))
+      .pipe(res)
+  })
+
+  app.listen(port)
+
 - determine lightness of color
   - http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color/24213274#24213274
 

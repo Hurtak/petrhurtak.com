@@ -1,31 +1,32 @@
-At [Seznam.cz](https://www.seznam.cz/) we use debian packages for packaging and distribution of decent amount of applications. While we are in the process of transitioning to Docker based solutions, Debian packages still play important role.
+At [Seznam.cz](https://www.seznam.cz/) we use Debian packages for packaging and distribution of a decent amount of applications. While we are in the process of transitioning to solutions using Docker, Debian packages still play a significant role.
 
-In this article I will tell you the basics about how to make simple debian package with static website application. Also note that this article is written from the frontend developer point of view so some parts of creating packages might be ommited simply because they are not needed for simple frontend apps.
+In this article, I will tell you the basics about how to make a simple Debian package with static website application. I wrote this article from the frontend developer point of view, so not all parts of Debian packaging are covered.
 
 ## Basics
 
-- Create directory named `debian` in the root of your project.
-- To create the Debian package we will use `debhelper` which is small set of tools that will help us to create the package.
-- Add `DEBEMAIL` and `DEBFULLNAME` env variables to your`.bashrc` to make have your name and email automatically filled when you will manipulate the changelog with the `dch` tool.
-- Install the `debhelper` (`build-essential` package) and `dch` (`devscripts` package)
-    - `apt-get install build-essential devscripts`
+- Create a directory named `debian` in the root of your project.
+- We will use `debhelper` which is a collection of small tools that are used in to automate various aspects of building a Debian package.
+- Add `DEBEMAIL` and `DEBFULLNAME` environment variables to your`.bashrc` to have your name and email automatically filled when you will manipulate the changelog with the `dch`.
 
 ```bash
 export DEBEMAIL="name@email.com"
-export DEBFULLNAME="Forename Surename"
+export DEBFULLNAME="Forename Surname"
 ```
+
+- You will need `debhelper` and `dch`. These tools are located in `build-essential` and `devscripts` packages.
+    - `apt-get install build-essential devscripts`
 
 ## Folder structure
 
 Inside the `debian` folder you will need to create these five files:
 
-| Filename             | Description |
-| -------------------- | ----------- |
-| changelog            | Changes and release date of each version of your package  |
-| compat               | Defines the debhelper (tool used to create the package) compatibility level |
-| control              | Meta data about the package, like its name, maintainers or dependencies |
-| rules                | Specifies how to build the package    |
-| package-name.install | If there are files that need to be copied into your package, put them here |
+| Filename             | Description                                                             |
+| -------------------- | ----------------------------------------------------------------------- |
+| changelog            | Changes and release date of each version of your package.               |
+| compat               | Defines the debhelper compatibility level.                              |
+| control              | Metadata about the package, like its name, maintainers or dependencies. |
+| rules                | Specifies how to build the package.                                     |
+| package-name.install | Specifies what files to copy into the package.                          |
 
 ## Changelog file
 
@@ -36,19 +37,19 @@ package-name (0.0.1) UNRELEASED; urgency=medium
 
   * Initial release.
 
- -- Forename Surename <name@email.com>  Mon, 15 May 2017 20:00:00 +0200
+ -- Forename Surname <name@email.com>  Mon, 15 May 2017 20:00:00 +0200
 ```
 
 ### Working with the changelog
 
-| Command              | Description |
-| -------------------- | ----------- |
-| `dch --create`       | Creates new changelog file with `Initial release` entry. |
-| `dch`                | Adds new version if the latest one is not `UNRELEASED`, otherwise it adds new item to the latest version and updates date. |
-| `dch -r`             | Changes from `UNRELEASED` to released state and updates the date of last version. |
-| just use your editor | Works fine most of the time |
+| Command              | Description                                                                                                                        |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `dch --create`       | Creates new changelog file with `Initial release` entry.                                                                           |
+| `dch`                | Adds new version if the latest one is not `UNRELEASED`. Otherwise, it adds a new item to the current version and updates the date. |
+| `dch -r`             | Changes from `UNRELEASED` to released state and updates the date.                                                                  |
+| Just use your editor | Works fine most of the time.                                                                                                       |
 
-At Seznam.cz when we release package we also do not use the official distributions, instead we do something like `dch -r --force-distribution --distribution Seznam`
+At Seznam.cz when we release a package we do not use the official distributions, instead we do something like `dch -r --force-distribution --distribution Seznam`.
 
 ## Compat file
 
@@ -61,7 +62,7 @@ Here is how `control` file could look like:
 
 ```
 Source: package-name
-Maintainer: Forename Surename <name@email.com>
+Maintainer: Forename Surname <name@email.com>
 Section: fulltext/Seznam
 Priority: extra
 Build-Depends: debhelper (>= 9.0.0)
@@ -80,7 +81,7 @@ Description: Package description
 | Field             | Type        | Description |
 | ----------------- | ----------- | ----------- |
 | [Source](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Source)                       | mandatory   | The source package name. Must consist only of lower case letters (a-z), digits (0-9), plus (+) and minus (-) signs, and periods (.). `package-name`. |
-| [Mantainer](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Maintainer)                | mandatory   | The package maintainer's name and email address. `Name Surename <name@email.com>`. |
+| [Mantainer](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Maintainer)                | mandatory   | The package maintainer's name and email address. `Name Surname <name@email.com>`. |
 | [Section](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Section)                     | recommended | An [application area](https://www.debian.org/doc/debian-policy/ch-archive.html#s-subsections) into which the package has been classified. At Seznam.cz we use something like `fulltext/Seznam`. |
 | [Priority](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Priority)                   | recommended | How important it is that the user have the package installed. The [priorities](https://www.debian.org/doc/debian-policy/ch-archive.html#s-priorities) are (in descending order): `required`, `important`, `standard`, `optional`, `extra`. |
 | [Build-Depends](https://www.debian.org/doc/debian-policy/ch-relationships.html#s-sourcebinarydeps)        | optional    | What packages need to be installed before we can start building your package. |
@@ -91,13 +92,14 @@ Description: Package description
 | Field             | Type        | Description |
 | ----------------- | ----------- | ----------- |
 | [Package](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Package)           | mandatory   | The name of the binary package. Binary package names must follow the same syntax and restrictions as source package names. `package-name`. |
-| [Architecture](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Architecture) | mandatory   | This value is usually one of the following depending on the type of the binary package: `any` - architecture dependent one usually in a compiled language, `all` - architecture independent one usually consisting of text, images, or scripts in an interpreted language. |
+| [Architecture](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Architecture) | mandatory   | Usually one of the following: `any` - architecture dependent one, usually in a compiled language, `all` - architecture independent one, usually consisting of text, images, or scripts in an interpreted language. |
 | [Section](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Section)           | recommended | Same as Section of source package. |
 | [Priority](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Priority)         | recommended | Same as Priority of source package. |
-| [Depends](https://www.debian.org/doc/debian-policy/ch-relationships.html#s-binarydeps)          | optional    | Some debhelper commands may cause the generated package to depend on some additional packages. All such commands generate a list of required packages for each binary package, this list is used for substituting `${misc:Depends}`. |
+| [Depends](https://www.debian.org/doc/debian-policy/ch-relationships.html#s-binarydeps)          | optional    | Dependencies of the package. Some debhelper commands may cause the generated package to depend on some additional packages. All such commands generate a list of required packages for each binary package, this list is used for substituting `${misc:Depends}`. |
 | [Description](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Description)   | mandatory   | Description. |
 
 - TODO: source vs binary package
+- TODO: how dependencies work when we are installing / uninstalling
 
 ## Rules file
 

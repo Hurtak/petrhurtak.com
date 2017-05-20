@@ -4,15 +4,15 @@ In this article I will tell you the basics about how to make simple debian packa
 
 ## Basics
 
-- Create directory callend `debian` in the root of your project.
-- Make sure these dependencies are installed:
+- Create directory named `debian` in the root of your project.
+- To create the Debian package we will use `debhelper` which is small set of tools that will help us to create the package.
+- Add `DEBEMAIL` and `DEBFULLNAME` env variables to your`.bashrc` to make have your name and email automatically filled when you will manipulate the changelog with the `dch` tool.
+- Install the `debhelper` (`build-essential` package) and `dch` (`devscripts` package)
     - `apt-get install build-essential devscripts`
-    - TODO: double check if both of these are really used
-- Add `DEBEMAIL` and `DEBFULLNAME` env variables to `.bashrc` to make sure your name and email is filled properly when you will be manipulating with changelog with `dch` tool.
 
 ```bash
-export DEBEMAIL="petr.hurtak@firma.seznam.cz"
-export DEBFULLNAME="Petr Huřťák"
+export DEBEMAIL="name@email.com"
+export DEBFULLNAME="Forename Surename"
 ```
 
 ## Folder structure
@@ -29,24 +29,23 @@ Inside the `debian` folder you will need to create these five files:
 
 ## Changelog file
 
-- Create file `debian/changelog`.
-- Either by running `dch --create` or manually.
+Create `debian/changelog` file, either by running `dch --create` or manually.
 
 ```
-PACKAGE (0.0.1) UNRELEASED; urgency=medium
+package-name (0.0.1) UNRELEASED; urgency=medium
 
   * Initial release.
 
- -- Petr Huřťák <petr.hurtak@firma.seznam.cz>  Mon, 15 May 2017 21:38:29 +0200
+ -- Forename Surename <name@email.com>  Mon, 15 May 2017 20:00:00 +0200
 ```
 
 ### Working with the changelog
 
 | Command              | Description |
 | -------------------- | ----------- |
-| `dch --create`       | Creates new changelog file with "Initial release" entry TODO: quotes |
-| `dch`                | Meta data about the package, like its name, maintainers or dependencies |
-| `dch -r`             | Changes from `UNRELEASED` to released state and updates the date od last entry |
+| `dch --create`       | Creates new changelog file with `Initial release` entry. |
+| `dch`                | Adds new version if the latest one is not `UNRELEASED`, otherwise it adds new item to the latest version and updates date. |
+| `dch -r`             | Changes from `UNRELEASED` to released state and updates the date of last version. |
 | just use your editor | Works fine most of the time |
 
 At Seznam.cz when we release package we also do not use the official distributions, instead we do something like `dch -r --force-distribution --distribution Seznam`
@@ -62,7 +61,7 @@ Here is how `control` file could look like:
 
 ```
 Source: package-name
-Maintainer: Petr Huřťák <petr.hurtak@firma.seznam.cz>
+Maintainer: Forename Surename <name@email.com>
 Section: fulltext/Seznam
 Priority: extra
 Build-Depends: debhelper (>= 9.0.0)
@@ -98,13 +97,15 @@ Description: Package description
 | [Depends](https://www.debian.org/doc/debian-policy/ch-relationships.html#s-binarydeps)          | optional    | Some debhelper commands may cause the generated package to depend on some additional packages. All such commands generate a list of required packages for each binary package, this list is used for substituting `${misc:Depends}`. |
 | [Description](https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Description)   | mandatory   | Description. |
 
+- TODO: source vs binary package
+
 ## Rules file
 
 - Create file `debian/rules`.
-- Now we need to take a look at the exact rules which `dpkg-buildpackage` command will use to actually create the package.
-- This file is in fact another Makefile so make sure to:
-    - mark this file as executable `chmod u+x debian/rules`
-    - use only tabs as indentation
+- Now we need to take a look at the exact rules which `dpkg-buildpackage` command will use to create the package.
+- This file is Makefile so make sure to:
+    - Mark this file as executable `chmod u+x debian/rules`.
+    - Use only tabs for indentation.
 
 Minimal rules file:
 
@@ -132,9 +133,29 @@ dist/* /www/package-name/
 ## Create the package
 
 - In the root of your project directory run `dpkg-buildpackage -b -uc`.
+- the created packages are one level up from the root of your project
+
 - TODO: -b -uc parameters
 - TODO: inspecting the package
 - TODO: installing the package
+
+- there are also some build artefacts from the creation of the package, they are usefull for debugging but if everything went ok, you can removethem with something like
+
+```bash
+rm debian/debhelper-build-stamp
+rm debian/files
+rm debian/*.log
+rm debian/*.substvars
+rm -r debian/*/
+```
+
+or if you are using git in your repository
+
+```bash
+git clean -df debian
+```
+
+- or git command
 
 ## Static files build dependencies
 

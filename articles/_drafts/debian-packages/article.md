@@ -1,6 +1,6 @@
 At [Seznam.cz](https://www.seznam.cz/) we use Debian packages for packaging and distribution of a decent amount of our applications. While we are in the process of transitioning to solutions using Docker, Debian packages still play a significant role.
 
-In this article, I will tell you the basics about how to make a simple Debian package with static website application. I wrote this article from the frontend developer point of view, so not all parts of Debian packaging are covered.
+In this article, I will tell you the basics about how to make a simple Debian package with static website. I wrote this article from the frontend developer point of view, so not all parts of Debian packaging are covered.
 
 ## Basics
 

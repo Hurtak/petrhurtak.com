@@ -1,15 +1,11 @@
-# TODO: update
-title: Title
+title: Debian packages for frontend
 
-# TODO: update
 description:
-  Description
+  How to make a simple Debian package with a static website – from a frontend developer point of view.
 
 url: debian-packages
 
-# TODO: update
-datePublication: 2015-01-01 00:00:00
-# TODO: update
-dateLastUpdate: 2015-01-01 00:00:00
+datePublication: 2017-05-21 18:00:00
+dateLastUpdate: 2017-05-21 18:00:00
 
 id: 0fce129ad57c8a72cde82f54324c1c0f

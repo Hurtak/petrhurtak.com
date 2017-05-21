@@ -1,6 +1,6 @@
 At [Seznam.cz](https://www.seznam.cz/) we use Debian packages for packaging and distribution of a decent amount of our applications. While we are in the process of transitioning to solutions using Docker, Debian packages still play a significant role.
 
-In this article, I will tell you the basics about how to make a simple Debian package with static website. I wrote this article from the frontend developer point of view, so not all parts of Debian packaging are covered.
+In this article, I will tell you the basics about how to make a simple Debian package with a static website. I wrote this article from the frontend developer point of view, so not all parts of Debian packaging are covered.
 
 ## Basics
 
@@ -63,11 +63,11 @@ echo 9 > debian/compat
 
 ## Control file
 
-- In this file we specify all the metadata about our package, like its name, dependencies and maintainers.
+- In this file, we specify all the metadata about our packages, like their names, dependencies, and maintainers.
 - There are two types of packages:
-    - __Source releases__: contain human readable version of the application, meaning it has to be compiled before it can be used.
-    - __Binary releases__: contain computer readable version of the application, meaning it is already compiled.
-- For our purposes we will only build the binary package, but fields for the source release also need to be specified.
+    - __Source releases__: contain a human readable version of the application, meaning they have to be compiled before they can be used.
+    - __Binary releases__: include computer readable version of the app, meaning they are already compiled.
+- For our purposes, we will only build the binary package, but fields for the source release also need to be specified.
 
 ### Minimal control file
 
@@ -89,25 +89,25 @@ Description: Package description
 
 ### Source package fields
 
-| Field                                  | Type        | Description |
-| -------------------------------------- | ----------- | ----------- |
-| [Source][source]                       | mandatory   | The source package name. Must consist only of lower case letters (a-z), digits (0-9), plus (+) and minus (-) signs, and periods (.). <br> `package-name` |
-| [Mantainer][maintainer]                | mandatory   | The package maintainer's name and email address. <br> `Forename Surname <name@email.com>`. |
-| [Section][section]                     | recommended | An [application area][application-area] into which the package has been classified. <br> At Seznam.cz we use something like `fulltext/Seznam`. |
-| [Priority][priority]                   | recommended | How important it is that the user have the package installed. The [priorities][priorities] are (in descending order): `required`, `important`, `standard`, `optional`, `extra`. |
-| <span style="white-space: nowrap">[Build-Depends][build-depends]</span>         | optional    | What dependencies need to be installed before we can start building the package. |
-| <span style="white-space: nowrap">[Standards-Version][standards-version]</span> | recommended | The most recent version of the [Debian Policy Manual][standards] with which the package complies. You can find the lates version at the bottom of every Debian policy page. |
+| Field                                                                           | Type        | Description                                                                                                                                                                     |
+| ------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Source][source]                                                                | mandatory   | The source package name. Must consist only of lower case letters (a-z), digits (0-9), plus (+) and minus (-) signs, and periods (.). <br> `package-name`                        |
+| [Mantainer][maintainer]                                                         | mandatory   | The package maintainer's name and email address. <br> `Forename Surname <name@email.com>`.                                                                                      |
+| [Section][section]                                                              | recommended | An [application area][application-area] into which the package has been classified. <br> At Seznam.cz we use something like `fulltext/Seznam`.                                  |
+| [Priority][priority]                                                            | recommended | How important it is that the user have the package installed. The [priorities][priorities] are (in descending order): `required`, `important`, `standard`, `optional`, `extra`. |
+| <span style="white-space: nowrap">[Build-Depends][build-depends]</span>         | optional    | What dependencies need to be installed before we can start building the package.                                                                                                |
+| <span style="white-space: nowrap">[Standards-Version][standards-version]</span> | recommended | The most recent version of the [Debian Policy Manual][standards] with which the package complies. You can find the lates version at the bottom of every Debian policy page.     |
 
 ### Binary package fields
 
-| Field                        | Type        | Description |
-| ---------------------------- | ----------- | ----------- |
-| [Package][package]           | mandatory   | Name of the binary package. Binary package names must follow the same syntax and restrictions as source package names. |
-| [Architecture][architecture] | mandatory   | Usually one of the following: <br> `all` - Architecture independent, usually consisting of text, images, or scripts in an interpreted language. <br> `any` - Architecture dependent, usually in a compiled language. |
-| [Section][section]           | recommended | Same as Section of source package. |
-| [Priority][priority]         | recommended | Same as Priority of source package. |
-| [Depends][depends]           | optional    | Dependencies of the package. Some debhelper commands may cause the generated package to depend on some additional packages. All such commands generate a list of required packages for each binary package, this list is will then substitute the `${misc:Depends}` string. |
-| [Description][description]   | mandatory   | Description. |
+| Field                        | Type        | Description                                                                                                                                                                                                                                                             |
+| ---------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Package][package]           | mandatory   | Name of the binary package. Binary package names must follow the same syntax and restrictions as source package names.                                                                                                                                                  |
+| [Architecture][architecture] | mandatory   | Usually one of the following: <br> `all` - Architecture independent, usually consisting of text, images, or scripts in an interpreted language. <br> `any` - Architecture dependent, usually in a compiled language.                                                    |
+| [Section][section]           | recommended | Same as Section of source package.                                                                                                                                                                                                                                      |
+| [Priority][priority]         | recommended | Same as Priority of source package.                                                                                                                                                                                                                                     |
+| [Depends][depends]           | optional    | Dependencies of the package. Some debhelper commands may cause the generated package to depend on some additional packages. All such commands produce a list of required packages for each binary package. This list will then substitute the `${misc:Depends}` string. |
+| [Description][description]   | mandatory   | Description.                                                                                                                                                                                                                                                            |
 
 [source]: https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Source
 [maintainer]: https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Maintainer
@@ -128,7 +128,7 @@ Description: Package description
 
 ## Rules file
 
-- Create `debian/rules` file, this file is _Makefile_ so make sure to:
+- Create `debian/rules`. This file is _Makefile_ so make sure to:
     - Mark it as executable `chmod u+x debian/rules`.
     - Use only tabs for indentation.
 - This file contains rules about how to build your package. We will be using the `dh` command from the `debhelper` package to help us with the build. Here is minimal rules file that only calls the `dh` without any other configuration.
@@ -140,7 +140,7 @@ Description: Package description
 	dh $@
 ```
 
-- The `dh` have many stages of the buils and you will see them all in the console once you start building your package. If you need to override or extend parts of the `dh` build steps, here is how you do it:
+- The `dh` command has many build stages, and you will see them mentioned in the console once you start building your package. If you need to override or extend parts of the `dh` build steps, here is how you do it:
 
 ```makefile
 #!/usr/bin/make -f
@@ -155,24 +155,24 @@ override_dh_auto_build:
 
 ## Debian install script
 
-- Creat file named `debian/package-name.install`.
-- In this file we specify what files or folders should be copied into the package. Then once the package will be installed, these files will be copied from the package into the filesystem.
-- Directory is relative to the parent of _debian_ directory, eg if you have `project/debian/package-name.install`, paths will be relative to `project` dir.
+- Create file named `debian/package-name.install`.
+- In this file, we specify what files or folders will be copied into the package. Then once the package is installed, these files will be copied from the package onto the filesystem.
+- Directories are relative to the parent of _debian_ directory, for example, if you have `project/debian/package-name.install`, paths will be relative to the `project` dir.
 
 ```
 dist/* /www/package-name/
 ```
 
-## Create the package
+## Build the package
 
 - In the root of your project directory run `dpkg-buildpackage -b -uc`.
-    - `-b` only make binary package and do not create package with source files.
+    - `-b` only make a binary package and do not create a package with source files.
     - `-uc` skip the signing stage of the `.changes` file with your PGP key.
 - If everything went ok, you should see file named `package-name_1.0.0_all.deb` one level up from the root directory of your project.
 
 ### Build artefacts
 
-After the build you will see some build artefacts inside the `debian` directory. They are usefull for your build debugging, but if everything went ok, you can safely remove them with something like:
+After the build, you will see some build artifacts inside the `debian` directory. They are useful for your build debugging, but if everything goes ok, you can safely remove them with something like:
 
 ```bash
 git clean -df debian
@@ -182,9 +182,9 @@ git clean -df debian
 
 - To get basic metadata about package (mostly stuff from `debian/control`)
     - `dpkg --info <file>.deb`
-- Midnight Commander is pretty helpful when taking a look inside the package
+- Midnight Commander program is pretty helpful if we want to take a look inside of the package
     - `sudo apt-get install mc`
-    - Press `F3` or the `View` command while having the package selected to view basic info.
+    - Press `F3` or the `View` command while having the package selected to see basic info.
     - Or press enter to open the package and inspect its content.
 - Trying to install the package is also useful to see if there are not any conflicts or dependency problems
     - `sudo dpkg -i <file>.deb`
@@ -208,7 +208,7 @@ Control file:
 
 Rules file:
 
-- Add override to the build step where we will do the installation of additional dependencies from other package managers and also the building itself.
+- Add an override to the build step where we will do the installation of additional dependencies from other package managers and also the building itself.
 
 ```makefile
 #!/usr/bin/make -f
@@ -222,7 +222,7 @@ override_dh_auto_build:
 
 ### CI Build pipeline
 
-If we have some CI build pipeline, it makes more sense to have one CI task for building of the static files, and another one for creating the debian package. Then we just pass the build artifacts from the first task to the other. This will allow use to use the right docker images for given task (eg `node:7` for building the static files, and `debian:8` for the packaging) and worry less about installing additional dependencies.
+If we have some CI build pipeline, it makes more sense to have one CI task for the build of the static files, and another one for the creation of the Debian package. Then we just pass the build artifacts from the build task to the package task. This will allow use to use the right Docker image for given task (e.g. `node:7` for the static files, and `debian:8` for the packaging) and worry less about installing additional dependencies.
 
 ### Example of GitLab CI file
 

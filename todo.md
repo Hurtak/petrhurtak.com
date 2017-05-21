@@ -6,6 +6,7 @@
 - skip deploy task from periodic builds
 - write first article
     - http://i.imgur.com/A6gQxoM.jpg
+- videos are jumping around when we refresh the page?
 
 ## Right after release
 

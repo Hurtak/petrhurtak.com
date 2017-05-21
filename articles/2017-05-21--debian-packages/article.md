@@ -248,7 +248,7 @@ package:
   image: debian:8.8
   script:
     - apt-get update
-    - apt-get install --yes git build-essential devscripts
+    - apt-get install --yes build-essential devscripts
     - dpkg-buildpackage -b -uc
     - mv ../*.deb .
   artifacts:

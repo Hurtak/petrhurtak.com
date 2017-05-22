@@ -21,16 +21,8 @@
   color: var(--color-blue-main);
 }
 
-.ArticlePreview-title-link:hover::after {
-  content: '';
-  position: absolute;
-  display: inline-block;
-  left: 0;
-  bottom: 2px;
-  width: 100%;
-  height: 1px;
-  user-select: none;
-  background-color: var(--color-blue-main);
+.ArticlePreview-title-link:hover {
+  text-decoration: underline;
 }
 
 .ArticlePreview-date {

@@ -17,7 +17,7 @@
     "coveralls": "^2.11.16",
     "cssnano": "^3.10.0",
     "escape-html": "^1.0.3",
-    "execa": "^0.6.0",
+    "execa": "^0.7.0",
     "fs-promise": "^2.0.0",
     "gulp": "git://github.com/gulpjs/gulp.git#e9e5ab7e70080e1bfb5650a4fdc4c8849e70b3e0",
     "gulp-real-favicon": "^0.2.2",

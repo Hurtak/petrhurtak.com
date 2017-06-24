@@ -1,3 +1,16 @@
+- xmlhttprequest
+  - get/post/delete ... (POST vs post or it doesent matter?)
+  - headers
+  - timeout
+  - error/done listeners
+  - cancel
+  - progress
+
+- async component loading
+  - https://github.com/thejameskyle/react-loadable
+
+- article optional array/object fields - sbread operator and before spread operator
+
 - bash script basics
   - shebang
   - chmod u+x file
@@ -90,3 +103,5 @@
   - running some script during packaging (makefile override)
   - how dependencies work
   - how installation work
+
+- JQ

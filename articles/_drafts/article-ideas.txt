@@ -1,11 +1,3 @@
-- xmlhttprequest
-  - get/post/delete ... (POST vs post or it doesent matter?)
-  - headers
-  - timeout
-  - error/done listeners
-  - cancel
-  - progress
-
 - async component loading
   - https://github.com/thejameskyle/react-loadable
 

@@ -35,6 +35,7 @@ const paths = {
   articleImages: 'images',
   articleSnippets: 'snippets',
   articleVideos: 'videos',
+  articleExtra: 'extra',
 
   nodeModules: absolutePath('./node_modules')
 }

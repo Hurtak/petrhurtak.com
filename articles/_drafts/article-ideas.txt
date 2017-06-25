@@ -97,3 +97,8 @@
   - how installation work
 
 - JQ
+
+- cross origin
+  - why it was introduces
+  - security limitations of responding *
+  - proxy workaround

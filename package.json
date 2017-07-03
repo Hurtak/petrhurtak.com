@@ -29,7 +29,7 @@
     "normalize.css": "^5.0.0",
     "nunjucks": "^3.0.0",
     "nyc": "^10.1.2",
-    "postcss": "^5.2.17",
+    "postcss": "^6.0.5",
     "postcss-cssnext": "^2.9.0",
     "postcss-import": "^9.1.0",
     "pretty-bytes": "^4.0.2",

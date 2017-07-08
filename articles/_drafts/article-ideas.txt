@@ -1,3 +1,8 @@
+- common mistakes in naming
+  - parameter vs argument
+  - pararell vs serial
+  - find other examples - also I should have something in my notes
+
 - async component loading
   - https://github.com/thejameskyle/react-loadable
 

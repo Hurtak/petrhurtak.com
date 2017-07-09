@@ -3,8 +3,18 @@
   - pararell vs serial
   - find other examples - also I should have something in my notes
 
+- Random numbers in javascript
+  - http://thenewcode.com/82/Recipes-for-Randomness-in-JavaScript
+
 - async component loading
   - https://github.com/thejameskyle/react-loadable
+
+- images done right
+  - width & height properly set with img tags
+  - responsive
+    - width 100% height auto
+  - sizes are properly set event on mobile
+    - mixin for 16:9 size
 
 - article optional array/object fields - sbread operator and before spread operator
 

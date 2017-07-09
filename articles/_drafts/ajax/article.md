@@ -173,21 +173,10 @@ request.send()
 | 7     | `load` or `abort` or `timeout` |                                                               |
 | 8     | `loadend`                      |                                                               |
 
-
-
-- responseText and status
-- https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
-- e object interesting stuff
-- reading headers
-    - getAllResponseHeaders()
-- with credentials
-- CORS
-- there are several ways to make http requests `XMLHttpRequest` or `fetch` or `img` tag?
-
 ## Complete example, delete what you do not need
 
 ```js
-var request = new window.XMLHttpRequest()
+const request = new window.XMLHttpRequest()
 
 request.addEventListener('load', e => {
   console.log('load', e)
@@ -214,6 +203,8 @@ request.addEventListener('loadstart', e => {
 request.addEventListener('readystatechange', e => {
   console.log('readystatechange', e.target.readyState)
 })
+
+request.timeout = 10000 // ms
 request.addEventListener('timeout', e => {
   console.log('timeout', e)
 })
@@ -231,8 +222,6 @@ request.addEventListener('progress', e => {
   lastLoaded = e.loaded
 })
 
-request.timeout = 10000 // ms
-
 request.open('GET', './url')
 request.setRequestHeader('Content-Type', 'application/json')
 request.setRequestHeader('Accept', 'application/json')
@@ -240,3 +229,13 @@ request.send()
 
 // request.abort()
 ```
+
+## TODO
+
+- responseText and status
+- https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
+- reading headers
+    - getAllResponseHeaders()
+- with credentials
+- CORS
+- mention fetch

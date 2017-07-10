@@ -1,21 +1,29 @@
-## HTTP requests in browser
+## HTTP requests in browsers
 
 - The most common way to make HTTP request in the browser is by using the `window.XMLHttpRequest` API.
-- XMLHttpRequest was originally designed by Microsoft and then adopted by all browser wendors. Despite its name, XMLHttpRequest can be used to retrieve any type of data, not just XML.
+- XMLHttpRequest was originally designed by Microsoft and then adopted by all browser vendors. Despite its name, XMLHttpRequest can be used to fetch any type of data, not just XML.
 
 ## Simple example
 
 ```js
 const request = new window.XMLHttpRequest()
+
 request.addEventListener('load', e => {
-  console.log('response', e.target.responseText)
+  console.log('response body', e.target.status)
+  console.log('response status', e.target.responseText)
 })
 request.addEventListener('error', e => {
   console.log('error', e)
 })
+
 request.open('GET', './url')
 request.send()
 ```
+
+- Once the request is succesfully completed (`load` event is fired) the HTTP status code and request body are avaliable to us.
+    - `event.target.status` HTTP status code as `int`.
+    - `event.target.responseText` HTTP body as `string`.
+    - `event.target.getAllResponseHeaders()` response headers as newline separated string.
 
 ## Customizing the request
 
@@ -33,8 +41,8 @@ request.open('GET', './url')
 
 ### Setting HTTP headers
 
-- You must call the `setRequestHeader` method after `open` and before `send`.
-- If no `Accept` header has been set using this, an `Accept` header with the `*/*` value is automatically added.
+- Call the `setRequestHeader` method after `open` and before `send`.
+- If no `Accept` header has been set, an `Accept` header with the `*/*` value is automatically added.
 - For security reasons, some headers can cannot be set from JavaScript and are controled only by the browser, these headers are from the [forbidden header names](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name) and [forbidden response header](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_response_header_name) names.
 
 ```js
@@ -46,7 +54,7 @@ request.setRequestHeader('Accept', 'application/json')
 request.send()
 ```
 
-#### Most commom headers you might use
+Most commom headers you might use:
 
 ```js
 request.setRequestHeader('Content-Type', 'application/json')
@@ -58,7 +66,7 @@ request.setRequestHeader('Accept', 'text/html')
 
 ### Sending data along with the request
 
-- If you use GET you add data aq query parameters
+- If you use GET you add the data as query parameters
 
 ```js
 const request = new window.XMLHttpRequest()
@@ -76,6 +84,9 @@ request.send('data')
 
 ### Adding timeout
 
+- Set the `timeout` property on your request instance.
+- Timeout is set in milliseconds and when it elapses the `timeout` event is fired.
+
 ```js
 const request = new window.XMLHttpRequest()
 request.addEventListener('timeout', e => {
@@ -87,6 +98,8 @@ request.send()
 ```
 
 ## Canceling opened request
+
+- Once request is sent it can be aborted at any time
 
 ```js
 const request = new window.XMLHttpRequest()
@@ -102,31 +115,44 @@ request.abort()
 
 ## Request events
 
-- `load`
-    - Server responded and request finished loading.
-- `error`
-    - Error with HTTP request occurend
-    - Server responding with `500` status code will not trigger the `error` event since it is error on the server not with the HTTP request itself
-    - Usually it might be one of the following
-        - There is no internet connection.
-        - Server does not response in time (several minutes in Chrome) and the browser terminates the connection.
-        - Request is made into different domain and the response does not have correct cross origin headers.
-        - Unknown protocol scheme.
-- `loadend`
-    - After `error`, `abort`, or `load` have been dispatched.
-- `loadstart`
-    - Fires when the progress has begun.
-- `abort`
-    - Fires when `abort` method is called on the request instance.
-- `timeout`
-    - Fires when request takes longet than value set in then `timeout` property the request instance.
-    - Does not fire when `timeout` is not set, request takes too ling and browser decides to close the connection, in that case `error` event is fired instead.
-- `progress`
-    - Fires at least one time once first chunk of data arrives, then roughly after some amount of data is downloaded.
-        - In Chrome it is roughly after each 32KB are downloaded.
-        - In Firefox it seemed to fire related on current network speed, so there could be several kilobytes huge chunks. At minimum there seemed to be 6.4KB chunks.
-    - `event.total` size of the request body in Bytes.
-    - `event.loaded` number of Bytes downloaded.
+### load
+
+- Server responded and request finished loading.
+
+### error
+
+- Error with HTTP request occurend.
+- Server responding with `500` status code will not trigger the `error` event since it is error on the server not with the HTTP request itself.
+- Usually it might be one of the following:
+    - There is no internet connection.
+    - Server does not response in time (several minutes in Chrome) and the browser terminates the connection.
+    - Request is made into different domain and the response does not have correct cross origin headers.
+    - Unknown protocol scheme.
+
+### loadend
+
+- After `error`, `abort`, or `load` have been dispatched.
+
+### loadstart
+
+- Fires when the progress has begun.
+
+### abort
+
+- Fires when `abort` method is called on the request instance.
+
+### timeout
+
+- Fires when request takes longet than value set in then `timeout` property the request instance.
+- Does not fire when `timeout` is not set, request takes too ling and browser decides to close the connection, in that case `error` event is fired instead.
+
+### progress
+
+- Fires at least one time once first chunk of data arrives, then roughly after some amount of data is downloaded.
+    - In Chrome it is roughly after each 32KB are downloaded.
+    - In Firefox it seemed to fire related on current network speed, so there could be several kilobytes huge chunks. At minimum there seemed to be 6.4KB chunks.
+- `event.total` size of the request body in Bytes.
+- `event.loaded` number of Bytes downloaded.
 
 ```js
 let progressLastTimestamp = Date.now()
@@ -147,9 +173,10 @@ request.open('GET', './url')
 request.send()
 ```
 
-- `readystatechange`
-    - Describes the state of the HTTP request
-    - Is avaliable on the `event.target.readyState` property
+### readystatechange
+
+- Describes the state of the HTTP request.
+- Is avaliable on the `event.target.readyState` property.
 
 | Value | State              | Description |
 | ----- | ------------------ | ----------- |
@@ -159,8 +186,7 @@ request.send()
 | 3     | `LOADING`          | Downloading, `event.target.responseText` holds partial data. |
 | 4     | `DONE`             | Request completed. |
 
-
-### Events order
+## Events order
 
 | Order | Event name                     | Additional info                                               |
 | ------| ------------------------------ | ------------------------------------------------------------- |
@@ -182,7 +208,7 @@ request.addEventListener('load', e => {
   console.log('load', e)
   if (e.target.status >= 200 && e.target.status < 300) {
     // ok
-    const res = e.target.statusText
+    const res = e.target.responseText
   } else {
     // not ok
   }
@@ -230,12 +256,6 @@ request.send()
 // request.abort()
 ```
 
-## TODO
+## Alternatives
 
-- responseText and status
-- https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
-- reading headers
-    - getAllResponseHeaders()
-- with credentials
-- CORS
-- mention fetch
+Modern alternative to XMLHttpRequest is the [Fetch](https://developer.mozilla.org/en/docs/Web/API/Fetch_API) API that uses promises but has some downsides like worse browser support and not supporting request cancelattion which is needed suprisingly often - I have found myself lately rewriting many times from Fetch to XMLHttpRequest just because I needed the cancelation feature.

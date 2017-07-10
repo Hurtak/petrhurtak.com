@@ -20,18 +20,18 @@ request.open('GET', './url')
 request.send()
 ```
 
-- Once the request is succesfully completed (`load` event is fired) the HTTP status code and request body are avaliable to us.
+- Once the request is successfully completed (`load` event is fired), the HTTP status code and request body are avaliable to us.
     - `event.target.status` HTTP status code as `int`.
     - `event.target.responseText` HTTP body as `string`.
     - `event.target.getAllResponseHeaders()` response headers as newline separated string.
 
 ## Customizing the request
 
-- There are several ways to customize the request
+- There are several ways to customize the request.
 
 ### The HTTP request method
 
-- HTTP method is specified as the firt argument of the `open` method.
+- HTTP method is specified as the first argument of the `open` method.
 - HTTP method name is case-insensitive.
 - All HTTP methods are supported, so you can use the less common ones like `DELETE` or `PUT`.
 
@@ -43,7 +43,7 @@ request.open('GET', './url')
 
 - Call the `setRequestHeader` method after `open` and before `send`.
 - If no `Accept` header has been set, an `Accept` header with the `*/*` value is automatically added.
-- For security reasons, some headers can cannot be set from JavaScript and are controled only by the browser, these headers are from the [forbidden header names](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name) and [forbidden response header](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_response_header_name) names.
+- For security reasons, some headers can not be set from JavaScript and controlled only by the browser. These headers are from the [forbidden header names](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name) and [forbidden response header](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_response_header_name) names.
 
 ```js
 const request = new window.XMLHttpRequest()
@@ -54,7 +54,7 @@ request.setRequestHeader('Accept', 'application/json')
 request.send()
 ```
 
-Most commom headers you might use:
+Most common headers you might use:
 
 ```js
 request.setRequestHeader('Content-Type', 'application/json')
@@ -66,7 +66,7 @@ request.setRequestHeader('Accept', 'text/html')
 
 ### Sending data along with the request
 
-- If you use GET you add the data as query parameters
+- If you use GET you add the data as query parameters.
 
 ```js
 const request = new window.XMLHttpRequest()
@@ -99,7 +99,7 @@ request.send()
 
 ## Canceling opened request
 
-- Once request is sent it can be aborted at any time
+- Once request is sent, it can be aborted at any time.
 
 ```js
 const request = new window.XMLHttpRequest()
@@ -112,21 +112,20 @@ request.send()
 request.abort()
 ```
 
-
 ## Request events
 
 ### load
 
-- Server responded and request finished loading.
+- Server responded, and request finished loading.
 
 ### error
 
-- Error with HTTP request occurend.
-- Server responding with `500` status code will not trigger the `error` event since it is error on the server not with the HTTP request itself.
-- Usually it might be one of the following:
+- Error with HTTP request occurred.
+- A server responding with `500` status code will not trigger the `error` event since it is an error on the server side, not with the HTTP request itself.
+- Usually, it might be one of the following:
     - There is no internet connection.
-    - Server does not response in time (several minutes in Chrome) and the browser terminates the connection.
-    - Request is made into different domain and the response does not have correct cross origin headers.
+    - A server does not respond in time (several minutes in Chrome), and the browser terminates the connection.
+    - A request is made into a different domain, and the response does not have correct cross-origin headers.
     - Unknown protocol scheme.
 
 ### loadend
@@ -143,15 +142,15 @@ request.abort()
 
 ### timeout
 
-- Fires when request takes longet than value set in then `timeout` property the request instance.
-- Does not fire when `timeout` is not set, request takes too ling and browser decides to close the connection, in that case `error` event is fired instead.
+- Fires when a request takes longer than a value set in then `timeout` property.
+- Does not fire when `timeout` is not set, request takes too long and browser decides to close the connection, in that case, `error` event is fired instead.
 
 ### progress
 
-- Fires at least one time once first chunk of data arrives, then roughly after some amount of data is downloaded.
+- Fires at least one time once the first chunk of data arrives, then after some amount of data is downloaded.
     - In Chrome it is roughly after each 32KB are downloaded.
-    - In Firefox it seemed to fire related on current network speed, so there could be several kilobytes huge chunks. At minimum there seemed to be 6.4KB chunks.
-- `event.total` size of the request body in Bytes.
+    - In Firefox it seemed to fire relative to the current network speed, it varied between few KB and several hundred KB.
+- `event.total` the size of the request body in Bytes.
 - `event.loaded` number of Bytes downloaded.
 
 ```js
@@ -176,28 +175,28 @@ request.send()
 ### readystatechange
 
 - Describes the state of the HTTP request.
-- Is avaliable on the `event.target.readyState` property.
+- Is available on the `event.target.readyState` property.
 
 | Value | State              | Description |
 | ----- | ------------------ | ----------- |
-| 0     | `UNSENT`           | Request instance has been created but `open` method has not been called yet. |
+| 0     | `UNSENT`           | Request instance has been created, but `open` method has not been called yet. |
 | 1     | `OPENED`           | `open` method called. |
-| 2     | `HEADERS_RECEIVED` | `send` method has been called and headers and status code received. |
+| 2     | `HEADERS_RECEIVED` | `send` method has been called, and headers and status code received. |
 | 3     | `LOADING`          | Downloading, `event.target.responseText` holds partial data. |
 | 4     | `DONE`             | Request completed. |
 
 ## Events order
 
-| Order | Event name                     | Additional info                                               |
-| ------| ------------------------------ | ------------------------------------------------------------- |
-| 1     | `readystatechange`             | `readyState` is `1` (`OPENED`)                                |
-| 2     | `loadstart`                    |                                                               |
-| 3     | `readystatechange`             | `readyState` is `2` (`HEADERS_RECEIVED`)                      |
-| 4-5   | `readystatechange`             | `readyState` is `3` (`LOADING`), might happen more than once. |
-| 5-6   | `progress`                     | Might happen more than once if file is larger.                |
-| 5-6   | `readystatechange`             | `readyState` is `4` (`DONE`)                                  |
-| 7     | `load` or `abort` or `timeout` |                                                               |
-| 8     | `loadend`                      |                                                               |
+| Order | Event name                     | Additional info                                                              |
+| ------| ------------------------------ | ---------------------------------------------------------------------------- |
+| 1     | `readystatechange`             | `readyState` is `1` (`OPENED`)                                               |
+| 2     | `loadstart`                    |                                                                              |
+| 3     | `readystatechange`             | `readyState` is `2` (`HEADERS_RECEIVED`)                                     |
+| 4-5   | `readystatechange`             | `readyState` is `3` (`LOADING`), might happen more than once.                |
+| 5-6   | `progress`                     | Might happen more than once with larger files or slower internet connection. |
+| 5-6   | `readystatechange`             | `readyState` is `4` (`DONE`)                                                 |
+| 7     | `load` or `abort` or `timeout` |                                                                              |
+| 8     | `loadend`                      |                                                                              |
 
 ## Complete example, delete what you do not need
 
@@ -258,4 +257,4 @@ request.send()
 
 ## Alternatives
 
-Modern alternative to XMLHttpRequest is the [Fetch](https://developer.mozilla.org/en/docs/Web/API/Fetch_API) API that uses promises but has some downsides like worse browser support and not supporting request cancelattion which is needed suprisingly often - I have found myself lately rewriting many times from Fetch to XMLHttpRequest just because I needed the cancelation feature.
+A modern alternative to XMLHttpRequest is the [Fetch](https://developer.mozilla.org/en/docs/Web/API/Fetch_API) API that uses promises but has some downsides like worse browser support and not supporting request cancellation which is needed surprisingly often – Lately, I have found myself rewriting Fetch to XMLHttpRequest many times, just because I needed the cancellation feature.

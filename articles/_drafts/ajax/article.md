@@ -222,9 +222,6 @@ request.addEventListener('loadend', e => {
   // After `error`, `abort`, or `load` have been dispatched.
   console.log('loadend', e)
 })
-request.addEventListener('loadstart', e => {
-  console.log('loadstart', e)
-})
 request.addEventListener('readystatechange', e => {
   console.log('readystatechange', e.target.readyState)
 })

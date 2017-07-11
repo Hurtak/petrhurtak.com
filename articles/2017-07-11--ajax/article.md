@@ -142,8 +142,8 @@ request.abort()
 
 ### timeout
 
-- Fires when a request takes longer than a value set in then `timeout` property.
-- Does not fire when `timeout` is not set, request takes too long and browser decides to close the connection, in that case, `error` event is fired instead.
+- Fires when a request takes longer than a value set in the `timeout` property.
+- Does not fire when `timeout` is not set, request takes too long, and browser decides to close the connection. In that case, `error` event is fired instead.
 
 ### progress
 
@@ -177,13 +177,13 @@ request.send()
 - Describes the state of the HTTP request.
 - Is available on the `event.target.readyState` property.
 
-| Value | State              | Description |
-| ----- | ------------------ | ----------- |
+| Value | State              | Description                                                                   |
+| ----- | ------------------ | ----------------------------------------------------------------------------- |
 | 0     | `UNSENT`           | Request instance has been created, but `open` method has not been called yet. |
-| 1     | `OPENED`           | `open` method called. |
-| 2     | `HEADERS_RECEIVED` | `send` method has been called, and headers and status code received. |
-| 3     | `LOADING`          | Downloading, `event.target.responseText` holds partial data. |
-| 4     | `DONE`             | Request completed. |
+| 1     | `OPENED`           | `open` method called.                                                         |
+| 2     | `HEADERS_RECEIVED` | `send` method has been called, and headers and status code received.          |
+| 3     | `LOADING`          | Downloading, `event.target.responseText` holds partial data.                  |
+| 4     | `DONE`             | Request completed.                                                            |
 
 ## Events order
 

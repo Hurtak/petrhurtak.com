@@ -9,8 +9,8 @@
 const request = new window.XMLHttpRequest()
 
 request.addEventListener('load', e => {
-  console.log('response body', e.target.status)
-  console.log('response status', e.target.responseText)
+  console.log('response status code', e.target.status)
+  console.log('response body', e.target.responseText)
 })
 request.addEventListener('error', e => {
   console.log('error', e)
@@ -23,7 +23,7 @@ request.send()
 - Once the request is successfully completed (`load` event is fired), the HTTP status code and request body are avaliable to us.
     - `event.target.status` HTTP status code as `int`.
     - `event.target.responseText` HTTP body as `string`.
-    - `event.target.getAllResponseHeaders()` response headers as newline separated string.
+    - `event.target.getAllResponseHeaders()` response headers as newline separated `string`.
 
 ## Customizing the request
 
@@ -43,7 +43,7 @@ request.open('GET', './url')
 
 - Call the `setRequestHeader` method after `open` and before `send`.
 - If no `Accept` header has been set, an `Accept` header with the `*/*` value is automatically added.
-- For security reasons, some headers can not be set from JavaScript and controlled only by the browser. These headers are from the [forbidden header names](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name) and [forbidden response header](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_response_header_name) names.
+- For security reasons, some headers can not be set from JavaScript and are controlled only by the browser. These headers are from the [forbidden header names](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name) and [forbidden response header](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_response_header_name) names.
 
 ```js
 const request = new window.XMLHttpRequest()

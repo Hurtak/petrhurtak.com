@@ -35,6 +35,7 @@
   - CORS http requests
     - with credentials
   - headers
+  - https://github.com/pillarjs/understanding-csrf/blob/master/README.md
   - simple cors proxy
     #!/usr/bin/env node
 

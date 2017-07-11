@@ -39,3 +39,5 @@ Showing the collected values in the console:
 
 > [43484, 57947, 46691, 49849, 24272, 11827, 28203, 17423]
 The Web Cryptography API has good support in modern browsers, although it is vendor prefixed in some cases.
+
+- If you want numbers in certain range, you might do +min and %max, but that might leave uneven distribution. Add example code where we just ask for new number again.

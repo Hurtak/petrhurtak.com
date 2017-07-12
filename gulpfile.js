@@ -86,7 +86,12 @@ async function compileStyles (done, productionBuild) {
 
   const result = await postCss([
     postCssImport(),
-    postCssNext({ browsers: config.supportedBrowsers }),
+    postCssNext({
+      browsers: config.supportedBrowsers,
+      features: {
+        customProperties: false
+      }
+    }),
     cssnano({ autoprefixer: false })
   ])
   .process(await fs.readFile(from, 'utf8'), {

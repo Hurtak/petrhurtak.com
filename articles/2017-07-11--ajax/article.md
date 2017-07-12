@@ -23,7 +23,7 @@ request.send()
 - Once the request is successfully completed (`load` event is fired), the HTTP status code and request body are avaliable to us.
     - `event.target.status` HTTP status code as `int`.
     - `event.target.responseText` HTTP body as `string`.
-    - `event.target.getAllResponseHeaders()` response headers as newline separated `string`.
+    - `event.target.getAllResponseHeaders()` response headers as newline separated `string`.
 
 ## Customizing the request
 

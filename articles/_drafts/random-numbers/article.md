@@ -45,20 +45,21 @@ The Web Cryptography API has good support in modern browsers, although it is ven
 ```js
 function generateCryptoRandomNumber (min, max) {
 	const distance = max - min
-  const maxDistance = 2 ** 8 -1
+  const maxDistance = 2 ** 32 - 1
+  // TODO: better error message
 	if (distance > maxDistance) throw new Error('Maximum is too big')
 
-  let randomNumber = window.crypto.getRandomValues(new Uint8Array(1))[0]
-  // TODO: > or >= ??
-  while (randomNumber > maxDistance - (maxDistance % distance)) {
-    console.log(randomNumber)
-  	console.log('happened')
-  	randomNumber = window.crypto.getRandomValues(new Uint8Array(1))[0]
-  }
+  let randomNumber
+  do  {
+    randomNumber = window.crypto.getRandomValues(new Uint32Array(1))[0]
+  } while (randomNumber >= maxDistance - (maxDistance % distance))
 
   return randomNumber % (distance + 1) + min
 }
 
-console.log('------')
-console.log(generateCryptoRandomNumber(0, 200))
+console.log(generateCryptoRandomNumber(1, 100))
 ```
+
+## Node
+
+TODO

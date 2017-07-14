@@ -15,7 +15,7 @@ function getRandomInt (min, max) {
 }
 ```
 
-If you want to read more about how this function works, I recomment [this helpful Stack Overflow answer](https://stackoverflow.com/a/1527820).
+If you want to read more about how this function works, I recommend [this helpful Stack Overflow answer](https://stackoverflow.com/a/1527820).
 
 ## Cryptographic randomness
 
@@ -41,3 +41,24 @@ Showing the collected values in the console:
 The Web Cryptography API has good support in modern browsers, although it is vendor prefixed in some cases.
 
 - If you want numbers in certain range, you might do +min and %max, but that might leave uneven distribution. Add example code where we just ask for new number again.
+
+```js
+function generateCryptoRandomNumber (min, max) {
+	const distance = max - min
+  const maxDistance = 2 ** 8 -1
+	if (distance > maxDistance) throw new Error('Maximum is too big')
+
+  let randomNumber = window.crypto.getRandomValues(new Uint8Array(1))[0]
+  // TODO: > or >= ??
+  while (randomNumber > maxDistance - (maxDistance % distance)) {
+    console.log(randomNumber)
+  	console.log('happened')
+  	randomNumber = window.crypto.getRandomValues(new Uint8Array(1))[0]
+  }
+
+  return randomNumber % (distance + 1) + min
+}
+
+console.log('------')
+console.log(generateCryptoRandomNumber(0, 200))
+```

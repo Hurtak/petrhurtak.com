@@ -1,65 +1,47 @@
-## Generating random numbers in JavaScript
-
-In JavaScript there `Math.random()` function. It returns 64bit float between 0 (inclusive) and 1 (exclusive), and is not cryptographically secure
+- In JavaScript most common way to get random values is from the `Math.random()` function.
+  - Returns 64bit float between 0 (inclusive) and 1 (exclusive).
+  - Not cryptographically secure.
+  - Avaliable both in the browser and in the server enviroment.
 
 ```js
 > Math.random()
-0.25882258613409337
+0.5392704424754013
 ```
 
-In case you would want random number in certain range, there is no standard library function for that and you need use something like this
+- In case you would want random number in certain range, there is no standard library function you either need to do the transformations by yourself or use some package/library.
+
+## Random integer in range
 
 ```js
+/**
+  * Get random integer in given range.
+  * @param {int} min - Random number lower boundary (inclusive)
+  * @param {int} max - Random number upper boundary (inclusive)
+  * @return {int} Random integer.
+  */
 function getRandomInt (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 ```
 
-If you want to read more about how this function works, I recommend [this helpful Stack Overflow answer](https://stackoverflow.com/a/1527820).
+If you want to read more about how this range transformation works, I recommend [this helpful Stack Overflow answer](https://stackoverflow.com/a/1527820).
 
-## Cryptographic randomness
-
-The `window.crypto.getRandomValues()` function lets you get cryptographically strong random values. The array given as the parameter is filled with random numbers (random in its cryptographic meaning).
-
-This function takes TypedArray of certain size and fill it with random numbers in range of the typed array, eg if it is 8Bit array, values will be between 0-255.
+## Random float in range
 
 ```js
-const randomNumber = window.crypto.getRandomValues(new Uint8Array(1))[0]
-```
-
-To guarantee enough performance, implementations are not using a truly random number generator, but they are using a pseudo-random number generator seeded with a value with enough entropy. The PRNG used differs from one implementation to the other but is suitable for cryptographic usages. Implementations are also required to use a seed with enough entropy, like a system-level entropy source.
-
-var cryptoStor = new Uint16Array(8);
-(In this case, we’re creating an array with eight different slots that can each contain an unsigned 16-bit integer. Other interger options include Int8Array, Uint8Array, int16Array, Int32Array and Uint32Array.
-
-Then, fill the array with random numbers of the defined type:
-
-window.crypto.getRandomValues(cryptoStor);
-Showing the collected values in the console:
-
-> [43484, 57947, 46691, 49849, 24272, 11827, 28203, 17423]
-The Web Cryptography API has good support in modern browsers, although it is vendor prefixed in some cases.
-
-- If you want numbers in certain range, you might do +min and %max, but that might leave uneven distribution. Add example code where we just ask for new number again.
-
-```js
-function generateCryptoRandomNumber (min, max) {
-	const distance = max - min
-  const maxDistance = 2 ** 32 - 1
-  // TODO: better error message
-	if (distance > maxDistance) throw new Error('Maximum is too big')
-
-  let randomNumber
-  do  {
-    randomNumber = window.crypto.getRandomValues(new Uint32Array(1))[0]
-  } while (randomNumber >= maxDistance - (maxDistance % distance))
-
-  return randomNumber % (distance + 1) + min
+/**
+  * Get random float in given range.
+  * @param {number} min - Random number lower boundary (inclusive)
+  * @param {number} max - Random number upper boundary (exclusive)
+  * @return {number} Random number.
+  */
+function getRandomFloat (min, max) {
+  return Math.random() * (max - min) + min
 }
-
-console.log(generateCryptoRandomNumber(1, 100))
 ```
 
-## Node
+## Cryptographically secure numbers
 
-TODO
+- In the browser world you have [window.crypto.getRandomValues](https://developer.mozilla.org/en/docs/Web/API/RandomSource/getRandomValues).
+- In Node.js there is [global.crypto.randomBytes](https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback).
+- You probably should not do the range transformations by yourself as they can be [error prone](https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba). I would recomment using some library for that.

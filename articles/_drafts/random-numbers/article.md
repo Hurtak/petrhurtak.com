@@ -1,4 +1,4 @@
-- In JavaScript, most common way to get random values is from the `Math.random()` standard library function.
+- In JavaScript, most common way to get pseudo random values is from the `Math.random()` standard library function.
     - Returns 64bit float between 0 (inclusive) and 1 (exclusive).
     - Not cryptographically secure.
     - Available both in the browser and in the server environment.

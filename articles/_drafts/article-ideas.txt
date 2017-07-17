@@ -1,3 +1,53 @@
+- semicolons vs no semicolons
+  https://www.youtube.com/watch?v=gsfbh17Ax9I
+  http://standardjs.com/
+  Xo
+  https://github.com/sindresorhus/xo#space
+
+  Es6 destruction problems
+
+  [a, b] = something();
+
+  Here's one specific case to watch for:
+  alert('hi')
+  (function () { var x = 1 })()
+  Gets treated as:
+  alert('hi')(function () { var x = 1 })()
+
+  From <https://github.com/feross/standard/issues/5>
+
+  They can be substituted by one simpler rule:
+    • Always put semicolons between statements.
+  The “never start a line with ( or [” rule is very arbitrary.
+  It is only going to get worse with ES6 where
+  [a, b] = something();
+  is a valid destructuring construction.
+  Isn't it strange to write
+  { a, b } = something()
+  ;[a, b] = something()
+  thus making code less uniform, if you can make it more uniform by just writing semicolons?
+  { a, b } = something();
+  [a, b] = something();
+
+  From <https://github.com/feross/standard/issues/78>
+
+  Na druhou stranu
+
+  For example, you have to remember to not do this:
+
+  function () {
+  };
+  But remember to use them here:
+  var obj = {
+  };
+
+  From <https://github.com/feross/standard/issues/78>
+
+
+  Statistika kolik lidí používá no semicollon
+
+  https://www.youtube.com/watch?v=Qlr-FGbhKaI
+
 - common mistakes in naming
   - parameter vs argument
   - function vs method

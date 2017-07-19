@@ -208,30 +208,34 @@ You have to wrap the function in parens in order to make it [parse as an express
 
 ## Semicolon at the beginning
 
+There are two cases whe putting semicolon before the IIFE is necessary.
 
-- Use linter like [ESLint](http://eslint.org/) to prevent you from making such mistake
+If you are not using any module system and concentrating JavaScript files manually.
 
-It prevents the parens from being seen as a possible function call. Simple example:
-(function (val) {
-  console.log(val)
-})('hello world')
-This logs 'hello world'. Maybe I share this with someone else so they can paste it into their script. Their script, brilliant as they are, looks like this:
-alert
-And when the add the IIFE, you get
-alert
+In this case your code
 
-(function (val) {
-  console.log(val)
-})('hello world')
-But what JavaScript sees is
-alert(function (val) {
-  console.log(val)
-})('hello world')
+```js
+// File a.js
+(() => {
+  // Code
+})()
+```
+
+Will get concetrated with this code
+
+```js
+console.log
+```
+
+It will be interpreted as
+
+```js
+console.log(() => {
+  // Code
+})()
+```
+
 Which when run, will alert the function then complain that the result of the alert call is not a function and produces an error.
 The semicolon ends whatever expression that might precede the IIFE so that its parens can't be misinterpreted as a function call.
-alert
 
-// ; to end the alert (or anything else up there)
-;(function (val) {
-  console.log(val)
-})('hello world')
+- Use linter like [ESLint](http://eslint.org/) to prevent you from making such mistake

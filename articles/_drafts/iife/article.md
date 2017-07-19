@@ -16,7 +16,7 @@ console.log(1)
   console.log(3)
 })()
 
-// Regular function call equivalent
+// IIFE equivalent, function definition and function call
 function foo () {
   console.log(4)
 }
@@ -69,7 +69,7 @@ const bar = 2
 const res = foo + bar
 ```
 
-- This is more common in functional languages where there are keywords for such nesting.
+- This is more common in functional languages where there are keywords for such nestings.
 
 ```elm
 res =
@@ -86,15 +86,15 @@ res =
 
 ```js
 const res = do {
-  const foo = getFoo()
-  const bar = getBar()
+  const foo = 1
+  const bar = 2
   foo + bar // implicit return
 }
 ```
 
 ### React
 
-- In React `if` statements inside templates are usualy done either with logical operators `condition && <b>true</b>` or with ternary operators `condition ? <b>true</b> : false`. IIFE might be used to create blocks with regular code flow.
+- In React `if` statements inside templates are usualy done either with logical operators `condition && <b>true</b>` or with ternary operators `condition ? <b>true</b> : <b>false</b>`. IIFE might be used to create blocks with regular code flow.
 
 ```jsx
 <section>
@@ -117,8 +117,8 @@ const res = do {
 ```jsx
 <section>
   {(() => {
-    const foo = getFoo()
-    const bar = getBar()
+    const foo = 1
+    const bar = 2
     const res = foo + bar
 
     return <p>{ res }</p>
@@ -138,7 +138,7 @@ const Module = (() => {
   // private variables/functions
   let state = 0
 
-  const init = (initialState) => {
+  function init (initialState) {
     state = initialState
   }
 

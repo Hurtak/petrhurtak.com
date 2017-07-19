@@ -53,6 +53,7 @@
   - function vs method
   - pararell vs serial
   - find other examples - also I should have something in my notes
+  - imperative vs procedural vs declarative
 
 - gitignore
   - .gitkeep

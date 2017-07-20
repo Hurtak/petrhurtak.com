@@ -31,10 +31,11 @@ console.log(5)
 
 ### Not leaking variables into the global scope
 
-- In the browser environment (if you are not using module system), it is a good practice to wrap your code inside IIFE to make sure:
-    - You are not leaking any global variables/functions into global scope.
-    - Your variables cannot be overwritten by any other scripts that also might be accessing global scope.
-    - You do not accidentally overwrite global variables of other scripts by using the same name.
+In the browser environment (if you are not using module system), it is a good practice to wrap your code inside IIFE to make sure:
+
+- You are not leaking any global variables/functions into global scope.
+- Your variables cannot be overwritten by any other scripts that also might be accessing global scope.
+- You do not accidentally overwrite global variables of other scripts by using the same name.
 
 ```js
 <DOCTYPE html>
@@ -69,7 +70,9 @@ const bar = 2
 const res = foo + bar
 ```
 
-- This approach is more common in functional languages where language keywords like `let` might be available.
+This approach might lead to better code structure where it is clearer what parts of the code are only sub computations and what are the results of these computations.
+
+It is more common to see this in functional languages where keywords like `let` are available.
 
 ```elm
 res =
@@ -80,8 +83,7 @@ res =
     foo + bar
 ```
 
-- It might lead to better code structure where it is clearer what parts of the code are only sub computations.
-- At the moment there is stage 1 `do` keyword [proposal](https://gist.github.com/dherman/1c97dfb25179fa34a41b5fff040f9879) for JavaScript that introduces such functionality. It is also supported by [Babel](https://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=es2015%2Cstage-0%2Cstage-1%2Cstage-2%2Cstage-3&targets=&browsers=&builtIns=false&debug=false&code_lz=MYewdgzgLgBATgUwjAvDAJiGBvAUDGUSWAMxCzQEZ9DxoYAjAQzlRgCYaysBqRl3AF8gA).
+At the moment there is stage 1 `do` keyword [proposal](https://gist.github.com/dherman/1c97dfb25179fa34a41b5fff040f9879) for JavaScript that introduces such functionality. It is also supported by [Babel](https://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=es2015%2Cstage-0%2Cstage-1%2Cstage-2%2Cstage-3&targets=&browsers=&builtIns=false&debug=false&code_lz=MYewdgzgLgBATgUwjAvDAJiGBvAUDGUSWAMxCzQEZ9DxoYAjAQzlRgCYaysBqRl3AF8gA).
 
 ```js
 const res = do {
@@ -93,44 +95,50 @@ const res = do {
 
 ### React
 
-- In React `if` statements inside templates are usualy done either with logical operators `condition && <b>true</b>` or with ternary operators `condition ? <b>true</b> : <b>false</b>`. IIFE might be used to create blocks with regular code flow.
+In React `if` statements inside templates are usualy done either with logical operators `condition && <b>true</b>` or with ternary operators `condition ? <b>true</b> : <b>false</b>`. IIFE might be used to create blocks with regular code flow.
 
 ```jsx
-<section>
-  {(() => {
-    if (a) {
-      if (b) {
-        return <p>a and b</p>
+const html = (
+  <section>
+    {(() => {
+      if (a) {
+        if (b) {
+          return <p>a and b</p>
+        } else {
+          return <p>a and not b</p>
+        }
       } else {
-        return <p>a and not b</p>
+        return <p>not a</p>
       }
-    } else {
-      return <p>not a</p>
-    }
-  })()}
-</section>
+    })()}
+  </section>
+)
 ```
 
-- Also might be useful when we want to do some computations right in the templates.
+Also might be useful when we want to do some computations right in the templates.
 
 ```jsx
-<section>
-  {(() => {
-    const foo = 1
-    const bar = 2
-    const res = foo + bar
+const html = (
+  <section>
+    {(() => {
+      const foo = 1
+      const bar = 2
+      const res = foo + bar
 
-    return <p>{ res }</p>
-  })()}
-</section>
+      return <p>{res}</p>
+    })()}
+  </section>
+)
 ```
 
 ### Module pattern
 
-- Module pattern was once popular before the module system was introduced into the language.
-- This pattern provides:
-    - Encapsulation.
-    - True private variables/functions/methods (unlike with JavaScript classes).
+Module pattern was once popular before the module system was introduced into the language.
+
+This pattern provides:
+
+- Encapsulation.
+- True private variables/functions/methods (unlike with JavaScript classes).
 
 ```js
 const Module = (() => {
@@ -161,9 +169,9 @@ Module.init(10)
 Module.publicMethod() // 11
 ```
 
-- Compared to classes there is a downside,  there is only one shared state, and you cannot create multiple instances.
+Compared to classes there is a downside,  there is only one shared state, and you cannot create multiple instances.
 
-- While instances can be done with the module pattern, they are not recommended since new functions are created for each instance, instead of having one method that is reused on each instance with the prototype chain. This will lead to bigger memory requirements compared to classes.
+While instances can be done with the module pattern, it is not recommended to do that because new functions are created for each instance, instead of having one method on the prototype chain that is reused by each instance. This will also lead to bigger memory requirements compared to classes.
 
 ```js
 const Module = initialState => (() => {
@@ -198,18 +206,19 @@ You have to wrap the function in parentheses in order to make the code [parse as
 | Code                                            | Valid   |
 | ----------------------------------------------- | ------- |
 | `const x = (() => { return foo() })()`          | valid   |
-| `const x = (function () { return foo() })()`    | valid   |
 | `const x = () => { return foo() }()`            | invalid |
+| `const x = (function () { return foo() })()`    | valid   |
 | `const x = function () { return foo() }()`      | valid   |
-| `function () { return foo() }()`                | invalid |
 | `(() => { return foo() })()`                    | valid   |
 | `() => { return foo() }()`                      | invalid |
+| `(function () { return foo() })()`              | valid   |
+| `function () { return foo() }()`                | invalid |
 
 ## Semicolon at the beginning
 
 There are two cases where putting a semicolon before the IIFE is necessary.
 
-- If you are not using any module system and concentrating JavaScript files manually.
+### If you are not using any module system and concatenate JavaScript files manually.
 
 ```js
 // File a.js
@@ -221,14 +230,24 @@ console.log(1)
 })()
 ```
 
-Which is the equivalent of 
+If you concatenate these files, the executed code is the equivalent to
 
 ```js
 console.log(1)(() => {})()
 // Uncaught TypeError: console.log(...) is not a function
 ```
 
-- If you are not using semicolons at the end of statements and have standalone IIFE with no assignment
+You can solve this problem by putting semicolon before the IIFE
+
+```js
+;(() => {
+  // Code
+})()
+```
+
+### If you are not using semicolons
+
+When you decide to omit semicolons at the end of statements, and you have standalone IIFE with no assignment, semicolon at the beginning is required for the reasons described above.
 
 ```js
 // ok
@@ -244,4 +263,4 @@ const res2 = (() => { return 1 })()
 ;(() => { return 1 })()
 ```
 
-- Use linter like [ESLint](http://eslint.org/) to prevent you from making such mistakes.
+You can use linter like [ESLint](http://eslint.org/) to prevent you from making such mistakes.

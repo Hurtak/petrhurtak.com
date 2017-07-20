@@ -1,7 +1,7 @@
 ## What is IIFE
 
-- `IIFE` is abbreviation for `immediately-invoked function expression`.
-- What that basically means is, that we define new function and we execute it immediately
+- `IIFE` is an abbreviation for `immediately-invoked function expression`.
+- What that means is, that we define a new function and execute it immediately.
 
 ```js
 console.log(1)
@@ -16,7 +16,7 @@ console.log(1)
   console.log(3)
 })()
 
-// IIFE equivalent, function definition and function call
+// Regular function call equivalent
 function foo () {
   console.log(4)
 }
@@ -31,10 +31,10 @@ console.log(5)
 
 ### Not leaking variables into the global scope
 
-- In browser land - if you are not using modules, it is a good practice to wrap your code inside iife to make sure:
-    - You are not leaking any global variables into global scope.
-    - Your variables are not overwriten by later scripts that also can acces global scope.
-    - You do not overwrite global variables with variables that you define with the same name.
+- In the browser environment (if you are not using module system), it is a good practice to wrap your code inside IIFE to make sure:
+    - You are not leaking any global variables/functions into global scope.
+    - Your variables cannot be overwritten by any other scripts that also might be accessing global scope.
+    - You do not accidentally overwrite global variables of other scripts by using the same name.
 
 ```js
 <DOCTYPE html>
@@ -45,7 +45,7 @@ console.log(5)
     <script>
       (() => {
         const config = { foo: 'bar' }
-        // Config is not leaked to the window object
+        // `config` is not leaked to the window object
         App.init(config)
       })()
     </script>
@@ -53,7 +53,7 @@ console.log(5)
 </html>
 ```
 
-### Nested code block that assign value to variable
+### Variable assignment with its own scope
 
 ```js
 // IIFE
@@ -69,7 +69,7 @@ const bar = 2
 const res = foo + bar
 ```
 
-- This is more common in functional languages where there are keywords for such nestings.
+- This approach is more common in functional languages where language keywords like `let` might be available.
 
 ```elm
 res =
@@ -80,9 +80,8 @@ res =
     foo + bar
 ```
 
-- This might lead to better code structure where it is clearer what parts of code are only sub computations and it also provides better variable names (shadowing?).
-
-- There is also stage 1 `do` keyword [proposal](https://gist.github.com/dherman/1c97dfb25179fa34a41b5fff040f9879) for JavaScript that introduces such functionality. It is also supported by [Babel](https://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=es2015%2Cstage-0%2Cstage-1%2Cstage-2%2Cstage-3&targets=&browsers=&builtIns=false&debug=false&code_lz=MYewdgzgLgBATgUwjAvDAJiGBvAUDGUSWAMxCzQEZ9DxoYAjAQzlRgCYaysBqRl3AF8gA).
+- It might lead to better code structure where it is clearer what parts of the code are only sub computations.
+- At the moment there is stage 1 `do` keyword [proposal](https://gist.github.com/dherman/1c97dfb25179fa34a41b5fff040f9879) for JavaScript that introduces such functionality. It is also supported by [Babel](https://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=es2015%2Cstage-0%2Cstage-1%2Cstage-2%2Cstage-3&targets=&browsers=&builtIns=false&debug=false&code_lz=MYewdgzgLgBATgUwjAvDAJiGBvAUDGUSWAMxCzQEZ9DxoYAjAQzlRgCYaysBqRl3AF8gA).
 
 ```js
 const res = do {
@@ -130,8 +129,8 @@ const res = do {
 
 - Module pattern was once popular before the module system was introduced into the language.
 - This pattern provides:
-    - Encapsulation
-    - True pripave variables/functions/methods (unlike with JavaScript class).
+    - Encapsulation.
+    - True private variables/functions/methods (unlike with JavaScript classes).
 
 ```js
 const Module = (() => {
@@ -162,9 +161,9 @@ Module.init(10)
 Module.publicMethod() // 11
 ```
 
-- Compared to classes there is downside, that there is only one shared state and you cannot create multiple instances.
+- Compared to classes there is a downside,  there is only one shared state, and you cannot create multiple instances.
 
-- While instancing can be done with the module pattern, it is not recommended since new functions are created for each instance. Instead of having one method that is reused on each instance with the prototype chaing. This will lead to bigger memory requiremeents compared to classes.
+- While instances can be done with the module pattern, they are not recommended since new functions are created for each instance, instead of having one method that is reused on each instance with the prototype chain. This will lead to bigger memory requirements compared to classes.
 
 ```js
 const Module = initialState => (() => {
@@ -194,7 +193,7 @@ console.log(instanceB.publicMethod()) // 11
 
 ## Why are parentheses required around IIFE?
 
-You have to wrap the function in parens in order to make it [parse as an expression](http://benalman.com/news/2010/11/immediately-invoked-function-expression/). While it will parse in some cases, in most it will not so it is a good practice to always wrap them.
+You have to wrap the function in parentheses in order to make the code [parse as an expression](http://benalman.com/news/2010/11/immediately-invoked-function-expression/). While the code will be parsed in some cases, in most it will not, so it is a good practice to always use them.
 
 | Code                                            | Valid   |
 | ----------------------------------------------- | ------- |
@@ -208,34 +207,41 @@ You have to wrap the function in parens in order to make it [parse as an express
 
 ## Semicolon at the beginning
 
-There are two cases whe putting semicolon before the IIFE is necessary.
+There are two cases where putting a semicolon before the IIFE is necessary.
 
-If you are not using any module system and concentrating JavaScript files manually.
-
-In this case your code
+- If you are not using any module system and concentrating JavaScript files manually.
 
 ```js
 // File a.js
+console.log(1)
+
+// File b.js
 (() => {
   // Code
 })()
 ```
 
-Will get concetrated with this code
+Which is the equivalent of 
 
 ```js
-console.log
+console.log(1)(() => {})()
+// Uncaught TypeError: console.log(...) is not a function
 ```
 
-It will be interpreted as
+- If you are not using semicolons at the end of statements and have standalone IIFE with no assignment
 
 ```js
-console.log(() => {
-  // Code
-})()
+// ok
+const res1 = (() => { return 1 })()
+const res2 = (() => { return 1 })()
+
+// not ok
+(() => { return 1 })()
+(() => { return 1 })()
+
+// ok
+;(() => { return 1 })()
+;(() => { return 1 })()
 ```
 
-Which when run, will alert the function then complain that the result of the alert call is not a function and produces an error.
-The semicolon ends whatever expression that might precede the IIFE so that its parens can't be misinterpreted as a function call.
-
-- Use linter like [ESLint](http://eslint.org/) to prevent you from making such mistake
+- Use linter like [ESLint](http://eslint.org/) to prevent you from making such mistakes.

@@ -1,7 +1,7 @@
 ## What is IIFE
 
 - `IIFE` is an abbreviation for `immediately-invoked function expression`.
-- What that means is, that we define a new function and execute it immediately.
+- What that means is that we define a new function and execute it immediately.
 
 ```js
 console.log(1)
@@ -83,7 +83,7 @@ res =
     foo + bar
 ```
 
-At the moment there is stage 1 `do` keyword [proposal](https://gist.github.com/dherman/1c97dfb25179fa34a41b5fff040f9879) for JavaScript that introduces such functionality. It is also supported by [Babel](https://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=es2015%2Cstage-0%2Cstage-1%2Cstage-2%2Cstage-3&targets=&browsers=&builtIns=false&debug=false&code_lz=MYewdgzgLgBATgUwjAvDAJiGBvAUDGUSWAMxCzQEZ9DxoYAjAQzlRgCYaysBqRl3AF8gA).
+At the moment there is a stage 1 `do` keyword [proposal](https://gist.github.com/dherman/1c97dfb25179fa34a41b5fff040f9879) for JavaScript that introduces such functionality. It is also supported by [Babel](https://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=es2015%2Cstage-0%2Cstage-1%2Cstage-2%2Cstage-3&targets=&browsers=&builtIns=false&debug=false&code_lz=MYewdgzgLgBATgUwjAvDAJiGBvAUDGUSWAMxCzQEZ9DxoYAjAQzlRgCYaysBqRl3AF8gA).
 
 ```js
 const res = do {
@@ -226,7 +226,7 @@ console.log(1)
 
 // File b.js
 (() => {
-  // Code
+  // ...
 })()
 ```
 
@@ -241,7 +241,7 @@ You can solve this problem by putting semicolon before the IIFE
 
 ```js
 ;(() => {
-  // Code
+  // ...
 })()
 ```
 
@@ -264,3 +264,15 @@ const res2 = (() => { return 1 })()
 ```
 
 You can use linter like [ESLint](http://eslint.org/) to prevent you from making such mistakes.
+
+## Other ways to enforce function expression
+
+There are several other ways you can write the IIFE's, but they do not work with arrow functions and are not that commonly used.
+
+```js
+!function () { /* ... */ }()
+~function () { /* ... */ }()
+-function () { /* ... */ }()
++function () { /* ... */ }()
+void function () { /* ... */ }()
+```

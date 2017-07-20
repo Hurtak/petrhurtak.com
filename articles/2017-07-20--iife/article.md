@@ -141,7 +141,7 @@ This pattern provides:
 - True private variables/functions/methods (unlike with JavaScript classes).
 
 ```js
-const Module = (() => {
+const Counter = (() => {
   // private variables/functions
   let state = 0
 
@@ -153,7 +153,7 @@ const Module = (() => {
     state += 1
   }
 
-  function publicMethod () {
+  function increment () {
     privateMethod()
     return state
   }
@@ -161,12 +161,12 @@ const Module = (() => {
   // exported public functions
   return {
     init,
-    publicMethod
+    increment
   }
 })()
 
-Module.init(10)
-Module.publicMethod() // 11
+Counter.init(10)
+Counter.increment() // 11
 ```
 
 Compared to classes there is a downside,  there is only one shared state, and you cannot create multiple instances.
@@ -174,7 +174,7 @@ Compared to classes there is a downside,  there is only one shared state, and yo
 While instances can be done with the module pattern, it is not recommended to do that because new functions are created for each instance, instead of having one method on the prototype chain that is reused by each instance. This will also lead to bigger memory requirements compared to classes.
 
 ```js
-const Module = initialState => (() => {
+const Counter = initialState => (() => {
   // private variables/functions
   let state = initialState
 
@@ -182,21 +182,21 @@ const Module = initialState => (() => {
     state += 1
   }
 
-  function publicMethod () {
+  function increment () {
     privateMethod()
     return state
   }
 
   // exported public functions
   return {
-    publicMethod
+    increment
   }
 })()
 
-const instanceA = Module(1)
-const instanceB = Module(10)
-console.log(instanceA.publicMethod()) // 2
-console.log(instanceB.publicMethod()) // 11
+const counterA = Counter(1)
+const counterB = Counter(10)
+counterA.increment() // 2
+counterB.increment() // 11
 ```
 
 ## Why are parentheses required around IIFE?

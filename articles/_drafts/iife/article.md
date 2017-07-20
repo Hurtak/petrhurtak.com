@@ -267,7 +267,7 @@ You can use linter like [ESLint](http://eslint.org/) to prevent you from making 
 
 ## Other ways to enforce function expression
 
-There are several other ways you can write the IIFE's, but they do not work with arrow functions and are not that commonly used.
+There are several other ways you can write the IIFE's, but they do not work with arrow functions and are not that commonly used (outside of minifies which use them because they are 1 character shorter than the version with parentheses).
 
 ```js
 !function () { /* ... */ }()

@@ -22,7 +22,7 @@
     "gulp": "git://github.com/gulpjs/gulp.git#e9e5ab7e70080e1bfb5650a4fdc4c8849e70b3e0",
     "gulp-real-favicon": "0.2.2",
     "highlight.js": "9.11.0",
-    "html-minifier": "3.4.0",
+    "html-minifier": "3.5.3",
     "js-yaml": "3.8.2",
     "lodash": "4.17.4",
     "markdown-it": "8.3.1",

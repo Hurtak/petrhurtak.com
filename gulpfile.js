@@ -1,7 +1,7 @@
 'use strict'
 
 const path = require('path')
-const fs = require('fs-promise')
+const fs = require('fs-extra')
 
 const gulp = require('gulp')
 const execa = require('execa')
@@ -135,7 +135,15 @@ async function compileScripts (done, productionBuild) {
       }]
     ]
   }).code
-  code = uglifyJS.minify(code, { fromString: true }).code
+
+  const uglifyRes = uglifyJS.minify(code)
+  if (uglifyRes.error) {
+    throw uglifyRes.error
+  }
+  if (uglifyRes.warning) {
+    console.warn(uglifyRes.warning)
+  }
+  code = uglifyRes.code
 
   const hashJs = revHash(Buffer.from(code))
   nunjucks.addGlobal('hashJs', hashJs)

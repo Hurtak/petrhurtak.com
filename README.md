@@ -4,6 +4,8 @@
 
 # blog
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Hurtak/hurtak.cc.svg)](https://greenkeeper.io/)
+
 - TODO
 
 ## License

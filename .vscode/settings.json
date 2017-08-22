@@ -3,5 +3,6 @@
     ".nyc_output": true,
     "coverage": true
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "git.ignoreLimitWarning": true
 }

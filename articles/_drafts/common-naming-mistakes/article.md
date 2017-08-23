@@ -73,7 +73,7 @@ If you know about any other expressions that get confused often, tell me in comm
 ## TODO
 
 - common mistakes in naming
-  - find other examples - also I should have something in my notes
   - url vs uri
+    - https://stackoverflow.com/questions/176264/what-is-the-difference-between-a-uri-a-url-and-a-urn
   - imperative vs procedural vs declarative
 - is `expression` the right word?

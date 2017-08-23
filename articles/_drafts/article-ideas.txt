@@ -1,3 +1,9 @@
+- unicode box drawing characters
+  - https://en.wikipedia.org/wiki/Box-drawing_character
+  - use line-height: 0 so the vertical lines align
+
+- url parts
+
 - semicolons vs no semicolons
   https://www.youtube.com/watch?v=gsfbh17Ax9I
   http://standardjs.com/
@@ -47,13 +53,6 @@
   Statistika kolik lidí používá no semicollon
 
   https://www.youtube.com/watch?v=Qlr-FGbhKaI
-
-- common mistakes in naming
-  - parameter vs argument
-  - function vs method
-  - pararell vs serial
-  - find other examples - also I should have something in my notes
-  - imperative vs procedural vs declarative
 
 - gitignore
   - .gitkeep

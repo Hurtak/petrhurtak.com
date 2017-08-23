@@ -218,6 +218,10 @@
   padding: 0.5em;
 }
 
+.Article-content code.language-diagram {
+  line-height: 1;
+}
+
 /*
  * quotes
  */

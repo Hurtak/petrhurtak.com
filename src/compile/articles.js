@@ -62,12 +62,15 @@ function getArticles (postsDirectory, draftsDirectory, nunjucks) {
 function getArticleData (articleFolderPath, isPublished, nunjucks) {
   const metadataPath = path.join(articleFolderPath, paths.articleMetadata)
   const metadataContent = fs.readFileSync(metadataPath, 'utf8')
-  const metadata = Object.assign(
-    yaml.safeLoad(metadataContent),
-    { published: isPublished }
-  )
+  const metadata = Object.assign(yaml.safeLoad(metadataContent), {
+    published: isPublished
+  })
 
-  const snippetsData = getSnippetsData(articleFolderPath, metadata.url, metadata.snippetsConfig)
+  const snippetsData = getSnippetsData(
+    articleFolderPath,
+    metadata.url,
+    metadata.snippetsConfig
+  )
   const snippets = enhanceSnippetsDataWithConfig(snippetsData)
 
   const articleHtml = getArticleHtml(articleFolderPath, snippets, nunjucks)
@@ -87,9 +90,14 @@ function getArticleData (articleFolderPath, isPublished, nunjucks) {
 }
 
 function getArticleHtml (articlePath, snippets, nunjucks) {
+  const skippedLanguages = ['text', 'diagram']
+
   const markdown = markdownIt({
     html: true,
-    highlight: (str, language) => language ? highlight.highlight(language, str).value : false
+    highlight: (str, language) =>
+      (language && !skippedLanguages.includes(language)
+        ? highlight.highlight(language, str).value
+        : false)
   })
 
   // TODO: every time we make html transformation we take html
@@ -98,10 +106,17 @@ function getArticleHtml (articlePath, snippets, nunjucks) {
   //       back to html string. We could pass around cheerio
   //       object so creation of cheerio object and transformation
   //       to html string will be done only once
-  let articleHtml = fs.readFileSync(path.join(articlePath, paths.articleMarkdown), 'utf8')
+  let articleHtml = fs.readFileSync(
+    path.join(articlePath, paths.articleMarkdown),
+    'utf8'
+  )
   articleHtml = markdown.render(articleHtml)
   articleHtml = utilsArticles.addIdsToHeadings(articleHtml)
-  articleHtml = utilsArticles.enhanceSnippetLinks(articleHtml, snippets, nunjucks)
+  articleHtml = utilsArticles.enhanceSnippetLinks(
+    articleHtml,
+    snippets,
+    nunjucks
+  )
 
   return articleHtml
 }

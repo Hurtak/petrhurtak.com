@@ -1,6 +1,6 @@
-Little collection of technical expressions that I either confuse often or that I see often confused by other people.
+A Little collection of technical expressions that I either confuse often or that I see often confused by other people.
 
-## Parameter vs argument
+## Parameter vs. argument
 
 ```js
 function log (parameter) {
@@ -12,13 +12,13 @@ log('argument')
 
 ### Parameter
 
-Variable in a funtion signature that is placeholder for the actual value passed into the function.
+Variable in a function signature that is a placeholder for the actual value passed into the function.
 
 ### Argument
 
-Actual value passed into the function.
+The actual value passed into the function.
 
-## Function vs method
+## Function vs. method
 
 ```js
 function functionName (state) {
@@ -38,15 +38,15 @@ class ClassName {
 
 ### Function
 
-- Data is usually passed into the function explicitely.
+- Data is usually passed into the function explicitly.
 
 ### Method
 
 - OOP paradigm.
 - Methods are called on instance or object `instance.methodName()`.
-- Usually it operates on data that is contained within the instance of the class.
+- Usually, it operates on data that is contained within the instance of the class.
 
-## Serial vs pararell
+## Serial vs. parallel
 
 ### Serial
 
@@ -68,12 +68,12 @@ class ClassName {
 
 ```
 
-## URL vs URI
+## URL vs. URI
 
 URIs are identifiers, and that can mean name, location, or both. All URLs are URIs, but the opposite is not true. The part that makes something a URL is the inclusion of the "access mechanism", or "network location", such as `https://`, or `mailto:`.
 
-- URI: when you’re referring to a resource just by its name or some other fragment.
-- URL: When you’re giving both the name of a resource and the method of accessing it.
+- URI: when you're referring to a resource just by its name or some other fragment.
+- URL: When you're giving both the name of a resource and the method of accessing it.
 
 ### Examples
 
@@ -84,4 +84,4 @@ URIs are identifiers, and that can mean name, location, or both. All URLs are UR
 
 - [https://danielmiessler.com/study/url-uri/](https://danielmiessler.com/study/url-uri/)
 
-If you know about any other expressions that get confused often, tell me in comments.
+If you know about any other expressions that are often confused, tell me about them in comments.

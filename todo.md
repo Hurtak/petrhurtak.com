@@ -4,6 +4,7 @@
 
 - compile articles
     - replace `"` with correct quotes
+    - `you're` -> `you’re`
 
 - can i use links
 - skip deploy task from periodic builds

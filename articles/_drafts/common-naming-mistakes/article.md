@@ -21,16 +21,16 @@ Actual value passed into the function.
 ## Function vs method
 
 ```js
-function theFunction (state) {
+function functionName (state) {
   return state + 1
 }
 
-class TheClass {
+class ClassName {
   constructor () {
     this.state = 0
   }
 
-  theMethod () {
+  methodName () {
     this.state += 1
   }
 }
@@ -43,10 +43,8 @@ class TheClass {
 ### Method
 
 - OOP paradigm.
-- Methods are called on instance or object `instance.theMethod()`.
+- Methods are called on instance or object `instance.methodName()`.
 - Usually it operates on data that is contained within the instance of the class.
-
-If you know about any other expressions that get confused often, tell me in comments.
 
 ## Serial vs pararell
 
@@ -62,18 +60,28 @@ If you know about any other expressions that get confused often, tell me in comm
 
 ```diagram
 
-            ┏━━ A ━━┓
-            ┃       ┃
-    input ━━╋━━ B ━━╋━━ response
-            ┃       ┃
-            ┗━━ C ━━┛
+            ┏━━━━ A ━━━━┓
+            ┃           ┃
+    input ━━╋━━━━ B ━━━━╋━━ response
+            ┃           ┃
+            ┗━━━━ C ━━━━┛
 
 ```
 
-## TODO
+## URL vs URI
 
-- common mistakes in naming
-  - url vs uri
-    - https://stackoverflow.com/questions/176264/what-is-the-difference-between-a-uri-a-url-and-a-urn
-  - imperative vs procedural vs declarative
-- is `expression` the right word?
+URIs are identifiers, and that can mean name, location, or both. All URLs are URIs, but the opposite is not true. The part that makes something a URL is the inclusion of the "access mechanism", or "network location", such as `https://`, or `mailto:`.
+
+- URI: when you’re referring to a resource just by its name or some other fragment.
+- URL: When you’re giving both the name of a resource and the method of accessing it.
+
+### Examples
+
+- `example.com` URI.
+- `https://example.com` URI and URL.
+
+## Links
+
+- [https://danielmiessler.com/study/url-uri/](https://danielmiessler.com/study/url-uri/)
+
+If you know about any other expressions that get confused often, tell me in comments.

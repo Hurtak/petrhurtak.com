@@ -2,6 +2,9 @@
 
 ## NEXT RELEASE
 
+- compile articles
+    - replace `"` with correct quotes
+
 - can i use links
 - skip deploy task from periodic builds
 - write first article

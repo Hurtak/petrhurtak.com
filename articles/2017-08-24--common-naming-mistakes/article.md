@@ -56,7 +56,7 @@ class ClassName {
 
 ```
 
-### Pararell
+### Parallel
 
 ```diagram
 

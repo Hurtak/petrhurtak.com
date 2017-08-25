@@ -1,19 +1,19 @@
 # TODO
 
-## NEXT RELEASE
+## Latest
 
 - compile articles
     - replace `"` with correct quotes
     - `you're` -> `you’re`
+- Today (as date) is not capitalized in articles list
+
+## Older
 
 - can i use links
 - skip deploy task from periodic builds
 - write first article
     - http://i.imgur.com/A6gQxoM.jpg
 - videos are jumping around when we refresh the page?
-
-## Right after release
-
 - articles on main page ale filtered with UTC, dates displayed are without UTC.
 - when displaying '2 days ago' dates - round dates to latest midnight
 - headings should have links to the hashes

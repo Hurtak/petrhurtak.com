@@ -1,3 +1,10 @@
+- gulp
+
+- local storage
+  - localStorage.set('key', 1) vs localStorage.key = 1
+  - get the size of local storage
+  - size overflow error
+
 - unicode box drawing characters
   - https://en.wikipedia.org/wiki/Box-drawing_character
   - use line-height: 0 so the vertical lines align

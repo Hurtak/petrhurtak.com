@@ -1,3 +1,13 @@
+- time tag
+  <time
+    class="Article-datetime"
+    title="{{ metadata.dateLastUpdate | fullDate }}"
+    datetime="{{ metadata.dateLastUpdate | datetimeAttribute }}"
+    data-date-convert
+  >
+    {{ metadata.dateLastUpdate | fullDate }}
+  </time>
+
 - gulp
 
 - local storage

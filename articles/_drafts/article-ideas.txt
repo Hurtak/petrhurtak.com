@@ -17,6 +17,7 @@
     - suit/bem
     - Text component from Calendar project
       - can be used outside of react in Bem/SuitCSS
+  - steidas article
 
 - gulp
 

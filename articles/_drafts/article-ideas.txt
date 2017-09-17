@@ -8,6 +8,16 @@
     {{ metadata.dateLastUpdate | fullDate }}
   </time>
 
+- specifying styles for text
+  - default styles (p, h1 has margin)
+  - evolution:
+    - typography variables, mixins
+    - suit/bem
+  - react:
+    - suit/bem
+    - Text component from Calendar project
+      - can be used outside of react in Bem/SuitCSS
+
 - gulp
 
 - local storage

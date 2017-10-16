@@ -1,3 +1,9 @@
+- Create React app, experiences
+  - React App Rewired
+  - rozdeleni na vice appek (debug/normal)
+  - autoprefixer
+  - obecne veci z Krastyho
+
 - union type concept from elm
   - explain the type
   - ELM example

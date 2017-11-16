@@ -1,3 +1,10 @@
+- CORS hlavicky
+  - co vsechno musi backend vracet
+  - k cemu to vubec je
+  - je potreba neco navic u postu?
+  - options request
+  - ukazka cors proxy?
+
 - Create React app, experiences
   - React App Rewired
   - rozdeleni na vice appek (debug/normal)

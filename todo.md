@@ -28,6 +28,7 @@
     - add cool efect to buttons like in https://www.keithcirkel.co.uk/
     - inspiration:
         - new
+            - https://tomdale.net/
             - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
             - https://www.robinwieruch.de/mobx-react/
             - https://www.bramstein.com/writing/web-font-loading-patterns.html

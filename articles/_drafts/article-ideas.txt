@@ -5,6 +5,14 @@
   - options request
   - ukazka cors proxy?
 
+- element
+  - viewport size
+    - zoomed in?
+  - obrazky.cz repo - there will be good code examples
+  - dimensions
+  - is visible
+  - page size
+
 - Create React app, experiences
   - React App Rewired
   - rozdeleni na vice appek (debug/normal)

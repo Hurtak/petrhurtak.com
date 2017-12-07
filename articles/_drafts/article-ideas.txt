@@ -119,9 +119,6 @@
 
   https://www.youtube.com/watch?v=Qlr-FGbhKaI
 
-- gitignore
-  - .gitkeep
-
 - async component loading
   - https://github.com/thejameskyle/react-loadable
 

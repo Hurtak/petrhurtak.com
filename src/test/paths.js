@@ -1,7 +1,7 @@
-import test from 'ava'
+import test from "ava";
 
-import paths from '../compile/paths.js'
+import paths from "../compile/paths.js";
 
-test('paths', t => {
-  t.true(Object.keys(paths).length > 0)
-})
+test("paths", t => {
+  t.true(Object.keys(paths).length > 0);
+});

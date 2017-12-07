@@ -1,29 +1,29 @@
 /*
  * libraries
  */
-@import '../../../node_modules/normalize.css/normalize.css';
-@import '../../../node_modules/highlight.js/styles/xcode.css';
+@import "../../../node_modules/normalize.css/normalize.css";
+@import "../../../node_modules/highlight.js/styles/xcode.css";
 
 /*
  * resets & shared styles
  */
-@import 'general/resets.css';
-@import 'general/variables.css';
-@import 'general/typography.css';
+@import "general/resets.css";
+@import "general/variables.css";
+@import "general/typography.css";
 
 /*
  * page specific components
  */
-@import 'index/index.css';
-@import 'index/article-preview.css';
-@import 'article/article.css';
-@import 'article/article-snippet.css';
-@import '404/not-found.css';
+@import "index/index.css";
+@import "index/article-preview.css";
+@import "article/article.css";
+@import "article/article-snippet.css";
+@import "404/not-found.css";
 
 /*
  * shared components
  */
-@import 'components/page.css';
-@import 'components/header.css';
-@import 'components/menu.css';
-@import 'components/footer.css';
+@import "components/page.css";
+@import "components/header.css";
+@import "components/menu.css";
+@import "components/footer.css";

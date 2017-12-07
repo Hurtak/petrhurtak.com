@@ -32,10 +32,10 @@
   font-family: var(--font-family-code);
   font-size: var(--font-size-paragraph);
   outline: 0;
-  border: 0!important; /* TODO: remove */
+  border: 0 !important; /* TODO: remove */
 }
 .Snippet-button:first-child {
-  margin-left: 0
+  margin-left: 0;
 }
 .Snippet-button:hover {
   background-color: var(--color-gray-light);

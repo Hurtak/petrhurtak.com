@@ -1,12 +1,12 @@
-'use strict'
+"use strict";
 
 module.exports = {
   //
   // Blog configuration
   //
 
-  siteUrl: 'https://www.hurtak.cc',
-  siteUrlShort: 'hurtak.cc',
+  siteUrl: "https://www.hurtak.cc",
+  siteUrlShort: "hurtak.cc",
   yearFounded: 2015,
 
   articles: {
@@ -30,10 +30,7 @@ module.exports = {
     online: true
   },
 
-  debugSkipPackages: [
-    'nunjucks',
-    'gulp'
-  ],
+  debugSkipPackages: ["nunjucks", "gulp"],
 
   //
   // Compilation configuration
@@ -41,11 +38,7 @@ module.exports = {
 
   // used with Autoprefixer and Babel
   // https://github.com/ai/browserslist#queries
-  supportedBrowsers: [
-    'last 2 versions',
-    'Firefox ESR',
-    '> 2%'
-  ],
+  supportedBrowsers: ["last 2 versions", "Firefox ESR", "> 2%"],
 
   // https://mozilla.github.io/nunjucks/api.html#configure
   nunjucks: {
@@ -53,5 +46,4 @@ module.exports = {
     throwOnUndefined: true, // (default: false) throw errors when outputting a null/undefined value
     noCache: true // (default: false) never use a cache and recompile templates each time (server-side)
   }
-
-}
+};

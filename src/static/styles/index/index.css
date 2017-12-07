@@ -1,4 +1,5 @@
-.Index {}
+.Index {
+}
 
 .Index-heading {
   font-family: var(--font-family-heading);
@@ -12,4 +13,3 @@
 .Index-articles {
   padding-top: 2.4rem;
 }
-

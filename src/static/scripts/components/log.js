@@ -1,35 +1,35 @@
-window.App.Log = (function () {
-  'use strict'
+window.App.Log = (function() {
+  "use strict";
 
   const config = {
-    apiLogExceptionUrl: '/api/log/exception',
-    apiLogAppMessageUrl: '/api/log/app-message'
-  }
+    apiLogExceptionUrl: "/api/log/exception",
+    apiLogAppMessageUrl: "/api/log/app-message"
+  };
 
-  function init () {
-    window.addEventListener('error', logException)
+  function init() {
+    window.addEventListener("error", logException);
 
     // setTimeout(() => throwError, 1000) // debug
   }
 
-  function error (module, message, additionalData) {
-    console.error(`[${module}] ${message}`)
+  function error(module, message, additionalData) {
+    console.error(`[${module}] ${message}`);
 
     const data = {
       module: module,
       message: message,
       additionalData: additionalData,
-      logType: 'error'
-    }
+      logType: "error"
+    };
 
     window.fetch(config.apiLogAppMessageUrl, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(data),
-      headers: new window.Headers({ 'Content-Type': 'application/json' }) // TODO: double check
-    })
+      headers: new window.Headers({ "Content-Type": "application/json" }) // TODO: double check
+    });
   }
 
-  function logException (e) {
+  function logException(e) {
     const data = {
       columnNumber: e.colno,
       lineNumber: e.lineno,
@@ -48,17 +48,17 @@ window.App.Log = (function () {
       timestamp: e.timeStamp,
       // extra fields
       date: new Date().toUTCString()
-    }
+    };
 
     window.fetch(config.apiLogExceptionUrl, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(data),
-      headers: new window.Headers({ 'Content-Type': 'application/json' }) // TODO: double check
-    })
+      headers: new window.Headers({ "Content-Type": "application/json" }) // TODO: double check
+    });
   }
 
   return {
     init,
     error
-  }
-}())
+  };
+})();

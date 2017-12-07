@@ -35,12 +35,12 @@ Sources:
 */
 
 :root {
-    --color1: magenta;
-    --color2: cyan;
+  --color1: magenta;
+  --color2: cyan;
 
-    --padding: 1em;
-    --border: 4px;
-    --border-big: 8px;
+  --padding: 1em;
+  --border: 4px;
+  --border-big: 8px;
 }
 
 body {
@@ -50,51 +50,51 @@ body {
 /* Typography */
 
 body {
-    font-size: 30px;
-    font-family: "Comic Sans MS", consolas, monospace;
+  font-size: 30px;
+  font-family: "Comic Sans MS", consolas, monospace;
 }
 
 /* Lists */
 
 ol,
 ul {
-    list-style-type: hiragana;
-    padding-left: var(--padding);
-    margin-top: var(--padding);
-    margin-bottom: var(--padding);
+  list-style-type: hiragana;
+  padding-left: var(--padding);
+  margin-top: var(--padding);
+  margin-bottom: var(--padding);
 }
 
 /* Buttons */
 
 button {
-    background-color: var(--color1);
-    border: var(--padding) solid var(--color1);
-    padding: var(--padding);
+  background-color: var(--color1);
+  border: var(--padding) solid var(--color1);
+  padding: var(--padding);
 }
 
 button:focus {
-    outline: 0.5em solid var(--color2);
+  outline: 0.5em solid var(--color2);
 }
 
 /* Input & Textarea */
 
 input {
-    border: var(--border) solid var(--color1);
-    padding: var(--padding);
-    width: 200%;
+  border: var(--border) solid var(--color1);
+  padding: var(--padding);
+  width: 200%;
 }
 
 input:focus {
-    outline: var(--border-big) solid var(--color2);
+  outline: var(--border-big) solid var(--color2);
 }
 
 textarea {
-    border: var(--border) solid var(--color1);
-    padding: var(--padding);
-    width: 200%;
-    height: 50em;
+  border: var(--border) solid var(--color1);
+  padding: var(--padding);
+  width: 200%;
+  height: 50em;
 }
 
 textarea:focus {
-    outline: var(--border-big) solid var(--color2);
+  outline: var(--border-big) solid var(--color2);
 }

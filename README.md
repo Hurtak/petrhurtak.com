@@ -4,9 +4,9 @@
 
 # Hurtak.cc
 
-- Articles are in the [articles](./articles) folder
-- Source files are in the [arc](./src) folder
-- The project is developed and compiled with [gulpfile.js](./gulpfile.js)
+* Articles are in the [articles](./articles) folder
+* Source files are in the [arc](./src) folder
+* The project is developed and compiled with [gulpfile.js](./gulpfile.js)
 
 ## License
 

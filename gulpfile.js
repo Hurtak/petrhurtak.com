@@ -516,15 +516,6 @@ async function testUnit(done) {
   done();
 }
 
-async function testLint(done) {
-  try {
-    await execa.shell('standard --verbose "scripts/**/*.js" "src/**/*.js"');
-  } catch (e) {
-    console.log(e.stdout);
-  }
-  done();
-}
-
 async function testCoverage(done) {
   try {
     await execa.shell(
@@ -611,17 +602,13 @@ gulp.task("browser-sync:reload-browser", browserSyncReloadBrowser);
 gulp.task("browser-sync:inject-css", browserSyncInjectCss);
 
 gulp.task("test:unit", testUnit);
-gulp.task("test:lint", testLint);
 gulp.task("test:coverage", testCoverage);
 gulp.task("test:coverage-report", testCoverageReport);
 gulp.task("test:coveralls", testCoveralls);
 
 gulp.task(
   "test:all",
-  gulp.parallel(
-    "test:lint",
-    gulp.series("test:unit", "test:coverage", "test:coverage-report")
-  )
+  gulp.series("test:unit", "test:coverage", "test:coverage-report")
 );
 
 gulp.task("watch:articles", () =>
@@ -676,11 +663,7 @@ gulp.task(
 
 gulp.task(
   "ci:test",
-  gulp.series(
-    gulp.parallel("test:lint", "test:unit"),
-    "site:compile",
-    "site:compile:production"
-  )
+  gulp.series("test:unit", "site:compile", "site:compile:production")
 );
 
 gulp.task(

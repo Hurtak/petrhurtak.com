@@ -1,3 +1,10 @@
+- vim basics
+  - selection
+  - copy
+  - paste
+  - search
+  - regex search
+
 - CORS hlavicky
   - co vsechno musi backend vracet
   - k cemu to vubec je

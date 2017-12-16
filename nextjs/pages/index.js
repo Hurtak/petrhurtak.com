@@ -1,6 +1,6 @@
 import React from "react";
 import { rehydrate, css } from "glamor";
-import glamorous from "glamorous";
+import Layout from "../components/layout.js";
 
 // Adds server generated styles to glamor cache.
 // Has to run before any `style()` calls
@@ -10,13 +10,18 @@ if (typeof window !== "undefined") {
 }
 
 css.global("body", {
-  margin: 0,
-  background: "orange"
+  margin: 0
 });
 
 class Index extends React.Component {
   render() {
-    return <React.Fragment>Hello</React.Fragment>;
+    return (
+      <Layout>
+        Hello
+        <br />
+        Hello2
+      </Layout>
+    );
   }
 }
 

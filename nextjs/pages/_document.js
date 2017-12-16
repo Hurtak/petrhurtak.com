@@ -48,7 +48,6 @@ export default class MyDocument extends Document {
 
           {/* Google analytics */}
           {/* https://phpfashion.com/rychlejsi-stranky-s-google-universal-analytics */}
-          {/* NOTE: we could use https://github.com/react-ga/react-ga */}
           <script
             dangerouslySetInnerHTML={{
               __html: `

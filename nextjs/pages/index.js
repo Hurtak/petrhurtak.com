@@ -9,12 +9,15 @@ if (typeof window !== "undefined") {
   rehydrate(window.__NEXT_DATA__.ids);
 }
 
-const main = () => {
-  css.global("body", {
-    margin: 0
-  });
+css.global("body", {
+  margin: 0,
+  background: "orange"
+});
 
-  return <React.Fragment>Hello</React.Fragment>;
-};
+class Index extends React.Component {
+  render() {
+    return <React.Fragment>Hello</React.Fragment>;
+  }
+}
 
-export default main;
+export default Index;

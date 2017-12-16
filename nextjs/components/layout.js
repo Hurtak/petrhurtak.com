@@ -16,7 +16,58 @@ class Layout extends React.Component {
   render() {
     return (
       <Page>
-        {/* {% include 'components/header.njk' %} */}
+        <Header>
+          <HeaderContent>
+            <HeaderLogo href="/">
+              <HeaderLogoImage
+                class="Header-logo-image"
+                src="/static/images/logo.svg"
+                width="130"
+                height="55"
+                alt="{{ globals.siteUrlShort | capitalize }} logo"
+              />
+            </HeaderLogo>
+
+            <HeaderMenu>
+              <ul class="Menu">
+                <li class="Menu-item">
+                  <a class="Menu-item-link Menu-item-link--articles" href="/">
+                    Articles
+                  </a>
+                </li>
+                <li class="Menu-item">
+                  <a
+                    class="Menu-item-link Menu-item-link--twitter"
+                    href="https://twitter.com/PetrHurtak"
+                    target="_blank"
+                  >
+                    Twitter
+                  </a>
+                </li>
+                <li class="Menu-item">
+                  <a
+                    class="Menu-item-link Menu-item-link--github"
+                    href="https://github.com/Hurtak"
+                    target="_blank"
+                  >
+                    Github
+                  </a>
+                </li>
+                <li class="Menu-item">
+                  <a
+                    class="Menu-item-link Menu-item-link--rss"
+                    href="/rss.xml"
+                    rel="alternate"
+                    type="application/rss+xml"
+                  >
+                    RSS
+                  </a>
+                </li>
+              </ul>
+            </HeaderMenu>
+          </HeaderContent>
+        </Header>
+
         <PageCentered>
           <PageMain>{this.props.children}</PageMain>
 
@@ -29,13 +80,18 @@ class Layout extends React.Component {
               </FooterParagraphLink>
             </FooterParagraph>
           </Footer>
-
-          {/* {% include 'components/footer.njk' %} */}
         </PageCentered>
       </Page>
     );
   }
 }
+
+const limitedWidthWithPadding = {
+  paddingLeft: s.dimensions.contentSpacing,
+  paddingRight: s.dimensions.contentSpacing,
+  maxWidth: s.dimensions.contentMaxWidth,
+  width: "100%"
+};
 
 const Page = glamorous.div({
   display: "flex",
@@ -47,21 +103,53 @@ const Page = glamorous.div({
 });
 
 const PageCentered = glamorous.div({
+  ...limitedWidthWithPadding,
   display: "flex",
   flex: 1,
   flexDirection: "column",
-  width: "100%",
-
-  /* TODO: move into mixin once they are avaliable - same code used in header.css & page.css */
-  padding: `0 ${s.dimensions.contentSpacing}`,
-  maxWidth: s.dimensions.contentMaxWidth
+  alignItems: "center",
+  width: "100%"
 });
 
 const PageMain = glamorous.main({
-  flex: 1 // To make footer sticky
+  flex: 1, // To make footer sticky
+  width: "100%"
+});
+
+const Header = glamorous.header({
+  display: "flex",
+  width: "100%",
+  paddingTop: s.grid(7.5), // TODO
+  flexDirection: "column",
+  alignItems: "center",
+  backgroundColor: s.colors.blueMain
+});
+
+const HeaderContent = glamorous.div({
+  ...limitedWidthWithPadding,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  width: "100%"
+});
+
+const HeaderLogo = glamorous.a({
+  display: "block"
+});
+
+const HeaderLogoImage = glamorous.img({
+  display: "block",
+  width: s.size(130),
+  height: s.size(55),
+  margin: `${s.size(20)} ${s.size(80)}`
+});
+
+const HeaderMenu = glamorous.nav({
+  width: "100%"
 });
 
 const Footer = glamorous.footer({
+  width: "100%",
   padding: `${s.grid(8)} 0 ${s.grid(2)}`
 });
 

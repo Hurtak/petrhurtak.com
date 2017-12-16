@@ -45,6 +45,26 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+
+          {/* Google analytics */}
+          {/* https://phpfashion.com/rychlejsi-stranky-s-google-universal-analytics */}
+          {/* NOTE: we could use https://github.com/react-ga/react-ga */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                ga = function() { ga.q.push(arguments); };
+                ga.q = [];
+                ga.l = new Date().getTime();
+                ga("create", "UA-93333552-1", "auto");
+                ga("send", "pageview");
+              `
+            }}
+          />
+          <script
+            src="https://www.google-analytics.com/analytics.js"
+            async
+            defer
+          />
         </body>
       </html>
     );

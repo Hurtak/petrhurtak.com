@@ -22,7 +22,7 @@ class Layout extends React.Component {
 
           <Footer>
             <FooterParagraph>2015&ndash;{config.yearCurrent}</FooterParagraph>
-            <FooterParagraph author>
+            <FooterParagraph withMarginTop>
               Written by{" "}
               <FooterParagraphLink href="mailto:petr.hurtak@gmail.com">
                 Petr Huřťák
@@ -73,7 +73,7 @@ const FooterParagraph = glamorous.p(
     textAlign: "center"
   },
   props => {
-    if (props.author) {
+    if (props.withMarginTop) {
       return {
         marginTop: s.grid(1)
       };

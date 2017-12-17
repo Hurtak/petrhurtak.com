@@ -49,14 +49,14 @@ Unlike more traditional text editors, where if you start typing the letters will
 
 ### Command mode
 
-| Command                      | Key              | Abbreviation         |
-| ---------------------------- | ---------------- | -------------------- |
-| Save file                    | `w`              | **w**rite            |
-| Quit Vim                     | `q`              | **q**uit             |
-| Force quit Vim               | `q!`             | **q**uit             |
-| Save file and quit Vim       | `wq`             | **w**rite + **q**uit |
-| Search                       | `/searched term` |                      |
-| Search &ndash; next item     | `n`              | **n**ext             |
-| Search &ndash; previous item | `N`              |                      |
+| Command                               | Key              | Abbreviation         |
+| ------------------------------------- | ---------------- | -------------------- |
+| Save file                             | `w`              | **w**rite            |
+| Quit Vim                              | `q`              | **q**uit             |
+| Force quit Vim (drop unsaved changes) | `q!`             | **q**uit             |
+| Save file and quit Vim                | `wq`             | **w**rite + **q**uit |
+| Search                                | `/searched term` |                      |
+| Search &ndash; next item              | `n`              | **n**ext             |
+| Search &ndash; previous item          | `N`              |                      |
 
 [vim]: https://insights.stackoverflow.com/survey/2017#technology-most-popular-developer-environments-by-occupation

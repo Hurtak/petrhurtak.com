@@ -23,7 +23,7 @@ Unlike more traditional text editors, where if you start typing the letters will
 
 ### Modes & Commands
 
-| Mode name   | Description     | How to get there                                                                                             |
+| Mode name   | Key             | Description                                                                                                  |
 | ----------- | --------------- | ------------------------------------------------------------------------------------------------------------ |
 | Normal      | `Esc`           | For navigation and manipulation of text. The default mode. You can usually get back to this mode with `Esc`. |
 | Insert      | `Insert` or `i` | For inserting text.                                                                                          |

@@ -1,18 +1,32 @@
-## Title
+#adw
 
-Open file in vim
+Vim is [one of the most popular text editor][vim] and one of his advantages is that it runs inside terminal and it is widely avaliable on Linux distributions, you will find hin either preinstalled or you can install him with one command. So if you are using SSH to connect to some servers once in a while, Vim might come in handy for some quick file edits or file exploration like search and replace. So this article focuses completly on this usecase, by default I use other editor and use sshfs (mention sshfs-box) to connect remote directories, but for some quick edits Vim is useful and you should know some basics.
+
+## Install
+
+```bash
+sudo apt-get install vim
+```
+
+## Open file in Vim
 
 ```bash
 vim filepath
 ```
 
-| Mode name   | Description     | How to get there                                                                                                                        |
-| ----------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Normal      | `Esc`           | For navigation and manipulation of text. This is the mode that vim will usually start in, which you can usually get back to with `Esc`. |
-| Insert      | `Insert` or `i` | For inserting new text.                                                                                                                 |
-| Visual      | `v`             | Text selections.                                                                                                                        |
-| Visual Line | `V`             | Selection of whole lines.                                                                                                               |
-| Command     | `:`             | For entering commands like for searching, saving or exiting vim.                                                                        |
+## Basic usage
+
+Unlike more traditional text editors where if you start typing the letters will be inserted at the place of the cursor, Vim works little differently. In Vim you have modes and the default one is for text navigation and manipulation and letters on your keyboard are shortcuts for things like cut, paste, mode change, save file. So if you want to select text, you enter `Visual` mode, if you want to insert text, you enter `Insert` mode and so on.
+
+### Modes & Commands
+
+| Mode name   | Description     | How to get there                                                                                                     |
+| ----------- | --------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Normal      | `Esc`           | For navigation and manipulation of text. This is the default mode. You can usually get back to this mode with `Esc`. |
+| Insert      | `Insert` or `i` | For inserting new text.                                                                                              |
+| Visual      | `v`             | Text selections.                                                                                                     |
+| Visual Line | `V`             | Selection of whole lines.                                                                                            |
+| Command     | `:`             | For entering commands like searching, save file or exit Vim.                                                         |
 
 ### Command mode
 
@@ -26,21 +40,20 @@ vim filepath
 | Search &ndash; next item     | `n`              | next         |
 | Search &ndash; previous item | `N`              |              |
 
-## TODO
+### Normal mode
 
-| Command                | Key       | Shortening | Mode   | Description |
-| ---------------------- | --------- | ---------- | ------ | ----------- |
-| Delete (cut) line      | `d` + `d` | delete     | Normal |             |
-| Delete (cut) selection | `d`       | delete     | Visual |             |
-| Copy                   | `y`       | yank       | Visual |             |
-| Delete (cut) selection | `d`       |            | Visual |             |
+| Command           | Key          | Shortening | Mode   | Description |
+| ----------------- | ------------ | ---------- | ------ | ----------- |
+| Undo              | `u`          | undo       | Normal |             |
+| Redo              | `Ctrl` + `R` | undo       | Normal |             |
+| Cut (delete) line | `d` and `d`  | delete     | Normal |             |
 
-* save file
-* exit
-* force quit
-* copy
-* paste
-* delete line
-* selection
-* search
-* regex search
+### Visual mode
+
+| Command                | Key | Shortening | Mode   | Description |
+| ---------------------- | --- | ---------- | ------ | ----------- |
+| Copy                   | `y` | yank       | Visual |             |
+| Paste                  | `p` | paste      | Visual |             |
+| Cut (delete) selection | `d` | delete     | Visual |             |
+
+[vim]: https://insights.stackoverflow.com/survey/2017#technology-most-popular-developer-environments-by-occupation

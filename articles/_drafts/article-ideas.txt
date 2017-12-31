@@ -1,3 +1,5 @@
+- todos apps mostly useless - google calendar
+
 - CORS hlavicky
   - co vsechno musi backend vracet
   - k cemu to vubec je

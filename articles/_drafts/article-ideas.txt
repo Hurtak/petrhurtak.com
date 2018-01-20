@@ -1,3 +1,57 @@
+- macbook pro switch
+  - tak studeny po ranu ze jsem si parkrat musel po ranu zahrat nejakou 3d hru aby se trochu zahral
+  - keyboard
+    - annoyingly low key travel, you get used to it but never stopped feeling "wrong"
+    - retarded arrow keys, up and down is half size
+    - missing keys like delete pageup down - annoying, you need to learn more gestures, but probably ok
+    - media keys instead of function keys
+      - i like this, i use volume up/down next track way more than function keys, so i like that this is default. And in reality even on windows you would not miss them because what function keys are you really using
+        - f5 - cmd/control + r doest the refresh also
+        - midnight commander, this is where you use them the most and it is little annoying
+    - completly different keyboard layout - i like that the more common gestures loke copy and paste ale easier to reach (command is where alt is on regular keyboard), so your hands do not hurt as much compared to regular keyboards, but i still get confused and have no idea when to use command/option or control.
+    - system keyboards do not fucking match what i have on keyboard backtick key is switched with backslash key, what the fuck??
+  - regular mouses do not fucking work out of the box, every special key is mapped middle mouse button so when i plugged my mouse with back button it did nothing - this even works on Linux out of the box.
+  - speakers - really good
+  - window management
+    - suprisingly i like the fullscreen, i thought it was super retarded but it actually made me like and use multiple desktops (i tried this on windows and linux and always went back to 1 workplace)
+    - there is no maximize button like on windows or linux, so you see most users using 60% of the screen when only using one app - because there is no fucking maximize button, only fullscreen button which is not what you want most of the time. fortunately there is great app called Magnet, that does exactly this
+  - macos
+    - notification centre - just as useless as on windows
+    - time - when you click on time in top bar it does not expand to small month calendar like on Win/Linux, annoying since i got used to this feature
+    - sound in top bar - it only expands to volume bar, on Linux it shoved spotify controls and on windows you could expand to sound mixed of all apps playing sound
+  - usb-c annoying, you need adapter for anything
+    - there are all in one adapters that solve this but they are expensive ~70USD
+    - do not buy cheap ones, they might not work, i brought some and when i plugged it in, wifi stopped working because it interfired with usb3 and 2.4ghz wifi - appearently this is because macos is from metal and there is not as much protection to filter this interference (wtf), so it will probably work with other computers but not on your mac. So you either buy more expensive one or you wrap the hub in aluminium foil (this was actually recommnended on some macos forums, wtf??)
+  - app store
+    - super slow
+    - slightly more useful than windows store
+  - dmg
+    - i like that it is sandboxed until you drag it into the applications folder
+    - the common drag app to applications folder is fucked up if you enable displaying dotfiles in finder
+  - finder
+    - no go up one folder button (wtf??), there is cmd+up shortcut, but still wtf?
+    - way worse than windows finder, which actually got ok over time
+    - it does not tell you where you are in the folder structure, you can add special button that kinda tells you but you still need to click it to find you where you are
+    - enter fakin renames instead of opening the folder / app, wtf?? i am opening 100x more than renaming so wtf? if you want to open you either need to click on your mouse or you need to learn cmd+o shortcut
+    - space does quick preview of the file, pretty nice
+    - when you open picture in macos default image viewer app called "Preview" it does not allow cycling to next/previous image - what the actuall fuck??
+      - you can press the space to shou quick preview, this is pretty nice, but again does not allow you to cycle between images, you actually need to select more images and then press space, wtf??
+      - there is special cover flow view type that actually does the image cycling and is pretty nice, better than windows and linux
+    - it created the .DS_Store file all over the place in every fucking directory you touch with this program.
+    - creating new folder is ridiculous, you cant actually click on folder and tell it create new directory
+      - you either need to find empty row (which is top level, you might want to create directory somewhere nested) and right click new directory
+      - or you need to click on action button at the top and select create directory - wich then proceeds to crate not in the directory you selected but in the fucking top level, what the fuck??
+  - fullscreen
+    - really cool, when you play fullscreen game you can smoothly switch to another desktop with three fingers swipe or control+left/right
+  - touchpad
+    - nice
+    - dont mind the bigger size - no problems when typing
+    - no buttons - ok and sometimes easier to use for the easy stuff (clicking with right mouse button on link to open in new window). but for anything more serious (dragging file/folder between windows) it is worse - and way less reliable
+  - office suite
+    - free comapred to windows so that is really nice
+    - simpler and easier to use than office it seemed, i used it for the first time and the stuf i wanted to do in the Numbers app were usualy very easy to find, i am not saying that the simple stuff I do is hard in office, but it seemed easier in Apple suite. Nice
+  - for non profesional work (emails, calendar, web browser stuff) macos feels nicer compared to other 2 systems, trackpack gestures are really nice. but once you start doing some more serious stuff the new/weirh keyboard layout and other unusual stuff starts getting in the way
+
 - todos apps mostly useless - google calendar
 
 - CORS hlavicky

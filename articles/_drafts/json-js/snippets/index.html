@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>JSON &amp; JS compatibility</title>
+</head>
+
+<body>
+  <div>
+    <h1>JSON &amp; JS compatibility</h1>
+    <p>Open your console and see the source code for this page</p>
+  </div>
+
+  <script>
+    // `\u2028` works fine.
+    const value = "\u2028";
+    console.log(`const value = "\\u2028";`)
+    console.log(`value: "${value}"`)
+    console.log(`value.length: ${value.length}`)
+    console.log(`value.charCodeAt(0).toString(16): ${value.charCodeAt(0).toString(16)}`)
+  </script>
+
+  <script>
+    // Raw `\u2028` ends with Uncaught SyntaxError: Invalid or unexpected token.
+    const value = " ";
+  </script>
+
+  <script>
+    // Same with `\u2029`.
+    const value = "	 ";
+  </script>
+</body>
+
+</html>

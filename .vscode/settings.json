@@ -3,6 +3,9 @@
     ".nyc_output": true,
     "coverage": true
   },
-  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  },
   "git.ignoreLimitWarning": true
 }

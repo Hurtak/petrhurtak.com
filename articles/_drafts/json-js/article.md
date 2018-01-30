@@ -1,16 +1,12 @@
 ## Title
 
-* Empty article
+JSON stands for JavaScript Object Notation and is an open-standard file format that uses human-readable text to transmit data.
 
-<!--
+JSON is a language-independent data format that was derived from JavaScript
 
-Description:http://timelessrepo.com/json-isnt-a-javascript-subset
+Although Douglas Crockford originally asserted that JSON is a strict subset of JavaScript, his specification actually allows valid JSON documents that are invalid JavaScript. Specifically, JSON allows the Unicode line terminators U+2028 LINE SEPARATOR and U+2029 PARAGRAPH SEPARATOR to appear unescaped in quoted strings, while JavaScript does not.
+`
 
-\u2028 was sometimes present in title, which is
-legal character in JSON but not in JavaScript
-@see: https://cml.kancelar.seznam.cz/fulltext/ticket/14953
-@see: http://timelessrepo.com/json-isnt-a-javascript-subset
+## Links
 
-<?teng set __title = regex_replace($__title, '\\x{2028}|\\x{2029}', '') ?>
-
--->
+* [http://timelessrepo.com/json-isnt-a-javascript-subset](http://timelessrepo.com/json-isnt-a-javascript-subset)

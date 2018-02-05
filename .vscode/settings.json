@@ -3,11 +3,6 @@
     ".nyc_output": true,
     "coverage": true
   },
-  "[javascript]": {
-    "editor.formatOnSave": true
-  },
-  "[markdown]": {
-    "editor.formatOnSave": true
-  },
+  "editor.formatOnSave": true,
   "git.ignoreLimitWarning": true
 }

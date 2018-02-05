@@ -1,18 +1,13 @@
 {
-  "name": "with-glamorous",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
-  },
+  "name": "hurtak.cc",
+  "version": "2.0.0",
   "dependencies": {
-    "glamor": "^2.20.24",
-    "glamorous": "^4.11.4",
-    "next": "^4.2.3",
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "glamor": "2.20.24",
+    "glamorous": "4.11.4",
+    "next": "4.2.3",
+    "prop-types": "15.6.0",
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
   },
   "license": "MIT"
 }

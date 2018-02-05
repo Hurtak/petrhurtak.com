@@ -12,5 +12,8 @@
     "react": "16.2.0",
     "react-dom": "16.2.0"
   },
+  "engines": {
+    "node": "9.4.0"
+  },
   "license": "MIT"
 }

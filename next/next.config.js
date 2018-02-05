@@ -1,12 +1,14 @@
 module.exports = {
-  exportPathMap: () => {
-    return {
-      "/": { page: "/" }
-      //   '/about': { page: '/about' },
-      //   '/readme.md': { page: '/readme' },
-      //   '/p/hello-nextjs': { page: '/post', query: { title: 'hello-nextjs' } },
-      //   '/p/learn-nextjs': { page: '/post', query: { title: 'learn-nextjs' } },
-      //   '/p/deploy-nextjs': { page: '/post', query: { title: 'deploy-nextjs' } }
-    };
-  }
+  // exportPathMap: async () => {
+  //   const pages = {};
+  //   return {
+  //     ...pages,
+  //     "/": { page: "/" }
+  //     //   '/about': { page: '/about' },
+  //     //   '/readme.md': { page: '/readme' },
+  //     //   '/p/hello-nextjs': { page: '/post', query: { title: 'hello-nextjs' } },
+  //     //   '/p/learn-nextjs': { page: '/post', query: { title: 'learn-nextjs' } },
+  //     //   '/p/deploy-nextjs': { page: '/post', query: { title: 'deploy-nextjs' } }
+  //   };
+  // }
 };

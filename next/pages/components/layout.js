@@ -18,7 +18,6 @@ if (typeof window !== "undefined") {
 s.globals.forEach(({ selector, definitions }) => {
   css.global(selector, definitions);
 });
-// css.global("body", { margin: "33px" });
 
 class Layout extends React.Component {
   static propTypes = {
@@ -55,6 +54,7 @@ class Layout extends React.Component {
                     className="Menu-item-link Menu-item-link--twitter"
                     href="https://twitter.com/PetrHurtak"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Twitter
                   </a>
@@ -64,6 +64,7 @@ class Layout extends React.Component {
                     className="Menu-item-link Menu-item-link--github"
                     href="https://github.com/Hurtak"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Github
                   </a>

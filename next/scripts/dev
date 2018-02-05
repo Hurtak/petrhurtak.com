@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")/.."
 
-./node_modules/.bin/next
+NODE_ENV="development"
+node ./server/server.js

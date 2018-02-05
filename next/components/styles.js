@@ -1,6 +1,15 @@
 export const grid = size => `${size * 8}px`;
 export const size = size => `${size}px`;
 
+export const globals = [
+  {
+    selector: "body",
+    definitions: {
+      margin: 0
+    }
+  }
+];
+
 export const colors = {
   grayLighter: "#f5f5f5",
   grayLight: "#dddddd",

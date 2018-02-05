@@ -2,6 +2,7 @@
   "name": "hurtak.cc",
   "version": "2.0.0",
   "dependencies": {
+    "babel-plugin-glamorous-displayname": "2.2.0",
     "glamor": "2.20.24",
     "glamorous": "4.11.4",
     "next": "4.2.3",

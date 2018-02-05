@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { rehydrate, css } from "glamor";
 import glamorous from "glamorous";
 import * as s from "./styles.js";
 
@@ -7,6 +8,17 @@ const config = {
   yearFound: 2015,
   yearCurrent: new Date().getFullYear()
 };
+
+// Adds server generated styles to glamor cache.
+// Has to run before any `style()` calls
+// '__NEXT_DATA__.ids' is set in '_document.js'
+if (typeof window !== "undefined") {
+  rehydrate(window.__NEXT_DATA__.ids);
+}
+s.globals.forEach(({ selector, definitions }) => {
+  css.global(selector, definitions);
+});
+// css.global("body", { margin: "33px" });
 
 class Layout extends React.Component {
   static propTypes = {
@@ -20,7 +32,7 @@ class Layout extends React.Component {
           <HeaderContent>
             <HeaderLogo href="/">
               <HeaderLogoImage
-                class="Header-logo-image"
+                className="Header-logo-image"
                 src="/static/images/logo.svg"
                 width="130"
                 height="55"
@@ -29,33 +41,36 @@ class Layout extends React.Component {
             </HeaderLogo>
 
             <HeaderMenu>
-              <ul class="Menu">
-                <li class="Menu-item">
-                  <a class="Menu-item-link Menu-item-link--articles" href="/">
+              <ul className="Menu">
+                <li className="Menu-item">
+                  <a
+                    className="Menu-item-link Menu-item-link--articles"
+                    href="/"
+                  >
                     Articles
                   </a>
                 </li>
-                <li class="Menu-item">
+                <li className="Menu-item">
                   <a
-                    class="Menu-item-link Menu-item-link--twitter"
+                    className="Menu-item-link Menu-item-link--twitter"
                     href="https://twitter.com/PetrHurtak"
                     target="_blank"
                   >
                     Twitter
                   </a>
                 </li>
-                <li class="Menu-item">
+                <li className="Menu-item">
                   <a
-                    class="Menu-item-link Menu-item-link--github"
+                    className="Menu-item-link Menu-item-link--github"
                     href="https://github.com/Hurtak"
                     target="_blank"
                   >
                     Github
                   </a>
                 </li>
-                <li class="Menu-item">
+                <li className="Menu-item">
                   <a
-                    class="Menu-item-link Menu-item-link--rss"
+                    className="Menu-item-link Menu-item-link--rss"
                     href="/rss.xml"
                     rel="alternate"
                     type="application/rss+xml"

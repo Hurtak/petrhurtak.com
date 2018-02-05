@@ -1,25 +1,20 @@
 import React from "react";
-import { rehydrate, css } from "glamor";
 import Layout from "../components/layout.js";
 
-// Adds server generated styles to glamor cache.
-// Has to run before any `style()` calls
-// '__NEXT_DATA__.ids' is set in '_document.js'
-if (typeof window !== "undefined") {
-  rehydrate(window.__NEXT_DATA__.ids);
-}
-
-css.global("body", {
-  margin: 0
-});
-
 class Index extends React.Component {
+  static getInitialProps({ req }) {
+    const userAgent = req ? req.headers["user-agent"] : navigator.userAgent;
+    return { userAgent };
+  }
+
   render() {
     return (
       <Layout>
         Hello
         <br />
         Hello2
+        <br />
+        {this.props.userAgent}
       </Layout>
     );
   }

@@ -4,7 +4,9 @@
     "coverage": true
   },
   "[javascript]": {
-    "editor.tabSize": 2,
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
     "editor.formatOnSave": true
   },
   "git.ignoreLimitWarning": true

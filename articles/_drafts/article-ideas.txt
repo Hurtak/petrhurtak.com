@@ -1,3 +1,15 @@
+- free pub sub in browser (obrazky.cz)
+
+- chmod
+
+- clanek textbox - offline support, localstorage na zapamatovani
+
+- http authentication
+  - WWW-Authenticate
+  - Proxy-Authenticate
+
+- kb v KiB
+
 - macbook pro switch
   - tak studeny po ranu ze jsem si parkrat musel po ranu zahrat nejakou 3d hru aby se trochu zahral
   - keyboard

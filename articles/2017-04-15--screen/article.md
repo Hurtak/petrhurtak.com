@@ -40,7 +40,7 @@ Once you are in a Screen session, you can control it through keyboard shortcuts.
 | New session                                            | `screen`                                                                                                |
 | New session with name                                  | `screen -S name`                                                                                        |
 | List of Screen sessions                                | `screen -ls`                                                                                            |
-| Reattach to session                                    |  `screen -r [id or name]`                                                                               |
+| Reattach to session                                    | `screen -r [id or name]`                                                                               |
 | Reattach to session or create one if it does not exist | `screen -R [id or name]`                                                                                |
 | Kill session                                           | `screen -S [id or name] -X quit` <br>Or just connect to the screen with `screen -r` and then run `exit` |
 | Kill all sessions                                      | `pkill screen`                                                                                          |

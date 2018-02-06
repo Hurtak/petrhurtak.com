@@ -1,27 +1,39 @@
 const express = require("express");
 const next = require("next");
+const apiPosts = require("./api/posts.js");
 
-const port = Number(process.env.PORT) || 3000;
+const port = Number(process.env.APP_PORT) || 3000;
 const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev });
-const handle = app.getRequestHandler();
 
-app.prepare().then(() => {
+const nextApp = next({ dev });
+const nextRequestHandler = nextApp.getRequestHandler();
+
+async function main() {
+  await nextApp.prepare();
+
   const server = express();
 
-  // custom route for posts
+  // API
+  server.get("/api/posts", (req, res) => {
+    const posts = apiPosts();
+    res.json(posts);
+  });
+
+  // Custom route for posts
   server.get("/post/:id", (req, res) => {
-    return app.render(req, res, "/post", {
+    return nextApp.render(req, res, "/post", {
       id: req.params.id
     });
   });
 
   server.get("*", (req, res) => {
-    return handle(req, res);
+    return nextRequestHandler(req, res);
   });
 
   server.listen(port, err => {
     if (err) throw err;
     console.log(`> Ready on http://localhost:${port}`);
   });
-});
+}
+
+main();

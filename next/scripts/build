@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-cd "$(dirname "$0")/.."
-
-NODE_ENV="production"
-./node_modules/.bin/next build
-node ./server/server.js

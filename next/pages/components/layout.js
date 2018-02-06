@@ -40,46 +40,46 @@ class Layout extends React.Component {
             </HeaderLogo>
 
             <HeaderMenu>
-              <ul className="Menu">
-                <li className="Menu-item">
-                  <a
+              <Menu>
+                <MenuItem>
+                  <MenuItemLink
                     className="Menu-item-link Menu-item-link--articles"
                     href="/"
                   >
                     Articles
-                  </a>
-                </li>
-                <li className="Menu-item">
-                  <a
+                  </MenuItemLink>
+                </MenuItem>
+                <MenuItem>
+                  <MenuItemLink
                     className="Menu-item-link Menu-item-link--twitter"
                     href="https://twitter.com/PetrHurtak"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Twitter
-                  </a>
-                </li>
-                <li className="Menu-item">
-                  <a
+                  </MenuItemLink>
+                </MenuItem>
+                <MenuItem>
+                  <MenuItemLink
                     className="Menu-item-link Menu-item-link--github"
                     href="https://github.com/Hurtak"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Github
-                  </a>
-                </li>
-                <li className="Menu-item">
-                  <a
+                  </MenuItemLink>
+                </MenuItem>
+                <MenuItem>
+                  <MenuItemLink
                     className="Menu-item-link Menu-item-link--rss"
                     href="/rss.xml"
                     rel="alternate"
                     type="application/rss+xml"
                   >
                     RSS
-                  </a>
-                </li>
-              </ul>
+                  </MenuItemLink>
+                </MenuItem>
+              </Menu>
             </HeaderMenu>
           </HeaderContent>
         </Header>
@@ -162,6 +162,28 @@ const HeaderLogoImage = glamorous.img({
 
 const HeaderMenu = glamorous.nav({
   width: "100%"
+});
+
+const Menu = glamorous.ul({
+  display: "flex",
+  listStyleType: "none",
+  margin: 0,
+  padding: 0
+});
+
+const MenuItem = glamorous.li({
+  width: "25%",
+  textAlign: "center",
+  userSelect: "none"
+});
+
+const MenuItemLink = glamorous.a({
+  ...s.fonts.headingSmall,
+  display: "block",
+  color: "black",
+  padding: `${s.grid(3)} 0`,
+  borderRadius: s.dimensions.borderRadius,
+  textDecoration: "none"
 });
 
 const Footer = glamorous.footer({

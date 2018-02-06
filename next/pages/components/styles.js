@@ -31,16 +31,27 @@ export const dimensions = {
   contentWidth: `${contentWidth}px`,
   borderRadius: "3px",
 
-  /* TODO: move into mixin once they are avaliable - same code used in header.css & page.css */
+  // TODO: move into mixin once they are avaliable - same code used in header.css & page.css
   contentSpacing: `${contentSpacing}px`,
   contentMaxWidth: `${contentWidth + 2 * contentSpacing}px`
 };
 
+// TOOD: rename
+const f = {
+  fontFamilyHeading: "Arial, sans-serif",
+  fontFamilyDefault: "Georgia, serif"
+};
+
 export const fonts = {
   paragraphSmall: {
-    fontFamily: "Georgia, serif",
-    fontSize: grid(2),
+    fontFamily: f.fontFamilyDefault,
+    fontSize: size(20),
     lineHeight: 1.6
+  },
+  headingSmall: {
+    fontFamily: f.fontFamilyHeading,
+    fontSize: size(25),
+    lineHeight: 1.3
   }
 };
 

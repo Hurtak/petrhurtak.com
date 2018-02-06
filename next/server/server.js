@@ -1,6 +1,6 @@
-const express = require("express");
-const next = require("next");
-const apiPosts = require("./api/posts.js");
+import express from "express";
+import next from "next";
+import apiPosts from "./api/posts.js";
 
 const port = Number(process.env.APP_PORT) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -14,8 +14,8 @@ async function main() {
   const server = express();
 
   // API
-  server.get("/api/posts", (req, res) => {
-    const posts = apiPosts();
+  server.get("/api/posts", async (req, res) => {
+    const posts = await apiPosts();
     res.json(posts);
   });
 

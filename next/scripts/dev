@@ -4,4 +4,6 @@ cd "$(dirname "$0")/.."
 export NODE_ENV="development"
 export APP_PORT="3000"
 
-node ./server/server.js
+./node_modules/.bin/nodemon \
+  --watch server \
+  ./server/index.js

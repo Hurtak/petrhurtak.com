@@ -9,10 +9,10 @@ import * as s from "./components/styles.js";
 
 class Index extends React.Component {
   static async getInitialProps() {
-    const reqApi = await fetch("http://localhost:3000/api/posts");
-    const posts = await reqApi.json();
+    const reqApi = await fetch("http://localhost:3000/api/articles");
+    const articles = await reqApi.json();
 
-    return { posts };
+    return { articles };
   }
 
   render() {
@@ -20,14 +20,17 @@ class Index extends React.Component {
       <Layout>
         <Heading>Recent articles</Heading>
         <Spacer>
-          {this.props.posts.map(post => (
-            <Post key={post.id}>
-              <Link href={{ pathname: "/post", query: { postUrl: post.url } }}>
+          {this.props.articles.map(article => (
+            <Post key={article.id}>
+              <Link
+                href={{ pathname: "/post", query: { postUrl: article.url } }}
+                as={`/${article.url}`}
+              >
                 <h2>
-                  <a href={`/${post.url}`}>{post.title}</a>
+                  <a href={`/${article.url}`}>{article.title}</a>
                 </h2>
               </Link>
-              <p>{post.description}</p>
+              <p>{article.description}</p>
             </Post>
           ))}
         </Spacer>

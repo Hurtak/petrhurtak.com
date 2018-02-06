@@ -1,6 +1,6 @@
 import express from "express";
 import next from "next";
-import apiPosts from "./api/posts.js";
+import apiArticles from "./api/articles.js";
 
 const port = Number(process.env.APP_PORT) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -14,15 +14,14 @@ async function main() {
   const server = express();
 
   // API
-  server.get("/api/posts", async (req, res) => {
-    const posts = await apiPosts();
-    res.json(posts);
+  server.get("/api/articles", async (req, res) => {
+    const articles = await apiArticles();
+    res.json(articles);
   });
 
-  // Custom route for posts
-  server.get("/post/:id", (req, res) => {
+  server.get("/:articleUrl", (req, res) => {
     return nextApp.render(req, res, "/post", {
-      id: req.params.id
+      id: req.params.articleUrl
     });
   });
 

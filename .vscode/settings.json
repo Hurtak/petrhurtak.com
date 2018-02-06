@@ -4,5 +4,8 @@
     "coverage": true
   },
   "editor.formatOnSave": true,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
   "git.ignoreLimitWarning": true
 }

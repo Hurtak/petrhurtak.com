@@ -11,6 +11,8 @@ export const globals = [
 ];
 
 export const colors = {
+  white: "#fff",
+
   grayLighter: "#f5f5f5",
   grayLight: "#dddddd",
   grayStandard: "#cccccc",
@@ -24,16 +26,8 @@ export const colors = {
   linkBorder: "rgba(0, 0, 0, 0.3)"
 };
 
-const contentWidth = 700;
-const contentSpacing = 16;
-
 export const dimensions = {
-  contentWidth: `${contentWidth}px`,
-  borderRadius: "3px",
-
-  // TODO: move into mixin once they are avaliable - same code used in header.css & page.css
-  contentSpacing: `${contentSpacing}px`,
-  contentMaxWidth: `${contentWidth + 2 * contentSpacing}px`
+  borderRadius: size(3)
 };
 
 // TOOD: rename

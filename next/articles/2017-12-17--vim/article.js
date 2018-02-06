@@ -1,6 +1,6 @@
 import React from "react";
 
-module.exports = class Article extends React.Component {
+export default class Article extends React.Component {
   static metadata = {
     title: "Vim basics",
 
@@ -15,14 +15,10 @@ module.exports = class Article extends React.Component {
     id: "e2fd547986a4527970cc6be38f38d430"
   };
 
-  constructor() {
-    super();
-  }
-
   render() {
     return <div>XXX</div>;
   }
-};
+}
 
 /*
 ```

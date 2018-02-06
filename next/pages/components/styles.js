@@ -31,19 +31,33 @@ export const dimensions = {
 };
 
 // TOOD: rename
-const f = {
+
+const fontSharedProperties = {
+  margin: 0,
+  fontWeight: "normal"
+};
+
+const fontSharedValues = {
   fontFamilyHeading: "Arial, sans-serif",
   fontFamilyDefault: "Georgia, serif"
 };
 
 export const fonts = {
   paragraphSmall: {
-    fontFamily: f.fontFamilyDefault,
+    ...fontSharedProperties,
+    fontFamily: fontSharedValues.fontFamilyDefault,
     fontSize: size(20),
     lineHeight: 1.6
   },
+  heading: {
+    ...fontSharedProperties,
+    fontFamily: fontSharedValues.fontFamilyHeading,
+    fontSize: size(52),
+    lineHeight: 1.1
+  },
   headingSmall: {
-    fontFamily: f.fontFamilyHeading,
+    ...fontSharedProperties,
+    fontFamily: fontSharedValues.fontFamilyHeading,
     fontSize: size(25),
     lineHeight: 1.3
   }

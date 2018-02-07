@@ -6,3 +6,4 @@
 * commenting service - https://github.com/coralproject/talk
 * Style overscroll area
 * Rewmap description in RSS
+  * Switch to https://github.com/jpmonette/feed

@@ -1,17 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Link from "next/link";
 import { rehydrate, css } from "glamor";
 import glamorous from "glamorous";
+import config from "../../common/config.js";
 import * as s from "./styles.js";
-
-// TODO: move this to better place
-const config = {
-  yearFound: 2015,
-  yearCurrent: new Date().getFullYear(),
-
-  siteUrl: "https://www.hurtak.cc",
-  siteUrlShort: "hurtak.cc"
-};
 
 // Adds server generated styles to glamor cache.
 // Has to run before any `style()` calls
@@ -34,31 +27,35 @@ class Layout extends React.Component {
         <Header>
           <PageLayout>
             <HeaderContent>
-              <HeaderLogo href="/">
-                <HeaderLogoImage
-                  className="Header-logo-image"
-                  src="/static/images/logo.svg"
-                  width="130"
-                  height="55"
-                  alt={`${config.siteUrlShort} logo`}
-                />
-              </HeaderLogo>
+              <Link href="/">
+                <HeaderLogo href="/">
+                  <HeaderLogoImage
+                    className="Header-logo-image"
+                    src="/static/images/logo.svg"
+                    width="130"
+                    height="55"
+                    alt={`${config.siteUrlShort} logo`}
+                  />
+                </HeaderLogo>
+              </Link>
 
               <HeaderMenu>
                 <Menu>
                   <MenuItem>
-                    <MenuItemLink
-                      icon={
-                        <MenuItemLinkIcon
-                          src="/static/images/article.svg"
-                          alt="Article"
-                          padding={0.5}
-                        />
-                      }
-                      href="/"
-                    >
-                      Articles
-                    </MenuItemLink>
+                    <Link href="/">
+                      <MenuItemLink
+                        icon={
+                          <MenuItemLinkIcon
+                            src="/static/images/article.svg"
+                            alt="Article"
+                            padding={0.5}
+                          />
+                        }
+                        href="/"
+                      >
+                        Articles
+                      </MenuItemLink>
+                    </Link>
                   </MenuItem>
                   <MenuItem>
                     <MenuItemLink
@@ -100,7 +97,7 @@ class Layout extends React.Component {
                           padding={2}
                         />
                       }
-                      href="/rss.xml"
+                      href="/rss"
                       rel="alternate"
                       type="application/rss+xml"
                     >

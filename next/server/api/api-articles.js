@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import path from "path";
-import { sortBy, cloneDeep } from "lodash";
+import { sortBy } from "lodash";
 
 const pathArticles = path.join(__dirname, "../../articles/published");
 
@@ -9,16 +9,20 @@ function dateStringToDate(dateString) {
   const [year, month, day] = date.split("-").map(Number);
   const [hours, minutes, seconds] = time.split(":").map(Number);
 
-  return new Date(Date.UTC(year, month, day, hours, minutes, seconds));
+  return Date.UTC(year, month, day, hours, minutes, seconds);
 }
 
-function parseMetadata(metadata) {
-  return metadata.map(m => {
-    m.dateLastUpdate = dateStringToDate(m.dateLastUpdate);
-    m.datePublication = dateStringToDate(m.datePublication);
+function transformMetadata(metadata) {
+  const metadataTransformed = {
+    title: metadata.title,
+    description: metadata.description,
+    url: metadata.url,
+    datePublication: dateStringToDate(metadata.datePublication),
+    dateLastUpdate: dateStringToDate(metadata.dateLastUpdate),
+    id: metadata.id
+  };
 
-    return m;
-  });
+  return metadataTransformed;
 }
 
 export default async function getPosts() {
@@ -30,15 +34,13 @@ export default async function getPosts() {
     .filter(fullPathFolder => fs.lstatSync(fullPathFolder).isDirectory())
     .map(fullPathFolder => path.join(fullPathFolder, "article.js"))
     .map(articleFilePath => require(articleFilePath).default)
-    .map(article => article.metadata);
+    .map(article => article.metadata)
+    .map(metadata => transformMetadata(metadata))
+    // TODO: test this
+    .filter(metadata => metadata.dateLastUpdate <= Date.now());
 
-  metadata = cloneDeep(metadata);
-
-  metadata = parseMetadata(metadata);
   metadata = sortBy(metadata, "dateLastUpdate");
   metadata = metadata.reverse();
-
-  // TODO: remove articles that are in the future
 
   return metadata;
 }

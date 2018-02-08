@@ -5,6 +5,7 @@ import * as s from "./styles.js";
 
 export default class Spacer extends React.Component {
   static propTypes = {
+    spacing: PropTypes.number.isRequired,
     children: PropTypes.node.isRequired
   };
 
@@ -13,15 +14,15 @@ export default class Spacer extends React.Component {
 
     return children.map((item, index) => {
       return (
-        <SpacerItem
+        <glamorous.Div
           key={item.key}
-          css={{ marginTop: index === 0 ? null : s.grid(1) }}
+          css={{
+            marginTop: index === 0 ? null : s.grid(this.props.spacing)
+          }}
         >
           {item}
-        </SpacerItem>
+        </glamorous.Div>
       );
     });
   }
 }
-
-const SpacerItem = glamorous.div({});

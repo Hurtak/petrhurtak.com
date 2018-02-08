@@ -1,8 +1,23 @@
 import articlesRouter from "./articles-router.js";
+import fs from "fs-extra";
 import { expect } from "global";
 
-test("adds 1 + 2 to equal 3", () => {
-  const articles = Object.values(articlesRouter);
+async function loadArticles() {
+  const articlesList = await fs.readdir(pathArticles);
+
+  let metadata = articlesList
+    .map(articleFolder => path.join(pathArticles, articleFolder))
+    // TODO: Make this async.
+    .map(fullPathFolder => path.join(fullPathFolder, "article.js"))
+    .filter(fullPathFolder => fs.lstatSync(fullPathFolder).isDirectory())
+    .map(articleFilePath => require(articleFilePath).default)
+    .map(article => article.metadata);
+}
+
+test("adds 1 + 2 to equal 3", async () => {
+  // for (const [articleUrl, articleModule] of Object.entries(articles)) {
+  //   console.log(articleUrl);
+  // }
   expect(1 + 2).toBe(3);
 });
 

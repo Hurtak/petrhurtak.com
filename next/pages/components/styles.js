@@ -31,7 +31,10 @@ export const dimensions = {
   borderRadius: size(3)
 };
 
-// TOOD: rename
+const breakpoints = {
+  medium: `@media (max-width: ${size(600)})`,
+  small: `@media (max-width: ${size(450)})`
+};
 
 const fontSharedProperties = {
   margin: 0,
@@ -44,23 +47,69 @@ const fontSharedValues = {
 };
 
 export const fonts = {
-  paragraphSmall: {
-    ...fontSharedProperties,
-    fontFamily: fontSharedValues.fontFamilyDefault,
-    fontSize: size(20),
-    lineHeight: 1.6
-  },
   heading: {
     ...fontSharedProperties,
     fontFamily: fontSharedValues.fontFamilyHeading,
     fontSize: size(52),
-    lineHeight: 1.1
+    lineHeight: 1.1,
+    [breakpoints.medium]: {
+      fontSize: size(42)
+    },
+    [breakpoints.small]: {
+      fontSize: size(26)
+    }
   },
+
+  headingMedium: {
+    ...fontSharedProperties,
+    fontFamily: fontSharedValues.fontFamilyHeading,
+    fontSize: size(33),
+    lineHeight: 1.2,
+    [breakpoints.medium]: {
+      fontSize: size(26)
+    },
+    [breakpoints.small]: {
+      fontSize: size(22)
+    }
+  },
+
   headingSmall: {
     ...fontSharedProperties,
     fontFamily: fontSharedValues.fontFamilyHeading,
     fontSize: size(25),
-    lineHeight: 1.3
+    lineHeight: 1.3,
+    [breakpoints.medium]: {
+      fontSize: size(20)
+    },
+    [breakpoints.small]: {
+      fontSize: size(16)
+    }
+  },
+
+  paragraph: {
+    ...fontSharedProperties,
+    fontFamily: fontSharedValues.fontFamilyDefault,
+    fontSize: size(20),
+    lineHeight: 1.6,
+    [breakpoints.medium]: {
+      fontSize: size(16)
+    },
+    [breakpoints.small]: {
+      fontSize: size(16)
+    }
+  },
+
+  paragraphSmall: {
+    ...fontSharedProperties,
+    fontFamily: fontSharedValues.fontFamilyDefault,
+    fontSize: size(16),
+    lineHeight: 1.6,
+    [breakpoints.medium]: {
+      fontSize: size(8)
+    },
+    [breakpoints.small]: {
+      fontSize: size(8)
+    }
   }
 };
 

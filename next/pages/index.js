@@ -23,7 +23,10 @@ class Index extends React.Component {
           {this.props.articles.map(article => (
             <Post key={article.id}>
               <Link
-                href={{ pathname: "/post", query: { postUrl: article.url } }}
+                href={{
+                  pathname: "/article",
+                  query: { articleUrl: article.url }
+                }}
                 as={`/${article.url}`}
               >
                 <h2>

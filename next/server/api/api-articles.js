@@ -1,8 +1,8 @@
 import fs from "fs-extra";
 import path from "path";
-import { sortBy } from "lodash";
+import { sortBy, cloneDeep } from "lodash";
 
-const pathArticles = path.join(__dirname, "../../articles");
+const pathArticles = path.join(__dirname, "../../articles/published");
 
 function validateAndFilterMetadata(metadataArr) {
   let filteredMetadata = [];
@@ -82,31 +82,25 @@ function parseMetadata(metadata) {
   });
 }
 
-let metadataCached = null;
-
-async function getPosts() {
-  if (metadataCached) {
-    return metadataCached;
-  }
-
+export default async function getPosts() {
   const articlesList = await fs.readdir(pathArticles);
 
   let metadata = articlesList
     .map(articleFolder => path.join(pathArticles, articleFolder))
+    // TODO: Make this async.
+    .filter(fullPathFolder => fs.lstatSync(fullPathFolder).isDirectory())
     .map(fullPathFolder => path.join(fullPathFolder, "article.js"))
     .map(articleFilePath => require(articleFilePath).default)
     .map(article => article.metadata);
+
+  metadata = cloneDeep(metadata);
 
   metadata = validateAndFilterMetadata(metadata);
   metadata = parseMetadata(metadata);
   metadata = sortBy(metadata, "dateLastUpdate");
   metadata = metadata.reverse();
 
-  metadataCached = metadata;
-
   // TODO: remove articles that are in the future
 
   return metadata;
 }
-
-module.exports = getPosts;

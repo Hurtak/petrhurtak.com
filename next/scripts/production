@@ -5,4 +5,4 @@ export NODE_ENV="production"
 export APP_PORT="3000"
 
 ./node_modules/.bin/next build
-node ./server/server.js
+node ./server/index.js

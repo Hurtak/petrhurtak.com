@@ -20,5 +20,9 @@
   "engines": {
     "node": "9.4.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "concurrently": "^3.5.1"
+  }
 }

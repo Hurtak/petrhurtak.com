@@ -1,4 +1,5 @@
 export const grid = size => `${size * 8}px`;
+
 export const size = size => `${size}px`;
 
 export const globals = [

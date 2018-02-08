@@ -1,7 +1,8 @@
 import express from "express";
 import next from "next";
 import helmet from "helmet";
-import apiArticles from "./api/articles.js";
+import apiArticles from "./api/api-articles.js";
+import apiArticle from "./api/api-article.js";
 import rss from "./rss.js";
 
 const port = Number(process.env.APP_PORT) || 3000;
@@ -13,16 +14,21 @@ const nextRequestHandler = nextApp.getRequestHandler();
 async function main() {
   await nextApp.prepare();
 
-  const server = express();
-  server.use(helmet());
+  const expressServer = express();
+  expressServer.use(helmet());
 
   // API
-  server.get("/api/articles", async (req, res) => {
+  expressServer.get("/api/articles", async (req, res) => {
     const articles = await apiArticles();
     res.json(articles);
   });
+  expressServer.get("/api/article/:url", async (req, res) => {
+    const article = await apiArticle(req.params.url);
+    res.json(article);
+  });
 
-  server.get("/rss", async (req, res) => {
+  // Special
+  expressServer.get("/rss", async (req, res) => {
     const articles = await apiArticles();
     const rssString = rss(articles);
 
@@ -30,17 +36,20 @@ async function main() {
     res.send(rssString);
   });
 
-  server.get("/:articleUrl", (req, res) => {
-    return nextApp.render(req, res, "/post", {
-      id: req.params.articleUrl
+  // Articles
+  expressServer.get("/:articleUrl", (req, res) => {
+    return nextApp.render(req, res, "/article", {
+      articleUrl: req.params.articleUrl
     });
   });
 
-  server.get("*", (req, res) => {
+  // Rest
+  expressServer.get("*", (req, res) => {
     return nextRequestHandler(req, res);
   });
 
-  server.listen(port, err => {
+  // Start the server
+  expressServer.listen(port, err => {
     if (err) throw err;
     console.log(`> Ready on http://localhost:${port}`);
   });

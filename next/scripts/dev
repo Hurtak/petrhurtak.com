@@ -4,6 +4,8 @@ cd "$(dirname "$0")/.."
 export NODE_ENV="development"
 export APP_PORT="3000"
 
-./node_modules/.bin/nodemon \
-  --watch server \
-  ./server/index.js
+./node_modules/.bin/concurrently \
+    --prefix "{name}" \
+    --names "server,test" \
+    "./node_modules/.bin/nodemon --watch server ./server/index.js" \
+    "./node_modules/.bin/ava ./**/*.test.js --watch"

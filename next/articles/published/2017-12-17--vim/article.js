@@ -16,7 +16,7 @@ export default class Article extends React.Component {
   };
 
   render() {
-    return <div>XXX</div>;
+    return <div>XXXXXXXXXXXXXXXXXVIMVIMVIM</div>;
   }
 }
 

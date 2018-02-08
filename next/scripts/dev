@@ -8,4 +8,4 @@ export APP_PORT="3000"
     --prefix "{name}" \
     --names "server,test" \
     "./node_modules/.bin/nodemon --watch server ./server/index.js" \
-    "./node_modules/.bin/ava ./**/*.test.js --watch"
+    "NODE_ENV=test ./node_modules/.bin/jest ./**/*.test.js --watchAll"

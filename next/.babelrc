@@ -1,4 +1,14 @@
 {
-  "presets": ["next/babel"],
-  "plugins": ["glamorous-displayname"]
+  "env": {
+    "development": {
+      "presets": ["env", "next/babel"],
+      "plugins": ["glamorous-displayname"]
+    },
+    "production": {
+      "presets": ["next/babel"]
+    },
+    "test": {
+      "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]]
+    }
+  }
 }

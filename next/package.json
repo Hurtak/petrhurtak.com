@@ -10,6 +10,7 @@
     "glamorous": "4.11.4",
     "helmet": "3.10.0",
     "isomorphic-fetch": "2.2.1",
+    "jest": "^22.2.1",
     "lodash": "4.17.5",
     "next": "5.0.0",
     "nodemon": "1.14.12",
@@ -22,7 +23,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.25.0",
+    "babel-jest": "^22.2.0",
     "concurrently": "^3.5.1"
   }
 }

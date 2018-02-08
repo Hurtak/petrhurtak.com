@@ -1,14 +1,15 @@
 {
   "env": {
     "development": {
-      "presets": ["env", "next/babel"],
+      "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]],
       "plugins": ["glamorous-displayname"]
     },
     "production": {
-      "presets": ["next/babel"]
+      "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]]
     },
     "test": {
-      "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]]
+      "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]],
+      "plugins": ["glamorous-displayname"]
     }
   }
 }

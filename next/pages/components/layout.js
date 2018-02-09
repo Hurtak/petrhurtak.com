@@ -156,23 +156,28 @@ class PageLayout extends React.Component {
 const PageLayoutWrapper = glamorous.div({
   boxSizing: "border-box",
   display: "flex",
+  flexGrow: 1,
   justifyContent: "center",
   padding: `0 ${s.grid(2)}`,
   width: "100%"
 });
 
 const PageLayoutContent = glamorous.div({
+  display: "flex",
+  flexGrow: 1,
   width: "100%",
   maxWidth: s.size(700)
 });
 
 const PageContent = glamorous.div({
-  flex: 1,
+  display: "flex",
+  flexDirection: "column",
+  flexGrow: 1,
   width: "100%"
 });
 
 const PageMain = glamorous.main({
-  flex: 1, // To make footer sticky
+  flexGrow: 1, // To make footer sticky
   width: "100%"
 });
 

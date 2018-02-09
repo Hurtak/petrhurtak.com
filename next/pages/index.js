@@ -90,12 +90,7 @@ const ArticleTitle = glamorous.h2({
 
 const ArticleTitleLink = glamorous.a({
   ...s.fonts.headingMedium,
-  display: "inline-block",
-  textDecoration: "none",
-  color: s.colors.blueMain,
-  ":hover": {
-    textDecoration: "underline"
-  }
+  ...s.fonts.link
 });
 
 const ArticleDate = glamorous.time({

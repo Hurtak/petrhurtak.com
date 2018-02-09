@@ -47,6 +47,7 @@ const fontSharedValues = {
 };
 
 export const fonts = {
+  // Size modificators
   heading: {
     ...fontSharedProperties,
     fontFamily: fontSharedValues.fontFamilyHeading,
@@ -109,6 +110,15 @@ export const fonts = {
     },
     [breakpoints.small]: {
       fontSize: size(8)
+    }
+  },
+
+  // Type modificators
+  link: {
+    textDecoration: "none",
+    color: colors.blueMain,
+    ":hover": {
+      textDecoration: "underline"
     }
   }
 };

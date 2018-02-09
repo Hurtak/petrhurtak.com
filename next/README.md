@@ -7,3 +7,5 @@
 * Style overscroll area
 * Rewmap description in RSS
   * Switch to https://github.com/jpmonette/feed
+* Change layout to menu on the left
+  * http://vojtechruzicka.com/

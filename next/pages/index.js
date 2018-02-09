@@ -1,6 +1,5 @@
-import React from "react";
 import Link from "next/link";
-import PropTypes from "prop-types";
+import React from "react";
 import glamorous from "glamorous";
 import fetch from "isomorphic-fetch";
 import Layout from "./components/layout.js";

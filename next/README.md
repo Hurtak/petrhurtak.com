@@ -1,4 +1,4 @@
-## Rewrite todos
+# Rewrite TODOS
 
 * Check that Google Analytics works
 * Go through TODOS
@@ -9,3 +9,7 @@
   * Switch to https://github.com/jpmonette/feed
 * Change layout to menu on the left
   * http://vojtechruzicka.com/
+* Incorporate tests
+  * metadata validation
+  * https://github.com/wooorm/alex
+  * something that checks grammar (maybe Grammarly has some API?)

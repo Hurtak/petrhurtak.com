@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import glamorous from "glamorous";
-import * as s from "./styles.js";
+import * as s from "../common/styles.js";
 
 export default class Spacer extends React.Component {
   static propTypes = {

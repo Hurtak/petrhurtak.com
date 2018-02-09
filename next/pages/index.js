@@ -2,9 +2,9 @@ import Link from "next/link";
 import React from "react";
 import glamorous from "glamorous";
 import fetch from "isomorphic-fetch";
-import Layout from "./components/layout.js";
-import Spacer from "./components/spacer.js";
-import * as s from "./components/styles.js";
+import Layout from "../components/layout.js";
+import Spacer from "../components/spacer.js";
+import * as s from "../common/styles.js";
 import * as date from "../common/date.js";
 
 class Index extends React.Component {

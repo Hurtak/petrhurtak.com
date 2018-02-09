@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import { rehydrate, css } from "glamor";
 import glamorous from "glamorous";
-import config from "../../common/config.js";
-import * as s from "./styles.js";
+import config from "../common/config.js";
+import * as s from "../common/styles.js";
 
 // Adds server generated styles to glamor cache.
 // Has to run before any `style()` calls

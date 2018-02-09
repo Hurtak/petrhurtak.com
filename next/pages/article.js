@@ -1,9 +1,14 @@
 import React from "react";
-import Layout from "./components/layout.js";
+import PropTypes from "prop-types";
+import Layout from "../components/layout.js";
 import ArticlesRouter from "../articles/articles-router.js";
 import dynamic from "next/dynamic";
 
 class Article extends React.Component {
+  static propTypes = {
+    articleUrl: PropTypes.string.isRequired
+  };
+
   static async getInitialProps(data) {
     const articleUrl = data.query.articleUrl;
 

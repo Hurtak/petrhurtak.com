@@ -1,4 +1,5 @@
-export const grid = size => `${size * 8}px`;
+export const gridRaw = size => size * 8;
+export const grid = size => `${gridRaw(size)}px`;
 
 export const size = size => `${size}px`;
 
@@ -12,6 +13,7 @@ export const globals = [
 ];
 
 export const colors = {
+  black: "#000",
   white: "#fff",
 
   grayLighter: "#f5f5f5",
@@ -28,7 +30,8 @@ export const colors = {
 };
 
 export const dimensions = {
-  borderRadius: size(3)
+  borderRadius: size(3),
+  paragraphSpacing: size(30)
 };
 
 const breakpoints = {
@@ -38,6 +41,7 @@ const breakpoints = {
 
 const fontSharedProperties = {
   margin: 0,
+  color: colors.black,
   fontWeight: "normal"
 };
 

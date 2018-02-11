@@ -1,10 +1,11 @@
 import React from "react";
 import {
+  Heading1,
   Paragraph,
   Bold,
   List,
   ListItem,
-  Heading1
+  Code
 } from "../../../components/article.js";
 
 export default class Article extends React.Component {
@@ -47,17 +48,23 @@ export default class Article extends React.Component {
         </Paragraph>
 
         <Heading1>Install</Heading1>
+
+        <Code language="javascript">
+          {`
+            const res = (() => {
+              const foo = 1
+              const bar = 2
+              return foo + bar
+            })()
+          `}
+        </Code>
+        <Code language="bash">{`sudo apt-get install vim`}</Code>
       </React.Fragment>
     );
   }
 }
 
 /*
-
-
-```bash
-sudo apt-get install vim
-```
 
 ## Open file in Vim
 

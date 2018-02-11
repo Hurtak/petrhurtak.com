@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import glamorous from "glamorous";
+import stripIndent from "strip-indent";
+import { highlight } from "highlight.js";
 import * as s from "../common/styles.js";
 
 //
@@ -189,6 +191,39 @@ const Heading1Styled = glamorous.h2({
 //   font-weight: normal;
 //   color: var(--color-gray-dark);
 // }
+
+//
+// Special
+//
+
+export class Code extends React.Component {
+  // TODO: make this component dynamic so we do not import whole highlight.js
+
+  static propTypes = {
+    children: PropTypes.string.isRequired,
+    language: PropTypes.string
+  };
+
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.children !== this.props.children) return true;
+    if (nextProps.language !== this.props.language) return true;
+
+    return false;
+  }
+
+  render() {
+    let code = this.props.children;
+    code = stripIndent(code);
+    code = code.trim();
+    code = highlight(this.props.language, code).value;
+
+    return (
+      <pre>
+        <code dangerouslySetInnerHTML={{ __html: code }} />
+      </pre>
+    );
+  }
+}
 
 /*
 

@@ -11,6 +11,7 @@ export default class MyDocument extends Document {
 
   constructor(props) {
     super(props);
+
     const { __NEXT_DATA__, ids } = props;
     if (ids) {
       __NEXT_DATA__.ids = this.props.ids;
@@ -48,6 +49,9 @@ export default class MyDocument extends Document {
 
           {/* Google analytics */}
           {/* https://phpfashion.com/rychlejsi-stranky-s-google-universal-analytics */}
+          {
+            // TODO: take GA token from config
+          }
           <script
             dangerouslySetInnerHTML={{
               __html: `

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import { rehydrate, css } from "glamor";
+import { rehydrate } from "glamor";
 import glamorous from "glamorous";
 import config from "../common/config.js";
 import * as s from "../common/styles.js";
@@ -12,9 +12,7 @@ import * as s from "../common/styles.js";
 if (typeof window !== "undefined") {
   rehydrate(window.__NEXT_DATA__.ids);
 }
-s.globals.forEach(({ selector, definitions }) => {
-  css.global(selector, definitions);
-});
+s.initGlobalStyles();
 
 class Layout extends React.Component {
   static propTypes = {

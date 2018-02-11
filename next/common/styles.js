@@ -139,7 +139,8 @@ const fontSharedProperties = {
 
 const fontSharedValues = {
   fontFamilyHeading: "Arial, sans-serif",
-  fontFamilyDefault: "Georgia, serif"
+  fontFamilyDefault: "Georgia, serif",
+  fontFamilyCode: "monospace"
 };
 
 export const fonts = {
@@ -207,6 +208,13 @@ export const fonts = {
     [breakpoints.small]: {
       fontSize: size(8)
     }
+  },
+
+  code: {
+    ...fontSharedProperties,
+    fontFamily: fontSharedProperties.fontFamilyCode,
+    fontSize: size(16),
+    lineHeight: 1.45
   },
 
   // Type modificators

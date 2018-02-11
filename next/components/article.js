@@ -218,12 +218,31 @@ export class Code extends React.Component {
     code = highlight(this.props.language, code).value;
 
     return (
-      <pre>
-        <code dangerouslySetInnerHTML={{ __html: code }} />
-      </pre>
+      <PreStyled>
+        <CodeStyled dangerouslySetInnerHTML={{ __html: code }} />
+      </PreStyled>
     );
   }
 }
+
+const PreStyled = glamorous.pre({
+  margin: `${s.dimensions.paragraphSpacing} 0 0 0`
+});
+
+const CodeStyled = glamorous.code({
+  ...s.fonts.code,
+  display: "block",
+  padding: s.grid(1),
+  overflow: "auto",
+  backgroundColor: s.colors.grayLighter,
+  border: `${s.size(1)} solid ${s.colors.grayLight}`,
+  borderRadius: s.dimensions.borderRadius,
+  boxDecorationBreak: "clone", // inline code snippets can be spread across 2 rows
+  WebkitOverflowScrolling: "touch",
+  "&.language-diagram": {
+    lineHeight: 1
+  }
+});
 
 /*
 
@@ -314,39 +333,6 @@ export class Code extends React.Component {
 
 .Article-content a:visited {
   color: var(--color-blue-dark);
-}
-
-// code
-
-.Article-content pre {
-  margin: var(--paragraph-spacing) 0 0 0;
-}
-
-.Article-content code {
-  padding: 0.1em 0.2em;
-  font-size: var(--font-size-code);
-  line-height: var(--font-line-height-code);
-  font-family: var(--font-family-code);
-  background-color: var(--color-gray-lighter);
-  border: 1px solid var(--color-gray-light);
-  border-radius: var(--border-radius);
-
-  // TODO: remove once we no longer need it in chrome for development
-  -webkit-box-decoration-break: clone;
-
-  // inline code snippets can be spread across 2 rows
-  box-decoration-break: clone;
-  -webkit-overflow-scrolling: touch;
-}
-
-.Article-content pre > code {
-  display: block;
-  overflow: auto;
-  padding: 0.5em;
-}
-
-.Article-content code.language-diagram {
-  line-height: 1;
 }
 
 // quotes

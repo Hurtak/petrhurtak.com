@@ -2,7 +2,6 @@
   "name": "hurtak.cc",
   "version": "2.0.0",
   "dependencies": {
-    "babel-plugin-glamorous-displayname": "2.2.0",
     "babel-register": "6.26.0",
     "express": "4.16.2",
     "glamor": "2.20.40",
@@ -11,6 +10,7 @@
     "isomorphic-fetch": "2.2.1",
     "lodash": "4.17.5",
     "next": "5.0.0",
+    "node": "9.5.0",
     "prop-types": "15.6.0",
     "react": "16.2.0",
     "react-dom": "16.2.0"
@@ -20,6 +20,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "babel-plugin-glamorous-displayname": "2.2.0",
     "concurrently": "3.5.1",
     "jest": "22.2.2",
     "nodemon": "1.14.12"

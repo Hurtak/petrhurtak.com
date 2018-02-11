@@ -12,6 +12,8 @@ const nextApp = next({ dev });
 const nextRequestHandler = nextApp.getRequestHandler();
 
 async function main() {
+  console.log(`> Starting the app with Node ${process.version}`);
+
   await nextApp.prepare();
 
   const expressServer = express();

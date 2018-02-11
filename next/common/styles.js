@@ -34,7 +34,7 @@ export const dimensions = {
   paragraphSpacing: size(30)
 };
 
-const breakpoints = {
+export const breakpoints = {
   medium: `@media (max-width: ${size(600)})`,
   small: `@media (max-width: ${size(450)})`
 };

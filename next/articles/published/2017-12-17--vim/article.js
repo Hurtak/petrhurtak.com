@@ -1,5 +1,11 @@
 import React from "react";
-import { Paragraph, List, ListItem } from "../../../components/article.js";
+import {
+  Paragraph,
+  Bold,
+  List,
+  ListItem,
+  Heading1
+} from "../../../components/article.js";
 
 export default class Article extends React.Component {
   static metadata = {
@@ -23,28 +29,31 @@ export default class Article extends React.Component {
           Vim is a text editor. It is in the [top 5 of the most popular text
           editors][vim]. Some of its advantages are:
         </Paragraph>
-        <List numbered>
+        <List>
           <ListItem>
-            **Runs inside terminal**, so it is easy to use on remote servers
-            with ssh.
+            <Bold>Runs inside terminal</Bold>, so it is easy to use on remote
+            servers with ssh.
           </ListItem>
           <ListItem>
-            **Widely available** on Linux distributions. If you ssh somewhere,
-            Vim is the probably the most likely terminal text editor to be
-            installed.
+            <Bold>Widely available</Bold> on Linux distributions. If you ssh
+            somewhere, Vim is the probably the most likely terminal text editor
+            to be installed.
           </ListItem>
         </List>
+        <Paragraph>
+          This article focuses on Vim basics and the use case where you are in a
+          terminal in the ssh session and want to quickly edit/explore files
+          within the terminal.
+        </Paragraph>
+
+        <Heading1>Install</Heading1>
       </React.Fragment>
     );
   }
 }
 
 /*
-```
 
-This article focuses on Vim basics and the use case where you are in a terminal in the ssh session and want to quickly edit/explore files within the terminal.
-
-## Install
 
 ```bash
 sudo apt-get install vim

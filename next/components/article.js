@@ -4,15 +4,11 @@ import glamorous from "glamorous";
 import * as s from "../common/styles.js";
 
 //
-// Paragraph
+// Texts
 //
 
 // .Article-content em {
 //   font-style: italic;
-// }
-
-// .Article-content strong {
-//   font-weight: bold;
 // }
 
 // .Article-content mark {
@@ -36,6 +32,20 @@ export class Paragraph extends React.Component {
 const ParagraphStyled = glamorous.p({
   ...s.fonts.paragraph,
   marginTop: s.dimensions.paragraphSpacing
+});
+
+export class Bold extends React.Component {
+  static propTypes = {
+    children: PropTypes.string.isRequired
+  };
+
+  render() {
+    return <BoldStyled>{this.props.children}</BoldStyled>;
+  }
+}
+
+const BoldStyled = glamorous.strong({
+  fontWeight: "bold"
 });
 
 // TODO: probably not used?
@@ -82,7 +92,7 @@ export class List extends React.Component {
 
 export class ListItem extends React.Component {
   static propTypes = {
-    children: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
     numbered: PropTypes.bool
   };
 
@@ -144,7 +154,45 @@ const ListItemStyled = glamorous.li(
 //   margin-top: 0;
 // }
 
+//
+// Headings
+//
+
+export class Heading1 extends React.Component {
+  static propTypes = {
+    children: PropTypes.string.isRequired
+  };
+
+  render() {
+    return <Heading1Styled>{this.props.children}</Heading1Styled>;
+  }
+}
+
+const Heading1Styled = glamorous.h2({
+  ...s.fonts.headingMedium,
+  padding: `${s.size(56)} 0 ${s.size(12)} 0`,
+  color: s.colors.grayDark,
+  [s.breakpoints.medium]: {
+    padding: `${s.size(44)} 0 ${s.size(10)} 0`
+  },
+  [s.breakpoints.small]: {
+    padding: `${s.size(34)} 0 ${s.size(8)} 0`
+  }
+});
+
+// .Article-content h3 {
+//   margin: 0;
+//   padding: var(--font-padding-headline-small);
+//   font-size: var(--font-size-headline-small);
+//   line-height: var(--font-line-height-headline-small);
+//   font-family: var(--font-family-heading);
+//   font-weight: normal;
+//   color: var(--color-gray-dark);
+// }
+
 /*
+
+
 
 
 
@@ -190,28 +238,6 @@ const ListItemStyled = glamorous.li(
   padding: var(--font-padding-headline);
   font-size: var(--font-size-headline);
   line-height: var(--font-line-height-headline);
-  font-family: var(--font-family-heading);
-  font-weight: normal;
-  color: var(--color-gray-dark);
-}
-
-// headings
-
-.Article-content h2 {
-  margin: 0;
-  padding: var(--font-padding-headline);
-  font-size: var(--font-size-headline);
-  line-height: var(--font-line-height-headline);
-  font-family: var(--font-family-heading);
-  font-weight: normal;
-  color: var(--color-gray-dark);
-}
-
-.Article-content h3 {
-  margin: 0;
-  padding: var(--font-padding-headline-small);
-  font-size: var(--font-size-headline-small);
-  line-height: var(--font-line-height-headline-small);
   font-family: var(--font-family-heading);
   font-weight: normal;
   color: var(--color-gray-dark);

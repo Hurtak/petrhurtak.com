@@ -182,15 +182,27 @@ const Heading1Styled = glamorous.h2({
   }
 });
 
-// .Article-content h3 {
-//   margin: 0;
-//   padding: var(--font-padding-headline-small);
-//   font-size: var(--font-size-headline-small);
-//   line-height: var(--font-line-height-headline-small);
-//   font-family: var(--font-family-heading);
-//   font-weight: normal;
-//   color: var(--color-gray-dark);
-// }
+export class Heading2 extends React.Component {
+  static propTypes = {
+    children: PropTypes.string.isRequired
+  };
+
+  render() {
+    return <Heading2Styled>{this.props.children}</Heading2Styled>;
+  }
+}
+
+const Heading2Styled = glamorous.h3({
+  ...s.fonts.headingMedium,
+  padding: `${s.size(32)} 0 ${s.size(10)} 0`,
+  color: s.colors.grayDark,
+  [s.breakpoints.medium]: {
+    padding: `${s.size(26)} 0 ${s.size(8)} 0`
+  },
+  [s.breakpoints.small]: {
+    padding: `${s.size(18)} 0 ${s.size(6)} 0`
+  }
+});
 
 //
 // Special

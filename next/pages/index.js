@@ -66,13 +66,21 @@ class Index extends React.Component {
               >
                 {date.howLongBefore(article.dateLastUpdate)}
               </ArticleDate>
-              <ArticleDescription>{article.description}</ArticleDescription>
+              <ArticleDescription>
+                {formatDescription(article.description)}
+              </ArticleDescription>
             </Article>
           ))}
         </Spacer>
       </Layout>
     );
   }
+}
+
+function formatDescription(description) {
+  description = description.replace(/\s{2,}/g, " ");
+  description = description.trim();
+  return description;
 }
 
 const Heading = glamorous.h1({

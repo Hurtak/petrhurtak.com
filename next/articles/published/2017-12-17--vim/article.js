@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Heading1,
+  Heading2,
   Paragraph,
   Bold,
   List,
@@ -12,8 +13,11 @@ export default class Article extends React.Component {
   static metadata = {
     title: "Vim basics",
 
-    description:
-      "This article focuses on Vim basics and the use case where you are in a terminal in the ssh session and want to quickly edit/explore files within the terminal.",
+    description: `
+      This article focuses on Vim basics and the use case where you are in a
+      terminal in the ssh session and want to quickly edit/explore files within
+      the terminal.
+    `,
 
     url: "vim",
 
@@ -41,6 +45,7 @@ export default class Article extends React.Component {
             to be installed.
           </ListItem>
         </List>
+
         <Paragraph>
           This article focuses on Vim basics and the use case where you are in a
           terminal in the ssh session and want to quickly edit/explore files
@@ -48,17 +53,24 @@ export default class Article extends React.Component {
         </Paragraph>
 
         <Heading1>Install</Heading1>
-
-        <Code language="javascript">
-          {`
-            const res = (() => {
-              const foo = 1
-              const bar = 2
-              return foo + bar
-            })()
-          `}
-        </Code>
         <Code language="bash">{`sudo apt-get install vim`}</Code>
+
+        <Heading1>Open file in Vim</Heading1>
+        <Code language="bash">{`vim filepath`}</Code>
+
+        <Heading1>Basic usage</Heading1>
+
+        <Paragraph>
+          Unlike more traditional text editors, where if you start typing the
+          letters will be inserted at the place of your cursor, Vim works little
+          differently. **In Vim you have modes and commands**, the default mode
+          is for text navigation or manipulation, and letters on your keyboard
+          are shortcuts for things like cut, paste, mode change or save file. So
+          if you want to select text, you enter `Visual` mode, if you want to
+          insert text, you enter `Insert` mode and so on.
+        </Paragraph>
+
+        <Heading2>Modes & Commands</Heading2>
       </React.Fragment>
     );
   }
@@ -66,17 +78,8 @@ export default class Article extends React.Component {
 
 /*
 
-## Open file in Vim
 
-```bash
-vim filepath
-```
 
-## Basic usage
-
-Unlike more traditional text editors, where if you start typing the letters will be inserted at the place of your cursor, Vim works little differently. **In Vim you have modes and commands**, the default mode is for text navigation or manipulation, and letters on your keyboard are shortcuts for things like cut, paste, mode change or save file. So if you want to select text, you enter `Visual` mode, if you want to insert text, you enter `Insert` mode and so on.
-
-### Modes & Commands
 
 | Mode name   | Key             | Description                                                                                                  |
 | ----------- | --------------- | ------------------------------------------------------------------------------------------------------------ |

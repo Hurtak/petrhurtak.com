@@ -205,7 +205,7 @@ const Heading2Styled = glamorous.h3({
 });
 
 //
-// Special
+// Code
 //
 
 export class Code extends React.Component {
@@ -227,11 +227,17 @@ export class Code extends React.Component {
     let code = this.props.children;
     code = stripIndent(code);
     code = code.trim();
-    code = highlight(this.props.language, code).value;
+    if (this.props.language) {
+      code = highlight(this.props.language, code).value;
+    }
 
     return (
       <PreStyled>
-        <CodeStyled dangerouslySetInnerHTML={{ __html: code }} />
+        {this.props.language ? (
+          <CodeStyled dangerouslySetInnerHTML={{ __html: code }} />
+        ) : (
+          <CodeStyled>{code}</CodeStyled>
+        )}
       </PreStyled>
     );
   }
@@ -255,6 +261,87 @@ const CodeStyled = glamorous.code({
     lineHeight: 1
   }
 });
+
+//
+// Table
+//
+
+export class Table extends React.Component {
+  static propTypes = {
+    // TODO: children only table rows
+
+    heading: PropTypes.node,
+    children: PropTypes.node.isRequired
+  };
+
+  constructor() {
+    super();
+  }
+
+  render() {
+    return (
+      <TableStyled>
+        {this.props.heading}
+        <tbody>{this.props.children}</tbody>
+      </TableStyled>
+    );
+  }
+}
+
+const TableStyled = glamorous.table({
+  margin: `${s.dimensions.paragraphSpacing} 0 0 0`,
+  // font-size: var(--font-size-paragraph-small),
+  // line-height: var(--font-line-height-paragraph),
+  borderCollapse: "collapse"
+});
+
+const TableHeadingStyled = glamorous.thead({
+  // font-weight: bold;
+  // font-family: var(--font-family-heading);
+});
+
+// .Article-content table tbody {
+//   font-family: var(--font-family-paragraph);
+// }
+
+export class TableRow extends React.Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired
+  };
+
+  constructor() {
+    super();
+  }
+
+  render() {
+    return <tr>{this.props.children}</tr>;
+  }
+}
+
+export class TableCell extends React.Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired
+  };
+
+  constructor() {
+    super();
+  }
+
+  render() {
+    return <TableCellStyled>{this.props.children}</TableCellStyled>;
+  }
+}
+
+const TableCellStyled = glamorous.td({
+  border: `1px solid ${s.colors.grayLight}`,
+  padding: "0.4em 0.8em"
+});
+
+// .Article-content table th,
+// .Article-content table td {
+//   border: 1px solid var(--color-gray-light);
+//   padding: 0.4em 0.8em;
+// }
 
 /*
 
@@ -365,30 +452,6 @@ const CodeStyled = glamorous.code({
 
 .Article-content blockquote footer {
   margin-top: 0.4em;
-}
-
-// table
-
-.Article-content table {
-  margin: var(--paragraph-spacing) 0 0 0;
-  font-size: var(--font-size-paragraph-small);
-  line-height: var(--font-line-height-paragraph);
-  border-collapse: collapse;
-}
-
-.Article-content table thead {
-  font-weight: bold;
-  font-family: var(--font-family-heading);
-}
-
-.Article-content table tbody {
-  font-family: var(--font-family-paragraph);
-}
-
-.Article-content table th,
-.Article-content table td {
-  border: 1px solid var(--color-gray-light);
-  padding: 0.4em 0.8em;
 }
 
 // videos

@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Heading1,
-  Heading2,
-  Paragraph,
-  Bold,
-  List,
-  ListItem,
-  Code
-} from "../../../components/article.js";
+import * as A from "../../../components/article.js";
 
 export default class Article extends React.Component {
   static metadata = {
@@ -30,37 +22,32 @@ export default class Article extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Paragraph>
+        <A.Paragraph>
           Vim is a text editor. It is in the [top 5 of the most popular text
           editors][vim]. Some of its advantages are:
-        </Paragraph>
-        <List>
-          <ListItem>
-            <Bold>Runs inside terminal</Bold>, so it is easy to use on remote
-            servers with ssh.
-          </ListItem>
-          <ListItem>
-            <Bold>Widely available</Bold> on Linux distributions. If you ssh
+        </A.Paragraph>
+        <A.List>
+          <A.ListItem>
+            <A.Bold>Runs inside terminal</A.Bold>, so it is easy to use on
+            remote servers with ssh.
+          </A.ListItem>
+          <A.ListItem>
+            <A.Bold>Widely available</A.Bold> on Linux distributions. If you ssh
             somewhere, Vim is the probably the most likely terminal text editor
             to be installed.
-          </ListItem>
-        </List>
-
-        <Paragraph>
+          </A.ListItem>
+        </A.List>
+        <A.Paragraph>
           This article focuses on Vim basics and the use case where you are in a
           terminal in the ssh session and want to quickly edit/explore files
           within the terminal.
-        </Paragraph>
-
-        <Heading1>Install</Heading1>
-        <Code language="bash">{`sudo apt-get install vim`}</Code>
-
-        <Heading1>Open file in Vim</Heading1>
-        <Code language="bash">{`vim filepath`}</Code>
-
-        <Heading1>Basic usage</Heading1>
-
-        <Paragraph>
+        </A.Paragraph>
+        <A.Heading1>Install</A.Heading1>
+        <A.Code language="bash">{`sudo apt-get install vim`}</A.Code>
+        <A.Heading1>Open file in Vim</A.Heading1>
+        <A.Code language="bash">{`vim filepath`}</A.Code>
+        <A.Heading1>Basic usage</A.Heading1>
+        <A.Paragraph>
           Unlike more traditional text editors, where if you start typing the
           letters will be inserted at the place of your cursor, Vim works little
           differently. **In Vim you have modes and commands**, the default mode
@@ -68,9 +55,54 @@ export default class Article extends React.Component {
           are shortcuts for things like cut, paste, mode change or save file. So
           if you want to select text, you enter `Visual` mode, if you want to
           insert text, you enter `Insert` mode and so on.
-        </Paragraph>
+        </A.Paragraph>
 
-        <Heading2>Modes & Commands</Heading2>
+        <A.Heading2>Modes & Commands</A.Heading2>
+
+        <A.Table
+          heading={
+            <A.TableRow>
+              <A.TableCell>Mode name</A.TableCell>
+              <A.TableCell>Key</A.TableCell>
+              <A.TableCell>Description</A.TableCell>
+            </A.TableRow>
+          }
+        >
+          <A.TableRow>
+            <A.TableRow>
+              <A.TableCell>Normal </A.TableCell>
+              <A.TableCell>
+                <A.Code>Esc</A.Code>
+              </A.TableCell>
+              <A.TableCell>
+                For navigation and manipulation of text. The default mode. You
+                can usually get back to this mode with `Esc`.
+              </A.TableCell>
+            </A.TableRow>
+            <A.TableRow>
+              <A.TableCell>Insert </A.TableCell>
+              <A.TableCell>`Insert` or `i` </A.TableCell>
+              <A.TableCell>For inserting text. </A.TableCell>
+            </A.TableRow>
+            <A.TableRow>
+              <A.TableCell>Visual </A.TableCell>
+              <A.TableCell>`v` </A.TableCell>
+              <A.TableCell>Text selections. </A.TableCell>
+            </A.TableRow>
+            <A.TableRow>
+              <A.TableCell>Visual Line </A.TableCell>
+              <A.TableCell>`V` </A.TableCell>
+              <A.TableCell>Selection of whole lines. </A.TableCell>
+            </A.TableRow>
+            <A.TableRow>
+              <A.TableCell>Command </A.TableCell>
+              <A.TableCell>`:` </A.TableCell>
+              <A.TableCell>
+                For entering commands like search, save file or exit Vim.
+              </A.TableCell>
+            </A.TableRow>
+          </A.TableRow>
+        </A.Table>
       </React.Fragment>
     );
   }
@@ -80,14 +112,6 @@ export default class Article extends React.Component {
 
 
 
-
-| Mode name   | Key             | Description                                                                                                  |
-| ----------- | --------------- | ------------------------------------------------------------------------------------------------------------ |
-| Normal      | `Esc`           | For navigation and manipulation of text. The default mode. You can usually get back to this mode with `Esc`. |
-| Insert      | `Insert` or `i` | For inserting text.                                                                                          |
-| Visual      | `v`             | Text selections.                                                                                             |
-| Visual Line | `V`             | Selection of whole lines.                                                                                    |
-| Command     | `:`             | For entering commands like search, save file or exit Vim.                                                    |
 
 ### Normal mode
 

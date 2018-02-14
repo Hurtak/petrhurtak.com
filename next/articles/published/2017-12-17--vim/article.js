@@ -69,38 +69,36 @@ export default class Article extends React.Component {
           }
         >
           <A.TableRow>
-            <A.TableRow>
-              <A.TableCell>Normal </A.TableCell>
-              <A.TableCell>
-                <A.Code>Esc</A.Code>
-              </A.TableCell>
-              <A.TableCell>
-                For navigation and manipulation of text. The default mode. You
-                can usually get back to this mode with `Esc`.
-              </A.TableCell>
-            </A.TableRow>
-            <A.TableRow>
-              <A.TableCell>Insert </A.TableCell>
-              <A.TableCell>`Insert` or `i` </A.TableCell>
-              <A.TableCell>For inserting text. </A.TableCell>
-            </A.TableRow>
-            <A.TableRow>
-              <A.TableCell>Visual </A.TableCell>
-              <A.TableCell>`v` </A.TableCell>
-              <A.TableCell>Text selections. </A.TableCell>
-            </A.TableRow>
-            <A.TableRow>
-              <A.TableCell>Visual Line </A.TableCell>
-              <A.TableCell>`V` </A.TableCell>
-              <A.TableCell>Selection of whole lines. </A.TableCell>
-            </A.TableRow>
-            <A.TableRow>
-              <A.TableCell>Command </A.TableCell>
-              <A.TableCell>`:` </A.TableCell>
-              <A.TableCell>
-                For entering commands like search, save file or exit Vim.
-              </A.TableCell>
-            </A.TableRow>
+            <A.TableCell>Normal </A.TableCell>
+            <A.TableCell>
+              <A.Code>Esc</A.Code>
+            </A.TableCell>
+            <A.TableCell>
+              For navigation and manipulation of text. The default mode. You can
+              usually get back to this mode with `Esc`.
+            </A.TableCell>
+          </A.TableRow>
+          <A.TableRow>
+            <A.TableCell>Insert </A.TableCell>
+            <A.TableCell>`Insert` or `i` </A.TableCell>
+            <A.TableCell>For inserting text. </A.TableCell>
+          </A.TableRow>
+          <A.TableRow>
+            <A.TableCell>Visual </A.TableCell>
+            <A.TableCell>`v` </A.TableCell>
+            <A.TableCell>Text selections. </A.TableCell>
+          </A.TableRow>
+          <A.TableRow>
+            <A.TableCell>Visual Line </A.TableCell>
+            <A.TableCell>`V` </A.TableCell>
+            <A.TableCell>Selection of whole lines. </A.TableCell>
+          </A.TableRow>
+          <A.TableRow>
+            <A.TableCell>Command </A.TableCell>
+            <A.TableCell>`:` </A.TableCell>
+            <A.TableCell>
+              For entering commands like search, save file or exit Vim.
+            </A.TableCell>
           </A.TableRow>
         </A.Table>
       </React.Fragment>

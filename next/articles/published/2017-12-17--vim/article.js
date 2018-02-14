@@ -42,10 +42,13 @@ export default class Article extends React.Component {
           terminal in the ssh session and want to quickly edit/explore files
           within the terminal.
         </A.Paragraph>
+
         <A.Heading1>Install</A.Heading1>
-        <A.Code language="bash">{`sudo apt-get install vim`}</A.Code>
+        <A.Code language="bash" multiline>{`sudo apt-get install vim`}</A.Code>
+
         <A.Heading1>Open file in Vim</A.Heading1>
-        <A.Code language="bash">{`vim filepath`}</A.Code>
+        <A.Code language="bash" multiline>{`vim filepath`}</A.Code>
+
         <A.Heading1>Basic usage</A.Heading1>
         <A.Paragraph>
           Unlike more traditional text editors, where if you start typing the
@@ -69,33 +72,41 @@ export default class Article extends React.Component {
           }
         >
           <A.TableRow>
-            <A.TableCell>Normal </A.TableCell>
+            <A.TableCell>Normal</A.TableCell>
             <A.TableCell>
               <A.Code>Esc</A.Code>
             </A.TableCell>
             <A.TableCell>
               For navigation and manipulation of text. The default mode. You can
-              usually get back to this mode with `Esc`.
+              usually get back to this mode with <A.Code>Esc</A.Code>.
             </A.TableCell>
           </A.TableRow>
           <A.TableRow>
-            <A.TableCell>Insert </A.TableCell>
-            <A.TableCell>`Insert` or `i` </A.TableCell>
-            <A.TableCell>For inserting text. </A.TableCell>
+            <A.TableCell>Insert</A.TableCell>
+            <A.TableCell>
+              <A.Code>Insert</A.Code> or <A.Code>i</A.Code>
+            </A.TableCell>
+            <A.TableCell>For inserting text.</A.TableCell>
           </A.TableRow>
           <A.TableRow>
-            <A.TableCell>Visual </A.TableCell>
-            <A.TableCell>`v` </A.TableCell>
-            <A.TableCell>Text selections. </A.TableCell>
+            <A.TableCell>Visual</A.TableCell>
+            <A.TableCell>
+              <A.Code>v</A.Code>
+            </A.TableCell>
+            <A.TableCell>Text selections.</A.TableCell>
           </A.TableRow>
           <A.TableRow>
-            <A.TableCell>Visual Line </A.TableCell>
-            <A.TableCell>`V` </A.TableCell>
-            <A.TableCell>Selection of whole lines. </A.TableCell>
+            <A.TableCell>Visual Line</A.TableCell>
+            <A.TableCell>
+              <A.Code>V</A.Code>
+            </A.TableCell>
+            <A.TableCell>Selection of whole lines.</A.TableCell>
           </A.TableRow>
           <A.TableRow>
-            <A.TableCell>Command </A.TableCell>
-            <A.TableCell>`:` </A.TableCell>
+            <A.TableCell>Command</A.TableCell>
+            <A.TableCell>
+              <A.Code>:</A.Code>
+            </A.TableCell>
             <A.TableCell>
               For entering commands like search, save file or exit Vim.
             </A.TableCell>

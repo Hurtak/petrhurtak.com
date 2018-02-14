@@ -213,6 +213,7 @@ export class Code extends React.Component {
 
   static propTypes = {
     children: PropTypes.string.isRequired,
+    multiline: PropTypes.bool,
     language: PropTypes.string
   };
 
@@ -224,43 +225,64 @@ export class Code extends React.Component {
   }
 
   render() {
-    let code = this.props.children;
-    code = stripIndent(code);
-    code = code.trim();
-    if (this.props.language) {
-      code = highlight(this.props.language, code).value;
-    }
+    const code = (() => {
+      let res = this.props.children;
+      res = stripIndent(res);
+      res = res.trim();
+      return res;
+    })();
 
-    return (
-      <PreStyled>
-        {this.props.language ? (
-          <CodeStyled dangerouslySetInnerHTML={{ __html: code }} />
-        ) : (
-          <CodeStyled>{code}</CodeStyled>
-        )}
-      </PreStyled>
+    const codeComponent = this.props.language ? (
+      <CodeStyled
+        dangerouslySetInnerHTML={{
+          __html: highlight(this.props.language, code).value
+        }}
+        multiline={this.props.multiline}
+      />
+    ) : (
+      <CodeStyled multiline={this.props.multiline}>{code}</CodeStyled>
     );
+
+    if (this.props.multiline) {
+      return <PreStyled>{codeComponent}</PreStyled>;
+    } else {
+      return codeComponent;
+    }
   }
 }
 
 const PreStyled = glamorous.pre({
+  display: "block",
   margin: `${s.dimensions.paragraphSpacing} 0 0 0`
 });
 
-const CodeStyled = glamorous.code({
-  ...s.fonts.code,
-  display: "block",
-  padding: s.grid(1),
-  overflow: "auto",
-  backgroundColor: s.colors.grayLighter,
-  border: `${s.size(1)} solid ${s.colors.grayLight}`,
-  borderRadius: s.dimensions.borderRadius,
-  boxDecorationBreak: "clone", // inline code snippets can be spread across 2 rows
-  WebkitOverflowScrolling: "touch",
-  "&.language-diagram": {
-    lineHeight: 1
+const CodeStyled = glamorous.code(
+  {
+    ...s.fonts.code,
+    backgroundColor: s.colors.grayLighter,
+    border: `${s.size(1)} solid ${s.colors.grayLight}`,
+    borderRadius: s.dimensions.borderRadius,
+    boxDecorationBreak: "clone", // inline code snippets can be spread across 2 rows
+    WebkitOverflowScrolling: "touch",
+    "&.language-diagram": {
+      lineHeight: 1
+    }
+  },
+  props => {
+    if (props.multiline) {
+      return {
+        display: "block",
+        padding: s.grid(1),
+        overflow: "auto"
+      };
+    } else {
+      return {
+        display: "inline",
+        padding: `${s.size(1)} ${s.size(2)}`
+      };
+    }
   }
-});
+);
 
 //
 // Table

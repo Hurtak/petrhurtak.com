@@ -322,14 +322,8 @@ export class Table extends React.Component {
 
 const TableStyled = glamorous.table({
   margin: `${s.dimensions.paragraphSpacing} 0 0 0`,
-  // font-size: var(--font-size-paragraph-small),
-  // line-height: var(--font-line-height-paragraph),
   borderCollapse: "collapse"
 });
-
-// .Article-content table tbody {
-//   font-family: var(--font-family-paragraph);
-// }
 
 export class TableRow extends React.Component {
   static propTypes = {
@@ -365,7 +359,7 @@ export class TableCell extends React.Component {
 const tableCellSharedStyles = {
   ...s.fonts.paragraphSmall,
   border: `${s.size(1)} solid ${s.colors.grayLight}`,
-  padding: "0.4em 0.8em"
+  padding: `${s.grid(0.5)} ${s.grid(1)}`
 };
 
 const TableCellStyled = glamorous.td({
@@ -378,12 +372,6 @@ const TableCellHeadingStyled = glamorous.th({
   fontWeight: "bold",
   textAlign: "center"
 });
-
-// .Article-content table th,
-// .Article-content table td {
-//   border: 1px solid var(--color-gray-light);
-//   padding: 0.4em 0.8em;
-// }
 
 /*
 

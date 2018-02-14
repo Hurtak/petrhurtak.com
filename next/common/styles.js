@@ -143,6 +143,19 @@ const fontSharedValues = {
   fontFamilyCode: "monospace"
 };
 
+const fontParagraphSmall = {
+  ...fontSharedProperties,
+  fontFamily: fontSharedValues.fontFamilyDefault,
+  fontSize: size(16),
+  lineHeight: 1.6,
+  [breakpoints.medium]: {
+    fontSize: size(8)
+  },
+  [breakpoints.small]: {
+    fontSize: size(8)
+  }
+};
+
 export const fonts = {
   // Size modificators
   heading: {
@@ -198,16 +211,13 @@ export const fonts = {
   },
 
   paragraphSmall: {
-    ...fontSharedProperties,
-    fontFamily: fontSharedValues.fontFamilyDefault,
-    fontSize: size(16),
-    lineHeight: 1.6,
-    [breakpoints.medium]: {
-      fontSize: size(8)
-    },
-    [breakpoints.small]: {
-      fontSize: size(8)
-    }
+    ...fontParagraphSmall
+  },
+
+  headingTable: {
+    ...fontParagraphSmall,
+    fontFamily: fontSharedValues.fontFamilyHeading,
+    lineHeight: 1.2
   },
 
   code: {

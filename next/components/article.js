@@ -193,7 +193,7 @@ export class Heading2 extends React.Component {
 }
 
 const Heading2Styled = glamorous.h3({
-  ...s.fonts.headingMedium,
+  ...s.fonts.headingSmall,
   padding: `${s.size(32)} 0 ${s.size(10)} 0`,
   color: s.colors.grayDark,
   [s.breakpoints.medium]: {
@@ -291,7 +291,6 @@ const CodeStyled = glamorous.code(
 export class Table extends React.Component {
   static propTypes = {
     // TODO: children only table rows
-
     heading: PropTypes.node,
     children: PropTypes.node.isRequired
   };
@@ -301,9 +300,20 @@ export class Table extends React.Component {
   }
 
   render() {
+    const heading = (() => {
+      const headingProp = this.props.heading;
+      if (!headingProp) return null;
+
+      const headingRow = React.Children.map(this.props.heading, child =>
+        React.cloneElement(child, { heading: true })
+      );
+
+      return headingRow;
+    })();
+
     return (
       <TableStyled>
-        {this.props.heading}
+        {heading && <thead>{heading}</thead>}
         <tbody>{this.props.children}</tbody>
       </TableStyled>
     );
@@ -317,46 +327,56 @@ const TableStyled = glamorous.table({
   borderCollapse: "collapse"
 });
 
-const TableHeadingStyled = glamorous.thead({
-  // font-weight: bold;
-  // font-family: var(--font-family-heading);
-});
-
 // .Article-content table tbody {
 //   font-family: var(--font-family-paragraph);
 // }
 
 export class TableRow extends React.Component {
   static propTypes = {
-    children: PropTypes.node.isRequired
+    // TODO: child oly TableCell
+    children: PropTypes.node.isRequired,
+    heading: PropTypes.bool
   };
 
-  constructor() {
-    super();
-  }
-
   render() {
-    return <tr>{this.props.children}</tr>;
+    const cells = React.Children.map(this.props.children, child =>
+      React.cloneElement(child, { heading: this.props.heading })
+    );
+
+    return <tr>{cells}</tr>;
   }
 }
 
 export class TableCell extends React.Component {
   static propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    heading: PropTypes.bool
   };
 
-  constructor() {
-    super();
-  }
-
   render() {
-    return <TableCellStyled>{this.props.children}</TableCellStyled>;
+    const Component = this.props.heading
+      ? TableCellHeadingStyled
+      : TableCellStyled;
+
+    return <Component>{this.props.children}</Component>;
   }
 }
 
-const TableCellStyled = glamorous.td({
-  border: `1px solid ${s.colors.grayLight}`,
+const tableCellSharedStyles = {
+  ...s.fonts.paragraphSmall,
+  border: `${s.size(1)} solid ${s.colors.grayLight}`,
   padding: "0.4em 0.8em"
+};
+
+const TableCellStyled = glamorous.td({
+  ...tableCellSharedStyles
+});
+
+const TableCellHeadingStyled = glamorous.th({
+  ...tableCellSharedStyles,
+  ...s.fonts.headingTable,
+  fontWeight: "bold",
+  textAlign: "center"
 });
 
 // .Article-content table th,

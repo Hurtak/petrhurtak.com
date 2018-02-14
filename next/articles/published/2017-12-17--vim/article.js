@@ -53,11 +53,12 @@ export default class Article extends React.Component {
         <A.Paragraph>
           Unlike more traditional text editors, where if you start typing the
           letters will be inserted at the place of your cursor, Vim works little
-          differently. **In Vim you have modes and commands**, the default mode
-          is for text navigation or manipulation, and letters on your keyboard
-          are shortcuts for things like cut, paste, mode change or save file. So
-          if you want to select text, you enter `Visual` mode, if you want to
-          insert text, you enter `Insert` mode and so on.
+          differently. <A.Bold>In Vim you have modes and commands</A.Bold>, the
+          default mode is for text navigation or manipulation, and letters on
+          your keyboard are shortcuts for things like cut, paste, mode change or
+          save file. So if you want to select text, you enter{" "}
+          <A.Code>Visual</A.Code> mode, if you want to insert text, you enter{" "}
+          <A.Code>Insert</A.Code> mode and so on.
         </A.Paragraph>
 
         <A.Heading2>Modes & Commands</A.Heading2>

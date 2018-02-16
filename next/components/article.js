@@ -68,6 +68,31 @@ const BoldStyled = glamorous.strong({
 // });
 
 //
+// Link
+//
+
+export class Link extends React.Component {
+  static propTypes = {
+    children: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired
+  };
+
+  render() {
+    return (
+      <LinkStyled href={this.props.children}>{this.props.children}</LinkStyled>
+    );
+  }
+}
+
+const LinkStyled = glamorous.a({
+  color: s.colors.blueDark,
+  transition: `0.2s border ease-in-out`,
+  ":visited": {
+    color: s.colors.blueDark
+  }
+});
+
+//
 // Lists
 //
 
@@ -359,7 +384,7 @@ export class TableCell extends React.Component {
 const tableCellSharedStyles = {
   ...s.fonts.paragraphSmall,
   border: `${s.size(1)} solid ${s.colors.grayLight}`,
-  padding: `${s.grid(0.5)} ${s.grid(1)}`
+  padding: s.grid(1)
 };
 
 const TableCellStyled = glamorous.td({
@@ -451,17 +476,6 @@ const TableCellHeadingStyled = glamorous.th({
 .Article-content video {
   max-width: 100%;
   height: auto;
-}
-
-// links
-
-.Article-content a {
-  color: var(--color-blue-dark);
-  transition: 0.2s border ease-in-out;
-}
-
-.Article-content a:visited {
-  color: var(--color-blue-dark);
 }
 
 // quotes

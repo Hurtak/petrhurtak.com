@@ -1,5 +1,17 @@
 import React from "react";
-import * as A from "../../../components/article.js";
+import {
+  Paragraph,
+  List,
+  ListItem,
+  Link,
+  Bold,
+  Heading1,
+  Heading2,
+  Code,
+  Table,
+  TableRow,
+  TableCell
+} from "../../../components/article.js";
 
 export default class Article extends React.Component {
   static metadata = {
@@ -19,138 +31,259 @@ export default class Article extends React.Component {
     id: "e2fd547986a4527970cc6be38f38d430"
   };
 
+  static links = {
+    vim:
+      "https://insights.stackoverflow.com/survey/2017#technology-most-popular-developer-environments-by-occupation"
+  };
+
   render() {
     return (
       <React.Fragment>
-        <A.Paragraph>
-          Vim is a text editor. It is in the [top 5 of the most popular text
-          editors][vim]. Some of its advantages are:
-        </A.Paragraph>
-        <A.List>
-          <A.ListItem>
-            <A.Bold>Runs inside terminal</A.Bold>, so it is easy to use on
-            remote servers with ssh.
-          </A.ListItem>
-          <A.ListItem>
-            <A.Bold>Widely available</A.Bold> on Linux distributions. If you ssh
+        <Paragraph>
+          Vim is a text editor. It is in the{" "}
+          <Link href={Article.links.vim}>
+            top 5 of the most popular text editors
+          </Link>. Some of its advantages are:
+        </Paragraph>
+        <List>
+          <ListItem>
+            <Bold>Runs inside terminal</Bold>, so it is easy to use on remote
+            servers with ssh.
+          </ListItem>
+          <ListItem>
+            <Bold>Widely available</Bold> on Linux distributions. If you ssh
             somewhere, Vim is the probably the most likely terminal text editor
             to be installed.
-          </A.ListItem>
-        </A.List>
-        <A.Paragraph>
+          </ListItem>
+        </List>
+        <Paragraph>
           This article focuses on Vim basics and the use case where you are in a
           terminal in the ssh session and want to quickly edit/explore files
           within the terminal.
-        </A.Paragraph>
+        </Paragraph>
 
-        <A.Heading1>Install</A.Heading1>
-        <A.Code language="bash" multiline>{`sudo apt-get install vim`}</A.Code>
+        <Heading1>Install</Heading1>
+        <Code language="bash" multiline>{`sudo apt-get install vim`}</Code>
 
-        <A.Heading1>Open file in Vim</A.Heading1>
-        <A.Code language="bash" multiline>{`vim filepath`}</A.Code>
+        <Heading1>Open file in Vim</Heading1>
+        <Code language="bash" multiline>{`vim filepath`}</Code>
 
-        <A.Heading1>Basic usage</A.Heading1>
-        <A.Paragraph>
+        <Heading1>Basic usage</Heading1>
+        <Paragraph>
           Unlike more traditional text editors, where if you start typing the
           letters will be inserted at the place of your cursor, Vim works little
-          differently. <A.Bold>In Vim you have modes and commands</A.Bold>, the
+          differently. <Bold>In Vim you have modes and commands</Bold>, the
           default mode is for text navigation or manipulation, and letters on
           your keyboard are shortcuts for things like cut, paste, mode change or
           save file. So if you want to select text, you enter{" "}
-          <A.Code>Visual</A.Code> mode, if you want to insert text, you enter{" "}
-          <A.Code>Insert</A.Code> mode and so on.
-        </A.Paragraph>
+          <Code>Visual</Code> mode, if you want to insert text, you enter{" "}
+          <Code>Insert</Code> mode and so on.
+        </Paragraph>
 
-        <A.Heading2>Modes & Commands</A.Heading2>
-
-        <A.Table
+        <Heading2>Modes & Commands</Heading2>
+        <Table
           heading={
-            <A.TableRow>
-              <A.TableCell>Mode name</A.TableCell>
-              <A.TableCell>Key</A.TableCell>
-              <A.TableCell>Description</A.TableCell>
-            </A.TableRow>
+            <TableRow>
+              <TableCell>Mode name</TableCell>
+              <TableCell>Key</TableCell>
+              <TableCell>Description</TableCell>
+            </TableRow>
           }
         >
-          <A.TableRow>
-            <A.TableCell>Normal</A.TableCell>
-            <A.TableCell>
-              <A.Code>Esc</A.Code>
-            </A.TableCell>
-            <A.TableCell>
+          <TableRow>
+            <TableCell>Normal</TableCell>
+            <TableCell>
+              <Code>Esc</Code>
+            </TableCell>
+            <TableCell>
               For navigation and manipulation of text. The default mode. You can
-              usually get back to this mode with <A.Code>Esc</A.Code>.
-            </A.TableCell>
-          </A.TableRow>
-          <A.TableRow>
-            <A.TableCell>Insert</A.TableCell>
-            <A.TableCell>
-              <A.Code>Insert</A.Code> or <A.Code>i</A.Code>
-            </A.TableCell>
-            <A.TableCell>For inserting text.</A.TableCell>
-          </A.TableRow>
-          <A.TableRow>
-            <A.TableCell>Visual</A.TableCell>
-            <A.TableCell>
-              <A.Code>v</A.Code>
-            </A.TableCell>
-            <A.TableCell>Text selections.</A.TableCell>
-          </A.TableRow>
-          <A.TableRow>
-            <A.TableCell>Visual Line</A.TableCell>
-            <A.TableCell>
-              <A.Code>V</A.Code>
-            </A.TableCell>
-            <A.TableCell>Selection of whole lines.</A.TableCell>
-          </A.TableRow>
-          <A.TableRow>
-            <A.TableCell>Command</A.TableCell>
-            <A.TableCell>
-              <A.Code>:</A.Code>
-            </A.TableCell>
-            <A.TableCell>
+              usually get back to this mode with <Code>Esc</Code>.
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Insert</TableCell>
+            <TableCell>
+              <Code>Insert</Code> or <Code>i</Code>
+            </TableCell>
+            <TableCell>For inserting text.</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Visual</TableCell>
+            <TableCell>
+              <Code>v</Code>
+            </TableCell>
+            <TableCell>Text selections.</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Visual Line</TableCell>
+            <TableCell>
+              <Code>V</Code>
+            </TableCell>
+            <TableCell>Selection of whole lines.</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Command</TableCell>
+            <TableCell>
+              <Code>:</Code>
+            </TableCell>
+            <TableCell>
               For entering commands like search, save file or exit Vim.
-            </A.TableCell>
-          </A.TableRow>
-        </A.Table>
+            </TableCell>
+          </TableRow>
+        </Table>
+
+        <Heading2>Normal mode</Heading2>
+
+        <Table
+          heading={
+            <TableRow>
+              <TableCell>Command</TableCell>
+              <TableCell>Key</TableCell>
+              <TableCell>Abbreviation</TableCell>
+            </TableRow>
+          }
+        >
+          <TableRow>
+            <TableCell>Undo</TableCell>
+            <TableCell>
+              <Code>u</Code>
+            </TableCell>
+            <TableCell>
+              <Bold>u</Bold>ndo
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Redo</TableCell>
+            <TableCell>
+              <Code>Ctrl</Code> + <Code>r</Code>
+            </TableCell>
+            <TableCell>
+              <Bold>r</Bold>edo
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Cut (delete) line</TableCell>
+            <TableCell>
+              <Code>d</Code> and <Code>d</Code>
+            </TableCell>
+            <TableCell>
+              <Bold>d</Bold>elete
+            </TableCell>
+          </TableRow>
+        </Table>
+
+        <Heading2>Visual mode</Heading2>
+
+        <Table
+          heading={
+            <TableRow>
+              <TableCell>Command</TableCell>
+              <TableCell>Key</TableCell>
+              <TableCell>Abbreviation</TableCell>
+            </TableRow>
+          }
+        >
+          <TableRow>
+            <TableCell>Copy</TableCell>
+            <TableCell>
+              <Code>y</Code>
+            </TableCell>
+            <TableCell>
+              <Bold>y</Bold>ank
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Paste</TableCell>
+            <TableCell>
+              <Code>p</Code>
+            </TableCell>
+            <TableCell>
+              <Bold>p</Bold>aste
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Cut (delete) selection</TableCell>
+            <TableCell>
+              <Code>d</Code>
+            </TableCell>
+            <TableCell>
+              <Bold>d</Bold>elete
+            </TableCell>
+          </TableRow>
+        </Table>
+
+        <Heading2>Command mode</Heading2>
+
+        <Table
+          heading={
+            <TableRow>
+              <TableCell>Command</TableCell>
+              <TableCell>Key</TableCell>
+              <TableCell>Abbreviation</TableCell>
+            </TableRow>
+          }
+        >
+          <TableRow>
+            <TableCell>Save file </TableCell>
+            <TableCell>
+              <Code>w</Code>
+            </TableCell>
+            <TableCell>
+              <Bold>w</Bold>rite
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Quit Vim </TableCell>
+            <TableCell>
+              <Code>q</Code>
+            </TableCell>
+            <TableCell>
+              <Bold>q</Bold>uit
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Force quit Vim (drop unsaved changes)</TableCell>
+            <TableCell>
+              <Code>q!</Code>
+            </TableCell>
+            <TableCell>
+              <Bold>q</Bold>uit
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Save file and quit Vim </TableCell>
+            <TableCell>
+              <Code>wq</Code>
+            </TableCell>
+            <TableCell>
+              <Bold>w</Bold>rite + <Bold>q</Bold>uit
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Search </TableCell>
+            <TableCell>
+              <Code>/searched term</Code>
+            </TableCell>
+            <TableCell> </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Search &ndash; next item </TableCell>
+            <TableCell>
+              <Code>n</Code>
+            </TableCell>
+            <TableCell>
+              <Bold>n</Bold>ext
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Search &ndash; previous item </TableCell>
+            <TableCell>
+              <Code>N</Code>
+            </TableCell>
+            <TableCell> </TableCell>
+          </TableRow>
+        </Table>
       </React.Fragment>
     );
   }
 }
-
-/*
-
-
-
-
-### Normal mode
-
-| Command           | Key          | Abbreviation |
-| ----------------- | ------------ | ------------ |
-| Undo              | `u`          | **u**ndo     |
-| Redo              | `Ctrl` + `R` | **r**edo     |
-| Cut (delete) line | `d` and `d`  | **d**elete   |
-
-### Visual mode
-
-| Command                | Key | Abbreviation |
-| ---------------------- | --- | ------------ |
-| Copy                   | `y` | **y**ank     |
-| Paste                  | `p` | **p**aste    |
-| Cut (delete) selection | `d` | **d**elete   |
-
-### Command mode
-
-| Command                               | Key              | Abbreviation         |
-| ------------------------------------- | ---------------- | -------------------- |
-| Save file                             | `w`              | **w**rite            |
-| Quit Vim                              | `q`              | **q**uit             |
-| Force quit Vim (drop unsaved changes) | `q!`             | **q**uit             |
-| Save file and quit Vim                | `wq`             | **w**rite + **q**uit |
-| Search                                | `/searched term` |                      |
-| Search &ndash; next item              | `n`              | **n**ext             |
-| Search &ndash; previous item          | `N`              |                      |
-
-[vim]: https://insights.stackoverflow.com/survey/2017#technology-most-popular-developer-environments-by-occupation
-```
-*/

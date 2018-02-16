@@ -19,7 +19,7 @@ export class ArticleWrapper extends React.Component {
   }
 }
 
-const WrapperStyled = glamorous.article({
+const WrapperStyled = glamorous.div({
   "> *:first-child": {
     marginTop: 0,
     paddingTop: 0
@@ -229,7 +229,6 @@ export class Heading1 extends React.Component {
 
 const Heading1Styled = glamorous.h2({
   ...s.fonts.headingMedium,
-  ...removeSpacingAfterHeading,
   padding: `${s.size(56)} 0 ${s.size(12)} 0`,
   color: s.colors.grayDark,
   [s.breakpoints.medium]: {
@@ -237,7 +236,8 @@ const Heading1Styled = glamorous.h2({
   },
   [s.breakpoints.small]: {
     padding: `${s.size(34)} 0 ${s.size(8)} 0`
-  }
+  },
+  ...removeSpacingAfterHeading
 });
 
 export class Heading2 extends React.Component {
@@ -252,7 +252,6 @@ export class Heading2 extends React.Component {
 
 const Heading2Styled = glamorous.h3({
   ...s.fonts.headingSmall,
-  ...removeSpacingAfterHeading,
   padding: `${s.size(32)} 0 ${s.size(10)} 0`,
   color: s.colors.grayDark,
   [s.breakpoints.medium]: {
@@ -260,7 +259,8 @@ const Heading2Styled = glamorous.h3({
   },
   [s.breakpoints.small]: {
     padding: `${s.size(18)} 0 ${s.size(6)} 0`
-  }
+  },
+  ...removeSpacingAfterHeading
 });
 
 //
@@ -438,37 +438,6 @@ const TableCellHeadingStyled = glamorous.th({
 
 
 
-
-
-// header
-
-.Article-header {
-  display: flex;
-  flex-direction: column;
-}
-
-.Article-title {
-  margin: 1.2em 0 0 0;
-  font-size: var(--font-size-title);
-  line-height: var(--font-line-height-title);
-  font-family: var(--font-family-heading);
-  font-weight: normal;
-  color: var(--color-gray-dark);
-}
-
-.Article-datetime {
-  margin-top: 0.2em;
-  font-size: var(--font-size-paragraph);
-  line-height: var(--font-line-height-paragraph);
-  font-family: var(--font-family-paragraph);
-  font-style: italic;
-}
-
-// content
-
-.Article-content {
-  margin-top: 2.8rem;
-}
 
 // comments
 

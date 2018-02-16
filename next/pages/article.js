@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Layout from "../components/layout.js";
-import ArticlesRouter from "../articles/articles-router.js";
-import { ArticleWrapper } from "../components/article.js";
+import glamorous from "glamorous";
 import dynamic from "next/dynamic";
+import ArticlesRouter from "../articles/articles-router.js";
+import Layout from "../components/layout.js";
+import { ArticleWrapper } from "../components/article.js";
+import * as date from "../common/date.js";
+import * as s from "../common/styles.js";
 
 class Article extends React.Component {
   static propTypes = {
@@ -14,9 +17,9 @@ class Article extends React.Component {
     const articleUrl = data.query.articleUrl;
 
     // Makes sure we wait for the import to resolve before we render the page.
-    await ArticlesRouter[articleUrl];
+    const article = await ArticlesRouter[articleUrl];
 
-    return { articleUrl: articleUrl };
+    return { articleUrl: articleUrl, metadata: article.default.metadata };
   }
 
   render() {
@@ -24,12 +27,45 @@ class Article extends React.Component {
 
     return (
       <Layout>
-        <ArticleWrapper>
-          <Component />
-        </ArticleWrapper>
+        <Header>
+          <Title>{this.props.metadata.title}</Title>
+          <Time
+            title={date.fullDate(this.props.metadata.dateLastUpdate)}
+            dateTime={date.dateTimeAttribute(
+              this.props.metadata.dateLastUpdate
+            )}
+          >
+            {date.howLongBefore(this.props.metadata.dateLastUpdate)}
+          </Time>
+        </Header>
+        <Content>
+          <ArticleWrapper>
+            <Component />
+          </ArticleWrapper>
+        </Content>
       </Layout>
     );
   }
 }
+
+const Header = glamorous.div({
+  display: "flex",
+  flexDirection: "column"
+});
+
+const Title = glamorous.h1({
+  ...s.fonts.heading,
+  margin: `${s.grid(7)} 0 0 0`,
+  color: s.colors.grayDark
+});
+
+const Time = glamorous.time({
+  ...s.fonts.paragraph,
+  fontStyle: "italic"
+});
+
+const Content = glamorous.div({
+  marginTop: s.grid(3)
+});
 
 export default Article;

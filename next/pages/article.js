@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Layout from "../components/layout.js";
 import ArticlesRouter from "../articles/articles-router.js";
+import { ArticleWrapper } from "../components/article.js";
 import dynamic from "next/dynamic";
 
 class Article extends React.Component {
@@ -23,7 +24,9 @@ class Article extends React.Component {
 
     return (
       <Layout>
-        <Component />
+        <ArticleWrapper>
+          <Component />
+        </ArticleWrapper>
       </Layout>
     );
   }

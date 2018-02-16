@@ -6,6 +6,27 @@ import { highlight } from "highlight.js";
 import * as s from "../common/styles.js";
 
 //
+// Article wrapper
+//
+
+export class ArticleWrapper extends React.Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired
+  };
+
+  render() {
+    return <WrapperStyled>{this.props.children}</WrapperStyled>;
+  }
+}
+
+const WrapperStyled = glamorous.article({
+  "> *:first-child": {
+    marginTop: 0,
+    paddingTop: 0
+  }
+});
+
+//
 // Texts
 //
 
@@ -31,7 +52,9 @@ export class Paragraph extends React.Component {
   }
 }
 
-const ParagraphStyled = glamorous.p({
+const classNameParagraph = "article-paragraph";
+
+const ParagraphStyled = glamorous.p(classNameParagraph, {
   ...s.fonts.paragraph,
   marginTop: s.dimensions.paragraphSpacing
 });
@@ -143,7 +166,10 @@ const listIndentSize = s.gridRaw(2);
 const ListUnorderedStyled = glamorous.ul({
   ...listSharedStyles,
   position: "relative",
-  marginLeft: s.size(listIndentSize)
+  marginLeft: s.size(listIndentSize),
+  [`.${classNameParagraph} + &`]: {
+    marginTop: 0
+  }
 });
 
 const ListOrderedStyled = glamorous.ol({
@@ -152,7 +178,10 @@ const ListOrderedStyled = glamorous.ol({
 
 const ListItemStyled = glamorous.li(
   {
-    ...s.fonts.paragraph
+    ...s.fonts.paragraph,
+    "> *": {
+      marginTop: 0
+    }
   },
   props => {
     if (props.numbered) {
@@ -173,17 +202,20 @@ const ListItemStyled = glamorous.li(
   }
 );
 
-// .Article-content p + ul,
-// .Article-content li > ul,
-// .Article-content li > ol,
-// .Article-content li > pre,
-// .Article-content li > p {
-//   margin-top: 0;
-// }
-
 //
 // Headings
 //
+
+// .Article-content h2 + *:not(h2):not(h3),
+// .Article-content h3 + *:not(h2):not(h3) {
+//   // remove margin after heading, since headins has margin bottom
+//   margin-top: 0;
+// }
+const removeSpacingAfterHeading = {
+  "& + *": {
+    marginTop: 0
+  }
+};
 
 export class Heading1 extends React.Component {
   static propTypes = {
@@ -197,6 +229,7 @@ export class Heading1 extends React.Component {
 
 const Heading1Styled = glamorous.h2({
   ...s.fonts.headingMedium,
+  ...removeSpacingAfterHeading,
   padding: `${s.size(56)} 0 ${s.size(12)} 0`,
   color: s.colors.grayDark,
   [s.breakpoints.medium]: {
@@ -219,6 +252,7 @@ export class Heading2 extends React.Component {
 
 const Heading2Styled = glamorous.h3({
   ...s.fonts.headingSmall,
+  ...removeSpacingAfterHeading,
   padding: `${s.size(32)} 0 ${s.size(10)} 0`,
   color: s.colors.grayDark,
   [s.breakpoints.medium]: {
@@ -504,23 +538,6 @@ const TableCellHeadingStyled = glamorous.th({
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-// spacing between paragraphs and headings
-
-.Article-content > * {
-  margin: var(--paragraph-spacing) 0 0 0;
-}
-
-.Article-content > *:first-child {
-  margin-top: 0;
-  padding-top: 0;
-}
-
-.Article-content h2 + *:not(h2):not(h3),
-.Article-content h3 + *:not(h2):not(h3) {
-  // remove margin after heading, since headins has margin bottom
-  margin-top: 0;
 }
 
 

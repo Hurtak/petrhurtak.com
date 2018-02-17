@@ -213,7 +213,9 @@ const ListItemStyled = glamorous.li(
 // }
 const removeSpacingAfterHeading = {
   "& + *": {
-    marginTop: 0
+    // TODO: some easy and clean way to do this?
+    marginTop: "0 !important",
+    paddingTop: "0 !important"
   }
 };
 

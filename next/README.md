@@ -7,6 +7,8 @@
 
 ## Later
 
+* cleanup articles css, there are some importants and other stuff
+* unify how margin/paddings are used, use only one when possible?
 * Check that Google Analytics works
 * https://asciinema.org/ & https://github.com/marionebl/svg-term-cli
 * commenting service - https://github.com/coralproject/talk

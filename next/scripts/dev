@@ -2,7 +2,6 @@
 cd "$(dirname "$0")/.."
 
 export NODE_ENV="development"
-export APP_PORT="3000"
 
 ./node_modules/.bin/concurrently \
     --prefix "{name}" \

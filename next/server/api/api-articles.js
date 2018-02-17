@@ -1,24 +1,21 @@
 import fs from "fs-extra";
 import path from "path";
 import { sortBy } from "lodash";
+import * as apiCommon from "./api-common.js";
 
 const pathArticles = path.join(__dirname, "../../articles/published");
-
-function dateStringToDate(dateString) {
-  const [date, time] = dateString.split(" ");
-  const [year, month, day] = date.split("-").map(Number);
-  const [hours, minutes, seconds] = time.split(":").map(Number);
-
-  return Date.UTC(year, month, day, hours, minutes, seconds);
-}
 
 function transformMetadata(metadata) {
   const metadataTransformed = {
     title: metadata.title,
     description: metadata.description,
     url: metadata.url,
-    datePublication: dateStringToDate(metadata.datePublication),
-    dateLastUpdate: dateStringToDate(metadata.dateLastUpdate),
+    datePublication: apiCommon.articleMetadataDateToTimestamp(
+      metadata.datePublication
+    ),
+    dateLastUpdate: apiCommon.articleMetadataDateToTimestamp(
+      metadata.dateLastUpdate
+    ),
     id: metadata.id
   };
 

@@ -1,6 +1,6 @@
 import articlesRouter from "./articles-router.js";
 import fs from "fs-extra";
-import { expect } from "global";
+import { test, expect } from "global";
 
 async function loadArticles() {
   const articlesList = await fs.readdir(pathArticles);

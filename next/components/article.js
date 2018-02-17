@@ -206,11 +206,6 @@ const ListItemStyled = glamorous.li(
 // Headings
 //
 
-// .Article-content h2 + *:not(h2):not(h3),
-// .Article-content h3 + *:not(h2):not(h3) {
-//   // remove margin after heading, since headins has margin bottom
-//   margin-top: 0;
-// }
 const removeSpacingAfterHeading = {
   "& + *": {
     // TODO: some easy and clean way to do this?

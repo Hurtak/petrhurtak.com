@@ -4,12 +4,13 @@ import glamorous from "glamorous";
 import fetch from "isomorphic-fetch";
 import Layout from "../components/layout.js";
 import Spacer from "../components/spacer.js";
+import config from "../common/config.js";
 import * as s from "../common/styles.js";
 import * as date from "../common/date.js";
 
 class Index extends React.Component {
   static async getInitialProps() {
-    const reqApi = await fetch("http://localhost:3000/api/articles");
+    const reqApi = await fetch(`${config.api.url}/articles`);
     const articles = await reqApi.json();
 
     return { articles };

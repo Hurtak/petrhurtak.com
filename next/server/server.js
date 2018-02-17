@@ -1,11 +1,11 @@
 import express from "express";
 import next from "next";
 import helmet from "helmet";
+import config from "../common/config.js";
 import apiArticles from "./api/api-articles.js";
 import apiArticle from "./api/api-article.js";
 import rss from "./rss.js";
 
-const port = Number(process.env.APP_PORT) || 3000;
 const dev = process.env.NODE_ENV !== "production";
 
 const nextApp = next({ dev });
@@ -51,9 +51,9 @@ async function main() {
   });
 
   // Start the server
-  expressServer.listen(port, err => {
+  expressServer.listen(config.server.port, err => {
     if (err) throw err;
-    console.log(`> Ready on http://localhost:${port}`);
+    console.log(`> Ready on ${config.server.url}`);
   });
 }
 

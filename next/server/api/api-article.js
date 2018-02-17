@@ -1,22 +1,18 @@
 import fs from "fs-extra";
 import path from "path";
 import { cloneDeep } from "lodash";
+import * as apiCommon from "./api-common.js";
 
 const pathArticles = path.join(__dirname, "../../articles/published");
 
 // TODO: duplicate function
-function dateStringToDate(dateString) {
-  const [date, time] = dateString.split(" ");
-  const [year, month, day] = date.split("-").map(Number);
-  const [hours, minutes, seconds] = time.split(":").map(Number);
-
-  return new Date(Date.UTC(year, month - 1, day, hours, minutes, seconds));
-}
-
-// TODO: duplicate function
 function parseMetadata(metadata) {
-  metadata.dateLastUpdate = dateStringToDate(metadata.dateLastUpdate);
-  metadata.datePublication = dateStringToDate(metadata.datePublication);
+  metadata.dateLastUpdate = apiCommon.articleMetadataDateToTimestamp(
+    metadata.dateLastUpdate
+  );
+  metadata.datePublication = apiCommon.articleMetadataDateToTimestamp(
+    metadata.datePublication
+  );
 
   return metadata;
 }

@@ -1,7 +1,8 @@
 {
   "search.exclude": {
     ".nyc_output": true,
-    "coverage": true
+    "coverage": true,
+    "**/.next": true
   },
   "editor.formatOnSave": true,
   "[markdown]": {

@@ -1,9 +1,32 @@
 import path from "path";
 import fs from "fs-extra";
+import { sortBy } from "lodash";
 
-export async function getArticlesMetadata() {
-  const pathArticles = path.join(__dirname, "../../articles/published");
+const pathArticles = path.join(__dirname, "../articles/published");
 
+export async function articles() {
+  let metadata = await getArticlesMetadata();
+
+  // TODO: test this
+  metadata = metadata.filter(article => article.dateLastUpdate <= Date.now());
+  metadata = sortBy(metadata, "dateLastUpdate");
+  metadata = metadata.reverse();
+
+  return metadata;
+}
+
+export async function article(articleUrl) {
+  const articles = await getArticlesMetadata();
+
+  const article = articles.find(article => article.url === articleUrl);
+  if (!article) {
+    return null;
+  }
+
+  return article;
+}
+
+async function getArticlesMetadata() {
   const articlesList = await fs.readdir(pathArticles);
 
   let metadata = articlesList

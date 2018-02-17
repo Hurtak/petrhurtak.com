@@ -2,8 +2,7 @@ import express from "express";
 import next from "next";
 import helmet from "helmet";
 import config from "../common/config.js";
-import apiArticles from "./api/api-articles.js";
-import apiArticle from "./api/api-article.js";
+import * as api from "./api.js";
 import rss from "./rss.js";
 
 const dev = process.env.NODE_ENV !== "production";
@@ -21,12 +20,12 @@ async function main() {
 
   // API
   expressServer.get("/api/articles", async (req, res) => {
-    const articles = await apiArticles();
+    const articles = await api.articles();
     res.json(articles);
   });
 
   expressServer.get("/api/article/:url", async (req, res) => {
-    const article = await apiArticle(req.params.url);
+    const article = await api.article(req.params.url);
     if (!article) {
       res.status(404);
       res.send("Article not found");
@@ -38,7 +37,7 @@ async function main() {
 
   // Special
   expressServer.get("/rss", async (req, res) => {
-    const articles = await apiArticles();
+    const articles = await api.articles();
     const rssString = rss(articles);
 
     res.set("Content-Type", "application/rss+xml");

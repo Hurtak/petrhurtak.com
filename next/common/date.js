@@ -6,8 +6,9 @@ export function metadataDateToTimestamp(dateString) {
   return new Date(Date.UTC(year, month - 1, day, hours, minutes, seconds));
 }
 
-export function gmt(date) {
+export function gmt(timestamp) {
   // GMT string example "Mon, 27 Jun 2016 17:48:24 GMT"
+  const date = new Date(timestamp);
   return date.toGMTString();
 }
 

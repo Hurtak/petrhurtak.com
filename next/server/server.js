@@ -6,14 +6,13 @@ import config from "../common/config.js";
 import * as api from "./api.js";
 import rss from "./rss.js";
 
-const dev = process.env.NODE_ENV !== "production";
-
-const nextApp = next({ dev });
-const nextRequestHandler = nextApp.getRequestHandler();
-
 async function main() {
   console.log(`> Starting the app with Node ${process.version}`);
 
+  const dev = process.env.NODE_ENV !== "production";
+
+  const nextApp = next({ dev });
+  const nextRequestHandler = nextApp.getRequestHandler();
   await nextApp.prepare();
 
   const cacheMiddleware = apicache
@@ -21,6 +20,9 @@ async function main() {
     .middleware(config.cacheDuration);
 
   const expressServer = express();
+  expressServer.enable("strict routing");
+  expressServer.use(unifySlashesMiddleware());
+  expressServer.use(removeTrailingSlashesMiddleware());
   expressServer.use(helmet());
 
   //
@@ -81,6 +83,31 @@ async function main() {
     if (err) throw err;
     console.log(`> Ready on ${config.server.url}`);
   });
+}
+
+function unifySlashesMiddleware() {
+  const multipleSlashes = /[/]{2,}/g;
+
+  return function(req, res, next) {
+    if (multipleSlashes.test(req.originalUrl)) {
+      const fixedUrl = req.originalUrl.replace(multipleSlashes, "/");
+      res.redirect(301, fixedUrl);
+    } else {
+      next();
+    }
+  };
+}
+
+function removeTrailingSlashesMiddleware() {
+  return function(req, res, next) {
+    if (req.path !== "/" && req.path.endsWith("/")) {
+      const search = req.originalUrl.replace(req.path, "");
+      const fixedUrl = req.path.slice(0, -1) + search;
+      res.redirect(301, fixedUrl);
+    } else {
+      next();
+    }
+  };
 }
 
 main();

@@ -24,7 +24,6 @@
   "devDependencies": {
     "babel-plugin-glamorous-displayname": "2.2.0",
     "concurrently": "3.5.1",
-    "jest": "22.3.0",
-    "nodemon": "1.15.0"
+    "jest": "22.3.0"
   }
 }

@@ -24,8 +24,15 @@ async function main() {
     const articles = await apiArticles();
     res.json(articles);
   });
+
   expressServer.get("/api/article/:url", async (req, res) => {
     const article = await apiArticle(req.params.url);
+    if (!article) {
+      res.status(404);
+      res.send("Article not found");
+      return;
+    }
+
     res.json(article);
   });
 

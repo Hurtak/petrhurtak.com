@@ -2,9 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import glamorous from "glamorous";
 import dynamic from "next/dynamic";
+import fetch from "isomorphic-fetch";
 import ArticlesRouter from "../articles/articles-router.js";
 import Layout from "../components/layout.js";
 import { ArticleWrapper } from "../components/article.js";
+import config from "../common/config.js";
 import * as date from "../common/date.js";
 import * as s from "../common/styles.js";
 
@@ -16,27 +18,46 @@ class Article extends React.Component {
   static async getInitialProps(data) {
     const articleUrl = data.query.articleUrl;
 
-    // Makes sure we wait for the import to resolve before we render the page.
-    const article = await ArticlesRouter[articleUrl];
+    const baseProps = {
+      articleUrl: articleUrl,
+      articleExists: false
+    };
 
-    return { articleUrl: articleUrl, metadata: article.default.metadata };
+    const articleComponentImport = ArticlesRouter[articleUrl];
+    if (!articleComponentImport) {
+      return baseProps;
+    }
+
+    const req = await fetch(`${config.api.url}/article/${articleUrl}`);
+    if (req.status !== 200) {
+      return baseProps;
+    }
+    const metadata = await req.json();
+
+    // Makes sure we wait for the import to resolve before we render the page.
+    await articleComponentImport();
+
+    return { ...baseProps, articleExists: true, metadata: metadata };
   }
 
   render() {
-    const Component = dynamic(ArticlesRouter[this.props.articleUrl]);
-    const timestampLastUpdate = date.metadataDateToTimestamp(
-      this.props.metadata.dateLastUpdate
-    );
+    if (!this.props.articleExists) {
+      return <Layout>Article not found</Layout>;
+    }
+
+    const Component = dynamic(ArticlesRouter[this.props.articleUrl]());
 
     return (
       <Layout>
         <Header>
           <Title>{this.props.metadata.title}</Title>
           <Time
-            title={date.fullDate(timestampLastUpdate)}
-            dateTime={date.dateTimeAttribute(timestampLastUpdate)}
+            title={date.fullDate(this.props.metadata.dateLastUpdate)}
+            dateTime={date.dateTimeAttribute(
+              this.props.metadata.dateLastUpdate
+            )}
           >
-            {date.howLongBefore(timestampLastUpdate)}
+            {date.howLongBefore(this.props.metadata.dateLastUpdate)}
           </Time>
         </Header>
         <Content>

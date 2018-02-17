@@ -1,6 +1,6 @@
 # Rewrite TODOS
 
-* cleanup api and whole articles data handling and articles metadata handling
+* api calls caching
 * convert remaining articles
 * deploy
 * Go through TODOS

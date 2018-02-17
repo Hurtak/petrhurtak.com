@@ -28,11 +28,11 @@ class Layout extends React.Component {
             {(() => {
               const pageName = this.props.pageTitle
                 ? capitalize(this.props.pageTitle)
-                : null;
+                : "";
               const nDash = "\u2013";
               const siteName = capitalize(config.siteUrlShort);
 
-              return pageName + (pageName ? ` ${nDash} ` : null) + siteName;
+              return pageName + (pageName ? ` ${nDash} ` : "") + siteName;
             })()}
           </title>
         </Head>

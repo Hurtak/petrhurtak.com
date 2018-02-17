@@ -1,7 +1,5 @@
 # Rewrite TODOS
 
-* rozbitej title
-* trailing slash unification
 * css je debilni v produkcnim modu
 * convert remaining articles
 * deploy

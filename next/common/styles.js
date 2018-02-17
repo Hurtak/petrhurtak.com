@@ -147,17 +147,21 @@ const fontSharedValues = {
   fontFamilyCode: "monospace"
 };
 
-const fontParagraphSmall = {
-  ...fontSharedProperties,
-  fontFamily: fontSharedValues.fontFamilyDefault,
+const fontParagraphSmallSizes = {
   fontSize: size(16),
-  lineHeight: 1.6,
   [breakpoints.medium]: {
     fontSize: size(13)
   },
   [breakpoints.small]: {
     fontSize: size(13)
   }
+};
+
+const fontParagraphSmall = {
+  ...fontSharedProperties,
+  ...fontParagraphSmallSizes,
+  fontFamily: fontSharedValues.fontFamilyDefault,
+  lineHeight: 1.6
 };
 
 export const fonts = {
@@ -226,6 +230,7 @@ export const fonts = {
 
   codeMultiline: {
     ...fontSharedProperties,
+    ...fontParagraphSmallSizes,
     fontFamily: fontSharedProperties.fontFamilyCode,
     fontSize: size(16),
     lineHeight: 1.45

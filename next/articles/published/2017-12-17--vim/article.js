@@ -233,7 +233,7 @@ export default class Article extends React.Component {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Quit Vim </TableCell>
+            <TableCell>Quit Vim</TableCell>
             <TableCell>
               <Code>q</Code>
             </TableCell>
@@ -260,11 +260,11 @@ export default class Article extends React.Component {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Search </TableCell>
+            <TableCell>Search</TableCell>
             <TableCell>
               <Code>/searched term</Code>
             </TableCell>
-            <TableCell> </TableCell>
+            <TableCell />
           </TableRow>
           <TableRow>
             <TableCell>Search &ndash; next item</TableCell>
@@ -280,7 +280,7 @@ export default class Article extends React.Component {
             <TableCell>
               <Code>N</Code>
             </TableCell>
-            <TableCell> </TableCell>
+            <TableCell />
           </TableRow>
         </Table>
       </React.Fragment>

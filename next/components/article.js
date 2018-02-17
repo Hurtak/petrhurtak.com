@@ -387,7 +387,9 @@ const TableStyled = glamorous.table({
 export class TableRow extends React.Component {
   static propTypes = {
     // TODO: child oly TableCell
-    children: PropTypes.node.isRequired,
+
+    // Children are not required because we might have empty filler cells.
+    children: PropTypes.node,
     heading: PropTypes.bool
   };
 

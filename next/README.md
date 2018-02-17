@@ -1,6 +1,8 @@
 # Rewrite TODOS
 
-* favicon.ico 404
+* next 404 override
+* trailing slash unification
+* css je debilni v produkcnim modu
 * convert remaining articles
 * deploy
 * Go through TODOS

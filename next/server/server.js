@@ -23,7 +23,9 @@ async function main() {
   const expressServer = express();
   expressServer.use(helmet());
 
+  //
   // API
+  //
   expressServer.get("/api/articles", cacheMiddleware, async (req, res) => {
     const articles = await api.articles();
     res.json(articles);
@@ -40,7 +42,14 @@ async function main() {
     res.json(article);
   });
 
+  expressServer.get("/api/*", (req, res) => {
+    res.status(405);
+    res.send("Method not allowed");
+  });
+
+  //
   // Special
+  //
   expressServer.get("/rss", cacheMiddleware, async (req, res) => {
     const articles = await api.articles();
     const rssString = rss(articles);
@@ -49,19 +58,25 @@ async function main() {
     res.send(rssString);
   });
 
+  //
   // Articles
+  //
   expressServer.get("/:articleUrl", (req, res) => {
     return nextApp.render(req, res, "/article", {
       articleUrl: req.params.articleUrl
     });
   });
 
+  //
   // Rest
+  //
   expressServer.get("*", (req, res) => {
     return nextRequestHandler(req, res);
   });
 
+  //
   // Start the server
+  //
   expressServer.listen(config.server.port, err => {
     if (err) throw err;
     console.log(`> Ready on ${config.server.url}`);

@@ -7,9 +7,8 @@ import glamorous from "glamorous";
 import config from "../common/config.js";
 import * as s from "../common/styles.js";
 
-// Adds server generated styles to glamor cache.
-// Has to run before any `style()` calls
-// '__NEXT_DATA__.ids' is set in '_document.js'
+// Adds server generated styles to glamor cache. Has to run before any `style()`
+// calls. '__NEXT_DATA__.ids' is set in '_document.js'.
 if (typeof window !== "undefined") {
   rehydrate(window.__NEXT_DATA__.ids);
 }
@@ -22,15 +21,19 @@ class Layout extends React.Component {
   };
 
   render() {
-    const nDash = "\u2013";
-
     return (
       <Page>
         <Head>
           <title>
-            {this.props.pageTitle &&
-              `${capitalize(this.props.pageTitle)} ${nDash} `}
-            {capitalize(config.siteUrlShort)}
+            {(() => {
+              const pageName = this.props.pageTitle
+                ? capitalize(this.props.pageTitle)
+                : null;
+              const nDash = "\u2013";
+              const siteName = capitalize(config.siteUrlShort);
+
+              return pageName + (pageName ? ` ${nDash} ` : null) + siteName;
+            })()}
           </title>
         </Head>
 

@@ -1,6 +1,6 @@
 # Rewrite TODOS
 
-* next 404 override
+* proptypes for article metadata
 * trailing slash unification
 * css je debilni v produkcnim modu
 * convert remaining articles

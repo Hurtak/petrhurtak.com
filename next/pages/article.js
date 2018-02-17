@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import fetch from "isomorphic-fetch";
 import ArticlesRouter from "../articles/articles-router.js";
 import Layout from "../components/layout.js";
-import NotFound from "../components/not-found.js";
+import Error from "../components/error.js";
 import { ArticleWrapper } from "../components/article.js";
 import config from "../common/config.js";
 import * as date from "../common/date.js";
@@ -13,7 +13,8 @@ import * as s from "../common/styles.js";
 
 class Article extends React.Component {
   static propTypes = {
-    articleUrl: PropTypes.string.isRequired
+    articleUrl: PropTypes.string.isRequired,
+    articleExists: PropTypes.bool.isRequired
   };
 
   static async getInitialProps(data) {
@@ -43,7 +44,7 @@ class Article extends React.Component {
 
   render() {
     if (!this.props.articleExists) {
-      return <NotFound />;
+      return <Error type="not-found" />;
     }
 
     const Component = dynamic(ArticlesRouter[this.props.articleUrl]());

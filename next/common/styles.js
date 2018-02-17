@@ -127,8 +127,12 @@ export const dimensions = {
 };
 
 export const breakpoints = {
+  // Shared
   medium: `@media (max-width: ${size(600)})`,
-  small: `@media (max-width: ${size(450)})`
+  small: `@media (max-width: ${size(450)})`,
+
+  // Component specific
+  menu: `@media (max-width: ${size(360)})`
 };
 
 const fontSharedProperties = {
@@ -230,7 +234,7 @@ export const fonts = {
   codeInline: {
     ...fontSharedProperties,
     fontFamily: fontSharedProperties.fontFamilyCode
-    // font-size and line-height is inherited.
+    // font-size and line-height are inherited.
   },
 
   // Type modificators

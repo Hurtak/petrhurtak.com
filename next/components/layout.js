@@ -214,7 +214,7 @@ const PageMain = glamorous.main({
 const Header = glamorous.header({
   display: "flex",
   width: "100%",
-  paddingTop: s.grid(7.5), // TODO
+  paddingTop: s.grid(8),
   flexDirection: "column",
   alignItems: "center",
   backgroundColor: s.colors.blueMain
@@ -248,7 +248,10 @@ const Menu = glamorous.ul({
   justifyContent: "space-between",
   listStyleType: "none",
   margin: 0,
-  padding: 0
+  padding: 0,
+  [s.breakpoints.menu]: {
+    flexDirection: "column"
+  }
 });
 
 const MenuItem = glamorous.li({
@@ -286,6 +289,10 @@ const MenuItemLinkWrapper = glamorous.a(menuItemLinkClass, {
   textDecoration: "none",
   ":hover": {
     color: s.colors.white
+  },
+  [s.breakpoints.menu]: {
+    justifyContent: "flex-start",
+    padding: `${s.grid(1)} 0`
   }
 });
 

@@ -1,6 +1,5 @@
 # Rewrite TODOS
 
-* header responsive
 * jest silent when test passes
 * convert remaining articles
 * deploy

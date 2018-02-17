@@ -22,30 +22,6 @@ class Index extends React.Component {
         <Spacer spacing={4}>
           {this.props.articles.map(article => (
             <Article key={article.id}>
-              {/*
-        <article class="ArticlePreview">
-
-          <h2 class="ArticlePreview-title">
-            <a
-              class="ArticlePreview-title-link"
-              href="/{{ article.metadata.url }}/"
-            >
-              {{ article.metadata.title }}
-            </a>
-          </h2>
-
-          <time
-            class="ArticlePreview-date"
-            title="{{ article.metadata.dateLastUpdate | fullDate }}"
-            datetime="{{ article.metadata.dateLastUpdate | datetimeAttribute }}"
-            data-date-convert
-          >
-            {{ article.metadata.dateLastUpdate | fullDate }}
-          </time>
-
-        </article>
-              */}
-
               <ArticleTitle>
                 <Link
                   href={{

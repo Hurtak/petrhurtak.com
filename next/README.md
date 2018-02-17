@@ -1,7 +1,13 @@
 # Rewrite TODOS
 
-* Check that Google Analytics works
+* cleanup api and whole articles data handling and articles metadata handling
+* convert remaining articles
+* deploy
 * Go through TODOS
+
+## Later
+
+* Check that Google Analytics works
 * https://asciinema.org/ & https://github.com/marionebl/svg-term-cli
 * commenting service - https://github.com/coralproject/talk
 * Style overscroll area
@@ -13,3 +19,5 @@
   * metadata validation
   * https://github.com/wooorm/alex
   * something that checks grammar (maybe Grammarly has some API?)
+* hover & active styles
+  * test whole web only with kehboard

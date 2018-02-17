@@ -24,18 +24,19 @@ class Article extends React.Component {
 
   render() {
     const Component = dynamic(ArticlesRouter[this.props.articleUrl]);
+    const timestampLastUpdate = date.metadataDateToTimestamp(
+      this.props.metadata.dateLastUpdate
+    );
 
     return (
       <Layout>
         <Header>
           <Title>{this.props.metadata.title}</Title>
           <Time
-            title={date.fullDate(this.props.metadata.dateLastUpdate)}
-            dateTime={date.dateTimeAttribute(
-              this.props.metadata.dateLastUpdate
-            )}
+            title={date.fullDate(timestampLastUpdate)}
+            dateTime={date.dateTimeAttribute(timestampLastUpdate)}
           >
-            {date.howLongBefore(this.props.metadata.dateLastUpdate)}
+            {date.howLongBefore(timestampLastUpdate)}
           </Time>
         </Header>
         <Content>

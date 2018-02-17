@@ -1,3 +1,11 @@
+export function metadataDateToTimestamp(dateString) {
+  const [date, time] = dateString.split(" ");
+  const [year, month, day] = date.split("-").map(Number);
+  const [hours, minutes, seconds] = time.split(":").map(Number);
+
+  return new Date(Date.UTC(year, month - 1, day, hours, minutes, seconds));
+}
+
 export function gmt(date) {
   // GMT string example "Mon, 27 Jun 2016 17:48:24 GMT"
   return date.toGMTString();

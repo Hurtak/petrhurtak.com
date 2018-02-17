@@ -224,7 +224,7 @@ export default class Article extends React.Component {
           }
         >
           <TableRow>
-            <TableCell>Save file </TableCell>
+            <TableCell>Save file</TableCell>
             <TableCell>
               <Code>w</Code>
             </TableCell>
@@ -251,7 +251,7 @@ export default class Article extends React.Component {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Save file and quit Vim </TableCell>
+            <TableCell>Save file and quit Vim</TableCell>
             <TableCell>
               <Code>wq</Code>
             </TableCell>
@@ -267,7 +267,7 @@ export default class Article extends React.Component {
             <TableCell> </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Search &ndash; next item </TableCell>
+            <TableCell>Search &ndash; next item</TableCell>
             <TableCell>
               <Code>n</Code>
             </TableCell>
@@ -276,7 +276,7 @@ export default class Article extends React.Component {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Search &ndash; previous item </TableCell>
+            <TableCell>Search &ndash; previous item</TableCell>
             <TableCell>
               <Code>N</Code>
             </TableCell>

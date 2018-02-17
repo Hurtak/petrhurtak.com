@@ -171,7 +171,8 @@ const PageContent = glamorous.div({
   display: "flex",
   flexDirection: "column",
   flexGrow: 1,
-  width: "100%"
+  width: "100%",
+  paddingTop: s.grid(7)
 });
 
 const PageMain = glamorous.main({

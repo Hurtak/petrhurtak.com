@@ -21,8 +21,7 @@ export class ArticleWrapper extends React.Component {
 
 const WrapperStyled = glamorous.div({
   "> *:first-child": {
-    marginTop: 0,
-    paddingTop: 0
+    marginTop: 0
   }
 });
 
@@ -209,8 +208,7 @@ const ListItemStyled = glamorous.li(
 const removeSpacingAfterHeading = {
   "& + *": {
     // TODO: some easy and clean way to do this?
-    marginTop: "0 !important",
-    paddingTop: "0 !important"
+    marginTop: "0 !important"
   }
 };
 
@@ -226,13 +224,13 @@ export class Heading1 extends React.Component {
 
 const Heading1Styled = glamorous.h2({
   ...s.fonts.headingMedium,
-  padding: `${s.size(56)} 0 ${s.size(12)} 0`,
+  margin: `${s.size(56)} 0 ${s.size(12)} 0`,
   color: s.colors.grayDark,
   [s.breakpoints.medium]: {
-    padding: `${s.size(44)} 0 ${s.size(10)} 0`
+    margin: `${s.size(44)} 0 ${s.size(10)} 0`
   },
   [s.breakpoints.small]: {
-    padding: `${s.size(34)} 0 ${s.size(8)} 0`
+    margin: `${s.size(34)} 0 ${s.size(8)} 0`
   },
   ...removeSpacingAfterHeading
 });
@@ -249,13 +247,13 @@ export class Heading2 extends React.Component {
 
 const Heading2Styled = glamorous.h3({
   ...s.fonts.headingSmall,
-  padding: `${s.size(32)} 0 ${s.size(10)} 0`,
+  margin: `${s.size(32)} 0 ${s.size(10)} 0`,
   color: s.colors.grayDark,
   [s.breakpoints.medium]: {
-    padding: `${s.size(26)} 0 ${s.size(8)} 0`
+    margin: `${s.size(26)} 0 ${s.size(8)} 0`
   },
   [s.breakpoints.small]: {
-    padding: `${s.size(18)} 0 ${s.size(6)} 0`
+    margin: `${s.size(18)} 0 ${s.size(6)} 0`
   },
   ...removeSpacingAfterHeading
 });

@@ -77,7 +77,6 @@ const Header = glamorous.div({
 
 const Title = glamorous.h1({
   ...s.fonts.heading,
-  margin: `${s.grid(7)} 0 0 0`,
   color: s.colors.grayDark
 });
 

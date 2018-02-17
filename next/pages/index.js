@@ -54,8 +54,7 @@ class Index extends React.Component {
 
 const Heading = glamorous.h1({
   ...s.fonts.heading,
-  paddingTop: s.grid(7),
-  paddingBottom: s.grid(3)
+  marginBottom: s.grid(3)
 });
 
 const Article = glamorous.article({});

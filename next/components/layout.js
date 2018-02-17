@@ -178,7 +178,10 @@ const PageLayoutWrapper = glamorous.div({
   flexGrow: 1,
   justifyContent: "center",
   padding: `0 ${s.grid(2)}`,
-  width: "100%"
+  width: "100%",
+  [s.breakpoints.small]: {
+    padding: `0 ${s.grid(1)}`
+  }
 });
 
 const PageLayoutContent = glamorous.div({
@@ -194,7 +197,13 @@ const PageContent = glamorous.div({
   flexGrow: 1,
   width: "100%",
   paddingTop: s.grid(7),
-  paddingBottom: s.grid(2)
+  paddingBottom: s.grid(2),
+  [s.breakpoints.medium]: {
+    paddingTop: s.grid(5)
+  },
+  [s.breakpoints.small]: {
+    paddingTop: s.grid(3)
+  }
 });
 
 const PageMain = glamorous.main({

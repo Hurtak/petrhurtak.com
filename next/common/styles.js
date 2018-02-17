@@ -149,10 +149,10 @@ const fontParagraphSmall = {
   fontSize: size(16),
   lineHeight: 1.6,
   [breakpoints.medium]: {
-    fontSize: size(8)
+    fontSize: size(13)
   },
   [breakpoints.small]: {
-    fontSize: size(8)
+    fontSize: size(13)
   }
 };
 
@@ -220,11 +220,17 @@ export const fonts = {
     lineHeight: 1.2
   },
 
-  code: {
+  codeMultiline: {
     ...fontSharedProperties,
     fontFamily: fontSharedProperties.fontFamilyCode,
     fontSize: size(16),
     lineHeight: 1.45
+  },
+
+  codeInline: {
+    ...fontSharedProperties,
+    fontFamily: fontSharedProperties.fontFamilyCode
+    // font-size and line-height is inherited.
   },
 
   // Type modificators

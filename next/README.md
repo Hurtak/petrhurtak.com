@@ -1,6 +1,7 @@
 # Rewrite TODOS
 
-* css je debilni v produkcnim modu
+* header responsive
+* jest silent when test passes
 * convert remaining articles
 * deploy
 * Go through TODOS

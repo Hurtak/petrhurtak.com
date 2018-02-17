@@ -222,18 +222,20 @@ export class Heading1 extends React.Component {
   }
 }
 
-const Heading1Styled = glamorous.h2({
-  ...s.fonts.headingMedium,
-  margin: `${s.size(56)} 0 ${s.size(12)} 0`,
-  color: s.colors.grayDark,
-  [s.breakpoints.medium]: {
-    margin: `${s.size(44)} 0 ${s.size(10)} 0`
+const Heading1Styled = glamorous.h2(
+  s.fonts.headingMedium,
+  {
+    margin: `${s.size(56)} 0 ${s.size(12)} 0`,
+    color: s.colors.grayDark,
+    [s.breakpoints.medium]: {
+      margin: `${s.size(44)} 0 ${s.size(10)} 0`
+    },
+    [s.breakpoints.small]: {
+      margin: `${s.size(34)} 0 ${s.size(8)} 0`
+    }
   },
-  [s.breakpoints.small]: {
-    margin: `${s.size(34)} 0 ${s.size(8)} 0`
-  },
-  ...removeSpacingAfterHeading
-});
+  removeSpacingAfterHeading
+);
 
 export class Heading2 extends React.Component {
   static propTypes = {
@@ -245,18 +247,20 @@ export class Heading2 extends React.Component {
   }
 }
 
-const Heading2Styled = glamorous.h3({
-  ...s.fonts.headingSmall,
-  margin: `${s.size(32)} 0 ${s.size(10)} 0`,
-  color: s.colors.grayDark,
-  [s.breakpoints.medium]: {
-    margin: `${s.size(26)} 0 ${s.size(8)} 0`
+const Heading2Styled = glamorous.h3(
+  s.fonts.headingSmall,
+  {
+    margin: `${s.size(32)} 0 ${s.size(10)} 0`,
+    color: s.colors.grayDark,
+    [s.breakpoints.medium]: {
+      margin: `${s.size(26)} 0 ${s.size(8)} 0`
+    },
+    [s.breakpoints.small]: {
+      margin: `${s.size(18)} 0 ${s.size(6)} 0`
+    }
   },
-  [s.breakpoints.small]: {
-    margin: `${s.size(18)} 0 ${s.size(6)} 0`
-  },
-  ...removeSpacingAfterHeading
-});
+  removeSpacingAfterHeading
+);
 
 //
 // Code
@@ -312,7 +316,6 @@ const PreStyled = glamorous.pre({
 
 const CodeStyled = glamorous.code(
   {
-    ...s.fonts.code,
     backgroundColor: s.colors.grayLighter,
     border: `${s.size(1)} solid ${s.colors.grayLight}`,
     borderRadius: s.dimensions.borderRadius,
@@ -325,12 +328,14 @@ const CodeStyled = glamorous.code(
   props => {
     if (props.multiline) {
       return {
+        ...s.fonts.codeMultiline,
         display: "block",
         padding: s.grid(1),
         overflow: "auto"
       };
     } else {
       return {
+        ...s.fonts.codeInline,
         display: "inline",
         padding: `${s.size(1)} ${s.size(2)}`
       };

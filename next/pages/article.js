@@ -16,7 +16,7 @@ class Article extends React.Component {
   static propTypes = {
     articleUrl: PropTypes.string.isRequired,
     articleExists: PropTypes.bool.isRequired,
-    article: sharedPropTypes.article.isRequired
+    article: sharedPropTypes.article
   };
 
   static async getInitialProps(data) {

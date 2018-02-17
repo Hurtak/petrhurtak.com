@@ -22,7 +22,7 @@ class Layout extends React.Component {
   };
 
   render() {
-    const nDash = "\u2014";
+    const nDash = "\u2013";
 
     return (
       <Page>

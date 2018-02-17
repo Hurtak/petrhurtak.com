@@ -7,8 +7,8 @@ export const article = PropTypes.shape({
 
   url: PropTypes.string.isRequired,
 
-  datePublication: PropTypes.string.isRequired,
-  dateLastUpdate: PropTypes.string.isRequired,
+  datePublication: PropTypes.number.isRequired,
+  dateLastUpdate: PropTypes.number.isRequired,
 
   id: PropTypes.string.isRequired
 });

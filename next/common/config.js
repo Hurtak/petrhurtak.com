@@ -8,7 +8,7 @@ const config = {
   },
 
   //
-  // Template config
+  // Template values
   //
   siteUrl: "https://www.hurtak.cc",
   siteUrlShort: "hurtak.cc",
@@ -27,7 +27,9 @@ const config = {
   api: {
     url: "http://localhost:3000/api",
     port: 3000
-  }
+  },
+
+  cacheDuration: "2 hours"
 };
 
 export default config;

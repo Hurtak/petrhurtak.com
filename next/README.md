@@ -1,7 +1,6 @@
 # Rewrite TODOS
 
-* merge arr api stuff into one file
-* api calls caching
+* favicon.ico 404
 * convert remaining articles
 * deploy
 * Go through TODOS

@@ -1,5 +1,6 @@
-import express from "express";
 import next from "next";
+import express from "express";
+import apicache from "apicache";
 import helmet from "helmet";
 import config from "../common/config.js";
 import * as api from "./api.js";
@@ -15,16 +16,20 @@ async function main() {
 
   await nextApp.prepare();
 
+  const cacheMiddleware = apicache
+    .options({ enabled: !dev })
+    .middleware(config.cacheDuration);
+
   const expressServer = express();
   expressServer.use(helmet());
 
   // API
-  expressServer.get("/api/articles", async (req, res) => {
+  expressServer.get("/api/articles", cacheMiddleware, async (req, res) => {
     const articles = await api.articles();
     res.json(articles);
   });
 
-  expressServer.get("/api/article/:url", async (req, res) => {
+  expressServer.get("/api/article/:url", cacheMiddleware, async (req, res) => {
     const article = await api.article(req.params.url);
     if (!article) {
       res.status(404);
@@ -36,7 +41,7 @@ async function main() {
   });
 
   // Special
-  expressServer.get("/rss", async (req, res) => {
+  expressServer.get("/rss", cacheMiddleware, async (req, res) => {
     const articles = await api.articles();
     const rssString = rss(articles);
 

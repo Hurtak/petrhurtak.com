@@ -1,5 +1,6 @@
 # Rewrite TODOS
 
+* merge arr api stuff into one file
 * api calls caching
 * convert remaining articles
 * deploy

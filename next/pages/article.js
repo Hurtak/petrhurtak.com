@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import fetch from "isomorphic-fetch";
 import ArticlesRouter from "../articles/articles-router.js";
 import Layout from "../components/layout.js";
+import NotFound from "../components/not-found.js";
 import { ArticleWrapper } from "../components/article.js";
 import config from "../common/config.js";
 import * as date from "../common/date.js";
@@ -42,15 +43,15 @@ class Article extends React.Component {
 
   render() {
     if (!this.props.articleExists) {
-      return <Layout>Article not found</Layout>;
+      return <NotFound />;
     }
 
     const Component = dynamic(ArticlesRouter[this.props.articleUrl]());
 
     return (
-      <Layout>
+      <Layout pageTitle={this.props.metadata.title}>
         <Header>
-          <Title>{this.props.metadata.title}</Title>
+          <Heading>{this.props.metadata.title}</Heading>
           <Time
             title={date.fullDate(this.props.metadata.dateLastUpdate)}
             dateTime={date.dateTimeAttribute(
@@ -75,7 +76,7 @@ const Header = glamorous.div({
   flexDirection: "column"
 });
 
-const Title = glamorous.h1({
+const Heading = glamorous.h1({
   ...s.fonts.heading,
   color: s.colors.grayDark
 });

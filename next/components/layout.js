@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
+import Head from "next/head";
 import { rehydrate } from "glamor";
 import glamorous from "glamorous";
 import config from "../common/config.js";
@@ -16,12 +17,23 @@ s.initGlobalStyles();
 
 class Layout extends React.Component {
   static propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    pageTitle: PropTypes.string
   };
 
   render() {
+    const nDash = "\u2014";
+
     return (
       <Page>
+        <Head>
+          <title>
+            {this.props.pageTitle &&
+              `${capitalize(this.props.pageTitle)} ${nDash} `}
+            {capitalize(config.siteUrlShort)}
+          </title>
+        </Head>
+
         <Header>
           <PageLayout>
             <HeaderContent>
@@ -113,7 +125,9 @@ class Layout extends React.Component {
             <PageMain>{this.props.children}</PageMain>
 
             <Footer>
-              <FooterParagraph>2015&ndash;{config.yearCurrent}</FooterParagraph>
+              <FooterParagraph>
+                {config.yearFound}&ndash;{config.yearCurrent}
+              </FooterParagraph>
               <FooterParagraph withMarginTop>
                 Written by{" "}
                 <FooterParagraphLink href="mailto:petr.hurtak@gmail.com">
@@ -126,6 +140,10 @@ class Layout extends React.Component {
       </Page>
     );
   }
+}
+
+function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1);
 }
 
 const Page = glamorous.div({
@@ -172,7 +190,8 @@ const PageContent = glamorous.div({
   flexDirection: "column",
   flexGrow: 1,
   width: "100%",
-  paddingTop: s.grid(7)
+  paddingTop: s.grid(7),
+  paddingBottom: s.grid(2)
 });
 
 const PageMain = glamorous.main({
@@ -297,7 +316,7 @@ const MenuItemLinkIconImg = glamorous.img({
 
 const Footer = glamorous.footer({
   width: "100%",
-  padding: `${s.grid(8)} 0 ${s.grid(2)}`
+  paddingTop: s.grid(8)
 });
 
 const FooterParagraph = glamorous.p(

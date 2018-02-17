@@ -1,6 +1,5 @@
 # Rewrite TODOS
 
-* proptypes for article metadata
 * trailing slash unification
 * css je debilni v produkcnim modu
 * convert remaining articles

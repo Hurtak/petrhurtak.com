@@ -26,9 +26,7 @@
     "jest": "22.3.0"
   },
   "scripts": {
-    "now-start": "./scripts/production"
-  },
-  "engines": {
-    "node": "9.5.0"
+    "build": "next build",
+    "start": "NODE_ENV=production node ./server/index.js"
   }
 }

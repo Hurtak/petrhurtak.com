@@ -20,12 +20,14 @@ const config = {
   // Backend URLs config
   //
   server: {
-    url: "http://localhost:3000",
+    url: process.env.NOW_URL ? process.env.NOW_URL : "http://localhost:3000",
     port: 3000
   },
 
   api: {
-    url: "http://localhost:3000/api",
+    url: process.env.NOW_URL
+      ? `${process.env.NOW_URL}/api`
+      : "http://localhost:3000/api",
     port: 3000
   },
 

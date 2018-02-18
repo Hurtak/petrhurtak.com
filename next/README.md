@@ -1,10 +1,9 @@
 # Rewrite TODOS
 
-* react+markdown loader?
+* convert remaining articles
 * article proptypes validation
   * listitem must be inside List component
 * jest silent when test passes
-* convert remaining articles
 * deploy
 * Go through TODOS
 

@@ -1,6 +1,5 @@
 # Rewrite TODOS
 
-* static.links vs static.urls vs nothing?
 * react+markdown loader?
 * article proptypes validation
   * listitem must be inside List component

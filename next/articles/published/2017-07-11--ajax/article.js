@@ -118,7 +118,7 @@ export default class Article extends React.Component {
           </Li>
           <Li>
             For security reasons, some headers can not be set from JavaScript
-            and are controlled only by the browser. These headers are from the
+            and are controlled only by the browser. These headers are from the{" "}
             <Link href="https://developer.mozillorg/en-US/docs/Glossary/Forbidden_header_name">
               forbidden header names
             </Link>{" "}
@@ -221,9 +221,8 @@ export default class Article extends React.Component {
           <Li>Error with HTTP request occurred.</Li>
           <Li>
             A server responding with <Code>500</Code> status code will not
-            trigger the
-            <Code>error</Code> event since it is an error on the server side,
-            not with the HTTP request itself.
+            trigger the <Code>error</Code> event since it is an error on the
+            server side, not with the HTTP request itself.
           </Li>
           <Li>
             Usually, it might be one of the following:
@@ -271,8 +270,7 @@ export default class Article extends React.Component {
         <List>
           <Li>
             Fires when a request takes longer than a value set in the{" "}
-            <Code>timeout</Code>
-            property.
+            <Code>timeout</Code> property.
           </Li>
           <Li>
             Does not fire when <Code>timeout</Code> is not set, request takes

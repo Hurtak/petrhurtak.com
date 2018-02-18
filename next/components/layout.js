@@ -229,7 +229,8 @@ const HeaderContent = glamorous.div({
 });
 
 const HeaderLogo = glamorous.a({
-  display: "block"
+  display: "block",
+  userSelect: "none"
 });
 
 const HeaderLogoImage = glamorous.img({

@@ -101,7 +101,7 @@ export class Link extends React.Component {
 
   render() {
     return (
-      <LinkStyled href={this.props.children}>{this.props.children}</LinkStyled>
+      <LinkStyled href={this.props.href}>{this.props.children}</LinkStyled>
     );
   }
 }

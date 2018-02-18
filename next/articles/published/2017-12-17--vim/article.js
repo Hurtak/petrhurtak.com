@@ -1,16 +1,16 @@
 import React from "react";
 import {
-  Paragraph,
-  List,
-  ListItem,
-  Link,
+  H1,
+  H2,
+  P,
   Bold,
-  Heading1,
-  Heading2,
+  Link,
   Code,
+  List,
+  Li,
   Table,
-  TableRow,
-  TableCell
+  Tr,
+  Tc
 } from "../../../components/article.js";
 
 export default class Article extends React.Component {
@@ -31,45 +31,40 @@ export default class Article extends React.Component {
     id: "e2fd547986a4527970cc6be38f38d430"
   };
 
-  static links = {
-    vim:
-      "https://insights.stackoverflow.com/survey/2017#technology-most-popular-developer-environments-by-occupation"
-  };
-
   render() {
     return (
       <React.Fragment>
-        <Paragraph>
+        <P>
           Vim is a text editor. It is in the{" "}
-          <Link href={Article.links.vim}>
+          <Link href="https://insights.stackoverflow.com/survey/2017#technology-most-popular-developer-environments-by-occupation">
             top 5 of the most popular text editors
           </Link>. Some of its advantages are:
-        </Paragraph>
+        </P>
         <List>
-          <ListItem>
+          <Li>
             <Bold>Runs inside terminal</Bold>, so it is easy to use on remote
             servers with ssh.
-          </ListItem>
-          <ListItem>
+          </Li>
+          <Li>
             <Bold>Widely available</Bold> on Linux distributions. If you ssh
             somewhere, Vim is the probably the most likely terminal text editor
             to be installed.
-          </ListItem>
+          </Li>
         </List>
-        <Paragraph>
+        <P>
           This article focuses on Vim basics and the use case where you are in a
           terminal in the ssh session and want to quickly edit/explore files
           within the terminal.
-        </Paragraph>
+        </P>
 
-        <Heading1>Install</Heading1>
+        <H1>Install</H1>
         <Code language="bash" multiline>{`sudo apt-get install vim`}</Code>
 
-        <Heading1>Open file in Vim</Heading1>
+        <H1>Open file in Vim</H1>
         <Code language="bash" multiline>{`vim filepath`}</Code>
 
-        <Heading1>Basic usage</Heading1>
-        <Paragraph>
+        <H1>Basic usage</H1>
+        <P>
           Unlike more traditional text editors, where if you start typing the
           letters will be inserted at the place of your cursor, Vim works little
           differently. <Bold>In Vim you have modes and commands</Bold>, the
@@ -78,210 +73,208 @@ export default class Article extends React.Component {
           save file. So if you want to select text, you enter{" "}
           <Code>Visual</Code> mode, if you want to insert text, you enter{" "}
           <Code>Insert</Code> mode and so on.
-        </Paragraph>
+        </P>
 
-        <Heading2>Modes & Commands</Heading2>
+        <H2>Modes & Commands</H2>
         <Table
           heading={
-            <TableRow>
-              <TableCell>Mode name</TableCell>
-              <TableCell>Key</TableCell>
-              <TableCell>Description</TableCell>
-            </TableRow>
+            <Tr>
+              <Tc>Mode name</Tc>
+              <Tc>Key</Tc>
+              <Tc>Description</Tc>
+            </Tr>
           }
         >
-          <TableRow>
-            <TableCell>Normal</TableCell>
-            <TableCell>
+          <Tr>
+            <Tc>Normal</Tc>
+            <Tc>
               <Code>Esc</Code>
-            </TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>
               For navigation and manipulation of text. The default mode. You can
               usually get back to this mode with <Code>Esc</Code>.
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Insert</TableCell>
-            <TableCell>
+            </Tc>
+          </Tr>
+          <Tr>
+            <Tc>Insert</Tc>
+            <Tc>
               <Code>Insert</Code> or <Code>i</Code>
-            </TableCell>
-            <TableCell>For inserting text.</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Visual</TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>For inserting text.</Tc>
+          </Tr>
+          <Tr>
+            <Tc>Visual</Tc>
+            <Tc>
               <Code>v</Code>
-            </TableCell>
-            <TableCell>Text selections.</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Visual Line</TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>Text selections.</Tc>
+          </Tr>
+          <Tr>
+            <Tc>Visual Line</Tc>
+            <Tc>
               <Code>V</Code>
-            </TableCell>
-            <TableCell>Selection of whole lines.</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Command</TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>Selection of whole lines.</Tc>
+          </Tr>
+          <Tr>
+            <Tc>Command</Tc>
+            <Tc>
               <Code>:</Code>
-            </TableCell>
-            <TableCell>
-              For entering commands like search, save file or exit Vim.
-            </TableCell>
-          </TableRow>
+            </Tc>
+            <Tc>For entering commands like search, save file or exit Vim.</Tc>
+          </Tr>
         </Table>
 
-        <Heading2>Normal mode</Heading2>
+        <H2>Normal mode</H2>
 
         <Table
           heading={
-            <TableRow>
-              <TableCell>Command</TableCell>
-              <TableCell>Key</TableCell>
-              <TableCell>Abbreviation</TableCell>
-            </TableRow>
+            <Tr>
+              <Tc>Command</Tc>
+              <Tc>Key</Tc>
+              <Tc>Abbreviation</Tc>
+            </Tr>
           }
         >
-          <TableRow>
-            <TableCell>Undo</TableCell>
-            <TableCell>
+          <Tr>
+            <Tc>Undo</Tc>
+            <Tc>
               <Code>u</Code>
-            </TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>
               <Bold>u</Bold>ndo
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Redo</TableCell>
-            <TableCell>
+            </Tc>
+          </Tr>
+          <Tr>
+            <Tc>Redo</Tc>
+            <Tc>
               <Code>Ctrl</Code> + <Code>r</Code>
-            </TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>
               <Bold>r</Bold>edo
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Cut (delete) line</TableCell>
-            <TableCell>
+            </Tc>
+          </Tr>
+          <Tr>
+            <Tc>Cut (delete) line</Tc>
+            <Tc>
               <Code>d</Code> and <Code>d</Code>
-            </TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>
               <Bold>d</Bold>elete
-            </TableCell>
-          </TableRow>
+            </Tc>
+          </Tr>
         </Table>
 
-        <Heading2>Visual mode</Heading2>
+        <H2>Visual mode</H2>
 
         <Table
           heading={
-            <TableRow>
-              <TableCell>Command</TableCell>
-              <TableCell>Key</TableCell>
-              <TableCell>Abbreviation</TableCell>
-            </TableRow>
+            <Tr>
+              <Tc>Command</Tc>
+              <Tc>Key</Tc>
+              <Tc>Abbreviation</Tc>
+            </Tr>
           }
         >
-          <TableRow>
-            <TableCell>Copy</TableCell>
-            <TableCell>
+          <Tr>
+            <Tc>Copy</Tc>
+            <Tc>
               <Code>y</Code>
-            </TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>
               <Bold>y</Bold>ank
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Paste</TableCell>
-            <TableCell>
+            </Tc>
+          </Tr>
+          <Tr>
+            <Tc>Paste</Tc>
+            <Tc>
               <Code>p</Code>
-            </TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>
               <Bold>p</Bold>aste
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Cut (delete) selection</TableCell>
-            <TableCell>
+            </Tc>
+          </Tr>
+          <Tr>
+            <Tc>Cut (delete) selection</Tc>
+            <Tc>
               <Code>d</Code>
-            </TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>
               <Bold>d</Bold>elete
-            </TableCell>
-          </TableRow>
+            </Tc>
+          </Tr>
         </Table>
 
-        <Heading2>Command mode</Heading2>
+        <H2>Command mode</H2>
 
         <Table
           heading={
-            <TableRow>
-              <TableCell>Command</TableCell>
-              <TableCell>Key</TableCell>
-              <TableCell>Abbreviation</TableCell>
-            </TableRow>
+            <Tr>
+              <Tc>Command</Tc>
+              <Tc>Key</Tc>
+              <Tc>Abbreviation</Tc>
+            </Tr>
           }
         >
-          <TableRow>
-            <TableCell>Save file</TableCell>
-            <TableCell>
+          <Tr>
+            <Tc>Save file</Tc>
+            <Tc>
               <Code>w</Code>
-            </TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>
               <Bold>w</Bold>rite
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Quit Vim</TableCell>
-            <TableCell>
+            </Tc>
+          </Tr>
+          <Tr>
+            <Tc>Quit Vim</Tc>
+            <Tc>
               <Code>q</Code>
-            </TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>
               <Bold>q</Bold>uit
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Force quit Vim (drop unsaved changes)</TableCell>
-            <TableCell>
+            </Tc>
+          </Tr>
+          <Tr>
+            <Tc>Force quit Vim (drop unsaved changes)</Tc>
+            <Tc>
               <Code>q!</Code>
-            </TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>
               <Bold>q</Bold>uit
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Save file and quit Vim</TableCell>
-            <TableCell>
+            </Tc>
+          </Tr>
+          <Tr>
+            <Tc>Save file and quit Vim</Tc>
+            <Tc>
               <Code>wq</Code>
-            </TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>
               <Bold>w</Bold>rite + <Bold>q</Bold>uit
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Search</TableCell>
-            <TableCell>
+            </Tc>
+          </Tr>
+          <Tr>
+            <Tc>Search</Tc>
+            <Tc>
               <Code>/searched term</Code>
-            </TableCell>
-            <TableCell />
-          </TableRow>
-          <TableRow>
-            <TableCell>Search &ndash; next item</TableCell>
-            <TableCell>
+            </Tc>
+            <Tc />
+          </Tr>
+          <Tr>
+            <Tc>Search &ndash; next item</Tc>
+            <Tc>
               <Code>n</Code>
-            </TableCell>
-            <TableCell>
+            </Tc>
+            <Tc>
               <Bold>n</Bold>ext
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Search &ndash; previous item</TableCell>
-            <TableCell>
+            </Tc>
+          </Tr>
+          <Tr>
+            <Tc>Search &ndash; previous item</Tc>
+            <Tc>
               <Code>N</Code>
-            </TableCell>
-            <TableCell />
-          </TableRow>
+            </Tc>
+            <Tc />
+          </Tr>
         </Table>
       </React.Fragment>
     );

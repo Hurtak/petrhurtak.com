@@ -29,6 +29,10 @@ export async function article(articleUrl) {
 async function getArticlesMetadata() {
   const articlesList = await fs.readdir(pathArticles);
 
+  // We read metadata from fs instead of using ArticlesRouter because backend
+  // part of the code is not run through webpack and it does not understand
+  // dynamic imports.
+
   let metadata = articlesList
     .map(articleFolder => path.join(pathArticles, articleFolder))
     // TODO: Make this async.

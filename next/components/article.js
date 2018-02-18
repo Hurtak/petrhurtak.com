@@ -41,7 +41,7 @@ const WrapperStyled = glamorous.div({
 //   text-decoration: line-through;
 // }
 
-export class Paragraph extends React.Component {
+export class P extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired
   };
@@ -139,7 +139,7 @@ export class List extends React.Component {
   }
 }
 
-export class ListItem extends React.Component {
+export class Li extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     numbered: PropTypes.bool
@@ -212,7 +212,7 @@ const removeSpacingAfterHeading = {
   }
 };
 
-export class Heading1 extends React.Component {
+export class H1 extends React.Component {
   static propTypes = {
     children: PropTypes.string.isRequired
   };
@@ -237,7 +237,7 @@ const Heading1Styled = glamorous.h2(
   removeSpacingAfterHeading
 );
 
-export class Heading2 extends React.Component {
+export class H2 extends React.Component {
   static propTypes = {
     children: PropTypes.string.isRequired
   };
@@ -384,12 +384,12 @@ const TableStyled = glamorous.table({
   borderCollapse: "collapse"
 });
 
-export class TableRow extends React.Component {
+export class Tr extends React.Component {
   static propTypes = {
     // TODO: child oly TableCell
 
     // Children are not required because we might have empty filler cells.
-    children: PropTypes.node,
+    children: PropTypes.node.isRequired,
     heading: PropTypes.bool
   };
 
@@ -402,9 +402,9 @@ export class TableRow extends React.Component {
   }
 }
 
-export class TableCell extends React.Component {
+export class Tc extends React.Component {
   static propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
     heading: PropTypes.bool
   };
 

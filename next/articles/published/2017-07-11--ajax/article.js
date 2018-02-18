@@ -1,17 +1,5 @@
 import React from "react";
-import {
-  H1,
-  H2,
-  P,
-  // Bold,
-  Link,
-  Code,
-  List,
-  Li,
-  Table,
-  Tr,
-  Tc
-} from "../../../components/article.js";
+import * as a from "../../../components/article.js";
 
 export default class Article extends React.Component {
   static metadata = {
@@ -31,23 +19,23 @@ export default class Article extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <H1>HTTP requests in browsers</H1>
+        <a.H1>HTTP requests in browsers</a.H1>
 
-        <List>
-          <Li>
+        <a.List>
+          <a.Li>
             The most common way to make HTTP request in the browser is by using
-            the <Code>window.XMLHttpRequest</Code> API.
-          </Li>
-          <Li>
+            the <a.Code>window.XMLHttpRequest</a.Code> API.
+          </a.Li>
+          <a.Li>
             XMLHttpRequest was originally designed by Microsoft and then adopted
             by all browser vendors. Despite its name, XMLHttpRequest can be used
             to fetch any type of data, not just XML.
-          </Li>
-        </List>
+          </a.Li>
+        </a.List>
 
-        <H1>Simple example</H1>
+        <a.H1>Simple example</a.H1>
 
-        <Code multiline language="javascript">{`
+        <a.Code multiline language="javascript">{`
           const request = new window.XMLHttpRequest();
 
           request.addEventListener("load", e => {
@@ -60,129 +48,130 @@ export default class Article extends React.Component {
 
           request.open("GET", "./url");
           request.send();
-        `}</Code>
+        `}</a.Code>
 
-        <P>
-          Once the request is successfully completed (<Code>load</Code> event is
-          fired), the HTTP status code and request body are avaliable to us.
-        </P>
+        <a.P>
+          Once the request is successfully completed (<a.Code>load</a.Code>{" "}
+          event is fired), the HTTP status code and request body are avaliable
+          to us.
+        </a.P>
 
-        <List>
-          <Li>
-            <Code>event.target.status</Code> HTTP status code as{" "}
-            <Code>int</Code>.
-          </Li>
-          <Li>
-            <Code>event.target.responseText</Code> HTTP body as{" "}
-            <Code>string</Code>.
-          </Li>
-          <Li>
-            <Code>event.target.getAllResponseHeaders()</Code> response headers
-            as newline separated <Code>string</Code>.
-          </Li>
-        </List>
+        <a.List>
+          <a.Li>
+            <a.Code>event.target.status</a.Code> HTTP status code as{" "}
+            <a.Code>int</a.Code>.
+          </a.Li>
+          <a.Li>
+            <a.Code>event.target.responseText</a.Code> HTTP body as{" "}
+            <a.Code>string</a.Code>.
+          </a.Li>
+          <a.Li>
+            <a.Code>event.target.getAllResponseHeaders()</a.Code> response
+            headers as newline separated <a.Code>string</a.Code>.
+          </a.Li>
+        </a.List>
 
-        <H1>Customizing the request</H1>
+        <a.H1>Customizing the request</a.H1>
 
-        <P>There are several ways to customize the request.</P>
+        <a.P>There are several ways to customize the request.</a.P>
 
-        <H2>The HTTP request method</H2>
+        <a.H2>The HTTP request method</a.H2>
 
-        <List>
-          <Li>
+        <a.List>
+          <a.Li>
             HTTP method is specified as the first argument of the{" "}
-            <Code>open</Code> method.
-          </Li>
-          <Li>HTTP method name is case-insensitive.</Li>
-          <Li>
+            <a.Code>open</a.Code> method.
+          </a.Li>
+          <a.Li>HTTP method name is case-insensitive.</a.Li>
+          <a.Li>
             All HTTP methods are supported, so you can use the less common ones
-            like <Code>DELETE</Code> or <Code>PUT</Code>.
-          </Li>
-        </List>
+            like <a.Code>DELETE</a.Code> or <a.Code>PUT</a.Code>.
+          </a.Li>
+        </a.List>
 
-        <Code multiline language="javascript">{`
+        <a.Code multiline language="javascript">{`
           request.open("GET", "./url");
-        `}</Code>
+        `}</a.Code>
 
-        <H2>Setting HTTP headers</H2>
+        <a.H2>Setting HTTP headers</a.H2>
 
-        <List>
-          <Li>
-            Call the <Code>setRequestHeader</Code> method after{" "}
-            <Code>open</Code> and before <Code>send</Code>.
-          </Li>
-          <Li>
-            If no <Code>Accept</Code> header has been set, an{" "}
-            <Code>Accept</Code> header with the
-            <Code>*/*</Code> value is automatically added.
-          </Li>
-          <Li>
+        <a.List>
+          <a.Li>
+            Call the <a.Code>setRequestHeader</a.Code> method after{" "}
+            <a.Code>open</a.Code> and before <a.Code>send</a.Code>.
+          </a.Li>
+          <a.Li>
+            If no <a.Code>Accept</a.Code> header has been set, an{" "}
+            <a.Code>Accept</a.Code> header with the
+            <a.Code>*/*</a.Code> value is automatically added.
+          </a.Li>
+          <a.Li>
             For security reasons, some headers can not be set from JavaScript
             and are controlled only by the browser. These headers are from the{" "}
-            <Link href="https://developer.mozillorg/en-US/docs/Glossary/Forbidden_header_name">
+            <a.Link href="https://developer.mozillorg/en-US/docs/Glossary/Forbidden_header_name">
               forbidden header names
-            </Link>{" "}
+            </a.Link>{" "}
             and{" "}
-            <Link href="https://developer.mozillorg/en-US/docs/Glossary/Forbidden_response_header_name">
+            <a.Link href="https://developer.mozillorg/en-US/docs/Glossary/Forbidden_response_header_name">
               forbidden response header
-            </Link>{" "}
+            </a.Link>{" "}
             names.
-          </Li>
-        </List>
+          </a.Li>
+        </a.List>
 
-        <Code multiline language="javascript">{`
+        <a.Code multiline language="javascript">{`
           const request = new window.XMLHttpRequest();
 
           request.open("GET", "./url");
           request.setRequestHeader("Content-Type", "application/json");
           request.setRequestHeader("Accept", "application/json");
           request.send();
-        `}</Code>
+        `}</a.Code>
 
-        <P>Most common headers you might use:</P>
+        <a.P>Most common headers you might use:</a.P>
 
-        <Code multiline language="javascript">{`
+        <a.Code multiline language="javascript">{`
           request.setRequestHeader("Content-Type", "application/json");
           request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
           request.setRequestHeader("Accept", "application/json");
           request.setRequestHeader("Accept", "text/plain");
           request.setRequestHeader("Accept", "text/html");
-        `}</Code>
+        `}</a.Code>
 
-        <H2>Sending data along with the request</H2>
+        <a.H2>Sending data along with the request</a.H2>
 
-        <P>If you use GET you add the data as query parameters.</P>
+        <a.P>If you use GET you add the data as query parameters.</a.P>
 
-        <Code multiline language="javascript">{`
+        <a.Code multiline language="javascript">{`
           const request = new window.XMLHttpRequest();
           request.open("GET", "./url?some=data");
           request.send();
-        `}</Code>
+        `}</a.Code>
 
-        <P>
+        <a.P>
           If you use POST you want to send the data in the HTTP request body,
-          you do that by passing string in the <Code>send</Code> method.
-        </P>
+          you do that by passing string in the <a.Code>send</a.Code> method.
+        </a.P>
 
-        <Code multiline language="javascript">{`
+        <a.Code multiline language="javascript">{`
           const request = new window.XMLHttpRequest();
           request.open("GET", "./url");
           request.send("data");
-        `}</Code>
+        `}</a.Code>
 
-        <H2>Adding timeout</H2>
+        <a.H2>Adding timeout</a.H2>
 
-        <List>
-          <Li>
-            Set the <Code>timeout</Code> property on your request instance.
-          </Li>
-          <Li>
+        <a.List>
+          <a.Li>
+            Set the <a.Code>timeout</a.Code> property on your request instance.
+          </a.Li>
+          <a.Li>
             Timeout is set in milliseconds and when it elapses the{" "}
-            <Code>timeout</Code> event is fired.
-          </Li>
-        </List>
+            <a.Code>timeout</a.Code> event is fired.
+          </a.Li>
+        </a.List>
 
-        <Code multiline language="javascript">{`
+        <a.Code multiline language="javascript">{`
           const request = new window.XMLHttpRequest();
           request.addEventListener("timeout", e => {
             console.log("timeout", e);
@@ -190,13 +179,13 @@ export default class Article extends React.Component {
           request.timeout = 10000; // ms
           request.open("GET", "./url");
           request.send();
-        `}</Code>
+        `}</a.Code>
 
-        <H1>Canceling opened request</H1>
+        <a.H1>Canceling opened request</a.H1>
 
-        <P>Once request is sent, it can be aborted at any time.</P>
+        <a.P>Once request is sent, it can be aborted at any time.</a.P>
 
-        <Code multiline language="javascript">{`
+        <a.Code multiline language="javascript">{`
           const request = new window.XMLHttpRequest();
           request.addEventListener("abort", e => {
             console.log("abort", e);
@@ -205,103 +194,105 @@ export default class Article extends React.Component {
           request.send();
 
           request.abort();
-        `}</Code>
+        `}</a.Code>
 
-        <H1>Request events</H1>
+        <a.H1>Request events</a.H1>
 
-        <H2>load</H2>
+        <a.H2>load</a.H2>
 
-        <List>
-          <Li>Server responded, and request finished loading.</Li>
-        </List>
+        <a.List>
+          <a.Li>Server responded, and request finished loading.</a.Li>
+        </a.List>
 
-        <H2>error</H2>
+        <a.H2>error</a.H2>
 
-        <List>
-          <Li>Error with HTTP request occurred.</Li>
-          <Li>
-            A server responding with <Code>500</Code> status code will not
-            trigger the <Code>error</Code> event since it is an error on the
+        <a.List>
+          <a.Li>Error with HTTP request occurred.</a.Li>
+          <a.Li>
+            A server responding with <a.Code>500</a.Code> status code will not
+            trigger the <a.Code>error</a.Code> event since it is an error on the
             server side, not with the HTTP request itself.
-          </Li>
-          <Li>
+          </a.Li>
+          <a.Li>
             Usually, it might be one of the following:
-            <List>
-              <Li>There is no internet connection.</Li>
-              <Li>
+            <a.List>
+              <a.Li>There is no internet connection.</a.Li>
+              <a.Li>
                 A server does not respond in time (several minutes in Chrome),
                 and the browser terminates the connection.
-              </Li>
-              <Li>
+              </a.Li>
+              <a.Li>
                 A request is made into a different domain, and the response does
                 not have correct cross-origin headers.
-              </Li>
-              <Li>Unknown protocol scheme.</Li>
-            </List>
-          </Li>
-        </List>
+              </a.Li>
+              <a.Li>Unknown protocol scheme.</a.Li>
+            </a.List>
+          </a.Li>
+        </a.List>
 
-        <H2>loadend</H2>
+        <a.H2>loadend</a.H2>
 
-        <List>
-          <Li>
-            After <Code>error</Code>, <Code>abort</Code>, or <Code>load</Code>{" "}
-            have been dispatched.
-          </Li>
-        </List>
+        <a.List>
+          <a.Li>
+            After <a.Code>error</a.Code>, <a.Code>abort</a.Code>, or{" "}
+            <a.Code>load</a.Code> have been dispatched.
+          </a.Li>
+        </a.List>
 
-        <H2>loadstart</H2>
+        <a.H2>loadstart</a.H2>
 
-        <List>
-          <Li>Fires when the progress has begun.</Li>
-        </List>
+        <a.List>
+          <a.Li>Fires when the progress has begun.</a.Li>
+        </a.List>
 
-        <H2>abort</H2>
+        <a.H2>abort</a.H2>
 
-        <List>
-          <Li>
-            Fires when <Code>abort</Code> method is called on the request
+        <a.List>
+          <a.Li>
+            Fires when <a.Code>abort</a.Code> method is called on the request
             instance.
-          </Li>
-        </List>
+          </a.Li>
+        </a.List>
 
-        <H2>timeout</H2>
+        <a.H2>timeout</a.H2>
 
-        <List>
-          <Li>
+        <a.List>
+          <a.Li>
             Fires when a request takes longer than a value set in the{" "}
-            <Code>timeout</Code> property.
-          </Li>
-          <Li>
-            Does not fire when <Code>timeout</Code> is not set, request takes
-            too long, and browser decides to close the connection. In that case,{" "}
-            <Code>error</Code> event is fired instead.
-          </Li>
-        </List>
+            <a.Code>timeout</a.Code> property.
+          </a.Li>
+          <a.Li>
+            Does not fire when <a.Code>timeout</a.Code> is not set, request
+            takes too long, and browser decides to close the connection. In that
+            case, <a.Code>error</a.Code> event is fired instead.
+          </a.Li>
+        </a.List>
 
-        <H2>progress</H2>
+        <a.H2>progress</a.H2>
 
-        <List>
-          <Li>
+        <a.List>
+          <a.Li>
             Fires at least one time once the first chunk of data arrives, then
             after some amount of data is downloaded.
-            <List>
-              <Li>In Chrome it is roughly after each 32KB are downloaded.</Li>
-              <Li>
+            <a.List>
+              <a.Li>
+                In Chrome it is roughly after each 32KB are downloaded.
+              </a.Li>
+              <a.Li>
                 In Firefox it seemed to fire relative to the current network
                 speed, it varied between few KB and several hundred KB.
-              </Li>
-            </List>
-          </Li>
-          <Li>
-            <Code>event.total</Code> the size of the request body in Bytes.
-          </Li>
-          <Li>
-            <Code>event.loaded</Code> number of Bytes downloaded.
-          </Li>
-        </List>
+              </a.Li>
+            </a.List>
+          </a.Li>
+          <a.Li>
+            <a.Code>event.total</a.Code> the size of the request body in Bytes.
+          </a.Li>
+          <a.Li>
+            <a.Code>event.loaded</a.Code> number of Bytes downloaded.
+          </a.Li>
+        </a.List>
 
-        <Code multiline language="javascript">{`
+        <a.Code multiline language="javascript">{`
           let progressLastTimestamp = Date.now();
           let progressLastLoadedChunk = 0;
 
@@ -318,164 +309,171 @@ export default class Article extends React.Component {
           });
           request.open("GET", "./url");
           request.send();
-        `}</Code>
+        `}</a.Code>
 
-        <H2>readystatechange</H2>
+        <a.H2>readystatechange</a.H2>
 
-        <List>
-          <Li>Describes the state of the HTTP request.</Li>
-          <Li>
-            Is available on the <Code>event.target.readyState</Code> property.
-          </Li>
-        </List>
+        <a.List>
+          <a.Li>Describes the state of the HTTP request.</a.Li>
+          <a.Li>
+            Is available on the <a.Code>event.target.readyState</a.Code>{" "}
+            property.
+          </a.Li>
+        </a.List>
 
-        <Table
+        <a.Table
           heading={
-            <Tr>
-              <Tc>Value</Tc>
-              <Tc>State</Tc>
-              <Tc>Description</Tc>
-            </Tr>
+            <a.Tr>
+              <a.Tc>Value</a.Tc>
+              <a.Tc>State</a.Tc>
+              <a.Tc>Description</a.Tc>
+            </a.Tr>
           }
         >
-          <Tr>
-            <Tc>0</Tc>
-            <Tc>
-              <Code>UNSENT</Code>
-            </Tc>
-            <Tc>
-              Request instance has been created, but <Code>open</Code> method
-              has not been called yet.
-            </Tc>
-          </Tr>
+          <a.Tr>
+            <a.Tc>0</a.Tc>
+            <a.Tc>
+              <a.Code>UNSENT</a.Code>
+            </a.Tc>
+            <a.Tc>
+              Request instance has been created, but <a.Code>open</a.Code>{" "}
+              method has not been called yet.
+            </a.Tc>
+          </a.Tr>
 
-          <Tr>
-            <Tc>1</Tc>
-            <Tc>
-              <Code>OPENED</Code>
-            </Tc>
-            <Tc>
-              <Code>open</Code> method called.
-            </Tc>
-          </Tr>
+          <a.Tr>
+            <a.Tc>1</a.Tc>
+            <a.Tc>
+              <a.Code>OPENED</a.Code>
+            </a.Tc>
+            <a.Tc>
+              <a.Code>open</a.Code> method called.
+            </a.Tc>
+          </a.Tr>
 
-          <Tr>
-            <Tc>2</Tc>
-            <Tc>
-              <Code>HEADERS_RECEIVED</Code>
-            </Tc>
-            <Tc>
-              <Code>send</Code> method has been called, and headers and status
-              code received.
-            </Tc>
-          </Tr>
+          <a.Tr>
+            <a.Tc>2</a.Tc>
+            <a.Tc>
+              <a.Code>HEADERS_RECEIVED</a.Code>
+            </a.Tc>
+            <a.Tc>
+              <a.Code>send</a.Code> method has been called, and headers and
+              status code received.
+            </a.Tc>
+          </a.Tr>
 
-          <Tr>
-            <Tc>3</Tc>
-            <Tc>
-              <Code>LOADING</Code>
-            </Tc>
-            <Tc>
-              Downloading, <Code>event.target.responseText</Code> holds partial
-              dat
-            </Tc>
-          </Tr>
+          <a.Tr>
+            <a.Tc>3</a.Tc>
+            <a.Tc>
+              <a.Code>LOADING</a.Code>
+            </a.Tc>
+            <a.Tc>
+              Downloading, <a.Code>event.target.responseText</a.Code> holds
+              partial dat
+            </a.Tc>
+          </a.Tr>
 
-          <Tr>
-            <Tc>4</Tc>
-            <Tc>
-              <Code>DONE</Code>
-            </Tc>
-            <Tc>Request completed.</Tc>
-          </Tr>
-        </Table>
+          <a.Tr>
+            <a.Tc>4</a.Tc>
+            <a.Tc>
+              <a.Code>DONE</a.Code>
+            </a.Tc>
+            <a.Tc>Request completed.</a.Tc>
+          </a.Tr>
+        </a.Table>
 
-        <H1>Events order</H1>
+        <a.H1>Events order</a.H1>
 
-        <Table
+        <a.Table
           heading={
-            <Tr>
-              <Tc>Order</Tc>
-              <Tc>Event name</Tc>
-              <Tc>Additional info</Tc>
-            </Tr>
+            <a.Tr>
+              <a.Tc>Order</a.Tc>
+              <a.Tc>Event name</a.Tc>
+              <a.Tc>Additional info</a.Tc>
+            </a.Tr>
           }
         >
-          <Tr>
-            <Tc>1</Tc>
-            <Tc>
-              <Code>readystatechange</Code>
-            </Tc>
-            <Tc>
-              <Code>readyState</Code> is <Code>1</Code> (<Code>OPENED</Code>)
-            </Tc>
-          </Tr>
-          <Tr>
-            <Tc>2</Tc>
-            <Tc>
-              <Code>loadstart</Code>
-            </Tc>
-            <Tc />
-          </Tr>
-          <Tr>
-            <Tc>3</Tc>
-            <Tc>
-              <Code>readystatechange</Code>
-            </Tc>
-            <Tc>
-              <Code>readyState</Code> is <Code>2</Code> (<Code>
+          <a.Tr>
+            <a.Tc>1</a.Tc>
+            <a.Tc>
+              <a.Code>readystatechange</a.Code>
+            </a.Tc>
+            <a.Tc>
+              <a.Code>readyState</a.Code> is <a.Code>1</a.Code> (<a.Code>
+                OPENED
+              </a.Code>)
+            </a.Tc>
+          </a.Tr>
+          <a.Tr>
+            <a.Tc>2</a.Tc>
+            <a.Tc>
+              <a.Code>loadstart</a.Code>
+            </a.Tc>
+            <a.Tc />
+          </a.Tr>
+          <a.Tr>
+            <a.Tc>3</a.Tc>
+            <a.Tc>
+              <a.Code>readystatechange</a.Code>
+            </a.Tc>
+            <a.Tc>
+              <a.Code>readyState</a.Code> is <a.Code>2</a.Code> (<a.Code>
                 HEADERS_RECEIVED
-              </Code>)
-            </Tc>
-          </Tr>
-          <Tr>
-            <Tc>4-5</Tc>
-            <Tc>
-              <Code>readystatechange</Code>
-            </Tc>
-            <Tc>
-              <Code>readyState</Code> is <Code>3</Code> (<Code>LOADING</Code>),
-              might happen more than once.
-            </Tc>
-          </Tr>
-          <Tr>
-            <Tc>5-6</Tc>
-            <Tc>
-              <Code>progress</Code>
-            </Tc>
-            <Tc>
+              </a.Code>)
+            </a.Tc>
+          </a.Tr>
+          <a.Tr>
+            <a.Tc>4-5</a.Tc>
+            <a.Tc>
+              <a.Code>readystatechange</a.Code>
+            </a.Tc>
+            <a.Tc>
+              <a.Code>readyState</a.Code> is <a.Code>3</a.Code> (<a.Code>
+                LOADING
+              </a.Code>), might happen more than once.
+            </a.Tc>
+          </a.Tr>
+          <a.Tr>
+            <a.Tc>5-6</a.Tc>
+            <a.Tc>
+              <a.Code>progress</a.Code>
+            </a.Tc>
+            <a.Tc>
               Might happen more than once with larger files or slower internet
               connection.
-            </Tc>
-          </Tr>
-          <Tr>
-            <Tc>5-6</Tc>
-            <Tc>
-              <Code>readystatechange</Code>
-            </Tc>
-            <Tc>
-              <Code>readyState</Code> is <Code>4</Code> (<Code>DONE</Code>)
-            </Tc>
-          </Tr>
-          <Tr>
-            <Tc>7</Tc>
-            <Tc>
-              <Code>load</Code> or <Code>abort</Code> or <Code>timeout</Code>
-            </Tc>
-            <Tc />
-          </Tr>
-          <Tr>
-            <Tc>8</Tc>
-            <Tc>
-              <Code>loadend</Code>
-            </Tc>
-            <Tc />
-          </Tr>
-        </Table>
+            </a.Tc>
+          </a.Tr>
+          <a.Tr>
+            <a.Tc>5-6</a.Tc>
+            <a.Tc>
+              <a.Code>readystatechange</a.Code>
+            </a.Tc>
+            <a.Tc>
+              <a.Code>readyState</a.Code> is <a.Code>4</a.Code> (<a.Code>
+                DONE
+              </a.Code>)
+            </a.Tc>
+          </a.Tr>
+          <a.Tr>
+            <a.Tc>7</a.Tc>
+            <a.Tc>
+              <a.Code>load</a.Code> or <a.Code>abort</a.Code> or{" "}
+              <a.Code>timeout</a.Code>
+            </a.Tc>
+            <a.Tc />
+          </a.Tr>
+          <a.Tr>
+            <a.Tc>8</a.Tc>
+            <a.Tc>
+              <a.Code>loadend</a.Code>
+            </a.Tc>
+            <a.Tc />
+          </a.Tr>
+        </a.Table>
 
-        <H1>Complete example, delete what you do not need</H1>
+        <a.H1>Complete example, delete what you do not need</a.H1>
 
-        <Code multiline language="javascript">{`
+        <a.Code multiline language="javascript">{`
           const request = new window.XMLHttpRequest();
 
           request.addEventListener("load", e => {
@@ -525,21 +523,21 @@ export default class Article extends React.Component {
           request.send();
 
           // request.abort()
-        `}</Code>
+        `}</a.Code>
 
-        <H1>Alternatives</H1>
+        <a.H1>Alternatives</a.H1>
 
-        <P>
+        <a.P>
           A modern alternative to XMLHttpRequest is the{" "}
-          <Link href="https://developer.mozillorg/en/docs/Web/API/Fetch_API">
+          <a.Link href="https://developer.mozillorg/en/docs/Web/API/Fetch_API">
             Fetch
-          </Link>{" "}
+          </a.Link>{" "}
           API that uses promises but has some downsides like worse browser
           support and not supporting request cancellation which is needed
           surprisingly often – Lately, I have found myself rewriting Fetch to
           XMLHttpRequest many times, just because I needed the cancellation
           feature.
-        </P>
+        </a.P>
       </React.Fragment>
     );
   }

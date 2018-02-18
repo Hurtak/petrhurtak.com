@@ -2,8 +2,32 @@ import React from "react";
 import PropTypes from "prop-types";
 import glamorous from "glamorous";
 import stripIndent from "strip-indent";
-import { highlight } from "highlight.js";
+
+// Only include used languages in the bundle
+// https://github.com/isagalaev/highlight.js/issues/1257
+// TODO: make the register language with dynamic imports so we do not have
+//       to register languages manually and so only needed languages are
+//       downloaded?
+import highlight from "highlight.js/lib/highlight.js";
+import highlightJavaScript from "highlight.js/lib/languages/javascript";
+import highlightJson from "highlight.js/lib/languages/json";
+import highlightCss from "highlight.js/lib/languages/css";
+import highlightXml from "highlight.js/lib/languages/xml"; // HTML
+import highlightBash from "highlight.js/lib/languages/bash";
+// import highlightShell from "highlight.js/lib/languages/shell";
+// import highlightHttp from "highlight.js/lib/languages/http";
+// import highlightPython from "highlight.js/lib/languages/python";
+// import highlightSql from "highlight.js/lib/languages/sql";
+// import highlightDiff from "highlight.js/lib/languages/diff";
+// import highlightMarkdown from "highlight.js/lib/languages/markdown";
+
 import * as s from "../common/styles.js";
+
+highlight.registerLanguage("javascript", highlightJavaScript);
+highlight.registerLanguage("json", highlightJson);
+highlight.registerLanguage("css", highlightCss);
+highlight.registerLanguage("xml", highlightXml);
+highlight.registerLanguage("bash", highlightBash);
 
 //
 // Article wrapper
@@ -293,7 +317,7 @@ export class Code extends React.Component {
     const codeComponent = this.props.language ? (
       <CodeStyled
         dangerouslySetInnerHTML={{
-          __html: highlight(this.props.language, code).value
+          __html: highlight.highlight(this.props.language, code).value
         }}
         multiline={this.props.multiline}
       />

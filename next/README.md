@@ -9,6 +9,7 @@
 
 ## Later
 
+* https://www.npmjs.com/package/@pwa/next-workbox-webpack-plugin
 * cleanup articles css, there are some importants and other stuff
 * Check that Google Analytics works
 * https://asciinema.org/ & https://github.com/marionebl/svg-term-cli

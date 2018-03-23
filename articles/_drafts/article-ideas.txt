@@ -1,3 +1,7 @@
+- article - css arrow and shadow
+
+- Article URL parsing https://twitter.com/jaffathecake/status/969534845050335232?s=20 a href trick, nodejs compatibility implementation, isomorphic polyfill package.
+
 - free pub sub in browser (obrazky.cz)
 
 - chmod
@@ -63,6 +67,7 @@
     - free comapred to windows so that is really nice
     - simpler and easier to use than office it seemed, i used it for the first time and the stuf i wanted to do in the Numbers app were usualy very easy to find, i am not saying that the simple stuff I do is hard in office, but it seemed easier in Apple suite. Nice
   - for non profesional work (emails, calendar, web browser stuff) macos feels nicer compared to other 2 systems, trackpack gestures are really nice. but once you start doing some more serious stuff the new/weirh keyboard layout and other unusual stuff starts getting in the way
+  - you need to download some 3rd party software to open android phones, wtf???
 
 - todos apps mostly useless - google calendar
 

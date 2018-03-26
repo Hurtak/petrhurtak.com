@@ -1,5 +1,11 @@
 - ssr antipattern article
 
+- meta viewport 
+  - https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag
+  - https://stackoverflow.com/questions/33767533/what-does-the-shrink-to-fit-viewport-meta-attribute-do
+  - doporuceni co davat standartne
+  - zminit ze zakazani zoomu je spatna vec
+
 - article - css arrow and shadow
 
 - Article URL parsing https://twitter.com/jaffathecake/status/969534845050335232?s=20 a href trick, nodejs compatibility implementation, isomorphic polyfill package.

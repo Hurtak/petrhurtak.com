@@ -9,6 +9,8 @@ Although Douglas Crockford originally asserted that JSON is a strict subset of J
 
 https://github.com/tc39/proposal-json-superset
 
+https://v8project.blogspot.cz/2018/03/v8-release-66.html
+
 ## Links
 
 * [http://timelessrepo.com/json-isnt-a-javascript-subset](http://timelessrepo.com/json-isnt-a-javascript-subset)

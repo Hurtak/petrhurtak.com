@@ -1,6 +1,8 @@
+- how i do notes
+
 - ssr antipattern article
 
-- meta viewport 
+- meta viewport
   - https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag
   - https://stackoverflow.com/questions/33767533/what-does-the-shrink-to-fit-viewport-meta-attribute-do
   - doporuceni co davat standartne

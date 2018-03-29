@@ -5,18 +5,17 @@ import helmet from "helmet";
 import config from "../common/config.js";
 import * as api from "./api.js";
 import rss from "./rss.js";
+import nextConfig from "../next.config.js";
 
 async function main() {
   console.log(`> Starting the app with Node ${process.version}`);
 
-  const dev = process.env.NODE_ENV !== "production";
-
-  const nextApp = next({ dev });
+  const nextApp = next({ dev: config.dev, config: nextConfig });
   const nextRequestHandler = nextApp.getRequestHandler();
   await nextApp.prepare();
 
   const cacheMiddleware = apicache
-    .options({ enabled: !dev })
+    .options({ enabled: !config.dev })
     .middleware(config.cacheDuration);
 
   const expressServer = express();

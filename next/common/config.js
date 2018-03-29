@@ -1,4 +1,10 @@
+import nextConfig from "../next.config.js";
+
+const nowUrl = nextConfig.publicRuntimeConfig.nowUrl;
+
 const config = {
+  dev: nextConfig.publicRuntimeConfig.dev,
+
   //
   // Blog settings
   //
@@ -20,14 +26,12 @@ const config = {
   // Backend URLs config
   //
   server: {
-    url: process.env.NOW_URL ? process.env.NOW_URL : "http://localhost:3000",
+    url: nowUrl ? nowUrl : "http://localhost:3000",
     port: 3000
   },
 
   api: {
-    url: process.env.NOW_URL
-      ? `${process.env.NOW_URL}/api`
-      : "http://localhost:3000/api",
+    url: nowUrl ? `${nowUrl}/api` : "http://localhost:3000/api",
     port: 3000
   },
 

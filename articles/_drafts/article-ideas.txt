@@ -1,3 +1,20 @@
+- spacing between components
+  .Component {
+    &:not(:first-child) {
+        margin-top: 16px;
+    }
+  }
+
+  .Component {
+    margin-top: 16px;
+
+    &:first-child {
+        margin-top: 0;
+    }
+  }
+
+  Spacer component
+
 - how i do notes
 
 - ssr antipattern article

@@ -2,21 +2,23 @@ import next from "next";
 import express from "express";
 import apicache from "apicache";
 import helmet from "helmet";
-import config from "../common/config.js";
+import config from "../next.config.js";
 import * as api from "./api.js";
 import rss from "./rss.js";
-import nextConfig from "../next.config.js";
 
 async function main() {
   console.log(`> Starting the app with Node ${process.version}`);
 
-  const nextApp = next({ dev: config.dev, config: nextConfig });
+  const nextApp = next({
+    dev: config.publicRuntimeConfig.dev,
+    conf: config
+  });
   const nextRequestHandler = nextApp.getRequestHandler();
   await nextApp.prepare();
 
   const cacheMiddleware = apicache
-    .options({ enabled: !config.dev })
-    .middleware(config.cacheDuration);
+    .options({ enabled: !config.publicRuntimeConfig.dev })
+    .middleware(config.serverRuntimeConfig.cacheDuration);
 
   const expressServer = express();
   expressServer.enable("strict routing");
@@ -78,9 +80,9 @@ async function main() {
   //
   // Start the server
   //
-  expressServer.listen(config.server.port, err => {
+  expressServer.listen(config.serverRuntimeConfig.port, err => {
     if (err) throw err;
-    console.log(`> Ready on ${config.server.url}`);
+    console.log(`> Ready on port ${config.serverRuntimeConfig.port}`);
   });
 }
 

@@ -2,15 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import glamorous from "glamorous";
 import dynamic from "next/dynamic";
+import config from "next/config";
 import fetch from "isomorphic-fetch";
 import ArticlesRouter from "../articles/articles-router.js";
 import Layout from "../components/layout.js";
 import Error from "../components/error.js";
 import { ArticleWrapper } from "../components/article.js";
-import config from "../common/config.js";
 import * as s from "../common/styles.js";
 import * as date from "../common/date.js";
 import * as sharedPropTypes from "../common/shared-prop-types.js";
+
+const { publicRuntimeConfig } = config();
 
 class Article extends React.Component {
   static propTypes = {
@@ -32,7 +34,7 @@ class Article extends React.Component {
       return baseProps;
     }
 
-    const req = await fetch(`${config.api.url}/article/${articleUrl}`);
+    const req = await fetch(`${publicRuntimeConfig.api}/article/${articleUrl}`);
     if (req.status !== 200) {
       return baseProps;
     }

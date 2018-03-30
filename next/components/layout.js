@@ -2,10 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import Head from "next/head";
+import config from "next/config";
 import { rehydrate } from "glamor";
 import glamorous from "glamorous";
-import config from "../common/config.js";
 import * as s from "../common/styles.js";
+
+const { publicRuntimeConfig } = config();
 
 // Adds server generated styles to glamor cache. Has to run before any `style()`
 // calls. '__NEXT_DATA__.ids' is set in '_document.js'.
@@ -30,7 +32,7 @@ class Layout extends React.Component {
                 ? capitalize(this.props.pageTitle)
                 : "";
               const nDash = "\u2013";
-              const siteName = capitalize(config.siteUrlShort);
+              const siteName = capitalize(publicRuntimeConfig.siteUrlShort);
 
               return pageName + (pageName ? ` ${nDash} ` : "") + siteName;
             })()}
@@ -47,7 +49,7 @@ class Layout extends React.Component {
                     src="/static/images/logo.svg"
                     width="130"
                     height="55"
-                    alt={`${config.siteUrlShort} logo`}
+                    alt={`${publicRuntimeConfig.siteUrlShort} logo`}
                   />
                 </HeaderLogo>
               </Link>
@@ -129,7 +131,9 @@ class Layout extends React.Component {
 
             <Footer>
               <FooterParagraph>
-                {config.yearFound}&ndash;{config.yearCurrent}
+                {publicRuntimeConfig.yearFound}&ndash;{
+                  publicRuntimeConfig.yearCurrent
+                }
               </FooterParagraph>
               <FooterParagraph withMarginTop>
                 Written by{" "}

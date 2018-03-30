@@ -1,4 +1,4 @@
-import withSourceMaps from "@zeit/next-source-maps";
+const withSourceMaps = require("@zeit/next-source-maps");
 
 const nowUrl = process.env.NOW_URL;
 
@@ -39,4 +39,4 @@ const config = {
 let configWithPlugins = config;
 configWithPlugins = withSourceMaps(configWithPlugins);
 
-export default configWithPlugins;
+module.exports = configWithPlugins;

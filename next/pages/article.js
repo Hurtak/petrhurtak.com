@@ -57,7 +57,7 @@ class Article extends React.Component {
     return (
       <Layout pageTitle={this.props.article.title}>
         <Header>
-          <Heading>{this.props.article.title}</Heading>
+          <ArticleTitle>{this.props.article.title}</ArticleTitle>
           <Time
             title={date.fullDate(this.props.article.dateLastUpdate)}
             dateTime={date.dateTimeAttribute(this.props.article.dateLastUpdate)}
@@ -69,13 +69,16 @@ class Article extends React.Component {
           <ArticleWrapper>
             <Component />
           </ArticleWrapper>
+        </Content>
+        <Comments>
+          <CommentsTitle>Comments</CommentsTitle>
           <ReactDisqusComments
             shortname="hurtak"
             identifier={this.props.article.id}
             title={this.props.article.title}
             url={publicRuntimeConfig.siteUrl + "/" + this.props.articleUrl}
           />
-        </Content>
+        </Comments>
       </Layout>
     );
   }
@@ -86,7 +89,7 @@ const Header = glamorous.div({
   flexDirection: "column"
 });
 
-const Heading = glamorous.h1({
+const ArticleTitle = glamorous.h1({
   ...s.fonts.heading,
   color: s.colors.grayDark
 });
@@ -98,6 +101,15 @@ const Time = glamorous.time({
 
 const Content = glamorous.div({
   marginTop: s.grid(3)
+});
+
+const Comments = glamorous.section({
+  marginTop: s.grid(3)
+});
+
+const CommentsTitle = glamorous.h2({
+  ...s.fonts.headingMedium,
+  margin: `${s.grid(7)} 0 ${s.grid(2)} 0`
 });
 
 export default Article;

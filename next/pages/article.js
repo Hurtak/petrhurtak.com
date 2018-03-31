@@ -4,6 +4,7 @@ import glamorous from "glamorous";
 import dynamic from "next/dynamic";
 import config from "next/config";
 import fetch from "isomorphic-fetch";
+import ReactDisqusComments from "react-disqus-comments";
 import ArticlesRouter from "../articles/articles-router.js";
 import Layout from "../components/layout.js";
 import Error from "../components/error.js";
@@ -68,6 +69,12 @@ class Article extends React.Component {
           <ArticleWrapper>
             <Component />
           </ArticleWrapper>
+          <ReactDisqusComments
+            shortname="hurtak"
+            identifier={this.props.article.id}
+            title={this.props.article.title}
+            url={publicRuntimeConfig.siteUrl + "/" + this.props.articleUrl}
+          />
         </Content>
       </Layout>
     );

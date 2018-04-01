@@ -37,9 +37,9 @@ class Index extends React.Component {
                     pathname: "/article",
                     query: { articleUrl: article.url }
                   }}
-                  as={`/${article.url}`}
+                  as={`/${article.url}/`}
                 >
-                  <ArticleTitleLink href={`/${article.url}`}>
+                  <ArticleTitleLink href={`/${article.url}/`}>
                     {article.title}
                   </ArticleTitleLink>
                 </Link>

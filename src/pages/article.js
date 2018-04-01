@@ -21,8 +21,8 @@ class Article extends React.Component {
     article: sharedPropTypes.article
   };
 
-  static async getInitialProps(data) {
-    const articleUrl = data.query.articleUrl;
+  static async getInitialProps(ctx) {
+    const articleUrl = ctx.query.articleUrl;
 
     const baseProps = {
       articleUrl: articleUrl,

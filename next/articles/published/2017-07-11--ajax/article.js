@@ -18,7 +18,7 @@ export default class Article extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <a.ArticleWrapper>
         <a.H1>HTTP requests in browsers</a.H1>
 
         <a.List>
@@ -538,7 +538,7 @@ export default class Article extends React.Component {
           XMLHttpRequest many times, just because I needed the cancellation
           feature.
         </a.P>
-      </React.Fragment>
+      </a.ArticleWrapper>
     );
   }
 }

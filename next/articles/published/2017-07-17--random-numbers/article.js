@@ -17,7 +17,7 @@ export default class Article extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <a.ArticleWrapper>
         <a.List>
           <a.Li>
             In JavaScript, most common way to get pseudo random values is from
@@ -106,7 +106,7 @@ export default class Article extends React.Component {
             </a.Link>. I would recommend using some library for that.
           </a.Li>
         </a.List>
-      </React.Fragment>
+      </a.ArticleWrapper>
     );
   }
 }

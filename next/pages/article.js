@@ -8,7 +8,6 @@ import ReactDisqusComments from "react-disqus-comments";
 import ArticlesRouter from "../articles/articles-router.js";
 import Layout from "../components/layout.js";
 import Error from "../components/error.js";
-import { ArticleWrapper } from "../components/article.js";
 import * as s from "../common/styles.js";
 import * as date from "../common/date.js";
 import * as sharedPropTypes from "../common/shared-prop-types.js";
@@ -52,7 +51,7 @@ class Article extends React.Component {
       return <Error type="not-found" />;
     }
 
-    const Component = dynamic(ArticlesRouter[this.props.articleUrl]());
+    const ArticleComponent = dynamic(ArticlesRouter[this.props.articleUrl]());
 
     return (
       <Layout pageTitle={this.props.article.title}>
@@ -66,9 +65,7 @@ class Article extends React.Component {
           </Time>
         </Header>
         <Content>
-          <ArticleWrapper>
-            <Component />
-          </ArticleWrapper>
+          <ArticleComponent />
         </Content>
         <Comments>
           <CommentsTitle>Comments</CommentsTitle>

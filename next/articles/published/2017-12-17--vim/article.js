@@ -21,7 +21,7 @@ export default class Article extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <a.ArticleWrapper>
         <a.P>
           Vim is a text editor. It is in the{" "}
           <a.Link href="https://insights.stackoverflow.com/survey/2017#technology-most-popular-developer-environments-by-occupation">
@@ -266,7 +266,7 @@ export default class Article extends React.Component {
             <a.Tc />
           </a.Tr>
         </a.Table>
-      </React.Fragment>
+      </a.ArticleWrapper>
     );
   }
 }

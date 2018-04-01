@@ -290,6 +290,30 @@ const Heading2Styled = glamorous.h3(
 // Code
 //
 
+function formatMultilineCode(string) {
+  let res = string;
+  res = stripIndent(res);
+  res = res.split("\n");
+
+  const start = (() => {
+    for (let i = 0; i < res.length; i++) {
+      if (res[i].trim() !== "") return i;
+    }
+    return 0;
+  })();
+
+  const end = (() => {
+    for (let i = res.length - 1; i >= 0; i--) {
+      if (res[i].trim() !== "") return i;
+    }
+    return res.length - 1;
+  })();
+
+  res = res.slice(start, end + 1);
+  res = res.join("\n");
+  return res;
+}
+
 export class Code extends React.Component {
   // TODO: make this component dynamic so we do not import whole highlight.js
 
@@ -307,12 +331,7 @@ export class Code extends React.Component {
   }
 
   render() {
-    const code = (() => {
-      let res = this.props.children;
-      res = stripIndent(res);
-      res = res.trim();
-      return res;
-    })();
+    const code = formatMultilineCode(this.props.children);
 
     const codeComponent = this.props.language ? (
       <CodeStyled
@@ -333,6 +352,22 @@ export class Code extends React.Component {
   }
 }
 
+export class Diagram extends React.Component {
+  static propTypes = {
+    children: PropTypes.string.isRequired
+  };
+
+  render() {
+    const code = formatMultilineCode(this.props.children);
+
+    return (
+      <PreStyled>
+        <CodeStyled diagram>{code}</CodeStyled>
+      </PreStyled>
+    );
+  }
+}
+
 const PreStyled = glamorous.pre({
   display: "block",
   margin: `${s.dimensions.paragraphSpacing} 0 0 0`
@@ -350,20 +385,33 @@ const CodeStyled = glamorous.code(
     }
   },
   props => {
-    if (props.multiline) {
-      return {
+    let styles = {};
+
+    if (props.multiline || props.diagram) {
+      styles = {
+        ...styles,
         ...s.fonts.codeMultiline,
         display: "block",
         padding: s.grid(1),
         overflow: "auto"
       };
     } else {
-      return {
+      styles = {
+        ...styles,
         ...s.fonts.codeInline,
         display: "inline",
         padding: `${s.size(1)} ${s.size(2)}`
       };
     }
+
+    if (props.diagram) {
+      styles = {
+        ...styles,
+        lineHeight: 1
+      };
+    }
+
+    return styles;
   }
 );
 

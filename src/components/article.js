@@ -96,6 +96,21 @@ const BoldStyled = glamorous.strong({
   fontWeight: "bold"
 });
 
+export class Q extends React.Component {
+  static propTypes = {
+    children: PropTypes.string.isRequired
+  };
+
+  render() {
+    return <QuotationsStyles>{this.props.children}</QuotationsStyles>;
+  }
+}
+
+const QuotationsStyles = glamorous.q({
+  // https://practicaltypography.com/straight-and-curly-quotes.html
+  quotes: `"“" "”"`
+});
+
 // TODO: probably not used?
 // export class Small extends React.Component {
 //   static propTypes = {
@@ -316,7 +331,6 @@ function formatMultilineCode(string) {
 
 export class Code extends React.Component {
   // TODO: make this component dynamic so we do not import whole highlight.js
-
   static propTypes = {
     children: PropTypes.string.isRequired,
     multiline: PropTypes.bool,

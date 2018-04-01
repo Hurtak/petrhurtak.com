@@ -7,6 +7,7 @@ import {
   Li,
   Link,
   P,
+  Q,
   Diagram,
   Code
 } from "../../../components/article.js";
@@ -84,7 +85,8 @@ export default class Article extends React.Component {
         <List>
           <Li>OOP paradigm.</Li>
           <Li>
-            Methods are called on instance or object `instance.methodName()`.
+            Methods are called on instance or object{" "}
+            <Code>instance.methodName()</Code>.
           </Li>
           <Li>
             Usually, it operates on data that is contained within the instance
@@ -115,8 +117,9 @@ export default class Article extends React.Component {
         <P>
           URIs are identifiers, and that can mean name, location, or both. All
           URLs are URIs, but the opposite is not true. The part that makes
-          something a URL is the inclusion of the "access mechanism", or
-          "network location", such as `https://`, or `mailto:`.
+          something a URL is the inclusion of the <Q>access mechanism</Q>, or{" "}
+          <Q>network location</Q>, such as <Code>https://</Code>, or{" "}
+          <Code>mailto:</Code>.
         </P>
 
         <List>
@@ -133,15 +136,21 @@ export default class Article extends React.Component {
         <H2>Examples</H2>
 
         <List>
-          <Li>`example.com` URI.</Li>
-          <Li>`https://example.com` URI and URL.</Li>
+          <Li>
+            <Code>example.com</Code> URI.
+          </Li>
+          <Li>
+            <Code>https://example.com</Code> URI and URL.
+          </Li>
         </List>
 
         <H1>Links</H1>
 
         <List>
           <Li>
-            [https://danielmiessler.com/study/url-uri/](https://danielmiessler.com/study/url-uri/)
+            <Link href={"https://danielmiessler.com/study/url-uri/"}>
+              https://danielmiessler.com/study/url-uri/
+            </Link>
           </Li>
         </List>
 

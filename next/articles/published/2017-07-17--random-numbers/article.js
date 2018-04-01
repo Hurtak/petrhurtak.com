@@ -1,5 +1,13 @@
 import React from "react";
-import * as a from "../../../components/article.js";
+import {
+  ArticleWrapper,
+  Code,
+  H1,
+  Link,
+  List,
+  Li,
+  P
+} from "../../../components/article.js";
 
 export default class Article extends React.Component {
   static metadata = {
@@ -17,39 +25,39 @@ export default class Article extends React.Component {
 
   render() {
     return (
-      <a.ArticleWrapper>
-        <a.List>
-          <a.Li>
+      <ArticleWrapper>
+        <List>
+          <Li>
             In JavaScript, most common way to get pseudo random values is from
-            the <a.Code>Math.random()</a.Code> standard library function.
-            <a.List>
-              <a.Li>
+            the <Code>Math.random()</Code> standard library function.
+            <List>
+              <Li>
                 Returns 64bit float between 0 (inclusive) and 1 (exclusive).
-              </a.Li>
-              <a.Li>Not cryptographically secure.</a.Li>
-              <a.Li>
+              </Li>
+              <Li>Not cryptographically secure.</Li>
+              <Li>
                 Available both in the browser and in the server environment.
-              </a.Li>
-            </a.List>
-          </a.Li>
-        </a.List>
+              </Li>
+            </List>
+          </Li>
+        </List>
 
-        <a.Code multiline language="javascript">{`
+        <Code multiline language="javascript">{`
           > Math.random()
           0.5392704424754013
-        `}</a.Code>
+        `}</Code>
 
-        <a.List>
-          <a.Li>
+        <List>
+          <Li>
             In case you would want a random number in a certain range, there is
             no standard library function for that. So you either need to do the
             range transformations by yourself or use some package/library.
-          </a.Li>
-        </a.List>
+          </Li>
+        </List>
 
-        <a.H1>Random integer in range</a.H1>
+        <H1>Random integer in range</H1>
 
-        <a.Code multiline language="javascript">{`
+        <Code multiline language="javascript">{`
           /**
            * Get random integer in given rangee.
            * @param {int} min - Random number lower boundary (inclusive).
@@ -59,19 +67,19 @@ export default class Article extends React.Component {
           function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
           }
-        `}</a.Code>
+        `}</Code>
 
-        <a.P>
+        <P>
           If you want to read more about how this range transformation works, I
           recommend{" "}
-          <a.Link href="https://stackoverflow.com/a/1527820">
+          <Link href="https://stackoverflow.com/a/1527820">
             this helpful Stack Overflow answer
-          </a.Link>.
-        </a.P>
+          </Link>.
+        </P>
 
-        <a.H1>Random float in range</a.H1>
+        <H1>Random float in range</H1>
 
-        <a.Code multiline language="javascript">{`
+        <Code multiline language="javascript">{`
           /**
            * Get random float in given range.
            * @param {number} min - Random number lower boundary (inclusive).
@@ -81,32 +89,32 @@ export default class Article extends React.Component {
           function getRandomFloat(min, max) {
             return Math.random() * (max - min) + min;
           }
-        `}</a.Code>
+        `}</Code>
 
-        <a.H1>Cryptographically secure numbers</a.H1>
+        <H1>Cryptographically secure numbers</H1>
 
-        <a.List>
-          <a.Li>
+        <List>
+          <Li>
             In the browser world you have{" "}
-            <a.Link href="https://developer.mozilla.org/en/docs/Web/API/RandomSource/getRandomValues">
+            <Link href="https://developer.mozillorg/en/docs/Web/API/RandomSource/getRandomValues">
               window.crypto.getRandomValues
-            </a.Link>.
-          </a.Li>
-          <a.Li>
+            </Link>.
+          </Li>
+          <Li>
             In Node.js there is{" "}
-            <a.Link href="https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback">
+            <Link href="https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback">
               global.crypto.randomBytes
-            </a.Link>.
-          </a.Li>
-          <a.Li>
+            </Link>.
+          </Li>
+          <Li>
             You probably should not do the range transformations by yourself as
             they can be{" "}
-            <a.Link href="https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba">
+            <Link href="https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba">
               error prone
-            </a.Link>. I would recommend using some library for that.
-          </a.Li>
-        </a.List>
-      </a.ArticleWrapper>
+            </Link>. I would recommend using some library for that.
+          </Li>
+        </List>
+      </ArticleWrapper>
     );
   }
 }

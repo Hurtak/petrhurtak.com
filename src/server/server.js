@@ -16,25 +16,24 @@ async function main() {
   const nextRequestHandler = nextApp.getRequestHandler();
   await nextApp.prepare();
 
-  const cacheMiddleware = apicache
+  const middlewareCache = apicache
     .options({ enabled: !config.publicRuntimeConfig.dev })
     .middleware(config.serverRuntimeConfig.cacheDuration);
 
   const expressServer = express();
   expressServer.enable("strict routing");
   expressServer.use(unifySlashesMiddleware());
-  expressServer.use(removeTrailingSlashesMiddleware());
   expressServer.use(helmet());
 
   //
   // API
   //
-  expressServer.get("/api/articles", cacheMiddleware, async (req, res) => {
+  expressServer.get("/api/articles", middlewareCache, async (req, res) => {
     const articles = await api.articles();
     res.json(articles);
   });
 
-  expressServer.get("/api/article/:url", cacheMiddleware, async (req, res) => {
+  expressServer.get("/api/article/:url", middlewareCache, async (req, res) => {
     const article = await api.article(req.params.url);
     if (!article) {
       res.status(404);
@@ -45,7 +44,7 @@ async function main() {
     res.json(article);
   });
 
-  expressServer.get("/api/*", (req, res) => {
+  expressServer.get("/api/*", middlewareRemoveTrailingSlash, (req, res) => {
     res.status(405);
     res.send("Method not allowed");
   });
@@ -53,18 +52,20 @@ async function main() {
   //
   // Special
   //
-  expressServer.get("/rss", cacheMiddleware, async (req, res) => {
+  expressServer.get("/rss", middlewareCache, async (req, res) => {
     const articles = await api.articles();
     const rssString = rss(articles);
 
     res.set("Content-Type", "application/rss+xml");
     res.send(rssString);
   });
+  expressServer.get("/rss/", middlewareRemoveTrailingSlash);
 
   //
   // Articles
   //
-  expressServer.get("/:articleUrl", (req, res) => {
+  expressServer.get("/:articleUrl", middlewareAddTrailingSlash);
+  expressServer.get("/:articleUrl/", (req, res) => {
     return nextApp.render(req, res, "/article", {
       articleUrl: req.params.articleUrl
     });
@@ -86,9 +87,12 @@ async function main() {
   });
 }
 
+//
+// Middlewares
+//
+
 function unifySlashesMiddleware() {
   const multipleSlashes = /[/]{2,}/g;
-
   return function(req, res, next) {
     if (multipleSlashes.test(req.originalUrl)) {
       const fixedUrl = req.originalUrl.replace(multipleSlashes, "/");
@@ -99,16 +103,28 @@ function unifySlashesMiddleware() {
   };
 }
 
-function removeTrailingSlashesMiddleware() {
-  return function(req, res, next) {
-    if (req.path !== "/" && req.path.endsWith("/")) {
-      const search = req.originalUrl.replace(req.path, "");
-      const fixedUrl = req.path.slice(0, -1) + search;
-      res.redirect(301, fixedUrl);
-    } else {
-      next();
-    }
-  };
+function middlewareRemoveTrailingSlash(req, res, next) {
+  if (req.path !== "/" && req.path.endsWith("/")) {
+    const search = req.originalUrl.replace(req.path, "");
+    const fixedUrl = req.path.slice(0, -1) + search;
+    res.redirect(301, fixedUrl);
+  } else {
+    next();
+  }
 }
+
+function middlewareAddTrailingSlash(req, res, next) {
+  if (!req.path.endsWith("/")) {
+    const search = req.originalUrl.replace(req.path, "");
+    const fixedUrl = req.path + "/" + search;
+    res.redirect(301, fixedUrl);
+  } else {
+    next();
+  }
+}
+
+//
+// Start
+//
 
 main();

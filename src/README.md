@@ -1,7 +1,8 @@
 # Rewrite TODOS
 
-* load comments when visible
+* videos and other static resources
 * convert remaining articles
+* load comments when visible
 * deploy
 * Go through TODOS
 

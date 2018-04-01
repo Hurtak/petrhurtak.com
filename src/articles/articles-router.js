@@ -7,3 +7,9 @@ export default {
   ajax: () => import("./published/2017-07-11--ajax/article.js"),
   shebang: () => import("./published/2017-04-28--shebang/article.js")
 };
+
+export const r = {
+  shebang: {
+    folder: "./published/2017-04-28--shebang"
+  }
+};

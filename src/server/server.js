@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import next from "next";
 import express from "express";
 import apicache from "apicache";
@@ -5,6 +7,7 @@ import helmet from "helmet";
 import config from "../next.config.js";
 import * as api from "./api.js";
 import rss from "./rss.js";
+import { r } from "../articles/articles-router.js";
 
 async function main() {
   console.log(`> Starting the app with Node ${process.version}`);
@@ -72,10 +75,37 @@ async function main() {
   });
 
   //
-  // Rest
+  // Articles static files + rest
   //
-  expressServer.get("*", (req, res) => {
-    return nextRequestHandler(req, res);
+  expressServer.get("/:maybeArticleUrl/*", (req, res) => {
+    const maybeArticleUrl = req.params.maybeArticleUrl;
+    const maybeRelativePathArticle = r[maybeArticleUrl]
+      ? r[maybeArticleUrl].folder
+      : null;
+
+    if (!maybeRelativePathArticle) {
+      return nextRequestHandler(req, res);
+    }
+
+    const articlePathRelative = maybeRelativePathArticle;
+    const restPath = req.params[0];
+
+    const root = path.join(__dirname, "..");
+    const pathRelativeToRoot = path.join(
+      "articles",
+      articlePathRelative,
+      restPath
+    );
+    const pathAbsolute = path.join(root, pathRelativeToRoot);
+
+    // TODO: redo to async/await or promise
+    fs.lstat(pathAbsolute, (err, stats) => {
+      if (err || !stats.isFile()) {
+        nextRequestHandler(req, res);
+      } else {
+        res.sendfile(pathRelativeToRoot, { root: root });
+      }
+    });
   });
 
   //

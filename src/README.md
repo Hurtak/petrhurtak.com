@@ -1,6 +1,8 @@
 # Rewrite TODOS
 
-* videos and other static resources
+* redo router
+*
+* video component
 * convert remaining articles
 * load comments when visible
 * deploy

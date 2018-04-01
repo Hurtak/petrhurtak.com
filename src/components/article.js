@@ -385,6 +385,7 @@ const CodeStyled = glamorous.code(
     }
   },
   props => {
+    const innerPadding = s.grid(1);
     let styles = {};
 
     if (props.multiline || props.diagram) {
@@ -392,7 +393,7 @@ const CodeStyled = glamorous.code(
         ...styles,
         ...s.fonts.codeMultiline,
         display: "block",
-        padding: s.grid(1),
+        padding: innerPadding,
         overflow: "auto"
       };
     } else {
@@ -407,6 +408,7 @@ const CodeStyled = glamorous.code(
     if (props.diagram) {
       styles = {
         ...styles,
+        padding: `calc(1em + ${innerPadding})`,
         lineHeight: 1
       };
     }

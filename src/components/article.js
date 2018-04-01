@@ -393,10 +393,7 @@ const CodeStyled = glamorous.code(
     border: `${s.size(1)} solid ${s.colors.grayLight}`,
     borderRadius: s.dimensions.borderRadius,
     boxDecorationBreak: "clone", // inline code snippets can be spread across 2 rows
-    WebkitOverflowScrolling: "touch",
-    "&.language-diagram": {
-      lineHeight: 1
-    }
+    WebkitOverflowScrolling: "touch"
   },
   props => {
     const innerPadding = s.grid(1);
@@ -423,7 +420,9 @@ const CodeStyled = glamorous.code(
       styles = {
         ...styles,
         padding: `calc(1em + ${innerPadding})`,
-        lineHeight: 1
+        // At 0.9 box drawing characters are properly connected
+        // https://en.wikipedia.org/wiki/Box-drawing_character
+        lineHeight: 0.9
       };
     }
 

@@ -99,17 +99,17 @@ export default class Article extends React.Component {
         <H2>Serial</H2>
 
         <Diagram>{`
-          input ━━ A ━━ B ━━ C ━━ response
+          input ── A ── B ── C ── response
         `}</Diagram>
 
         <H2>Parallel</H2>
 
         <Diagram>{`
-                  ┏━━━━ A ━━━━┓
-                  ┃           ┃
-          input ━━╋━━━━ B ━━━━╋━━ response
-                  ┃           ┃
-                  ┗━━━━ C ━━━━┛
+                  ┌──── A ────┐
+                  │           │
+          input ──┼──── B ────┼── response
+                  │           │
+                  └──── C ────┘
         `}</Diagram>
 
         <H1>URL vs. URI</H1>
@@ -124,11 +124,11 @@ export default class Article extends React.Component {
 
         <List>
           <Li>
-            URI: when you're referring to a resource just by its name or some
+            URI: when you’re referring to a resource just by its name or some
             other fragment.
           </Li>
           <Li>
-            URL: When you're giving both the name of a resource and the method
+            URL: When you’re giving both the name of a resource and the method
             of accessing it.
           </Li>
         </List>

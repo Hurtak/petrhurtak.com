@@ -1,6 +1,5 @@
 # Rewrite TODOS
 
-* fix diagram
 * load comments when visible
 * convert remaining articles
 * deploy

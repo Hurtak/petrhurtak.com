@@ -7,7 +7,7 @@ import helmet from "helmet";
 import config from "../next.config.js";
 import * as api from "./api.js";
 import rss from "./rss.js";
-import { r } from "../articles/articles-router.js";
+import articlesRouter from "../articles/articles-router.js";
 
 async function main() {
   console.log(`> Starting the app with Node ${process.version}`);
@@ -75,12 +75,15 @@ async function main() {
   });
 
   //
-  // Articles static files + rest
+  // Articles static files
   //
   expressServer.get("/:maybeArticleUrl/*", (req, res, next) => {
+    // Try to find article in articlesRouter, if it is not there, delegate
+    // handling to "*" route.
+
     const maybeArticleUrl = req.params.maybeArticleUrl;
-    const maybeRelativePathArticle = r[maybeArticleUrl]
-      ? r[maybeArticleUrl].folder
+    const maybeRelativePathArticle = articlesRouter[maybeArticleUrl]
+      ? articlesRouter[maybeArticleUrl].folder
       : null;
 
     if (!maybeRelativePathArticle) {

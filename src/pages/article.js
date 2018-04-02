@@ -29,8 +29,8 @@ class Article extends React.Component {
       articleExists: false
     };
 
-    const articleComponentImport = ArticlesRouter[articleUrl];
-    if (!articleComponentImport) {
+    const articleComponent = ArticlesRouter[articleUrl];
+    if (!articleComponent) {
       return baseProps;
     }
 
@@ -38,12 +38,12 @@ class Article extends React.Component {
     if (req.status !== 200) {
       return baseProps;
     }
-    const article = await req.json();
+    const articleData = await req.json();
 
     // Makes sure we wait for the import to resolve before we render the page.
-    await articleComponentImport();
+    await articleComponent.import();
 
-    return { ...baseProps, articleExists: true, article: article };
+    return { ...baseProps, articleExists: true, article: articleData };
   }
 
   render() {
@@ -51,7 +51,9 @@ class Article extends React.Component {
       return <Error type="not-found" />;
     }
 
-    const ArticleComponent = dynamic(ArticlesRouter[this.props.articleUrl]());
+    const ArticleComponent = dynamic(
+      ArticlesRouter[this.props.articleUrl].import()
+    );
 
     return (
       <Layout pageTitle={this.props.article.title}>

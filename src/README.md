@@ -1,7 +1,5 @@
 # Rewrite TODOS
 
-* redo router
-*
 * video component
 * convert remaining articles
 * load comments when visible

@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "fs-extra";
 import path from "path";
 import next from "next";
 import express from "express";
@@ -77,14 +77,15 @@ async function main() {
   //
   // Articles static files + rest
   //
-  expressServer.get("/:maybeArticleUrl/*", (req, res) => {
+  expressServer.get("/:maybeArticleUrl/*", (req, res, next) => {
     const maybeArticleUrl = req.params.maybeArticleUrl;
     const maybeRelativePathArticle = r[maybeArticleUrl]
       ? r[maybeArticleUrl].folder
       : null;
 
     if (!maybeRelativePathArticle) {
-      return nextRequestHandler(req, res);
+      next();
+      return;
     }
 
     const articlePathRelative = maybeRelativePathArticle;
@@ -98,14 +99,26 @@ async function main() {
     );
     const pathAbsolute = path.join(root, pathRelativeToRoot);
 
-    // TODO: redo to async/await or promise
-    fs.lstat(pathAbsolute, (err, stats) => {
-      if (err || !stats.isFile()) {
-        nextRequestHandler(req, res);
-      } else {
-        res.sendfile(pathRelativeToRoot, { root: root });
-      }
-    });
+    fs
+      .lstat(pathAbsolute)
+      .then(stats => {
+        if (!stats.isFile()) {
+          next();
+          return;
+        }
+
+        res.sendFile(pathRelativeToRoot, { root: root });
+      })
+      .catch(() => {
+        next();
+      });
+  });
+
+  //
+  // Rest
+  //
+  expressServer.get("*", (req, res) => {
+    return nextRequestHandler(req, res);
   });
 
   //

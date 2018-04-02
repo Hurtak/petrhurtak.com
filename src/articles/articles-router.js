@@ -18,6 +18,10 @@ export default {
     folder: "./published/2017-07-17--random-numbers/",
     import: () => import("./published/2017-07-17--random-numbers/article.js")
   },
+  iife: {
+    folder: "./published/2017-07-20--iife/",
+    import: () => import("./published/2017-07-20--iife/article.js")
+  },
   "common-naming-mistakes": {
     folder: "./published/2017-08-24--common-naming-mistakes/",
     import: () =>

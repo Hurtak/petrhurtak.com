@@ -10,6 +10,7 @@ import stripIndent from "strip-indent";
 //       downloaded?
 import highlight from "highlight.js/lib/highlight.js";
 import highlightJavaScript from "highlight.js/lib/languages/javascript";
+import highlightElm from "highlight.js/lib/languages/elm";
 import highlightJson from "highlight.js/lib/languages/json";
 import highlightCss from "highlight.js/lib/languages/css";
 import highlightXml from "highlight.js/lib/languages/xml"; // HTML
@@ -24,6 +25,7 @@ import highlightBash from "highlight.js/lib/languages/bash";
 import * as s from "../common/styles.js";
 
 highlight.registerLanguage("javascript", highlightJavaScript);
+highlight.registerLanguage("elm", highlightElm);
 highlight.registerLanguage("json", highlightJson);
 highlight.registerLanguage("css", highlightCss);
 highlight.registerLanguage("xml", highlightXml);

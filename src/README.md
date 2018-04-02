@@ -3,8 +3,9 @@
 * video component
 * convert remaining articles
 * load comments when visible
-* deploy
+* cleaup dir structure
 * Go through TODOS
+* deploy
 
 ## Later
 

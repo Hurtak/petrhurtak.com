@@ -37,9 +37,10 @@ export default class Article extends React.Component {
       <ArticleWrapper>
         <P>
           Under Unix-like operating systems you can either run scripts by
-          specifying the interpreter along with the path `python test.py`, or
-          you can run them as programs `./test.py`, and have the interpreter
-          specified in the shebang on the first line of the script.
+          specifying the interpreter along with the path{" "}
+          <Code>python test.py</Code>, or you can run them as programs{" "}
+          <Code>./test.py</Code>, and have the interpreter specified in the
+          shebang on the first line of the script.
         </P>
 
         <H1>Syntax</H1>
@@ -53,12 +54,13 @@ export default class Article extends React.Component {
         <List>
           <Li>
             The interpreter must be a valid pathname for an executable.
-            Therefore something like `#!python` will not work because `python`
-            is not a path name. Use full path like `#!/usr/bin/env python`.
+            Therefore something like <Code>#!python</Code> will not work because{" "}
+            <Code>python</Code> is not a path name. Use full path like{" "}
+            <Code>#!/usr/bin/env python</Code>.
           </Li>
           <Li>
             The interpreted usually takes only one argument, so you cannot do
-            something like `#!/usr/bin/env node --harmony`.
+            something like <Code>#!/usr/bin/env node --harmony</Code>.
           </Li>
         </List>
 

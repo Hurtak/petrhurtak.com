@@ -135,12 +135,14 @@ const QuotationsStyles = glamorous.q({
 export class Link extends React.Component {
   static propTypes = {
     children: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired
+    href: PropTypes.string
   };
 
   render() {
     return (
-      <LinkStyled href={this.props.href}>{this.props.children}</LinkStyled>
+      <LinkStyled href={this.props.href || this.props.children}>
+        {this.props.children}
+      </LinkStyled>
     );
   }
 }

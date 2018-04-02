@@ -148,9 +148,7 @@ export default class Article extends React.Component {
 
         <List>
           <Li>
-            <Link href={"https://danielmiessler.com/study/url-uri/"}>
-              https://danielmiessler.com/study/url-uri/
-            </Link>
+            <Link>https://danielmiessler.com/study/url-uri/</Link>
           </Li>
         </List>
 

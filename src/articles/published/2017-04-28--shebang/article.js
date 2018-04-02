@@ -5,7 +5,6 @@ import {
   H2,
   List,
   Li,
-  Link,
   Video,
   P,
   Table,
@@ -70,9 +69,7 @@ export default class Article extends React.Component {
           echo "Hello"
         `}</Code>
 
-        <video width="626" height="274" controls autoPlay loop>
-          <source src="./videos/shebang.mp4" type="video/mp4" />
-        </video>
+        <Video width={598} height={274} src="./videos/shebang.mp4" />
 
         <H2>usr/bin/env</H2>
 

@@ -1,6 +1,5 @@
 # Rewrite TODOS
 
-* video component
 * convert remaining articles
 * load comments when visible
 * cleaup dir structure

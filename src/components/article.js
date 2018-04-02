@@ -390,7 +390,7 @@ const PreStyled = glamorous.pre({
 const CodeStyled = glamorous.code(
   {
     backgroundColor: s.colors.grayLighter,
-    border: `${s.size(1)} solid ${s.colors.grayLight}`,
+    border: s.borders.default,
     borderRadius: s.dimensions.borderRadius,
     boxDecorationBreak: "clone", // inline code snippets can be spread across 2 rows
     WebkitOverflowScrolling: "touch"
@@ -521,6 +521,64 @@ const TableCellHeadingStyled = glamorous.th({
   textAlign: "center"
 });
 
+//
+// Video
+//
+
+export class Video extends React.Component {
+  static propTypes = {
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    src: PropTypes.string.isRequired
+  };
+
+  render() {
+    const ratio = this.props.width / this.props.height;
+
+    return (
+      <VideoWrapperStyled
+        css={{
+          maxHeight: this.props.height + "px",
+          maxWidth: this.props.width + "px"
+        }}
+      >
+        <VideoWrapperInnerStyled css={{ paddingBottom: 100 / ratio + "%" }}>
+          <VideoStyled
+            width={this.props.width}
+            height={this.props.height}
+            controls
+            autoPlay
+            loop
+          >
+            <source src={this.props.src} type="video/mp4" />
+          </VideoStyled>
+        </VideoWrapperInnerStyled>
+      </VideoWrapperStyled>
+    );
+  }
+}
+
+const VideoWrapperStyled = glamorous.div({
+  marginTop: s.dimensions.paragraphSpacing,
+  marginLeft: "auto",
+  marginRight: "auto",
+  border: s.borders.default,
+  background: s.colors.grayLighter,
+  borderRadius: s.dimensions.borderRadius,
+  overflow: "hidden"
+});
+
+const VideoWrapperInnerStyled = glamorous.div({
+  width: "100%",
+  height: 0
+});
+
+const VideoStyled = glamorous.video({
+  display: "block",
+  maxWidth: "100%",
+  height: "auto"
+});
+
 /*
 
 
@@ -589,14 +647,5 @@ const TableCellHeadingStyled = glamorous.th({
 .Article-content blockquote footer {
   margin-top: 0.4em;
 }
-
-// videos
-
-.Article-content video {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 
  */

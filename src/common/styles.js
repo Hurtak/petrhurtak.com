@@ -126,6 +126,10 @@ export const dimensions = {
   paragraphSpacing: size(30)
 };
 
+export const borders = {
+  default: `${size(1)} solid ${colors.grayLight}`
+};
+
 export const breakpoints = {
   // Shared
   medium: `@media (max-width: ${size(600)})`,

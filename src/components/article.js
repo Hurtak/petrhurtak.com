@@ -9,9 +9,12 @@ import stripIndent from "strip-indent";
 //       to register languages manually and so only needed languages are
 //       downloaded?
 import highlight from "highlight.js/lib/highlight.js";
+
 import highlightJavaScript from "highlight.js/lib/languages/javascript";
+import highlightMakefile from "highlight.js/lib/languages/makefile";
 import highlightElm from "highlight.js/lib/languages/elm";
 import highlightJson from "highlight.js/lib/languages/json";
+import highlightYaml from "highlight.js/lib/languages/yaml";
 import highlightCss from "highlight.js/lib/languages/css";
 import highlightXml from "highlight.js/lib/languages/xml"; // HTML
 import highlightBash from "highlight.js/lib/languages/bash";
@@ -25,8 +28,10 @@ import highlightBash from "highlight.js/lib/languages/bash";
 import * as s from "../common/styles.js";
 
 highlight.registerLanguage("javascript", highlightJavaScript);
+highlight.registerLanguage("makefile", highlightMakefile);
 highlight.registerLanguage("elm", highlightElm);
 highlight.registerLanguage("json", highlightJson);
+highlight.registerLanguage("yaml", highlightYaml);
 highlight.registerLanguage("css", highlightCss);
 highlight.registerLanguage("xml", highlightXml);
 highlight.registerLanguage("bash", highlightBash);
@@ -54,10 +59,6 @@ const WrapperStyled = glamorous.div({
 //
 // Texts
 //
-
-// .Article-content em {
-//   font-style: italic;
-// }
 
 // .Article-content mark {
 //   background-color: var(--color-yellow);
@@ -96,6 +97,20 @@ export class Bold extends React.Component {
 
 const BoldStyled = glamorous.strong({
   fontWeight: "bold"
+});
+
+export class Italic extends React.Component {
+  static propTypes = {
+    children: PropTypes.string.isRequired
+  };
+
+  render() {
+    return <ItalicStyled>{this.props.children}</ItalicStyled>;
+  }
+}
+
+const ItalicStyled = glamorous.em({
+  fontStyle: "italic"
 });
 
 export class Q extends React.Component {
@@ -496,7 +511,8 @@ export class Tr extends React.Component {
 export class Tc extends React.Component {
   static propTypes = {
     children: PropTypes.node,
-    heading: PropTypes.bool
+    heading: PropTypes.bool,
+    noWrap: PropTypes.bool
   };
 
   render() {
@@ -504,7 +520,9 @@ export class Tc extends React.Component {
       ? TableCellHeadingStyled
       : TableCellStyled;
 
-    return <Component>{this.props.children}</Component>;
+    return (
+      <Component noWrap={this.props.noWrap}>{this.props.children}</Component>
+    );
   }
 }
 
@@ -514,16 +532,30 @@ const tableCellSharedStyles = {
   padding: s.grid(1)
 };
 
-const TableCellStyled = glamorous.td({
-  ...tableCellSharedStyles
-});
+const tableCellSharedProps = props => {
+  if (props.noWrap) {
+    return {
+      whiteSpace: "nowrap"
+    };
+  }
+};
 
-const TableCellHeadingStyled = glamorous.th({
-  ...tableCellSharedStyles,
-  ...s.fonts.headingTable,
-  fontWeight: "bold",
-  textAlign: "center"
-});
+const TableCellStyled = glamorous.td(
+  {
+    ...tableCellSharedStyles
+  },
+  tableCellSharedProps
+);
+
+const TableCellHeadingStyled = glamorous.th(
+  {
+    ...tableCellSharedStyles,
+    ...s.fonts.headingTable,
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  tableCellSharedProps
+);
 
 //
 // Video

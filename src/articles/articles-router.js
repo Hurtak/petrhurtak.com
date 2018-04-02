@@ -10,6 +10,10 @@ export default {
     folder: "./published/2017-04-28--shebang/",
     import: () => import("./published/2017-04-28--shebang/article.js")
   },
+  "debian-packages": {
+    folder: "./published/2017-05-21--debian-packages/",
+    import: () => import("./published/2017-05-21--debian-packages/article.js")
+  },
   ajax: {
     folder: "./published/2017-07-11--ajax/",
     import: () => import("./published/2017-07-11--ajax/article.js")

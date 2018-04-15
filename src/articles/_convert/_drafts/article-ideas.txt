@@ -1,3 +1,5 @@
+- article white space typy, multiline ellipsis
+
 - spacing between components
   .Component {
     &:not(:first-child) {
@@ -16,6 +18,8 @@
   Spacer component
 
 - how i do notes
+
+- popups done right article
 
 - ssr antipattern article
 

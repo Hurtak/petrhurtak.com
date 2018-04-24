@@ -1,3 +1,8 @@
+- increase clickable area of link/whatever
+  - https://stackoverflow.com/questions/11078509/how-to-increase-the-clickable-area-of-a-a-tag-button
+    - overlaping clickable areas?
+  - padding - problem with aligning to the box - need to add negative margin and recalculate
+d
 - article white space typy, multiline ellipsis
 
 - spacing between components

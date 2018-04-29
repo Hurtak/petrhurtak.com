@@ -2,7 +2,18 @@
   - https://stackoverflow.com/questions/11078509/how-to-increase-the-clickable-area-of-a-a-tag-button
     - overlaping clickable areas?
   - padding - problem with aligning to the box - need to add negative margin and recalculate
-d
+- passwords
+  - what not to do
+    - plain text (password is private information. most users have same password everywhere)
+    - regular hashes md5 - dictionary attack
+    - regular hashes md5 + salt - hash is too fast
+  - what to do
+    - hashing function that is for passwords
+    - how to store (bcrypt)
+    - password comparison - timing attacks
+      - https://snyk.io/blog/node-js-timing-attack-ccc-ctf/
+    - updating from older hasing to newer hashing
+
 - article white space typy, multiline ellipsis
 
 - spacing between components

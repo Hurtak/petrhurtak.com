@@ -1,3 +1,11 @@
+- i18n
+  - date.toLocaleString()
+  - number.toLocaleString()
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat
+  - 2-digits does not work on some locales
+    - https://bugs.chromium.org/p/chromium/issues/detail?id=527926
+    - https://bugs.chromium.org/p/chromium/issues/detail?id=507037
+
 - increase clickable area of link/whatever
   - https://stackoverflow.com/questions/11078509/how-to-increase-the-clickable-area-of-a-a-tag-button
     - overlaping clickable areas?

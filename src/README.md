@@ -1,5 +1,6 @@
 # Rewrite TODOS
 
+* https://github.com/mdx-js/mdx ?
 * convert remaining articles
 * load comments when visible
 * cleaup dir structure
@@ -8,6 +9,8 @@
 
 ## Later
 
+* inspiration
+  * https://ryanclark.me/
 * tell now to use scripts/production instead of npm scripts
 * jest silent when test passes
 * article proptypes validation

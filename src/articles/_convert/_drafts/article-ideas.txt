@@ -6,6 +6,11 @@
     - https://bugs.chromium.org/p/chromium/issues/detail?id=527926
     - https://bugs.chromium.org/p/chromium/issues/detail?id=507037
 
+- flexbox
+  - flex-basis
+  - flex: 0 0 200px
+  - align-items vs justify-content
+
 - increase clickable area of link/whatever
   - https://stackoverflow.com/questions/11078509/how-to-increase-the-clickable-area-of-a-a-tag-button
     - overlaping clickable areas?

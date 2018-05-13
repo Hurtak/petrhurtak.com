@@ -111,7 +111,7 @@
     - when you open picture in macos default image viewer app called "Preview" it does not allow cycling to next/previous image - what the actuall fuck??
       - you can press the space to shou quick preview, this is pretty nice, but again does not allow you to cycle between images, you actually need to select more images and then press space, wtf??
       - there is special cover flow view type that actually does the image cycling and is pretty nice, better than windows and linux
-    - it created the .DS_Store file all over the place in every fucking directory you touch with this program.
+    - it creates the .DS_Store file all over the place in every fucking directory you touch with this program.
     - creating new folder is ridiculous, you cant actually click on folder and tell it create new directory
       - you either need to find empty row (which is top level, you might want to create directory somewhere nested) and right click new directory
       - or you need to click on action button at the top and select create directory - wich then proceeds to crate not in the directory you selected but in the fucking top level, what the fuck??
@@ -127,6 +127,7 @@
   - for non profesional work (emails, calendar, web browser stuff) macos feels nicer compared to other 2 systems, trackpack gestures are really nice. but once you start doing some more serious stuff the new/weirh keyboard layout and other unusual stuff starts getting in the way
   - you need to download some 3rd party software to open android phones, wtf???
   - cant write to ntfs drives, only read
+  - jack connector is really tight, after you put it it, it is hard to pull out.
 
 - todos apps mostly useless - google calendar
 

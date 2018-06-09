@@ -1,3 +1,5 @@
+- Article bolded text same width as regular text
+
 - i18n
   - date.toLocaleString()
   - number.toLocaleString()

@@ -78,6 +78,7 @@
   - tak studeny po ranu ze jsem si parkrat musel po ranu zahrat nejakou 3d hru aby se trochu zahral
   - keyboard
     - official layout has "§" in the place of "\", WTF??
+    - external keyboard has command/control/option on different places than internal laptop keyboard
     - annoyingly low key travel, you get used to it but never stopped feeling "wrong"
     - retarded arrow keys, up and down is half size
     - missing keys like delete pageup down - annoying, you need to learn more gestures, but probably ok

@@ -64,6 +64,11 @@ async function main() {
   });
   expressServer.get("/rss/", middlewareRemoveTrailingSlash);
 
+  expressServer.get(
+    "/robots.txt",
+    express.static(path.join(__dirname, "../static-root"))
+  );
+
   //
   // Articles
   //

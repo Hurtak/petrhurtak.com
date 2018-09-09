@@ -40,7 +40,7 @@ function validateAllMetadata(metadataArr) {
   return [true, null];
 }
 
-function valudateMetadata(t, metadata) {
+function validateMetadata(t, metadata) {
   if (!metadata) {
     errors.push("Metadata missing");
   }

@@ -1,0 +1,8 @@
+{
+  "name": "hurtakcc-dev",
+  "alias": "hurtakcc-dev",
+  "public": true,
+  "engines": {
+    "node": "^8.0.0"
+  }
+}

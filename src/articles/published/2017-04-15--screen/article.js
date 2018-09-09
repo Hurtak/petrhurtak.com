@@ -1,18 +1,5 @@
 import React from "react";
-import {
-  ArticleWrapper,
-  H1,
-  H2,
-  Link,
-  List,
-  Li,
-  Video,
-  P,
-  Table,
-  Tr,
-  Tc,
-  Code
-} from "../../../components/article.js";
+import { ArticleWrapper, H1, H2, Link, List, Li, Video, P, Table, Tr, Tc, Code } from "../../../components/article.js";
 
 export default class Article extends React.Component {
   static metadata = {
@@ -35,16 +22,10 @@ export default class Article extends React.Component {
   render() {
     return (
       <ArticleWrapper>
-        <P>
-          The Screen is screen manager with terminal emulation that allows you
-          to:
-        </P>
+        <P>The Screen is screen manager with terminal emulation that allows you to:</P>
 
         <List>
-          <Li>
-            Run a process in a terminal on background, and later on connect
-            back.
-          </Li>
+          <Li>Run a process in a terminal on background, and later on connect back.</Li>
           <Li>Use multiple terminal windows from a single session.</Li>
           <Li>Reconnect to a terminal session from various locations.</Li>
         </List>
@@ -64,24 +45,15 @@ export default class Article extends React.Component {
             Start the Screen session with <Code>screen</Code> command.
           </Li>
           <Li>
-            Exit the session as you would exit a regular shell, by typing{" "}
-            <Code>exit</Code>.
+            Exit the session as you would exit a regular shell, by typing <Code>exit</Code>.
           </Li>
-          <Li>
-            Or you can detach from the Screen session so later you can come
-            back.
-          </Li>
-          <Li>
-            Inside the Screen, you can create windows and switch between them.
-          </Li>
+          <Li>Or you can detach from the Screen session so later you can come back.</Li>
+          <Li>Inside the Screen, you can create windows and switch between them.</Li>
         </List>
 
         <H1>Keyboard shortcuts</H1>
 
-        <P>
-          Once you are in a Screen session, you can control it through keyboard
-          shortcuts.
-        </P>
+        <P>Once you are in a Screen session, you can control it through keyboard shortcuts.</P>
 
         <Table
           heading={
@@ -178,8 +150,7 @@ export default class Article extends React.Component {
             <Tc>
               <Code>screen -S [id or name] -X quit</Code>
               <br />
-              Or just connect to the screen with <Code>screen -r</Code> and then
-              run <Code>exit</Code>
+              Or just connect to the screen with <Code>screen -r</Code> and then run <Code>exit</Code>
             </Tc>
           </Tr>
           <Tr>
@@ -194,12 +165,11 @@ export default class Article extends React.Component {
 
         <List>
           <Li>
-            Take a look at the <Code>$STY</Code> environment variable (STY
-            stands for <Code>Alternate socket name</Code>).
+            Take a look at the <Code>$STY</Code> environment variable (STY stands for <Code>Alternate socket name</Code>
+            ).
           </Li>
           <Li>
-            If you are running inside a Screen, <Code>$STY</Code> is set.
-            Otherwise, it is empty.
+            If you are running inside a Screen, <Code>$STY</Code> is set. Otherwise, it is empty.
           </Li>
         </List>
 
@@ -230,21 +200,17 @@ export default class Article extends React.Component {
 
         <H1>Conclusion</H1>
         <P>
-          I use Screen mainly for running processes in the background &ndash;
-          for the ease of coming back to them, seeing what they logged into the
-          console, and terminating them. With the window management stuff, I am
-          fine with just using regular tabs in my terminal. But if you ever
-          needed something more powerful than that, you should consider either
-          Screen or its more powerful competitor{" "}
-          <Link href="https://tmux.github.io/">Tmux</Link>.
+          I use Screen mainly for running processes in the background &ndash; for the ease of coming back to them,
+          seeing what they logged into the console, and terminating them. With the window management stuff, I am fine
+          with just using regular tabs in my terminal. But if you ever needed something more powerful than that, you
+          should consider either Screen or its more powerful competitor <Link href="https://tmux.github.io/">Tmux</Link>
+          .
         </P>
 
         <H1>Links</H1>
         <List>
           <Li>
-            <Link>
-              https://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/
-            </Link>
+            <Link>https://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/</Link>
           </Li>
           <Li>
             <Link>https://tmux.github.io/</Link>

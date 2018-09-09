@@ -41,7 +41,7 @@ export default class MyDocument extends Document {
 
           {/* Extra */}
           <link rel="alternate" type="application/rss+xml" href="/rss" />
-          <link type="text/plain" rel="author" href="/humans.txt" />
+          {/* <link type="text/plain" rel="author" href="/humans.txt" /> */}
         </Head>
         <body>
           <Main />

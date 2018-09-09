@@ -1,6 +1,7 @@
 # Rewrite TODOS
 
 * /xxx/ breaks server
+* humans.txt
 * update to next6
 * https://github.com/mdx-js/mdx ?
 * convert remaining articles

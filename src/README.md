@@ -1,7 +1,6 @@
 # Rewrite TODOS
 
 * /xxx/ breaks server
-* remove @zeit/next-source-maps
 * update to next6
 * https://github.com/mdx-js/mdx ?
 * convert remaining articles

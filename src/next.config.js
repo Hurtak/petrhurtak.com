@@ -1,5 +1,3 @@
-const withSourceMaps = require("@zeit/next-source-maps");
-
 const nowUrl = process.env.NOW_URL;
 const dev = process.env.NODE_ENV !== "production";
 const serverPort = 3000;
@@ -39,7 +37,4 @@ const config = {
   }
 };
 
-let configWithPlugins = config;
-configWithPlugins = withSourceMaps(configWithPlugins);
-
-module.exports = configWithPlugins;
+module.exports = config;

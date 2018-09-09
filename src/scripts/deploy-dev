@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")/.."
 
-now rm --yes hurtakcc-dev
 now --local-config=now-dev.json deploy
 now --local-config=now-dev.json alias
+now rm --safe --yes hurtakcc-dev

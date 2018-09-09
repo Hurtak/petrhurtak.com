@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+cd "$(dirname "$0")/.."
+
+now --local-config=now-prod.json deploy --public
+now --local-config=now-prod.json alias
+now rm --safe --yes hurtakcc-prod
+

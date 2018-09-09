@@ -67,8 +67,23 @@ async function main() {
   //
   // Articles
   //
-  expressServer.get("/:articleUrl", middlewareAddTrailingSlash);
+  expressServer.get("/:articleUrl", (req, res, next) => {
+    const articleExists = Boolean(articlesRouter[req.params.articleUrl]);
+    if (!articleExists) {
+      next();
+      return;
+    }
+
+    middlewareAddTrailingSlash(req, res, next);
+  });
+
   expressServer.get("/:articleUrl/", (req, res) => {
+    const articleExists = Boolean(articlesRouter[req.params.articleUrl]);
+    if (!articleExists) {
+      next();
+      return;
+    }
+
     return nextApp.render(req, res, "/article", {
       articleUrl: req.params.articleUrl
     });
@@ -77,21 +92,17 @@ async function main() {
   //
   // Articles static files
   //
-  expressServer.get("/:maybeArticleUrl/*", (req, res, next) => {
+  expressServer.get("/:articleUrl/*", (req, res, next) => {
     // Try to find article in articlesRouter, if it is not there, delegate
     // handling to "*" route.
-
-    const maybeArticleUrl = req.params.maybeArticleUrl;
-    const maybeRelativePathArticle = articlesRouter[maybeArticleUrl]
-      ? articlesRouter[maybeArticleUrl].folder
-      : null;
-
-    if (!maybeRelativePathArticle) {
+    const articleUrl = req.params.articleUrl;
+    const article = Boolean(articlesRouter[articleUrl]);
+    if (!article) {
       next();
       return;
     }
 
-    const articlePathRelative = maybeRelativePathArticle;
+    const articlePathRelative = articlesRouter[articleUrl].folder;
     const restPath = req.params[0];
 
     const root = path.join(__dirname, "..");
@@ -102,8 +113,7 @@ async function main() {
     );
     const pathAbsolute = path.join(root, pathRelativeToRoot);
 
-    fs
-      .lstat(pathAbsolute)
+    fs.lstat(pathAbsolute)
       .then(stats => {
         if (!stats.isFile()) {
           next();

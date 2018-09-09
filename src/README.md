@@ -1,5 +1,7 @@
 # Rewrite TODOS
 
+* remove @zeit/next-source-maps
+* update to next6
 * https://github.com/mdx-js/mdx ?
 * convert remaining articles
 * load comments when visible

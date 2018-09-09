@@ -1,15 +1,18 @@
 const withSourceMaps = require("@zeit/next-source-maps");
 
 const nowUrl = process.env.NOW_URL;
+const dev = process.env.NODE_ENV !== "production";
+const serverPort = 3000;
 
 const config = {
   publicRuntimeConfig: {
     //
     // Backend config
     //
-    dev: process.env.NODE_ENV !== "production",
-    nowUrl: nowUrl,
-    api: nowUrl ? `${nowUrl}/api` : "http://localhost:3000/api",
+    dev: dev,
+
+    origin: nowUrl ? nowUrl : `http://localhost:${serverPort}`,
+    apiPath: "/api",
 
     //
     // Blog settings
@@ -30,7 +33,7 @@ const config = {
   },
 
   serverRuntimeConfig: {
-    port: 3000,
+    port: serverPort,
 
     cacheDuration: "2 hours"
   }

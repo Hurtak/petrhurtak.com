@@ -3,14 +3,12 @@ import PropTypes from "prop-types";
 import glamorous from "glamorous";
 import fetch from "isomorphic-fetch";
 import Link from "next/link";
-import config from "next/config";
 import Layout from "../components/layout.js";
 import Spacer from "../components/spacer.js";
+import apiUrl from "../common/api-url.js";
 import * as s from "../common/styles.js";
 import * as date from "../common/date.js";
 import * as sharedPropTypes from "../common/shared-prop-types.js";
-
-const { publicRuntimeConfig } = config();
 
 class Index extends React.Component {
   static propTypes = {
@@ -18,7 +16,7 @@ class Index extends React.Component {
   };
 
   static async getInitialProps() {
-    const reqApi = await fetch(`${publicRuntimeConfig.api}/articles`);
+    const reqApi = await fetch(`${apiUrl}/articles`);
     const articles = await reqApi.json();
 
     return { articles };

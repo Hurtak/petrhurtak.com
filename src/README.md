@@ -6,9 +6,12 @@
 * cleaup dir structure
 * Go through TODOS
 * deploy
+  * link to real www.hurtak.cc
+  * run tests before dev & prod deployment script
 
 ## Later
 
+* RSS feed, use some package to make sure encoding is ok??
 * inspiration
   * https://ryanclark.me/
 * tell now to use scripts/production instead of npm scripts

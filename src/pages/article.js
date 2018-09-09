@@ -8,6 +8,7 @@ import ReactDisqusComments from "react-disqus-comments";
 import ArticlesRouter from "../articles/articles-router.js";
 import Layout from "../components/layout.js";
 import Error from "../components/error.js";
+import apiUrl from "../common/api-url.js";
 import * as s from "../common/styles.js";
 import * as date from "../common/date.js";
 import * as sharedPropTypes from "../common/shared-prop-types.js";
@@ -34,7 +35,7 @@ class Article extends React.Component {
       return baseProps;
     }
 
-    const req = await fetch(`${publicRuntimeConfig.api}/article/${articleUrl}`);
+    const req = await fetch(`${apiUrl}/article/${articleUrl}`);
     if (req.status !== 200) {
       return baseProps;
     }

@@ -1,3 +1,48 @@
+- vue vs react
+  - template cannot be top level
+
+    Jeden student se ptal jakej si myslim ze je rozdil mezi Vue a Reactem. Tak kdyz uz jsem se s tim psal, tak to postnu i sem, treba to prijde nekomu zajimavy.
+    ===
+    Dobrý deň,
+
+    V komentároch k mojej semestrálke Website Builder ste spomínali:
+
+    "Ted uz je asi pozde ale pri pohledu na kod mi prijde ze jste nezvolil uplne vhodny framework. U takhle slozitych aplikaci kde se komponenty vytvareji/modifikuji/skladaji dynamicky bych rekl ze se to dela mnohem lepe v Reactu nez ve Vue”
+
+    Môžem sa opýtať prečo si myslíte, že je vhodnejšie použiť React? Osobne som viac pracoval s Vue takže som nad voľbou frameworku moc nerozmýšľal. Vedeli by ste mi vysvetliť aké výhody by mal pri tomto probléme React? Vue už má aj svoj SSR framework a plánujem v budúcnosti tieto “vybuildené” stránky renderovať cez SSR s rovnakými komponentami ako na front-ende. Ta “Export” funkcia tam bola iba kvôli use case KAJ no v budúcnosti plánujem renderovať nakonfigurované komponenty(uložiť stav) cez SSR.
+
+    Čo si o tom myslíte?
+
+    S pozdravom,
+
+    Peter Tóth (edited)
+    ===
+    Pekny den,
+
+    - jestli uz mate zkusenosti s Vue, tak si s volbou nedelejte starosti, zas tolik se ty frameworky nelisi
+    - co jsem myslel je ze kdyz mam komponentu ktera tvori / upravuje elementy ze slotu dynamicky tak casto musite misto klasicke <template> prejit na render metodu se kterou se pracuje uplne jinak nez s sablonami v template. Napr kdyz bych mel komponentu ktera chce vzit vsechny polozky ze slotu a pridat jim nejakou tridu, tak to nejde udelat pres <template> ale musim prepnout do render metody se kterou se pracuje uplne jinak nez s <template>. V porovnani s Reactem kde vlastne neni sablonovaci jazyk, pouze JSX coz je nejaka hezci syntaxe volani JS funkci, co vypada jako sablonovaci jazyk. Tak u Reactu byste tenhle "problem", kdy musim prepsat komponentu z sablon fo uplne jinak pracujici render funkce, nemel protoze v Reactu tohle striktni rozdeleni na <template> a data co se do nich posilaji neni, druha vec, kdyz sablony pisu v JS (JSX), tak nemuzu narazit na omezeni expresivnosti sablonovaciho jazyka (chci iterovat pres slot, a ke kazde polozce pridat tridu, ale sablonovaci jazyk to nemusi podporovat). V Reactu byste porad pouzival stejnou render metodu a stejne byste pracoval s komponentami co prisli do slotu (children), jako v jakychkoli jinych pripadech. Na druhou stranu mam pocit ze Vue umi pouzivat JSX ve svych komponentach a dokonce to i nekde v dokumentaci zminuji jako vhodnou alternativu kdyz ma clovek takhle hodne dynamicky tvorene sablony kdy mu uz nestaci "hloupejsi" sablonovaci jazyk, ale s tim jsem nikdy nepracoval takze nemuzu poreferovat.
+    - co se tyce vyhod a nevyhod React vs Vue, tak tady par nahodnych poznamek ktere me ted napadly
+    - jenom na uvod abyste vedel z jakeho pohledu to pisu, s Reactem jsem delal hlavne v Seznamu neco pres rok na nekolika projektech + v nem delam vetsinu osobnich projektu. S Vue mam zkusenosti mensi, delam s nim v aktualni praci neco okolo ctvrt roku, konkretne s frameworkem Nuxt ktery poskytuje i SSR
+
+    - Vue ma sadu oficialnich knihoven (oficialni router, oficialni "Redux" na spravu stavu, vue-cli na generovani projektu)
+    - React je v tomhle o dost vice roztristeny a clovek si musi tyhle veci vyhledat a pozapojovat do projektu sam. Ikdyz na druhou stranu posledni dobou se to hodne zlepsilo, kdyz chci aplikaci co se rendruje jenom na klientu muzu pouzit create-react-app. Kdyz chci neco co se rendruje na serveru muzu pouzit skvelej nextjs (ten mimo jine umi i export do staticke stranky, takze vysledek muze byt podobny jako u create-react-app)
+    - Vue i React maji velice podobne dev tools, takze tady je to remiza. S Reactimi se mi pracovalo trochu lepe protoze v nich vidim jak React komponenty tak klasicke html elementy, ve Vue dev tools vidim jenom Vue komponenty coz me obcas matlo a hure se mi v tom orientovalo. Dokumentace mi prisla podobne dobra u obou projektu.
+    - ve Vue jsou docela pekne single file komponenty, ale obcas clovek chce novou mini komponentu, kde bude nejaky sdileny kod, a neni mozne to dat do toho sameho souboru (jako v Reactu kde bych si proste nadefinoval novou tridu/funkci v danem souboru a pak ji pouzival v hlavni komponente), musi se kvuli tomu zakladat soubor novy (edited)
+    - Reacti pristup kdy "sablony" jsou v podstate JavaScriptovy kod ktery si muzu libovolne generovat, obalovat a ukladat do promennych mi prijde flexibilnejsi a lepsi nez u Vue kde je klasictejsi pristup s sablonovacim jazykem (viz muj druhy komentar a odpoved na vasi hlavni otazku).
+    - U Vue mi porad prijde trochu divne cpat js kod do stringu napr `<template v-if="requestState === 'LOADING'>`, navic v tom stringu je to nejak zvlastne evaluovano, takze tam nejde pouzit console.log na nejake rychle zalogovani. V Reactu je rozdil mezi sablonami s js kodem jasnejsi, navic scope js kodu je taky jasny, proste tam kde se nachazim s sablonou tak v tom jsem scopu (stejne jako u jakehokoli jineho js kodu).
+    - Mnozstvi a kvalita knihoven mi prisla lepsi u Reactu ikdyz i u Vue to nebylo nijak spatne.
+    - Vue ma o dost vetsi API, je sice pravda ze ma nektere pekne veci jako computed properties nebo treba watche, ale porad mi Reacti pristup, kde je jenom minumum metod, mi prijde sympatictejsi. Na druhou stranu neni to nijak zavratny rozdil, Vue i React razi docela podobny komponentovy pristup, takze kdyz clovek umi s Reactem tak prechod na Vue byl otazka hodin / par dni.
+    - U Vue se o trochu lepe pracuje se stavem, proste napisu this.stavovaPromenna = novyStav a Vue se o vse postara protoze stavove promenne ma obalene, na druho stranu kdyz si zaloguju stavovou promennou tak to je nejaky Vue objekt ktery se hure inspectuje v konzoli
+    - Vue se lepe zapojuje do stavajiciho projektu co je rendrovany nejakym jinych serverovym frameworkem, proste misto single file vue komponenty pouziju new Vue({ ... }) a sablony by meli jit prepouzit ze stavajiciho html (vue sablony jsou kompatibilni s html), nebo je muzu zapsat do stringu. U Reactu by tohle taky slo (az na prepouziti sablon z html), ale vyzadovalo by to vice usili na zapojeni do build procesu (za predpokladu ze clovek nechce psat React.createElement ale chce pouzivat JSX). Tohle jsem teda nikdy nepouzil ale zni to zajimave.
+    - Trochu se mi nelibilo jak je u Vue vsechno cpane na this dane instance, jsou tam namichane stavove promenne, s computed promenymi s metodami, bez namespacu vsechno v jenom. Na druhou stranu props jsou namespacovane v this.$props ale pouze v JS kodu, v sablonach jsou bez namespacu. V reactu je to jasne namespacovane v this.state a this.props a neni rozdil mezi sablonami a normalnim js kodem.
+    - Zaver: oba frameworky jsou si docela podobny protoze razi podobny komponentovy model, ale React mi je trochu blizsi svym pristupem a taky je oblibenejsi, takze je pro nej vic knihoven a navodu. Ale Vue taky neni spatna volba.
+
+    PS: Moc jsem to po sobe necetl, tak se omlouvam za pripadne chyby :slightly_smiling_face:
+
+    S pozdravem,
+    Petr Hurtak
+
+
 - https://css-tricks.com/useful-nth-child-recipies/
 
 - Article bolded text same width as regular text

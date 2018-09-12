@@ -2,18 +2,20 @@
 
 * /xxx/ breaks server
 * humans.txt
-* update to next6
-* https://github.com/mdx-js/mdx ?
 * convert remaining articles
-* load comments when visible
-* cleaup dir structure
-* Go through TODOS
 * deploy
   * link to real www.hurtak.cc
   * run tests before dev & prod deployment script
 
 ## Later
 
+* articles writing
+  * make drafts work again
+  * live reload when new article appears
+* update to next6
+* cleaup dir structure
+* Go through TODOS
+* load comments when visible, or on demand with button?
 * RSS feed, use some package to make sure encoding is ok??
 * inspiration
   * https://ryanclark.me/

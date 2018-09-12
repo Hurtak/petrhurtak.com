@@ -23,7 +23,7 @@
   "devDependencies": {
     "babel-plugin-glamorous-displayname": "2.2.0",
     "concurrently": "4.0.1",
-    "jest": "23.5.0"
+    "jest": "23.6.0"
   },
   "scripts": {
     "build": "next build",

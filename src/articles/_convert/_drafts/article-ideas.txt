@@ -42,6 +42,11 @@
     S pozdravem,
     Petr Hurtak
 
+  - extra
+    - propTypes u Vue jsou hloupy, umi jenom Array, nebo Object ale neumi zanoreny typy
+    - na druhou stranu o dost lepe se tam pisou validator funkce a specifikujou defaulty
+      - u reactu je propTypes a defaultProps, u Vue je to vsechno v jednom
+
 
 - https://css-tricks.com/useful-nth-child-recipies/
 

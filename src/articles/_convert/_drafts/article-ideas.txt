@@ -1,3 +1,8 @@
+- fetch example
+  - POST/PUT
+  - headers
+  - inspiration from AJAX article
+
 - font loading
   - how I did it on example project
   - font loading fallback

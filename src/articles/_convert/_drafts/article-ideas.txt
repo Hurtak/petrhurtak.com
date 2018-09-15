@@ -1,3 +1,10 @@
+- font loading
+  - how I did it on example project
+  - font loading fallback
+  - Fonts from https://fonts.google.com
+  - Hosted locally, downloaded with help of https://google-webfonts-helper.herokuapp.com/fonts
+  - For performance we add `font-display: optional` to all font definitions
+
 - vue vs react
   - template cannot be top level
 

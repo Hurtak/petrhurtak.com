@@ -1,3 +1,5 @@
+- https://css-tricks.com/useful-nth-child-recipies/
+
 - fetch example
   - POST/PUT
   - headers
@@ -58,9 +60,6 @@
     - propTypes u Vue jsou hloupy, umi jenom Array, nebo Object ale neumi zanoreny typy
     - na druhou stranu o dost lepe se tam pisou validator funkce a specifikujou defaulty
       - u reactu je propTypes a defaultProps, u Vue je to vsechno v jednom
-
-
-- https://css-tricks.com/useful-nth-child-recipies/
 
 - Article bolded text same width as regular text
 

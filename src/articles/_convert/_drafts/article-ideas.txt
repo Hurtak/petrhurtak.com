@@ -1,5 +1,80 @@
 - https://css-tricks.com/useful-nth-child-recipies/
 
+- tabindex-1 for whole element trees
+  - https://stackoverflow.com/questions/38059140/when-to-use-the-disabled-attribute-vs-the-aria-disabled-attribute-for-html-eleme
+  - https://github.com/GoogleChrome/inert-polyfill
+  - https://html.spec.whatwg.org/multipage/interaction.html#inert
+  - https://github.com/WICG/inert
+
+class TabIndexHandler extends React.Component {
+  // NOTE: If any element had tabindex attribute, this component would remove it
+
+  static propTypes = {
+    disableTabbing: PropTypes.bool.isRequired,
+    children: PropTypes.node.isRequired
+  };
+
+  static skipAttribute = "data-tabindexhandlerignore";
+
+  constructor() {
+    super();
+
+    this.wrapper = null;
+    this.elements = [];
+  }
+
+  render() {
+    return <div ref={el => (this.wrapper = el)}>{this.props.children}</div>;
+  }
+
+  gatherElements() {
+    const elements = this.wrapper.querySelectorAll(
+      "button, a, input, select, textarea"
+    );
+
+    this.elements = [...elements];
+  }
+
+  disableTabbing() {
+    for (const element of this.elements) {
+      if (element.hasAttribute(TabIndexHandler.skipAttribute)) continue;
+      element.setAttribute("tabindex", -1);
+    }
+  }
+
+  enableTabbing() {
+    for (const element of this.elements) {
+      if (element.hasAttribute(TabIndexHandler.skipAttribute)) continue;
+      element.removeAttribute("tabindex");
+    }
+  }
+
+  componentDidMount() {
+    this.handleTabbing();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.disableTabbing !== this.props.disableTabbing) {
+      this.handleTabbing();
+    }
+  }
+
+  handleTabbing() {
+    this.gatherElements();
+    if (this.props.disableTabbing) {
+      this.disableTabbing();
+    } else {
+      this.enableTabbing();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.disableTabbing) {
+      this.enableTabbing();
+    }
+  }
+}
+
 - fetch example
   - POST/PUT
   - headers

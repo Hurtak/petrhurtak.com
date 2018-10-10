@@ -1,3 +1,5 @@
+- https://twitter.com/PetrHurtak/status/913504461884190720
+
 - https://css-tricks.com/useful-nth-child-recipies/
 
 - tabindex-1 for whole element trees

@@ -1,3 +1,27 @@
+- less common semantic tags
+  - date/time
+  - quotes
+    <blockquote className={styles.quote}>
+      <Text
+        size={36}
+        color="white"
+        tag="p"
+        quote
+        className={styles.quote__text}
+      >
+        “Great, kid. Don’t get cocky.”
+      </Text>
+      <div className={styles.quote__separator} />
+      <footer className={styles.quote__author}>
+        <Text tag="span" size={18} color="gray-949ea8">
+          Han Solo
+        </Text>
+      </footer>
+    </blockquote>
+  - code
+  - abbrv
+  - see list of all tags on mdn
+
 - normalize.css
   - most is legacy stuff or stuff that you rarely use (dialog element)
   - some significant stuff

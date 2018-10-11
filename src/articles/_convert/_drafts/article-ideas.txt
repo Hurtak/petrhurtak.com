@@ -1,3 +1,34 @@
+- normalize.css
+  - most is legacy stuff or stuff that you rarely use (dialog element)
+  - some significant stuff
+    /**
+    * 1. Correct the line height in all browsers.
+    * 2. Prevent adjustments of font size after orientation changes in
+    *    IE on Windows Phone and in iOS.
+    */
+
+    html {
+      line-height: 1.15; /* 1 */
+      -ms-text-size-adjust: 100%; /* 2 */
+      -webkit-text-size-adjust: 100%; /* 2 */
+    }
+
+    ---
+
+    /**
+    * Remove the margin in Safari.
+    */
+
+    button,
+    input,
+    select {
+      margin: 0;
+    }
+
+  - other projects
+    - https://github.com/csstools/sanitize.css
+    - css resets
+
 - https://twitter.com/PetrHurtak/status/913504461884190720
 
 - https://css-tricks.com/useful-nth-child-recipies/

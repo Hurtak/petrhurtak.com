@@ -13,6 +13,7 @@
   - blog you want cursor probably
   - disadvantages of cursor
     - https://twitter.com/jamiebuilds/status/1050141614302085120
+  - should empty page return 204, 200 or 404?
 
 class TabIndexHandler extends React.Component {
   // NOTE: If any element had tabindex attribute, this component would remove it

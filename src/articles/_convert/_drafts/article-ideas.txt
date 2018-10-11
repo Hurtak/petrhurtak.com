@@ -8,6 +8,12 @@
   - https://html.spec.whatwg.org/multipage/interaction.html#inert
   - https://github.com/WICG/inert
 
+- pagination done right
+  - regular page vs cursor
+  - blog you want cursor probably
+  - disadvantages of cursor
+    - https://twitter.com/jamiebuilds/status/1050141614302085120
+
 class TabIndexHandler extends React.Component {
   // NOTE: If any element had tabindex attribute, this component would remove it
 

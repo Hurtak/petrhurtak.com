@@ -1,3 +1,14 @@
+- less common form fiels https://www.w3schools.com/html/html_forms.asp
+  - target blank na formu
+  - fieldset
+  - select has size and multiple attribute
+  - datalist output
+  - input type reset
+  - formaction formmethod formenctype formnovalidate formtarget
+  - multiple attribute funguje i na input type email
+
+- article super simple date/time pickers (from eventio)
+
 - less common semantic tags
   - date/time
   - quotes

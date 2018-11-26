@@ -3,6 +3,17 @@
 ## TODO
 
 - mdx
+- article with image
+- article with video
+- external static file?
+- where to store code examples?
+  - static html files?
+  - codepen?
+- try build
+- convert design
+- convert articles
+- netlify deploy
+- deploy
 
 ## Changing the date format
 

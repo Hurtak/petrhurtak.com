@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.org/Hurtak/hurtak.cc.svg?branch=master)](https://travis-ci.org/Hurtak/hurtak.cc)
-[![devDependency Status](https://david-dm.org/Hurtak/hurtak.cc/dev-status.svg)](https://david-dm.org/Hurtak/hurtak.cc#info=devDependencies)
-
 # Hurtak.cc
 
 - Articles are in the [articles](./articles) folder

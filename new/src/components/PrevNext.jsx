@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Link } from 'gatsby';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Link } from "gatsby";
 
 const Wrapper = styled.div`
   display: flex;
@@ -54,10 +54,10 @@ export default PrevNext;
 
 PrevNext.propTypes = {
   next: PropTypes.object,
-  prev: PropTypes.object,
+  prev: PropTypes.object
 };
 
 PrevNext.defaultProps = {
   next: null,
-  prev: null,
+  prev: null
 };

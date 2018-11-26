@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import { Link, graphql } from 'gatsby';
-import styled from 'styled-components';
-import kebabCase from 'lodash/kebabCase';
-import { Layout, Wrapper, Header, Subline, SEO, PrevNext } from 'components';
-import { media } from '../utils/media';
-import config from '../../config/SiteConfig';
-import '../utils/prismjs-theme.css';
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { Link, graphql } from "gatsby";
+import styled from "styled-components";
+import kebabCase from "lodash/kebabCase";
+import { Layout, Wrapper, Header, Subline, SEO, PrevNext } from "components";
+import { media } from "../utils/media";
+import config from "../../config/SiteConfig";
+import "../utils/prismjs-theme.css";
 
 const Content = styled.article`
   grid-column: 2;
@@ -34,7 +34,10 @@ const PostContent = styled.div`
   margin-top: 4rem;
 `;
 
-const Post = ({ pageContext: { slug, prev, next }, data: { markdownRemark: postNode } }) => {
+const Post = ({
+  pageContext: { slug, prev, next },
+  data: { markdownRemark: postNode }
+}) => {
   const post = postNode.frontmatter;
 
   return (
@@ -48,8 +51,10 @@ const Post = ({ pageContext: { slug, prev, next }, data: { markdownRemark: postN
         <Content>
           <Title>{post.title}</Title>
           <Subline>
-            {post.date} &mdash; {postNode.timeToRead} Min Read &mdash; In{' '}
-            <Link to={`/categories/${kebabCase(post.category)}`}>{post.category}</Link>
+            {post.date} &mdash; {postNode.timeToRead} Min Read &mdash; In{" "}
+            <Link to={`/categories/${kebabCase(post.category)}`}>
+              {post.category}
+            </Link>
           </Subline>
           <PostContent dangerouslySetInnerHTML={{ __html: postNode.html }} />
           <PrevNext prev={prev} next={next} />
@@ -65,18 +70,18 @@ Post.propTypes = {
   pageContext: PropTypes.shape({
     slug: PropTypes.string.isRequired,
     next: PropTypes.object,
-    prev: PropTypes.object,
+    prev: PropTypes.object
   }),
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object.isRequired,
-  }).isRequired,
+    markdownRemark: PropTypes.object.isRequired
+  }).isRequired
 };
 
 Post.defaultProps = {
   pageContext: PropTypes.shape({
     next: null,
-    prev: null,
-  }),
+    prev: null
+  })
 };
 
 export const postQuery = graphql`

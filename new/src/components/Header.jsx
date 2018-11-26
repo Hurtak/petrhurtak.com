@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { darken, lighten } from 'polished';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { darken, lighten } from "polished";
 
 const Wrapper = styled.header`
   background: linear-gradient(
@@ -38,5 +38,5 @@ const Header = ({ children }) => (
 export default Header;
 
 Header.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired
 };

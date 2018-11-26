@@ -1,13 +1,13 @@
 /* eslint jsx-a11y/label-has-for:0 */
 
-import React from 'react';
-import Helmet from 'react-helmet';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
-import { Layout, Wrapper, Header, Button } from 'components';
-import { media } from '../utils/media';
+import React from "react";
+import Helmet from "react-helmet";
+import { Link } from "gatsby";
+import styled from "styled-components";
+import { Layout, Wrapper, Header, Button } from "components";
+import { media } from "../utils/media";
 
-import config from '../../config/SiteConfig';
+import config from "../../config/SiteConfig";
 
 const Content = styled.div`
   grid-column: 2;
@@ -52,8 +52,17 @@ const Contact = () => (
       </Header>
       <Content>
         <h1>Contact</h1>
-        <p>Super cool intro text to get people contacting me! It uses Netlify's form feature.</p>
-        <form name="contact-form" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/success">
+        <p>
+          Super cool intro text to get people contacting me! It uses
+          Netlify&apos;s form feature.
+        </p>
+        <form
+          name="contact-form"
+          method="post"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          action="/success"
+        >
           <p>
             <label htmlFor="contact-name">
               Name
@@ -62,12 +71,14 @@ const Contact = () => (
           </p>
           <p>
             <label htmlFor="contact-email">
-              E-Mail <input name="email" id="contact-email" type="email" required />
+              E-Mail{" "}
+              <input name="email" id="contact-email" type="email" required />
             </label>
           </p>
           <p>
             <label htmlFor="contact-message">
-              Your Message <textarea name="message" id="contact-message" required />
+              Your Message{" "}
+              <textarea name="message" id="contact-message" required />
             </label>
           </p>
           <p>

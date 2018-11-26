@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import { Link, graphql } from 'gatsby';
-import styled from 'styled-components';
-import kebabCase from 'lodash/kebabCase';
-import { Layout, Wrapper, Header, SectionTitle } from 'components';
-import { media } from '../utils/media';
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { Link, graphql } from "gatsby";
+import styled from "styled-components";
+import kebabCase from "lodash/kebabCase";
+import { Layout, Wrapper, Header, SectionTitle } from "components";
+import { media } from "../utils/media";
 
-import config from '../../config/SiteConfig';
+import config from "../../config/SiteConfig";
 
 const Content = styled.div`
   grid-column: 2;
@@ -33,8 +33,8 @@ const Title = styled.h3`
 
 const Category = ({
   data: {
-    allMarkdownRemark: { group },
-  },
+    allMarkdownRemark: { group }
+  }
 }) => (
   <Layout>
     <Wrapper>
@@ -46,8 +46,10 @@ const Category = ({
         <SectionTitle>Categories</SectionTitle>
         {group.map(category => (
           <Title key={category.fieldValue}>
-            <Link to={`/categories/${kebabCase(category.fieldValue)}`}>{category.fieldValue}</Link> (
-            {category.totalCount})
+            <Link to={`/categories/${kebabCase(category.fieldValue)}`}>
+              {category.fieldValue}
+            </Link>{" "}
+            ({category.totalCount})
           </Title>
         ))}
       </Content>
@@ -60,9 +62,9 @@ export default Category;
 Category.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      group: PropTypes.array.isRequired,
-    }),
-  }).isRequired,
+      group: PropTypes.array.isRequired
+    })
+  }).isRequired
 };
 
 export const postQuery = graphql`

@@ -1,10 +1,28 @@
 {
-  "name": "gatsby-starter-minimal-blog",
-  "description": "Gatsby Starter - Minimal Blog",
+  "name": "hurtak.cc",
   "version": "2.0.0",
-  "author": "LekoArts <hello@lekoarts.de>",
+  "license": "MIT",
+  "author": "Petr Huřťák <petr.hurtak@gmail.com>",
+  "scripts": {
+    "dev": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby build && gatsby serve",
+    "lint": "yarn run lint:md && yarn run lint:js",
+    "lint:js": "eslint . --ext .js,.jsx --ignore-path .gitignore",
+    "lint:md": "prettier --write blog/**/*.md"
+  },
   "dependencies": {
     "babel-plugin-styled-components": "1.8.0",
+    "eslint": "5.8.0",
+    "eslint-config-prettier": "3.3.0",
+    "eslint-config-react": "1.1.7",
+    "eslint-config-standard": "12.0.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-node": "8.0.0",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-react": "7.11.1",
+    "eslint-plugin-standard": "4.0.0",
     "gatsby": "2.0.37",
     "gatsby-plugin-catch-links": "2.0.6",
     "gatsby-plugin-lodash": "3.0.2",
@@ -22,6 +40,7 @@
     "gatsby-transformer-remark": "2.1.11",
     "lodash": "4.17.11",
     "polished": "2.3.0",
+    "prettier": "1.15.2",
     "prismjs": "1.15.0",
     "prop-types": "15.6.2",
     "react": "16.6.0",
@@ -30,36 +49,5 @@
     "react-typography": "0.16.13",
     "styled-components": "4.0.3",
     "typography": "0.16.17"
-  },
-  "keywords": [
-    "gatsby",
-    "gatsby-starter",
-    "lekoarts"
-  ],
-  "license": "MIT",
-  "main": "n/a",
-  "scripts": {
-    "build": "gatsby build",
-    "dev": "gatsby develop -o",
-    "serve": "gatsby build && gatsby serve",
-    "lint": "yarn run lint:md && yarn run lint:js:fix",
-    "lint:js": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "lint:js:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
-    "lint:md": "prettier --write blog/**/*.md"
-  },
-  "devDependencies": {
-    "babel-eslint": "10.0.1",
-    "babel-preset-env": "1.7.0",
-    "eslint": "5.8.0",
-    "eslint-config-prettier": "3.3.0",
-    "eslint-config-react": "1.1.7",
-    "eslint-config-standard": "12.0.0",
-    "eslint-plugin-jsx-a11y": "6.1.2",
-    "eslint-plugin-node": "8.0.0",
-    "eslint-plugin-prettier": "3.0.0",
-    "eslint-plugin-promise": "4.0.1",
-    "eslint-plugin-react": "7.11.1",
-    "eslint-plugin-standard": "4.0.0",
-    "prettier": "1.15.2"
   }
 }

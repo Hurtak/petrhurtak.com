@@ -8,9 +8,7 @@
     "dev": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby build && gatsby serve",
-    "lint": "yarn run lint:md && yarn run lint:js",
-    "lint:js": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "lint:md": "prettier --write blog/**/*.md"
+    "lint:js": "eslint . --ext .js,.jsx --ignore-path ../.gitignore"
   },
   "dependencies": {
     "@mdx-js/mdx": "0.16.5",

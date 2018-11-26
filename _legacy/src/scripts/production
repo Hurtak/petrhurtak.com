@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-cd "$(dirname "$0")/.."
-
-# Now requires using npm scripts so we use them here also.
-npm run build
-npm run start

@@ -14,10 +14,11 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "post",
+        name: "articles",
         path: path.join(__dirname, "../articles")
       }
     },
+    "gatsby-mdx",
     {
       resolve: "gatsby-transformer-remark",
       options: {
@@ -29,8 +30,7 @@ module.exports = {
               rel: "nofollow noopener noreferrer"
             }
           },
-          "gatsby-remark-prismjs",
-          "gatsby-remark-autolink-headers"
+          "gatsby-remark-prismjs"
         ]
       }
     },

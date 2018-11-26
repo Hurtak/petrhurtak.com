@@ -2,7 +2,9 @@
 
 ## TODO
 
+- blog directory structure
 - mdx
+  - h1 -> h1 component
 - article with image
 - article with video
 - external static file?

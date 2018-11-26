@@ -1,6 +1,6 @@
 ---
 date: "2018-01-01"
-title: "Scittle Luo"
+title: "Markdown example"
 category: "General"
 ---
 

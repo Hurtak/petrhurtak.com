@@ -1,12 +1,11 @@
 {
   "search.exclude": {
-    ".nyc_output": true,
-    "coverage": true,
     "**/.next": true
   },
   "editor.formatOnSave": true,
   "[markdown]": {
-    "editor.formatOnSave": false
+    // TODO: why was this turned off?
+    // "editor.formatOnSave": false
   },
   "git.ignoreLimitWarning": true
 }

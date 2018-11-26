@@ -2,7 +2,7 @@
 
 ## TODO
 
-- editorconfig
+- mdx
 
 ## Changing the date format
 

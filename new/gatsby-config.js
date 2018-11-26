@@ -1,3 +1,4 @@
+const path = require("path");
 const config = require("./config/SiteConfig");
 
 const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
@@ -14,7 +15,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "post",
-        path: `${__dirname}/blog`
+        path: path.join(__dirname, "../articles")
       }
     },
     {

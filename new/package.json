@@ -1,5 +1,6 @@
 {
   "name": "hurtak.cc",
+  "description": "source code for hurtak.cc",
   "version": "2.0.0",
   "license": "MIT",
   "author": "Petr Huřťák <petr.hurtak@gmail.com>",
@@ -49,5 +50,12 @@
     "react-typography": "0.16.13",
     "styled-components": "4.0.3",
     "typography": "0.16.17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hurtak/hurtak.cc"
+  },
+  "bugs": {
+    "url": "https://github.com/Hurtak/hurtak.cc/issues"
   }
 }

@@ -1,3 +1,10 @@
+- git squash into one commit
+  - https://stackoverflow.com/questions/25356810/git-how-to-squash-all-commits-on-branch
+
+- visitelnost
+  - je element videt ve viewportu/jinem elementu, nastaveni na procenta viditelnosti?
+  - je element prekryvan jinym elementem?
+
 - less common form fiels https://www.w3schools.com/html/html_forms.asp
   - target blank na formu
   - fieldset

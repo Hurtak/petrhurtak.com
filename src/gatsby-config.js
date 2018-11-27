@@ -18,19 +18,18 @@ module.exports = {
         path: path.join(__dirname, "../articles")
       }
     },
-    "gatsby-mdx",
+    "gatsby-plugin-sharp",
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: `gatsby-mdx`,
       options: {
-        plugins: [
+        gatsbyRemarkPlugins: [
           {
-            resolve: "gatsby-remark-external-links",
+            resolve: "gatsby-remark-images",
             options: {
-              target: "_blank",
-              rel: "nofollow noopener noreferrer"
+              maxWidth: 1035,
+              sizeByPixelDensity: true
             }
-          },
-          "gatsby-remark-prismjs"
+          }
         ]
       }
     },

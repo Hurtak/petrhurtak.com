@@ -2,12 +2,12 @@
 
 ## TODO
 
-- blog directory structure
 - mdx
   - h1 -> h1 component
-- article with image
-- article with video
-- external static file?
+- blog directory structure
+  - images
+  - videos
+  - static file
 - where to store code examples?
   - static html files?
   - codepen?

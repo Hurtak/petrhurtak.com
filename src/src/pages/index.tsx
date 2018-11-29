@@ -1,8 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import styled from "styled-components";
-import { Layout, Article, Wrapper, Button, SectionTitle } from "components";
+import {
+  Layout,
+  Article,
+  Wrapper,
+  Button,
+  SectionTitle
+} from "../components/index";
 import { media } from "../utils/media";
 
 const Content = styled.div`
@@ -84,14 +89,6 @@ const IndexPage = ({
 );
 
 export default IndexPage;
-
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    posts: PropTypes.shape({
-      edges: PropTypes.array.isRequired
-    })
-  }).isRequired
-};
 
 export const IndexQuery = graphql`
   query IndexQuery {

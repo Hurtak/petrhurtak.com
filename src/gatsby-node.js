@@ -1,5 +1,4 @@
 const path = require("path");
-const _ = require("lodash");
 
 // exports.onCreateNode = ({ node, actions }) => {
 //   const { createNodeField } = actions;

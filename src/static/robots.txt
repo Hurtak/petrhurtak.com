@@ -1,4 +1,3 @@
 User-agent: *
-Disallow:
 
 sitemap: https://hurtak.cc/sitemap.xml

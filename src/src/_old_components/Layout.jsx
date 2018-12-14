@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
-import { SEO } from "components";
+import { SEO } from "./index";
 import theme from "../../config/Theme";
 import { media } from "../utils/media";
 

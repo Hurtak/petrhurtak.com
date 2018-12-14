@@ -2,7 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { Layout, Wrapper, Header } from "components";
+import { Layout, Wrapper, Header } from "../_old_components";
 import { media } from "../utils/media";
 
 import config from "../../config/SiteConfig";

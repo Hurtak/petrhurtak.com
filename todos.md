@@ -14,6 +14,7 @@
 - try build
 - convert design
 - convert articles
+- sitemap in robots.txt?
 - netlify deploy
 - deploy
 

@@ -15,6 +15,8 @@
 - convert design
 - convert articles
 - sitemap in robots.txt?
+- responsive images
+  - https://www.gatsbyjs.org/docs/working-with-images/
 - netlify deploy
 - deploy
 

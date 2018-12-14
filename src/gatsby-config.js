@@ -1,5 +1,5 @@
 const path = require("path");
-const config = require("./config/SiteConfig");
+const config = require("./config/site-config");
 
 const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
 

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Layout, Wrapper, Header } from "../_old_components";
 import { media } from "../utils/media";
 
-import config from "../../config/SiteConfig";
+import config from "../../config/site-config";
 
 const Content = styled.div`
   grid-column: 2;

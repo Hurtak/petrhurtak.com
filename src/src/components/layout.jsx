@@ -1,55 +1,50 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "next/link";
-import Head from "next/head";
-import config from "next/config";
-import { rehydrate } from "glamor";
-import glamorous from "glamorous";
+import Helmet from "react-helmet";
+import { Link } from "gatsby";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import * as s from "../common/styles.js";
+import { capitalize } from "../utils/text-formatting";
+import config from "../../config/site-config";
+import theme from "../../config/Theme"; // TODO: remove
 
-const { publicRuntimeConfig } = config();
+const GlobalStyles = createGlobalStyle`
+  body {
+    margin: 0;
+  }
+`;
 
-// Adds server generated styles to glamor cache. Has to run before any `style()`
-// calls. '__NEXT_DATA__.ids' is set in '_document.js'.
-if (typeof window !== "undefined") {
-  rehydrate(window.__NEXT_DATA__.ids);
-}
-s.initGlobalStyles();
-
-class Layout extends React.Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    pageTitle: PropTypes.string
-  };
-
-  render() {
-    return (
+const Layout = props => (
+  <div>
+    <GlobalStyles />
+    <ThemeProvider theme={theme}>
+      {/* TODO: remove */}
       <Page>
-        <Head>
+        <Helmet>
           <title>
             {(() => {
-              const pageName = this.props.pageTitle
-                ? capitalize(this.props.pageTitle)
+              const pageName = props.pageTitle
+                ? capitalize(props.pageTitle)
                 : "";
               const nDash = "\u2013";
-              const siteName = capitalize(publicRuntimeConfig.siteUrlShort);
+              const siteName = capitalize(config.siteUrlShort);
 
               return pageName + (pageName ? ` ${nDash} ` : "") + siteName;
             })()}
           </title>
-        </Head>
+        </Helmet>
 
         <Header>
           <PageLayout>
             <HeaderContent>
-              <Link href="/">
+              <Link to="/">
                 <HeaderLogo href="/">
                   <HeaderLogoImage
                     className="Header-logo-image"
                     src="/static/images/logo.svg"
                     width="130"
                     height="55"
-                    alt={`${publicRuntimeConfig.siteUrlShort} logo`}
+                    alt={`${config.siteUrlShort} logo`}
                   />
                 </HeaderLogo>
               </Link>
@@ -57,7 +52,7 @@ class Layout extends React.Component {
               <HeaderMenu>
                 <Menu>
                   <MenuItem>
-                    <Link href="/">
+                    <Link to="/">
                       <MenuItemLink
                         icon={
                           <MenuItemLinkIcon
@@ -127,13 +122,12 @@ class Layout extends React.Component {
 
         <PageLayout>
           <PageContent>
-            <PageMain>{this.props.children}</PageMain>
+            <PageMain>{props.children}</PageMain>
 
             <Footer>
               <FooterParagraph>
-                {publicRuntimeConfig.yearFound}&ndash;{
-                  publicRuntimeConfig.yearCurrent
-                }
+                {config.yearFound}&ndash;
+                {config.yearCurrent}
               </FooterParagraph>
               <FooterParagraph withMarginTop>
                 Written by{" "}
@@ -145,15 +139,12 @@ class Layout extends React.Component {
           </PageContent>
         </PageLayout>
       </Page>
-    );
-  }
-}
+    </ThemeProvider>
+  </div>
+);
+export default Layout;
 
-function capitalize(str) {
-  return str[0].toUpperCase() + str.slice(1);
-}
-
-const Page = glamorous.div({
+const Page = styled.div({
   display: "flex",
   alignItems: "center",
   flexDirection: "column",
@@ -176,7 +167,7 @@ class PageLayout extends React.Component {
   }
 }
 
-const PageLayoutWrapper = glamorous.div({
+const PageLayoutWrapper = styled.div({
   boxSizing: "border-box",
   display: "flex",
   flexGrow: 1,
@@ -188,14 +179,14 @@ const PageLayoutWrapper = glamorous.div({
   }
 });
 
-const PageLayoutContent = glamorous.div({
+const PageLayoutContent = styled.div({
   display: "flex",
   flexGrow: 1,
   width: "100%",
   maxWidth: s.size(700)
 });
 
-const PageContent = glamorous.div({
+const PageContent = styled.div({
   display: "flex",
   flexDirection: "column",
   flexGrow: 1,
@@ -210,12 +201,12 @@ const PageContent = glamorous.div({
   }
 });
 
-const PageMain = glamorous.main({
+const PageMain = styled.main({
   flexGrow: 1, // To make footer sticky
   width: "100%"
 });
 
-const Header = glamorous.header({
+const Header = styled.header({
   display: "flex",
   width: "100%",
   paddingTop: s.grid(8),
@@ -224,7 +215,7 @@ const Header = glamorous.header({
   backgroundColor: s.colors.blueMain
 });
 
-const HeaderContent = glamorous.div({
+const HeaderContent = styled.div({
   ...s.dimensions.content,
   display: "flex",
   flexDirection: "column",
@@ -232,23 +223,23 @@ const HeaderContent = glamorous.div({
   width: "100%"
 });
 
-const HeaderLogo = glamorous.a({
+const HeaderLogo = styled.a({
   display: "block",
   userSelect: "none"
 });
 
-const HeaderLogoImage = glamorous.img({
+const HeaderLogoImage = styled.img({
   display: "block",
   width: s.size(130),
   height: s.size(55),
   margin: `${s.size(20)} ${s.size(80)}`
 });
 
-const HeaderMenu = glamorous.nav({
+const HeaderMenu = styled.nav({
   width: "100%"
 });
 
-const Menu = glamorous.ul({
+const Menu = styled.ul({
   display: "flex",
   justifyContent: "space-between",
   listStyleType: "none",
@@ -259,7 +250,7 @@ const Menu = glamorous.ul({
   }
 });
 
-const MenuItem = glamorous.li({
+const MenuItem = styled.li({
   userSelect: "none"
 });
 
@@ -283,7 +274,7 @@ class MenuItemLink extends React.Component {
   }
 }
 
-const MenuItemLinkWrapper = glamorous.a(menuItemLinkClass, {
+const MenuItemLinkWrapper = styled.a(menuItemLinkClass, {
   ...s.fonts.headingSmall,
   display: "flex",
   alignItems: "center",
@@ -321,14 +312,14 @@ class MenuItemLinkIcon extends React.Component {
   }
 }
 
-const MenuItemLinkIconWrapper = glamorous.div({
+const MenuItemLinkIconWrapper = styled.div({
   boxSizing: "border-box",
   marginRight: s.grid(1),
   width: s.size(20),
   height: s.size(20)
 });
 
-const MenuItemLinkIconImg = glamorous.img({
+const MenuItemLinkIconImg = styled.img({
   display: "block",
   width: "100%",
   height: "100%",
@@ -338,12 +329,12 @@ const MenuItemLinkIconImg = glamorous.img({
   }
 });
 
-const Footer = glamorous.footer({
+const Footer = styled.footer({
   width: "100%",
   paddingTop: s.grid(8)
 });
 
-const FooterParagraph = glamorous.p(
+const FooterParagraph = styled.p(
   {
     ...s.fonts.paragraphSmall,
     margin: 0,
@@ -359,11 +350,9 @@ const FooterParagraph = glamorous.p(
   }
 );
 
-const FooterParagraphLink = glamorous.a({
+const FooterParagraphLink = styled.a({
   ...s.fonts.paragraphSmall,
   lineHeight: 1,
   color: s.colors.blueDark,
   textDecoration: "none"
 });
-
-export default Layout;

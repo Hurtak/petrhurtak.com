@@ -1,11 +1,10 @@
 {
   "search.exclude": {
-    "**/.next": true
+    "src/.cache": true,
+    "src/public": true,
+    "_legacy": true,
+    "**/node_modules": true
   },
   "editor.formatOnSave": true,
-  "[markdown]": {
-    // TODO: why was this turned off?
-    // "editor.formatOnSave": false
-  },
   "git.ignoreLimitWarning": true
 }

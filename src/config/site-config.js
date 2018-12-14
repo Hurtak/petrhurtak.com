@@ -1,9 +1,34 @@
 module.exports = {
+  //
+  // Backend config
+  //
+  dev: process.env.NODE_ENV !== "production",
+
+  //
+  // Blog settings
+  //
+  articles: {
+    perPage: 10,
+    perRssFeed: 20
+  },
+
+  //
+  // Template values
+  //
+  siteUrl: "https://www.hurtak.cc",
+  siteUrlShort: "hurtak.cc",
+
+  yearFound: 2015,
+  yearCurrent: new Date().getFullYear(),
+
+  //
+  // OTHER
+  //
+
   pathPrefix: "/", // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "portfolio"
 
   siteTitle: "Minimal Blog", // Navigation and Site Title
   siteTitleAlt: "Minimal Blog - Gatsby Starter", // Alternative Site title for SEO
-  siteUrl: "https://minimal-blog.netlify.com", // Domain of your site. No trailing slash!
   siteLanguage: "en", // Language Tag on <html> element
   siteBanner: "/social/banner.jpg", // Your image for og:image tag. You can find it in the /static folder
   favicon: "src/favicon.png", // Your image for favicons. You can find it in the /src folder

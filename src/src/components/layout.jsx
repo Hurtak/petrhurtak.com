@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
-import { Link, StaticQuery } from "gatsby";
+import { StaticQuery, graphql } from "gatsby";
 import styled, { createGlobalStyle } from "styled-components";
-import HtmlComment from "./html-comment";
+import HtmlComment from "./html-comment.jsx";
+import Link from "./link.jsx";
 import * as s from "../common/styles.js";
 import { capitalize } from "../utils/text-formatting";
 import config from "../../config/site-config";
@@ -46,53 +47,49 @@ const Layout = props => (
           <Header>
             <PageLayout>
               <HeaderContent>
-                <Link to="/">
-                  <HeaderLogo href="/">
-                    <HeaderLogoImage
-                      className="Header-logo-image"
-                      src="/static/images/logo.svg"
-                      width="130"
-                      height="55"
-                      alt={`${config.siteUrlShort} logo`}
-                    />
-                  </HeaderLogo>
-                </Link>
+                <HeaderLogoLink to="/">
+                  <HeaderLogoImage
+                    className="Header-logo-image"
+                    src="/static/images/logo.svg"
+                    width="130"
+                    height="55"
+                    alt={`${config.siteUrlShort} logo`}
+                  />
+                </HeaderLogoLink>
 
                 <HeaderMenu>
                   <Menu>
                     <MenuItem>
-                      <Link to="/">
-                        <MenuItemLink
-                          icon={
-                            <MenuItemLinkIcon
-                              src="/static/images/article.svg"
-                              alt="Article"
-                              padding={0.5}
-                            />
-                          }
-                          href="/"
-                        >
-                          Articles
-                        </MenuItemLink>
-                      </Link>
+                      <MenuItemLink
+                        to="/"
+                        icon={
+                          <MenuItemLinkIcon
+                            src="/static/images/article.svg"
+                            alt="Article"
+                            padding={0.5}
+                          />
+                        }
+                      >
+                        Articles
+                      </MenuItemLink>
                     </MenuItem>
                     <MenuItem>
                       <MenuItemLink
+                        to="https://twitter.com/PetrHurtak"
                         icon={
                           <MenuItemLinkIcon
                             src="/static/images/twitter.svg"
                             alt="Twitter"
                           />
                         }
-                        href="https://twitter.com/PetrHurtak"
                         target="_blank"
-                        rel="noopener noreferrer"
                       >
                         Twitter
                       </MenuItemLink>
                     </MenuItem>
                     <MenuItem>
                       <MenuItemLink
+                        to="https://github.com/Hurtak"
                         icon={
                           <MenuItemLinkIcon
                             src="/static/images/github.svg"
@@ -100,15 +97,14 @@ const Layout = props => (
                             padding={1}
                           />
                         }
-                        href="https://github.com/Hurtak"
                         target="_blank"
-                        rel="noopener noreferrer"
                       >
                         Github
                       </MenuItemLink>
                     </MenuItem>
                     <MenuItem>
                       <MenuItemLink
+                        to="/rss"
                         icon={
                           <MenuItemLinkIcon
                             src="/static/images/rss.svg"
@@ -116,7 +112,6 @@ const Layout = props => (
                             padding={2}
                           />
                         }
-                        href="/rss"
                         rel="alternate"
                         type="application/rss+xml"
                       >
@@ -140,7 +135,7 @@ const Layout = props => (
                 </FooterParagraph>
                 <FooterParagraph withMarginTop>
                   Written by{" "}
-                  <FooterParagraphLink href="mailto:petr.hurtak@gmail.com">
+                  <FooterParagraphLink to="mailto:petr.hurtak@gmail.com">
                     Petr Huřťák
                   </FooterParagraphLink>
                 </FooterParagraph>
@@ -152,6 +147,10 @@ const Layout = props => (
     )}
   />
 );
+Layout.propTypes = {
+  pageTitle: PropTypes.string,
+  children: PropTypes.node.isRequired
+};
 export default Layout;
 
 const Page = styled.div({
@@ -163,19 +162,14 @@ const Page = styled.div({
   /* TODO http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/ */
 });
 
-class PageLayout extends React.Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired
-  };
-
-  render() {
-    return (
-      <PageLayoutWrapper>
-        <PageLayoutContent>{this.props.children}</PageLayoutContent>
-      </PageLayoutWrapper>
-    );
-  }
-}
+const PageLayout = props => (
+  <PageLayoutWrapper>
+    <PageLayoutContent>{props.children}</PageLayoutContent>
+  </PageLayoutWrapper>
+);
+PageLayout.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 const PageLayoutWrapper = styled.div({
   boxSizing: "border-box",
@@ -189,32 +183,34 @@ const PageLayoutWrapper = styled.div({
   }
 });
 
-const PageLayoutContent = styled.div({
-  display: "flex",
-  flexGrow: 1,
-  width: "100%",
-  maxWidth: s.size(700)
-});
+const PageLayoutContent = styled.div`
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  max-width: ${s.size(700)};
+`;
 
-const PageContent = styled.div({
-  display: "flex",
-  flexDirection: "column",
-  flexGrow: 1,
-  width: "100%",
-  paddingTop: s.grid(7),
-  paddingBottom: s.grid(2),
-  [s.breakpoints.medium]: {
-    paddingTop: s.grid(5)
-  },
-  [s.breakpoints.small]: {
-    paddingTop: s.grid(3)
-  }
-});
+const PageContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  padding-top: ${s.grid(7)};
+  padding-bottom: ${s.grid(2)};
 
-const PageMain = styled.main({
-  flexGrow: 1, // To make footer sticky
-  width: "100%"
-});
+  ${s.breakpoints.medium}: {
+    padding-top: ${s.grid(5)};
+  };
+
+  ${s.breakpoints.small}: {
+    padding-top: ${s.grid(3)};
+  };
+`;
+
+const PageMain = styled.main`
+  flex-grow: 1; /* To make footer sticky */
+  width: 100%;
+`;
 
 const Header = styled.header({
   display: "flex",
@@ -233,7 +229,7 @@ const HeaderContent = styled.div({
   width: "100%"
 });
 
-const HeaderLogo = styled.a({
+const HeaderLogoLink = styled(Link)({
   display: "block",
   userSelect: "none"
 });
@@ -266,25 +262,24 @@ const MenuItem = styled.li({
 
 const menuItemLinkClass = "MenuItemLink";
 
-class MenuItemLink extends React.Component {
-  static propTypes = {
-    icon: PropTypes.element.isRequired,
-    children: PropTypes.string.isRequired
-  };
+const MenuItemLink = props => {
+  const { icon, children, ...restProps } = props;
 
-  render() {
-    const { icon, children, ...restProps } = this.props;
+  return (
+    <MenuItemLinkWrapper {...restProps}>
+      {icon}
+      {children}
+    </MenuItemLinkWrapper>
+  );
+};
+MenuItemLink.propTypes = {
+  icon: PropTypes.element.isRequired,
+  children: PropTypes.string.isRequired
+};
 
-    return (
-      <MenuItemLinkWrapper {...restProps}>
-        {icon}
-        {children}
-      </MenuItemLinkWrapper>
-    );
-  }
-}
-
-const MenuItemLinkWrapper = styled.a(menuItemLinkClass, {
+// TODO: item hovering does not work -- this broken menuItemLinkClass
+// also there is Mmargin: 0 style generated??
+const MenuItemLinkWrapper = styled(Link)(menuItemLinkClass, {
   ...s.fonts.headingSmall,
   display: "flex",
   alignItems: "center",
@@ -302,47 +297,49 @@ const MenuItemLinkWrapper = styled.a(menuItemLinkClass, {
   }
 });
 
-class MenuItemLinkIcon extends React.Component {
-  static propTypes = {
-    padding: PropTypes.number
-  };
+const MenuItemLinkIcon = props => {
+  const { padding, ...restProps } = props;
 
-  render() {
-    const { padding, ...restProps } = this.props;
+  return (
+    <MenuItemLinkIconWrapper padding={padding}>
+      <MenuItemLinkIconImg {...restProps} />
+    </MenuItemLinkIconWrapper>
+  );
+};
+MenuItemLinkIcon.propTypes = {
+  padding: PropTypes.number
+};
 
-    return (
-      <MenuItemLinkIconWrapper
-        style={{
-          padding: s.size(padding)
-        }}
-      >
-        <MenuItemLinkIconImg {...restProps} />
-      </MenuItemLinkIconWrapper>
-    );
+const MenuItemLinkIconWrapper = styled.div`
+  box-sizing: border-box;
+  margin-right: ${s.grid(1)};
+  width: ${s.size(20)};
+  height: ${s.size(20)};
+  padding: ${props => s.size(props.padding)};
+`;
+MenuItemLinkIconWrapper.propTypes = {
+  padding: PropTypes.number
+};
+MenuItemLinkIconWrapper.defaultProps = {
+  padding: 0
+};
+
+const MenuItemLinkIconImg = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  /* TODO: does not work */
+  .${menuItemLinkClass}:hover & {
+    filter: invert(1);
   }
-}
+`;
 
-const MenuItemLinkIconWrapper = styled.div({
-  boxSizing: "border-box",
-  marginRight: s.grid(1),
-  width: s.size(20),
-  height: s.size(20)
-});
-
-const MenuItemLinkIconImg = styled.img({
-  display: "block",
-  width: "100%",
-  height: "100%",
-  objectFit: "contain",
-  [`.${menuItemLinkClass}:hover &`]: {
-    filter: "invert(1)"
-  }
-});
-
-const Footer = styled.footer({
-  width: "100%",
-  paddingTop: s.grid(8)
-});
+const Footer = styled.footer`
+  width: 100%;
+  padding-top: ${s.grid(8)};
+`;
 
 const FooterParagraph = styled.p(
   {
@@ -360,9 +357,10 @@ const FooterParagraph = styled.p(
   }
 );
 
-const FooterParagraphLink = styled.a({
-  ...s.fonts.paragraphSmall,
-  lineHeight: 1,
-  color: s.colors.blueDark,
-  textDecoration: "none"
-});
+const FooterParagraphLink = styled(Link)`
+  ${s.fonts.paragraphSmall};
+
+  line-height: 1;
+  color: ${s.colors.blueDark};
+  text-decoration: none;
+`;

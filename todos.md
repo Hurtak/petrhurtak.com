@@ -2,15 +2,17 @@
 
 ## TODO
 
-- mdx
-  - h1 -> h1 component
-- blog directory structure
-  - images
-  - videos
-  - static file
-- where to store code examples?
-  - static html files?
-  - codepen?
+- article page
+  - mdx
+    - h1 -> h1 component
+  - blog directory structure
+    - images
+    - videos
+    - static file
+  - where to store code examples?
+    - static html files?
+    - codepen?
+- rss
 - try build
 - convert design
 - convert articles

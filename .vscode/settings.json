@@ -5,6 +5,6 @@
     "_legacy": true,
     "**/node_modules": true
   },
-  "editor.formatOnSave": true,
-  "git.ignoreLimitWarning": true
+  "editor.formatOnSave": true
+  // "git.ignoreLimitWarning": true
 }

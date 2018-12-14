@@ -3,8 +3,6 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 import kebabCase from "lodash/kebabCase";
 
-import { Subline } from "./index";
-
 const Post = styled.article`
   display: flex;
   flex-direction: column;
@@ -40,12 +38,11 @@ const Article = ({ title, date, excerpt, slug, timeToRead, category }) => {
     <Post>
       <Title>
         <Initiale>{firstChar}</Initiale>
-        <Link to={slug}>{title}</Link>
+        {/* <Link to={slug}>{title}</Link> */}
+        <Link to={slug}>a</Link>
       </Title>
-      <Subline>
-        {date} &mdash; {timeToRead} Min Read &mdash; In{" "}
-        <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
-      </Subline>
+      {date} &mdash; {timeToRead} Min Read &mdash; In{" "}
+      <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
       <Excerpt>{excerpt}</Excerpt>
     </Post>
   );

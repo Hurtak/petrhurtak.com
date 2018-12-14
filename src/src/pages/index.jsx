@@ -1,47 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, graphql } from "gatsby";
-import styled from "styled-components";
-import { Article, Wrapper, SectionTitle } from "../_old_components";
-import Layout from "../components/layout";
-import { media } from "../utils/media";
+import { graphql } from "gatsby";
+import Article from "../_old_components/Article.jsx";
+import Layout from "../components/layout.jsx";
 
-const Content = styled.div`
-  grid-column: 2;
-  box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
-  border-radius: 1rem;
-  padding: 3rem 6rem;
-  @media ${media.tablet} {
-    padding: 3rem 2rem;
-  }
-  @media ${media.phone} {
-    padding: 2rem 1.5rem;
-  }
-  overflow: hidden;
-`;
-
-const IndexPage = ({
-  data: {
-    posts: { edges: postEdges }
-  }
-}) => (
+const IndexPage = props => (
   <Layout>
-    <Wrapper>
-      <Content>
-        <SectionTitle>Latest stories</SectionTitle>
-        {postEdges.map(post => (
-          <Article
-            title={post.node.frontmatter.title}
-            date={post.node.frontmatter.date}
-            excerpt={post.node.excerpt}
-            timeToRead={post.node.timeToRead}
-            slug={post.node.frontmatter.slug}
-            category={post.node.frontmatter.category}
-            key={post.node.frontmatter.slug}
-          />
-        ))}
-      </Content>
-    </Wrapper>
+    <h2>Latest stories</h2>
+    {props.data.posts.edges.map(post => (
+      <Article
+        title={post.node.frontmatter.title}
+        date={post.node.frontmatter.date}
+        excerpt={post.node.excerpt}
+        timeToRead={post.node.timeToRead}
+        slug={post.node.frontmatter.slug}
+        category={post.node.frontmatter.category}
+        key={post.node.frontmatter.slug}
+      />
+    ))}
   </Layout>
 );
 IndexPage.propTypes = {

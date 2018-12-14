@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
-import { Link } from "gatsby";
-import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import { Link, StaticQuery } from "gatsby";
+import styled, { createGlobalStyle } from "styled-components";
+import HtmlComment from "./html-comment";
 import * as s from "../common/styles.js";
 import { capitalize } from "../utils/text-formatting";
 import config from "../../config/site-config";
-import theme from "../../config/Theme"; // TODO: remove
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -15,132 +15,142 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const Layout = props => (
-  <div>
-    <GlobalStyles />
-    <ThemeProvider theme={theme}>
-      {/* TODO: remove */}
-      <Page>
-        <Helmet>
-          <title>
-            {(() => {
-              const pageName = props.pageTitle
-                ? capitalize(props.pageTitle)
-                : "";
-              const nDash = "\u2013";
-              const siteName = capitalize(config.siteUrlShort);
+  <StaticQuery
+    query={graphql`
+      query {
+        site {
+          buildTime(formatString: "YYYY/MM/DD HH:MM:SS Z")
+        }
+      }
+    `}
+    render={data => (
+      <>
+        <HtmlComment>{`build time: ${data.site.buildTime}`}</HtmlComment>
+        <GlobalStyles />
 
-              return pageName + (pageName ? ` ${nDash} ` : "") + siteName;
-            })()}
-          </title>
-        </Helmet>
+        <Page>
+          <Helmet>
+            <title>
+              {(() => {
+                const pageName = props.pageTitle
+                  ? capitalize(props.pageTitle)
+                  : "";
+                const nDash = "\u2013";
+                const siteName = capitalize(config.siteUrlShort);
 
-        <Header>
-          <PageLayout>
-            <HeaderContent>
-              <Link to="/">
-                <HeaderLogo href="/">
-                  <HeaderLogoImage
-                    className="Header-logo-image"
-                    src="/static/images/logo.svg"
-                    width="130"
-                    height="55"
-                    alt={`${config.siteUrlShort} logo`}
-                  />
-                </HeaderLogo>
-              </Link>
+                return pageName + (pageName ? ` ${nDash} ` : "") + siteName;
+              })()}
+            </title>
+          </Helmet>
 
-              <HeaderMenu>
-                <Menu>
-                  <MenuItem>
-                    <Link to="/">
+          <Header>
+            <PageLayout>
+              <HeaderContent>
+                <Link to="/">
+                  <HeaderLogo href="/">
+                    <HeaderLogoImage
+                      className="Header-logo-image"
+                      src="/static/images/logo.svg"
+                      width="130"
+                      height="55"
+                      alt={`${config.siteUrlShort} logo`}
+                    />
+                  </HeaderLogo>
+                </Link>
+
+                <HeaderMenu>
+                  <Menu>
+                    <MenuItem>
+                      <Link to="/">
+                        <MenuItemLink
+                          icon={
+                            <MenuItemLinkIcon
+                              src="/static/images/article.svg"
+                              alt="Article"
+                              padding={0.5}
+                            />
+                          }
+                          href="/"
+                        >
+                          Articles
+                        </MenuItemLink>
+                      </Link>
+                    </MenuItem>
+                    <MenuItem>
                       <MenuItemLink
                         icon={
                           <MenuItemLinkIcon
-                            src="/static/images/article.svg"
-                            alt="Article"
-                            padding={0.5}
+                            src="/static/images/twitter.svg"
+                            alt="Twitter"
                           />
                         }
-                        href="/"
+                        href="https://twitter.com/PetrHurtak"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        Articles
+                        Twitter
                       </MenuItemLink>
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <MenuItemLink
-                      icon={
-                        <MenuItemLinkIcon
-                          src="/static/images/twitter.svg"
-                          alt="Twitter"
-                        />
-                      }
-                      href="https://twitter.com/PetrHurtak"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Twitter
-                    </MenuItemLink>
-                  </MenuItem>
-                  <MenuItem>
-                    <MenuItemLink
-                      icon={
-                        <MenuItemLinkIcon
-                          src="/static/images/github.svg"
-                          alt="Github"
-                          padding={1}
-                        />
-                      }
-                      href="https://github.com/Hurtak"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Github
-                    </MenuItemLink>
-                  </MenuItem>
-                  <MenuItem>
-                    <MenuItemLink
-                      icon={
-                        <MenuItemLinkIcon
-                          src="/static/images/rss.svg"
-                          alt="RSS"
-                          padding={2}
-                        />
-                      }
-                      href="/rss"
-                      rel="alternate"
-                      type="application/rss+xml"
-                    >
-                      RSS
-                    </MenuItemLink>
-                  </MenuItem>
-                </Menu>
-              </HeaderMenu>
-            </HeaderContent>
+                    </MenuItem>
+                    <MenuItem>
+                      <MenuItemLink
+                        icon={
+                          <MenuItemLinkIcon
+                            src="/static/images/github.svg"
+                            alt="Github"
+                            padding={1}
+                          />
+                        }
+                        href="https://github.com/Hurtak"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Github
+                      </MenuItemLink>
+                    </MenuItem>
+                    <MenuItem>
+                      <MenuItemLink
+                        icon={
+                          <MenuItemLinkIcon
+                            src="/static/images/rss.svg"
+                            alt="RSS"
+                            padding={2}
+                          />
+                        }
+                        href="/rss"
+                        rel="alternate"
+                        type="application/rss+xml"
+                      >
+                        RSS
+                      </MenuItemLink>
+                    </MenuItem>
+                  </Menu>
+                </HeaderMenu>
+              </HeaderContent>
+            </PageLayout>
+          </Header>
+
+          <PageLayout>
+            <PageContent>
+              <PageMain>{props.children}</PageMain>
+
+              <Footer>
+                <FooterParagraph>
+                  {config.yearFound}&ndash;
+                  {config.yearCurrent}
+                </FooterParagraph>
+                <FooterParagraph withMarginTop>
+                  Written by{" "}
+                  <FooterParagraphLink href="mailto:petr.hurtak@gmail.com">
+                    Petr Huřťák
+                  </FooterParagraphLink>
+                </FooterParagraph>
+              </Footer>
+            </PageContent>
           </PageLayout>
-        </Header>
-
-        <PageLayout>
-          <PageContent>
-            <PageMain>{props.children}</PageMain>
-
-            <Footer>
-              <FooterParagraph>
-                {config.yearFound}&ndash;
-                {config.yearCurrent}
-              </FooterParagraph>
-              <FooterParagraph withMarginTop>
-                Written by{" "}
-                <FooterParagraphLink href="mailto:petr.hurtak@gmail.com">
-                  Petr Huřťák
-                </FooterParagraphLink>
-              </FooterParagraph>
-            </Footer>
-          </PageContent>
-        </PageLayout>
-      </Page>
-    </ThemeProvider>
-  </div>
+        </Page>
+      </>
+    )}
+  />
 );
 export default Layout;
 

@@ -15,6 +15,9 @@
 - convert design
 - convert articles
 - sitemap in robots.txt?
+- convert to ts?
+- prev/next article links inside article
+  - or perhaps another articles from the same tag
 - responsive images
   - https://www.gatsbyjs.org/docs/working-with-images/
 - netlify deploy

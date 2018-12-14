@@ -9,7 +9,6 @@ module.exports = {
     siteUrl: config.siteUrl + pathPrefix
   },
   plugins: [
-    "gatsby-plugin-typescript",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-styled-components",
     {

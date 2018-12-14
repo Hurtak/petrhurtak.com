@@ -1,7 +1,28 @@
+export function articleDateStringToTimestamp(dateString) {
+  const validationRegex = /\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}/;
+
+  const isStringValid = validationRegex.test(dateString);
+  if (!isStringValid) {
+    throw new Error(
+      `Article date string is in invalida format, received "${dateString}", expected pattern ${String(
+        validationRegex
+      )}`
+    );
+  }
+
+  const [date, time] = dateString.split(" ");
+  return Date.UTC(...date.split("-"), ...time.split(":"));
+}
+
 export function gmt(timestamp) {
   // GMT string example "Mon, 27 Jun 2016 17:48:24 GMT"
   const date = new Date(timestamp);
   return date.toGMTString();
+}
+
+export function iso(timestamp) {
+  const date = new Date(timestamp);
+  return date.toISOString();
 }
 
 export function fullDate(timestamp) {
@@ -45,16 +66,6 @@ export function fullDate(timestamp) {
   })();
 
   return `${day}${dayPostfix} ${month} ${year}`;
-}
-
-export function dateTimeAttribute(timestamp) {
-  // 0. timestamp -> 1466262512000
-  // 1. date -> "Sat Jun 18 2016 17:08:32 GMT+0200 (Central Europe Daylight Time)"
-  // 2. toISOString() -> "2016-06-18T15:08:32.598Z"
-  // 3. substr(0,19) -> "2016-06-18T15:08:32"
-
-  const date = new Date(timestamp);
-  return date.toISOString().substr(0, 19);
 }
 
 function plural(word, count) {

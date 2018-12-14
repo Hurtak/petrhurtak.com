@@ -14,9 +14,8 @@ const HtmlComment = props => (
 HtmlComment.propTypes = {
   children: PropTypes.string.isRequired
 };
+export default HtmlComment;
 
 const HtmlCommentStyled = styled.div`
   display: none;
 `;
-
-export default HtmlComment;

@@ -158,8 +158,8 @@ const Page = styled.div({
   alignItems: "center",
   flexDirection: "column",
   minHeight: "100vh",
-  textRendering: "optimizeLegibility" /* TODO: is this doing anyting? */
-  /* TODO http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/ */
+  textRendering: "optimizeLegibility" // TODO: is this doing anyting?
+  // TODO: http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
 });
 
 const PageLayout = props => (
@@ -183,34 +183,33 @@ const PageLayoutWrapper = styled.div({
   }
 });
 
-const PageLayoutContent = styled.div`
-  display: flex;
-  flex-grow: 1;
-  width: 100%;
-  max-width: ${s.size(700)};
-`;
+const PageLayoutContent = styled.div({
+  display: "flex",
+  flexGrow: 1,
+  width: "100%",
+  maxWidth: s.size(700)
+});
 
-const PageContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  width: 100%;
-  padding-top: ${s.grid(7)};
-  padding-bottom: ${s.grid(2)};
+const PageContent = styled.div({
+  display: "flex",
+  flexDirection: "column",
+  flexGrow: 1,
+  width: "100%",
+  paddingTop: s.grid(7),
+  paddingBottom: s.grid(2),
 
-  ${s.breakpoints.medium}: {
-    padding-top: ${s.grid(5)};
-  };
+  [s.breakpoints.medium]: {
+    paddingTop: s.grid(5)
+  },
+  [s.breakpoints.small]: {
+    paddingTop: s.grid(3)
+  }
+});
 
-  ${s.breakpoints.small}: {
-    padding-top: ${s.grid(3)};
-  };
-`;
-
-const PageMain = styled.main`
-  flex-grow: 1; /* To make footer sticky */
-  width: 100%;
-`;
+const PageMain = styled.main({
+  flexGrow: 1, // To make footer sticky
+  width: "100%"
+});
 
 const Header = styled.header({
   display: "flex",

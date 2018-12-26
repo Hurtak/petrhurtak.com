@@ -16,6 +16,6 @@ HtmlComment.propTypes = {
 };
 export default HtmlComment;
 
-const HtmlCommentStyled = styled.div`
-  display: none;
-`;
+const HtmlCommentStyled = styled.div({
+  display: "none"
+});

@@ -2,6 +2,7 @@
 
 ## TODO
 
+- styled components object syntax?
 - article page
   - mdx
     - h1 -> h1 component

@@ -7,7 +7,7 @@ const Spacer = props => {
   const children = React.Children.toArray(props.children);
 
   return children.map((item, index) => (
-    <SpacerStyled key={item.key} marginTop={index === 0 ? null : props.spacing}>
+    <SpacerStyled key={item.key} spacing={index === 0 ? null : props.spacing}>
       {item}
     </SpacerStyled>
   ));
@@ -18,6 +18,6 @@ Spacer.propTypes = {
 };
 export default Spacer;
 
-const SpacerStyled = styled.div`
-  margin-top: ${props => s.grid(props.marginTop)};
-`;
+const SpacerStyled = styled.div(props => ({
+  marginTop: s.grid(props.spacing)
+}));

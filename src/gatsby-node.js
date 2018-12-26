@@ -1,4 +1,5 @@
 const path = require("path");
+const componentWithMDXScope = require("gatsby-mdx/component-with-mdx-scope");
 const _ = require("lodash");
 
 // exports.onCreateNode = ({ node, actions }) => {
@@ -21,25 +22,30 @@ const _ = require("lodash");
 //   }
 // };
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const postPage = path.resolve("src/templates/post.js");
-    const categoryPage = path.resolve("src/templates/category.js");
+    // const categoryPage = path.join(
+    //   __dirname,
+    //   "src/pages-generated/category.js"
+    // );
 
     resolve(
       graphql(`
         {
-          posts: allMdx {
+          articles: allMdx {
             edges {
               node {
                 id
                 frontmatter {
                   title
-                  date
                   url
                   description
+                  dateLastUpdate
+                }
+                code {
+                  scope
                 }
               }
             }
@@ -49,20 +55,27 @@ exports.createPages = ({ graphql, actions }) => {
         if (result.errors) {
           process.stdout.write(result.errors + "\n");
           reject(result.errors);
+          return;
         }
 
-        const posts = result.data.posts.edges;
+        const articles = result.data.articles.edges;
 
-        posts.forEach((edge, index) => {
-          const next = index === 0 ? null : posts[index - 1].node;
+        articles.forEach((edge, index) => {
+          const next = index === 0 ? null : articles[index - 1].node;
           const prev =
-            index === posts.length - 1 ? null : posts[index + 1].node;
+            index === articles.length - 1 ? null : articles[index + 1].node;
 
           createPage({
             path: edge.node.frontmatter.url,
-            component: postPage,
+            // component: componentWithMDXScope(
+            //   path.join(__dirname, "src/pages-generated/article.jsx"),
+            //   edge.node.code.scope
+            // ),
+            component: path.join(__dirname, "src/pages-generated/article.jsx"),
+
             context: {
-              slug: edge.node.frontmatter.url,
+              id: edge.node.id,
+              url: edge.node.frontmatter.url,
               prev,
               next
             }
@@ -71,7 +84,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         // let categories = [];
 
-        // _.each(posts, edge => {
+        // _.each(articles, edge => {
         //   if (_.get(edge, "node.frontmatter.category")) {
         //     categories = categories.concat(edge.node.frontmatter.category);
         //   }
@@ -96,7 +109,7 @@ exports.createPages = ({ graphql, actions }) => {
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, "src"), "node_modules"]
+      modules: [path.join(__dirname, "src"), "node_modules"]
     }
   });
 };

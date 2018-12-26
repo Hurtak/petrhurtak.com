@@ -6,9 +6,10 @@ import Layout from "../components/layout.jsx";
 import Spacer from "../components/spacer.jsx";
 import * as s from "../common/styles.js";
 import * as date from "../common/date.js";
+import * as types from "../common/types.js";
 
 const IndexPage = props => {
-  const articles = props.data.posts.edges;
+  const articles = props.data.articles.edges;
 
   return (
     <Layout>
@@ -23,16 +24,20 @@ const IndexPage = props => {
 };
 IndexPage.propTypes = {
   data: PropTypes.shape({
-    posts: PropTypes.shape({
-      edges: PropTypes.array.isRequired
-    })
+    articles: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: types.article.isRequired
+        }).isRequired
+      ).isRequired
+    }).isRequired
   }).isRequired
 };
 export default IndexPage;
 
 export const IndexQuery = graphql`
   query IndexQuery {
-    posts: allMdx(
+    articles: allMdx(
       sort: { fields: [frontmatter___dateLastUpdate], order: DESC }
     ) {
       edges {
@@ -43,7 +48,6 @@ export const IndexQuery = graphql`
             url
             dateLastUpdate
             description
-            category
           }
         }
       }
@@ -81,14 +85,7 @@ const Article = props => (
   </ArticleStyled>
 );
 Article.propTypes = {
-  article: PropTypes.shape({
-    frontmatter: PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      dateLastUpdate: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
+  article: types.article.isRequired
 };
 
 const Heading = styled.h1({

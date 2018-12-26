@@ -1,25 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql, Link } from "gatsby";
 import styled from "styled-components";
-import Layout from "../components/layout.jsx";
 import Spacer from "../components/spacer.jsx";
 import * as s from "../common/styles.js";
 import * as date from "../common/date.js";
 import * as types from "../common/types.js";
 
 const IndexPage = props => {
-  const articles = props.data.articles.edges;
+  const articles = []; // TODO
 
   return (
-    <Layout>
+    <>
       <Heading>Recent articles</Heading>
       <Spacer spacing={4}>
         {articles.map(article => (
           <Article key={article.node.id} article={article.node} />
         ))}
       </Spacer>
-    </Layout>
+    </>
   );
 };
 IndexPage.propTypes = {
@@ -34,26 +32,6 @@ IndexPage.propTypes = {
   }).isRequired
 };
 export default IndexPage;
-
-export const IndexQuery = graphql`
-  query IndexQuery {
-    articles: allMdx(
-      sort: { fields: [frontmatter___dateLastUpdate], order: DESC }
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            url
-            dateLastUpdate
-            description
-          }
-        }
-      }
-    }
-  }
-`;
 
 const Article = props => (
   <ArticleStyled>
@@ -99,7 +77,7 @@ const ArticleTitle = styled.h2({
   margin: 0
 });
 
-const ArticleTitleLink = styled(Link)({
+const ArticleTitleLink = styled.a({
   ...s.fonts.headingMedium,
   ...s.fonts.link
 });

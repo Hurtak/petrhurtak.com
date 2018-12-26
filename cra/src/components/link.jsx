@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link as GatsbyLink } from "gatsby";
+// import { Link as GatsbyLink } from "gatsby";
 
 const Link = props => {
   const isLinkExternal = /^\w+:/.test(props.to);
@@ -23,7 +23,8 @@ const Link = props => {
     );
   }
 
-  return <GatsbyLink {...props} />;
+  return null;
+  // return <GatsbyLink {...props} />;
 };
 Link.propTypes = {
   to: PropTypes.string.isRequired,

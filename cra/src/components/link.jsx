@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-// import { Link as GatsbyLink } from "gatsby";
+import { Link as ReachRouterLink } from "@reach/router";
 
 const Link = props => {
   const isLinkExternal = /^\w+:/.test(props.to);
@@ -21,14 +20,18 @@ const Link = props => {
         {children}
       </a>
     );
+  } else {
+    const { to, children, ...restProps } = props;
+    return (
+      <ReachRouterLink to={to} {...restProps}>
+        {children}
+      </ReachRouterLink>
+    );
   }
-
-  return null;
-  // return <GatsbyLink {...props} />;
 };
-Link.propTypes = {
-  to: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired
-};
+// Link.propTypes = {
+//   to: PropTypes.string.isRequired,
+//   children: PropTypes.node.isRequired
+// };
 
 export default Link;

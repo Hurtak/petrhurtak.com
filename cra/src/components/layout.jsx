@@ -5,8 +5,14 @@ import styled, { createGlobalStyle } from "styled-components";
 import HtmlComment from "./html-comment.jsx";
 import Link from "./link.jsx";
 import * as s from "../common/styles.js";
-import { capitalize } from "../utils/text-formatting.js";
+import { capitalize } from "../common/text-formatting.js";
 import config from "../config/site-config";
+
+import imageLogo from "../images/logo.svg";
+import imageArticle from "../images/article.svg";
+import imageTwitter from "../images/twitter.svg";
+import imageGithub from "../images/github.svg";
+import imageRss from "../images/rss.svg";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -16,6 +22,7 @@ const GlobalStyles = createGlobalStyle`
 
 const Layout = props => (
   <>
+    {/* TODO */}
     <HtmlComment>{`build time: XXX`}</HtmlComment>
     <GlobalStyles />
 
@@ -38,7 +45,7 @@ const Layout = props => (
             <HeaderLogoLink to="/">
               <HeaderLogoImage
                 className="Header-logo-image"
-                src="/static/images/logo.svg"
+                src={imageLogo}
                 width="130"
                 height="55"
                 alt={`${config.siteUrlShort} logo`}
@@ -52,7 +59,7 @@ const Layout = props => (
                     to="/"
                     icon={
                       <MenuItemLinkIcon
-                        src="/static/images/article.svg"
+                        src={imageArticle}
                         alt="Article"
                         padding={0.5}
                       />
@@ -64,12 +71,7 @@ const Layout = props => (
                 <MenuItem>
                   <MenuItemLink
                     to="https://twitter.com/PetrHurtak"
-                    icon={
-                      <MenuItemLinkIcon
-                        src="/static/images/twitter.svg"
-                        alt="Twitter"
-                      />
-                    }
+                    icon={<MenuItemLinkIcon src={imageTwitter} alt="Twitter" />}
                     target="_blank"
                   >
                     Twitter
@@ -80,7 +82,7 @@ const Layout = props => (
                     to="https://github.com/Hurtak"
                     icon={
                       <MenuItemLinkIcon
-                        src="/static/images/github.svg"
+                        src={imageGithub}
                         alt="Github"
                         padding={1}
                       />
@@ -94,11 +96,7 @@ const Layout = props => (
                   <MenuItemLink
                     to="/rss"
                     icon={
-                      <MenuItemLinkIcon
-                        src="/static/images/rss.svg"
-                        alt="RSS"
-                        padding={2}
-                      />
+                      <MenuItemLinkIcon src={imageRss} alt="RSS" padding={2} />
                     }
                     rel="alternate"
                     type="application/rss+xml"
@@ -264,7 +262,7 @@ MenuItemLink.propTypes = {
 
 // TODO: item hovering does not work -- this broken menuItemLinkClass
 // also there is Mmargin: 0 style generated??
-const MenuItemLinkWrapper = styled(Link)(menuItemLinkClass, {
+const MenuItemLinkWrapper = styled(Link)({
   ...s.fonts.headingSmall,
   display: "flex",
   alignItems: "center",

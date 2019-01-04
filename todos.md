@@ -2,14 +2,13 @@
 
 ## TODO
 
+- typescript
 - styled components object syntax?
 - article page
-  - mdx
-    - h1 -> h1 component
   - blog directory structure
     - images
-    - videos
     - static file
+    - videos
   - where to store code examples?
     - static html files?
     - codepen?
@@ -24,6 +23,11 @@
 - responsive images
   - https://www.gatsbyjs.org/docs/working-with-images/
 - netlify deploy
+- bugs
+  - menu hover - change icon to white
+- revisit
+  - revisit robots.txt
+  - revisit manifest.json
 - deploy
 
 - mdx in future?

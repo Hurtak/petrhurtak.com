@@ -2,6 +2,7 @@
 
 ## TODO
 
+- bundle splitting and dynamic loading a articles
 - article page
   - blog directory structure
     - images
@@ -10,12 +11,12 @@
   - where to store code examples?
     - static html files?
     - codepen?
+- svg as react components?
 - rss
 - try build
 - convert design
 - convert articles
 - sitemap in robots.txt?
-- convert to ts?
 - prev/next article links inside article
   - or perhaps another articles from the same tag
 - responsive images

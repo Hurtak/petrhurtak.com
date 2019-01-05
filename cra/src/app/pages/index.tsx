@@ -4,16 +4,20 @@ import Link from "../components/link";
 import Spacer from "../components/spacer";
 import * as s from "../common/styles";
 import * as date from "../common/date";
+import {
+  getAllVisibleArticles,
+  IArticleMetadata
+} from "../../articles/articles";
 
 const IndexPage = () => {
-  const articles = []; // TODO
+  const articles = getAllVisibleArticles();
 
   return (
     <>
       <Heading>Recent articles</Heading>
       <Spacer spacing={4}>
         {articles.map(article => (
-          <Article key={article.node.id} article={article.node} />
+          <Article key={article.url} article={article} />
         ))}
       </Spacer>
     </>
@@ -22,33 +26,22 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-const Article = props => (
+const Article = ({ article }: { article: IArticleMetadata }) => (
   <ArticleStyled>
     <ArticleTitle>
-      <ArticleTitleLink to={`/${props.article.frontmatter.url}/`}>
-        {props.article.frontmatter.title}
+      <ArticleTitleLink to={`/${article.url}/`}>
+        {article.title}
       </ArticleTitleLink>
     </ArticleTitle>
 
-    {props.article.frontmatter.dateLastUpdate &&
-      (() => {
-        const dateLastUpdateTimestamp = date.articleDateStringToTimestamp(
-          props.article.frontmatter.dateLastUpdate
-        );
+    <ArticleDate
+      title={date.fullDate(article.dateLastUpdate)}
+      dateTime={date.iso(article.dateLastUpdate)}
+    >
+      {date.howLongBefore(article.dateLastUpdate)}
+    </ArticleDate>
 
-        return (
-          <ArticleDate
-            title={date.fullDate(dateLastUpdateTimestamp)}
-            dateTime={date.iso(dateLastUpdateTimestamp)}
-          >
-            {date.howLongBefore(dateLastUpdateTimestamp)}
-          </ArticleDate>
-        );
-      })()}
-
-    <ArticleDescription>
-      {props.article.frontmatter.description}
-    </ArticleDescription>
+    <ArticleDescription>{article.description}</ArticleDescription>
   </ArticleStyled>
 );
 

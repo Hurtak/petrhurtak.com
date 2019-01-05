@@ -4,17 +4,18 @@ import video from "./videos/screen.mp4";
 import { x } from "./huge.js";
 
 export const metadata = {
-  title: "IIFE",
+  title: "Vim basics",
 
   description: `
-    What is immediately-invoked function expression and where they might be
-    useful.
-  `,
+      This article focuses on Vim basics and the use case where you are in a
+      terminal in the ssh session and want to quickly edit/explore files within
+      the terminal.
+    `,
 
-  url: "iife",
+  url: "vim",
 
-  datePublication: "2017-07-20 18:00:00",
-  dateLastUpdate: "2017-07-20 18:00:00"
+  datePublication: "2017-12-17 17:00:00",
+  dateLastUpdate: "2017-12-17 17:00:00"
 };
 
 const Article = () => (

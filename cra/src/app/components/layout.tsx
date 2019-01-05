@@ -1,4 +1,4 @@
-import React, { Children, ReactNode } from "react";
+import React from "react";
 import Helmet from "react-helmet";
 import styled, { createGlobalStyle } from "styled-components";
 import HtmlComment from "./html-comment";
@@ -7,11 +7,11 @@ import * as s from "../common/styles";
 import { capitalize } from "../common/text-formatting";
 import config from "../config/site-config";
 
-import imageLogo from "../images/logo.svg";
-import imageArticle from "../images/article.svg";
-import imageTwitter from "../images/twitter.svg";
-import imageGithub from "../images/github.svg";
-import imageRss from "../images/rss.svg";
+import imageLogo from "../../images/logo.svg";
+import imageArticle from "../../images/article.svg";
+import imageTwitter from "../../images/twitter.svg";
+import imageGithub from "../../images/github.svg";
+import imageRss from "../../images/rss.svg";
 
 const GlobalStyles = createGlobalStyle`
   body {

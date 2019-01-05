@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import * as s from "../common/styles";
 
-const Spacer = (props: { spacing: number; children: React.ReactNode }) => {
+const Spacer = (props: { spacing: number; children: React.ReactNode }): any => {
   const children = React.Children.toArray(props.children);
 
-  return children.map((item, index) => (
-    <SpacerStyled spacing={index === 0 ? 0 : props.spacing}>
+  return children.map((item: any, index) => (
+    <SpacerStyled key={item.key} spacing={index === 0 ? 0 : props.spacing}>
       {item}
     </SpacerStyled>
   ));

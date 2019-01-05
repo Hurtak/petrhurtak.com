@@ -1,12 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-import Spacer from "../components/spacer.jsx";
-import * as s from "../common/styles.js";
-import * as date from "../common/date.js";
-import * as types from "../common/types.js";
+import Link from "../components/link";
+import Spacer from "../components/spacer";
+import * as s from "../common/styles";
+import * as date from "../common/date";
 
-const IndexPage = props => {
+const IndexPage = () => {
   const articles = []; // TODO
 
   return (
@@ -20,17 +19,7 @@ const IndexPage = props => {
     </>
   );
 };
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    articles: PropTypes.shape({
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: types.article.isRequired
-        }).isRequired
-      ).isRequired
-    }).isRequired
-  }).isRequired
-};
+
 export default IndexPage;
 
 const Article = props => (
@@ -62,9 +51,6 @@ const Article = props => (
     </ArticleDescription>
   </ArticleStyled>
 );
-Article.propTypes = {
-  article: types.article.isRequired
-};
 
 const Heading = styled.h1({
   ...s.fonts.heading,
@@ -77,13 +63,13 @@ const ArticleTitle = styled.h2({
   margin: 0
 });
 
-const ArticleTitleLink = styled.a({
+const ArticleTitleLink = styled(Link)({
   ...s.fonts.headingMedium,
   ...s.fonts.link
 });
 
 const ArticleDate = styled.time({
-  ...s.fonts.small,
+  ...s.fonts.paragraphSmall,
   margingTop: s.grid(0.25)
 });
 

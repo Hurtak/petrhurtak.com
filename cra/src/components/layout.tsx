@@ -1,11 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { Children, ReactNode } from "react";
 import Helmet from "react-helmet";
 import styled, { createGlobalStyle } from "styled-components";
-import HtmlComment from "./html-comment.jsx";
-import Link from "./link.jsx";
-import * as s from "../common/styles.js";
-import { capitalize } from "../common/text-formatting.js";
+import HtmlComment from "./html-comment";
+import Link from "./link";
+import * as s from "../common/styles";
+import { capitalize } from "../common/text-formatting";
 import config from "../config/site-config";
 
 import imageLogo from "../images/logo.svg";
@@ -20,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const Layout = props => (
+const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
   <>
     {/* TODO */}
     <HtmlComment>{`build time: XXX`}</HtmlComment>
@@ -131,10 +130,6 @@ const Layout = props => (
     </Page>
   </>
 );
-Layout.propTypes = {
-  pageTitle: PropTypes.string,
-  children: PropTypes.node.isRequired
-};
 export default Layout;
 
 const Page = styled.div({
@@ -146,14 +141,11 @@ const Page = styled.div({
   // TODO: http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
 });
 
-const PageLayout = props => (
+const PageLayout = (props: { children: React.ReactNode }) => (
   <PageLayoutWrapper>
     <PageLayoutContent>{props.children}</PageLayoutContent>
   </PageLayoutWrapper>
 );
-PageLayout.propTypes = {
-  children: PropTypes.node.isRequired
-};
 
 const PageLayoutWrapper = styled.div({
   boxSizing: "border-box",
@@ -205,7 +197,6 @@ const Header = styled.header({
 });
 
 const HeaderContent = styled.div({
-  ...s.dimensions.content,
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -245,7 +236,9 @@ const MenuItem = styled.li({
 
 const menuItemLinkClass = "MenuItemLink";
 
-const MenuItemLink = props => {
+const MenuItemLink = (
+  props: { icon: React.ReactNode; children: string } & any
+) => {
   const { icon, children, ...restProps } = props;
 
   return (
@@ -254,10 +247,6 @@ const MenuItemLink = props => {
       {children}
     </MenuItemLinkWrapper>
   );
-};
-MenuItemLink.propTypes = {
-  icon: PropTypes.element.isRequired,
-  children: PropTypes.string.isRequired
 };
 
 // TODO: item hovering does not work -- this broken menuItemLinkClass
@@ -280,44 +269,51 @@ const MenuItemLinkWrapper = styled(Link)({
   }
 });
 
-const MenuItemLinkIcon = props => {
-  const { padding, ...restProps } = props;
+const MenuItemLinkIcon = ({
+  src,
+  alt,
+  padding = 0,
+  ...restProps
+}: { padding?: number } & React.HTMLProps<HTMLImageElement>) => {
+  const iconSizePx = 20;
 
   return (
-    <MenuItemLinkIconWrapper padding={padding}>
-      <MenuItemLinkIconImg {...restProps} />
+    <MenuItemLinkIconWrapper iconSize={iconSizePx} padding={padding}>
+      <MenuItemLinkIconImg
+        src={src}
+        alt={alt}
+        width={iconSizePx}
+        height={iconSizePx}
+      />
     </MenuItemLinkIconWrapper>
   );
 };
-MenuItemLinkIcon.propTypes = {
-  padding: PropTypes.number
-};
 
-const MenuItemLinkIconWrapper = styled.div`
-  box-sizing: border-box;
-  margin-right: ${s.grid(1)};
-  width: ${s.size(20)};
-  height: ${s.size(20)};
-  padding: ${props => s.size(props.padding)};
-`;
-MenuItemLinkIconWrapper.propTypes = {
-  padding: PropTypes.number
-};
-MenuItemLinkIconWrapper.defaultProps = {
-  padding: 0
-};
+const MenuItemLinkIconWrapper = styled.div(
+  {
+    boxSizing: "border-box",
+    marginRight: s.grid(1)
+  },
+  (props: { padding: number; iconSize: number }) => {
+    return {
+      padding: s.size(props.padding),
+      width: s.size(props.iconSize),
+      height: s.size(props.iconSize)
+    };
+  }
+);
 
-const MenuItemLinkIconImg = styled.img`
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+const MenuItemLinkIconImg = styled.img({
+  display: "block",
+  width: "100%",
+  height: "100%",
+  objectFit: "contain",
 
   /* TODO: does not work */
-  .${menuItemLinkClass}:hover & {
-    filter: invert(1);
+  [`${menuItemLinkClass}:hover &`]: {
+    filter: "invert(1)"
   }
-`;
+});
 
 const Footer = styled.footer`
   width: 100%;
@@ -331,7 +327,7 @@ const FooterParagraph = styled.p(
     lineHeight: 1,
     textAlign: "center"
   },
-  props => {
+  (props: { withMarginTop?: boolean }) => {
     if (props.withMarginTop) {
       return {
         marginTop: s.grid(1)

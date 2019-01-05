@@ -1,7 +1,7 @@
-export const gridRaw = size => size * 8;
-export const grid = size => `${gridRaw(size)}px`;
+export const gridRaw = (size: number): number => size * 8;
+export const grid = (size: number): string => `${gridRaw(size)}px`;
 
-export const size = size => `${size}px`;
+export const size = (size: number): string => `${size}px`;
 
 export const colors = {
   black: "#000",
@@ -41,7 +41,7 @@ export const breakpoints = {
 const fontSharedProperties = {
   margin: 0,
   color: colors.black,
-  fontWeight: "normal"
+  fontWeight: 400
 };
 
 const fontSharedValues = {
@@ -134,14 +134,14 @@ export const fonts = {
   codeMultiline: {
     ...fontSharedProperties,
     ...fontParagraphSmallSizes,
-    fontFamily: fontSharedProperties.fontFamilyCode,
+    fontFamily: fontSharedValues.fontFamilyCode,
     fontSize: size(16),
     lineHeight: 1.45
   },
 
   codeInline: {
     ...fontSharedProperties,
-    fontFamily: fontSharedProperties.fontFamilyCode
+    fontFamily: fontSharedValues.fontFamilyCode
     // font-size and line-height are inherited.
   },
 

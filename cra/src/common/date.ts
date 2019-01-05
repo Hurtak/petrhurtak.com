@@ -1,4 +1,4 @@
-export function articleDateStringToTimestamp(dateString) {
+export function articleDateStringToTimestamp(dateString: string): number {
   const validationRegex = /\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}/;
 
   const isStringValid = validationRegex.test(dateString);
@@ -11,21 +11,24 @@ export function articleDateStringToTimestamp(dateString) {
   }
 
   const [date, time] = dateString.split(" ");
-  return Date.UTC(...date.split("-"), ...time.split(":"));
+  const [year, month, day] = date.split("-").map(Number);
+  const [hour, minute, second] = time.split("-").map(Number);
+
+  return Date.UTC(year, month + 1, day, hour, minute, second);
 }
 
-export function gmt(timestamp) {
+export function utc(timestamp: number): string {
   // GMT string example "Mon, 27 Jun 2016 17:48:24 GMT"
   const date = new Date(timestamp);
-  return date.toGMTString();
+  return date.toUTCString();
 }
 
-export function iso(timestamp) {
+export function iso(timestamp: number): string {
   const date = new Date(timestamp);
   return date.toISOString();
 }
 
-export function fullDate(timestamp) {
+export function fullDate(timestamp: number): string {
   const months = [
     "January",
     "February",
@@ -68,11 +71,11 @@ export function fullDate(timestamp) {
   return `${day}${dayPostfix} ${month} ${year}`;
 }
 
-function plural(word, count) {
+function plural(word: string, count: number): string {
   return `${word}${count === 1 ? "" : "s"}`;
 }
 
-export function howLongBefore(timestamp) {
+export function howLongBefore(timestamp: number): string {
   const date = new Date(timestamp);
 
   const nowTimestamp = Date.now();

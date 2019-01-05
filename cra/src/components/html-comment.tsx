@@ -1,9 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import escapeHtml from "escape-html";
 
-const HtmlComment = props => (
+interface IHtmlCommentProps {
+  children: string;
+}
+
+const HtmlComment = (props: IHtmlCommentProps) => (
   <HtmlCommentStyled
     dangerouslySetInnerHTML={{
       __html: `<!-- ${escapeHtml(props.children)} -->`
@@ -11,9 +14,6 @@ const HtmlComment = props => (
     hidden
   />
 );
-HtmlComment.propTypes = {
-  children: PropTypes.string.isRequired
-};
 export default HtmlComment;
 
 const HtmlCommentStyled = styled.div({

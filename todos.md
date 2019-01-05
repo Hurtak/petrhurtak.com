@@ -3,6 +3,7 @@
 ## TODO
 
 - bundle splitting and dynamic loading a articles
+- is lodash correctly imported?
 - article page
   - blog directory structure
     - images

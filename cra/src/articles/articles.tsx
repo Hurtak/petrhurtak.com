@@ -1,7 +1,10 @@
 import { sortBy, reverse } from "lodash-es";
 
-import { metadata as article1Metadata } from "./01/article";
-import { metadata as article2Metadata } from "./02/article";
+import article1Metadata from "./01/metadata";
+import article2Metadata from "./02/metadata";
+
+// Article metadata are in separate file because webpack was not able to tree
+// shake the article even if we used the {} imports and just imported the metadata
 
 interface IArticleMetadataRaw {
   title: string;

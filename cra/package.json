@@ -26,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && react-snap",
-    "analyze": "source-map-explorer build/static/js/main.*",
+    "analyze": "source-map-explorer",
     "test": "react-scripts test"
   },
   "eslintConfig": {

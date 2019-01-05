@@ -40,7 +40,7 @@ const Test = () => (
   </Suspense>
 );
 
-const ArticleLoader = () => {
+const ArticleLoader = (props: any) => {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <h2>Dashboard</h2>

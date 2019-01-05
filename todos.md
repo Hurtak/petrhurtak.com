@@ -3,7 +3,6 @@
 ## TODO
 
 - bundle splitting and dynamic loading a articles
-- is lodash correctly imported?
 - article page
   - blog directory structure
     - images
@@ -29,9 +28,9 @@
   - revisit robots.txt
   - revisit manifest.json
 - deploy
-
-- mdx in future?
-  - https://github.com/jamesknelson/create-react-app-mdx
+- future
+  - mdx? https://github.com/jamesknelson/create-react-app-mdx
+  - get rid of lodash? importing just one function is 20kb (of of 70kb of full lodash)
 
 ## Changing the date format
 

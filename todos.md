@@ -2,7 +2,6 @@
 
 ## TODO
 
-- styled components object syntax?
 - article page
   - blog directory structure
     - images

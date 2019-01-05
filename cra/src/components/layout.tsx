@@ -315,10 +315,10 @@ const MenuItemLinkIconImg = styled.img({
   }
 });
 
-const Footer = styled.footer`
-  width: 100%;
-  padding-top: ${s.grid(8)};
-`;
+const Footer = styled.footer({
+  width: "100%",
+  paddingTop: s.grid(8)
+});
 
 const FooterParagraph = styled.p(
   {
@@ -336,10 +336,9 @@ const FooterParagraph = styled.p(
   }
 );
 
-const FooterParagraphLink = styled(Link)`
-  ${s.fonts.paragraphSmall};
-
-  line-height: 1;
-  color: ${s.colors.blueDark};
-  text-decoration: none;
-`;
+const FooterParagraphLink = styled(Link)({
+  ...s.fonts.paragraphSmall,
+  lineGeight: 1,
+  color: s.colors.blueDark,
+  textDecoration: "none"
+});

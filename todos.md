@@ -2,7 +2,6 @@
 
 ## TODO
 
-- 404 page
 - styled components object syntax?
 - article page
   - blog directory structure

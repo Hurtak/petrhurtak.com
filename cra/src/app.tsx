@@ -8,14 +8,18 @@ const Article = lazy(() => import("./articles/01/article.jsx"));
 const App = () => (
   <Layout>
     <Router>
-      <Index path="/" />
-      <Dashboard path="/text" />
+      <RouterPage path="/" pageComponent={<Index />} />
+      <RouterPage path="/text" pageComponent={<Dashboard />} />
     </Router>
   </Layout>
 );
 export default App;
 
-const Dashboard = (_: RouteComponentProps) => (
+const RouterPage = (
+  props: { pageComponent: JSX.Element } & RouteComponentProps
+) => props.pageComponent;
+
+const Dashboard = () => (
   <Suspense key={"1"} fallback={<h1>Loading</h1>}>
     <h2>Dashboard</h2>
     <Article />

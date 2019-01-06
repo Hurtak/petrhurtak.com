@@ -5,7 +5,7 @@ import { x } from "./huge.js";
 
 const Article = () => (
   <article>
-    <h2>Article title {x.length}</h2>
+    <h2>IIFE {x.length}</h2>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam animi
       ipsam cumque dolorem nesciunt a aut consequuntur error libero eum

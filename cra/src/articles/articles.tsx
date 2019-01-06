@@ -1,7 +1,9 @@
 import { sortBy, reverse } from "lodash-es";
 
-import article1Metadata from "./01/metadata";
-import article2Metadata from "./02/metadata";
+// import articleIife from "./2017-07-20--iife/metadata";
+// import articleVim from "./2017-12-17--vim/metadata";
+import articleIife from "./iife/metadata";
+import articleVim from "./vim/metadata";
 
 // Article metadata are in separate file because webpack was not able to tree
 // shake the article even if we used the {} imports and just imported the metadata
@@ -20,12 +22,12 @@ export interface IArticleMetadata {
   url: string;
   datePublication: number;
   dateLastUpdate: number;
+  articleImportPromise: () => any;
 }
 
-const articlesMetadata: IArticleMetadata[] = [
-  article1Metadata,
-  article2Metadata
-].map(transformMetadata);
+const articlesMetadata: IArticleMetadata[] = [articleIife, articleVim].map(
+  transformMetadata
+);
 
 export function getAllVisibleArticles() {
   let articles = articlesMetadata;
@@ -35,21 +37,14 @@ export function getAllVisibleArticles() {
   return articles;
 }
 
-function transformMetadata(
-  metadata: IArticleMetadataRaw
-): {
-  title: string;
-  description: string;
-  url: string;
-  datePublication: number;
-  dateLastUpdate: number;
-} {
+function transformMetadata(metadata: IArticleMetadataRaw): IArticleMetadata {
   const metadataTransformed = {
     title: metadata.title,
     description: formatDescription(metadata.description),
     url: metadata.url,
     datePublication: articleMetadataDateToTimestamp(metadata.datePublication),
-    dateLastUpdate: articleMetadataDateToTimestamp(metadata.dateLastUpdate)
+    dateLastUpdate: articleMetadataDateToTimestamp(metadata.dateLastUpdate),
+    articleImportPromise: () => import("./" + metadata.url + "/article.jsx")
   };
 
   return metadataTransformed;

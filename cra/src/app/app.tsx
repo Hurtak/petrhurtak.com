@@ -3,8 +3,7 @@ import { Router, RouteComponentProps } from "@reach/router";
 import Layout from "./components/layout";
 import Index from "./pages/index";
 import NotFound from "./pages/not-found";
-
-const Article = lazy(() => import("../articles/01/article.jsx"));
+import { getAllVisibleArticles } from "../articles/articles";
 
 const App = () => (
   <Layout>
@@ -13,34 +12,41 @@ const App = () => (
       // To prevent page scrolling router content into viewport
       // We handle scrolling manually in ScrollToTop component
     >
-      <RouterPage path="/" pageComponent={<Index />} />
-      <RouterPage path="/test" pageComponent={<Test />} />
-      <RouterPage path="/:article" pageComponent={<ArticleLoader />} />
-      <RouterPage default pageComponent={<NotFound />} />
+      <RouterPage path="/" pageComponent={() => <Index />} />
+      <RouterPage
+        path="/:articleUrl"
+        pageComponent={(routerProps: IArticleLoader) => (
+          <ArticleLoader articleUrl={routerProps.articleUrl} />
+        )}
+      />
+      <RouterPage default pageComponent={() => <NotFound />} />
     </Router>
   </Layout>
 );
 export default App;
 
-const RouterPage = (
-  props: { pageComponent: JSX.Element } & RouteComponentProps
-) => {
+const RouterPage = ({
+  pageComponent,
+  ...routerProps
+}: {
+  pageComponent: (routerProps: RouteComponentProps) => JSX.Element;
+} & RouteComponentProps) => {
   return (
     <>
-      <ScrollToTop {...props} />
-      {props.pageComponent}
+      <ScrollToTop {...routerProps} />
+      {pageComponent(routerProps)}
     </>
   );
 };
 
-const Test = () => (
-  <Suspense fallback={<h1>Loading</h1>}>
-    <h2>Dashboard</h2>
-    <Article />
-  </Suspense>
-);
+interface IArticleLoader extends RouteComponentProps<{ articleUrl: string }> {}
+const ArticleLoader = (props: IArticleLoader) => {
+  const articles = getAllVisibleArticles();
+  const article = articles.find(article => article.url === props.articleUrl);
+  if (!article) return null;
 
-const ArticleLoader = (props: any) => {
+  const Article = lazy(article.articleImportPromise);
+
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <h2>Dashboard</h2>

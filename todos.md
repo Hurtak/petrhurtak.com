@@ -2,15 +2,9 @@
 
 ## TODO
 
-- bundle splitting and dynamic loading a articles
-- article page
-  - blog directory structure
-    - images
-    - static file
-    - videos
-  - where to store code examples?
-    - static html files?
-    - codepen?
+- 404 page
+- drafts
+- try to convert 1 article
 - svg as react components?
 - rss
 - try build

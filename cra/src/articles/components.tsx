@@ -26,7 +26,7 @@ import highlightBash from "highlight.js/lib/languages/bash";
 // import highlightDiff from "highlight.js/lib/languages/diff";
 // import highlightMarkdown from "highlight.js/lib/languages/markdown";
 
-import * as s from "../common/styles";
+import * as s from "../app/common/styles";
 
 highlight.registerLanguage("javascript", highlightJavaScript);
 highlight.registerLanguage("makefile", highlightMakefile);
@@ -36,26 +36,6 @@ highlight.registerLanguage("yaml", highlightYaml);
 highlight.registerLanguage("css", highlightCss);
 highlight.registerLanguage("xml", highlightXml);
 highlight.registerLanguage("bash", highlightBash);
-
-//
-// Article wrapper
-//
-
-export class ArticleWrapper extends React.Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired
-  };
-
-  render() {
-    return <WrapperStyled>{this.props.children}</WrapperStyled>;
-  }
-}
-
-const WrapperStyled = styled.div({
-  "> *:first-child": {
-    marginTop: 0
-  }
-});
 
 //
 // Texts

@@ -1,8 +1,8 @@
 import React from "react";
 import Helmet from "react-helmet";
+import styled from "styled-components";
 import config from "../config/site-config";
 import { capitalize } from "../common/text-formatting";
-import { ArticleWrapper } from "../components/article";
 import { IArticleMetadata } from "../../articles/articles";
 
 const Article = (props: {
@@ -28,3 +28,9 @@ const Article = (props: {
   );
 };
 export default Article;
+
+const ArticleWrapper = styled.div({
+  "> *:first-child": {
+    marginTop: 0
+  }
+});

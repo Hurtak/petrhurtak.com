@@ -21,6 +21,8 @@
 - revisit
   - revisit robots.txt
   - revisit manifest.json
+- check generated html, if tags are ok
+- frontend checklist
 - cleanup package.json and package-lock.json
 - deploy
 - future

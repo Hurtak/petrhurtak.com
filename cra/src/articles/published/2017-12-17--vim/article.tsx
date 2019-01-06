@@ -11,7 +11,7 @@ import {
   Tr,
   Tc,
   Code
-} from "../../../app/components/article";
+} from "../../components";
 
 export default () => (
   <>

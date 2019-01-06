@@ -2,7 +2,6 @@
 
 ## TODO
 
-- 404 page
 - drafts
 - try to convert 1 article
 - svg as react components?

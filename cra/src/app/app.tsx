@@ -12,14 +12,9 @@ const App = () => (
       // To prevent page scrolling router content into viewport
       // We handle scrolling manually in ScrollToTop component
     >
-      <RouterPage path="/" pageComponent={() => <Index />} />
-      <RouterPage
-        path="/:articleUrl"
-        pageComponent={(routerProps: IArticleLoader) => (
-          <ArticleLoader articleUrl={routerProps.articleUrl} />
-        )}
-      />
-      <RouterPage default pageComponent={() => <NotFound />} />
+      <RouterPage path="/" pageComponent={Index} />
+      <RouterPage path="/:articleUrl" pageComponent={ArticleLoader} />
+      <RouterPage default pageComponent={NotFound} />
     </Router>
   </Layout>
 );
@@ -39,11 +34,12 @@ const RouterPage = ({
   );
 };
 
-interface IArticleLoader extends RouteComponentProps<{ articleUrl: string }> {}
-const ArticleLoader = (props: IArticleLoader) => {
+const ArticleLoader = (props: RouteComponentProps<{ articleUrl: string }>) => {
   const articles = getAllVisibleArticles();
   const article = articles.find(article => article.url === props.articleUrl);
-  if (!article) return null;
+  if (!article) {
+    return <NotFound />;
+  }
 
   const Article = lazy(article.articleImportPromise);
 

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import glamorous from "glamorous";
+import styled from "styled-components";
+// TODO: is this duplicate code with or own metadata.description strip indent function?
 import stripIndent from "strip-indent";
 
 // Only include used languages in the bundle
@@ -25,7 +26,7 @@ import highlightBash from "highlight.js/lib/languages/bash";
 // import highlightDiff from "highlight.js/lib/languages/diff";
 // import highlightMarkdown from "highlight.js/lib/languages/markdown";
 
-import * as s from "../common/styles.js";
+import * as s from "../common/styles";
 
 highlight.registerLanguage("javascript", highlightJavaScript);
 highlight.registerLanguage("makefile", highlightMakefile);
@@ -50,7 +51,7 @@ export class ArticleWrapper extends React.Component {
   }
 }
 
-const WrapperStyled = glamorous.div({
+const WrapperStyled = styled.div({
   "> *:first-child": {
     marginTop: 0
   }
@@ -80,10 +81,14 @@ export class P extends React.Component {
 
 const classNameParagraph = "article-paragraph";
 
-const ParagraphStyled = glamorous.p(classNameParagraph, {
-  ...s.fonts.paragraph,
-  marginTop: s.dimensions.paragraphSpacing
-});
+const ParagraphStyled = styled.p(
+  // TODO: TEST THIS
+  { className: classNameParagraph },
+  {
+    ...s.fonts.paragraph,
+    marginTop: s.dimensions.paragraphSpacing
+  }
+);
 
 export class Bold extends React.Component {
   static propTypes = {
@@ -95,7 +100,7 @@ export class Bold extends React.Component {
   }
 }
 
-const BoldStyled = glamorous.strong({
+const BoldStyled = styled.strong({
   fontWeight: "bold"
 });
 
@@ -109,7 +114,7 @@ export class Italic extends React.Component {
   }
 }
 
-const ItalicStyled = glamorous.em({
+const ItalicStyled = styled.em({
   fontStyle: "italic"
 });
 
@@ -123,7 +128,7 @@ export class Q extends React.Component {
   }
 }
 
-const QuotationsStyles = glamorous.q({
+const QuotationsStyles = styled.q({
   // https://practicaltypography.com/straight-and-curly-quotes.html
   quotes: `"“" "”"`
 });
@@ -139,7 +144,7 @@ const QuotationsStyles = glamorous.q({
 //   }
 // }
 
-// const SmallComponent = glamorous.small({
+// const SmallComponent = styled.small({
 //   ...s.fonts.paragraphSmall,
 //   marginTop: s.dimensions.paragraphSpacing,
 //   color: s.colors.grayDark
@@ -149,22 +154,11 @@ const QuotationsStyles = glamorous.q({
 // Link
 //
 
-export class Link extends React.Component {
-  static propTypes = {
-    children: PropTypes.string.isRequired,
-    href: PropTypes.string
-  };
+export const Link = (props: { children: string; href?: string }) => (
+  <LinkStyled href={props.href || props.children}>{props.children}</LinkStyled>
+);
 
-  render() {
-    return (
-      <LinkStyled href={this.props.href || this.props.children}>
-        {this.props.children}
-      </LinkStyled>
-    );
-  }
-}
-
-const LinkStyled = glamorous.a({
+const LinkStyled = styled.a({
   color: s.colors.blueDark,
   transition: `0.2s border ease-in-out`,
   ":visited": {
@@ -176,41 +170,31 @@ const LinkStyled = glamorous.a({
 // Lists
 //
 
-export class List extends React.Component {
-  static propTypes = {
-    // TODO: children only prop type of li
-    children: PropTypes.node.isRequired,
-    numbered: PropTypes.bool
-  };
+export const List = ({
+  numbered = false,
+  children
+}: {
+  // TODO: children only prop type of li
+  numbered?: boolean;
+  children: React.ReactNode;
+}) => {
+  const ListStyled = numbered ? ListOrderedStyled : ListUnorderedStyled;
 
-  render() {
-    const ListStyled = this.props.numbered
-      ? ListOrderedStyled
-      : ListUnorderedStyled;
+  // TODO: consider using contect api when the new one comes out
+  const childrenNumbered = React.Children.map(children, (child: any) =>
+    React.cloneElement(child, { numbered: numbered })
+  );
 
-    // TODO: consider using contect api when the new one comes out
-    const children = React.Children.map(this.props.children, child =>
-      React.cloneElement(child, { numbered: this.props.numbered })
-    );
+  return <ListStyled>{childrenNumbered}</ListStyled>;
+};
 
-    return <ListStyled>{children}</ListStyled>;
-  }
-}
-
-export class Li extends React.Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    numbered: PropTypes.bool
-  };
-
-  render() {
-    return (
-      <ListItemStyled numbered={this.props.numbered}>
-        {this.props.children}
-      </ListItemStyled>
-    );
-  }
-}
+export const Li = ({
+  numbered = false,
+  children
+}: {
+  children: React.ReactNode;
+  numbered?: boolean;
+}) => <ListItemStyled numbered={numbered}>{children}</ListItemStyled>;
 
 const listSharedStyles = {
   // TODO: why is there size and not grid?
@@ -220,7 +204,7 @@ const listSharedStyles = {
 
 const listIndentSize = s.gridRaw(2);
 
-const ListUnorderedStyled = glamorous.ul({
+const ListUnorderedStyled = styled.ul({
   ...listSharedStyles,
   position: "relative",
   marginLeft: s.size(listIndentSize),
@@ -229,18 +213,18 @@ const ListUnorderedStyled = glamorous.ul({
   }
 });
 
-const ListOrderedStyled = glamorous.ol({
+const ListOrderedStyled = styled.ol({
   ...listSharedStyles
 });
 
-const ListItemStyled = glamorous.li(
+const ListItemStyled = styled.li(
   {
     ...s.fonts.paragraph,
     "> *": {
       marginTop: 0
     }
   },
-  props => {
+  (props: { numbered: boolean }) => {
     if (props.numbered) {
       return {
         listStyleType: "decimal"
@@ -280,7 +264,7 @@ export class H1 extends React.Component {
   }
 }
 
-const Heading1Styled = glamorous.h2(
+const Heading1Styled = styled.h2(
   s.fonts.headingMedium,
   {
     margin: `${s.size(56)} 0 ${s.size(12)} 0`,
@@ -305,7 +289,7 @@ export class H2 extends React.Component {
   }
 }
 
-const Heading2Styled = glamorous.h3(
+const Heading2Styled = styled.h3(
   s.fonts.headingSmall,
   {
     margin: `${s.size(32)} 0 ${s.size(10)} 0`,
@@ -324,89 +308,73 @@ const Heading2Styled = glamorous.h3(
 // Code
 //
 
-function formatMultilineCode(string) {
-  let res = string;
-  res = stripIndent(res);
-  res = res.split("\n");
+function formatMultilineCode(input: string): string {
+  let inputLines = stripIndent(input).split("\n");
 
   const start = (() => {
-    for (let i = 0; i < res.length; i++) {
-      if (res[i].trim() !== "") return i;
+    for (let i = 0; i < inputLines.length; i++) {
+      if (inputLines[i].trim() !== "") return i;
     }
     return 0;
   })();
 
   const end = (() => {
-    for (let i = res.length - 1; i >= 0; i--) {
-      if (res[i].trim() !== "") return i;
+    for (let i = inputLines.length - 1; i >= 0; i--) {
+      if (inputLines[i].trim() !== "") return i;
     }
-    return res.length - 1;
+    return inputLines.length - 1;
   })();
 
-  res = res.slice(start, end + 1);
-  res = res.join("\n");
-  return res;
+  inputLines = inputLines.slice(start, end + 1);
+
+  return inputLines.join("\n");
 }
 
-export class Code extends React.Component {
-  // TODO: make this component dynamic so we do not import whole highlight.js
-  static propTypes = {
-    children: PropTypes.string.isRequired,
-    multiline: PropTypes.bool,
-    language: PropTypes.string
-  };
+export const Code = ({
+  children,
+  multiline = false,
+  language
+}: {
+  children: string;
+  multiline?: boolean;
+  language?: string;
+}) => {
+  const code = formatMultilineCode(children);
 
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.children !== this.props.children) return true;
-    if (nextProps.language !== this.props.language) return true;
+  const codeComponent = language ? (
+    <CodeStyled
+      dangerouslySetInnerHTML={{
+        __html: highlight.highlight(language, code).value
+      }}
+      multiline={multiline}
+    />
+  ) : (
+    <CodeStyled multiline={multiline}>{code}</CodeStyled>
+  );
 
-    return false;
+  if (multiline) {
+    return <PreStyled>{codeComponent}</PreStyled>;
+  } else {
+    return codeComponent;
   }
+};
 
-  render() {
-    const code = formatMultilineCode(this.props.children);
+export const Diagram = (props: { children: string }) => {
+  const code = formatMultilineCode(props.children);
 
-    const codeComponent = this.props.language ? (
-      <CodeStyled
-        dangerouslySetInnerHTML={{
-          __html: highlight.highlight(this.props.language, code).value
-        }}
-        multiline={this.props.multiline}
-      />
-    ) : (
-      <CodeStyled multiline={this.props.multiline}>{code}</CodeStyled>
-    );
+  return (
+    <PreStyled>
+      <CodeStyled diagram>{code}</CodeStyled>
+    </PreStyled>
+  );
+};
 
-    if (this.props.multiline) {
-      return <PreStyled>{codeComponent}</PreStyled>;
-    } else {
-      return codeComponent;
-    }
-  }
-}
-
-export class Diagram extends React.Component {
-  static propTypes = {
-    children: PropTypes.string.isRequired
-  };
-
-  render() {
-    const code = formatMultilineCode(this.props.children);
-
-    return (
-      <PreStyled>
-        <CodeStyled diagram>{code}</CodeStyled>
-      </PreStyled>
-    );
-  }
-}
-
-const PreStyled = glamorous.pre({
+const PreStyled = styled.pre({
   display: "block",
   margin: `${s.dimensions.paragraphSpacing} 0 0 0`
 });
 
-const CodeStyled = glamorous.code(
+const CodeStyled = styled.code(
   {
     backgroundColor: s.colors.grayLighter,
     border: s.borders.default,
@@ -414,11 +382,17 @@ const CodeStyled = glamorous.code(
     boxDecorationBreak: "clone", // inline code snippets can be spread across 2 rows
     WebkitOverflowScrolling: "touch"
   },
-  props => {
+  ({
+    multiline = false,
+    diagram = false
+  }: {
+    multiline?: boolean;
+    diagram?: boolean;
+  }) => {
     const innerPadding = s.grid(1);
     let styles = {};
 
-    if (props.multiline || props.diagram) {
+    if (multiline || diagram) {
       styles = {
         ...styles,
         ...s.fonts.codeMultiline,
@@ -435,7 +409,7 @@ const CodeStyled = glamorous.code(
       };
     }
 
-    if (props.diagram) {
+    if (diagram) {
       styles = {
         ...styles,
         padding: `calc(1em + ${innerPadding})`,
@@ -453,78 +427,65 @@ const CodeStyled = glamorous.code(
 // Table
 //
 
-export class Table extends React.Component {
-  static propTypes = {
-    // TODO: children only table rows
-    heading: PropTypes.node,
-    children: PropTypes.node.isRequired
-  };
+export const Table = (props: {
+  // TODO: children only table rows
+  heading?: React.ReactNode;
+  children: React.ReactNode;
+}) => {
+  const heading = (() => {
+    const headingProp = props.heading;
+    if (!headingProp) return null;
 
-  constructor() {
-    super();
-  }
-
-  render() {
-    const heading = (() => {
-      const headingProp = this.props.heading;
-      if (!headingProp) return null;
-
-      const headingRow = React.Children.map(this.props.heading, child =>
-        React.cloneElement(child, { heading: true })
-      );
-
-      return headingRow;
-    })();
-
-    return (
-      <TableStyled>
-        {heading && <thead>{heading}</thead>}
-        <tbody>{this.props.children}</tbody>
-      </TableStyled>
+    const headingRow = React.Children.map(props.heading, (child: any) =>
+      React.cloneElement(child, { heading: true })
     );
-  }
-}
 
-const TableStyled = glamorous.table({
+    return headingRow;
+  })();
+
+  return (
+    <TableStyled>
+      {heading && <thead>{heading}</thead>}
+      <tbody>{props.children}</tbody>
+    </TableStyled>
+  );
+};
+
+const TableStyled = styled.table({
   margin: `${s.dimensions.paragraphSpacing} 0 0 0`,
   borderCollapse: "collapse"
 });
 
-export class Tr extends React.Component {
-  static propTypes = {
-    // TODO: child oly TableCell
+export const Tr = ({
+  heading = false,
+  children
+}: {
+  // TODO: child oly TableCell
 
-    // Children are not required because we might have empty filler cells.
-    children: PropTypes.node.isRequired,
-    heading: PropTypes.bool
-  };
+  // Children are not required because we might have empty filler cells.
+  heading?: boolean;
+  children: React.ReactNode;
+}) => {
+  const cells = React.Children.map(children, (child: any) =>
+    React.cloneElement(child, { heading })
+  );
 
-  render() {
-    const cells = React.Children.map(this.props.children, child =>
-      React.cloneElement(child, { heading: this.props.heading })
-    );
+  return <tr>{cells}</tr>;
+};
 
-    return <tr>{cells}</tr>;
-  }
-}
+export const Tc = ({
+  heading = false,
+  noWrap = false,
+  children
+}: {
+  heading?: boolean;
+  noWrap?: boolean;
+  children?: React.ReactNode;
+}) => {
+  const Component = heading ? TableCellHeadingStyled : (TableCellStyled as any);
 
-export class Tc extends React.Component {
-  static propTypes = {
-    children: PropTypes.node,
-    heading: PropTypes.bool,
-    noWrap: PropTypes.bool
-  };
-
-  render() {
-    const Component = this.props.heading
-      ? TableCellHeadingStyled
-      : TableCellStyled;
-
-    return (
-      <Component noWrap={this.props.noWrap}>{this.props.children}</Component>
-    );
-  }
-}
+  return <Component noWrap={noWrap}>{children}</Component>;
+};
 
 const tableCellSharedStyles = {
   ...s.fonts.paragraphSmall,
@@ -532,7 +493,7 @@ const tableCellSharedStyles = {
   padding: s.grid(1)
 };
 
-const tableCellSharedProps = props => {
+const tableCellSharedProps = (props: { noWrap: boolean }) => {
   if (props.noWrap) {
     return {
       whiteSpace: "nowrap"
@@ -540,61 +501,57 @@ const tableCellSharedProps = props => {
   }
 };
 
-const TableCellStyled = glamorous.td(
+const TableCellStyled = styled.td(
   {
     ...tableCellSharedStyles
   },
-  tableCellSharedProps
+  tableCellSharedProps as any
 );
 
-const TableCellHeadingStyled = glamorous.th(
+const TableCellHeadingStyled = styled.th(
   {
     ...tableCellSharedStyles,
     ...s.fonts.headingTable,
     fontWeight: "bold",
     textAlign: "center"
   },
-  tableCellSharedProps
+  tableCellSharedProps as any
 );
 
 //
 // Video
 //
 
-export class Video extends React.Component {
-  static propTypes = {
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-    src: PropTypes.string.isRequired
-  };
+export const Video = (props: {
+  width: number;
+  height: number;
+  src: string;
+}) => {
+  const ratio = props.width / props.height;
 
-  render() {
-    const ratio = this.props.width / this.props.height;
+  return (
+    <VideoWrapperStyled
+      style={{
+        maxHeight: props.height + "px",
+        maxWidth: props.width + "px"
+      }}
+    >
+      <VideoWrapperInnerStyled style={{ paddingBottom: 100 / ratio + "%" }}>
+        <VideoStyled
+          width={props.width}
+          height={props.height}
+          controls
+          autoPlay
+          loop
+        >
+          <source src={props.src} type="video/mp4" />
+        </VideoStyled>
+      </VideoWrapperInnerStyled>
+    </VideoWrapperStyled>
+  );
+};
 
-    return (
-      <VideoWrapperStyled
-        css={{
-          maxHeight: this.props.height + "px",
-          maxWidth: this.props.width + "px"
-        }}
-      >
-        <VideoWrapperInnerStyled css={{ paddingBottom: 100 / ratio + "%" }}>
-          <VideoStyled
-            width={this.props.width}
-            height={this.props.height}
-            controls
-            autoPlay
-            loop
-          >
-            <source src={this.props.src} type="video/mp4" />
-          </VideoStyled>
-        </VideoWrapperInnerStyled>
-      </VideoWrapperStyled>
-    );
-  }
-}
-
-const VideoWrapperStyled = glamorous.div({
+const VideoWrapperStyled = styled.div({
   marginTop: s.dimensions.paragraphSpacing,
   marginLeft: "auto",
   marginRight: "auto",
@@ -604,12 +561,12 @@ const VideoWrapperStyled = glamorous.div({
   overflow: "hidden"
 });
 
-const VideoWrapperInnerStyled = glamorous.div({
+const VideoWrapperInnerStyled = styled.div({
   width: "100%",
   height: 0
 });
 
-const VideoStyled = glamorous.video({
+const VideoStyled = styled.video({
   display: "block",
   maxWidth: "100%",
   height: "auto"

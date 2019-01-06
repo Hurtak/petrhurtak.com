@@ -21,23 +21,15 @@ const GlobalStyles = createGlobalStyle`
 
 const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
   <>
+    <Helmet>
+      <title>{capitalize(config.siteUrlShort)}</title>
+    </Helmet>
+
     {/* TODO */}
     <HtmlComment>{`build time: XXX`}</HtmlComment>
     <GlobalStyles />
 
     <Page>
-      <Helmet>
-        <title>
-          {(() => {
-            const pageName = props.pageTitle ? capitalize(props.pageTitle) : "";
-            const nDash = "\u2013";
-            const siteName = capitalize(config.siteUrlShort);
-
-            return pageName + (pageName ? ` ${nDash} ` : "") + siteName;
-          })()}
-        </title>
-      </Helmet>
-
       <Header>
         <PageLayout>
           <HeaderContent>

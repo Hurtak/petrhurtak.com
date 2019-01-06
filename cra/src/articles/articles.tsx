@@ -1,12 +1,11 @@
 import { sortBy, reverse } from "lodash-es";
 
-// import articleIife from "./2017-07-20--iife/metadata";
-// import articleVim from "./2017-12-17--vim/metadata";
-import articleIife from "./iife/metadata";
-import articleVim from "./vim/metadata";
-
 // Article metadata are in separate file because webpack was not able to tree
 // shake the article even if we used the {} imports and just imported the metadata
+
+import vim from "./published/2017-12-17--vim/metadata";
+
+const articlesMetadata: IArticleMetadata[] = [vim].map(transformMetadata);
 
 interface IArticleMetadataRaw {
   title: string;
@@ -25,10 +24,6 @@ export interface IArticleMetadata {
   articleImportPromise: () => any;
 }
 
-const articlesMetadata: IArticleMetadata[] = [articleIife, articleVim].map(
-  transformMetadata
-);
-
 export function getAllVisibleArticles() {
   let articles = articlesMetadata;
   articles = articles.filter(article => article.dateLastUpdate <= Date.now());
@@ -38,18 +33,33 @@ export function getAllVisibleArticles() {
 }
 
 function transformMetadata(metadata: IArticleMetadataRaw): IArticleMetadata {
+  const datePublication = articleMetadataDateToTimestamp(
+    metadata.datePublication
+  );
+
   const metadataTransformed = {
     title: metadata.title,
     description: formatDescription(metadata.description),
     url: metadata.url,
-    datePublication: articleMetadataDateToTimestamp(metadata.datePublication),
+    datePublication,
     dateLastUpdate: articleMetadataDateToTimestamp(metadata.dateLastUpdate),
-    articleImportPromise: () => import("./" + metadata.url + "/article.jsx")
+    articleImportPromise: (() => {
+      const date = new Date(datePublication);
+      const year = date.getUTCFullYear();
+      const month = date.getUTCMonth() + 1;
+      const day = date.getUTCDate();
+
+      return () =>
+        import(`./published/${year}-${month}-${day}--${
+          metadata.url
+        }/article.tsx`);
+    })()
   };
 
   return metadataTransformed;
 }
 
+// TODO: is this duplicate code with article.js strip-indent module?
 function formatDescription(description: string): string {
   description = description.replace(/\s{2,}/g, " ");
   description = description.trim();

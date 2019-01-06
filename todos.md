@@ -3,13 +3,14 @@
 ## TODO
 
 - drafts
-- try to convert 1 article
 - svg as react components?
 - rss
-- try build
 - convert design
 - convert articles
-- sitemap in robots.txt?
+- route based codesplitting
+  - https://reactjs.org/docs/code-splitting.html
+- sitemap
+- robots.txt?
 - prev/next article links inside article
   - or perhaps another articles from the same tag
 - responsive images

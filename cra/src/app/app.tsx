@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { Router, RouteComponentProps } from "@reach/router";
 import Layout from "./components/layout";
 import Index from "./pages/index";
+import Article from "./pages/article";
 import NotFound from "./pages/not-found";
 import { getAllVisibleArticles } from "../articles/articles";
 
@@ -41,12 +42,15 @@ const ArticleLoader = (props: RouteComponentProps<{ articleUrl: string }>) => {
     return <NotFound />;
   }
 
-  const Article = lazy(article.articleImportPromise);
+  const ArticleContent = lazy(article.articleImportPromise);
 
   return (
     <Suspense fallback={<h1>Loading</h1>}>
-      <h2>Dashboard</h2>
-      <Article />
+      {/* TODO: proper loading component */}
+      {/* TODO: delay settigns? or it is not implemented yet? */}
+      <Article article={article}>
+        <ArticleContent />
+      </Article>
     </Suspense>
   );
 };

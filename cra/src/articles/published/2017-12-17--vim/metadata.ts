@@ -1,0 +1,14 @@
+export default {
+  title: "Vim basics",
+
+  description: `
+    This article focuses on Vim basics and the use case where you are in a
+    terminal in the ssh session and want to quickly edit/explore files within
+    the terminal.
+  `,
+
+  url: "vim",
+
+  datePublication: "2017-12-17 17:00:00",
+  dateLastUpdate: "2017-12-17 17:00:00"
+};

@@ -21,6 +21,7 @@
 - revisit
   - revisit robots.txt
   - revisit manifest.json
+- cleanup package.json and package-lock.json
 - deploy
 - future
   - mdx? https://github.com/jamesknelson/create-react-app-mdx

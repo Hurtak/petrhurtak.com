@@ -1,6 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import styled, { createGlobalStyle } from "styled-components";
+import { Normalize } from "styled-normalize";
 import HtmlComment from "./html-comment";
 import Link from "./link";
 import * as s from "../common/styles";
@@ -27,7 +28,10 @@ const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
 
     {/* TODO */}
     <HtmlComment>{`build time: XXX`}</HtmlComment>
+
+    {/* Global styles and resets */}
     <GlobalStyles />
+    <Normalize />
 
     <Page>
       <Header>

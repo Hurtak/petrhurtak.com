@@ -7,6 +7,7 @@ import Link from "./link";
 import * as s from "../common/styles";
 import { capitalize } from "../common/text-formatting";
 import config from "../config/site-config";
+import { buildTime, buildGitCommitHash } from "../macros/build-info";
 
 import imageLogo from "../../images/logo.svg";
 import imageArticle from "../../images/article.svg";
@@ -26,8 +27,8 @@ const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
       <title>{capitalize(config.siteUrlShort)}</title>
     </Helmet>
 
-    {/* TODO */}
-    <HtmlComment>{`build time: XXX`}</HtmlComment>
+    <HtmlComment>{`build time: ${buildTime}`}</HtmlComment>
+    <HtmlComment>{`build git commit: ${buildGitCommitHash}`}</HtmlComment>
 
     {/* Global styles and resets */}
     <GlobalStyles />

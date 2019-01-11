@@ -2,8 +2,8 @@
 
 ## TODO
 
-- drafts
 - svg as react components?
+- drafts
 - rss
 - convert design
 - convert articles

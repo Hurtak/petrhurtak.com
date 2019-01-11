@@ -1,7 +1,7 @@
 import preval from "preval.macro";
 
 const { buildGitCommitHash, buildTimestamp, buildTime } = preval`
-  module.exports = require("../../../aaa.js")();
+  module.exports = require("../../../scripts/build-info.js")();
 ` as {
   buildGitCommitHash: string;
   buildTimestamp: number;

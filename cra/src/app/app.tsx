@@ -4,6 +4,7 @@ import Layout from "./components/layout";
 import Index from "./pages/index";
 import Article from "./pages/article";
 import NotFound from "./pages/not-found";
+import HiddenIndex from "./pages/hidden/index";
 import { getAllVisibleArticles } from "../articles/articles";
 
 const App = () => (
@@ -14,6 +15,7 @@ const App = () => (
       // We handle scrolling manually in ScrollToTop component
     >
       <RouterPage path="/" pageComponent={Index} />
+      <RouterPage path="/hidden" pageComponent={HiddenIndex} />
       <RouterPage path="/:articleUrl" pageComponent={ArticleLoader} />
       <RouterPage default pageComponent={NotFound} />
     </Router>

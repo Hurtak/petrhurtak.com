@@ -36,6 +36,12 @@
     "analyze": "source-map-explorer",
     "test": "react-scripts test"
   },
+  "reactSnap": {
+    "source": "build",
+    "include": [
+      "/hello"
+    ]
+  },
   "eslintConfig": {
     "extends": "react-app"
   },

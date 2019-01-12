@@ -2,6 +2,8 @@
 
 ## TODO
 
+- types/lint for tests
+- lodash-es does not work in jest
 - article is missing title and time
 - error boundary
 - document titles - shared component

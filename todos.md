@@ -5,7 +5,7 @@
 - drafts
   - refactor hiddenArticleLoader, also article loader should be in Article page component
   - static build
-  - metadata.url is not really url
+- never use default export
 - error boundary
 - document titles - shared component
 - move layout from main router inside different pages?

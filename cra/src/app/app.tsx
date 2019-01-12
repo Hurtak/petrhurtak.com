@@ -10,10 +10,6 @@ import BuildInformation from "./pages/hello/build-information";
 import AllArticles from "./pages/hello/all-articles";
 import { getArticles } from "../articles/articles";
 
-import(`../articles/drafts/_example/article`)
-  .then(console.log)
-  .catch(console.log);
-
 const App = () => (
   <Router
     primary={false}
@@ -53,9 +49,9 @@ const RouterPage = ({
   );
 };
 
-const ArticleLoader = (props: RouteComponentProps<{ articleUrl: string }>) => {
+const ArticleLoader = (props: RouteComponentProps<{ slug: string }>) => {
   const articles = getArticles();
-  const article = articles.find(article => article.url === props.articleUrl);
+  const article = articles.find(article => article.slug === props.slug);
   if (!article) {
     return <NotFound />;
   }
@@ -76,11 +72,9 @@ const ArticleLoader = (props: RouteComponentProps<{ articleUrl: string }>) => {
   );
 };
 
-const HiddenArticleLoader = (
-  props: RouteComponentProps<{ articleUrl: string }>
-) => {
+const HiddenArticleLoader = (props: RouteComponentProps<{ slug: string }>) => {
   const articles = getArticles({ drafts: true, futureArticles: true });
-  const article = articles.find(article => article.url === props.articleUrl);
+  const article = articles.find(article => article.slug === props.slug);
 
   if (!article) {
     return <NotFound />;

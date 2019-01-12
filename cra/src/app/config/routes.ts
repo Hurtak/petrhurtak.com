@@ -5,12 +5,12 @@ export default {
   buildInformation: "/hello/build-information/",
   allArticles: "/hello/articles/",
   hiddenArticle: {
-    matcher: "/hello/articles/:articleUrl/",
+    matcher: "/hello/articles/:slug/",
     url: (article: string) => `/hello/articles/${article}/`
   },
 
   article: {
-    matcher: "/:articleUrl/",
+    matcher: "/:slug/",
     url: (article: string) => `/${article}/`
   },
 

@@ -14,10 +14,10 @@ const articlesMetadata: IArticleMetadata[] = [vim].map(metadata =>
   transformMetadata(metadata, false)
 );
 
-interface IArticleMetadataRaw {
+export interface IArticleMetadataRaw {
   title: string;
   description: string;
-  url: string;
+  slug: string;
   datePublication: string;
   dateLastUpdate: string;
 }
@@ -26,7 +26,7 @@ export interface IArticleMetadata {
   title: string;
   description: string;
   draft: boolean;
-  url: string;
+  slug: string;
   datePublication: number;
   dateLastUpdate: number;
   articleImportPromise: () => any;
@@ -72,7 +72,7 @@ function transformMetadata(
 
   const articleImportPromise = (() => {
     if (draft) {
-      return () => import(`./drafts/${metadata.url}/article`);
+      return () => import(`./drafts/${metadata.slug}/article`);
     } else {
       const date = new Date(datePublication);
       const year = date.getUTCFullYear();
@@ -80,7 +80,7 @@ function transformMetadata(
       const day = date.getUTCDate();
 
       return () =>
-        import(`./published/${year}-${month}-${day}--${metadata.url}/article`);
+        import(`./published/${year}-${month}-${day}--${metadata.slug}/article`);
     }
   })();
 
@@ -89,7 +89,7 @@ function transformMetadata(
 
     description: formatDescription(metadata.description),
     draft,
-    url: metadata.url,
+    slug: metadata.slug,
 
     datePublication,
     dateLastUpdate: articleMetadataDateToTimestamp(metadata.dateLastUpdate),

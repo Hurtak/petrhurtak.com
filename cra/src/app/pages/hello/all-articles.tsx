@@ -23,8 +23,8 @@ const AllArticles = () => {
         <Link
           to={
             hiddenArticle
-              ? routes.hiddenArticle.url(article.url)
-              : routes.article.url(article.url)
+              ? routes.hiddenArticle.url(article.slug)
+              : routes.article.url(article.slug)
           }
         >
           {article.title}

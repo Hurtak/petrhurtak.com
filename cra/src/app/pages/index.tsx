@@ -15,7 +15,7 @@ const IndexPage = () => {
       <Heading>Recent articles</Heading>
       <Spacer spacing={4}>
         {articles.map(article => (
-          <Article key={article.url} article={article} />
+          <Article key={article.slug} article={article} />
         ))}
       </Spacer>
     </>
@@ -27,7 +27,7 @@ export default IndexPage;
 const Article = ({ article }: { article: IArticleMetadata }) => (
   <ArticleStyled>
     <ArticleTitle>
-      <ArticleTitleLink to={routes.article.url(article.url)}>
+      <ArticleTitleLink to={routes.article.url(article.slug)}>
         {article.title}
       </ArticleTitleLink>
     </ArticleTitle>

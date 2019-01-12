@@ -1,4 +1,6 @@
-export default {
+import { IArticleMetadataRaw } from "../../articles";
+
+const metadata: IArticleMetadataRaw = {
   title: "Vim basics",
 
   description: `
@@ -7,8 +9,9 @@ export default {
     the terminal.
   `,
 
-  url: "vim",
+  slug: "vim",
 
   datePublication: "2017-12-17 17:00:00",
   dateLastUpdate: "2017-12-17 17:00:00"
 };
+export default metadata;

@@ -1,35 +1,58 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Helmet from "react-helmet";
 import styled from "styled-components";
 import config from "../config/site-config";
 import { capitalize } from "../common/text-formatting";
 import { IArticleMetadata } from "../../articles/articles";
+import NotFound from "./not-found";
 
-const Article = (props: {
-  article: IArticleMetadata;
-  children: React.ReactNode;
+const Article = ({
+  slug,
+  getArticlesConfigured
+}: {
+  slug?: string;
+  getArticlesConfigured: () => IArticleMetadata[];
 }) => {
+  if (!slug) {
+    console.error("Missing slug in article loader");
+    return <NotFound />;
+  }
+
+  const articles = getArticlesConfigured();
+  const article = articles.find(article => article.slug === slug);
+
+  if (!article) {
+    return <NotFound />;
+  }
+
+  const ArticleContent = lazy(article.articleImportPromise);
+
   return (
-    <ArticleWrapper>
-      <Helmet>
-        <title>
-          {(() => {
-            const pageName = capitalize(props.article.title);
-            const nDash = "\u2013";
-            const siteName = capitalize(config.siteUrlShort);
+    <Suspense fallback={<h1>Loading</h1>}>
+      {/* TODO: proper loading component */}
+      {/* TODO: delay settigns? or it is not implemented yet? */}
 
-            return `${pageName} ${nDash} ${siteName}`;
-          })()}
-        </title>
-      </Helmet>
+      <ArticleWrapperStyled>
+        <Helmet>
+          <title>
+            {(() => {
+              const pageName = capitalize(article.title);
+              const nDash = "\u2013";
+              const siteName = capitalize(config.siteUrlShort);
 
-      {props.children}
-    </ArticleWrapper>
+              return `${pageName} ${nDash} ${siteName}`;
+            })()}
+          </title>
+        </Helmet>
+
+        <ArticleContent />
+      </ArticleWrapperStyled>
+    </Suspense>
   );
 };
 export default Article;
 
-const ArticleWrapper = styled.div({
+const ArticleWrapperStyled = styled.div({
   "> *:first-child": {
     marginTop: 0
   }

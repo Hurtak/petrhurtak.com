@@ -3,9 +3,8 @@
 ## TODO
 
 - drafts
-  - refactor hiddenArticleLoader, also article loader should be in Article page component
   - static build
-- never use default export
+- article is missing title and time
 - error boundary
 - document titles - shared component
 - move layout from main router inside different pages?

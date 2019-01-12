@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import { Router, RouteComponentProps } from "@reach/router";
 import routes from "./config/routes";
 import Layout from "./components/layout";
@@ -26,10 +26,25 @@ const App = () => (
     <RouterPage path={routes.allArticles} pageComponent={AllArticles} />
     <RouterPage
       path={routes.hiddenArticle.matcher}
-      pageComponent={HiddenArticleLoader}
+      pageComponent={(props: RouteComponentProps<{ slug: string }>) => (
+        <Article
+          slug={props.slug}
+          getArticlesConfigured={() =>
+            getArticles({ drafts: true, futureArticles: true })
+          }
+        />
+      )}
     />
 
-    <RouterPage path={routes.article.matcher} pageComponent={ArticleLoader} />
+    <RouterPage
+      path={routes.article.matcher}
+      pageComponent={(props: RouteComponentProps<{ slug: string }>) => (
+        <Article
+          slug={props.slug}
+          getArticlesConfigured={() => getArticles()}
+        />
+      )}
+    />
     <RouterPage default pageComponent={NotFound} />
   </Router>
 );
@@ -46,50 +61,6 @@ const RouterPage = ({
       <ScrollToTop {...routerProps} />
       {pageComponent(routerProps)}
     </Layout>
-  );
-};
-
-const ArticleLoader = (props: RouteComponentProps<{ slug: string }>) => {
-  const articles = getArticles();
-  const article = articles.find(article => article.slug === props.slug);
-  if (!article) {
-    return <NotFound />;
-  }
-  const ArticleContent = lazy(article.articleImportPromise);
-  article
-    .articleImportPromise()
-    .then((r: any) => console.log(r))
-    .catch((e: any) => console.log(e));
-
-  return (
-    <Suspense fallback={<h1>Loading</h1>}>
-      {/* TODO: proper loading component */}
-      {/* TODO: delay settigns? or it is not implemented yet? */}
-      <Article article={article}>
-        <ArticleContent />
-      </Article>
-    </Suspense>
-  );
-};
-
-const HiddenArticleLoader = (props: RouteComponentProps<{ slug: string }>) => {
-  const articles = getArticles({ drafts: true, futureArticles: true });
-  const article = articles.find(article => article.slug === props.slug);
-
-  if (!article) {
-    return <NotFound />;
-  }
-
-  const ArticleContent = lazy(article.articleImportPromise);
-
-  return (
-    <Suspense fallback={<h1>Loading</h1>}>
-      {/* TODO: proper loading component */}
-      {/* TODO: delay settigns? or it is not implemented yet? */}
-      <Article article={article}>
-        <ArticleContent />
-      </Article>
-    </Suspense>
   );
 };
 

@@ -6,10 +6,10 @@ import {
   buildGitCommitHash
 } from "../../macros/build-info";
 
-const HiddenIndex = () => (
+const BuildInformation = () => (
   <>
     <Helmet>
-      <title>Hidden</title>
+      <title>Build information</title>
     </Helmet>
 
     <ul>
@@ -19,4 +19,4 @@ const HiddenIndex = () => (
     </ul>
   </>
 );
-export default HiddenIndex;
+export default BuildInformation;

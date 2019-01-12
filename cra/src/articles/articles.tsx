@@ -3,9 +3,16 @@ import { sortBy, reverse } from "lodash-es";
 // Article metadata are in separate file because webpack was not able to tree
 // shake the article even if we used the {} imports and just imported the metadata
 
+import _example from "./drafts/_example/metadata";
+
 import vim from "./published/2017-12-17--vim/metadata";
 
-const articlesMetadata: IArticleMetadata[] = [vim].map(transformMetadata);
+const articlesMetadataDrafts: IArticleMetadata[] = [_example].map(metadata =>
+  transformMetadata(metadata, true)
+);
+const articlesMetadata: IArticleMetadata[] = [vim].map(metadata =>
+  transformMetadata(metadata, false)
+);
 
 interface IArticleMetadataRaw {
   title: string;
@@ -18,6 +25,7 @@ interface IArticleMetadataRaw {
 export interface IArticleMetadata {
   title: string;
   description: string;
+  draft: boolean;
   url: string;
   datePublication: number;
   dateLastUpdate: number;
@@ -32,28 +40,61 @@ export function getAllVisibleArticles() {
   return articles;
 }
 
-function transformMetadata(metadata: IArticleMetadataRaw): IArticleMetadata {
+export function getArticles({
+  drafts = false,
+  futureArticles = false
+}: {
+  drafts?: boolean;
+  futureArticles?: boolean;
+} = {}) {
+  let articles = [...articlesMetadata, ...articlesMetadataDrafts];
+
+  if (!drafts) {
+    articles = articles.filter(article => article.draft === false);
+  }
+
+  if (!futureArticles) {
+    articles = articles.filter(article => article.dateLastUpdate <= Date.now());
+  }
+
+  articles = sortBy(articles, "dateLastUpdate");
+  articles = reverse(articles);
+  return articles;
+}
+
+function transformMetadata(
+  metadata: IArticleMetadataRaw,
+  draft: boolean
+): IArticleMetadata {
   const datePublication = articleMetadataDateToTimestamp(
     metadata.datePublication
   );
 
-  const metadataTransformed = {
-    title: metadata.title,
-    description: formatDescription(metadata.description),
-    url: metadata.url,
-    datePublication,
-    dateLastUpdate: articleMetadataDateToTimestamp(metadata.dateLastUpdate),
-    articleImportPromise: (() => {
+  const articleImportPromise = (() => {
+    if (draft) {
+      return () => import(`./drafts/${metadata.url}/article`);
+    } else {
       const date = new Date(datePublication);
       const year = date.getUTCFullYear();
       const month = date.getUTCMonth() + 1;
       const day = date.getUTCDate();
 
       return () =>
-        import(`./published/${year}-${month}-${day}--${
-          metadata.url
-        }/article.tsx`);
-    })()
+        import(`./published/${year}-${month}-${day}--${metadata.url}/article`);
+    }
+  })();
+
+  const metadataTransformed: IArticleMetadata = {
+    title: metadata.title,
+
+    description: formatDescription(metadata.description),
+    draft,
+    url: metadata.url,
+
+    datePublication,
+    dateLastUpdate: articleMetadataDateToTimestamp(metadata.dateLastUpdate),
+
+    articleImportPromise
   };
 
   return metadataTransformed;

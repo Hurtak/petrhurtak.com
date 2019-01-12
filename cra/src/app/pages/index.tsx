@@ -4,13 +4,11 @@ import Link from "../components/link";
 import Spacer from "../components/spacer";
 import * as s from "../common/styles";
 import * as date from "../common/date";
-import {
-  getAllVisibleArticles,
-  IArticleMetadata
-} from "../../articles/articles";
+import { getArticles, IArticleMetadata } from "../../articles/articles";
+import routes from "../config/routes";
 
 const IndexPage = () => {
-  const articles = getAllVisibleArticles();
+  const articles = getArticles();
 
   return (
     <>
@@ -29,7 +27,7 @@ export default IndexPage;
 const Article = ({ article }: { article: IArticleMetadata }) => (
   <ArticleStyled>
     <ArticleTitle>
-      <ArticleTitleLink to={`/${article.url}/`}>
+      <ArticleTitleLink to={routes.article.url(article.url)}>
         {article.title}
       </ArticleTitleLink>
     </ArticleTitle>

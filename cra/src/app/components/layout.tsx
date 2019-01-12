@@ -7,6 +7,7 @@ import Link from "./link";
 import * as s from "../common/styles";
 import { capitalize } from "../common/text-formatting";
 import config from "../config/site-config";
+import routes from "../config/routes";
 import { buildTime, buildGitCommitHash } from "../macros/build-info";
 
 import imageLogo from "../../images/logo.svg";
@@ -38,7 +39,7 @@ const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
       <Header>
         <PageLayout>
           <HeaderContent>
-            <HeaderLogoLink to="/">
+            <HeaderLogoLink to={routes.index}>
               <HeaderLogoImage
                 className="Header-logo-image"
                 src={imageLogo}
@@ -52,7 +53,7 @@ const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
               <Menu>
                 <MenuItem>
                   <MenuItemLink
-                    to="/"
+                    to={routes.index}
                     icon={
                       <MenuItemLinkIcon
                         src={imageArticle}
@@ -90,7 +91,7 @@ const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
                 </MenuItem>
                 <MenuItem>
                   <MenuItemLink
-                    to="/rss"
+                    to={routes.rss}
                     icon={
                       <MenuItemLinkIcon src={imageRss} alt="RSS" padding={2} />
                     }

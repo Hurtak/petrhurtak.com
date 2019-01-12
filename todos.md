@@ -2,8 +2,14 @@
 
 ## TODO
 
-- svg as react components?
 - drafts
+  - refactor hiddenArticleLoader, also article loader should be in Article page component
+  - static build
+  - metadata.url is not really url
+- error boundary
+- document titles - shared component
+- move layout from main router inside different pages?
+- svg as react components?
 - rss
 - convert design
 - convert articles

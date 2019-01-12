@@ -2,7 +2,6 @@
 
 ## TODO
 
-- add draft to robots.txt
 - article is missing title and time
 - error boundary
 - document titles - shared component

@@ -2,9 +2,7 @@
 
 ## TODO
 
-- robots.txt test - test whole line not just includes
-- types/lint for tests
-- lodash-es does not work in jest
+- article loading component/transition
 - article is missing title and time
 - error boundary
 - document titles - shared component

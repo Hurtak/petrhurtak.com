@@ -1,4 +1,5 @@
-import { sortBy, reverse } from "lodash-es";
+import sortBy from "lodash/sortBy";
+import reverse from "lodash/reverse";
 
 // Article metadata are in separate file because webpack was not able to tree
 // shake the article even if we used the {} imports and just imported the metadata

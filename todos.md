@@ -2,14 +2,17 @@
 
 ## TODO
 
+- convert articles
+- afaik Link component used to convert to link if its content was only link and href parameter was missing
 - article is missing title and time
 - rss
-- convert articles
 - netlify deploy
 - deploy
 
 ## Later
 
+- color highlight does not work
+- cant use tsx in articles because we import mp4/images and that seems to be broken in CRA in ts files?
 - revisit manifest.json
 - convert rest of the design and \_legacy folder
 - comments

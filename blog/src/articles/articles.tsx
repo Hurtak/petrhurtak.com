@@ -5,15 +5,32 @@ import reverse from "lodash/reverse";
 // shake the article even if we used the {} imports and just imported the metadata
 
 import _example from "./drafts/_example/metadata";
+import _components from "./drafts/_components/metadata";
 
+import screen from "./published/2017-04-15--screen/metadata";
+import shebang from "./published/2017-04-28--shebang/metadata";
+import debianPackages from "./published/2017-05-21--debian-packages/metadata";
+import ajax from "./published/2017-07-11--ajax/metadata";
+import randomNumbers from "./published/2017-07-17--random-numbers/metadata";
+import iife from "./published/2017-07-20--iife/metadata";
+import commonNamingMistakes from "./published/2017-08-24--common-naming-mistakes/metadata";
 import vim from "./published/2017-12-17--vim/metadata";
 
-const articlesMetadataDrafts: IArticleMetadata[] = [_example].map(metadata =>
-  transformMetadata(metadata, true)
-);
-const articlesMetadata: IArticleMetadata[] = [vim].map(metadata =>
-  transformMetadata(metadata, false)
-);
+const articlesMetadataDrafts: IArticleMetadata[] = [
+  _example,
+  _components
+  //
+].map(metadata => transformMetadata(metadata, true));
+const articlesMetadata: IArticleMetadata[] = [
+  screen,
+  shebang,
+  debianPackages,
+  ajax,
+  randomNumbers,
+  iife,
+  commonNamingMistakes,
+  vim
+].map(metadata => transformMetadata(metadata, false));
 
 export interface IArticleMetadataRaw {
   title: string;
@@ -33,20 +50,14 @@ export interface IArticleMetadata {
   articleImportPromise: () => any;
 }
 
-export function getAllVisibleArticles() {
-  let articles = articlesMetadata;
-  articles = articles.filter(article => article.dateLastUpdate <= Date.now());
-  articles = sortBy(articles, "dateLastUpdate");
-  articles = reverse(articles);
-  return articles;
-}
-
 export function getArticles({
   drafts = false,
-  futureArticles = false
+  futureArticles = false,
+  sortByKey = "dateLastUpdate"
 }: {
   drafts?: boolean;
   futureArticles?: boolean;
+  sortByKey?: keyof IArticleMetadata;
 } = {}) {
   let articles = [...articlesMetadata, ...articlesMetadataDrafts];
 
@@ -58,7 +69,7 @@ export function getArticles({
     articles = articles.filter(article => article.dateLastUpdate <= Date.now());
   }
 
-  articles = sortBy(articles, "dateLastUpdate");
+  articles = sortBy(articles, sortByKey);
   articles = reverse(articles);
   return articles;
 }
@@ -73,15 +84,17 @@ function transformMetadata(
 
   const articleImportPromise = (() => {
     if (draft) {
-      return () => import(`./drafts/${metadata.slug}/article`);
+      return () => import(`./drafts/${metadata.slug}/article.jsx`);
     } else {
       const date = new Date(datePublication);
       const year = date.getUTCFullYear();
-      const month = date.getUTCMonth() + 1;
-      const day = date.getUTCDate();
+      const month = addLeadingZero(date.getUTCMonth() + 1);
+      const day = addLeadingZero(date.getUTCDate());
 
       return () =>
-        import(`./published/${year}-${month}-${day}--${metadata.slug}/article`);
+        import(`./published/${year}-${month}-${day}--${
+          metadata.slug
+        }/article.jsx`);
     }
   })();
 
@@ -125,4 +138,12 @@ function articleMetadataDateToTimestamp(dateString: string): number {
   const [hour, minute, second] = time.split(":").map(Number);
 
   return Date.UTC(year, month - 1, day, hour, minute, second);
+}
+
+function addLeadingZero(input: number): string {
+  let str = String(input);
+  if (str.length === 1) {
+    return "0" + str;
+  }
+  return str;
 }

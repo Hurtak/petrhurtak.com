@@ -19,7 +19,7 @@ const AllArticles = () => {
     hiddenArticle: boolean
   ) =>
     articles.map(article => (
-      <li>
+      <li key={article.slug}>
         <Link
           to={
             hiddenArticle

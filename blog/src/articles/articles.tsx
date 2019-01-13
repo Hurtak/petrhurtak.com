@@ -9,6 +9,7 @@ import _components from "./drafts/_components/metadata";
 
 import screen from "./published/2017-04-15--screen/metadata";
 import shebang from "./published/2017-04-28--shebang/metadata";
+import cssNamedColors from "./published/2017-05-11--css-named-colors/metadata";
 import debianPackages from "./published/2017-05-21--debian-packages/metadata";
 import ajax from "./published/2017-07-11--ajax/metadata";
 import randomNumbers from "./published/2017-07-17--random-numbers/metadata";
@@ -24,6 +25,7 @@ const articlesMetadataDrafts: IArticleMetadata[] = [
 const articlesMetadata: IArticleMetadata[] = [
   screen,
   shebang,
+  cssNamedColors,
   debianPackages,
   ajax,
   randomNumbers,

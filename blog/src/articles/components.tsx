@@ -134,6 +134,7 @@ const QuotationsStyles = styled.q({
 // Link
 //
 
+// Use our link component??
 export const Link = (props: { children: string; href?: string }) => (
   <LinkStyled href={props.href || props.children}>{props.children}</LinkStyled>
 );
@@ -317,7 +318,7 @@ export const Code = ({
 }: {
   children: string;
   multiline?: boolean;
-  language?: string;
+  language?: "javascript" | "css" | "bash" | "makefile" | "yaml";
 }) => {
   const code = formatMultilineCode(children);
 
@@ -456,15 +457,23 @@ export const Tr = ({
 export const Tc = ({
   heading = false,
   noWrap = false,
+  center = false,
+  style,
   children
 }: {
   heading?: boolean;
   noWrap?: boolean;
+  center?: boolean;
+  style?: React.CSSProperties;
   children?: React.ReactNode;
 }) => {
   const Component = heading ? TableCellHeadingStyled : (TableCellStyled as any);
 
-  return <Component noWrap={noWrap}>{children}</Component>;
+  return (
+    <Component noWrap={noWrap} center={center} style={style}>
+      {children}
+    </Component>
+  );
 };
 
 const tableCellSharedStyles = {
@@ -473,12 +482,19 @@ const tableCellSharedStyles = {
   padding: s.grid(1)
 };
 
-const tableCellSharedProps = (props: { noWrap: boolean }) => {
+const tableCellSharedProps = (props: { noWrap: boolean; center: boolean }) => {
+  let styles = [];
   if (props.noWrap) {
-    return {
+    styles.push({
       whiteSpace: "nowrap"
-    };
+    });
   }
+  if (props.center) {
+    styles.push({
+      textAlign: "center"
+    });
+  }
+  return styles;
 };
 
 const TableCellStyled = styled.td(

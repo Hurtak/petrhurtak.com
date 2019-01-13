@@ -1,5 +1,5 @@
 import React from "react";
-import { H1, H2, Link, List, Li, Video, P, Table, Tr, Tc, Code } from "../../components";
+import { H1, H2, Link, List, Li, P, Table, Tr, Tc, Code } from "../../components";
 
 export default () => (
   <>

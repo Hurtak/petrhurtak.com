@@ -2,8 +2,6 @@
 
 ## TODO
 
-- convert articles
-- afaik Link component used to convert to link if its content was only link and href parameter was missing
 - article is missing title and time
 - rss
 - netlify deploy
@@ -11,6 +9,9 @@
 
 ## Later
 
+- dash (ndash & mdash) component? (instead of writing &ndash; and &mdash; manually?)
+- click on all links and determine if they do not return 404
+- sort through todos
 - color highlight does not work
 - cant use tsx in articles because we import mp4/images and that seems to be broken in CRA in ts files?
 - revisit manifest.json

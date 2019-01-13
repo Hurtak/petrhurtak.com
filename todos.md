@@ -3,21 +3,19 @@
 ## TODO
 
 - article is missing title and time
-- x
-  - document titles - shared component
-  - move layout from main router inside different pages?
-- comments
 - rss
-- convert design
 - convert articles
-- sitemap
 - netlify deploy
-- revisit
-  - revisit manifest.json
 - deploy
 
 ## Later
 
+- revisit manifest.json
+- convert rest of the design and \_legacy folder
+- comments
+- layout
+  - document titles - shared component
+  - move layout from main router inside different pages?
 - frontend checklist
 - check generated html, if tags are ok
 - responsive images
@@ -31,6 +29,7 @@
   - 404 page
   - admin pages
 - svg as react components?
+- sitemap
 - bugs
   - menu hover - change icon to white
 - prev/next article links inside article

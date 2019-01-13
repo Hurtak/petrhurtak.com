@@ -23,6 +23,7 @@
 
 ## Later
 
+- google analytics in some better place
 - route based codesplitting
   - https://reactjs.org/docs/code-splitting.html
 - revisit components

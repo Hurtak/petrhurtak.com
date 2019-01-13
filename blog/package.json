@@ -1,7 +1,12 @@
 {
   "name": "cra",
   "version": "4.0.0",
-  "private": true,
+  "description": "Hurtak.cc blog source code",
+  "license": "MIT",
+  "author": {
+    "name": "Petr Huřťák",
+    "email": "petr.hurtak@gmail.com"
+  },
   "dependencies": {
     "@reach/router": "1.2.1",
     "@types/escape-html": "0.0.20",

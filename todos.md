@@ -14,13 +14,12 @@
 - netlify deploy
 - revisit
   - revisit manifest.json
-- check generated html, if tags are ok
-- frontend checklist
-- cleanup package.json and package-lock.json
 - deploy
 
 ## Later
 
+- frontend checklist
+- check generated html, if tags are ok
 - responsive images
   - https://www.gatsbyjs.org/docs/working-with-images/
 - google analytics in some better place

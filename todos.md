@@ -2,53 +2,48 @@
 
 ## TODO
 
-- article loading component/transition
 - article is missing title and time
-- error boundary
-- document titles - shared component
-- move layout from main router inside different pages?
-- svg as react components?
+- x
+  - document titles - shared component
+  - move layout from main router inside different pages?
 - rss
 - convert design
 - convert articles
-- route based codesplitting
-  - https://reactjs.org/docs/code-splitting.html
 - sitemap
-- robots.txt?
-- prev/next article links inside article
-  - or perhaps another articles from the same tag
 - responsive images
   - https://www.gatsbyjs.org/docs/working-with-images/
 - netlify deploy
-- bugs
-  - menu hover - change icon to white
 - revisit
-  - revisit robots.txt
   - revisit manifest.json
 - check generated html, if tags are ok
 - frontend checklist
 - cleanup package.json and package-lock.json
 - deploy
-- future
-  - mdx? https://github.com/jamesknelson/create-react-app-mdx
-  - get rid of lodash? importing just one function is 20kb (of of 70kb of full lodash)
 
-## Changing the date format
+## Later
 
-This starter uses Gatsby's built-in date formatter in the GraphQL queries. If you want to change the date format you see on the index page or other overviews have a look at the GraphQL query. It contains the line:
+- route based codesplitting
+  - https://reactjs.org/docs/code-splitting.html
+- revisit components
+  - article loading component
+  - error boundary
+  - 404 page
+  - admin pages
+- svg as react components?
+- bugs
+  - menu hover - change icon to white
+- prev/next article links inside article
+  - or perhaps another articles from the same tag
 
-```graphql
-date(formatString: "DD.MM.YYYY")
-```
+## Future
+
+- maxDuration on Suspense of article component
+- mdx? https://github.com/jamesknelson/create-react-app-mdx
+- get rid of lodash? importing just one function is 20kb (of of 70kb of full lodash)
 
 ## Rewrite TODOS
 
-- /xxx/ breaks server
 - humans.txt
-- convert remaining articles
-- deploy
-  - link to real www.hurtak.cc
-  - run tests before dev & prod deployment script
 
 ## Later
 

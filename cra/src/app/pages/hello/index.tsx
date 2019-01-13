@@ -11,12 +11,10 @@ const HiddenIndex = () => (
 
     <ul>
       <li>
-        <li>
-          <Link to={routes.buildInformation}>Build information</Link>
-        </li>
-        <li>
-          <Link to={routes.allArticles}>Articles</Link>
-        </li>
+        <Link to={routes.buildInformation}>Build information</Link>
+      </li>
+      <li>
+        <Link to={routes.allArticles}>Articles</Link>
       </li>
     </ul>
   </>

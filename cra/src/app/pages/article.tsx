@@ -28,7 +28,7 @@ const Article = ({
   const ArticleContent = lazy(article.articleImportPromise);
 
   return (
-    <Suspense fallback={<h1>Loading</h1>}>
+    <Suspense fallback={<Loading />}>
       {/* TODO: proper loading component */}
       {/* TODO: delay settigns? or it is not implemented yet? */}
 
@@ -45,12 +45,43 @@ const Article = ({
           </title>
         </Helmet>
 
-        <ArticleContent />
+        <ArticleErrorBoundary>
+          <ArticleContent />
+        </ArticleErrorBoundary>
       </ArticleWrapperStyled>
     </Suspense>
   );
 };
 export default Article;
+
+const Loading = () => {
+  return null;
+};
+
+class ArticleErrorBoundary extends React.Component<{}, { hasError: boolean }> {
+  state = {
+    hasError: false
+  };
+
+  static getDerivedStateFromError(error: Error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: any, info: any) {
+    // TODO: log
+    // logErrorToMyService(error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // TODO
+      return <p>Something went wrong, please try again later</p>;
+    }
+
+    return this.props.children;
+  }
+}
 
 const ArticleWrapperStyled = styled.div({
   "> *:first-child": {

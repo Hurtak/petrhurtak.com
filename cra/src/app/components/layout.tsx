@@ -323,7 +323,7 @@ const FooterParagraph = styled.p(
   (props: { withMarginTop?: boolean }) => {
     if (props.withMarginTop) {
       return {
-        marginTop: s.grid(1)
+        marginTop: s.grid(0.5)
       };
     }
   }

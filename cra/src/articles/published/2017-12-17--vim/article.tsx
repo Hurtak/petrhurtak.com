@@ -1,17 +1,5 @@
 import React from "react";
-import {
-  H1,
-  H2,
-  List,
-  Bold,
-  Li,
-  Link,
-  P,
-  Table,
-  Tr,
-  Tc,
-  Code
-} from "../../components";
+import { H1, H2, List, Bold, Li, Link, P, Table, Tr, Tc, Code } from "../../components";
 
 export default () => (
   <>
@@ -24,19 +12,16 @@ export default () => (
     </P>
     <List>
       <Li>
-        <Bold>Runs inside terminal</Bold>, so it is easy to use on remote
-        servers with ssh.
+        <Bold>Runs inside terminal</Bold>, so it is easy to use on remote servers with ssh.
       </Li>
       <Li>
-        <Bold>Widely available</Bold> on Linux distributions. If you ssh
-        somewhere, Vim is the probably the most likely terminal text editor to
-        be installed.
+        <Bold>Widely available</Bold> on Linux distributions. If you ssh somewhere, Vim is the probably the most likely
+        terminal text editor to be installed.
       </Li>
     </List>
     <P>
-      This article focuses on Vim basics and the use case where you are in a
-      terminal in the ssh session and want to quickly edit/explore files within
-      the terminal.
+      This article focuses on Vim basics and the use case where you are in a terminal in the ssh session and want to
+      quickly edit/explore files within the terminal.
     </P>
 
     <H1>Install</H1>
@@ -47,13 +32,11 @@ export default () => (
 
     <H1>Basic usage</H1>
     <P>
-      Unlike more traditional text editors, where if you start typing the
-      letters will be inserted at the place of your cursor, Vim works little
-      differently. <Bold>In Vim you have modes and commands</Bold>, the default
-      mode is for text navigation or manipulation, and letters on your keyboard
-      are shortcuts for things like cut, paste, mode change or save file. So if
-      you want to select text, you enter <Code>Visual</Code> mode, if you want
-      to insert text, you enter <Code>Insert</Code> mode and so on.
+      Unlike more traditional text editors, where if you start typing the letters will be inserted at the place of your
+      cursor, Vim works little differently. <Bold>In Vim you have modes and commands</Bold>, the default mode is for
+      text navigation or manipulation, and letters on your keyboard are shortcuts for things like cut, paste, mode
+      change or save file. So if you want to select text, you enter <Code>Visual</Code> mode, if you want to insert
+      text, you enter <Code>Insert</Code> mode and so on.
     </P>
 
     <H2>Modes & Commands</H2>
@@ -72,8 +55,8 @@ export default () => (
           <Code>Esc</Code>
         </Tc>
         <Tc>
-          For navigation and manipulation of text. The default mode. You can
-          usually get back to this mode with <Code>Esc</Code>.
+          For navigation and manipulation of text. The default mode. You can usually get back to this mode with{" "}
+          <Code>Esc</Code>.
         </Tc>
       </Tr>
       <Tr>

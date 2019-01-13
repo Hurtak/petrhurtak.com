@@ -1,0 +1,10 @@
+{
+  "overrides": [
+    {
+      "files": ["drafts/**/*", "published/**/*"],
+      "options": {
+        "printWidth": 120
+      }
+    }
+  ]
+}

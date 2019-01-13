@@ -1,8 +1,6 @@
 {
   "search.exclude": {
-    "src/.cache": true,
-    "src/public": true,
-    "_legacy": true,
+    "blog/build": true,
     "**/node_modules": true
   },
   "editor.formatOnSave": true

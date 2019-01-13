@@ -11,8 +11,6 @@
 - convert design
 - convert articles
 - sitemap
-- responsive images
-  - https://www.gatsbyjs.org/docs/working-with-images/
 - netlify deploy
 - revisit
   - revisit manifest.json
@@ -23,6 +21,8 @@
 
 ## Later
 
+- responsive images
+  - https://www.gatsbyjs.org/docs/working-with-images/
 - google analytics in some better place
 - route based codesplitting
   - https://reactjs.org/docs/code-splitting.html

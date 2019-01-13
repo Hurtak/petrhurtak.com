@@ -11,6 +11,9 @@ it("hidden route in robots.txt", () => {
     path.join(__dirname, "../../../public/robots.txt"),
     "utf8"
   );
+
   expect(robotsTxt).toBeTruthy();
-  expect(robotsTxt.includes(`Disallow: ${routes.hidden}`)).toBeTruthy();
+
+  const regex = new RegExp(`^Disallow: ${routes.hidden}$`, "m");
+  expect(robotsTxt).toEqual(expect.stringMatching(regex));
 });

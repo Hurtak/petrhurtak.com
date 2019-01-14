@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -ex
 
+mkdir -p src/generated
 ./node_modules/.bin/ts-node --project ./scripts/file-generators/tsconfig.json ./scripts/file-generators/generate-build-info.ts
 ./node_modules/.bin/ts-node --project ./scripts/file-generators/tsconfig.json ./scripts/file-generators/generate-rss.ts

@@ -3,5 +3,5 @@ set -e
 cd "$(dirname "$0")/.."
 
 mkdir -p src/generated
-./node_modules/.bin/ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-build-info.ts
-./node_modules/.bin/ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-rss.ts
+npx ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-build-info.ts
+npx ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-rss.ts

@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 set -ex
 
-pwd
 cd "$(dirname "$0")/.."
-pwd
 
 ./scripts/generate
-npx react-scripts build
-npx react-snap
+../node_modules/.bin/react-scripts build
+../node_modules/.bin/react-snap

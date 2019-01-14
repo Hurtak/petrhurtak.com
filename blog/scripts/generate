@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -ex
-cd "$(dirname "$0")"
 
-../node_modules/.bin/ts-node --project ./file-generators/tsconfig.json ./file-generators/generate-build-info.ts
-../node_modules/.bin/ts-node --project ./file-generators/tsconfig.json ./file-generators/generate-rss.ts
+./node_modules/.bin/ts-node --project ./scripts/file-generators/tsconfig.json ./scripts/file-generators/generate-build-info.ts
+./node_modules/.bin/ts-node --project ./scripts/file-generators/tsconfig.json ./scripts/file-generators/generate-rss.ts

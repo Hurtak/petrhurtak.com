@@ -1,5 +1,8 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
+set -ex
+pwd
 cd "$(dirname "$0")"
+pwd
 
-npx ts-node --project file-generators/tsconfig.json ./file-generators/generate-build-info.ts
-npx ts-node --project file-generators/tsconfig.json ./file-generators/generate-rss.ts
+npx ts-node --project ./file-generators/tsconfig.json ./file-generators/generate-build-info.ts
+npx ts-node --project ./file-generators/tsconfig.json ./file-generators/generate-rss.ts

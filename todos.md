@@ -3,12 +3,14 @@
 ## TODO
 
 - article is missing title and time
-- rss
 - netlify deploy
 - deploy
 
 ## Later
 
+- tools that might be useful
+  - alex
+- typings, get rid of anys
 - dash (ndash & mdash) component? (instead of writing &ndash; and &mdash; manually?)
 - click on all links and determine if they do not return 404
 - sort through todos
@@ -44,6 +46,7 @@
 - maxDuration on Suspense of article component
 - mdx? https://github.com/jamesknelson/create-react-app-mdx
 - get rid of lodash? importing just one function is 20kb (of of 70kb of full lodash)
+- prettier xml?, once https://github.com/prettier/prettier/issues/5322 lands
 
 ## Rewrite TODOS
 

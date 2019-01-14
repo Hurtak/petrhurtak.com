@@ -1,3 +1,12 @@
+# OS stuff
 .DS_Store
+
+# Dependencies
 /blog/node_modules
+
+# Build files
 /blog/build
+
+# Generated files
+/blog/public/rss.xml
+/blog/src/generated

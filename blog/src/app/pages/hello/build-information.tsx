@@ -1,10 +1,8 @@
 import React from "react";
 import Helmet from "react-helmet";
-import {
-  buildTime,
-  buildTimestamp,
-  buildGitCommitHash
-} from "../../macros/build-info";
+import buildInformation from "../../../generated/build-info";
+
+const { buildTime, buildTimestamp, buildGitCommitHash } = buildInformation;
 
 const BuildInformation = () => (
   <>

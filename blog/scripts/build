@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+cd "$(dirname "$0")/.."
+
+./scripts/generate
+npx react-scripts build
+npx react-snap

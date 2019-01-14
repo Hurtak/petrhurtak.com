@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+cd "$(dirname "$0")"
+
+npx ts-node ./file-generators/generate-build-info.ts
+npx ts-node ./file-generators/generate-rss.ts

@@ -14,5 +14,5 @@ export default {
     url: (article: string) => `/${article}/`
   },
 
-  rss: "/rss"
+  rss: "/rss.xml"
 };

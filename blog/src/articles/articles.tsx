@@ -53,13 +53,17 @@ export interface IArticleMetadata {
 }
 
 export function getArticles({
+  limit = 10,
   drafts = false,
   futureArticles = false,
-  sortByKey = "dateLastUpdate"
+  sortByKey = "dateLastUpdate",
+  desc = true
 }: {
+  limit?: number;
   drafts?: boolean;
   futureArticles?: boolean;
   sortByKey?: keyof IArticleMetadata;
+  desc?: boolean;
 } = {}) {
   let articles = [...articlesMetadata, ...articlesMetadataDrafts];
 
@@ -72,7 +76,12 @@ export function getArticles({
   }
 
   articles = sortBy(articles, sortByKey);
-  articles = reverse(articles);
+
+  if (desc) {
+    articles = reverse(articles);
+  }
+
+  articles = articles.slice(0, limit);
   return articles;
 }
 

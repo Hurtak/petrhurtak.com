@@ -92,6 +92,7 @@ const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
                     }
                     rel="alternate"
                     type="application/rss+xml"
+                    rawLink
                   >
                     RSS
                   </MenuItemLink>

@@ -3,6 +3,7 @@ import { Link as ReachRouterLink } from "@reach/router";
 
 interface ILinkProps extends React.HTMLProps<HTMLAnchorElement> {
   to: string;
+  rawLink?: boolean;
   children: React.ReactNode;
 }
 
@@ -10,7 +11,7 @@ const Link = (props: ILinkProps) => {
   const { to, rel, className, children } = props;
 
   const isLinkExternal = /^\w+:/.test(props.to);
-  if (isLinkExternal) {
+  if (props.rawLink || isLinkExternal) {
     const relWrapped = (() => {
       if (rel) return rel;
 

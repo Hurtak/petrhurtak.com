@@ -14,7 +14,7 @@
     "@types/jest": "23.3.12",
     "@types/lodash": "4.14.119",
     "@types/node": "10.12.18",
-    "@types/preval.macro": "3.0.0",
+    "@types/prettier": "1.15.2",
     "@types/reach__router": "1.2.2",
     "@types/react": "16.7.18",
     "@types/react-dom": "16.0.11",
@@ -33,13 +33,8 @@
     "strip-indent": "2.0.0",
     "styled-components": "4.1.3",
     "styled-normalize": "8.0.4",
+    "ts-node": "7.0.1",
     "typescript": "3.2.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && react-snap",
-    "analyze": "source-map-explorer",
-    "test": "react-scripts test"
   },
   "reactSnap": {
     "source": "build",

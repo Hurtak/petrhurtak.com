@@ -1,3 +1,18 @@
+- how to write blogs
+  - everything own
+    - bad, hard to upgrade/extend, takes a long time
+  - next.js
+    - very bas support for static rendering
+    - get initial props are not cached so you would need api or walk your api and predownload it in some json files - that would be aanoying build step
+  - gatsby
+    - ridiculously complicated
+  - create react app + react-static
+    - reasonable compromise
+
+- alternative vay to write gulp
+  - how i did it in v1
+  - execa
+
 - babel preval macro
   - how i do it on this blog generate scripts
 
@@ -418,8 +433,6 @@ class TabIndexHandler extends React.Component {
     - Text component from Calendar project
       - can be used outside of react in Bem/SuitCSS
   - steidas article
-
-- gulp
 
 - local storage
   - localStorage.set('key', 1) vs localStorage.key = 1

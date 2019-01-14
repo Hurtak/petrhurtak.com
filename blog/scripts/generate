@@ -2,6 +2,7 @@
 set -e
 cd "$(dirname "$0")/.."
 
+rm -r src/generated
 mkdir -p src/generated
 npx ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-build-info.ts
 npx ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-rss.ts

@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -ex
+
+pwd
 cd "$(dirname "$0")/.."
+pwd
 
 ./scripts/generate
 npx react-scripts build

@@ -2,7 +2,6 @@
 
 ## TODO
 
-- article is missing title and time
 - netlify deploy
 - deploy
 

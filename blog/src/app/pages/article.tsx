@@ -1,10 +1,14 @@
 import React, { lazy, Suspense } from "react";
 import Helmet from "react-helmet";
 import styled from "styled-components";
+import ReactDisqusComments from "react-disqus-comments";
+import NotFound from "./not-found";
 import config from "../config/site-config";
+import routes from "../config/routes";
 import { capitalize } from "../common/text-formatting";
 import { IArticleMetadata } from "../../articles/articles";
-import NotFound from "./not-found";
+import * as date from "../common/date";
+import * as s from "../common/styles";
 
 const Article = ({
   slug,
@@ -46,7 +50,27 @@ const Article = ({
         </Helmet>
 
         <ArticleErrorBoundary>
-          <ArticleContent />
+          <Header>
+            <ArticleTitle>{article.title}</ArticleTitle>
+            <Time
+              title={date.fullDate(article.dateLastUpdate)}
+              dateTime={date.iso(article.dateLastUpdate)}
+            >
+              {date.howLongBefore(article.dateLastUpdate)}
+            </Time>
+          </Header>
+          <Content>
+            <ArticleContent />
+          </Content>
+          <Comments>
+            <CommentsTitle>Comments</CommentsTitle>
+            <ReactDisqusComments
+              shortname="hurtak"
+              identifier={article.slug}
+              title={article.title}
+              url={config.siteUrl + "/" + routes.article.url(article.slug)}
+            />
+          </Comments>
         </ArticleErrorBoundary>
       </ArticleWrapperStyled>
     </Suspense>
@@ -87,4 +111,32 @@ const ArticleWrapperStyled = styled.div({
   "> *:first-child": {
     marginTop: 0
   }
+});
+
+const Header = styled.div({
+  display: "flex",
+  flexDirection: "column"
+});
+
+const ArticleTitle = styled.h1({
+  ...s.fonts.heading,
+  color: s.colors.grayDark
+});
+
+const Time = styled.time({
+  ...s.fonts.paragraph,
+  fontStyle: "italic"
+});
+
+const Content = styled.div({
+  marginTop: s.grid(3)
+});
+
+const Comments = styled.section({
+  marginTop: s.grid(3)
+});
+
+const CommentsTitle = styled.h2({
+  ...s.fonts.headingMedium,
+  margin: `${s.grid(7)} 0 ${s.grid(2)} 0`
 });

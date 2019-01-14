@@ -2,8 +2,8 @@
 
 ## TODO
 
-- netlify deploy
-- deploy
+- articles page - jumping content
+- Insecure link urls: http://hurtak.disqus.com
 
 ## Later
 

@@ -354,7 +354,7 @@ class TabIndexHandler extends React.Component {
   - you need to download some 3rd party software to open android phones, wtf???
   - cant write to ntfs drives, only read
   - jack connector is really tight, after you put it it, it is hard to pull out.
-
+  - when I plug in headphones with microphone, it is not possible to use internal microphone
 
 - todos apps mostly useless - google calendar
 

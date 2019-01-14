@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 // TODO: is this duplicate code with or own metadata.description strip indent function?
 import stripIndent from "strip-indent";
@@ -50,9 +49,9 @@ highlight.registerLanguage("bash", highlightBash);
 // }
 
 export class P extends React.Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired
-  };
+  // static propTypes = {
+  //   children: PropTypes.node.isRequired
+  // };
 
   render() {
     return <ParagraphStyled>{this.props.children}</ParagraphStyled>;
@@ -71,9 +70,9 @@ const ParagraphStyled = styled.p(
 );
 
 export class Bold extends React.Component {
-  static propTypes = {
-    children: PropTypes.string.isRequired
-  };
+  // static propTypes = {
+  //   children: PropTypes.string.isRequired
+  // };
 
   render() {
     return <BoldStyled>{this.props.children}</BoldStyled>;
@@ -85,9 +84,9 @@ const BoldStyled = styled.strong({
 });
 
 export class Italic extends React.Component {
-  static propTypes = {
-    children: PropTypes.string.isRequired
-  };
+  // static propTypes = {
+  //   children: PropTypes.string.isRequired
+  // };
 
   render() {
     return <ItalicStyled>{this.props.children}</ItalicStyled>;
@@ -99,9 +98,9 @@ const ItalicStyled = styled.em({
 });
 
 export class Q extends React.Component {
-  static propTypes = {
-    children: PropTypes.string.isRequired
-  };
+  // static propTypes = {
+  //   children: PropTypes.string.isRequired
+  // };
 
   render() {
     return <QuotationsStyles>{this.props.children}</QuotationsStyles>;
@@ -236,9 +235,9 @@ const removeSpacingAfterHeading = {
 };
 
 export class H1 extends React.Component {
-  static propTypes = {
-    children: PropTypes.string.isRequired
-  };
+  // static propTypes = {
+  //   children: PropTypes.string.isRequired
+  // };
 
   render() {
     return <Heading1Styled>{this.props.children}</Heading1Styled>;
@@ -261,9 +260,9 @@ const Heading1Styled = styled.h2(
 );
 
 export class H2 extends React.Component {
-  static propTypes = {
-    children: PropTypes.string.isRequired
-  };
+  // static propTypes = {
+  //   children: PropTypes.string.isRequired
+  // };
 
   render() {
     return <Heading2Styled>{this.props.children}</Heading2Styled>;

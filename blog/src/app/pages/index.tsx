@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled/macro";
 import Link from "../components/link";
 import Spacer from "../components/spacer";
 import * as s from "../common/styles";

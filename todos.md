@@ -2,13 +2,14 @@
 
 ## TODO
 
-- articles page - jumping content
-- Insecure link urls: http://hurtak.disqus.com
-
 ## Later
 
+- articles page - jumping content
+  - implement loading component
+  - try react router? it maybe has some wait for async action complete
 - tools that might be useful
   - alex
+- Insecure link urls: http://hurtak.disqus.com
 - typings, get rid of anys
 - dash (ndash & mdash) component? (instead of writing &ndash; and &mdash; manually?)
 - click on all links and determine if they do not return 404
@@ -39,6 +40,7 @@
   - menu hover - change icon to white
 - prev/next article links inside article
   - or perhaps another articles from the same tag
+- emotion normalize.css
 
 ## Future
 

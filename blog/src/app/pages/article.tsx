@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import Helmet from "react-helmet";
-import styled from "styled-components";
+import styled from "@emotion/styled/macro";
 import ReactDisqusComments from "react-disqus-comments";
 import NotFound from "./not-found";
 import config from "../config/site-config";

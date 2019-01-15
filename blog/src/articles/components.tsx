@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled/macro";
 // TODO: is this duplicate code with or own metadata.description strip indent function?
 import stripIndent from "strip-indent";
 

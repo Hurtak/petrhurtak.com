@@ -1,7 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
-import styled, { createGlobalStyle } from "styled-components";
-import { Normalize } from "styled-normalize";
+import { Global } from "@emotion/core";
+import styled from "@emotion/styled/macro";
 import Link from "./link";
 import * as s from "../common/styles";
 import { capitalize } from "../common/text-formatting";
@@ -14,11 +14,15 @@ import imageTwitter from "../../images/twitter.svg";
 import imageGithub from "../../images/github.svg";
 import imageRss from "../../images/rss.svg";
 
-const GlobalStyles = createGlobalStyle`
-  body {
-    margin: 0;
-  }
-`;
+const GlobalStyles = () => (
+  <Global
+    styles={{
+      body: {
+        margin: 0
+      }
+    }}
+  />
+);
 
 const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
   <>
@@ -28,7 +32,6 @@ const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
 
     {/* Global styles and resets */}
     <GlobalStyles />
-    <Normalize />
 
     <Page>
       <Header>

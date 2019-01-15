@@ -2,6 +2,8 @@
 
 ## TODO
 
+- dash (ndash & mdash) component? (instead of writing &ndash; and &mdash; manually?)
+
 ## Later
 
 - articles page - jumping content
@@ -11,7 +13,6 @@
   - alex
 - Insecure link urls: http://hurtak.disqus.com
 - typings, get rid of anys
-- dash (ndash & mdash) component? (instead of writing &ndash; and &mdash; manually?)
 - click on all links and determine if they do not return 404
 - sort through todos
 - color highlight does not work

@@ -1,5 +1,5 @@
 import React from "react";
-import { H1, H2, List, Li, Link, P, Q, Diagram, Code } from "../../components";
+import { H1, H2, List, Li, Link, P, Quote, Diagram, Code } from "../../components";
 
 export default () => (
   <>
@@ -79,9 +79,9 @@ export default () => (
     <H1>URL vs. URI</H1>
 
     <P>
-      URIs are identifiers, and that can mean name, location, or both. All URLs are URIs, but the opposite is not
-      true. The part that makes something a URL is the inclusion of the <Q>access mechanism</Q>, or{" "}
-      <Q>network location</Q>, such as <Code>https://</Code>, or <Code>mailto:</Code>.
+      URIs are identifiers, and that can mean name, location, or both. All URLs are URIs, but the opposite is not true.
+      The part that makes something a URL is the inclusion of the <Quote>access mechanism</Quote>, or{" "}
+      <Quote>network location</Quote>, such as <Code>https://</Code>, or <Code>mailto:</Code>.
     </P>
 
     <List>

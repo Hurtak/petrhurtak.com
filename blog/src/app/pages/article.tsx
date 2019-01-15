@@ -107,11 +107,7 @@ class ArticleErrorBoundary extends React.Component<{}, { hasError: boolean }> {
   }
 }
 
-const ArticleWrapperStyled = styled.div({
-  "> *:first-child": {
-    marginTop: 0
-  }
-});
+const ArticleWrapperStyled = styled.div();
 
 const Header = styled.div({
   display: "flex",

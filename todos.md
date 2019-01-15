@@ -4,6 +4,7 @@
 
 ## Later
 
+- https://github.com/evenchange4/svgr.macro ?
 - articles page - jumping content
   - implement loading component
   - try react router? it maybe has some wait for async action complete
@@ -13,7 +14,6 @@
 - typings, get rid of anys
 - click on all links and determine if they do not return 404
 - sort through todos
-- color highlight does not work
 - cant use tsx in articles because we import mp4/images and that seems to be broken in CRA in ts files?
 - revisit manifest.json
 - convert rest of the design and \_legacy folder
@@ -39,7 +39,6 @@
   - menu hover - change icon to white
 - prev/next article links inside article
   - or perhaps another articles from the same tag
-- emotion normalize.css
 
 ## Future
 

@@ -1,23 +1,29 @@
 import React from "react";
 import styled from "@emotion/styled/macro";
+import css from "@emotion/css/macro";
+import { Global } from "@emotion/core";
 // TODO: is this duplicate code with or own metadata.description strip indent function?
 import stripIndent from "strip-indent";
 import * as s from "../../common/styles";
+import { highlightCss } from "../../../generated/raw-files";
+
+// const ss = raw("highlight.js/styles/github.css");
 
 // Only include used languages in the bundle
-// https://github.com/isagalaev/highlight.js/issues/1257
 // TODO: make the register language with dynamic imports so we do not have
 //       to register languages manually and so only needed languages are
 //       downloaded?
+// https://github.com/isagalaev/highlight.js/issues/1257
 import highlight from "highlight.js/lib/highlight.js";
 
-import highlightJavaScript from "highlight.js/lib/languages/javascript";
-import highlightMakefile from "highlight.js/lib/languages/makefile";
-import highlightJson from "highlight.js/lib/languages/json";
-import highlightYaml from "highlight.js/lib/languages/yaml";
-import highlightCss from "highlight.js/lib/languages/css";
-import highlightXml from "highlight.js/lib/languages/xml"; // HTML
-import highlightBash from "highlight.js/lib/languages/bash";
+import highlightLanguageJavaScript from "highlight.js/lib/languages/javascript";
+import highlightLanguageMakefile from "highlight.js/lib/languages/makefile";
+import highlightLanguageJson from "highlight.js/lib/languages/json";
+import highlightLanguageYaml from "highlight.js/lib/languages/yaml";
+import highlightLanguageCss from "highlight.js/lib/languages/css";
+import highlightLanguageXml from "highlight.js/lib/languages/xml"; // HTML
+import highlightLanguageBash from "highlight.js/lib/languages/bash";
+import highlightLanguageElm from "highlight.js/lib/languages/elm";
 // import highlightShell from "highlight.js/lib/languages/shell";
 // import highlightHttp from "highlight.js/lib/languages/http";
 // import highlightPython from "highlight.js/lib/languages/python";
@@ -25,13 +31,16 @@ import highlightBash from "highlight.js/lib/languages/bash";
 // import highlightDiff from "highlight.js/lib/languages/diff";
 // import highlightMarkdown from "highlight.js/lib/languages/markdown";
 
-highlight.registerLanguage("javascript", highlightJavaScript);
-highlight.registerLanguage("makefile", highlightMakefile);
-highlight.registerLanguage("json", highlightJson);
-highlight.registerLanguage("yaml", highlightYaml);
-highlight.registerLanguage("css", highlightCss);
-highlight.registerLanguage("xml", highlightXml);
-highlight.registerLanguage("bash", highlightBash);
+highlight.registerLanguage("javascript", highlightLanguageJavaScript);
+highlight.registerLanguage("makefile", highlightLanguageMakefile);
+highlight.registerLanguage("json", highlightLanguageJson);
+highlight.registerLanguage("yaml", highlightLanguageYaml);
+highlight.registerLanguage("css", highlightLanguageCss);
+highlight.registerLanguage("xml", highlightLanguageXml);
+highlight.registerLanguage("bash", highlightLanguageBash);
+highlight.registerLanguage("elm", highlightLanguageElm);
+
+const HighlightStyles = () => <Global styles={css(highlightCss)} />;
 
 export const Code = ({
   children,
@@ -62,11 +71,12 @@ export const Code = ({
     <CodeStyled multiline={multiline}>{code}</CodeStyled>
   );
 
-  if (multiline) {
-    return <PreStyled>{codeComponent}</PreStyled>;
-  } else {
-    return codeComponent;
-  }
+  return (
+    <>
+      <HighlightStyles />
+      {multiline ? <PreStyled>{codeComponent}</PreStyled> : codeComponent}
+    </>
+  );
 };
 
 export const Diagram = (props: { children: string }) => {

@@ -1,12 +1,14 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { Global } from "@emotion/core";
 import styled from "@emotion/styled/macro";
+import css from "@emotion/css/macro";
+import { Global } from "@emotion/core";
 import Link from "./link";
 import * as s from "../common/styles";
 import { capitalize } from "../common/text-formatting";
 import config from "../config/site-config";
 import routes from "../config/routes";
+import { normalizeCss } from "../../generated/raw-files";
 
 import imageLogo from "../../images/logo.svg";
 import imageArticle from "../../images/article.svg";
@@ -24,6 +26,8 @@ const GlobalStyles = () => (
   />
 );
 
+const NormalizeCss = () => <Global styles={css(normalizeCss)} />;
+
 const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
   <>
     <Helmet>
@@ -32,6 +36,7 @@ const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
 
     {/* Global styles and resets */}
     <GlobalStyles />
+    <NormalizeCss />
 
     <Page>
       <Header>

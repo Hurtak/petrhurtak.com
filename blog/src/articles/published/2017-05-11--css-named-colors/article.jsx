@@ -1,5 +1,5 @@
 import React from "react";
-import { H1, H2, Link, List, Li, P, Table, Tr, Tc, Code } from "../../components";
+import { H1, H2, Link, List, Li, P, Dash, Table, Tr, Tc, Code } from "../../components";
 import colors from "./colors.ts";
 
 export default () => (
@@ -34,14 +34,14 @@ export default () => (
     <H1>Duplicate colors</H1>
 
     <P>
-      There are four duplicates between the named colors, and all of them are related to gray (English) &ndash; grey
+      There are four duplicates between the named colors, and all of them are related to gray (English) <Dash /> grey
       (UK) spelling differences.
     </P>
 
     <P>
-      The duplicates are: <Color>lightgray</Color> &ndash; <Color>lightgrey</Color>, <Color>darkgray</Color> &ndash;{" "}
-      <Color>darkgrey</Color>, <Color invert>gray</Color> &ndash; <Color invert>grey</Color>,{" "}
-      <Color invert>dimgray</Color> &ndash; <Color invert>dimgrey</Color>.
+      The duplicates are: <Color>lightgray</Color> <Dash /> <Color>lightgrey</Color>, <Color>darkgray</Color> <Dash />{" "}
+      <Color>darkgrey</Color>, <Color invert>gray</Color> <Dash /> <Color invert>grey</Color>,{" "}
+      <Color invert>dimgray</Color> <Dash /> <Color invert>dimgrey</Color>.
     </P>
 
     <H1>Inconsistencies</H1>

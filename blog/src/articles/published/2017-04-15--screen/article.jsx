@@ -1,5 +1,5 @@
 import React from "react";
-import { H1, H2, Link, List, Li, Video, P, Table, Tr, Tc, Code } from "../../components";
+import { H1, H2, Link, List, Li, Video, P, Dash, Table, Tr, Tc, Code } from "../../components";
 import screenMp4 from "./videos/screen.mp4";
 
 export default () => (
@@ -182,7 +182,7 @@ export default () => (
 
     <H1>Conclusion</H1>
     <P>
-      I use Screen mainly for running processes in the background &ndash; for the ease of coming back to them, seeing
+      I use Screen mainly for running processes in the background <Dash /> for the ease of coming back to them, seeing
       what they logged into the console, and terminating them. With the window management stuff, I am fine with just
       using regular tabs in my terminal. But if you ever needed something more powerful than that, you should consider
       either Screen or its more powerful competitor <Link href="https://tmux.github.io/">Tmux</Link>.

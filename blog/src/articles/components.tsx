@@ -1,4 +1,11 @@
-import { P, Link, Bold, Italic, Quote } from "../app/components/article/text";
+import {
+  P,
+  Link,
+  Bold,
+  Italic,
+  Quote,
+  Dash
+} from "../app/components/article/text";
 import { H1, H2 } from "../app/components/article/headings";
 import { List, Li } from "../app/components/article/list";
 import { Table, Tr, Tc } from "../app/components/article/table";
@@ -11,6 +18,7 @@ export {
   Bold,
   Italic,
   Quote,
+  Dash,
   H1,
   H2,
   List,

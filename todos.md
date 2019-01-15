@@ -2,8 +2,6 @@
 
 ## TODO
 
-- dash (ndash & mdash) component? (instead of writing &ndash; and &mdash; manually?)
-
 ## Later
 
 - articles page - jumping content

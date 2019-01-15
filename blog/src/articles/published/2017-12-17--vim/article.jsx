@@ -1,5 +1,5 @@
 import React from "react";
-import { H1, H2, List, Bold, Li, Link, P, Table, Tr, Tc, Code } from "../../components";
+import { H1, H2, List, Bold, Li, Link, P, Dash, Table, Tr, Tc, Code } from "../../components";
 
 export default () => (
   <>
@@ -224,7 +224,9 @@ export default () => (
         <Tc />
       </Tr>
       <Tr>
-        <Tc>Search &ndash; next item</Tc>
+        <Tc>
+          Search <Dash /> next item
+        </Tc>
         <Tc>
           <Code>n</Code>
         </Tc>
@@ -233,7 +235,9 @@ export default () => (
         </Tc>
       </Tr>
       <Tr>
-        <Tc>Search &ndash; previous item</Tc>
+        <Tc>
+          Search <Dash /> previous item
+        </Tc>
         <Tc>
           <Code>N</Code>
         </Tc>

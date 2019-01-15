@@ -55,3 +55,6 @@ const QuotationsStyles = styled.q({
   // https://practicaltypography.com/straight-and-curly-quotes.html
   quotes: `"“" "”"`
 });
+
+export const Dash = ({ long = false }: { long?: boolean }) =>
+  long === false ? <>&ndash;</> : <>&mdash;</>;

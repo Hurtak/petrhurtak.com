@@ -2,12 +2,17 @@
 
 ## TODO
 
+- Blog article placeholder jako na médiu nebo facebooku
+  - articles page - jumping content
+    - implement loading component
+    - try react router? it maybe has some wait for async action complete
+- layout
+  - document titles - shared component
+  - move layout from main router inside different pages?
+
 ## Later
 
 - https://github.com/evenchange4/svgr.macro ?
-- articles page - jumping content
-  - implement loading component
-  - try react router? it maybe has some wait for async action complete
 - tools that might be useful
   - alex
 - Insecure link urls: http://hurtak.disqus.com
@@ -18,9 +23,6 @@
 - revisit manifest.json
 - convert rest of the design and \_legacy folder
 - comments
-- layout
-  - document titles - shared component
-  - move layout from main router inside different pages?
 - frontend checklist
 - check generated html, if tags are ok
 - responsive images

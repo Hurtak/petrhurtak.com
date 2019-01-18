@@ -1,7 +1,7 @@
 import React from "react";
 import { Router, RouteComponentProps } from "@reach/router";
 import routes from "./config/routes";
-import Layout from "./components/layout";
+import Layout from "./components/layout/layout";
 import Index from "./pages/index";
 import Article from "./pages/article";
 import NotFound from "./pages/not-found";

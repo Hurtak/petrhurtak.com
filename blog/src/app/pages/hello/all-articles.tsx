@@ -1,7 +1,7 @@
 import React from "react";
-import Helmet from "react-helmet";
 import Link from "../../components/link";
 import routes from "../../config/routes";
+import Title from "../../components/layout/title";
 import { IArticleMetadata, getArticles } from "../../../articles/articles";
 
 const AllArticles = () => {
@@ -34,9 +34,7 @@ const AllArticles = () => {
 
   return (
     <>
-      <Helmet>
-        <title>All articles</title>
-      </Helmet>
+      <Title>All articles</Title>
 
       <section>
         <h2>Drafts ({drafts.length})</h2>

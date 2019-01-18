@@ -9,7 +9,6 @@ const colors: IColorGroup[] = [
     colors: [
       ["MistyRose", "#FFE4E1", "rgb(255, 228, 225)", false],
       ["Pink", "#FFC0CB", "rgb(255, 192, 203)", false],
-      ["Pink", "#FFC0CB", "rgb(255, 192, 203)", false],
       ["LightPink", "#FFB6C1", "rgb(255, 182, 193)", false],
       ["HotPink", "#FF69B4", "rgb(255, 105, 180)", true],
       ["PaleVioletRed", "#DB7093", "rgb(219, 112, 147)", true],

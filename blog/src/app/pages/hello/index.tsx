@@ -1,13 +1,11 @@
 import React from "react";
-import Helmet from "react-helmet";
 import Link from "../../components/link";
+import Title from "../../components/layout/title";
 import routes from "../../config/routes";
 
 const HiddenIndex = () => (
   <>
-    <Helmet>
-      <title>Hello</title>
-    </Helmet>
+    <Title>Hello</Title>
 
     <ul>
       <li>

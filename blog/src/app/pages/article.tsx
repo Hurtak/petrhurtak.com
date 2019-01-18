@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import styled from "@emotion/styled/macro";
 import ReactDisqusComments from "react-disqus-comments";
 import NotFound from "./not-found";
+import Title from "../components/layout/title";
 import config from "../config/site-config";
 import routes from "../config/routes";
 import { capitalize } from "../common/text-formatting";
@@ -37,17 +38,7 @@ const Article = ({
       {/* TODO: delay settigns? or it is not implemented yet? */}
 
       <ArticleWrapperStyled>
-        <Helmet>
-          <title>
-            {(() => {
-              const pageName = capitalize(article.title);
-              const nDash = "\u2013";
-              const siteName = capitalize(config.siteUrlShort);
-
-              return `${pageName} ${nDash} ${siteName}`;
-            })()}
-          </title>
-        </Helmet>
+        <Title>{article.title}</Title>
 
         <ArticleErrorBoundary>
           <Header>

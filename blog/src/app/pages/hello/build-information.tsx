@@ -1,14 +1,12 @@
 import React from "react";
-import Helmet from "react-helmet";
+import Title from "../../components/layout/title";
 import buildInformation from "../../../generated/build-info";
 
 const { buildTime, buildTimestamp, buildGitCommitHash } = buildInformation;
 
 const BuildInformation = () => (
   <>
-    <Helmet>
-      <title>Build information</title>
-    </Helmet>
+    <Title>Build information</Title>
 
     <ul>
       <li>{`build time: ${buildTime}`}</li>

@@ -3,18 +3,18 @@ import Helmet from "react-helmet";
 import styled from "@emotion/styled/macro";
 import css from "@emotion/css/macro";
 import { Global } from "@emotion/core";
-import Link from "./link";
-import * as s from "../common/styles";
-import { capitalize } from "../common/text-formatting";
-import config from "../config/site-config";
-import routes from "../config/routes";
-import { normalizeCss } from "../../generated/raw-files";
+import Link from "../link";
+import * as s from "../../common/styles";
+import { capitalize } from "../../common/text-formatting";
+import config from "../../config/site-config";
+import routes from "../../config/routes";
+import { normalizeCss } from "../../../generated/raw-files";
 
-import imageLogo from "../../images/logo.svg";
-import imageArticle from "../../images/article.svg";
-import imageTwitter from "../../images/twitter.svg";
-import imageGithub from "../../images/github.svg";
-import imageRss from "../../images/rss.svg";
+import imageLogo from "../../../images/logo.svg";
+import imageArticle from "../../../images/article.svg";
+import imageTwitter from "../../../images/twitter.svg";
+import imageGithub from "../../../images/github.svg";
+import imageRss from "../../../images/rss.svg";
 
 const GlobalStyles = () => (
   <Global

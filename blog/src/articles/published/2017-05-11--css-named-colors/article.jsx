@@ -140,7 +140,7 @@ export default () => (
     </P>
 
     {colors.map(category => (
-      <React.Fragmen key={category.title}>
+      <React.Fragment key={category.title}>
         <H2>{category.title}</H2>
         <Table>
           {category.colors.map(([name, hex, rgb, invert]) => (
@@ -151,7 +151,7 @@ export default () => (
             </Tr>
           ))}
         </Table>
-      </React.Fragmen>
+      </React.Fragment>
     ))}
 
     <H2>Links</H2>

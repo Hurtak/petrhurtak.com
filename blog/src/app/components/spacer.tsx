@@ -2,14 +2,18 @@ import React from "react";
 import styled from "@emotion/styled/macro";
 import * as s from "../common/styles";
 
-const Spacer = (props: { spacing: number; children: React.ReactNode }): any => {
+const Spacer = (props: { spacing: number; children: React.ReactNode }) => {
   const children = React.Children.toArray(props.children);
 
-  return children.map((item: any, index) => (
-    <SpacerStyled key={item.key} spacing={index === 0 ? 0 : props.spacing}>
-      {item}
-    </SpacerStyled>
-  ));
+  return (
+    <>
+      {children.map((item: any, index) => (
+        <SpacerStyled key={item.key} spacing={index === 0 ? 0 : props.spacing}>
+          {item}
+        </SpacerStyled>
+      ))}
+    </>
+  );
 };
 export default Spacer;
 

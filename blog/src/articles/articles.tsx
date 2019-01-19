@@ -49,7 +49,7 @@ export interface IArticleMetadata {
   slug: string;
   datePublication: number;
   dateLastUpdate: number;
-  articleImportPromise: () => any;
+  articleImportPromise: () => Promise<{ default: any }>;
 }
 
 export function getArticles({

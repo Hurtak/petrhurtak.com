@@ -6,15 +6,13 @@ export const List = ({
   numbered = false,
   children
 }: {
-  // TODO: children only prop type of li
   numbered?: boolean;
   children: React.ReactNode;
 }) => {
   const ListStyled = numbered ? ListOrderedStyled : ListUnorderedStyled;
 
-  // TODO: consider using contect api when the new one comes out
-  const childrenNumbered = React.Children.map(children, (child: any) =>
-    React.cloneElement(child, { numbered: numbered })
+  const childrenNumbered = React.Children.map(children, child =>
+    React.cloneElement(child as React.ReactElement<any>, { numbered: numbered })
   );
 
   return <ListStyled>{childrenNumbered}</ListStyled>;
@@ -53,6 +51,7 @@ const ListOrderedStyled = styled.ol({
 const ListItemStyled = styled.li(
   {
     ...s.fonts.paragraph,
+    // TODO
     "> *": {
       marginTop: 0
     }

@@ -83,10 +83,10 @@ class ArticleErrorBoundary extends React.Component<{}, { hasError: boolean }> {
     return { hasError: true };
   }
 
-  componentDidCatch(error: any, info: any) {
-    // TODO: log
-    // logErrorToMyService(error, info);
-  }
+  // componentDidCatch(error: any, info: any) {
+  // TODO: log
+  // logErrorToMyService(error, info);
+  // }
 
   render() {
     if (this.state.hasError) {

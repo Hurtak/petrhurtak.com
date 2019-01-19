@@ -1,9 +1,8 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "@emotion/styled/macro";
 import * as s from "../../common/styles";
 
 export const Table = (props: {
-  // TODO: children only table rows
   heading?: React.ReactNode;
   children: React.ReactNode;
 }) => {
@@ -11,8 +10,8 @@ export const Table = (props: {
     const headingProp = props.heading;
     if (!headingProp) return null;
 
-    const headingRow = React.Children.map(props.heading, (child: any) =>
-      React.cloneElement(child, { heading: true })
+    const headingRow = React.Children.map(props.heading, child =>
+      React.cloneElement(child as React.ReactElement<any>, { heading: true })
     );
 
     return headingRow;
@@ -35,14 +34,12 @@ export const Tr = ({
   heading = false,
   children
 }: {
-  // TODO: child oly TableCell
-
   // Children are not required because we might have empty filler cells.
   heading?: boolean;
   children: React.ReactNode;
 }) => {
-  const cells = React.Children.map(children, (child: any) =>
-    React.cloneElement(child, { heading })
+  const cells = React.Children.map(children, child =>
+    React.cloneElement(child as React.ReactElement<any>, { heading })
   );
 
   return <tr>{cells}</tr>;
@@ -61,7 +58,7 @@ export const Tc = ({
   style?: React.CSSProperties;
   children?: React.ReactNode;
 }) => {
-  const Component = heading ? TableCellHeadingStyled : (TableCellStyled as any);
+  const Component = heading ? TableCellHeadingStyled : TableCellStyled;
 
   return (
     <Component noWrap={noWrap} center={center} style={style}>
@@ -95,7 +92,7 @@ const TableCellStyled = styled.td(
   {
     ...tableCellSharedStyles
   },
-  tableCellSharedProps as any
+  tableCellSharedProps
 );
 
 const TableCellHeadingStyled = styled.th(
@@ -105,5 +102,5 @@ const TableCellHeadingStyled = styled.th(
     fontWeight: "bold",
     textAlign: "center"
   },
-  tableCellSharedProps as any
+  tableCellSharedProps
 );

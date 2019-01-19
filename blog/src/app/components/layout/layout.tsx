@@ -138,9 +138,7 @@ const Page = styled.div({
   display: "flex",
   alignItems: "center",
   flexDirection: "column",
-  minHeight: "100vh",
-  textRendering: "optimizeLegibility" // TODO: is this doing anyting?
-  // TODO: http://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
+  minHeight: "100vh"
 });
 
 const PageLayout = (props: { children: React.ReactNode }) => (

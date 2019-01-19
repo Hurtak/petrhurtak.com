@@ -8,7 +8,6 @@
     - try react router? it maybe has some wait for async action complete
     - preload article when mousedown?
 - async loading of comments
-- typings, get rid of anys
 
 ## Later
 
@@ -40,6 +39,7 @@
   - or perhaps another articles from the same tag
 - preload articles in viewport
   - or something more clever?
+- production build time is in different locale
 
 ## Future
 

@@ -11,11 +11,7 @@ import AllArticles from "./pages/hello/all-articles";
 import { getArticles } from "../articles/articles";
 
 const App = () => (
-  <Router
-    primary={false}
-    // To prevent page scrolling router content into viewport
-    // We handle scrolling manually in ScrollToTop component
-  >
+  <Router>
     <RouterPage path={routes.index} pageComponent={Index} />
 
     <RouterPage path={routes.hidden} pageComponent={Hello} />
@@ -56,27 +52,5 @@ const RouterPage = ({
 }: {
   pageComponent: (routerProps: RouteComponentProps) => JSX.Element;
 } & RouteComponentProps) => {
-  return (
-    <Layout>
-      <ScrollToTop {...routerProps} />
-      {pageComponent(routerProps)}
-    </Layout>
-  );
+  return <Layout>{pageComponent(routerProps)}</Layout>;
 };
-
-class ScrollToTop extends React.Component<RouteComponentProps, {}> {
-  // https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/scroll-restoration.md
-  // TODO: rewrite to hooks?
-
-  componentDidUpdate(prevProps: RouteComponentProps) {
-    if (this.props.location && prevProps.location) {
-      if (this.props.location.pathname !== prevProps.location.pathname) {
-        window.scrollTo(0, 0);
-      }
-    }
-  }
-
-  render() {
-    return null;
-  }
-}

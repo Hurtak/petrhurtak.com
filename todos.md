@@ -6,23 +6,20 @@
   - articles page - jumping content
     - implement loading component
     - try react router? it maybe has some wait for async action complete
-- layout
-  - document titles - shared component
-  - move layout from main router inside different pages?
+    - preload article when mousedown?
+- async loading of comments
+- typings, get rid of anys
 
 ## Later
 
 - https://github.com/evenchange4/svgr.macro ?
-- tools that might be useful
-  - alex
 - Insecure link urls: http://hurtak.disqus.com
-- typings, get rid of anys
+- click on articles link should scroll to top
 - click on all links and determine if they do not return 404
 - sort through todos
 - cant use tsx in articles because we import mp4/images and that seems to be broken in CRA in ts files?
 - revisit manifest.json
 - convert rest of the design and \_legacy folder
-- comments
 - frontend checklist
 - check generated html, if tags are ok
 - responsive images
@@ -41,6 +38,8 @@
   - menu hover - change icon to white
 - prev/next article links inside article
   - or perhaps another articles from the same tag
+- preload articles in viewport
+  - or something more clever?
 
 ## Future
 

@@ -60,8 +60,7 @@ const ArticleTitleLink = styled(Link)({
 });
 
 const ArticleDate = styled.time({
-  ...s.fonts.paragraphSmall,
-  margingTop: s.grid(0.25)
+  ...s.fonts.paragraphSmall
 });
 
 const ArticleDescription = styled.p({

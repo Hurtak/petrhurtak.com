@@ -11,12 +11,12 @@ export default () => (
     <H1>Parameter vs. argument</H1>
 
     <Code multiline language="javascript">{`
-          function log (parameter) {
-            console.log(parameter)
-          }
+      function log (parameter) {
+        console.log(parameter)
+      }
 
-          log('argument')
-        `}</Code>
+      log('argument')
+    `}</Code>
 
     <H2>Parameter</H2>
     <P>Variable in a function signature that is a placeholder for the actual value passed into the function.</P>
@@ -27,20 +27,20 @@ export default () => (
     <H1>Function vs. method</H1>
 
     <Code multiline language="javascript">{`
-          function functionName (state) {
-            return state + 1
-          }
+      function functionName (state) {
+        return state + 1
+      }
 
-          class ClassName {
-            constructor () {
-              this.state = 0
-            }
+      class ClassName {
+        constructor () {
+          this.state = 0
+        }
 
-            methodName () {
-              this.state += 1
-            }
-          }
-        `}</Code>
+        methodName () {
+          this.state += 1
+        }
+      }
+    `}</Code>
 
     <H2>Function</H2>
 
@@ -63,18 +63,18 @@ export default () => (
     <H2>Serial</H2>
 
     <Diagram>{`
-          input ── A ── B ── C ── response
-        `}</Diagram>
+      input ── A ── B ── C ── response
+    `}</Diagram>
 
     <H2>Parallel</H2>
 
     <Diagram>{`
-                  ┌──── A ────┐
-                  │           │
-          input ──┼──── B ────┼── response
-                  │           │
-                  └──── C ────┘
-        `}</Diagram>
+              ┌──── A ────┐
+              │           │
+      input ──┼──── B ────┼── response
+              │           │
+              └──── C ────┘
+    `}</Diagram>
 
     <H1>URL vs. URI</H1>
 

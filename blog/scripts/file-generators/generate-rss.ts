@@ -19,8 +19,8 @@ const rssString = `
       article => `
           <item>
             <title>${article.title}</title>
-            <link>${config.siteUrl}/${routes.article.url(article.slug)}</link>
-            <guid>${config.siteUrl}/${routes.article.url(article.slug)}</guid>
+            <link>${config.siteUrl}${routes.article.url(article.slug)}</link>
+            <guid>${config.siteUrl}${routes.article.url(article.slug)}</guid>
             <pubDate>${utc(article.dateLastUpdate)}</pubDate>
             <description>${article.description}</description>
           </item>

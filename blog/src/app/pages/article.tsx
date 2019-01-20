@@ -59,7 +59,7 @@ const Article = ({
               shortname="hurtak"
               identifier={article.slug}
               title={article.title}
-              url={config.siteUrl + "/" + routes.article.url(article.slug)}
+              url={config.siteUrl + routes.article.url(article.slug)}
             />
           </Comments>
         </ArticleErrorBoundary>

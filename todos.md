@@ -8,6 +8,28 @@
     - try react router? it maybe has some wait for async action complete
     - preload article when mousedown?
 - async loading of comments
+- new design for site, insiration
+  - https://alexmeub.com/
+- finish CSS design
+  - add cool efect to buttons like in https://www.keithcirkel.co.uk/
+  - inspiration:
+    - new
+      - https://tomdale.net/
+      - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
+      - https://www.robinwieruch.de/mobx-react/
+      - https://www.bramstein.com/writing/web-font-loading-patterns.html
+    - old
+      - http://alves.im/blog/before-dive-into-react.html
+      - http://blog.rstankov.com/
+      - http://maketea.co.uk/2016/09/28/css-grid-layout-is-a-step-change.html
+      - http://oops.re/
+      - http://phoboslab.org/log
+      - http://prolost.com/
+      - http://usabilitypost.com/
+      - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
+      - https://automattic.com/
+      - https://www.briangilham.com/articles/
+      - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
 
 ## Later
 
@@ -109,28 +131,6 @@
 - add less, and maybe try sass
 - update rss, package.json descriptions
 - consider moving metadata.title to the article itself?
-- finish CSS design
-
-  - add cool efect to buttons like in https://www.keithcirkel.co.uk/
-  - inspiration:
-    - new
-      - https://tomdale.net/
-      - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
-      - https://www.robinwieruch.de/mobx-react/
-      - https://www.bramstein.com/writing/web-font-loading-patterns.html
-    - old
-      - http://alves.im/blog/before-dive-into-react.html
-      - http://blog.rstankov.com/
-      - http://maketea.co.uk/2016/09/28/css-grid-layout-is-a-step-change.html
-      - http://oops.re/
-      - http://phoboslab.org/log
-      - http://prolost.com/
-      - http://usabilitypost.com/
-      - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
-      - https://automattic.com/
-      - https://www.briangilham.com/articles/
-      - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
-
 - add components/styles for keyboard shortcuts - in case we want to write them in the article
 - add "updated 20/10/2015" - date of last update of the article
   - figure out where to put this date
@@ -173,9 +173,6 @@
 - take a look at error logging tools like sentry?
 - https://blog.cloudflare.com/accelerating-node-js-applications-with-http-2-server-push/
 - consider using https://github.com/VerbalExpressions/JSVerbalExpressions for regex
-- https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/ with this provide fallback to older browsers?
-- fork to multiple processes (strong-supervisor, there is also Isaac Schluter's old cluster-master, naught, cluster2, pm2, etc.)
-- robots.txt review - make article
 - inspiration
   - http://blog.jenkster.com/
   - http://bramstein.com/writing/

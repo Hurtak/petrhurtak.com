@@ -1,3 +1,5 @@
+- robots.txt review - make article
+
 - how to write blogs
   - everything own
     - bad, hard to upgrade/extend, takes a long time

@@ -6,7 +6,7 @@ export function generateSourceFile(tsString: string, fileName: string) {
   tsString = prettier.format(tsString, { parser: "typescript" });
 
   fs.writeFileSync(
-    path.join(__dirname, "../../src/generated", fileName),
+    path.join(__dirname, "../../../src/generated/", fileName),
     tsString,
     "utf8"
   );
@@ -14,7 +14,7 @@ export function generateSourceFile(tsString: string, fileName: string) {
 
 export function generateStaticFile(fileContent: string, fileName: string) {
   fs.writeFileSync(
-    path.join(__dirname, "../../public/", fileName),
+    path.join(__dirname, "../../../public/", fileName),
     fileContent,
     "utf8"
   );

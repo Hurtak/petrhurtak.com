@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Easy way</title>
-</head>
-<body>
-  <p>Try to press some keys.</p>
+  <head>
+    <title>Easy way</title>
+  </head>
+  <body>
+    <p>Try to press some keys.</p>
 
-  <input type="text" id="pass-1">
-  <p>CapsLock state is: <span id="capslock-message">unknown</span></p>
+    <input type="text" id="pass-1" />
+    <p>CapsLock state is: <span id="capslock-message">unknown</span></p>
 
-  <script>
-    const capsLockMessageEl = document.querySelector('#capslock-message')
+    <script>
+      const capsLockMessageEl = document.querySelector("#capslock-message");
 
-    window.addEventListener('keydown', event => {
-      let capsLockState = event.getModifierState('CapsLock')
+      window.addEventListener("keydown", event => {
+        let capsLockState = event.getModifierState("CapsLock");
 
-      if (event.key === 'CapsLock') { // or `event.which === 20` (deprecated API) if you want better backwards compatibility
-        capsLockState = !capsLockState
-      }
+        if (event.key === "CapsLock") {
+          // or `event.which === 20` (deprecated API) if you want better backwards compatibility
+          capsLockState = !capsLockState;
+        }
 
-      capsLockMessageEl.innerHTML = capsLockState ? 'ON' : 'OFF'
-    })
-  </script>
-</body>
+        capsLockMessageEl.innerHTML = capsLockState ? "ON" : "OFF";
+      });
+    </script>
+  </body>
 </html>

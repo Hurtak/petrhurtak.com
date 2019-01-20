@@ -1,5 +1,5 @@
 import { execSync } from "child_process";
-import { generateSourceFile } from "./generate-file";
+import { generateSourceFile } from "./lib/generate-file";
 
 const now = new Date();
 

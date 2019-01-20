@@ -3,7 +3,7 @@ import * as path from "path";
 import * as prettier from "prettier";
 
 export function generateSourceFile(tsString: string, fileName: string) {
-  tsString = prettier.format(tsString, { parser: "babylon" });
+  tsString = prettier.format(tsString, { parser: "typescript" });
 
   fs.writeFileSync(
     path.join(__dirname, "../../src/generated", fileName),

@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { generateSourceFile } from "./generate-file";
+import { generateSourceFile } from "./lib/generate-file";
 
 const highlightCss = fs.readFileSync(
   path.join(__dirname, "../../node_modules/highlight.js/styles/github.css"),

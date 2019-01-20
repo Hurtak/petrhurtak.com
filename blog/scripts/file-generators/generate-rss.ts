@@ -2,7 +2,7 @@ import config from "../../src/app/config/site-config";
 import routes from "../../src/app/config/routes";
 import { utc } from "../../src/app/common/date";
 import { getArticles } from "../../src/articles/articles";
-import { generateStaticFile } from "./generate-file";
+import { generateStaticFile } from "./lib/generate-file";
 
 const articlesSliced = getArticles({ limit: config.articles.perRssFeed });
 

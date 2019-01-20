@@ -3,6 +3,6 @@ set -e
 cd "$(dirname "$0")/.."
 
 ./scripts/generate
-CI=true ./scripts/test
+./scripts/verify
 npx react-scripts build
 npx react-snap

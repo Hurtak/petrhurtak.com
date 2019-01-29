@@ -8,9 +8,9 @@
     - try react router? it maybe has some wait for async action complete
     - preload article when mousedown?
 - async loading of comments
-- new design for site, insiration
-  - https://alexmeub.com/
 - finish CSS design
+  - new design for site, insiration
+    - https://alexmeub.com/
   - add cool efect to buttons like in https://www.keithcirkel.co.uk/
   - inspiration:
     - new
@@ -33,6 +33,8 @@
 
 ## Later
 
+- seo.jsx convert
+  - https://www.rarous.net/weblog/2019/01/28/generovani-twitter-card-obrazku.html
 - https://github.com/evenchange4/svgr.macro ?
 - Insecure link urls: http://hurtak.disqus.com
 - click on articles link should scroll to top

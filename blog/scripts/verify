@@ -4,5 +4,8 @@ set -e
 
 ./node_modules/.bin/tsc --noEmit --project tsconfig.json
 ./node_modules/.bin/tsc --noEmit --project scripts/file-generators/tsconfig.json
+
 ./node_modules/.bin/prettier --check src/**/*.{ts,tsx,js,jsx,html,css}
+
+# CI=true runs tests as regular script instead of in watch mode
 CI=true ./scripts/test

@@ -4,5 +4,5 @@ cd "$(dirname "$0")/.."
 
 ./scripts/generate
 ./scripts/verify
-npx react-scripts build
-npx react-snap
+./node_modules/.bin/react-scripts build
+./node_modules/.bin/react-snap

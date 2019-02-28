@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")/.."
 
-npx react-scripts test
+./node_modules/.bin/react-scripts test

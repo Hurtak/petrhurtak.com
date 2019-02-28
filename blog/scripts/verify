@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-cd "$(dirname "$0")/.."
 set -e
+cd "$(dirname "$0")/.."
 
 ./node_modules/.bin/tsc --noEmit --project "tsconfig.json"
 ./node_modules/.bin/tsc --noEmit --project "scripts/file-generators/tsconfig.json"

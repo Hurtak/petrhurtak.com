@@ -4,6 +4,6 @@ cd "$(dirname "$0")/.."
 
 rm -rf src/generated
 mkdir -p src/generated
-npx ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-build-info.ts
-npx ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-raw.ts
-npx ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-rss.ts
+./node_modules/.bin/ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-build-info.ts
+./node_modules/.bin/ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-raw.ts
+./node_modules/.bin/ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-rss.ts

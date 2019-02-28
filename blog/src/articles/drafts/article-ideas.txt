@@ -1,3 +1,11 @@
+- git squash into one commit
+  - git basics
+    - add remote
+    - merge upstream changes into your fork
+    - reset to remote branch
+    - squash changes and force push
+      - https://stackoverflow.com/questions/25356810/git-how-to-squash-all-commits-on-branch
+
 - robots.txt review - make article
 
 - how to write blogs
@@ -17,9 +25,6 @@
 
 - babel preval macro
   - how i do it on this blog generate scripts
-
-- git squash into one commit
-  - https://stackoverflow.com/questions/25356810/git-how-to-squash-all-commits-on-branch
 
 - visitelnost
   - je element videt ve viewportu/jinem elementu, nastaveni na procenta viditelnosti?

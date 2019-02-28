@@ -11,6 +11,7 @@
 - finish CSS design
   - new design for site, insiration
     - https://alexmeub.com/
+    - https://tesarek.me/
   - add cool efect to buttons like in https://www.keithcirkel.co.uk/
   - inspiration:
     - new

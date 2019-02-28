@@ -57,7 +57,9 @@
       TODO: take GA token from config
     -->
     <script>
-      ga = function() { ga.q.push(arguments); };
+      ga = function() {
+        ga.q.push(arguments);
+      };
       ga.q = [];
       ga.l = new Date().getTime();
       ga("create", "UA-93333552-1", "auto");

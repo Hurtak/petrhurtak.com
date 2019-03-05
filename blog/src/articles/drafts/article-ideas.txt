@@ -19,6 +19,8 @@
   - create react app + react-static
     - reasonable compromise
 
+- react key attribute
+
 - alternative vay to write gulp
   - how i did it in v1
   - execa

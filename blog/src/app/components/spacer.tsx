@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "@emotion/styled/macro";
-import * as s from "../common/styles";
+import * as s from "../styles/styles";
 
-const Spacer = (props: { spacing: number; children: React.ReactNode }) => {
+export const Spacer = (props: {
+  spacing: number;
+  children: React.ReactNode;
+}) => {
   const children = React.Children.toArray(props.children);
 
   return (
@@ -15,7 +18,6 @@ const Spacer = (props: { spacing: number; children: React.ReactNode }) => {
     </>
   );
 };
-export default Spacer;
 
 const SpacerStyled = styled.div((props: { spacing: number }) => ({
   marginTop: s.grid(props.spacing)

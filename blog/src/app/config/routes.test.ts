@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import routes from "./routes";
+import { routes } from "./routes";
 
 it("hidden route exists", () => {
   expect(routes.hidden).toBeTruthy();

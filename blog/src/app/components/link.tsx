@@ -7,22 +7,20 @@ interface ILinkProps extends React.HTMLProps<HTMLAnchorElement> {
   children: React.ReactNode;
 }
 
-const Link = (props: ILinkProps) => {
+export const Link = (props: ILinkProps) => {
   const { to, rel, className, children } = props;
 
   const isLinkExternal = /^\w+:/.test(props.to);
   if (props.rawLink || isLinkExternal) {
-    const relWrapped = (() => {
+    const relEnhanced = (() => {
       if (rel) return rel;
 
       const targetBlank = props.target === "_blank";
-      if (!targetBlank) return rel;
-
-      return "noopener noreferrer";
+      return targetBlank ? "noopener noreferrer" : "";
     })();
 
     return (
-      <a href={to} rel={relWrapped} className={className}>
+      <a href={to} rel={relEnhanced} className={className}>
         {children}
       </a>
     );
@@ -34,5 +32,3 @@ const Link = (props: ILinkProps) => {
     );
   }
 };
-
-export default Link;

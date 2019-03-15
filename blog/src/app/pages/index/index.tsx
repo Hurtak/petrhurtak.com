@@ -1,13 +1,18 @@
 import React from "react";
-import styled from "@emotion/styled/macro";
-import Link from "../components/link";
-import Spacer from "../components/spacer";
-import * as s from "../common/styles";
-import * as date from "../common/date";
-import { getArticles, IArticleMetadata } from "../../articles/articles";
-import routes from "../config/routes";
+import {
+  Heading,
+  ArticleStyled,
+  ArticleTitleLink,
+  ArticleDate,
+  ArticleDescription
+} from "./styled";
+import { Spacer } from "../../components/spacer";
+import * as date from "../../common/date";
+import { routes } from "../../config/routes";
+import { getArticles, IArticleMetadata } from "../../../articles/articles";
+import { ArticleTitle } from "../article/styled";
 
-const IndexPage = () => {
+export const Index = () => {
   const articles = getArticles();
 
   return (
@@ -21,8 +26,6 @@ const IndexPage = () => {
     </>
   );
 };
-
-export default IndexPage;
 
 const Article = ({ article }: { article: IArticleMetadata }) => (
   <ArticleStyled>
@@ -42,28 +45,3 @@ const Article = ({ article }: { article: IArticleMetadata }) => (
     <ArticleDescription>{article.description}</ArticleDescription>
   </ArticleStyled>
 );
-
-const Heading = styled.h1({
-  ...s.fonts.heading,
-  marginBottom: s.grid(3)
-});
-
-const ArticleStyled = styled.article({});
-
-const ArticleTitle = styled.h2({
-  margin: 0
-});
-
-const ArticleTitleLink = styled(Link)({
-  ...s.fonts.headingMedium,
-  ...s.fonts.link
-});
-
-const ArticleDate = styled.time({
-  ...s.fonts.paragraphSmall
-});
-
-const ArticleDescription = styled.p({
-  ...s.fonts.paragraph,
-  marginTop: s.grid(2)
-});

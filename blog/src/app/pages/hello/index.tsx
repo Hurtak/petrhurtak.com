@@ -1,11 +1,11 @@
 import React from "react";
-import Link from "../../components/link";
-import Title from "../../components/layout/title";
-import routes from "../../config/routes";
+import { Link } from "../../components/link";
+import { HelmetTitle } from "../../components/helmet-title";
+import { routes } from "../../config/routes";
 
-const HiddenIndex = () => (
+export const Hello = () => (
   <>
-    <Title>Hello</Title>
+    <HelmetTitle>Hello</HelmetTitle>
 
     <ul>
       <li>
@@ -26,4 +26,3 @@ const HiddenIndex = () => (
     </ul>
   </>
 );
-export default HiddenIndex;

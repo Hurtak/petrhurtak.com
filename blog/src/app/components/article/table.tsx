@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import styled from "@emotion/styled/macro";
-import * as s from "../../common/styles";
+import * as s from "../../styles/styles";
 
 export const Table = (props: {
   heading?: React.ReactNode;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled/macro";
-import * as s from "../../common/styles";
+import * as s from "../../styles/styles";
 
 const removeSpacingAfterHeading = {
   "& + *": {

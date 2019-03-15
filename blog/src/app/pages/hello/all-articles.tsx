@@ -1,10 +1,10 @@
 import React from "react";
-import Link from "../../components/link";
-import routes from "../../config/routes";
-import Title from "../../components/layout/title";
+import { Link } from "../../components/link";
+import { routes } from "../../config/routes";
+import { HelmetTitle } from "../../components/helmet-title";
 import { IArticleMetadata, getArticles } from "../../../articles/articles";
 
-const AllArticles = () => {
+export const AllArticles = () => {
   const articles = getArticles({ drafts: true, futureArticles: true });
 
   const drafts = articles.filter(a => a.draft === true);
@@ -34,7 +34,7 @@ const AllArticles = () => {
 
   return (
     <>
-      <Title>All articles</Title>
+      <HelmetTitle>All articles</HelmetTitle>
 
       <section>
         <h2>Drafts ({drafts.length})</h2>
@@ -53,4 +53,3 @@ const AllArticles = () => {
     </>
   );
 };
-export default AllArticles;

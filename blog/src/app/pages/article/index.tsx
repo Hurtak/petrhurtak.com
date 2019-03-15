@@ -40,9 +40,6 @@ export const Article = ({
 
   return (
     <Suspense fallback={<Loading />}>
-      {/* TODO: proper loading component */}
-      {/* TODO: delay settigns? or it is not implemented yet? */}
-
       <HelmetTitle>{article.title}</HelmetTitle>
 
       <ArticleErrorBoundary>

@@ -1,8 +1,23 @@
+import React from "react";
 import styled from "@emotion/styled/macro";
+import { Code, List } from "react-content-loader";
+import { Spacer } from "../../components/spacer";
 import * as s from "../../styles/styles";
 
+const LoadingBlockCode = () => <Code width={500} height={70} />;
+const LoadingBlockList = () => <List width={500} height={90} />;
+
 export const Loading = () => {
-  return null;
+  return (
+    <>
+      <Spacer spacing={5}>
+        <LoadingBlockList />
+        <LoadingBlockCode />
+        <LoadingBlockList />
+        <LoadingBlockList />
+      </Spacer>
+    </>
+  );
 };
 
 export const Header = styled.div({

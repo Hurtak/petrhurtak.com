@@ -2,4 +2,5 @@
 set -e
 cd "$(dirname "$0")/.."
 
-./node_modules/.bin/source-map-explorer './build/static/js/*'
+echo "[BLOG] running source-map-explorer"
+./node_modules/.bin/source-map-explorer "./build/static/js/*"

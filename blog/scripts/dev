@@ -3,4 +3,5 @@ set -e
 cd "$(dirname "$0")/.."
 
 ./scripts/generate
-npx react-scripts start
+echo "[BLOG] running react-scripts start"
+./node_modules/.bin/react-scripts start

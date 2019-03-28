@@ -4,5 +4,7 @@ cd "$(dirname "$0")/.."
 
 ./scripts/generate
 ./scripts/verify
+echo "[BLOG] running react-scripts build"
 ./node_modules/.bin/react-scripts build
+echo "[BLOG] running react-snap"
 ./node_modules/.bin/react-snap

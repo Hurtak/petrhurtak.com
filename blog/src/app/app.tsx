@@ -1,16 +1,16 @@
 import React from "react";
 import { Router, RouteComponentProps } from "@reach/router";
-import routes from "./config/routes";
-import Layout from "./components/layout/layout";
-import Index from "./pages/index";
-import Article from "./pages/article";
-import NotFound from "./pages/not-found";
-import Hello from "./pages/hello/index";
-import BuildInformation from "./pages/hello/build-information";
-import AllArticles from "./pages/hello/all-articles";
+import { routes } from "./config/routes";
+import { Layout } from "./components/layout";
+import { Index } from "./pages/index";
+import { Article } from "./pages/article";
+import { NotFound } from "./pages/error/not-found";
+import { Hello } from "./pages/hello";
+import { BuildInformation } from "./pages/hello/build-information";
+import { AllArticles } from "./pages/hello/all-articles";
 import { getArticles } from "../articles/articles";
 
-const App = () => (
+export const App = () => (
   <Router>
     <RouterPage path={routes.index} pageComponent={Index} />
 
@@ -44,7 +44,6 @@ const App = () => (
     <RouterPage default pageComponent={NotFound} />
   </Router>
 );
-export default App;
 
 const RouterPage = ({
   pageComponent,

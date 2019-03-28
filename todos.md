@@ -2,11 +2,6 @@
 
 ## TODO
 
-- Blog article placeholder jako na médiu nebo facebooku
-  - articles page - jumping content
-    - implement loading component
-    - try react router? it maybe has some wait for async action complete
-    - preload article when mousedown?
 - async loading of comments
 - finish CSS design
   - new design for site, insiration
@@ -36,6 +31,7 @@
 
 - seo.jsx convert
   - https://www.rarous.net/weblog/2019/01/28/generovani-twitter-card-obrazku.html
+- preload article when mousedown?
 - https://github.com/evenchange4/svgr.macro ?
 - Insecure link urls: http://hurtak.disqus.com
 - click on articles link should scroll to top

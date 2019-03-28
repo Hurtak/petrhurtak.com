@@ -10,11 +10,11 @@ const buildTimestamp = now.getTime();
 const buildTime = now.toLocaleString("cs");
 
 const res = `
-export default {
+export const buildInformation = {
   buildGitCommitHash: "${buildGitCommitHash}",
   buildTimestamp: ${buildTimestamp},
   buildTime: "${buildTime}",
 }
 `;
 
-generateSourceFile(res, "build-info.ts");
+generateSourceFile(res, "build-information.ts");

@@ -4,7 +4,7 @@ import css from "@emotion/css/macro";
 import { Global } from "@emotion/core";
 // TODO: is this duplicate code with or own metadata.description strip indent function?
 import stripIndent from "strip-indent";
-import * as s from "../../common/styles";
+import * as s from "../../styles/styles";
 import { highlightCss } from "../../../generated/raw-files";
 
 // const ss = raw("highlight.js/styles/github.css");

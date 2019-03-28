@@ -1,12 +1,12 @@
 import React from "react";
-import Title from "../../components/layout/title";
-import buildInformation from "../../../generated/build-info";
+import { HelmetTitle } from "../../components/helmet-title";
+import { buildInformation } from "../../../generated/build-information";
 
 const { buildTime, buildTimestamp, buildGitCommitHash } = buildInformation;
 
-const BuildInformation = () => (
+export const BuildInformation = () => (
   <>
-    <Title>Build information</Title>
+    <HelmetTitle>Build information</HelmetTitle>
 
     <ul>
       <li>{`build time: ${buildTime}`}</li>
@@ -15,4 +15,3 @@ const BuildInformation = () => (
     </ul>
   </>
 );
-export default BuildInformation;

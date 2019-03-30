@@ -4,11 +4,16 @@ cd "$(dirname "$0")/.."
 
 rm -rf src/generated
 mkdir -p src/generated
+
 echo "[BLOG] generating build-information"
-./node_modules/.bin/ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-build-information.ts
+./node_modules/.bin/ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-build-information.ts &
 echo "[BLOG] generating raw files"
-./node_modules/.bin/ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-raw.ts
+./node_modules/.bin/ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-raw.ts &
 echo "[BLOG] generating articles-list"
-./node_modules/.bin/ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-articles-list.ts
+./node_modules/.bin/ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-articles-list.ts &
+
+wait
+
 echo "[BLOG] generating rss"
 ./node_modules/.bin/ts-node --project scripts/file-generators/tsconfig.json scripts/file-generators/generate-rss.ts
+

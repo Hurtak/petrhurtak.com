@@ -1,38 +1,13 @@
 import sortBy from "lodash/sortBy";
 import reverse from "lodash/reverse";
+import { articlesDrafts, articlesPublished } from "../generated/articles-list";
 
-// Article metadata are in separate file because webpack was not able to tree
-// shake the article even if we used the {} imports and just imported the metadata
-
-import _example from "./drafts/_example/metadata";
-import _components from "./drafts/_components/metadata";
-
-import screen from "./published/2017-04-15--screen/metadata";
-import shebang from "./published/2017-04-28--shebang/metadata";
-import cssNamedColors from "./published/2017-05-11--css-named-colors/metadata";
-import debianPackages from "./published/2017-05-21--debian-packages/metadata";
-import ajax from "./published/2017-07-11--ajax/metadata";
-import randomNumbers from "./published/2017-07-17--random-numbers/metadata";
-import iife from "./published/2017-07-20--iife/metadata";
-import commonNamingMistakes from "./published/2017-08-24--common-naming-mistakes/metadata";
-import vim from "./published/2017-12-17--vim/metadata";
-
-const articlesMetadataDrafts: IArticleMetadata[] = [
-  _example,
-  _components
-  //
-].map(metadata => transformMetadata(metadata, true));
-const articlesMetadata: IArticleMetadata[] = [
-  screen,
-  shebang,
-  cssNamedColors,
-  debianPackages,
-  ajax,
-  randomNumbers,
-  iife,
-  commonNamingMistakes,
-  vim
-].map(metadata => transformMetadata(metadata, false));
+const articlesMetadataDrafts: IArticleMetadata[] = articlesDrafts.map(
+  metadata => transformMetadata(metadata, true)
+);
+const articlesMetadata: IArticleMetadata[] = articlesPublished.map(metadata =>
+  transformMetadata(metadata, false)
+);
 
 export interface IArticleMetadataRaw {
   title: string;

@@ -19,6 +19,7 @@ export const Hello = () => (
           to={
             "https://github.com/Hurtak/hurtak.cc/blob/master/blog/src/articles/drafts/article-ideas.txt"
           }
+          targetBlank
         >
           Article ideas
         </Link>

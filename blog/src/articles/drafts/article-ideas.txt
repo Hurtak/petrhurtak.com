@@ -6,6 +6,10 @@
   - alias nvl="nvu && brew link node"
   - nvm which is 3k lines bash script (scary) that does not support installing with package manager, you need to install manually, which why i prefere using the package managed directly
 
+- obrazky.cz
+  - scrolling horizontally along with overlaping element
+  - mobile filters bubble toggling
+
 - git squash into one commit
   - git basics
     - add remote

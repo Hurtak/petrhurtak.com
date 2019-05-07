@@ -78,9 +78,9 @@ function transformMetadata(
       const day = addLeadingZero(date.getUTCDate());
 
       return () =>
-        import(`./published/${year}-${month}-${day}--${
-          metadata.slug
-        }/article.jsx`);
+        import(
+          `./published/${year}-${month}-${day}--${metadata.slug}/article.jsx`
+        );
     }
   })();
 

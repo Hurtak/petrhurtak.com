@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+cd "$(dirname "$0")/.."
+
+echo "[BLOG] formatting files with prettier"
+./node_modules/.bin/prettier --write "{src,public,scripts}/**/*.{ts,tsx,js,jsx,html,css}"

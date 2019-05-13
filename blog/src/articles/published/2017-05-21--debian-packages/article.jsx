@@ -355,7 +355,7 @@ export default () => (
     <H1>Rules file</H1>
     <List>
       <Li>
-        Create <Code>debian/rules</Code>. This file is Makefile_ so make sure to:
+        Create <Code>debian/rules</Code>. This file is <Italic>Makefile</Italic> so make sure to:
         <List>
           <Li>
             Mark it as executable <Code>chmod u+x debian/rules</Code>.

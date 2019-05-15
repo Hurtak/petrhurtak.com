@@ -392,7 +392,7 @@ export default () => (
         dh $@
 
       override_dh_auto_build:
-        dh_auto_build # We can ommit this call and only use our scripts
+        dh_auto_build # We can omit this call and only use our scripts
         ./my-script
     `}</Code>
 

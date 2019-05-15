@@ -41,15 +41,21 @@ export default () => (
         </Tc>
       </Tr>
       <Tr>
-        <Tc>Unlink current node version</Tc>
+        <Tc>Unlink latest Node version</Tc>
         <Tc>
           <Code language="bash">brew unlink node</Code>
         </Tc>
       </Tr>
       <Tr>
+        <Tc>Unlink older Node version</Tc>
+        <Tc>
+          <Code language="bash">brew unlink node@8</Code>
+        </Tc>
+      </Tr>
+      <Tr>
         <Tc>Link older version</Tc>
         <Tc>
-          <Code language="bash">brew link node@8</Code>
+          <Code language="bash">brew link node@8 --force --overwrite</Code>
         </Tc>
       </Tr>
       <Tr>

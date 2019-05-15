@@ -52,6 +52,16 @@ export function fullDate(timestamp: number): string {
   return `${day}${dayPostfix} ${month} ${year}`;
 }
 
+export function debugDate(timestamp: number): string {
+  const date = new Date(timestamp);
+
+  const day = date.getUTCDate();
+  const month = addLeadingZero(date.getUTCMonth() + 1);
+  const year = addLeadingZero(date.getUTCFullYear());
+
+  return `${year}-${month}-${day}`;
+}
+
 function plural(word: string, count: number): string {
   return `${word}${count === 1 ? "" : "s"}`;
 }
@@ -84,4 +94,12 @@ export function howLongBefore(timestamp: number): string {
   } else {
     return `${years} ${plural("year", years)} ago`;
   }
+}
+
+function addLeadingZero(input: number) {
+  let str = String(input);
+  while (str.length < 2) {
+    str = "0" + str;
+  }
+  return str;
 }

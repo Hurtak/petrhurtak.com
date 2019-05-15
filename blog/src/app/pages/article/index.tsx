@@ -46,10 +46,10 @@ export const Article = ({
         <Header>
           <ArticleTitle>{article.title}</ArticleTitle>
           <Time
-            title={date.fullDate(article.dateLastUpdate)}
-            dateTime={date.iso(article.dateLastUpdate)}
+            title={date.fullDate(article.datePublication)}
+            dateTime={date.iso(article.datePublication)}
           >
-            {date.howLongBefore(article.dateLastUpdate)}
+            {date.howLongBefore(article.datePublication)}
           </Time>
         </Header>
         <Content>

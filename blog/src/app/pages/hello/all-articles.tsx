@@ -11,8 +11,8 @@ export const AllArticles = () => {
   const notDrafts = articles.filter(a => a.draft === false);
 
   const now = Date.now();
-  const future = notDrafts.filter(a => a.dateLastUpdate > now);
-  const published = notDrafts.filter(a => a.dateLastUpdate <= now);
+  const future = notDrafts.filter(a => a.datePublication > now);
+  const published = notDrafts.filter(a => a.datePublication <= now);
 
   const renderArticles = (
     articles: IArticleMetadata[],

@@ -31,7 +31,7 @@ export function getArticles({
   limit = 10,
   drafts = false,
   futureArticles = false,
-  sortByKey = "dateLastUpdate",
+  sortByKey = "datePublication",
   desc = true
 }: {
   limit?: number;
@@ -47,7 +47,9 @@ export function getArticles({
   }
 
   if (!futureArticles) {
-    articles = articles.filter(article => article.dateLastUpdate <= Date.now());
+    articles = articles.filter(
+      article => article.datePublication <= Date.now()
+    );
   }
 
   articles = sortBy(articles, sortByKey);

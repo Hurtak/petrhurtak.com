@@ -1,0 +1,17 @@
+	- Js JS it it used definitelly so determine, if it is useful (AFAIK it is useless)
+	- Can it be in html or CSS?
+		○ In html it can be in the form of inlined script tag
+		<script type="text/javascript">
+// <![CDATA[
+		// ]]>
+</script>
+
+		Z <http://stackoverflow.com/questions/7092236/what-is-cdata-in-html>
+	- Sometimes I saw it in RSS feed, is it useful in there?
+	- RSS is basically XML a this cdata thing is something from xml so mention what is the purpose of this in XML
+	- It is deprecated
+		○ https://developer.mozilla.org/en-US/docs/Web/API/CDATASection
+
+http://stackoverflow.com/questions/7092236/what-is-cdata-in-html
+
+http://stackoverflow.com/questions/2784183/what-does-cdata-in-xml-mean

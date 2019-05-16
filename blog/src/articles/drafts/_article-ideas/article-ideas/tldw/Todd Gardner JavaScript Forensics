@@ -1,0 +1,10 @@
+Todd Gardner: JavaScript Forensics | JSConf EU 2015
+
+
+	1. Cross origin na script tag který je z jiné domény způsobí, že když logujeme erory tak se dostaneme I k informacím jako je stact trace, název chyby, apod
+		a. Script tag musí mít cors hlavičky jinak to crossorigin script vůbec nenačte
+	2. Do not expect all your scripts to be loaded (especially 3rd party scripts) always check if global variables you are using from these scripts exist to make sure you don’t break your aplication when they fail, also log when they fail. You can test this by commenting out 3rd party scripts and seeing how your app behaves
+	3. Chrome dev tools - sources tab - there is async checkbox - this will display complete stack trace when you are looking at stack trace of async function (from setTimeout etc)
+	4. If you are dynamically creating and destroying element, do not forget to removeEventListener when destroying, just removing node from DOM doesent remove listener, this might cause memory leak, and long running application might crash
+
+	https://www.youtube.com/watch?v=Xvdnewmdokc

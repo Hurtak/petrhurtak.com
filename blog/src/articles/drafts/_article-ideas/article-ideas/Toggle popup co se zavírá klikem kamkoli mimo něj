@@ -1,0 +1,33 @@
+		var addListener = function(target, eventName, callback) {
+			if (target.addEventListener) {
+				target.addEventListener(eventName, callback);
+			} else if (target.attachEvent) {
+				target.attachEvent('on' + eventName, callback);
+			}
+		};
+
+		var changeMenuState = function(element, makeVisible) {
+			if (makeVisible) {
+				element.style.display = 'block';
+			} else {
+				element.style.display = '';
+			}
+			return !isMenuVisible;
+		};
+
+		var buttonEl = document.getElementById('links-more-button');
+		var contentEl = document.getElementById('links-more-content');
+
+		var isMenuVisible = false;
+
+		addListener(buttonEl, 'click', function(e) {
+			e.subMenuClick = true;
+			var visible = contentEl.style.display === 'block';
+
+			isMenuVisible = changeMenuState(contentEl, !visible);
+		});
+
+		addListener(document, 'click', function(e) {
+			if (e.subMenuClick || !isMenuVisible) { return; }
+			isMenuVisible = changeMenuState(contentEl, false);
+		});

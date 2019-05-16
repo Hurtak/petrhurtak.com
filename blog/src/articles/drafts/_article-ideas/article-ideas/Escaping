@@ -1,0 +1,30 @@
+Inner Html
+	Jsou tu balíčky tak se podívat co dělají
+Html attributy
+	Zjistit
+Něco dalšího
+
+Javascript
+	Boolean
+		Není třeba escapovat, možná můžu serializovat aby tam nebylo True a podobné věci
+	Čísla
+		Není třeba escapovat
+	Stringy
+		function jsEscape (data) {
+		  return data
+		    .replace(/'/g, "\\'")
+		    .replace(/"/g, '\\"')
+		    .replace(/`/g, '\\`')
+		    .replace(/\n/g, '\\n')
+		}
+
+		Stačí tohle anebo je třeba něco více?
+
+		ANEBO NESTAČÍ PROSTĚ ZAVOLAT JSON STRINGIFY NAD TOU HODNOTOU?
+
+Inline javascript v atributu?
+
+
+https://mathiasbynens.be/notes/json-dom-csp
+
+

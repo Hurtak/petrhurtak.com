@@ -1,0 +1,66 @@
+Number()
++proměna
+
+String()
+'' + Proměna
+
+32bit integer
+
+
+
+Retype to signed 32 bit integer
+var x = x | 0;
+var x |= 0;
+
+Retype to string
+var x = x + '';
+var x = String(x);
+
+Retype to number
+var x = x * 1;
+var x = Number(x);
+var x = parseInt(x, 10);
+var x = x >> 0;
+
+Bitshift is fastest http://jsperf.com/coercion-vs-casting/3
+
+Note: Be careful when using bitshift operations. Numbers are represented as 64-bit values, but Bitshift operations always return a 32-bit integer (source). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. Discussion. Largest signed 32-bit Int is 2,147,483,647:
+
+Z <https://github.com/airbnb/javascript/tree/es6?hc_location=ufi#variables>
+
+Booleans
+var x = Boolean(x);
+var x = !!x;
+
+In speaking js book there are reasons why not use parseint or parsefloat and use numbrer constructot function
+
+
+
+
+Convert x to a signed 32-bit integer
+function ToInt32(x) {
+    return x | 0;
+}
+
+ToInt32() removes the fraction and applies modulo 232:
+> ToInt32(1.001)
+1
+> ToInt32(1.999)
+1
+> ToInt32(1)
+1
+> ToInt32(-1)
+-1
+> ToInt32(Math.pow(2, 32)+1)
+1
+> ToInt32(Math.pow(2, 32)-1)
+-1
+
+
+
+
+
+Shift operators
+
+The same trick that worked for bitwise Or also works for shift operators: if you shift by zero bits, the result of a shift operation is the first operand, coerced to a 32-bit integer. Here are some examples of implementing operations of the ECMAScript specification via shift operators:
+

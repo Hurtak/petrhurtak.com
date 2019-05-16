@@ -1,0 +1,36 @@
+
+Začít s document createElement a innerHTML
+Zmínit konstruktory new Image, new Audio
+
+
+element.insertAdjacentHTML(place, content);
+element.insertAdjacentHTML('afterbegin', '<b>content</b>');
+
+	beforebegin	node.parentNode.insertBefore(newNode, node);
+	afterbegin	node.insertBefore(newNode, node.firstChild);
+	beforeend	node.appendChild(newNode);
+	afterend	node.parentNode.insertBefore(newNode, node.nextSibling);
+
+<!-- beforebegin -->
+<p>
+  <!-- afterbegin -->
+  <span>text</span>
+  <!-- beforeend -->
+</p>
+<!-- afterend -->
+
+innerHTML += je poalejší (vezme innerHTML string přidá k němu nový string a nahradí aktuální innerHTML tim novym, což nám zruší posluchače např)
+
+Document.createElement vs innerHTML, inenrHTML bylo dříve o 2 ády pomalejší, než createElement, nyní to neplatí, člověk by měl psát kód co nejpřehlednější a nestarat se o mikrooptimalizace dokud to nezačne být problém
+
+Žmínit replaceChild
+
+Dom4
+
+After
+Before
+Append
+prepend
+
+Není pořadně standardizováno
+Použít polyfill

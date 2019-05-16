@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            :root {
+                --reserve: 220px;
+            }
+
+            body.opened .bubble {
+                display: block;
+            }
+
+            body.opened .navigation {
+                padding-bottom: var(--reserve);
+            }
+
+            body.opened .content {
+                margin-top: calc(var(--reserve) * -1);
+            }
+
+            .navigation {
+                white-space: nowrap;
+                overflow: auto;
+            }
+
+            .navigation-item {
+                display: inline-block;
+                position: relative;
+                pointer-events: all;
+            }
+
+            .bubble {
+                display: none;
+                position: absolute;
+                left: 0;
+                top: 100%;
+            }
+
+            /* Decoration */
+
+            body {
+                max-width: 600px;
+                margin: 30px auto 0;
+            }
+
+            .navigation {
+            }
+
+            .navigation-item {
+                padding: 1em 4em;
+                background-color: dodgerblue;
+            }
+
+            .bubble {
+                width: 100%;
+                height: 150px;
+                background-color: orange;
+            }
+
+            .content {
+                background-color: lightblue;
+            }
+
+            .content-box {
+                width: 100px;
+                height: 100px;
+                background-color: rgba(0, 0, 0, 0.2);
+                display: inline-block;
+                cursor: pointer;
+            }
+
+        </style>
+    </head>
+    <body>
+        <nav class="navigation">
+            <div class="navigation-item">
+                Text
+                <div class="bubble" onclick="alert('bubble')">
+                    Hello
+                </div>
+            </div>
+            <div class="navigation-item">Text</div>
+            <div class="navigation-item">Text</div>
+            <div class="navigation-item">Text</div>
+            <div class="navigation-item">Text</div>
+        </nav>
+        <section class="content">
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+            <div class="content-box" onclick="alert('box')"></div>
+        </section>
+
+        <script>
+            var elements = document.querySelectorAll('.navigation-item')
+            for (const el of elements) {
+                el.addEventListener('click', function (e) {
+                    document.body.classList.toggle('opened')
+                })
+            }
+        </script>
+    </body>
+</html>

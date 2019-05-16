@@ -1,0 +1,55 @@
+When we think about it we are only using small number of features from css preprocesors (sure cool functions like lighten or colorshift are nice but how ofter are you really using them)
+
+What we really use (sorted by usefulness)
+	Modularization (@include)
+	Variables
+	Calculations with variables
+	Mixins
+	Nesting
+
+
+Nesting
+	No css equivalent, althought things like supports or media queries are some form of nesting
+	In reality, not that big deal. Not using nesting also makes you codebase more searchable, sometimes you are trying to figureout where some class came from and if you use nesting you cannot just search for that class because it is not present in project (in html you see module__component but in code you have module { &__component {} } (solvable by sourcemaps)
+
+Variables
+	Present in css
+	Less readable syntax but more powerful (change variable value based on media query)
+
+Calculations
+	Calc
+
+Mixins
+	http://jecas.cz/apply
+
+Modularization
+	Actually present in css for a loong time but it is not recommended to use because each include means blocking synchronous http request
+	When using css libraries from package manager you need to setup extra route in your app
+		Easy to solve
+
+		if (process.env.NODE_ENV === 'development') {
+		  app.use('/static/node_modules', express.static('../node_modules'))
+		}
+
+		Then in css
+
+		@import '/static/node_modules/normalize.css/normalize.css';
+
+
+
+Ok, so you are compiling anyway and if you are compiling why not use less or sass
+	You are not wasting time at the start of the project with setting up enviroment
+	For most small projects this is actually fine
+	You dont need compilation step during development & you dont need some kind of taskrunner to watch for file changes - less complexity
+	If find yourself in need for performance you can just run your css throught postcss and you have output similat to what you would have if you wrote this in sass
+
+Mention that this is probably not a good idea outside of small - medium sized projects
+
+
+Custom media
+	https://github.com/postcss/postcss-custom-media
+
+Projít všechny pluginy z https://github.com/postcss
+¨
+
+http://cssnext.io/features/

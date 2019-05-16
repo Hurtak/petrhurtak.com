@@ -1,0 +1,16 @@
+
+Jak správně psát uvozovky
+České „dvojité“ uvozovky
+Otevírací (Unicode 201E) má tvar 99 a je dole, uzavírací (Unicode 201C) má tvar 66 a je nahoře. Windows: Alt+0132, Alt+0147. Mac (na české klávesnici): Alt+Shift+N,Alt+Shift+H.
+České ‚jednoduché‘ uvozovky
+Otevírací (Unicode 201A) má tvar 9 a je dole. Uzavírací (Unicode 2018) má tvar 6 a je nahoře. Windows: Alt+0130, Alt+0145. Mac (na české klávesnici): Alt+N, Alt+H.
+»Francouzské« uvozovky
+Francouzi je ve skutečnosti píší «naopak», zobáčky ven, ale občas se používají i v češtině, zobáčky dovnitř. Otevírací (Unicode 00BB) má zobáček doprava, uzavírací (Unicode 00AB) má zobáček doleva. Windows: Alt+0187, Alt+0171, Mac (na české klávesnici): Alt+Shift+9, Alt+Shift+0.
+English “double” quotes
+Neboli anglické dvojité uvozovky. Otevírací (Unicode 201C) má tvar 66 a je nahoře. Uzavírací (Unicode 201D) má tvar 99 a je nahoře. Windows: Alt+0147, Alt+0148. Mac (na české klávesnici): Alt+Shift+H, Alt+Shift+J.
+English ‘single’ quotes
+Neboli anglické jednoduché uvozovky. Otevírací (Unicode 2018) má tvar 6 a je nahoře. Uzavírací (Unicode 2019) má tvar 9 a je nahoře. Windows: Alt+0145,Alt+0146. Mac (na české klávesnici): Alt+H, Alt+J.
+
+Z <http://www.zoul.cz/uvozovky/>
+
+

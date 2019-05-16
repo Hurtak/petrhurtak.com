@@ -1,0 +1,12 @@
+Zjištění pozice clicku myší na canvas nebo jakejkoli jinej element
+
+
+Pozicí myslim relativně vůči tomu elementu na kterej klikám
+
+Dělá se to přes e.offsetX e.offsetY
+Asi nebo nejlepší podpora prohlížečů
+
+Ondras to dělal přes el.getBoundingclientrect a něco dalšího
+
+Možná napsat článek o všech zajímavejch věcech co se posílaj při clicku (x, offsetX…) a jak se lišej a jak jsou podporovaný
+

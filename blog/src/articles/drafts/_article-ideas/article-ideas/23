@@ -1,0 +1,18 @@
+Box sizing
+
+Obrázky jak všechno funguje
+Dědění týhle vlastnosti na child elementy
+(*) selektor nefunguje na ::after ::before
+
+
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+From <http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/>
+
+

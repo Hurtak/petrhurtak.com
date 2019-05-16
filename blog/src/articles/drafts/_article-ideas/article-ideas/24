@@ -1,0 +1,20 @@
+Image preloading
+
+:hover obrázky a obrázky v media queries prohlížeč loaduje až když jsou potřeba,
+Můžeme je pak ručně naloadovat javascriptem
+
+http://kod.djpw.cz/ziwb
+
+
+setTimeout(function() {
+
+    [
+	    '/i/300',
+	    '/i/400',
+    ].forEach(function(url) {
+    	var img = new Image(url)
+    	img.src = url
+    })
+
+} ,1000)
+

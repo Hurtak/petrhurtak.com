@@ -1,0 +1,816 @@
+
+Gulp
+
+--------------------------------------------------------------------------------
+
+https://www.igvita.com/2015/08/17/eliminating-roundtrips-with-preconnect/
+
+--------------------------------------------------------------------------------
+
+
+http://www.w3schools.com/cssref/css_ref_aural.asp
+
+--------------------------------------------------------------------------------
+
+Lintery,, jshint eslint csslint
+
+--------------------------------------------------------------------------------
+
+Border box reset
+
+--------------------------------------------------------------------------------
+
+Bitwise operátory
+
+--------------------------------------------------------------------------------
+
+Regulární výrazy
+
+Jednak to co mam v poznámkách v JS jednak celej kurz
+
+
+
+--------------------------------------------------------------------------------
+
+HTTP status codes
+http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+
+--------------------------------------------------------------------------------
+
+Window.setImmediate
+
+    https://developer.mozilla.org/en-US/docs/Web/API/Window/setImmediate
+    https://github.com/YuzuJS/setImmediate
+
+
+--------------------------------------------------------------------------------
+
+document.currentScript
+
+
+--------------------------------------------------------------------------------
+
+Zabránění indexace prohlížeči
+
+Robots
+Meta tag
+
+
+--------------------------------------------------------------------------------
+
+
+Věci ve šmírovadle
+
+--------------------------------------------------------------------------------
+
+Iframy
+
+--------------------------------------------------------------------------------
+
+http://kod.djpw.cz/rtsb
+
+If you want to future-proof your normal CommonJS module, you should opt for either a single export or multiple named exports, but not for mixing styles (attaching named exports as properties of a single export).
+
+From <http://www.2ality.com/2015/12/babel-commonjs.html>
+
+
+
+--------------------------------------------------------------------------------
+
+http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
+
+
+--------------------------------------------------------------------------------
+Layouty
+http://kod.djpw.cz/twvb
+
+
+
+
+--------------------------------------------------------------------------------
+
+Lf vs crlf
+    Co to je
+    Zajímá mě to?
+        Většinou ne, možná nějaký scripty
+        Lepší editory (cokili mimo notepadu (ozkoušet)) si umějí poradit s obojím
+
+Git config autocrlf
+
+.editorconfig
+
+--------------------------------------------------------------------------------
+
+Hoistování funkcí, proměnných
+Let je taky hoistován
+
+--------------------------------------------------------------------------------
+
+Převod array like na array
+
+Array.prototype.slice.call(arrayLikeObject)
+[].slice.call(arraylikeObject)
+
+Co to je array like a proč to existuje
+Es6 převod
+
+--------------------------------------------------------------------------------
+
+Vim základy
+
+
+dd
+    Vymazání/cut řádku
+
+u
+    Indo
+
+insert
+    Vkládací mód
+
+p
+    paste
+
+:wq
+    Uložení + ukončení
+
+:q
+    Ukončení
+
+:q!
+    Force quit
+
+--------------------------------------------------------------------------------
+
+a cross origin ajax
+
+--------------------------------------------------------------------------------
+
+Insert adjanced html a https://github.com/webreflection/dom4
+
+--------------------------------------------------------------------------------
+Performance
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/performance
+
+--------------------------------------------------------------------------------
+
+Cross origin na script tagu
+
+<script type="text/javascript" src="https://h.imedia.cz/js/dot-small.js" crossorigin></script>
+
+
+
+--------------------------------------------------------------------------------
+
+Tomato tim sidebar s overlayem
+
+--------------------------------------------------------------------------------
+
+Async defer na scriptech
+    Defer jenom odloží stahování ale tře
+
+--------------------------------------------------------------------------------
+
+Useful metatags
+
+--------------------------------------------------------------------------------
+
+Triangle in css
++ generator
+--------------------------------------------------------------------------------
+
+https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+
+--------------------------------------------------------------------------------
+
+Svg with png fallback
+
+https://css-tricks.com/a-complete-guide-to-svg-fallbacks/
+
+--------------------------------------------------------------------------------
+Web cryptography api
+
+
+--------------------------------------------------------------------------------
+
+Passwordless authentication
+
+--------------------------------------------------------------------------------
+Blok jehoz obsah se nezalamuje
+
+Wrapper
+    whitespace no wrap
+    overflow auto
+
+Child
+    display inline block
+
+
+--------------------------------------------------------------------------------
+Css supports and js api fo that
+
+--------------------------------------------------------------------------------
+
+    https://github.com/WICG/interventions/issues
+
+
+--------------------------------------------------------------------------------
+
+https://zetafleet.com/blog/2010/04/why-i-consider-setinterval-to-be-harmful.html
+
+
+Taky zmínka o tom, že prohlížeče optimalizují a když není záložka aktivní, tak zpomalují timery
+    - Zjistit o kolik
+    - Dát ukázku na setTimeout hodiny (místo klasickýho setInterval(.., 1000) který kvůli zpúomalování moc nefunguje a navíc může incrementnout stav o 2 sekundy díky tomu, že neběží přesně 1000ms ale třeba o trochu dýl
+    - Dát ukázku pomocí performance now, jak přesný jsou timery
+        var start = performance.now()
+        setInterval(function () {
+            const now = performance.now()
+            const diff = now - start - 1000
+            start = now
+            console.log(diff)
+        }, 1000)
+
+        -- podle všeho to vypadá, že ve chromu je nějaká kompenzace, takže když timer běží o 100ms pozdějí, tak další interval se spustí o 100ms dříve
+
+
+--------------------------------------------------------------------------------
+
+https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/
+
+--------------------------------------------------------------------------------
+Loljs
+
+https://twitter.com/weitzelb/status/718623065480019968
+
+https://alf.nu/ReturnTrue
+
+https://www.destroyallsoftware.com/talks/wat
+
+
+--------------------------------------------------------------------------------
+Es6 destructuring
+https://gist.github.com/mikaelbr/9900818
+
+
+--------------------------------------------------------------------------------
+https://developers.google.com/web/fundamentals/getting-started/
+
+--------------------------------------------------------------------------------
+Jak zjistit velikost souboru
+  cli utility na minifikaci a gzip
+
+
+Vypočíst kolik prumerne usetri mumifikace akolik gzip a kolik oba dohromady
+
+
+--------------------------------------------------------------------------------
+Pravidelně sledovat
+https://github.com/simevidas/browser-intents a dělat z toho články
+
+
+--------------------------------------------------------------------------------
+
+Ascpect ratio
+http://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css
+
+--------------------------------------------------------------------------------
+Article about runtime cost of minifier
+    Do some testing with https://github.com/babel/babili
+    The point is that minifies try to minimize number of bytes the file is and they might do it at the cost of runtime
+    Eg they transform true to !0 this will probably have some cost, so do experiment on some codebase, where we compare babili output with all plugins and only with plugins without runtime cost
+    https://www.youtube.com/watch?v=xbZzahWakGs
+
+
+--------------------------------------------------------------------------------
+Input attribute inputmode
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-inputmode
+
+Zmínit, že není povinně, stačí input type number a ukazují se čísla na klávesnici
+Screenshoty všech možných klávesnic
+Možná rovnou člávenk o inputu a co se s ním dá dělat?
+
+
+--------------------------------------------------------------------------------
+
+Detail html tag
+http://www.w3schools.com/tags/tag_details.asp
+
+--------------------------------------------------------------------------------
+
+Přepínání contentu
+
+Bez javascriptu, můžu tak i udělat záložky
+
+http://kod.djpw.cz/abbc
+
+
+
+
+--------------------------------------------------------------------------------
+Css touch-action
+
+
+--------------------------------------------------------------------------------
+
+Img width & height
+http://kod.djpw.cz/febc-
+
+
+--------------------------------------------------------------------------------
+
+Offset index
+Zobrazení něčeho každých 5 řádků s počátečním offsetem 2 apod
+
+--------------------------------------------------------------------------------
+Favicons
+https://twitter.com/jdalton/status/775132771878473728
+
+--------------------------------------------------------------------------------
+Semantic Versioning
+
+http://semver.org/
+https://github.com/mojombo/semver/issues/321
+https://medium.com/sapioit/why-having-3-numbers-in-the-version-name-is-bad-92fc1f6bc73c#.i0xcx97ug
+
+--------------------------------------------------------------------------------
+
+http://www.w3schools.com/tags/att_meta_http_equiv.asp
+
+--------------------------------------------------------------------------------
+Přepsat můj článek o elmu na blog s updatama
+
+--------------------------------------------------------------------------------
+
+stylelint
+https://github.com/stylelint/stylelint
+
+--------------------------------------------------------------------------------
+
+Article & npm module from this
+
+http://funkcionalne.cz/2016/09/diff-a-komprese/
+
+followup
+    https://twitter.com/kaja47/status/778929227227856899
+
+         http://funkcionalne.cz/2016/09/diff-a-stromy/
+
+
+--------------------------------------------------------------------------------
+innerText vs textContent vs innerHTML
+
+
+https://kellegous.com/j/2013/02/27/innertext-vs-textcontent/
+
+
+--------------------------------------------------------------------------------
+
+Css grid
+http://gridbyexample.com/
+
+--------------------------------------------------------------------------------
+Broadcast channgel api
+
+Article about counication between tabs
+
+--------------------------------------------------------------------------------
+document.write
+
+
+Document.write
+Document.open
+
+Document.close
+--------------------------------------------------------------------------------
+
+https://css-tricks.com/snippets/
+
+--------------------------------------------------------------------------------
+
+https://www.reddit.com/r/javascript/comments/56cb8b/you_can_do_anything_in_js_using_only_and/
+http://jazcash.com/a-javascript-journey-with-only-six-characters/
+
+--------------------------------------------------------------------------------
+
+hover na jeden element způsobí podtržení elementu který je v html strutůře nekde
+jine, než přímo pod ním
+
+
+.Sklik {
+    &-title {
+        :hover {
+            text-decoration: underline;
+        }
+
+        .Sklik-imageAndTitleWrapper:hover & {
+            text-decoration: underline;
+        }
+    }
+}
+
+<section class="Sklik">
+
+    <div class="Sklik-imageAndTitleWrapper">
+        <div class="Sklik-imageWrapper">
+            <a class="Sklik-image">xxx</a>
+        </div>
+
+        <h3>
+            <a class="Sklik-title">
+                ${ title }
+            </a>
+        </h3>
+    </div>
+
+</section>
+
+
+
+anebo by šel použít + selektor, když je ta věc přímo pod ním
+
+anebo by šel použít ~ selektror když je někde pod ním
+
+případně .Sklik-title:hover ~ * {} když je někde pod ním a zároveň zanořen
+
+jak udělat kdyby to bylo o úroveň výše
+    javascriptem moseover and mouseleave?
+    jde bez javascriptu?
+
+--------------------------------------------------------------------------------
+
+keep dimension ration in CSS
+
+.mx-dimension-ratio(@ratio) {
+    width: 100%;
+    height: 0;
+    padding-bottom: unit(100 / @ratio, %);
+}
+
+--------------------------------------------------------------------------------
+
+Stylování placeholderů
+
+
+When testing whis we could use something like browser stack to see what works on what browsers
+
+--------------------------------------------------------------------------------
+
+articles from this series
+    https://blog.risingstack.com/node-hero-tutorial-getting-started-with-node-js/
+
+
+--------------------------------------------------------------------------------
+
+background-size property s obrázky jak to vypadá
+
+--------------------------------------------------------------------------------
+
+browser clipboard
+    https://css-tricks.com/native-browser-copy-clipboard/
+    older solutions
+        clipboard js solution which uses flash
+    http://jecas.cz/kopirovat
+
+--------------------------------------------------------------------------------
+Https on your web in 5 minutes for free
+
+Cloadflare.com
+Change dns as they tell you
+
+Go to crypto
+    Enable HSTS (Strict-Transport-Security)
+
+
+
+
+--------------------------------------------------------------------------------
+
+jak udělat, že když najedu nad obrázek, tak se zvárazní text pod ním (+ selektor, ~ selektor, .VideoSeries-video-description, javascript možnost) jde to bez javascriptu, když by ta zvýrazněná věc byla v DOM struktůře někde výše?
+
+--------------------------------------------------------------------------------
+Když chci mít něco na tenhle způsob
+
+
+
+Jak udělat tu šipečku?
+
+Aby to bylo dobře zarovnaný s tou čárou
+
+Vyzkoušet různý metody, někderý metody vypadaj líp při zoom levelech kdy se to začne rozpadat
+
+Podle všeho je lepší jako tu čáru mít div s výškou 1px místo abych přidával border s výškou 1px - je pak konzistentnější škálování napříč různýmy zoom levely
+
+
+http://imgur.com/a/m4dJJ
+
+
+--------------------------------------------------------------------------------
+
+favicon changing/animation
+
+--------------------------------------------------------------------------------
+
+projít moje projekty i pracovní a zamyslet se, z čeho by šly udělat články
+
+--------------------------------------------------------------------------------
+
+http://tympanus.net/codrops/2015/09/30/shaded-progress-bars-css-sass-excercise/
+
+--------------------------------------------------------------------------------
+
+docker
+    devlopment in docker file
+    docker compose example
+
+--------------------------------------------------------------------------------
+
+symlink vs regular link
+    http://askubuntu.com/questions/108771/what-is-the-difference-between-a-hard-link-and-a-symbolic-link
+
+--------------------------------------------------------------------------------
+
+union tupes (or are they called variant types?)
+    http://imgur.com/a/lQbxW
+        http://imgur.com/8S67vPd
+        http://imgur.com/UrD72FV
+        from
+            https://www.youtube.com/watch?v=-J8YyfrSwTk
+
+    https://www.youtube.com/watch?v=IcgmSRJHu_8
+
+--------------------------------------------------------------------------------
+
+json ld
+    https://developers.google.com/schemas/formats/json-ld
+
+    in some guys blog
+        https://bokstuff.com/i-made-an-iphone-game-with-phonegap-and-ill-never-do-it-again/
+
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Article",
+                "publisher": "THIS IS BOKSTUFF !!",
+                "author": {
+                    "@type": "Person",
+                    "name": "Brian O'Keefe",
+                    "image": "http://bokstuff.com/content/images/2016/11/me-5-1.png",
+                    "url": "http://bokstuff.com/author/brian-okeefe",
+                    "sameAs": "https://bokstuff.com",
+                    "description": "Frontend and indie game dev. All around weird dude."
+                },
+                "headline": "I made an iPhone game with PhoneGap and I&#x27;ll never do it again",
+                "url": "http://bokstuff.com/i-made-an-iphone-game-with-phonegap-and-ill-never-do-it-again/",
+                "datePublished": "2016-11-25T20:40:17.939Z",
+                "dateModified": "2016-11-27T05:26:59.900Z",
+                "keywords": "games",
+                "description": "I recently released my first ever iPhone app: a game called Super Flipside. This is a re-imagining of an earlier game I created way back in 2010. I had always imagined it would work really well on iPhone, but I&#x27;m..."
+            }
+        </script>
+
+--------------------------------------------------------------------------------
+
+Article idea infinite scrolling done right
+    - remember position in url, scroll to top button
+    - purge posts that are too far away but keep the first page because we have scroll to top
+    - when purging keep the space before the viewport and if user returns ajax load it back.
+    - When user reloads the page have server rendered current page and space of previous pages.
+
+--------------------------------------------------------------------------------
+
+https://meowni.ca/font-style-matcher/
+
+--------------------------------------------------------------------------------
+
+http://jsbin.com/pajubuz/edit?js,output
+
+--------------------------------------------------------------------------------
+
+http://stackoverflow.com/questions/25704650/disable-blue-highlight-when-touch-press-object-with-cursorpointer
+
+--------------------------------------------------------------------------------
+
+http://superuser.com/questions/215504/permissions-on-private-key-in-ssh-folder
+
+--------------------------------------------------------------------------------
+
+https://twitter.com/JanVoracek/status/811256659259559936
+
+Kéž by české banky zvládaly při zadávání číselných autorizačních kódů brát znaky s diakritikou jako čísla. "ščř" == 345. Ideálně
+
+--------------------------------------------------------------------------------
+
+Article idea how does the file:/// pseudoprotocol works, who sets the headers how foes cqching work?
+
+--------------------------------------------------------------------------------
+
+game of life optimalization
+    http://stackoverflow.com/questions/40485/optimizing-conways-game-of-life
+    then article about this
+
+    while we are at it
+        add icon to top right with link to wiki about what is game of life
+        replace smaller/bigger icons with zoom in/zoom out and +- icons
+
+--------------------------------------------------------------------------------
+
+Caching memoization weakmap article https://github.com/threepointone/glamor/blob/master/docs/weakmaps.md
+
+--------------------------------------------------------------------------------
+
+article about timers / performance measuring
+    Date.now
+    performance.now
+    performance.mark
+    performance.measure
+    console.time/console.timeEnd
+    process.hrtime
+
+    https://github.com/nolanlawson/marky
+
+--------------------------------------------------------------------------------
+
+Call to action in the middle of article after revealing some important or interesting info - http://imgur.com/a/G3Pgm
+
+--------------------------------------------------------------------------------
+
+Article https://github.com/whatwg/html/issues/330 https://github.com/jakearchibald/navigation-transitions
+
+--------------------------------------------------------------------------------
+
+header full width but rest of the content has max width and is centered
+    example how it is done on this blog
+
+        header is just outside of the main content blog and has fill width, header content has same max width and padding as the content, is centered and that is it.
+
+    other hacks
+        ::before & ::after element absolutely positioned that would just create the background
+            (maybe just one positioned bellow the header?)
+
+        one absolutely positioned background header (another element) displayed under the original header
+
+--------------------------------------------------------------------------------
+
+https://css-tricks.com/flexbox-truncated-text/
+    http://kod.djpw.cz/poec
+
+    mixin
+
+        // elipsis on one line with additional elements
+        .u-oneLineEllipsis {
+            display: flex;
+        }
+
+        // text that will be trimmed with elipsis
+        .u-oneLineEllipsis-left {
+            display: inline;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        // another element that will not be trimmed
+        .u-oneLineEllipsis-right {
+            display: inline-flex;
+        }
+
+
+
+
+
+.u-multilineElipsis (@lines, @line-height) {
+  overflow: hidden;
+  max-height: 1em * @line-height;
+
+  @supports (display: -webkit-box) {
+    display: -webkit-box;
+    -webkit-line-clamp: @lines;
+    -webkit-box-orient: vertical;
+    max-height: none;
+  }
+}
+
+
+--------------------------------------------------------------------------------
+
+http://kod.djpw.cz/bdfc
+    img tag with background size contain
+    + how do you do placeholder?
+
+    how about background size cover?
+
+    do the same thing with background images + placeholder
+
+--------------------------------------------------------------------------------
+
+css arrow
+
+    http://codepen.io/chriscoyier/pen/lotjh
+
+--------------------------------------------------------------------------------
+
+perfect lightbox
+    does preserve scroll of original content
+    changes scrollbar from content one to scrollbar one
+    lightbox scrollbar in the corner not directly in the box
+    background content is not shifted by enabling overflow hidden
+    click on the background closes
+    layout is not boxed in height 100% so some analytics scripts that measure body/html height are not broken
+
+--------------------------------------------------------------------------------
+
+http://guijournal.com/2011/09/gui-design-password-protected/
+
+--------------------------------------------------------------------------------
+
+article about mouse events
+
+--------------------------------------------------------------------------------
+
+https://twitter.com/Real_CSS_Tricks/status/839575975478366208
+
+--------------------------------------------------------------------------------
+
+perfect image loader
+    viz krasty
+
+    pozadavky
+        je zachovat klasicky img element anebo background-image > neni zavisle na javascriptu
+        nezobrazuje se loader po prvnich 300ms aby to neproblikavalo na rychlich pripojenich
+        fadein/fadeout na zobrazovani schovavani loaderu
+
+    otazky/rozsireni
+        je mozne mit progress na image eventu?
+        jako to dela medium, nez se nacte obrazek mam tam vyblurovany low res nahled anebo gradient z barev co se tam pouzivaji
+            na tohle jsou nejake knihovny
+            google to tam ma na jejich obrazcich na mobilu
+            medium to ma vyblurovane
+
+    nevyhody
+        browser loaduje jpegy progresivne (bud po radcich anebo po po chuncich a postupne se to zaostruje) - kdyz dame custo loading bar tak ten se neschova dokud neni obrazek 100% nacteny - nemusi byt zadouci
+
+--------------------------------------------------------------------------------
+
+article keyboard events
+
+--------------------------------------------------------------------------------
+
+OpenVPN
+
+- install
+    - sudo apt-get install openvpn
+    - sudo apt-get install network-manager-openvpn-gnome
+- najit network connections GUI, click na add, vybrat openvpn
+- vyplnit
+    Connection name
+        Seznam.cz treba
+    Gateway
+        okolo.kanclu.seznam.cz
+    User Certificate
+        najit jmeno.pem soubor
+    CA Certificate
+        najit cacert.pem
+    Private Key
+        najit jmeno.key
+    Private Key Password
+        vyplnit
+        heslo se uklada, jde zmenit klikem na ikonu
+- ulozit, pak mezi v menu mezi wifinama je polozka VPN Connections kde se da zapnout to co jsme ted pridali
+
+Nejvetsi problem jsem mel s tim, ze jsem instaloval network-manager-openvpn kterej mi nic nedelal, bylo treba nainstalovat network-manager-openvpn-gnome - bez tohohle baliku to pak nejde naklikat v GUI.
+S timhle resenim je jeden problem, kdyz clovek vypne VPN a pak ji znova zapne, tak se to cely rozbije (internet funguje, ale na interni sit uz se clovek nedostane). Takze to jde zapnout jenom jednou :D, nevim v cem je problem ale da se to resit pres restart network managera:
+    - sudo service network-manager restart
+Oproti predchozimu reseni, kdy jsem musel modifikovat /etc/resolv.conf velky zlepseni :)
+
+
+
+--------------------------------------------------------------------------------
+
+
+running things in pararell and then making sure they are killed when script finishes
+
+
+
+
+#!/bin/bash
+
+cd "$(dirname "$0")/.."
+
+export REACT_APP_INCLUDE_DEV_CODE="true"
+export REACT_APP_DEV_PROXY_PORT="3001"
+
+node ./scripts/dev-proxy.js &
+DEV_PROXY_PID="$!"
+
+./node_modules/.bin/react-app-rewired start
+kill $DEV_PROXY_PID
+
+
+
+--------------------------------------------------------------------------------
+
+
+

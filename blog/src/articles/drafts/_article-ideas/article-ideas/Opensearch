@@ -1,0 +1,42 @@
+http://www.hanselman.com/blog/AddingOpenSearchToYourWebsiteAndGettingInTheBrowsersSearchBox.aspx
+
+https://365tipu.wordpress.com/2015/09/10/jak-nastavim-v-edge-vyhledavac-na-google/
+
+https://hiddencodes.wordpress.com/2012/01/06/webkitchrome-and-search-engine-provider/
+
+
+
+
+
+
+Inside HEAD
+
+
+	<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Twitter Search">
+
+	Z <http://www.hanselman.com/blog/AddingOpenSearchToYourWebsiteAndGettingInTheBrowsersSearchBox.aspx>
+
+
+	<link rel="search" type="application/opensearchdescription+xml" title="Alza.cz" href="https://www.alza.cz/opensearch.xml" />
+
+	Z <https://www.alza.cz/>
+
+
+	<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Twitter">
+
+	Z <https://twitter.com/>
+
+	Yahoo
+		<link rel="search" type="application/opensearchdescription+xml" href="https://search.yahoo.com/opensearch.xml" title="Yahoo Search" />
+
+		Z <https://www.yahoo.com/>
+
+	Wikipedia
+		<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedie (cs)" />
+
+		Z <https://cs.wikipedia.org/wiki/Wikipedie:Typografick%C3%A9_rady>
+
+
+
+	- Musí běžet na stejné doméně, nesmí být ani na jiné subdoméně
+

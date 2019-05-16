@@ -1,0 +1,21 @@
+http://www.html5rocks.com/en/tutorials/cors/
+
+
+
+xhr.withCredentials = true;
+
+Z <http://www.html5rocks.com/en/tutorials/cors/>
+
+
+Posílání cookies cross domain
+
+
+Server pak musí posílat
+
+
+Access-Control-Allow-Origin: http://api.bob.com
+Access-Control-Allow-Credentials: true
+
+Z <http://www.html5rocks.com/en/tutorials/cors/>
+
+

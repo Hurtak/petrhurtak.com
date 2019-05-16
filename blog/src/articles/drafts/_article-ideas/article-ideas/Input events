@@ -1,0 +1,10 @@
+Na inputy je nejlepší oninput
+
+// backward compatibility: <input onchange="doSomething();" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();">
+
+From <https://github.com/Hurtak/DayPlanner/blob/master/js/dayplanner.js>
+
+Na checkboxy je event
+	Onchange
+
+

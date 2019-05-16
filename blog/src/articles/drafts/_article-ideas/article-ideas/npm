@@ -1,0 +1,71 @@
+	Npm
+
+
+	# Vyhledávání balíčku v centrálním repozitáři:
+npm/bower search jquery-ui
+	# Zobrazit detaily o balíčku:
+npm view jquery-ui
+bower info jquery-ui
+	# Instalace všech balíčků projektu:
+npm/bower install
+# Instalace balíčku a přidání do uživatelských závislostí:
+npm/bower install jquery-ui --save
+# Instalace balíčku a přidání do vývojářských závislostí:
+npm/bower install jquery-ui --save-dev
+# Instalace specifické verze balíčku:
+npm/bower install jquery-ui@1.11.x
+	# Aktualizace všech balíčků:
+npm/bower update
+	# Výpis stromu závislostí:
+npm/bower list
+# Výpis stromu závislostí a verze konkrétního balíčku:
+npm/bower list jquery-ui
+	# Odstranění balíčku:
+npm/bower uninstall jquery-ui
+	# Smazání cache. Hodí se v případě reinstalace sady balíčků:
+npm cache clean
+	# Zobrazení balíčků co je potřeba aktualizovat:
+npm outdated
+bower list
+	# Nápověda:
+npm help
+
+	Z <http://www.vzhurudolu.cz/prirucka/node-instalace>
+
+
+
+
+	Npm cache clean protože je npm často rozbité
+	Npm list -g --depth=0
+	Update npm pomocí npm
+		Windows linux
+	Instalace npm
+		Windows linux
+	Update nodejs pomocí npm??
+	Npm install --production
+
+
+
+
+	Npm he nespolehlive obvas pomuze npm cache clean
+	Taky jsem se setkal ze kduz jsem byl na virtual o64mb pameti tak mineslo noc nainstalovat a chubova hlaska byla na Nic pomohlo zvysit ram na 128mb
+
+
+
+
+	http://www.2ality.com/2015/12/npm-install-tag-version.html
+
+
+	Zjištění verzí o balíku
+
+		npm view gulp versions
+
+	Zjištění poslední verze (latest stable?? Ověřit)
+
+		npm view gulp verison
+
+
+
+
+
+https://github.com/sindresorhus/awesome-npm#tips

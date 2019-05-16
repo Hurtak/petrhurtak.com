@@ -1,0 +1,4 @@
+  - putting link tag in body will do this in some newer versions of chrome
+With js
+	Improved version
+		Create link tag with js, when css is loaded, set cookie. When user has cookie, add css in templates on the backend

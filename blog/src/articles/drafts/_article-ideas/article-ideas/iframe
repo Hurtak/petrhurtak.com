@@ -1,0 +1,18 @@
+Jak se dostat do iframe window a iframe document
+
+Document
+	var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+
+	Z <http://stackoverflow.com/questions/1088544/javascript-get-element-from-within-an-iframe>
+
+
+
+
+  win = iframe.contentWindow || iframe;
+  doc = iframe.contentDocument || iframe.contentWindow.document;
+
+Z <http://stackoverflow.com/questions/16018598/how-to-get-a-reference-to-an-iframes-window-object-inside-iframes-onload-handl>
+
+
+

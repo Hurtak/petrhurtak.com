@@ -1,0 +1,7 @@
+Target _blank nebezpeční
+Taky kdyř to otevírám přes js window.open, pak musim na tom oknu win.opener=null
+
+https://medium.com/@jitbit/target-blank-the-most-underestimated-vulnerability-ever-96e328301f4c#.4u4t4drfs
+
+
+možná obecně článek o targetech

@@ -1,0 +1,1 @@
+Article pagination done right, insted of paging by offset or page page by last otem on previous list, good for example on twitter wehere there are quick new posts, also url is more permanent. Whst happens when resource is deleted

@@ -1,0 +1,8 @@
+Sometimes we need to recalculate layout on resize
+
+So you add event listener on resize a be done with it, but be aware. Lots of browsers actually trigger resize when they scroll vertically (if you scroll down they hide some of their menus so you have more screen real estate), so if you layout recalculation function takes amore than 50ms? (measure this with and provide example) you will see noticable "stops" when you scroll up and down
+
+Solution
+	In that resize function check if screen width actually changed, most of the time you actually care about screen width when it comes to your layout
+	Or we could listen on document.body? This one should not change?
+	Also use passive event listeners when possible

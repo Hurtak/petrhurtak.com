@@ -1,0 +1,29 @@
+
+
+http://stackoverflow.com/questions/365805/is-it-ok-to-put-html-comments-outside-the-html-tags
+
+Where are they allowed?
+Can they be outside?
+Nested comments?
+See specification about some interesting things
+
+<!-- NOT OK? - html validator text: Comments seen before doctype. Internet Explorer will go into the quirks mode. -->
+<!DOCTYPE html>
+<!-- Probably OK? -->
+<html>
+	<!-- Probably OK? -->
+	<head>
+		<!-- OK -->
+		<title>hello</title>
+	</head>
+	<!-- Probably OK? -->
+	<body>
+		<!-- OK -->
+		test
+	</body>
+	<!-- Probably OK? -->
+</html>
+<!-- Probably OK? -->
+
+http://stackoverflow.com/questions/941100/can-comments-appear-before-the-doctype-declaration
+

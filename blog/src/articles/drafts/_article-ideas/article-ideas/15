@@ -1,0 +1,14 @@
+http://www.ebaytechblog.com/2014/12/08/async-fragments-rediscovering-progressive-html-rendering-with-marko/
+
+Another idea
+
+We could event skip server side redirects, what could happen instead of redirecting would be rendering the html for the page after we would be redirected, but the "redirect" would happen client side in the <head> tag
+
+If (window.history) {
+	window.history.pushState(null, null, '/route/after/redirect')
+} else {
+	// window.location fallback
+}
+<noscript>
+	No js fallback, could we redirect with some meta tag?
+</noscript>

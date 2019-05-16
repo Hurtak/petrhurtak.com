@@ -1,0 +1,7 @@
+http://jecas.cz/tvaR-urL
+
+/article-name vs /article-name/
+
+301 redirect to unify these 2 (why)
+
+Should we do 301 redirect from "artiCLE" to "article" ?

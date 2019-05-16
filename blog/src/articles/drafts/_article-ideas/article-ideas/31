@@ -1,0 +1,4 @@
+Odeslání před vypnutím stránky
+	beforeunlad
+	Unload
+	Beacon API - Navigator.sendbeacon

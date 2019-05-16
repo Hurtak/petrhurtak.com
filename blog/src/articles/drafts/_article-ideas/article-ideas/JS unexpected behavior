@@ -1,0 +1,24 @@
+JS unexpected behavior z mejch poznámek, vysvětlit, co se děje a proč
+
+> NaN === NaN
+false
+
+From <http://speakingjs.com/es5/ch11.html>
+
+
+
+
+
+
+> Math.pow(2, 53) - 1  // OK
+9007199254740991
+> Math.pow(2, 53)  // OK
+9007199254740992
+> Math.pow(2, 53) + 1  // can't be represented
+9007199254740992
+> Math.pow(2, 53) + 2  // OK
+9007199254740994
+
+Z <http://speakingjs.com/es5/ch11.html#number_representation>
+
+

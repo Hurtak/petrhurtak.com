@@ -1,0 +1,36 @@
+Array push withou previous funcion mutation
+
+	array.push(new);
+
+
+	array.concat(new);
+	[…array, new];
+
+
+Remove item at index
+
+	array.splice(index, 1)
+
+
+	array.slice(0, index).concat(array.slice(index + 1));
+	[…array.slice(0, index), …array.slice(index + 1)];
+	array.filter((_, innerIndex) => innerIndex !== index);
+
+
+
+Vybrat všechny array mutation metody a vyjmenovat k nim náhrady
+
+
+Object assign
+	 když chci vytvořit nový object s nějakou změnout
+
+	Object.assign({}, todo, { completed: !todo.completed });
+
+	Nebo
+
+	Es7 spread operator
+
+	{
+		…todo,
+		completed: !todo.completed
+	}

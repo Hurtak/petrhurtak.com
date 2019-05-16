@@ -1,0 +1,9 @@
+Does not writing semicolons in your program have runtime cost?
+	- ASI is run anyway so it is probably not that big but we could test that just for fun
+	- Have some big codebase with performance tests and run these performance tests with and without semicolons
+	- To easily convert, we could use standard --fix or some configured eslint
+	- Have a not that in the end it doesent really matter since we are minifying production code anyway, and minifiers are using semicolons instead of whitespace for "spacing" between identifiers
+	- https://twitter.com/tomayac/status/761247907555209216 výhoda nepsani stredniku
+	- Zmínit nevýhody jako ze nemůžu psat začátek radku s ( [
+	- https://github.com/feross/standard/issues/78
+

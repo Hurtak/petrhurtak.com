@@ -1,0 +1,8 @@
+Co všechno se dá logovat a podpora napříč prohlížeči
+
+Window.attachEvent v IE9 dává více informací než addEventListener
+
+e.timestamp
+	Za jak dlouho po inicializaci stránky (?) se to stalo
+
+Zmínit automatizované služby jako sentry?

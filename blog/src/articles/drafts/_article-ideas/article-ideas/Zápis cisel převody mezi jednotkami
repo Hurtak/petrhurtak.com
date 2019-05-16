@@ -1,0 +1,20 @@
+2e8
+0b101110
+0x1fa34
+Převod z desitkove na binarni
+
+
+
+x	Hexa
+o/0	Octal
+b	Binary
+E	x10exp
+
+From <http://maxwellito.github.io/es6-quiz-slides/#/43>
+
+
+var a = 0x1101010110111, b = 0o1101010110111, c = 0b1101010110111, d = 001101010110111, e = 0E1101010110111, f = 1101010110111;
+
+From <http://maxwellito.github.io/es6-quiz-slides/#/42>
+
+

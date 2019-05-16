@@ -1,0 +1,73 @@
+have a article about upcoming es proposals
+
+https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-do-expressions
+
+    var data = do {
+        const data = pullSomeData()
+        doSomethingElse()
+        data
+    }
+
+    var data = (() => {
+        const data = pullSomeData()
+        doSomethingElse()
+        return data
+    })()
+
+
+https://github.com/mindeavor/es-papp
+
+    proposal
+
+        function add (x, y, z) { return x + y + z; }
+
+        var addTen = add.papp(3, 7)
+
+    aktuale muzeme
+
+        var addTen = z => add(3, 7, z)
+
+    nebo primo funkce
+
+        https://github.com/mindeavor/es-papp/blob/master/index.js
+
+https://github.com/mindeavor/es-pipeline-operator
+
+    proposal
+
+        let result = "hello"
+            |> doubleSay
+            |> capitalize
+            |> exclaim;
+
+    muzeme
+
+        function pipe (data, ...args) {
+            return args.reduce((transformedData, transformation) =>
+                transformation(transformedData)
+            , data)
+        }
+
+        function pipe (data, ...args) => args.reduce((data, fun) => fun(data), data)
+
+
+        let result = pipe(
+            "hello",
+            doubleSay,
+            capitalize,
+            exclaim
+        )
+
+    or even simpler
+
+        let result = "hello"
+        result = doubleSay(result)
+        result = capitalize(result)
+        result = exclaim(result)
+
+
+not talked about
+
+    pure functions
+
+    carmack quote

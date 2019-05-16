@@ -1,0 +1,6 @@
+Across multiple servers
+
+https://github.com/Hurtak/dotfiles
+
+Also mention /bin directory whery you symlink desired binaries and then add this directory into path so you can call them easily
+

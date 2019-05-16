@@ -1,0 +1,16 @@
+Babel how to
+
+
+Gulpfile.js
+	Stačí přejmenovat na gulpfile.babel.js
+
+Nodejs
+	Stačí na mít nějaký index kde budu mít
+
+	require('babel/register');
+	require('./server.js');
+
+Client
+	Popsat in browser compilation
+	Moduly
+

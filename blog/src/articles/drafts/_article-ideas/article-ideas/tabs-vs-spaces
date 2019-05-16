@@ -1,0 +1,6 @@
+Tabs vs spaces
+
+	Nejdřív tabulátory jenom na odsazení, potom mezery na dorovnání
+
+	box-shadow:  @content-padding-big 0 0 0 @color-gray-background-image-detail,
+	            -@content-padding-big 0 0 0 @color-gray-background-image-detail;

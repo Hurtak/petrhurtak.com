@@ -1,6 +1,45 @@
 import React from "react";
 import { H1, H2, List, Bold, Li, Link, P, Dash, Table, Tr, Tc, Code } from "../../components";
 
+const SharedCommands = () => (
+  <>
+    <Tr>
+      <Tc>Scroll up/down whole page</Tc>
+      <Tc>
+        <Code>Ctrl</Code> + <Code>f</Code>/<Code>b</Code>
+      </Tc>
+      <Tc>
+        <Bold>f</Bold>orward/<Bold>b</Bold>ack
+      </Tc>
+    </Tr>
+    <Tr>
+      <Tc>Scroll up/down half page</Tc>
+      <Tc>
+        <Code>Ctrl</Code> + <Code>u</Code>/<Code>d</Code>
+      </Tc>
+      <Tc>
+        <Bold>u</Bold>p/<Bold>d</Bold>own
+      </Tc>
+    </Tr>
+    <Tr>
+      <Tc>Move to the start of the document</Tc>
+      <Tc>
+        <Code>g</Code> and <Code>g</Code>
+      </Tc>
+      <Tc>
+        be<Bold>gg</Bold>ining
+      </Tc>
+    </Tr>
+    <Tr>
+      <Tc>Move to the end of the document</Tc>
+      <Tc>
+        <Code>G</Code>
+      </Tc>
+      <Tc />
+    </Tr>
+  </>
+);
+
 export default () => (
   <>
     <P>
@@ -127,6 +166,7 @@ export default () => (
           <Bold>d</Bold>elete
         </Tc>
       </Tr>
+      <SharedCommands />
     </Table>
 
     <H2>Visual mode</H2>
@@ -167,6 +207,7 @@ export default () => (
           <Bold>d</Bold>elete
         </Tc>
       </Tr>
+      <SharedCommands />
     </Table>
 
     <H2>Command mode</H2>

@@ -2,6 +2,7 @@
 
 ## TODO
 
+- scroll to top does not work when changing routes?
 - async loading of comments
 - finish CSS design
   - new design for site, inspiration

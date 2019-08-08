@@ -2,13 +2,12 @@
   - scrolling horizontally along with overlaping element
   - mobile filters bubble toggling
 
-- git squash into one commit
-  - git basics
-    - add remote
-    - merge upstream changes into your fork
-    - reset to remote branch
-    - squash changes and force push
-      - https://stackoverflow.com/questions/25356810/git-how-to-squash-all-commits-on-branch
+- git basics
+  - add remote
+  - merge upstream changes into your fork
+  - reset to remote branch
+  - squash changes and force push
+    - https://stackoverflow.com/questions/25356810/git-how-to-squash-all-commits-on-branch
 
 - robots.txt review - make article
 

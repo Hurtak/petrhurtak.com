@@ -4,7 +4,7 @@ const metadata: IArticleMetadataRaw = {
   title: "Hello extension",
 
   description: `
-    I made cool Chrome extension that replaces your new tab with widgets and
+    I made a cool Chrome extension that replaces your new tab with widgets and
     fresh image every day.
   `,
 

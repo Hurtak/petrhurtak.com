@@ -7,7 +7,7 @@ const storeLink = "https://chrome.google.com/webstore/detail/hello/olenfgbgcphka
 export default () => (
   <>
     <P>
-      I made <Link href={storeLink}>Chrome extension</Link> that replaces your new tab with widgets and fresh image
+      I made a <Link href={storeLink}>Chrome extension</Link> that replaces your new tab with widgets and fresh image
       every day.
     </P>
 
@@ -40,7 +40,7 @@ export default () => (
         installing the extension.
       </Li>
       <Li>
-        <Link href="https://github.com/hurtak/hello">GitHub</Link> in case you want to checkout the code, the extension
+        <Link href="https://github.com/hurtak/hello">GitHub</Link> in case you want to check out the code, the extension
         is open-source.
       </Li>
     </List>

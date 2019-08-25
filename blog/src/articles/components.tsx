@@ -10,6 +10,7 @@ import { H1, H2 } from "../app/components/article/headings";
 import { List, Li } from "../app/components/article/list";
 import { Table, Tr, Tc } from "../app/components/article/table";
 import { Video } from "../app/components/article/video";
+import { Image } from "../app/components/article/image";
 import { Code, Diagram } from "../app/components/article/code";
 
 export {
@@ -27,6 +28,7 @@ export {
   Tr,
   Tc,
   Video,
+  Image,
   Code,
   Diagram
 };
@@ -80,13 +82,6 @@ TODO
   font-family: var(--font-family-heading);
   font-weight: normal;
   color: var(--color-gray-dark);
-}
-
-// images
-
-.Article-content img {
-  display: block;
-  margin: var(--paragraph-spacing) 0 0 0;
 }
 
 .Article-content figure {

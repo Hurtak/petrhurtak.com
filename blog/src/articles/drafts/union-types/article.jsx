@@ -146,7 +146,7 @@ export default () => (
     `}</Code>
 
     <P>
-      This is much better now because ve have clear indicator what state transition we are in, and we do not need to
+      This is much better now because we have clear indicator what state transition we are in, and we do not need to
       check boolean flags that can be mutually exclusive. Also the current state we are in only has data relevant to it,
       so for example, when we are in loading state there is no empty data field and false in error field.
     </P>

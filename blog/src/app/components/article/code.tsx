@@ -13,7 +13,7 @@ import { highlightCss } from "../../../generated/raw-files";
 // TODO: make the register language with dynamic imports so we do not have
 //       to register languages manually and so only needed languages are
 //       downloaded?
-// https://github.com/isagalaev/highlight.js/issues/1257
+// https://github.com/highlightjs/highlight.js/pull/1663
 import highlight from "highlight.js/lib/highlight.js";
 
 import highlightLanguageJavaScript from "highlight.js/lib/languages/javascript";

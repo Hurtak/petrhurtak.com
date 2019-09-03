@@ -176,7 +176,7 @@ export default function(hljs) {
       {
         className: "function",
         begin: "function",
-        end: /[\{;]/,
+        end: /[{;]/,
         excludeEnd: true,
         keywords: KEYWORDS,
         contains: [

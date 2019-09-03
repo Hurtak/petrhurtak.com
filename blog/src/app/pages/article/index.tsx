@@ -1,19 +1,17 @@
 import React, { lazy, Suspense } from "react";
-import ReactDisqusComments from "react-disqus-comments";
 import {
   Loading,
   Header,
   ArticleTitle,
   Time,
   Content,
-  Comments,
-  CommentsTitle
+  Footer,
+  FooterLink
 } from "./styled";
 import { NotFound } from "../error/not-found";
 import { ArticleErrorBoundary } from "../error/article-error-boundary";
 import { HelmetTitle } from "../../components/helmet-title";
 import { config } from "../../config/site-config";
-import { routes } from "../../config/routes";
 import { IArticleMetadata } from "../../../articles/articles";
 import * as date from "../../common/date";
 
@@ -37,6 +35,10 @@ export const Article = ({
   }
 
   const ArticleContent = lazy(article.articleImportPromise);
+  const linkTwitter = `https://mobile.twitter.com/search?q=${encodeURIComponent(
+    config.siteUrlShort + "/" + article.slug
+  )}`;
+  const linkGitHub = `https://github.com/Hurtak/hurtak.cc/tree/master/blog/src/articles/${article.folder}`;
 
   return (
     <Suspense fallback={<Loading />}>
@@ -55,15 +57,10 @@ export const Article = ({
         <Content>
           <ArticleContent />
         </Content>
-        <Comments>
-          <CommentsTitle>Comments</CommentsTitle>
-          <ReactDisqusComments
-            shortname="hurtak"
-            identifier={article.slug}
-            title={article.title}
-            url={config.siteUrl + routes.article.url(article.slug)}
-          />
-        </Comments>
+        <Footer>
+          <FooterLink to={linkTwitter}>Discuss on Twitter</FooterLink>
+          <FooterLink to={linkGitHub}>Edit on GitHub</FooterLink>
+        </Footer>
       </ArticleErrorBoundary>
     </Suspense>
   );

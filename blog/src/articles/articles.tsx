@@ -24,6 +24,7 @@ export interface IArticleMetadata {
   slug: string;
   datePublication: number;
   dateLastUpdate: number;
+  folder: string;
   articleImportPromise: () => Promise<{ default: any }>;
 }
 
@@ -70,21 +71,21 @@ function transformMetadata(
     metadata.datePublication
   );
 
-  const articleImportPromise = (() => {
-    if (draft) {
-      return () => import(`./drafts/${metadata.slug}/article.jsx`);
-    } else {
-      const date = new Date(datePublication);
-      const year = date.getUTCFullYear();
-      const month = addLeadingZero(date.getUTCMonth() + 1);
-      const day = addLeadingZero(date.getUTCDate());
+  const date = new Date(datePublication);
+  const year = date.getUTCFullYear();
+  const month = addLeadingZero(date.getUTCMonth() + 1);
+  const day = addLeadingZero(date.getUTCDate());
 
-      return () =>
+  const folder = draft
+    ? `drafts/${metadata.slug}/article.jsx`
+    : `published/${year}-${month}-${day}--${metadata.slug}/article.jsx`;
+
+  const articleImportPromise = draft
+    ? () => import(`./drafts/${metadata.slug}/article.jsx`)
+    : () =>
         import(
           `./published/${year}-${month}-${day}--${metadata.slug}/article.jsx`
         );
-    }
-  })();
 
   const metadataTransformed: IArticleMetadata = {
     title: metadata.title,
@@ -92,6 +93,7 @@ function transformMetadata(
     description: formatDescription(metadata.description),
     draft,
     slug: metadata.slug,
+    folder,
 
     datePublication,
     dateLastUpdate: articleMetadataDateToTimestamp(metadata.dateLastUpdate),

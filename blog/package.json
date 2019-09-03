@@ -27,7 +27,6 @@
     "prettier": "1.18.2",
     "react": "16.8.6",
     "react-content-loader": "4.2.2",
-    "react-disqus-comments": "1.4.0",
     "react-dom": "16.8.6",
     "react-helmet": "5.2.1",
     "react-scripts": "3.0.1",

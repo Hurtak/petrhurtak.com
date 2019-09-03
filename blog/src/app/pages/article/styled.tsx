@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled/macro";
 import { Code, List } from "react-content-loader";
 import { Spacer } from "../../components/spacer";
+import { Link } from "../../components/link";
 import * as s from "../../styles/styles";
 
 const LoadingBlockCode = () => <Code width={500} height={70} />;
@@ -39,11 +40,16 @@ export const Content = styled.div({
   marginTop: s.grid(3)
 });
 
-export const Comments = styled.section({
+export const Footer = styled.section({
   marginTop: s.grid(3)
 });
 
-export const CommentsTitle = styled.h2({
-  ...s.fonts.headingMedium,
-  margin: `${s.grid(7)} 0 ${s.grid(2)} 0`
+export const FooterLink = styled(Link)({
+  ...s.fonts.paragraph,
+  color: s.colors.blueDark,
+  marginLeft: s.grid(1),
+
+  ":first-of-type": {
+    marginLeft: 0
+  }
 });

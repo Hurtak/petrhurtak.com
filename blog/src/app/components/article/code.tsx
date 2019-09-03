@@ -17,7 +17,8 @@ import { highlightCss } from "../../../generated/raw-files";
 import highlight from "highlight.js/lib/highlight.js";
 
 import highlightLanguageJavaScript from "highlight.js/lib/languages/javascript";
-import highlightLanguageTypeScript from "highlight.js/lib/languages/typescript";
+// TODO: until https://github.com/highlightjs/highlight.js/issues/1155 is resolved
+import highlightLanguageTypeScript from "./highlight-ts-patch.js";
 import highlightLanguageMakefile from "highlight.js/lib/languages/makefile";
 import highlightLanguageJson from "highlight.js/lib/languages/json";
 import highlightLanguageYaml from "highlight.js/lib/languages/yaml";

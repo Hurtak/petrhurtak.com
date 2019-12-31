@@ -1,12 +1,14 @@
 # TODO
 
 ## TODO
+
 - iife article is missing?
 - blog inspiration
   - projects, list of all projects of what i did
   - opensource, list of all opensource of what i did
   - apperances - talks, articles, etc
   - https://mxstbr.com/
+  - https://tonsky.me/
 - scroll to top does not work when changing routes?
 - async loading of comments
 - finish CSS design

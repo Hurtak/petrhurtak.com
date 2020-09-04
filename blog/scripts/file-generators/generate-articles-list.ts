@@ -21,11 +21,18 @@ function getArticlesByType(type: ArticleType): ArticleData[] {
     const stat = fs.lstatSync(articleFolderPath);
     if (stat.isDirectory() === false) continue;
 
+    if (item.startsWith("_")) continue;
+
     const requiredFiles = ["article.jsx", "metadata.ts"];
     const requiredFilesPreset = requiredFiles.every(fileName =>
       fs.existsSync(path.join(articleFolderPath, fileName))
     );
-    if (!requiredFilesPreset) continue;
+    if (!requiredFilesPreset) {
+      console.log(
+        `Article folder "${item}" ignored, because it does not have required files`
+      );
+      continue;
+    }
 
     let variable = item;
     variable = variable.replace(/^_/, "");

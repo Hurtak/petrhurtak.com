@@ -28,9 +28,6 @@
   - how i did it in v1
   - execa
 
-- babel preval macro
-  - how i do it on this blog generate scripts
-
 - visitelnost
   - je element videt ve viewportu/jinem elementu, nastaveni na procenta viditelnosti?
   - je element prekryvan jinym elementem?
@@ -100,8 +97,6 @@
   - other projects
     - https://github.com/csstools/sanitize.css
     - css resets
-
-- https://twitter.com/PetrHurtak/status/913504461884190720
 
 - https://css-tricks.com/useful-nth-child-recipies/
 
@@ -186,11 +181,6 @@ class TabIndexHandler extends React.Component {
     }
   }
 }
-
-- fetch example
-  - POST/PUT
-  - headers
-  - inspiration from AJAX article
 
 - font loading
   - how I did it on example project

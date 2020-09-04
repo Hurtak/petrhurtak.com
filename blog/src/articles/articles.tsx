@@ -29,7 +29,7 @@ export interface IArticleMetadata {
 }
 
 export function getArticles({
-  limit = 10,
+  limit,
   drafts = false,
   futureArticles = false,
   sortByKey = "datePublication",

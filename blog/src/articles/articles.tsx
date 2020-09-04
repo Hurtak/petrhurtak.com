@@ -117,7 +117,7 @@ function articleMetadataDateToTimestamp(dateString: string): number {
   const isStringValid = validationRegex.test(dateString);
   if (!isStringValid) {
     throw new Error(
-      `Article date string is in invalida format, received "${dateString}", expected pattern ${String(
+      `Article date string is in invalid format, received "${dateString}", expected pattern ${String(
         validationRegex
       )}`
     );

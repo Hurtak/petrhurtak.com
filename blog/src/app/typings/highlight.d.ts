@@ -41,3 +41,7 @@ declare module "highlight.js/lib/languages/bash" {
   const x: any;
   export default x;
 }
+declare module "highlight.js/lib/languages/dockerfile" {
+  const x: any;
+  export default x;
+}

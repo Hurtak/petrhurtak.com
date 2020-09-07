@@ -25,6 +25,7 @@ import highlightLanguageYaml from "highlight.js/lib/languages/yaml";
 import highlightLanguageCss from "highlight.js/lib/languages/css";
 import highlightLanguageXml from "highlight.js/lib/languages/xml"; // HTML
 import highlightLanguageBash from "highlight.js/lib/languages/bash";
+import highlightLanguageDockerfile from "highlight.js/lib/languages/dockerfile";
 import highlightLanguageElm from "highlight.js/lib/languages/elm";
 // import highlightShell from "highlight.js/lib/languages/shell";
 // import highlightHttp from "highlight.js/lib/languages/http";
@@ -35,6 +36,7 @@ import highlightLanguageElm from "highlight.js/lib/languages/elm";
 
 highlight.registerLanguage("javascript", highlightLanguageJavaScript);
 highlight.registerLanguage("typescript", highlightLanguageTypeScript);
+highlight.registerLanguage("dockerfile", highlightLanguageDockerfile);
 highlight.registerLanguage("makefile", highlightLanguageMakefile);
 highlight.registerLanguage("json", highlightLanguageJson);
 highlight.registerLanguage("yaml", highlightLanguageYaml);
@@ -55,6 +57,7 @@ export const Code = ({
   language?:
     | "javascript"
     | "makefile"
+    | "dockerfile"
     | "json"
     | "yaml"
     | "css"

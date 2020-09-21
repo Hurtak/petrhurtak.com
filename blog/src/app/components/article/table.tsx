@@ -49,19 +49,29 @@ export const Tc = ({
   heading = false,
   noWrap = false,
   center = false,
+  colSpan,
+  rowSpan,
   style,
   children
 }: {
   heading?: boolean;
   noWrap?: boolean;
   center?: boolean;
+  colSpan?: number;
+  rowSpan?: number;
   style?: React.CSSProperties;
   children?: React.ReactNode;
 }) => {
   const Component = heading ? TableCellHeadingStyled : TableCellStyled;
 
   return (
-    <Component noWrap={noWrap} center={center} style={style}>
+    <Component
+      noWrap={noWrap}
+      center={center}
+      style={style}
+      colSpan={colSpan}
+      rowSpan={rowSpan}
+    >
       {children}
     </Component>
   );

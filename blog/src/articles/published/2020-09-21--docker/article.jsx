@@ -44,7 +44,7 @@ export default () => (
       # Build image
       #   -f/--file  Path to Dockerfile, default is 'CWD/Dockerfile'
       #   -t/--tag   Name and optionally a tag in the 'name:tag' format
-      docker build.
+      docker build .
 
       # List images
       docker image ls

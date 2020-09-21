@@ -64,7 +64,7 @@ export default () => (
       docker exec -it <CONTAINER ID> /bin/sh
    `}</Code>
 
-    <H2>Cleanup</H2>
+    <H2>Cleanup commands</H2>
 
     <Code multiline language="bash">{`
       # List containers

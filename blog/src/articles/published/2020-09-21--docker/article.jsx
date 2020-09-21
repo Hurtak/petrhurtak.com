@@ -38,7 +38,7 @@ export default () => (
       CMD ["index.js"]
     `}</Code>
 
-    <H2>Commands</H2>
+    <H2>Create commands</H2>
 
     <Code multiline language="bash">{`
       # Build image
@@ -116,7 +116,7 @@ export default () => (
       index.js  node_modules  packag
       root@08d6c527fe82:/app# exit
 
-      # Stop the running container
+      # Stop and remove the running container
       $ docker ps
       CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
       08d6c527fe82        ea5c328aef35        "node index.js"     3 seconds ago       Up 3 seconds                            festive_lehmann

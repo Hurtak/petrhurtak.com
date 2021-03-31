@@ -2,6 +2,8 @@
 
 ## TODO
 
+- inspiration
+  - https://tonsky.me/
 - iife article is missing?
 - blog inspiration
   - projects, list of all projects of what i did

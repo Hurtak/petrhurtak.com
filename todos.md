@@ -5,6 +5,7 @@
 - inspiration
   - https://tonsky.me/
   - https://mxstbr.com/
+  - https://200ok.vc/
 - iife article is missing?
 - blog inspiration
   - projects, list of all projects of what i did

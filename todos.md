@@ -3,16 +3,11 @@
 ## TODO
 
 - inspiration
-  - https://tonsky.me/
-  - https://mxstbr.com/
-  - https://200ok.vc/
 - iife article is missing?
 - blog inspiration
   - projects, list of all projects of what i did
   - opensource, list of all opensource of what i did
   - apperances - talks, articles, etc
-  - https://mxstbr.com/
-  - https://tonsky.me/
 - scroll to top does not work when changing routes?
 - async loading of comments
 - finish CSS design
@@ -21,6 +16,12 @@
     - https://tesarek.me/
   - add cool efect to buttons like in https://www.keithcirkel.co.uk/
   - inspiration:
+    - x
+      - https://mxstbr.com/
+      - https://tonsky.me/
+      - https://tonsky.me/
+      - https://mxstbr.com/
+      - https://200ok.vc/
     - new
       - https://tomdale.net/
       - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/

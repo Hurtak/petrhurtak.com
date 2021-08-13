@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const withVideos = require("next-videos");
+
+const config = {
   reactStrictMode: true,
 
   // Workaround for https://github.com/vercel/next.js/issues/8251
@@ -7,3 +9,5 @@ module.exports = {
     PROJECT_ROOT: __dirname,
   },
 };
+
+module.exports = withVideos(config);

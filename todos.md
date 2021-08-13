@@ -1,42 +1,31 @@
 # TODO
 
-## TODO
-
-- inspiration
-- iife article is missing?
-- blog inspiration
+- domains
+  - buy hurtak.cc hurtak.io petrhurtak.com petrhurtak.cz hurtak.pe
+- convert all articles
+- sections
+  - about me
+  - link to twitter
+  - link to linkedin
+  - link to instagram
+  - articles from twitter
   - projects, list of all projects of what i did
   - opensource, list of all opensource of what i did
   - apperances - talks, articles, etc
-- scroll to top does not work when changing routes?
-- async loading of comments
-- finish CSS design
-  - new design for site, inspiration
-    - https://alexmeub.com/
-    - https://tesarek.me/
-  - add cool efect to buttons like in https://www.keithcirkel.co.uk/
-  - inspiration:
-    - x
-      - https://mxstbr.com/
-      - https://tonsky.me/
-      - https://200ok.vc/
-    - new
-      - https://tomdale.net/
-      - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
-      - https://www.robinwieruch.de/mobx-react/
-      - https://www.bramstein.com/writing/web-font-loading-patterns.html
-    - old
-      - http://alves.im/blog/before-dive-into-react.html
-      - http://blog.rstankov.com/
-      - http://maketea.co.uk/2016/09/28/css-grid-layout-is-a-step-change.html
-      - http://oops.re/
-      - http://phoboslab.org/log
-      - http://prolost.com/
-      - http://usabilitypost.com/
-      - https://99designs.com.au/tech-blog/blog/2015/10/26/aws-vault/
-      - https://automattic.com/
-      - https://www.briangilham.com/articles/
-      - https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/
+  - 404 page
+- resolve todos in code
+- favicon
+- RSS feed
+- remove \_legacy folders
+- deploy
+
+## TODO
+
+- drafts
+- inspiration
+  - https://mxstbr.com/
+  - https://alexmeub.com/
+  - https://tesarek.me/
 
 ## Later
 
@@ -45,139 +34,42 @@
 - preload article when mousedown?
 - https://github.com/evenchange4/svgr.macro ?
 - Insecure link urls: http://hurtak.disqus.com
-- click on articles link should scroll to top
 - click on all links and determine if they do not return 404
-- sort through todos
-- cant use tsx in articles because we import mp4/images and that seems to be broken in CRA in ts files?
-- revisit manifest.json
-- convert rest of the design and \_legacy folder
 - frontend checklist
-- check generated html, if tags are ok
 - responsive images
   - https://www.gatsbyjs.org/docs/working-with-images/
 - google analytics in some better place
-- route based codesplitting
-  - https://reactjs.org/docs/code-splitting.html
-- revisit components
-  - article loading component
-  - error boundary
-  - 404 page
-  - admin pages
-- svg as react components?
-- sitemap
-- bugs
-  - menu hover - change icon to white
+- add sitemap
+  - http://jecas.cz/sitemap
 - prev/next article links inside article
-  - or perhaps another articles from the same tag
-- preload articles in viewport
-  - or something more clever?
-- production build time is in different locale
-
-## Future
-
 - prettier xml?, once https://github.com/prettier/prettier/issues/5322 lands
-
-## Rewrite TODOS
-
 - humans.txt
-
-## Later
-
-- articles writing
-  - make drafts work again
-  - live reload when new article appears
-- cleaup dir structure
-- Go through TODOS
-- load comments when visible, or on demand with button?
-- RSS feed, use some package to make sure encoding is ok??
 - inspiration
   - https://ryanclark.me/
 - tell now to use scripts/production instead of npm scripts
 - jest silent when test passes
-- article proptypes validation
-  - listitem must be inside List component
 - @zeit/next-bundle-analyzer
 - https://www.npmjs.com/package/@pwa/next-workbox-webpack-plugin
-- cleanup articles css, there are some importants and other stuff
-- Check that Google Analytics works
 - https://asciinema.org/ & https://github.com/marionebl/svg-term-cli
-- Style overscroll area
 - Rewmap description in RSS
   - Switch to https://github.com/jpmonette/feed
-- Change layout to menu on the left
-  - http://vojtechruzicka.com/
 - Incorporate tests
   - metadata validation
   - https://github.com/wooorm/alex
   - something that checks grammar (maybe Grammarly has some API?)
 - hover & active styles
-  - test whole web only with kehboard
-
-## Latest
-
+  - test whole web only with keyboard
 - compile articles
   - replace `"` with correct quotes
   - `you're` -> `you’re`
-- Today (as date) is not capitalized in articles list
+- headings should have links to the hashes
+- add css lint?
 
 ## Older
 
-- can i use links
-- skip deploy task from periodic builds
-- write first article
-  - http://i.imgur.com/A6gQxoM.jpg
-- videos are jumping around when we refresh the page?
-- articles on main page ale filtered with UTC, dates displayed are without UTC.
-- when displaying '2 days ago' dates - round dates to latest midnight
-- headings should have links to the hashes
-- insert <link preload> on all links in the page?
-- lazy load disqus
-  - https://css-tricks.com/lazy-loading-disqus-comments/
-  - maybe detect hardware and if we are on mobile, only lazyload then
-- add less, and maybe try sass
-- update rss, package.json descriptions
-- consider moving metadata.title to the article itself?
-- add components/styles for keyboard shortcuts - in case we want to write them in the article
-- add "updated 20/10/2015" - date of last update of the article
-  - figure out where to put this date
-    - in article
-    - on main page?
-    - what about rss?
-- links to previous/next article?
-- add `about` page with basic contact
-  - twitter
-  - email
-  - hobby
-  - current work
-    - seznam
-    - ui programmer
-- add css lint?
-- https://news.ycombinator.com/item?id=13733790
-  - 1. find somebody who blogs and review articles to each other
-  - 2. have a mailing list where i will just send preview of article to people that are interested
-- fix css source maps
-  - source map file does not have hash
-  - update sourceMapURL so it points to the file with hash
-  - make sourcemapped file paths correct
-- handle images cache busting
-  - https://blog.risingstack.com/automatic-cache-busting-for-your-css/
 - animated demos (videos) - https://news.ycombinator.com/item?id=12789862
-- update Twitter profile
-- domains
-  - buy hurtak.cc hurtak.io petrhurtak.com petrhurtak.cz hurtak.pe
 - https://www.smashingmagazine.com/2016/08/using-a-static-site-generator-at-scale-lessons-learned/
 - http://www.vzhurudolu.cz/prirucka/checklist
-- consider transforming article so each element has it's own class?
-  - p -> p.article\_\_p
-  - what do we do about nested components?
-  - what happens when we are in code/xmp element?
-  - do we do this automatically based on tag name or by hand?
-  - why would we do this? what is the benefit over plain CSS -> maybe that we don't have CSS specificity problems?
-- benchmark tool, use wrk? also benchmark after each commit in travis?
-- Synon.js for mocking api call a db functions?
-- Selenium testing?
-- take a look at error logging tools like sentry?
-- https://blog.cloudflare.com/accelerating-node-js-applications-with-http-2-server-push/
 - consider using https://github.com/VerbalExpressions/JSVerbalExpressions for regex
 - inspiration
   - http://blog.jenkster.com/
@@ -190,7 +82,6 @@
   - http://pebblecode.com/
   - http://perfectionkills.com/
   - http://shapeshed.com/writing-cross-platform-node/
-  - http://tesarek.me
   - http://uimovement.com/ui/1922/menu-item-selection/
   - http://www.mgadams.com/2015/06/30/the-software-engineers-guide-to-negotiating-a-raise/
   - http://www.michaelvillar.com/
@@ -203,18 +94,10 @@
   - https://shapeshed.com/the-future-of-jobs/
   - https://yobriefca.se/articles/
   - http://tympanus.net/Tutorials/FullscreenBookBlock/
-
-## FUTURE RELEASES
-
 - General
   - write README.md
-  - sitemap
-  - 301 redirects from uppercase urls? /arTicle -> /article
   - fine tune humans.txt
   - https://github.com/googlechrome/sw-precache
-  - run blog through
-    - CSS and HTML validator
-    - use some tool to detect unused styles
   - consider unification of quotes (html ", js ')
   - consider unification of coding style across technologies (camelCase JS, underscore_case MySQL, dash-case CSS)
   - take a look at ponyfoo.com for performance ideas
@@ -225,7 +108,6 @@
   - enable brotli compression
     - https://www.smashingmagazine.com/2016/10/next-generation-server-compression-with-brotli/
   - tags to articles
-  - node 6.6.0 promises: Unhandled rejections now emit a process warning after the first tick, so maybe we don't need hard-rejection module anymore
   - consider using execa, shelljs, cash for scripts once async/await lands
   - projects page
   - use & write article about https://github.com/nolanlawson/optimize-js
@@ -261,7 +143,6 @@
   - add variaous layers of validation, like that when snippets dir exists, there is at least on .html file in there
   - be able to resize
   - Source link doesent align with button - http://i.imgur.com/AIKK2K2.png (only in chrome)
-  - highlight code with `<mark>`?
   - json schema for metadata.yaml validation?
   - have a way to display diffs
   - inspiration: https://jakearchibald.com/2016/svg-media-queries/
@@ -286,24 +167,6 @@
       - do not add any other extra headers like powered by and security headers added by helmet??
         - somebody could then display our content? maybe only add the one which disables displaying in iframe?
       - also keep the original headers comment in html so reader can easily see what headers were added?
-- Debug
-  - have a way to show unpublished articles to other people on secret url
-- CI
-  - read docs https://docs.travis-ci.com/user/languages/javascript-with-nodejs (notifications when it fails?)
-  - have CI job which will run all article validity checks
-  - check if article links are not 404
-  - check if other page links are not 404
-  - if all pages are html valid
-  - npm outdated check
-  - html validator all pages (https://github.com/zrrrzzt/html-validator)
-  - https://www.npmjs.com/package/sloc-for-jenkins
-  - move npm run lint in something like before_script?
-  - https://github.com/stylelint/stylelint
-  - have task that run periodically every hour?
-    - https://github.com/RetireJS/retire.js
-    - npm outdated?
-    - https://github.com/nodesecurity/nsp
-    - https://github.com/Snyk/snyk
 - Articles
   - currently html of code blocks is parsed and we cannot get raw html? so `<h2>` will become `<h2></h2>`, maybe switch to jsdom?
   - add gradient overlay on code blocks that overflow to y
@@ -341,14 +204,6 @@
   - parse article function uses readFileSync, rewrite to use promises/cb
   - replace @see links in code with my own articles
 - Frontend
-  - once JS modules work in Chrome
-    - switch to that
-    - refactor global namespace in base.njk and how data are feeded into the app
-    - add support for sourcemaps
-    - consider using babili instead of uglifyjs
-  - highlight.js
-    - locally host css file
-    - only take css for languages that are really used
   - http://mozilla.github.io/nunjucks/templating.html#whitespace-control
   - minify scripts and css (debug mode in production still with unminified files)
   - minify article images
@@ -387,21 +242,8 @@
   - use webp for iamges?
 - page transition animations
   - http://codyhouse.co/demo/page-scroll-effects/parallax.html
-- logo inspiration
-  - http://imgur.com/WWvA4MP
-  - http://codepen.io/zadvorsky/pen/xVrMMO
-  - make favicon
-  - animate icon with sprite?
-  - animate logo with this https://vimeo.com/185587462 ?
-  - animate favicon
-  - http://speckyboy.com/2015/11/09/subtly-animated-logos/
-  - http://crystal-lang.org/
-  - http://blog.wearecolony.com/a-year-without-jquery/
 - https://uimovement.com/ui/2181/link-behavior/
 - https://webmasters.googleblog.com/2011/09/pagination-with-relnext-and-relprev.html?m=1
-- folder organization
-  - https://doc.nette.org/en/2.3/quickstart/getting-started#toc-sandbox-s-content
-  - Taky obrázky z článků by měly být we www složce nebo někde + je proháhět nějakym optimalizátorem a používat
 - make projects section
   - TOMATOTIM
   - PHPAUTOCOLOR
@@ -412,26 +254,18 @@
 - http://uimovement.com/ui/440/challenge-accepted/
 - https://blog.risingstack.com/node-js-security-checklist/
 - https://www.joyent.com/node-js/production/debug
-- chrome scrollbar styling?
-  - http://www.maxiprani.cz/
 - when somebody doesent have adblock, show warning :D
   - https://twitter.com/gcluley/status/704980787716866048
 - http://jecas.cz/toc
 - jecas.cz/seo-rychle
 - http://practice.typekit.com/lesson/caring-about-opentype-features/
-- add sitemap
-  - http://jecas.cz/sitemap
 - http://www.html5rocks.com/en/tutorials/appcache/beginner/
 - http://www.html5rocks.com/en/tutorials/service-worker/introduction/
 - search
   - http://uimovement.com/ui/1125/magazine-search/
 - Prechod mezi strankama
   - http://uimovement.com/ui/1127/product-page/
-- how to do gifs
-  - http://wesbos.com/animated-gif-workflow/
 - https://serviceworke.rs/
-- initial animation
-  - http://blog.izs.me/
 - header shadow animation
   - http://flexbox.io/
 - menu http://tympanus.net/codrops/2016/01/06/inspiration-for-line-menu-styles/

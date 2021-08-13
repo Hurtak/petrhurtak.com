@@ -1,8 +1,24 @@
 import React from "react";
-import { H1, H2, List, Li, Video, P, Table, Tr, Tc, Code } from "../../components";
+
+import { Code, H1, H2, Li, List, P, Table, Tc, Tr, Video } from "../../src/components";
+import { ArticleMetadata } from "../types";
 import shebangMp4 from "./videos/shebang.mp4";
 
-export default () => (
+const metadata: ArticleMetadata = {
+  title: "Shebang",
+
+  description: `
+    Under Unix-like operating systems you can either run scripts by specifying
+    the interpreter along with the path or you can run them as programs and
+    have the interpreter specified in the shebang on the first line of the
+    script.
+  `,
+
+  datePublication: "2017-04-28 10:00:00",
+};
+export default metadata;
+
+export const article = () => (
   <>
     <P>
       Under Unix-like operating systems you can either run scripts by specifying the interpreter along with the path{" "}

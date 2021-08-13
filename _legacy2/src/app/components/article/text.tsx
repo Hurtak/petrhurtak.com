@@ -31,30 +31,5 @@ const LinkStyled = styled.a({
   }
 });
 
-export const Bold = ({ children }: { children: string }) => (
-  <BoldStyled>{children}</BoldStyled>
-);
-
-const BoldStyled = styled.strong({
-  fontWeight: "bold"
-});
-
-export const Italic = ({ children }: { children: string }) => (
-  <ItalicStyled>{children}</ItalicStyled>
-);
-
-const ItalicStyled = styled.em({
-  fontStyle: "italic"
-});
-
-export const Quote = ({ children }: { children: string }) => (
-  <QuotationsStyles>{children}</QuotationsStyles>
-);
-
-const QuotationsStyles = styled.q({
-  // https://practicaltypography.com/straight-and-curly-quotes.html
-  quotes: `"“" "”"`
-});
-
 export const Dash = ({ long = false }: { long?: boolean }) =>
   long === false ? <>&ndash;</> : <>&mdash;</>;

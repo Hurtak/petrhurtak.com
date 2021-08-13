@@ -60,4 +60,38 @@ export const Li = ({ children }: { children: React.ReactNode }) => {
   return <li>{children}</li>;
 };
 
+export const Table = ({ heading, children }: { heading?: React.ReactNode; children: React.ReactNode }) => {
+  return (
+    <table>
+      {heading && <thead>{heading}</thead>}
+      <tbody>{children}</tbody>
+    </table>
+  );
+};
+
+export const Tr = ({ children }: { children: React.ReactNode }) => {
+  return <tr>{children}</tr>;
+};
+
+export const Tc = ({ noWrap = false, children }: { noWrap?: boolean; children: React.ReactNode }) => {
+  return (
+    <td>
+      <style jsx>{`
+        td {
+          ${noWrap && `white-space: nowrap;`}
+        }
+      `}</style>
+      {children}
+    </td>
+  );
+};
+
+export const Video = ({ width, height, src }: { width: number; height: number; src: string }) => {
+  return (
+    <video width={width} height={height} controls autoPlay loop>
+      <source src={src} type="video/mp4" />
+    </video>
+  );
+};
+
 export { Code } from "./code";

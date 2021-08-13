@@ -3,18 +3,31 @@ import bash from "refractor/lang/bash";
 import docker from "refractor/lang/docker";
 import javascript from "refractor/lang/javascript";
 import jsx from "refractor/lang/jsx";
+import makefile from "refractor/lang/makefile";
 import tsx from "refractor/lang/tsx";
 import typescript from "refractor/lang/typescript";
+import yaml from "refractor/lang/yaml";
 import stripIndent from "strip-indent";
 
 Refractor.registerLanguage(bash);
 Refractor.registerLanguage(docker);
 Refractor.registerLanguage(javascript);
 Refractor.registerLanguage(jsx);
+Refractor.registerLanguage(makefile);
 Refractor.registerLanguage(tsx);
 Refractor.registerLanguage(typescript);
+Refractor.registerLanguage(yaml);
 
-type LanguageType = "js" | "jsx" | "ts" | "tsx" | "docker" | "bash";
+type LanguageType =
+  | "bash"
+  //
+  | "docker"
+  | "js"
+  | "jsx"
+  | "makefile"
+  | "ts"
+  | "yaml"
+  | "tsx";
 
 export const Code = ({
   language,
@@ -35,6 +48,7 @@ export const Code = ({
 
         .inline-code {
           display: inline-flex;
+          width: auto;
         }
         .inline-code :global(.refractor) {
           margin: 0;

@@ -1,10 +1,4 @@
 {
   "editor.formatOnSave": true,
-  "eslint.workingDirectories": [
-    {
-      "directory": "blog-new",
-      "changeProcessCWD": true
-    }
-  ],
-  "typescript.tsdk": "blog-new/node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

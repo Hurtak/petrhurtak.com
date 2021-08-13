@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -e
-cd "$(dirname "$0")/.."
-
-./scripts/generate
-echo "[BLOG] running react-scripts start"
-./node_modules/.bin/react-scripts start

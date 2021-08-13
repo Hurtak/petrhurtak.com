@@ -1,8 +1,10 @@
 {
-  "search.exclude": {
-    "blog/build": true,
-    "**/node_modules": true
-  },
-  "editor.formatOnSave": true
-  // "git.ignoreLimitWarning": true
+  "editor.formatOnSave": true,
+  "eslint.workingDirectories": [
+    {
+      "directory": "blog-new",
+      "changeProcessCWD": true
+    }
+  ],
+  "typescript.tsdk": "blog-new/node_modules/typescript/lib"
 }

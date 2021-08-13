@@ -19,8 +19,6 @@
     - x
       - https://mxstbr.com/
       - https://tonsky.me/
-      - https://tonsky.me/
-      - https://mxstbr.com/
       - https://200ok.vc/
     - new
       - https://tomdale.net/
@@ -77,9 +75,6 @@
 
 ## Future
 
-- maxDuration on Suspense of article component
-- mdx? https://github.com/jamesknelson/create-react-app-mdx
-- get rid of lodash? importing just one function is 20kb (of of 70kb of full lodash)
 - prettier xml?, once https://github.com/prettier/prettier/issues/5322 lands
 
 ## Rewrite TODOS
@@ -212,7 +207,6 @@
 ## FUTURE RELEASES
 
 - General
-
   - write README.md
   - sitemap
   - 301 redirects from uppercase urls? /arTicle -> /article
@@ -259,9 +253,7 @@
   - think of a ways how to unify debug mode with production mode
   - check for TODOs in code and resolve them
   - also unify /rss and /about routes to have trailing slash?
-
 - code snippet tool
-
   - add bigger snippets where we can display html & css & js next to each other (on bigger screen widths)
   - in config
     - have a way to disable some controls / hide some tabs that are not necessary
@@ -294,15 +286,9 @@
       - do not add any other extra headers like powered by and security headers added by helmet??
         - somebody could then display our content? maybe only add the one which disables displaying in iframe?
       - also keep the original headers comment in html so reader can easily see what headers were added?
-
 - Debug
-
   - have a way to show unpublished articles to other people on secret url
-
 - CI
-
-  - https://percy.io/
-  - consider switching to some other ci tool (https://github.com/integrations), seems like Travis is not supporting multiple tasks
   - read docs https://docs.travis-ci.com/user/languages/javascript-with-nodejs (notifications when it fails?)
   - have CI job which will run all article validity checks
   - check if article links are not 404
@@ -318,9 +304,7 @@
     - npm outdated?
     - https://github.com/nodesecurity/nsp
     - https://github.com/Snyk/snyk
-
 - Articles
-
   - currently html of code blocks is parsed and we cannot get raw html? so `<h2>` will become `<h2></h2>`, maybe switch to jsdom?
   - add gradient overlay on code blocks that overflow to y
   - in parseArticle function have functions which checks article for correctness
@@ -356,37 +340,6 @@
   - refactor upload script, put id into articles so we have truly unique identificator?
   - parse article function uses readFileSync, rewrite to use promises/cb
   - replace @see links in code with my own articles
-
-- Backend
-
-  - pretty 500 page, figure out how to do this in express
-  - https://www.sitepoint.com/how-to-create-a-node-js-cluster-for-speeding-up-your-apps/
-  - fork processes to number of processors http://shapeshed.com/uncaught-exceptions-in-node/
-  - log unhandle exceptions and uncaught promises into file http://shapeshed.com/uncaught-exceptions-in-node/
-  - tests
-    - test routes
-      - https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/
-    - test if favicons are present in final build
-    - code coverage > 50%
-    - synon.js to moc db/api calls?
-    - selenium tests
-      - with CI
-      - periodically on distribution page
-  - prereload headers
-  - switch to https
-    - https://jakdelatseo.cz/checklist-pro-prechod-z-http-na-https/
-    - https://docs.google.com/spreadsheets/d/1XB26X_wFoBBlQEqecj7HB79hQ7DTLIPo97SS5irwsK8/edit#gid=1975121463
-  - redirect from /article/ to /article (301?)
-  - 404
-    - log 404s
-    - recommend some content based on searched query
-    - fix common typos?
-    - http://jecas.cz/oprava-url
-  - 500
-    - add error handler to display 500 pages
-    - add .catch on promises inside router to display 500?
-    - log all 500 into file, how to do this in express?
-
 - Frontend
   - once JS modules work in Chrome
     - switch to that
@@ -434,20 +387,6 @@
   - use webp for iamges?
 - page transition animations
   - http://codyhouse.co/demo/page-scroll-effects/parallax.html
-- try these
-  ```css
-  body,
-   img  {
-    -webkit-user-drag: none;
-  }
-  body  {
-    -webkit-animation-name: fontfix;
-    -webkit-font-smoothing: antialiased;
-    -moz-user-drag: none;
-    -o-user-drag: none;
-    user-drag: none;
-  }
-  ```
 - logo inspiration
   - http://imgur.com/WWvA4MP
   - http://codepen.io/zadvorsky/pen/xVrMMO

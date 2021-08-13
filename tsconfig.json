@@ -15,5 +15,6 @@
     "jsx": "preserve"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  // TODO: remove once we have new blog
+  "exclude": ["node_modules", "_legacy", "_legacy2"]
 }

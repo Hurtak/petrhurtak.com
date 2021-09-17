@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-set -e
-cd "$(dirname "$0")/.."
-
-echo "[BLOG] running source-map-explorer"
-./node_modules/.bin/source-map-explorer "./build/static/js/*"

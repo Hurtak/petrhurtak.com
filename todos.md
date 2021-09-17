@@ -1,7 +1,5 @@
 # TODO
 
-- domains
-  - buy hurtak.cc hurtak.io petrhurtak.com petrhurtak.cz hurtak.pe
 - convert all articles
 - sections
   - about me
@@ -23,7 +21,6 @@
 
 - drafts
 - inspiration
-  - https://mxstbr.com/
   - https://alexmeub.com/
   - https://tesarek.me/
 

@@ -1,9 +1,8 @@
-# OS stuff
-.DS_Store
-
 # dependencies
 /node_modules
 
 # next.js
 /.next/
+
+# build
 /dist/

@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-cd "$(dirname "$0")/.."
-
-echo "[BLOG] running react-script test"
-./node_modules/.bin/react-scripts test

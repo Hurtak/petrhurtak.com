@@ -2,7 +2,6 @@ import React from "react";
 
 import { Code, H1, H2, Li, List, P, Table, Tc, Tr, Video } from "../../src/components";
 import { ArticleMetadata } from "../types";
-import shebangMp4 from "./videos/shebang.mp4";
 
 const metadata: ArticleMetadata = {
   title: "Shebang",
@@ -52,7 +51,7 @@ export const article = () => (
       echo "Hello"
     `}</Code>
 
-    <Video width={598} height={274} src={shebangMp4} />
+    <Video width={598} height={274} src={require("./videos/shebang.mp4")} />
 
     <H2>usr/bin/env</H2>
 

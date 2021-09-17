@@ -2,7 +2,6 @@ import React from "react";
 
 import { Bold, Code, H1, H2, Italic, Li, Link, List, P, Table, Tc, Tr, Video } from "../../src/components";
 import { ArticleMetadata } from "../types";
-import packagingMp4 from "./videos/packaging.mp4";
 
 export const metadata: ArticleMetadata = {
   title: "Debian packages and front-end apps at Seznam.cz",
@@ -492,7 +491,7 @@ export const article = () => (
       </Li>
     </List>
 
-    <Video width={698} height={308} src={packagingMp4} />
+    <Video width={698} height={308} src={require("./videos/packaging.mp4")} />
 
     <H1>Static files build dependencies</H1>
 

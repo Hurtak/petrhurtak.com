@@ -21,6 +21,7 @@
 
 - drafts
 - inspiration
+  - http://paulgraham.com/
   - https://alexmeub.com/
   - https://tesarek.me/
 

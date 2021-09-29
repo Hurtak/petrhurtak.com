@@ -39,13 +39,10 @@ export const Code = ({
   children: string;
 }) => {
   const inline = multiline === false;
+  const Tag = inline ? "span" : "div";
   return (
-    <div className={inline ? "inline-code" : ""}>
+    <Tag className={inline ? "inline-code" : ""}>
       <style jsx>{`
-        div {
-          width: 100%;
-        }
-
         .inline-code {
           display: inline-flex;
           width: auto;
@@ -59,6 +56,6 @@ export const Code = ({
       {/* Refactor requires language, so we pass there the most general one */}
       {/* https://github.com/wooorm/refractor/issues/49 */}
       <Refractor inline={inline} language={language ?? "bash"} value={stripIndent(children).trim()} />
-    </div>
+    </Tag>
   );
 };

@@ -21,7 +21,6 @@ export const article = () => (
       <Li>Available both in the browser and in the server environment.</Li>
     </List>
 
-    {/* TODO: this has inline styles for some reason? */}
     <Code multiline language="js">{`
       > Math.random()
       0.5392704424754013

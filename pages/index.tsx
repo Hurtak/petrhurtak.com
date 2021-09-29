@@ -1,6 +1,7 @@
 import fs from "fs/promises";
 import { NextPage } from "next";
 import getConfig from "next/config";
+import Link from "next/link";
 import path from "path";
 
 const { serverRuntimeConfig } = getConfig();
@@ -11,11 +12,13 @@ type Props = {
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
   // Workaround for https://github.com/vercel/next.js/issues/8251
-  const res = await fs.readdir(path.join(serverRuntimeConfig.PROJECT_ROOT, "./articles"));
+  const articlesDir = path.join(serverRuntimeConfig.PROJECT_ROOT, "./pages/articles");
+  const articlesList = await fs.readdir(articlesDir);
+  const articles = articlesList.map((a) => a.replace(/\.tsx$/, ""));
 
   return {
     props: {
-      articles: res,
+      articles,
     },
   };
 };
@@ -26,11 +29,16 @@ const Home: NextPage<Props> = (props) => {
       <main>
         <h1>title</h1>
 
-        <p>
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        {props.articles.map((a) => JSON.stringify(a))}
+        <h2>Articles</h2>
+        <ul>
+          {props.articles.map((article) => (
+            <li key={article}>
+              <Link href={`/articles/${article}`}>
+                <a>{article}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </main>
     </div>
   );

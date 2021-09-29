@@ -58,7 +58,7 @@ export const Code = ({
 
       {/* Refactor requires language, so we pass there the most general one */}
       {/* https://github.com/wooorm/refractor/issues/49 */}
-      <Refractor language={language ?? "bash"} value={stripIndent(children).trim()} />
+      <Refractor inline={inline} language={language ?? "bash"} value={stripIndent(children).trim()} />
     </div>
   );
 };

@@ -139,7 +139,7 @@ export default () => (
       <Link href="http://alienryderflex.com/hsp.html">HSP Color Model</Link>. Currently, there are 147 named colors.
     </P>
 
-    {colors.map(category => (
+    {colors.map((category) => (
       <React.Fragment key={category.title}>
         <H2>{category.title}</H2>
         <Table>
@@ -170,9 +170,9 @@ export default () => (
   </>
 );
 
-const Color = props => <ColoredComponent Component={"span"} {...props} />;
+const Color = (props) => <ColoredComponent Component={"span"} {...props} />;
 
-const TcColored = props => <ColoredComponent Component={Tc} {...props} />;
+const TcColored = (props) => <ColoredComponent Component={Tc} {...props} />;
 
 const ColoredComponent = ({ children, Component, invert = false }) => (
   <Component style={{ backgroundColor: children, color: invert ? "white" : null }}>{children}</Component>

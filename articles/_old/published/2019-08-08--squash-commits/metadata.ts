@@ -10,6 +10,6 @@ const metadata: IArticleMetadataRaw = {
   slug: "squash-commits",
 
   datePublication: "2019-08-08 15:00:00",
-  dateLastUpdate: "2019-08-08 15:00:00"
+  dateLastUpdate: "2019-08-08 15:00:00",
 };
 export default metadata;

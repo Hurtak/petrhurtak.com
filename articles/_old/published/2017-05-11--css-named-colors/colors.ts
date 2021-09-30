@@ -13,8 +13,8 @@ const colors: IColorGroup[] = [
       ["HotPink", "#FF69B4", "rgb(255, 105, 180)", true],
       ["PaleVioletRed", "#DB7093", "rgb(219, 112, 147)", true],
       ["DeepPink", "#FF1493", "rgb(255, 20, 147)", true],
-      ["MediumVioletRed", "#C71585", "rgb(199, 21, 133)", true]
-    ]
+      ["MediumVioletRed", "#C71585", "rgb(199, 21, 133)", true],
+    ],
   },
 
   {
@@ -28,8 +28,8 @@ const colors: IColorGroup[] = [
       ["IndianRed", "#CD5C5C", "rgb(205, 92, 92)", true],
       ["Crimson", "#DC143C", "rgb(220, 20, 60)", true],
       ["FireBrick", "#B22222", "rgb(178, 34, 34)", true],
-      ["DarkRed", "#8B0000", "rgb(139, 0, 0)", true]
-    ]
+      ["DarkRed", "#8B0000", "rgb(139, 0, 0)", true],
+    ],
   },
 
   {
@@ -44,8 +44,8 @@ const colors: IColorGroup[] = [
       ["DarkOrange", "#FF8C00", "rgb(255, 140, 0)", false],
       ["Coral", "#FF7F50", "rgb(255, 127, 80)", false],
       ["Tomato", "#FF6347", "rgb(255, 99, 71)", true],
-      ["OrangeRed", "#FF4500", "rgb(255, 69, 0)", true]
-    ]
+      ["OrangeRed", "#FF4500", "rgb(255, 69, 0)", true],
+    ],
   },
 
   {
@@ -63,8 +63,8 @@ const colors: IColorGroup[] = [
       ["PeachPuff", "#FFDAB9", "rgb(255, 218, 185)", false],
       ["Khaki", "#F0E68C", "rgb(240, 230, 140)", false],
       ["Gold", "#FFD700", "rgb(255, 215, 0)", false],
-      ["DarkKhaki", "#BDB76B", "rgb(189, 183, 107)", false]
-    ]
+      ["DarkKhaki", "#BDB76B", "rgb(189, 183, 107)", false],
+    ],
   },
 
   {
@@ -86,8 +86,8 @@ const colors: IColorGroup[] = [
       ["Sienna", "#A0522D", "rgb(160, 82, 45)", true],
       ["Brown", "#A52A2A", "rgb(165, 42, 42)", true],
       ["SaddleBrown", "#8B4513", "rgb(139, 69, 19)", true],
-      ["Maroon", "#800000", "rgb(128, 0, 0)", true]
-    ]
+      ["Maroon", "#800000", "rgb(128, 0, 0)", true],
+    ],
   },
 
   {
@@ -116,8 +116,8 @@ const colors: IColorGroup[] = [
       ["DarkOliveGreen", "#556B2F", "rgb(85, 107, 47)", true],
       ["DarkGreen", "#006400", "rgb(0, 100, 0)", true],
       ["DarkSlateGray", "#2F4F4F", "rgb(47, 79, 79)", true],
-      ["DarkSlateGrey", "#2F4F4F", "rgb(47, 79, 79)", true]
-    ]
+      ["DarkSlateGrey", "#2F4F4F", "rgb(47, 79, 79)", true],
+    ],
   },
 
   {
@@ -134,8 +134,8 @@ const colors: IColorGroup[] = [
       ["LightSeaGreen", "#20B2AA", "rgb(32, 178, 170)", false],
       ["CadetBlue", "#5F9EA0", "rgb(95, 158, 160)", true],
       ["DarkCyan", "#008B8B", "rgb(0, 139, 139)", true],
-      ["Teal", "#008080", "rgb(0, 128, 128)", true]
-    ]
+      ["Teal", "#008080", "rgb(0, 128, 128)", true],
+    ],
   },
 
   {
@@ -161,8 +161,8 @@ const colors: IColorGroup[] = [
       ["MediumBlue", "#0000CD", "rgb(0, 0, 205)", true],
       ["DarkBlue", "#00008B", "rgb(0, 0, 139)", true],
       ["MidnightBlue", "#191970", "rgb(25, 25, 112)", true],
-      ["Navy", "#000080", "rgb(0, 0, 128)", true]
-    ]
+      ["Navy", "#000080", "rgb(0, 0, 128)", true],
+    ],
   },
 
   {
@@ -187,8 +187,8 @@ const colors: IColorGroup[] = [
       ["DarkMagenta", "#8B008B", "rgb(139, 0, 139)", true],
       ["Purple", "#800080", "rgb(128, 0, 128)", true],
       ["DarkSlateBlue", "#483D8B", "rgb(72, 61, 139)", true],
-      ["Indigo", "#4B0082", "rgb(75, 0, 130)", true]
-    ]
+      ["Indigo", "#4B0082", "rgb(75, 0, 130)", true],
+    ],
   },
 
   {
@@ -207,9 +207,9 @@ const colors: IColorGroup[] = [
       ["Grey", "#808080", "rgb(128, 128, 128)", true],
       ["DimGray", "#696969", "rgb(105, 105, 105)", true],
       ["DimGrey", "#696969", "rgb(105, 105, 105)", true],
-      ["Black", "#000000", "rgb(0, 0, 0)", true]
-    ]
-  }
+      ["Black", "#000000", "rgb(0, 0, 0)", true],
+    ],
+  },
 ];
 
 export default colors;

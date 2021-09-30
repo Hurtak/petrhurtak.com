@@ -12,6 +12,6 @@ const metadata: IArticleMetadataRaw = {
   slug: "css-named-colors",
 
   datePublication: "2017-05-11 19:00:00",
-  dateLastUpdate: "2017-05-11 19:00:00"
+  dateLastUpdate: "2017-05-11 19:00:00",
 };
 export default metadata;

@@ -15,8 +15,7 @@
 ```yaml
 title: Components
 
-description:
-  Collection of UI components used on this page
+description: Collection of UI components used on this page
 
 url: componetns
 
@@ -29,8 +28,6 @@ snippetsConfig:
   example2:
     inlineSnippet: true
 ```
-
-
 
 ## Links
 
@@ -50,8 +47,6 @@ Some text with [link](https://example.com) in it.
 
 Some text with [link](https://example.com) in it.
 
-
-
 ## Headings
 
 - use markdown
@@ -62,9 +57,11 @@ Some text with [link](https://example.com) in it.
 
 ```markdown
 ## Heading
+
 paragraph
 
 ### Sub-heading
+
 paragraph
 ```
 
@@ -88,15 +85,13 @@ paragraph
 
 paragraph
 
-
-
 ## Formatting
 
 ### Code
 
 ```markdown
 _italics text_
-__bold text__
+**bold text**
 ~striked text~
 <mark>marked text</mark>
 ```
@@ -104,11 +99,9 @@ __bold text__
 ### How it looks like
 
 - _italics text_
-- __bold text__
+- **bold text**
 - ~~striked text~~
 - <mark>marked text</mark>
-
-
 
 ## Images
 
@@ -120,12 +113,12 @@ __bold text__
 
 ```html
 <!-- just image -->
-<img src="images/test.png" alt="image alt text" width="100" height="100">
+<img src="images/test.png" alt="image alt text" width="100" height="100" />
 
 <!-- image with caption -->
 <figure>
-    <img src="images/test.png" alt="image alt text" width="100" height="100">
-    <figcaption>Image caption</figcaption>
+  <img src="images/test.png" alt="image alt text" width="100" height="100" />
+  <figcaption>Image caption</figcaption>
 </figure>
 ```
 
@@ -140,14 +133,13 @@ __bold text__
     <figcaption>Image caption</figcaption>
 </figure>
 
-
-
 ## Lists
 
 ### Code
 
 ```markdown
 <!-- un-ordered list -->
+
 - first item
 - second item
   - nested item
@@ -156,17 +148,19 @@ __bold text__
 - third item
 
 <!-- ordered list -->
+
 1. first item
 2. second item
-    1. nested item
-        1. deeply nested item
-        2. deeply nested item
+   1. nested item
+      1. deeply nested item
+      2. deeply nested item
 3. third item
 ```
 
 ### How it looks like
 
 <!-- un-ordered list -->
+
 - first item
 - second item
   - nested item
@@ -175,14 +169,13 @@ __bold text__
 - third item
 
 <!-- ordered list -->
+
 1. first item
 2. second item
-    1. nested item
-        1. deeply nested item
-        2. deeply nested item
+   1. nested item
+      1. deeply nested item
+      2. deeply nested item
 3. third item
-
-
 
 ## Video
 
@@ -190,15 +183,15 @@ __bold text__
 - default height: `256`
 - attributes: `controls autoplay loop`
 - recorded with `Vokoscreen`
-    - frames: `30`
-    - format: `mkv`
-    - videocodec: `libx264`
+  - frames: `30`
+  - format: `mkv`
+  - videocodec: `libx264`
 
 ### Code
 
 ```html
 <video width="698" height="256" controls autoplay loop>
-  <source src="./videos/video.mp4" type="video/mp4">
+  <source src="./videos/video.mp4" type="video/mp4" />
 </video>
 ```
 
@@ -207,8 +200,6 @@ __bold text__
 <video width="698" height="256" controls autoplay loop>
   <source src="./videos/video.mp4" type="video/mp4">
 </video>
-
-
 
 ## Code blocks
 
@@ -221,12 +212,14 @@ __bold text__
 
 ````markdown
 <!-- inline code -->
+
 Some text, `<strong>hello</strong>`
 
 <!-- multiline code -->
+
 ```javascript
-function foo (bar) {
-    return bar * 2
+function foo(bar) {
+  return bar * 2;
 }
 ```
 ````
@@ -247,34 +240,32 @@ function foo (bar) {
 ### How it looks like
 
 <!-- inline code -->
+
 Some text, `<strong>hello</strong>`
 
 <!-- multiline code -->
+
 ```javascript
-function foo (bar) {
-    return bar * 2
+function foo(bar) {
+  return bar * 2;
 }
 ```
-
-
 
 ## Tables
 
 ### Code
 
 ```markdown
-| Default align       | Left aligned        | Centered            | Right aligned       |
-| ------------------- |:------------------- |:-------------------:| -------------------:|
+| Default align       | Left aligned        |      Centered       |       Right aligned |
+| ------------------- | :------------------ | :-----------------: | ------------------: |
 | cell text text text | cell text text text | cell text text text | cell text text text |
 ```
 
 ### How it looks like
 
-| Default align       | Left aligned        | Centered            | Right aligned       |
-| ------------------- |:------------------- |:-------------------:| -------------------:|
+| Default align       | Left aligned        |      Centered       |       Right aligned |
+| ------------------- | :------------------ | :-----------------: | ------------------: |
 | cell text text text | cell text text text | cell text text text | cell text text text |
-
-
 
 ## Quotes
 
@@ -282,10 +273,10 @@ function foo (bar) {
 
 ```html
 <blockquote>
-    <p>Citation text</p>
-    <footer>
-        &mdash; <a href="https://www.hurtak.cc"><cite>Petr Huřťák</cite></a>
-    </footer>
+  <p>Citation text</p>
+  <footer>
+    &mdash; <a href="https://www.hurtak.cc"><cite>Petr Huřťák</cite></a>
+  </footer>
 </blockquote>
 ```
 
@@ -297,8 +288,6 @@ function foo (bar) {
         &mdash; <a href="https://www.hurtak.cc"><cite>Petr Huřťák</cite></a>
     </footer>
 </blockquote>
-
-
 
 ## Typography
 
@@ -316,8 +305,6 @@ function foo (bar) {
 | (tm) (TM)         | ™                 | `&trade;`                               |
 | (r) (R)           | ®                 | `&reg;`                                 |
 
-
-
 ## Snippets
 
 - snippets are pure `HTML` files
@@ -327,26 +314,20 @@ function foo (bar) {
 ### Snippet configuration
 
 - `inlineSnippet`
-    - `true` or `false` (default `false`)
-    - when set to `true`, no snippet controls are displayed, only the content
+  - `true` or `false` (default `false`)
+  - when set to `true`, no snippet controls are displayed, only the content
 
 ### Code in article
 
 ```html
 <!-- regular snippet -->
-<a href="./snippets/example.html">
-    Live code example snippet
-</a>
+<a href="./snippets/example.html"> Live code example snippet </a>
 
 <!-- inline snippet -->
-<a href="./snippets/example2.html">
-    Inline code example snippet
-</a>
+<a href="./snippets/example2.html"> Inline code example snippet </a>
 
 <!-- relative urls in snippets -->
-<a href="./snippets/example3.html">
-    Relative urls in snippets
-</a>
+<a href="./snippets/example3.html"> Relative urls in snippets </a>
 ```
 
 ### Code in snippet
@@ -357,15 +338,19 @@ function foo (bar) {
   inlineSnippet: true
 -->
 <html>
-<head>
+  <head>
     <title>Snippet tite</title>
-    <style>/* snippet styles */</style>
-</head>
-<body>
+    <style>
+      /* snippet styles */
+    </style>
+  </head>
+  <body>
     <!-- snippet html -->
     <h1>Hello world</h1>
-    <script>/* snippet scripts */</script>
-</body>
+    <script>
+      /* snippet scripts */
+    </script>
+  </body>
 </html>
 ```
 

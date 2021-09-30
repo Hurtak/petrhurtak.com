@@ -1,7 +1,6 @@
 title: Pub-Sub in browser without any code or libraries
 
-description:
-  There is a way how to do pub sub in browser enviroment using ony browser enviroment apis.
+description: There is a way how to do pub sub in browser enviroment using ony browser enviroment apis.
 
 url: free-pub-sub
 

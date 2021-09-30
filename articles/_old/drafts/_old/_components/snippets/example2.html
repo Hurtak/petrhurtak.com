@@ -11,11 +11,7 @@
     </form>
     <script>
       const [fromEl, toEl] = document.querySelectorAll("input");
-      const reverse = () =>
-        (toEl.value = fromEl.value
-          .split("")
-          .reverse()
-          .join(""));
+      const reverse = () => (toEl.value = fromEl.value.split("").reverse().join(""));
 
       reverse();
       fromEl.oninput = reverse;

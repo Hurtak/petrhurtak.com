@@ -12,6 +12,6 @@ const metadata: IArticleMetadataRaw = {
   slug: "vim",
 
   datePublication: "2017-12-17 17:00:00",
-  dateLastUpdate: "2019-05-15 19:00:00"
+  dateLastUpdate: "2019-05-15 19:00:00",
 };
 export default metadata;

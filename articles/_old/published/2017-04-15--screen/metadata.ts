@@ -12,6 +12,6 @@ const metadata: IArticleMetadataRaw = {
   slug: "screen",
 
   datePublication: "2017-04-15 16:40:00",
-  dateLastUpdate: "2017-04-15 16:40:00"
+  dateLastUpdate: "2017-04-15 16:40:00",
 };
 export default metadata;

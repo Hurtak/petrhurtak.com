@@ -10,6 +10,6 @@ const metadata: IArticleMetadataRaw = {
   slug: "_components",
 
   datePublication: "2018-09-10 16:00:00",
-  dateLastUpdate: "2018-09-10 16:00:00"
+  dateLastUpdate: "2018-09-10 16:00:00",
 };
 export default metadata;

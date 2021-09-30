@@ -12,7 +12,7 @@
     <script>
       const capsLockMessageEl = document.querySelector("#capslock-message");
 
-      window.addEventListener("keydown", event => {
+      window.addEventListener("keydown", (event) => {
         let capsLockState = event.getModifierState("CapsLock");
 
         if (event.key === "CapsLock") {

@@ -10,6 +10,6 @@ const metadata: IArticleMetadataRaw = {
   slug: "restart-postgresql",
 
   datePublication: "2020-06-22 14:00:00",
-  dateLastUpdate: "2020-06-22 14:00:00"
+  dateLastUpdate: "2020-06-22 14:00:00",
 };
 export default metadata;

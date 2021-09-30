@@ -10,6 +10,6 @@ const metadata: IArticleMetadataRaw = {
   slug: "switch-node-version",
 
   datePublication: "2019-05-13 15:00:00",
-  dateLastUpdate: "2019-05-13 15:00:00"
+  dateLastUpdate: "2019-05-13 15:00:00",
 };
 export default metadata;

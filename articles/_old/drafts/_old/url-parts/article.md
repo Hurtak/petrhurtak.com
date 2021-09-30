@@ -40,5 +40,6 @@ a
 - Empty article
 
 # TODO
+
 - example in javascript parsing and what it returns on given example url
-    - window.URL and the old way
+  - window.URL and the old way

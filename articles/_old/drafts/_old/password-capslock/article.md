@@ -17,11 +17,14 @@ Seems pretty easy, unfrotuantelly the first point is not possible and the second
 ## The easy way
 
 When you listen on keyboard events, the event object has `KeyboardEvent.getModifierState` method which will return Boolean whether certain modifier is pressed.
+
 <!-- TODO: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState -->
 <!-- TODO: http://caniuse.com/#feat=keyboardevent-getmodifierstate -->
+
 Support of this API is pretty good except for Safari where you need Safari 10.1+.
 
 The you will need to look at the pressed keys, you can use `KeyboardEvent.key === 'CapsLock'` but there is poor browser compatibility ATM. If we want to improve on that front we can use deprecated, but widely supported, `KeyboardEvent.which === 20`.
+
 <!-- TODO: http://caniuse.com/#feat=keyboardevent-which -->
 
 <a href="./snippets/easy-way.html">
@@ -37,7 +40,7 @@ The you will need to look at the pressed keys, you can use `KeyboardEvent.key ==
 ## TODO
 
 - js code
-    - for one input
-    - global detection
-    - toLocaleLowerString avaliable in node 0.8
+  - for one input
+  - global detection
+  - toLocaleLowerString avaliable in node 0.8
 - what about phones?

@@ -11,6 +11,6 @@ const metadata: IArticleMetadataRaw = {
   slug: "hello-extension",
 
   datePublication: "2019-08-25 18:00:00",
-  dateLastUpdate: "2019-08-25 18:00:00"
+  dateLastUpdate: "2019-08-25 18:00:00",
 };
 export default metadata;

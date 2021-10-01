@@ -1,7 +1,17 @@
 import React from "react";
-import { H1, P, Link, Code } from "../../components";
 
-export default () => (
+import { Code, H1, Link, P } from "../../src/components";
+import { ArticleMetadata } from "../types";
+
+export const metadata: ArticleMetadata = {
+  title: "Squash commits",
+  description: `
+    Easiest way to squash commits when creating merge request.
+  `,
+  datePublication: "2019-08-08 15:00:00",
+};
+
+export const article = () => (
   <>
     <P>When you create merge request often you will want to squash all the commits into one.</P>
 

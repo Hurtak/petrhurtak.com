@@ -1,10 +1,23 @@
 import React from "react";
-import { H1, P, Link, List, Li, Bold, Image } from "../../components";
+
+import { Bold, H1, Image, Li, Link, List, P } from "../../src/components";
+import { ArticleMetadata } from "../types";
 import screenshot1 from "./images/screenshot-1.png";
+
+console.log(screenshot1);
+
+export const metadata: ArticleMetadata = {
+  title: "Hello extension",
+  description: `
+    I made a cool Chrome extension that replaces your new tab with widgets and
+    fresh image every day.
+  `,
+  datePublication: "2019-08-25 18:00:00",
+};
 
 const storeLink = "https://chrome.google.com/webstore/detail/hello/olenfgbgcphkaipfeohfjpagibimmpke";
 
-export default () => (
+export const article = () => (
   <>
     <P>
       I made a <Link href={storeLink}>Chrome extension</Link> that replaces your new tab with widgets and fresh image

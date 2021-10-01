@@ -43,7 +43,7 @@ export const article = () => (
     `}</Code>
 
     <P>
-      Git <Link to="https://git-scm.com/docs/git-merge-base">merge-base</Link> finds best common ancestor between two
+      Git <Link href="https://git-scm.com/docs/git-merge-base">merge-base</Link> finds best common ancestor between two
       commits to use in a three-way merge, eg.: <Code>c111855daca0d1834cc836dc65ea39d22dabf14c</Code>.
     </P>
 

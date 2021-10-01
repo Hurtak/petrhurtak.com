@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import * as React from "react";
 
 export const P = ({ children }: { children: React.ReactNode }) => {
@@ -27,20 +28,46 @@ export const H2 = ({ children }: { children: string }) => {
   );
 };
 
-export const Link = ({ href, children }: { href: string; children: string }) => {
-  return (
-    <a href={href}>
-      <style jsx>{``}</style>
-      {children}
-    </a>
-  );
+export const Link = ({
+  href,
+  rawLink = false,
+  targetBlank = false,
+  children,
+}: {
+  href?: string;
+  rawLink?: boolean;
+  targetBlank?: boolean;
+  children: React.ReactNode;
+}) => {
+  const hrefNormalized = href ?? (typeof children === "string" ? children : "");
+  const isLinkExternal = /^\w+:/.test(hrefNormalized);
+
+  if (rawLink || isLinkExternal) {
+    return (
+      <a
+        href={hrefNormalized}
+        {...(targetBlank && {
+          rel: "noopener noreferrer",
+          target: "_blank",
+        })}
+      >
+        {children}
+      </a>
+    );
+  } else {
+    return (
+      <NextLink href={hrefNormalized}>
+        <a>{children}</a>
+      </NextLink>
+    );
+  }
 };
 
 export const Italic = ({ children }: { children: string }) => {
   return <em>{children}</em>;
 };
 
-export const Bold = ({ children }: { children: string }) => {
+export const Bold = ({ children }: { children: React.ReactNode }) => {
   return <strong>{children}</strong>;
 };
 
@@ -110,6 +137,32 @@ export const Tc = ({
       `}</style>
       {children}
     </Component>
+  );
+};
+
+export const Image = ({
+  //
+  src,
+  width,
+  height,
+  alt,
+}: {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+}) => {
+  return (
+    <Link href={src} rawLink>
+      <style jsx>{`
+        img {
+          display: block;
+          max-width: 100%;
+          height: auto;
+        }
+      `}</style>
+      <img src={src} width={width} height={height} alt={alt} />
+    </Link>
   );
 };
 

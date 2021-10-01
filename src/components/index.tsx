@@ -1,3 +1,5 @@
+import * as React from "react";
+
 export const P = ({ children }: { children: React.ReactNode }) => {
   return (
     <p>
@@ -61,28 +63,53 @@ export const Li = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const Table = ({ heading, children }: { heading?: React.ReactNode; children: React.ReactNode }) => {
+  const headingContent = (() => {
+    const headingProp = heading;
+    if (!headingProp) return null;
+
+    const headingRow = React.Children.map(heading, (child) =>
+      React.cloneElement(child as React.ReactElement<any>, { heading: true })
+    );
+
+    return headingRow;
+  })();
+
   return (
     <table>
-      {heading && <thead>{heading}</thead>}
+      {headingContent && <thead>{headingContent}</thead>}
       <tbody>{children}</tbody>
     </table>
   );
 };
 
-export const Tr = ({ children }: { children: React.ReactNode }) => {
-  return <tr>{children}</tr>;
+export const Tr = ({ heading = false, children }: { heading?: boolean; children: React.ReactNode }) => {
+  const cells = React.Children.map(children, (child) =>
+    React.cloneElement(child as React.ReactElement<any>, { heading })
+  );
+
+  return <tr>{cells}</tr>;
 };
 
-export const Tc = ({ noWrap = false, children }: { noWrap?: boolean; children: React.ReactNode }) => {
+export const Tc = ({
+  heading = false,
+  noWrap = false,
+  children,
+}: {
+  heading?: boolean;
+  noWrap?: boolean;
+  children?: React.ReactNode;
+}) => {
+  const Component = heading ? "th" : "td";
+
   return (
-    <td>
+    <Component className={`${noWrap ? "no-wrap" : ""}`}>
       <style jsx>{`
-        td {
-          ${noWrap && `white-space: nowrap;`}
+        .no-wrap {
+          white-space: nowrap;
         }
       `}</style>
       {children}
-    </td>
+    </Component>
   );
 };
 
@@ -93,5 +120,7 @@ export const Video = ({ width, height, src }: { width: number; height: number; s
     </video>
   );
 };
+
+export const Dash = ({ long = false }: { long?: boolean }) => (long === false ? <>&ndash;</> : <>&mdash;</>);
 
 export { Code } from "./code";

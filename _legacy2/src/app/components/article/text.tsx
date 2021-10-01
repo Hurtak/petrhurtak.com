@@ -1,10 +1,9 @@
-import React from "react";
 import styled from "@emotion/styled/macro";
+import React from "react";
+
 import * as s from "../../styles/styles";
 
-export const P = ({ children }: { children: string }) => (
-  <ParagraphStyled>{children}</ParagraphStyled>
-);
+export const P = ({ children }: { children: string }) => <ParagraphStyled>{children}</ParagraphStyled>;
 
 // TODO
 // const classNameParagraph = "article-paragraph";
@@ -12,7 +11,7 @@ export const P = ({ children }: { children: string }) => (
 const ParagraphStyled = styled.p(
   {
     ...s.fonts.paragraph,
-    marginTop: s.dimensions.paragraphSpacing
+    marginTop: s.dimensions.paragraphSpacing,
   }
   // TODO:
   // { className: classNameParagraph },
@@ -27,9 +26,6 @@ const LinkStyled = styled.a({
   color: s.colors.blueDark,
   transition: `0.2s border ease-in-out`,
   ":visited": {
-    color: s.colors.blueDark
-  }
+    color: s.colors.blueDark,
+  },
 });
-
-export const Dash = ({ long = false }: { long?: boolean }) =>
-  long === false ? <>&ndash;</> : <>&mdash;</>;

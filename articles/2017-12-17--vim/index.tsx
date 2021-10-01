@@ -1,5 +1,17 @@
 import React from "react";
-import { H1, H2, List, Bold, Li, Link, P, Dash, Table, Tr, Tc, Code } from "../../components";
+
+import { Bold, Code, Dash, H1, H2, Li, Link, List, P, Table, Tc, Tr } from "../../src/components";
+import { ArticleMetadata } from "../types";
+
+export const metadata: ArticleMetadata = {
+  title: "Vim basics",
+  description: `
+    This article focuses on Vim basics and the use case where you are in a
+    terminal in the ssh session and want to quickly edit/explore files within
+    the terminal.
+  `,
+  datePublication: "2017-12-17 17:00:00",
+};
 
 const SharedCommands = () => (
   <>
@@ -40,7 +52,7 @@ const SharedCommands = () => (
   </>
 );
 
-export default () => (
+export const article = () => (
   <>
     <P>
       Vim is a text editor. It is in the{" "}

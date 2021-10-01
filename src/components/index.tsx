@@ -67,7 +67,7 @@ export const Italic = ({ children }: { children: string }) => {
   return <em>{children}</em>;
 };
 
-export const Bold = ({ children }: { children: React.ReactNode }) => {
+export const Strong = ({ children }: { children: React.ReactNode }) => {
   return <strong>{children}</strong>;
 };
 

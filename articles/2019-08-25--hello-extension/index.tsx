@@ -1,10 +1,8 @@
 import React from "react";
 
-import { Bold, H1, Image, Li, Link, List, P } from "../../src/components";
+import { H1, Image, Li, Link, List, P, Strong } from "../../src/components";
 import { ArticleMetadata } from "../types";
 import screenshot1 from "./images/screenshot-1.png";
-
-console.log(screenshot1);
 
 export const metadata: ArticleMetadata = {
   title: "Hello extension",
@@ -34,12 +32,12 @@ export const article = () => (
       little.
     </P>
 
-    <Image src={screenshot1} alt="" width={1280} height={800} />
+    <Image src={screenshot1.src} alt="" width={1280} height={800} />
 
     <P>
-      <Bold>
+      <Strong>
         Download on <Link href={storeLink}>Chrome web store</Link>.
-      </Bold>
+      </Strong>
     </P>
 
     <H1>Links</H1>

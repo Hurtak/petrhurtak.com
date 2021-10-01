@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Bold, Code, H1, H2, Italic, Li, Link, List, P, Table, Tc, Tr, Video } from "../../src/components";
+import { Code, H1, H2, Italic, Li, Link, List, P, Strong, Table, Tc, Tr, Video } from "../../src/components";
 import { ArticleMetadata } from "../types";
 
 export const metadata: ArticleMetadata = {
@@ -178,11 +178,11 @@ export const article = () => (
         There are two types of packages:
         <List>
           <Li>
-            <Bold>Source releases</Bold>: contain a human readable version of the application, meaning they have to be
-            compiled before they can be used.
+            <Strong>Source releases</Strong>: contain a human readable version of the application, meaning they have to
+            be compiled before they can be used.
           </Li>
           <Li>
-            <Bold>Binary releases</Bold>: include computer readable version of the app, meaning they are already
+            <Strong>Binary releases</Strong>: include computer readable version of the app, meaning they are already
             compiled.
           </Li>
         </List>

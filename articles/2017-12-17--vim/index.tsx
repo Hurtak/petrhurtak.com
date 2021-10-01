@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Bold, Code, Dash, H1, H2, Li, Link, List, P, Table, Tc, Tr } from "../../src/components";
+import { Code, Dash, H1, H2, Li, Link, List, P, Strong, Table, Tc, Tr } from "../../src/components";
 import { ArticleMetadata } from "../types";
 
 export const metadata: ArticleMetadata = {
@@ -21,7 +21,7 @@ const SharedCommands = () => (
         <Code>Ctrl</Code> + <Code>f</Code>/<Code>b</Code>
       </Tc>
       <Tc>
-        <Bold>f</Bold>orward/<Bold>b</Bold>ack
+        <Strong>f</Strong>orward/<Strong>b</Strong>ack
       </Tc>
     </Tr>
     <Tr>
@@ -30,7 +30,7 @@ const SharedCommands = () => (
         <Code>Ctrl</Code> + <Code>u</Code>/<Code>d</Code>
       </Tc>
       <Tc>
-        <Bold>u</Bold>p/<Bold>d</Bold>own
+        <Strong>u</Strong>p/<Strong>d</Strong>own
       </Tc>
     </Tr>
     <Tr>
@@ -39,7 +39,7 @@ const SharedCommands = () => (
         <Code>g</Code> and <Code>g</Code>
       </Tc>
       <Tc>
-        be<Bold>gg</Bold>ining
+        be<Strong>gg</Strong>ining
       </Tc>
     </Tr>
     <Tr>
@@ -63,11 +63,11 @@ export const article = () => (
     </P>
     <List>
       <Li>
-        <Bold>Runs inside terminal</Bold>, so it is easy to use on remote servers with ssh.
+        <Strong>Runs inside terminal</Strong>, so it is easy to use on remote servers with ssh.
       </Li>
       <Li>
-        <Bold>Widely available</Bold> on Linux distributions. If you ssh somewhere, Vim is the probably the most likely
-        terminal text editor to be installed.
+        <Strong>Widely available</Strong> on Linux distributions. If you ssh somewhere, Vim is the probably the most
+        likely terminal text editor to be installed.
       </Li>
     </List>
     <P>
@@ -84,7 +84,7 @@ export const article = () => (
     <H1>Basic usage</H1>
     <P>
       Unlike more traditional text editors, where if you start typing the letters will be inserted at the place of your
-      cursor, Vim works little differently. <Bold>In Vim you have modes and commands</Bold>, the default mode is for
+      cursor, Vim works little differently. <Strong>In Vim you have modes and commands</Strong>, the default mode is for
       text navigation or manipulation, and letters on your keyboard are shortcuts for things like cut, paste, mode
       change or save file. So if you want to select text, you enter <Code>Visual</Code> mode, if you want to insert
       text, you enter <Code>Insert</Code> mode and so on.
@@ -157,7 +157,7 @@ export const article = () => (
           <Code>u</Code>
         </Tc>
         <Tc>
-          <Bold>u</Bold>ndo
+          <Strong>u</Strong>ndo
         </Tc>
       </Tr>
       <Tr>
@@ -166,7 +166,7 @@ export const article = () => (
           <Code>Ctrl</Code> + <Code>r</Code>
         </Tc>
         <Tc>
-          <Bold>r</Bold>edo
+          <Strong>r</Strong>edo
         </Tc>
       </Tr>
       <Tr>
@@ -175,7 +175,7 @@ export const article = () => (
           <Code>d</Code> and <Code>d</Code>
         </Tc>
         <Tc>
-          <Bold>d</Bold>elete
+          <Strong>d</Strong>elete
         </Tc>
       </Tr>
       <SharedCommands />
@@ -198,7 +198,7 @@ export const article = () => (
           <Code>y</Code>
         </Tc>
         <Tc>
-          <Bold>y</Bold>ank
+          <Strong>y</Strong>ank
         </Tc>
       </Tr>
       <Tr>
@@ -207,7 +207,7 @@ export const article = () => (
           <Code>p</Code>
         </Tc>
         <Tc>
-          <Bold>p</Bold>aste
+          <Strong>p</Strong>aste
         </Tc>
       </Tr>
       <Tr>
@@ -216,7 +216,7 @@ export const article = () => (
           <Code>d</Code>
         </Tc>
         <Tc>
-          <Bold>d</Bold>elete
+          <Strong>d</Strong>elete
         </Tc>
       </Tr>
       <SharedCommands />
@@ -239,7 +239,7 @@ export const article = () => (
           <Code>w</Code>
         </Tc>
         <Tc>
-          <Bold>w</Bold>rite
+          <Strong>w</Strong>rite
         </Tc>
       </Tr>
       <Tr>
@@ -248,7 +248,7 @@ export const article = () => (
           <Code>q</Code>
         </Tc>
         <Tc>
-          <Bold>q</Bold>uit
+          <Strong>q</Strong>uit
         </Tc>
       </Tr>
       <Tr>
@@ -257,7 +257,7 @@ export const article = () => (
           <Code>q!</Code>
         </Tc>
         <Tc>
-          <Bold>q</Bold>uit
+          <Strong>q</Strong>uit
         </Tc>
       </Tr>
       <Tr>
@@ -266,7 +266,7 @@ export const article = () => (
           <Code>wq</Code>
         </Tc>
         <Tc>
-          <Bold>w</Bold>rite + <Bold>q</Bold>uit
+          <Strong>w</Strong>rite + <Strong>q</Strong>uit
         </Tc>
       </Tr>
       <Tr>
@@ -284,7 +284,7 @@ export const article = () => (
           <Code>n</Code>
         </Tc>
         <Tc>
-          <Bold>n</Bold>ext
+          <Strong>n</Strong>ext
         </Tc>
       </Tr>
       <Tr>

@@ -7,7 +7,7 @@ export const Page = styled.div({
   display: "flex",
   alignItems: "center",
   flexDirection: "column",
-  minHeight: "100vh"
+  minHeight: "100vh",
 });
 
 export const PageLayoutWrapper = styled.div({
@@ -18,15 +18,15 @@ export const PageLayoutWrapper = styled.div({
   padding: `0 ${s.grid(2)}`,
   width: "100%",
   [s.breakpoints.small]: {
-    padding: `0 ${s.grid(1)}`
-  }
+    padding: `0 ${s.grid(1)}`,
+  },
 });
 
 export const PageLayoutContent = styled.div({
   display: "flex",
   flexGrow: 1,
   width: "100%",
-  maxWidth: s.size(700)
+  maxWidth: s.size(700),
 });
 
 export const PageContent = styled.div({
@@ -38,16 +38,16 @@ export const PageContent = styled.div({
   paddingBottom: s.grid(2),
 
   [s.breakpoints.medium]: {
-    paddingTop: s.grid(5)
+    paddingTop: s.grid(5),
   },
   [s.breakpoints.small]: {
-    paddingTop: s.grid(3)
-  }
+    paddingTop: s.grid(3),
+  },
 });
 
 export const PageMain = styled.main({
   flexGrow: 1, // To make footer sticky
-  width: "100%"
+  width: "100%",
 });
 
 export const Header = styled.header({
@@ -56,30 +56,30 @@ export const Header = styled.header({
   paddingTop: s.grid(8),
   flexDirection: "column",
   alignItems: "center",
-  backgroundColor: s.colors.blueMain
+  backgroundColor: s.colors.blueMain,
 });
 
 export const HeaderContent = styled.div({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  width: "100%"
+  width: "100%",
 });
 
 export const HeaderLogoLink = styled(Link)({
   display: "block",
-  userSelect: "none"
+  userSelect: "none",
 });
 
 export const HeaderLogoImage = styled.img({
   display: "block",
   width: s.size(130),
   height: s.size(55),
-  margin: `${s.size(20)} ${s.size(80)}`
+  margin: `${s.size(20)} ${s.size(80)}`,
 });
 
 export const HeaderMenu = styled.nav({
-  width: "100%"
+  width: "100%",
 });
 
 export const Menu = styled.ul({
@@ -89,21 +89,17 @@ export const Menu = styled.ul({
   margin: 0,
   padding: 0,
   [s.breakpoints.menu]: {
-    flexDirection: "column"
-  }
+    flexDirection: "column",
+  },
 });
 
 export const MenuItem = styled.li({
-  userSelect: "none"
+  userSelect: "none",
 });
 
 const menuItemLinkClass = "MenuItemLink";
 
-export const MenuItemLink = ({
-  icon,
-  children,
-  ...restProps
-}: { icon: React.ReactNode; children: string } & any) => (
+export const MenuItemLink = ({ icon, children, ...restProps }: { icon: React.ReactNode; children: string } & any) => (
   <MenuItemLinkWrapper {...restProps}>
     {icon}
     {children}
@@ -122,29 +118,24 @@ export const MenuItemLinkWrapper = styled(Link)({
   borderRadius: s.dimensions.borderRadius,
   textDecoration: "none",
   ":hover": {
-    color: s.colors.white
+    color: s.colors.white,
   },
   [s.breakpoints.menu]: {
     justifyContent: "flex-start",
-    padding: `${s.grid(1)} 0`
-  }
+    padding: `${s.grid(1)} 0`,
+  },
 });
 
 export const MenuItemLinkIcon = ({
   src,
   alt,
-  padding = 0
+  padding = 0,
 }: { padding?: number } & React.HTMLProps<HTMLImageElement>) => {
   const iconSizePx = 20;
 
   return (
     <MenuItemLinkIconWrapper iconSize={iconSizePx} padding={padding}>
-      <MenuItemLinkIconImg
-        src={src}
-        alt={alt}
-        width={iconSizePx}
-        height={iconSizePx}
-      />
+      <MenuItemLinkIconImg src={src} alt={alt} width={iconSizePx} height={iconSizePx} />
     </MenuItemLinkIconWrapper>
   );
 };
@@ -152,13 +143,13 @@ export const MenuItemLinkIcon = ({
 export const MenuItemLinkIconWrapper = styled.div(
   {
     boxSizing: "border-box",
-    marginRight: s.grid(1)
+    marginRight: s.grid(1),
   },
   (props: { padding: number; iconSize: number }) => {
     return {
       padding: s.size(props.padding),
       width: s.size(props.iconSize),
-      height: s.size(props.iconSize)
+      height: s.size(props.iconSize),
     };
   }
 );
@@ -171,13 +162,13 @@ export const MenuItemLinkIconImg = styled.img({
 
   /* TODO: does not work */
   [`${menuItemLinkClass}:hover &`]: {
-    filter: "invert(1)"
-  }
+    filter: "invert(1)",
+  },
 });
 
 export const Footer = styled.footer({
   width: "100%",
-  paddingTop: s.grid(8)
+  paddingTop: s.grid(8),
 });
 
 export const FooterParagraph = styled.p(
@@ -185,12 +176,12 @@ export const FooterParagraph = styled.p(
     ...s.fonts.paragraphSmall,
     margin: 0,
     lineHeight: 1,
-    textAlign: "center"
+    textAlign: "center",
   },
   (props: { withMarginTop?: boolean }) => {
     if (props.withMarginTop) {
       return {
-        marginTop: s.grid(0.5)
+        marginTop: s.grid(0.5),
       };
     }
   }
@@ -200,5 +191,5 @@ export const FooterParagraphLink = styled(Link)({
   ...s.fonts.paragraphSmall,
   lineGeight: 1,
   color: s.colors.blueDark,
-  textDecoration: "none"
+  textDecoration: "none",
 });

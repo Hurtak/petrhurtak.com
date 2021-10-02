@@ -1,13 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import {
-  Loading,
-  Header,
-  ArticleTitle,
-  Time,
-  Content,
-  Footer,
-  FooterLink
-} from "./styled";
+import { Loading, Header, ArticleTitle, Time, Content, Footer, FooterLink } from "./styled";
 import { NotFound } from "../error/not-found";
 import { ArticleErrorBoundary } from "../error/article-error-boundary";
 import { HelmetTitle } from "../../components/helmet-title";
@@ -17,7 +9,7 @@ import * as date from "../../common/date";
 
 export const Article = ({
   slug,
-  getArticlesConfigured
+  getArticlesConfigured,
 }: {
   slug?: string;
   getArticlesConfigured: () => IArticleMetadata[];
@@ -28,7 +20,7 @@ export const Article = ({
   }
 
   const articles = getArticlesConfigured();
-  const article = articles.find(article => article.slug === slug);
+  const article = articles.find((article) => article.slug === slug);
 
   if (!article) {
     return <NotFound />;
@@ -47,10 +39,7 @@ export const Article = ({
       <ArticleErrorBoundary>
         <Header>
           <ArticleTitle>{article.title}</ArticleTitle>
-          <Time
-            title={date.fullDate(article.datePublication)}
-            dateTime={date.iso(article.datePublication)}
-          >
+          <Time title={date.fullDate(article.datePublication)} dateTime={date.iso(article.datePublication)}>
             {date.howLongBefore(article.datePublication)}
           </Time>
         </Header>

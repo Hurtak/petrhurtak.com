@@ -16,9 +16,7 @@ export const Hello = () => (
       </li>
       <li>
         <Link
-          to={
-            "https://github.com/Hurtak/hurtak.cc/blob/master/blog/src/articles/drafts/article-ideas.txt"
-          }
+          to={"https://github.com/Hurtak/hurtak.cc/blob/master/blog/src/articles/drafts/article-ideas.txt"}
           targetBlank
         >
           Article ideas

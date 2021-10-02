@@ -15,30 +15,19 @@ export const App = () => (
     <RouterPage path={routes.index} pageComponent={Index} />
 
     <RouterPage path={routes.hidden} pageComponent={Hello} />
-    <RouterPage
-      path={routes.buildInformation}
-      pageComponent={BuildInformation}
-    />
+    <RouterPage path={routes.buildInformation} pageComponent={BuildInformation} />
     <RouterPage path={routes.allArticles} pageComponent={AllArticles} />
     <RouterPage
       path={routes.hiddenArticle.matcher}
       pageComponent={(props: RouteComponentProps<{ slug: string }>) => (
-        <Article
-          slug={props.slug}
-          getArticlesConfigured={() =>
-            getArticles({ drafts: true, futureArticles: true })
-          }
-        />
+        <Article slug={props.slug} getArticlesConfigured={() => getArticles({ drafts: true, futureArticles: true })} />
       )}
     />
 
     <RouterPage
       path={routes.article.matcher}
       pageComponent={(props: RouteComponentProps<{ slug: string }>) => (
-        <Article
-          slug={props.slug}
-          getArticlesConfigured={() => getArticles()}
-        />
+        <Article slug={props.slug} getArticlesConfigured={() => getArticles()} />
       )}
     />
     <RouterPage default pageComponent={NotFound} />

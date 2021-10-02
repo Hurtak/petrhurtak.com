@@ -1,4 +1,4 @@
-export default function(hljs) {
+export default function (hljs) {
   var JS_IDENT_RE = "[A-Za-z$_][0-9A-Za-z$_]*";
   var KEYWORDS = {
     keyword:
@@ -15,24 +15,19 @@ export default function(hljs) {
       "TypeError URIError Number Math Date String RegExp Array Float32Array " +
       "Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array " +
       "Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require " +
-      "module console window document any number boolean string void Promise"
+      "module console window document any number boolean string void Promise",
   };
 
   var DECORATOR = {
     className: "meta",
-    begin: "@" + JS_IDENT_RE
+    begin: "@" + JS_IDENT_RE,
   };
 
   var ARGS = {
     begin: "\\(",
     end: /\)/,
     keywords: KEYWORDS,
-    contains: [
-      "self",
-      hljs.QUOTE_STRING_MODE,
-      hljs.APOS_STRING_MODE,
-      hljs.NUMBER_MODE
-    ]
+    contains: ["self", hljs.QUOTE_STRING_MODE, hljs.APOS_STRING_MODE, hljs.NUMBER_MODE],
   };
 
   var PARAMS = {
@@ -42,28 +37,19 @@ export default function(hljs) {
     excludeBegin: true,
     excludeEnd: true,
     keywords: KEYWORDS,
-    contains: [
-      hljs.C_LINE_COMMENT_MODE,
-      hljs.C_BLOCK_COMMENT_MODE,
-      DECORATOR,
-      ARGS
-    ]
+    contains: [hljs.C_LINE_COMMENT_MODE, hljs.C_BLOCK_COMMENT_MODE, DECORATOR, ARGS],
   };
   var NUMBER = {
     className: "number",
-    variants: [
-      { begin: "\\b(0[bB][01]+)" },
-      { begin: "\\b(0[oO][0-7]+)" },
-      { begin: hljs.C_NUMBER_RE }
-    ],
-    relevance: 0
+    variants: [{ begin: "\\b(0[bB][01]+)" }, { begin: "\\b(0[oO][0-7]+)" }, { begin: hljs.C_NUMBER_RE }],
+    relevance: 0,
   };
   var SUBST = {
     className: "subst",
     begin: "\\$\\{",
     end: "\\}",
     keywords: KEYWORDS,
-    contains: [] // defined later
+    contains: [], // defined later
   };
   var HTML_TEMPLATE = {
     begin: "html`",
@@ -72,8 +58,8 @@ export default function(hljs) {
       end: "`",
       returnEnd: false,
       contains: [hljs.BACKSLASH_ESCAPE, SUBST],
-      subLanguage: "xml"
-    }
+      subLanguage: "xml",
+    },
   };
   var CSS_TEMPLATE = {
     begin: "css`",
@@ -82,14 +68,14 @@ export default function(hljs) {
       end: "`",
       returnEnd: false,
       contains: [hljs.BACKSLASH_ESCAPE, SUBST],
-      subLanguage: "css"
-    }
+      subLanguage: "css",
+    },
   };
   var TEMPLATE_STRING = {
     className: "string",
     begin: "`",
     end: "`",
-    contains: [hljs.BACKSLASH_ESCAPE, SUBST]
+    contains: [hljs.BACKSLASH_ESCAPE, SUBST],
   };
   SUBST.contains = [
     hljs.APOS_STRING_MODE,
@@ -98,7 +84,7 @@ export default function(hljs) {
     CSS_TEMPLATE,
     TEMPLATE_STRING,
     NUMBER,
-    hljs.REGEXP_MODE
+    hljs.REGEXP_MODE,
   ];
 
   return {
@@ -107,7 +93,7 @@ export default function(hljs) {
     contains: [
       {
         className: "meta",
-        begin: /^\s*['"]use strict['"]/
+        begin: /^\s*['"]use strict['"]/,
       },
       hljs.APOS_STRING_MODE,
       hljs.QUOTE_STRING_MODE,
@@ -135,10 +121,10 @@ export default function(hljs) {
                 className: "params",
                 variants: [
                   {
-                    begin: hljs.IDENT_RE
+                    begin: hljs.IDENT_RE,
                   },
                   {
-                    begin: /\(\s*\)/
+                    begin: /\(\s*\)/,
                   },
                   {
                     begin: /\(/,
@@ -146,15 +132,11 @@ export default function(hljs) {
                     excludeBegin: true,
                     excludeEnd: true,
                     keywords: KEYWORDS,
-                    contains: [
-                      "self",
-                      hljs.C_LINE_COMMENT_MODE,
-                      hljs.C_BLOCK_COMMENT_MODE
-                    ]
-                  }
-                ]
-              }
-            ]
+                    contains: ["self", hljs.C_LINE_COMMENT_MODE, hljs.C_BLOCK_COMMENT_MODE],
+                  },
+                ],
+              },
+            ],
           },
           {
             begin: /</,
@@ -166,12 +148,12 @@ export default function(hljs) {
                 begin: /<\w+/,
                 end: /(\/\w+|\w+\/)>/,
                 skip: true,
-                contains: [{ begin: /<\w+\s*\/>/, skip: true }, "self"]
-              }
-            ]
-          }
+                contains: [{ begin: /<\w+\s*\/>/, skip: true }, "self"],
+              },
+            ],
+          },
         ],
-        relevance: 0
+        relevance: 0,
       },
       {
         className: "function",
@@ -179,46 +161,42 @@ export default function(hljs) {
         end: /[{;]/,
         excludeEnd: true,
         keywords: KEYWORDS,
-        contains: [
-          "self",
-          hljs.inherit(hljs.TITLE_MODE, { begin: JS_IDENT_RE }),
-          PARAMS
-        ],
+        contains: ["self", hljs.inherit(hljs.TITLE_MODE, { begin: JS_IDENT_RE }), PARAMS],
         illegal: /%/,
-        relevance: 0 // () => {} is more typical in TypeScript
+        relevance: 0, // () => {} is more typical in TypeScript
       },
       {
         beginKeywords: "constructor",
         end: /\{/,
         excludeEnd: true,
-        contains: ["self", PARAMS]
+        contains: ["self", PARAMS],
       },
       {
         // prevent references like module.id from being higlighted as module definitions
         begin: /module\./,
         keywords: { built_in: "module" },
-        relevance: 0
+        relevance: 0,
       },
       {
         beginKeywords: "module",
         end: /\{/,
-        excludeEnd: true
+        excludeEnd: true,
       },
       {
         beginKeywords: "interface",
         end: /\{/,
         excludeEnd: true,
-        keywords: "interface extends"
+        keywords: "interface extends",
       },
       {
-        begin: /\$[(.]/ // relevance booster for a pattern common to JS libs: `$(something)` and `$.something`
+        begin: /\$[(.]/, // relevance booster for a pattern common to JS libs: `$(something)` and `$.something`
       },
       {
         begin: "\\." + hljs.IDENT_RE,
-        relevance: 0 // hack: prevents detection of keywords after dots
+        relevance: 0, // hack: prevents detection of keywords after dots
       },
       DECORATOR,
-      ARGS
-    ]
+      ARGS,
+    ],
   };
 }

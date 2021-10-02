@@ -6,13 +6,13 @@ export const routes = {
   allArticles: "/hello/articles/",
   hiddenArticle: {
     matcher: "/hello/articles/:slug/",
-    url: (article: string) => `/hello/articles/${article}/`
+    url: (article: string) => `/hello/articles/${article}/`,
   },
 
   article: {
     matcher: "/:slug/",
-    url: (article: string) => `/${article}/`
+    url: (article: string) => `/${article}/`,
   },
 
-  rss: "/rss.xml"
+  rss: "/rss.xml",
 };

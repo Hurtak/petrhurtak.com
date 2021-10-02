@@ -50,26 +50,18 @@ const HighlightStyles = () => <Global styles={css(highlightCss)} />;
 export const Code = ({
   children,
   multiline = false,
-  language
+  language,
 }: {
   children: string;
   multiline?: boolean;
-  language?:
-    | "javascript"
-    | "makefile"
-    | "dockerfile"
-    | "json"
-    | "yaml"
-    | "css"
-    | "xml"
-    | "bash";
+  language?: "javascript" | "makefile" | "dockerfile" | "json" | "yaml" | "css" | "xml" | "bash";
 }) => {
   const code = formatMultilineCode(children);
 
   const codeComponent = language ? (
     <CodeStyled
       dangerouslySetInnerHTML={{
-        __html: highlight.highlight(language, code).value
+        __html: highlight.highlight(language, code).value,
       }}
       multiline={multiline}
     />
@@ -97,7 +89,7 @@ export const Diagram = (props: { children: string }) => {
 
 const PreStyled = styled.pre({
   display: "block",
-  margin: `${s.dimensions.paragraphSpacing} 0 0 0`
+  margin: `${s.dimensions.paragraphSpacing} 0 0 0`,
 });
 
 const CodeStyled = styled.code(
@@ -106,15 +98,9 @@ const CodeStyled = styled.code(
     border: s.borders.default,
     borderRadius: s.dimensions.borderRadius,
     boxDecorationBreak: "clone", // inline code snippets can be spread across 2 rows
-    WebkitOverflowScrolling: "touch"
+    WebkitOverflowScrolling: "touch",
   },
-  ({
-    multiline = false,
-    diagram = false
-  }: {
-    multiline?: boolean;
-    diagram?: boolean;
-  }) => {
+  ({ multiline = false, diagram = false }: { multiline?: boolean; diagram?: boolean }) => {
     const innerPadding = s.grid(1);
     let styles = {};
 
@@ -124,14 +110,14 @@ const CodeStyled = styled.code(
         ...s.fonts.codeMultiline,
         display: "block",
         padding: innerPadding,
-        overflow: "auto"
+        overflow: "auto",
       };
     } else {
       styles = {
         ...styles,
         ...s.fonts.codeInline,
         display: "inline",
-        padding: `${s.size(1)} ${s.size(2)}`
+        padding: `${s.size(1)} ${s.size(2)}`,
       };
     }
 
@@ -141,7 +127,7 @@ const CodeStyled = styled.code(
         padding: `calc(1em + ${innerPadding})`,
         // At 0.9 box drawing characters are properly connected
         // https://en.wikipedia.org/wiki/Box-drawing_character
-        lineHeight: 0.9
+        lineHeight: 0.9,
       };
     }
 

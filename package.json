@@ -7,7 +7,7 @@
     "validate": "npm run validate:tsc && npm run validate:lint && npm run validate:prettier",
     "validate:tsc": "tsc --noEmit",
     "validate:lint": "next lint",
-    "validate:prettier": "prettier --ignore-path .gitignore --check articles pages src"
+    "validate:prettier": "prettier --ignore-path .gitignore --check ."
   },
   "dependencies": {
     "next": "11.1.2",

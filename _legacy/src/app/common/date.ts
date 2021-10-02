@@ -22,7 +22,7 @@ export function fullDate(timestamp: number): string {
     "September",
     "October",
     "November",
-    "December"
+    "December",
   ];
 
   const date = new Date(timestamp);

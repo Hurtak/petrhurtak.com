@@ -17,7 +17,7 @@ import {
   FooterParagraph,
   FooterParagraphLink,
   PageLayoutWrapper,
-  PageLayoutContent
+  PageLayoutContent,
 } from "./styled";
 import { GlobalStyles } from "../../styles/styles-global";
 import { capitalize } from "../../common/text-formatting";
@@ -30,10 +30,7 @@ import imageTwitter from "../../../images/twitter.svg";
 import imageGithub from "../../../images/github.svg";
 import imageRss from "../../../images/rss.svg";
 
-export const Layout = (props: {
-  pageTitle?: string;
-  children: React.ReactNode;
-}) => (
+export const Layout = (props: { pageTitle?: string; children: React.ReactNode }) => (
   <>
     <Helmet>
       <title>{capitalize(config.siteUrlShort)}</title>
@@ -60,13 +57,7 @@ export const Layout = (props: {
                 <MenuItem>
                   <MenuItemLink
                     to={routes.index}
-                    icon={
-                      <MenuItemLinkIcon
-                        src={imageArticle}
-                        alt="Article"
-                        padding={0.5}
-                      />
-                    }
+                    icon={<MenuItemLinkIcon src={imageArticle} alt="Article" padding={0.5} />}
                   >
                     Articles
                   </MenuItemLink>
@@ -83,13 +74,7 @@ export const Layout = (props: {
                 <MenuItem>
                   <MenuItemLink
                     to="https://github.com/Hurtak"
-                    icon={
-                      <MenuItemLinkIcon
-                        src={imageGithub}
-                        alt="Github"
-                        padding={1}
-                      />
-                    }
+                    icon={<MenuItemLinkIcon src={imageGithub} alt="Github" padding={1} />}
                     target="_blank"
                   >
                     Github
@@ -98,9 +83,7 @@ export const Layout = (props: {
                 <MenuItem>
                   <MenuItemLink
                     to={routes.rss}
-                    icon={
-                      <MenuItemLinkIcon src={imageRss} alt="RSS" padding={2} />
-                    }
+                    icon={<MenuItemLinkIcon src={imageRss} alt="RSS" padding={2} />}
                     rel="alternate"
                     type="application/rss+xml"
                     rawLink
@@ -124,10 +107,7 @@ export const Layout = (props: {
               {config.yearCurrent}
             </FooterParagraph>
             <FooterParagraph withMarginTop>
-              Written by{" "}
-              <FooterParagraphLink to="mailto:petr.hurtak@gmail.com">
-                Petr Huřťák
-              </FooterParagraphLink>
+              Written by <FooterParagraphLink to="mailto:petr.hurtak@gmail.com">Petr Huřťák</FooterParagraphLink>
             </FooterParagraph>
           </Footer>
         </PageContent>

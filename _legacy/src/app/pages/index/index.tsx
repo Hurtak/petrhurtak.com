@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Heading,
-  ArticleStyled,
-  ArticleTitleLink,
-  ArticleDate,
-  ArticleDescription
-} from "./styled";
+import { Heading, ArticleStyled, ArticleTitleLink, ArticleDate, ArticleDescription } from "./styled";
 import { Spacer } from "../../components/spacer";
 import * as date from "../../common/date";
 import { routes } from "../../config/routes";
@@ -19,7 +13,7 @@ export const Index = () => {
     <>
       <Heading>Recent articles</Heading>
       <Spacer spacing={4}>
-        {articles.map(article => (
+        {articles.map((article) => (
           <Article key={article.slug} article={article} />
         ))}
       </Spacer>
@@ -30,15 +24,10 @@ export const Index = () => {
 const Article = ({ article }: { article: IArticleMetadata }) => (
   <ArticleStyled>
     <ArticleTitle>
-      <ArticleTitleLink to={routes.article.url(article.slug)}>
-        {article.title}
-      </ArticleTitleLink>
+      <ArticleTitleLink to={routes.article.url(article.slug)}>{article.title}</ArticleTitleLink>
     </ArticleTitle>
 
-    <ArticleDate
-      title={date.fullDate(article.datePublication)}
-      dateTime={date.iso(article.datePublication)}
-    >
+    <ArticleDate title={date.fullDate(article.datePublication)} dateTime={date.iso(article.datePublication)}>
       {date.howLongBefore(article.datePublication)}
     </ArticleDate>
 

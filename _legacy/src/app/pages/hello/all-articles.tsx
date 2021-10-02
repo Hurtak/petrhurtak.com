@@ -8,12 +8,12 @@ import { debugDate } from "../../common/date";
 export const AllArticles = () => {
   const articles = getArticles({ drafts: true, futureArticles: true });
 
-  const drafts = articles.filter(a => a.draft === true);
-  const notDrafts = articles.filter(a => a.draft === false);
+  const drafts = articles.filter((a) => a.draft === true);
+  const notDrafts = articles.filter((a) => a.draft === false);
 
   const now = Date.now();
-  const future = notDrafts.filter(a => a.datePublication > now);
-  const published = notDrafts.filter(a => a.datePublication <= now);
+  const future = notDrafts.filter((a) => a.datePublication > now);
+  const published = notDrafts.filter((a) => a.datePublication <= now);
 
   return (
     <>
@@ -43,20 +43,11 @@ export const AllArticles = () => {
   );
 };
 
-const ArticlesList = (props: {
-  articles: IArticleMetadata[];
-  hiddenArticle: boolean;
-}) => (
+const ArticlesList = (props: { articles: IArticleMetadata[]; hiddenArticle: boolean }) => (
   <div>
-    {props.articles.map(article => (
+    {props.articles.map((article) => (
       <li key={article.slug}>
-        <Link
-          to={
-            props.hiddenArticle
-              ? routes.hiddenArticle.url(article.slug)
-              : routes.article.url(article.slug)
-          }
-        >
+        <Link to={props.hiddenArticle ? routes.hiddenArticle.url(article.slug) : routes.article.url(article.slug)}>
           {article.title}
         </Link>{" "}
         ({debugDate(article.datePublication)})

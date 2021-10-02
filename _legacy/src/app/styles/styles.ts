@@ -17,16 +17,16 @@ export const colors = {
   blueMain: "#69d2e7",
   blueDark: "#000fff",
 
-  linkBorder: "rgba(0, 0, 0, 0.3)"
+  linkBorder: "rgba(0, 0, 0, 0.3)",
 };
 
 export const dimensions = {
   borderRadius: size(3),
-  paragraphSpacing: size(30)
+  paragraphSpacing: size(30),
 };
 
 export const borders = {
-  default: `${size(1)} solid ${colors.grayLight}`
+  default: `${size(1)} solid ${colors.grayLight}`,
 };
 
 export const breakpoints = {
@@ -35,36 +35,36 @@ export const breakpoints = {
   small: `@media (max-width: ${size(450)})`,
 
   // Component specific
-  menu: `@media (max-width: ${size(360)})`
+  menu: `@media (max-width: ${size(360)})`,
 };
 
 const fontSharedProperties = {
   margin: 0,
   color: colors.black,
-  fontWeight: 400
+  fontWeight: 400,
 };
 
 const fontSharedValues = {
   fontFamilyHeading: "Arial, sans-serif",
   fontFamilyDefault: "Georgia, serif",
-  fontFamilyCode: "monospace"
+  fontFamilyCode: "monospace",
 };
 
 const fontParagraphSmallSizes = {
   fontSize: size(16),
   [breakpoints.medium]: {
-    fontSize: size(13)
+    fontSize: size(13),
   },
   [breakpoints.small]: {
-    fontSize: size(13)
-  }
+    fontSize: size(13),
+  },
 };
 
 const fontParagraphSmall = {
   ...fontSharedProperties,
   ...fontParagraphSmallSizes,
   fontFamily: fontSharedValues.fontFamilyDefault,
-  lineHeight: 1.6
+  lineHeight: 1.6,
 };
 
 export const fonts = {
@@ -75,11 +75,11 @@ export const fonts = {
     fontSize: size(52),
     lineHeight: 1.1,
     [breakpoints.medium]: {
-      fontSize: size(42)
+      fontSize: size(42),
     },
     [breakpoints.small]: {
-      fontSize: size(26)
-    }
+      fontSize: size(26),
+    },
   },
 
   headingMedium: {
@@ -88,11 +88,11 @@ export const fonts = {
     fontSize: size(33),
     lineHeight: 1.2,
     [breakpoints.medium]: {
-      fontSize: size(26)
+      fontSize: size(26),
     },
     [breakpoints.small]: {
-      fontSize: size(22)
-    }
+      fontSize: size(22),
+    },
   },
 
   headingSmall: {
@@ -101,11 +101,11 @@ export const fonts = {
     fontSize: size(25),
     lineHeight: 1.3,
     [breakpoints.medium]: {
-      fontSize: size(20)
+      fontSize: size(20),
     },
     [breakpoints.small]: {
-      fontSize: size(16)
-    }
+      fontSize: size(16),
+    },
   },
 
   paragraph: {
@@ -114,21 +114,21 @@ export const fonts = {
     fontSize: size(20),
     lineHeight: 1.6,
     [breakpoints.medium]: {
-      fontSize: size(16)
+      fontSize: size(16),
     },
     [breakpoints.small]: {
-      fontSize: size(16)
-    }
+      fontSize: size(16),
+    },
   },
 
   paragraphSmall: {
-    ...fontParagraphSmall
+    ...fontParagraphSmall,
   },
 
   headingTable: {
     ...fontParagraphSmall,
     fontFamily: fontSharedValues.fontFamilyHeading,
-    lineHeight: 1.2
+    lineHeight: 1.2,
   },
 
   codeMultiline: {
@@ -136,12 +136,12 @@ export const fonts = {
     ...fontParagraphSmallSizes,
     fontFamily: fontSharedValues.fontFamilyCode,
     fontSize: size(16),
-    lineHeight: 1.45
+    lineHeight: 1.45,
   },
 
   codeInline: {
     ...fontSharedProperties,
-    fontFamily: fontSharedValues.fontFamilyCode
+    fontFamily: fontSharedValues.fontFamilyCode,
     // font-size and line-height are inherited.
   },
 
@@ -150,9 +150,9 @@ export const fonts = {
     textDecoration: "none",
     color: colors.blueMain,
     ":hover": {
-      textDecoration: "underline"
-    }
-  }
+      textDecoration: "underline",
+    },
+  },
 };
 
 // /*

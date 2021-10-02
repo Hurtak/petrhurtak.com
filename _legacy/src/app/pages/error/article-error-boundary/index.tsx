@@ -1,11 +1,8 @@
 import React from "react";
 
-export class ArticleErrorBoundary extends React.Component<
-  {},
-  { hasError: boolean }
-> {
+export class ArticleErrorBoundary extends React.Component<{}, { hasError: boolean }> {
   state = {
-    hasError: false
+    hasError: false,
   };
 
   static getDerivedStateFromError(error: Error) {

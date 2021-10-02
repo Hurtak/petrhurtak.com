@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+
 import { routes } from "./routes";
 
 it("hidden route exists", () => {
@@ -7,10 +8,7 @@ it("hidden route exists", () => {
 });
 
 it("hidden route in robots.txt", () => {
-  const robotsTxt = fs.readFileSync(
-    path.join(__dirname, "../../../public/robots.txt"),
-    "utf8"
-  );
+  const robotsTxt = fs.readFileSync(path.join(__dirname, "../../../public/robots.txt"), "utf8");
 
   expect(robotsTxt).toBeTruthy();
 

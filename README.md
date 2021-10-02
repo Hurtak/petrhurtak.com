@@ -1,4 +1,3 @@
-# Hurtak.cc
+# petrhurtak.com
 
-- Articles are in the [blog/src/articles](./blog/src/articles) folder
-- Source files are in the [blog](./blog) folder
+- Articles are in the [articles](./articles) folder

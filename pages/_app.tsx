@@ -1,3 +1,4 @@
+import "normalize.css";
 import "prismjs/themes/prism.css";
 
 import { AppProps } from "next/app";

@@ -16,5 +16,5 @@
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   // TODO: remove once we have new blog
-  "exclude": ["node_modules", "_legacy", "_legacy2"]
+  "exclude": ["node_modules", "_legacy"]
 }

@@ -14,7 +14,8 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  // TODO: remove once we have new blog
-  "exclude": ["node_modules", "_legacy"]
+  "include": ["next-env.d.ts", "**/*.{ts,tsx}"],
+  // TODO: remove _legacy once we have new blog
+  // TODO: is node_modules needed?
+  "exclude": ["node_modules", "**/*.spec.{ts,tsx}", "_legacy"]
 }

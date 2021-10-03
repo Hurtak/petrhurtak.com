@@ -1,5 +1,6 @@
 # TODO
 
+- test that folder names match?
 - RSS feed
 - sections
   - about me

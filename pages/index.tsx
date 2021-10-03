@@ -14,7 +14,7 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
   // Workaround for https://github.com/vercel/next.js/issues/8251
   const articlesDir = path.join(serverRuntimeConfig.PROJECT_ROOT, "./pages/articles");
   const articlesList = await fs.readdir(articlesDir);
-  const articles = articlesList.map((a) => a.replace(/\.tsx$/, ""));
+  const articles = articlesList.filter((a) => !a.startsWith("_")).map((a) => a.replace(/\.tsx$/, ""));
 
   return {
     props: {

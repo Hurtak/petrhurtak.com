@@ -3,7 +3,7 @@ import React from "react";
 import { H1, P } from "../../../src/components";
 import { ArticleMetadata } from "../../types";
 
-const metadata: ArticleMetadata = {
+export const metadata: ArticleMetadata = {
   // Update!
   title: "Example article",
   // Update!
@@ -13,7 +13,6 @@ const metadata: ArticleMetadata = {
   // Update!
   datePublication: "2018-09-10 16:40:00",
 };
-export default metadata;
 
 export const article = () => (
   <>

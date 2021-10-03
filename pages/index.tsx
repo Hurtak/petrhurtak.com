@@ -4,15 +4,15 @@ import getConfig from "next/config";
 import Link from "next/link";
 import path from "path";
 
-const { serverRuntimeConfig } = getConfig();
+import generateRssFeed from "../src/rss";
 
 type Props = {
   articles: string[];
 };
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
-  // Workaround for https://github.com/vercel/next.js/issues/8251
-  const articlesDir = path.join(serverRuntimeConfig.PROJECT_ROOT, "./pages/article");
+  const { serverRuntimeConfig } = getConfig();
+  const articlesDir = path.join(serverRuntimeConfig.paths.project, "./pages/article");
   const articlesList = await fs.readdir(articlesDir);
   const articles = articlesList.filter((a) => !a.startsWith("_")).map((a) => a.replace(/\.tsx$/, ""));
 

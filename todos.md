@@ -1,6 +1,5 @@
 # TODO
 
-- convert all articles
 - RSS feed
 - sections
   - about me
@@ -25,6 +24,7 @@
 
 ## Old TODOs
 
+- convert all articles?
 - seo.jsx convert
   - https://www.rarous.net/weblog/2019/01/28/generovani-twitter-card-obrazku.html
 - preload article when mousedown?

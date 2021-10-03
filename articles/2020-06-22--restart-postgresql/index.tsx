@@ -1,7 +1,17 @@
 import React from "react";
-import { H1, P, Code } from "../../components";
 
-export default () => (
+import { Code, H1, P } from "../../src/components";
+import { ArticleMetadata } from "../types";
+
+export const metadata: ArticleMetadata = {
+  title: "Restart stuck PostgreSQL on macOS",
+  description: `
+    Sometimes PostgreSQL will get stuck, here is how to solve this.
+  `,
+  datePublication: "2020-06-22 14:00:00",
+};
+
+export const article = () => (
   <>
     <P>While connecting to PostgreSQL, you might get the following error.</P>
 
@@ -17,13 +27,13 @@ export default () => (
 
     <P>Delete the following file.</P>
 
-    <Code multiline>{`
+    <Code multiline language="bash">{`
       rm /usr/local/var/postgres/postmaster.pid
     `}</Code>
 
     <P>Then restart PostgreSQL, and it should work.</P>
 
-    <Code multiline>{`
+    <Code multiline language="bash">{`
       # with postgres
       pg_ctl -D /usr/local/var/postgres restart
 

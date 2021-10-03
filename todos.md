@@ -1,30 +1,33 @@
 # TODO
 
 - RSS feed
+- main page articles feed
 - sections
   - about me
   - link to twitter
   - link to linkedin
   - link to instagram
   - link to github
-  - articles from twitter
   - projects, list of all projects of what i did
   - opensource, list of all opensource of what i did
   - apperances - talks, articles, etc
   - 404 page
-- resolve todos in code
-- remove \_legacy folders
-- deploy
-- http://www.vzhurudolu.cz/prirucka/checklist
-- drafts
 - inspiration
   - http://paulgraham.com/
   - https://alexmeub.com/
   - https://tesarek.me/
-- tests in VSCode are evalueated as non strict mode for tests
+- resolve todos in code
+- http://www.vzhurudolu.cz/prirucka/checklist
+- drafts
+  - make sure they are in robots txt exclude
+  - add test
+- deploy
+- articles from twitter
 
 ## Old TODOs
 
+- tests in VSCode are evalueated as non strict mode for tests
+- remove \_legacy folders
 - test
   - article metadata match the article folder name
   - article metadata date is not in the future

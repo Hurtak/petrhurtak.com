@@ -1,15 +1,6 @@
 import React from "react";
 
 import { Code, H1, P } from "../../src/components";
-import { ArticleMetadata } from "../types";
-
-export const metadata: ArticleMetadata = {
-  title: "Restart stuck PostgreSQL on macOS",
-  description: `
-    Sometimes PostgreSQL will get stuck, here is how to solve this.
-  `,
-  datePublication: "2020-06-22 14:00:00",
-};
 
 export const article = () => (
   <>

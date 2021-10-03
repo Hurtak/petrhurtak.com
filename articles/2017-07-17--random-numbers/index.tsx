@@ -1,13 +1,6 @@
 import React from "react";
 
 import { Code, H1, Li, Link, List, P } from "../../src/components";
-import { ArticleMetadata } from "../types";
-
-export const metadata: ArticleMetadata = {
-  title: "Random numbers in JavaScript",
-  description: "How to generate random numbers in JavaScript.",
-  datePublication: "2017-07-17 11:00:00",
-};
 
 export const article = () => (
   <>

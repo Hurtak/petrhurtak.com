@@ -1,17 +1,4 @@
 import { Code, H1, H2, Italic, Li, Link, List, P } from "../../src/components";
-import { ArticleMetadata } from "../types";
-
-export const metadata: ArticleMetadata = {
-  title: "Union types",
-
-  description: `
-    One of the most useful features of typed languages are union types. They
-    bring interesting patterns on how to model state transitions that could
-    be used even in dynamic languages.
-  `,
-
-  datePublication: "2019-09-03 15:00:00",
-};
 
 export const article = () => (
   <>

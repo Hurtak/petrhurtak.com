@@ -12,6 +12,7 @@
     "validate:prettier": "prettier --ignore-path .gitignore --check ."
   },
   "dependencies": {
+    "feed": "4.2.2",
     "next": "11.1.2",
     "next-videos": "1.4.0",
     "normalize.css": "8.0.1",
@@ -20,7 +21,8 @@
     "react-ga": "3.3.0",
     "react-refractor": "2.1.5",
     "refractor": "4.2.1",
-    "strip-indent": "4.0.0"
+    "strip-indent": "4.0.0",
+    "zod": "3.9.4"
   },
   "devDependencies": {
     "@types/jest": "27.0.2",

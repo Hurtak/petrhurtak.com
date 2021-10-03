@@ -1,20 +1,6 @@
 import React from "react";
 
 import { Code, H1, H2, Li, List, P, Table, Tc, Tr, Video } from "../../src/components";
-import { ArticleMetadata } from "../types";
-
-export const metadata: ArticleMetadata = {
-  title: "Shebang",
-
-  description: `
-    Under Unix-like operating systems you can either run scripts by specifying
-    the interpreter along with the path or you can run them as programs and
-    have the interpreter specified in the shebang on the first line of the
-    script.
-  `,
-
-  datePublication: "2017-04-28 10:00:00",
-};
 
 export const article = () => (
   <>

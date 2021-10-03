@@ -1,18 +1,6 @@
 import React from "react";
 
 import { Code, H1, H2, Italic, Li, Link, List, P, Strong, Table, Tc, Tr, Video } from "../../src/components";
-import { ArticleMetadata } from "../types";
-
-export const metadata: ArticleMetadata = {
-  title: "Debian packages and front-end apps at Seznam.cz",
-
-  description: `
-    How to make a simple Debian package with a static website – from a
-    frontend developer point of view.
-  `,
-
-  datePublication: "2017-05-21 16:00:00",
-};
 
 export const article = () => (
   <>

@@ -1,7 +1,10 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "isolatedModules": false
+    "lib": ["esnext"],
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true
   },
-  "include": ["**/*.spec.{ts,tsx}"]
+  "include": ["**/*.test.ts", "**/*.test.tsx"],
+  "exclude": ["node_modules", "_legacy"]
 }

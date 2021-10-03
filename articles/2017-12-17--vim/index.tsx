@@ -1,17 +1,6 @@
 import React from "react";
 
 import { Code, Dash, H1, H2, Li, Link, List, P, Strong, Table, Tc, Tr } from "../../src/components";
-import { ArticleMetadata } from "../types";
-
-export const metadata: ArticleMetadata = {
-  title: "Vim basics",
-  description: `
-    This article focuses on Vim basics and the use case where you are in a
-    terminal in the ssh session and want to quickly edit/explore files within
-    the terminal.
-  `,
-  datePublication: "2017-12-17 17:00:00",
-};
 
 const SharedCommands = () => (
   <>

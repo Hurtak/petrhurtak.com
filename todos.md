@@ -21,6 +21,7 @@
   - http://paulgraham.com/
   - https://alexmeub.com/
   - https://tesarek.me/
+- tests in VSCode are evalueated as non strict mode for tests
 
 ## Old TODOs
 

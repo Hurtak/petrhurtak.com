@@ -1,15 +1,6 @@
 import React from "react";
 
 import { Code, H1, Link, P } from "../../src/components";
-import { ArticleMetadata } from "../types";
-
-export const metadata: ArticleMetadata = {
-  title: "Squash commits",
-  description: `
-    Easiest way to squash commits when creating merge request.
-  `,
-  datePublication: "2019-08-08 15:00:00",
-};
 
 export const article = () => (
   <>

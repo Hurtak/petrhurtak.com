@@ -1,6 +1,5 @@
 # TODO
 
-- route articles -> article
 - convert all articles
 - RSS feed
 - sections

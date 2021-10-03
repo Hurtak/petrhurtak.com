@@ -12,7 +12,7 @@ type Props = {
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
   // Workaround for https://github.com/vercel/next.js/issues/8251
-  const articlesDir = path.join(serverRuntimeConfig.PROJECT_ROOT, "./pages/articles");
+  const articlesDir = path.join(serverRuntimeConfig.PROJECT_ROOT, "./pages/article");
   const articlesList = await fs.readdir(articlesDir);
   const articles = articlesList.filter((a) => !a.startsWith("_")).map((a) => a.replace(/\.tsx$/, ""));
 
@@ -33,7 +33,7 @@ const Home: NextPage<Props> = (props) => {
         <ul>
           {props.articles.map((article) => (
             <li key={article}>
-              <Link href={`/articles/${article}`}>
+              <Link href={`/article/${article}`}>
                 <a>{article}</a>
               </Link>
             </li>

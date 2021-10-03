@@ -1,6 +1,5 @@
 # TODO
 
-- test that folder names match?
 - RSS feed
 - sections
   - about me
@@ -25,6 +24,10 @@
 
 ## Old TODOs
 
+- test
+  - article metadata match the article folder name
+  - article metadata date is not in the future
+  - article metadata data is in correct format
 - convert all articles?
 - seo.jsx convert
   - https://www.rarous.net/weblog/2019/01/28/generovani-twitter-card-obrazku.html

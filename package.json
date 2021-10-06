@@ -1,6 +1,8 @@
 {
   "name": "petrhurtak.com",
   "version": "1.0.0",
+  "repository": "github:hurtak/petrhurtak.com",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export -o dist",

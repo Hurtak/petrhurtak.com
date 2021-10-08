@@ -7,8 +7,8 @@ import { useRouter } from "next/router";
 import * as React from "react";
 import reactGA from "react-ga";
 
+import { Layout } from "../src/components/layout";
 import { config, routes } from "../src/config";
-import { Layout } from "../src/layout";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();

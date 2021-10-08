@@ -1,14 +1,15 @@
+import { RouteComponentProps, Router } from "@reach/router";
 import React from "react";
-import { Router, RouteComponentProps } from "@reach/router";
-import { routes } from "./config/routes";
+
+import { getArticles } from "../articles/articles";
 import { Layout } from "./components/layout";
-import { Index } from "./pages/index";
+import { routes } from "./config/routes";
 import { Article } from "./pages/article";
 import { NotFound } from "./pages/error/not-found";
 import { Hello } from "./pages/hello";
-import { BuildInformation } from "./pages/hello/build-information";
 import { AllArticles } from "./pages/hello/all-articles";
-import { getArticles } from "../articles/articles";
+import { BuildInformation } from "./pages/hello/build-information";
+import { Index } from "./pages/index";
 
 export const App = () => (
   <Router>

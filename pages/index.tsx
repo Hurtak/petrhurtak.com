@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getArticlesMetadata } from "../src/articles";
 import { ArticleMetadata } from "../src/articles/types";
 import { config, getServerRuntimeConfig, routes } from "../src/config";
-import { generateRssFeed } from "../src/rss";
+import { generateRssFeed } from "../src/domains/rss";
 
 type Props = {
   articles: ArticleMetadata[];

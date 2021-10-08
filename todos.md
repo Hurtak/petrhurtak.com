@@ -1,6 +1,5 @@
 # TODO
 
-- google analytics into custom hook
 - main page articles feed
 - sections
   - about me

@@ -2,8 +2,8 @@ import { Feed } from "feed";
 import * as fs from "fs/promises";
 import * as path from "path";
 
-import { ArticleMetadata } from "./articles/types";
-import { config, routes } from "./config";
+import { ArticleMetadata } from "../articles/types";
+import { config, routes } from "../config";
 
 export const generateRssFeed = async (articles: Array<ArticleMetadata>, targetFolder: string) => {
   const now = new Date();

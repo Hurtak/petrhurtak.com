@@ -29,6 +29,9 @@ export const getArticlesMetadata = async (articlesDir: string): Promise<Array<Ar
       datePublication: new Date(metadata.datePublication).getTime(),
       articlePath: articlePath,
       articleDirectory: articleDir,
+      // TODO: some nicer way to do this?
+      // TODO: test
+      slug: articleDir.split("--")[1],
     };
     articlesData.push(articleData);
   }

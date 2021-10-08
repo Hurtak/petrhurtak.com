@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import * as React from "react";
 import reactGA from "react-ga";
 
-import { config } from "../src/config";
+import { config, routes } from "../src/config";
 import { Layout } from "../src/layout";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <Head>
         <title>{config.siteDomain}</title>
-        <link rel="icon" type="image/svg" href="/favicon.svg" />
+        <link rel="icon" type="image/svg" href={routes.favicon} />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       </Head>
 

@@ -11,6 +11,8 @@ export const articleMetadataValidator = z.object({
   title: z.string(),
   description: z.string(),
   datePublication: z.number(),
+  slug: z.string(),
+
   articlePath: z.string(),
   articleDirectory: z.string(),
 });

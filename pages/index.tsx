@@ -1,24 +1,26 @@
-import fs from "fs/promises";
 import { NextPage } from "next";
-import getConfig from "next/config";
 import Link from "next/link";
-import path from "path";
 
-import generateRssFeed from "../src/rss";
+import { getArticlesMetadata } from "../src/articles";
+import { ArticleMetadata } from "../src/articles/types";
+import { config, getServerRuntimeConfig, routes } from "../src/config";
+import { generateRssFeed } from "../src/rss";
 
 type Props = {
-  articles: string[];
+  articles: ArticleMetadata[];
 };
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
-  const { serverRuntimeConfig } = getConfig();
-  const articlesDir = path.join(serverRuntimeConfig.paths.project, "./pages/article");
-  const articlesList = await fs.readdir(articlesDir);
-  const articles = articlesList.filter((a) => !a.startsWith("_")).map((a) => a.replace(/\.tsx$/, ""));
+  const serverConfig = getServerRuntimeConfig();
+  const articlesMetadata = await getArticlesMetadata(serverConfig.paths.articles);
+
+  if (config.isProduction || config.generateRssInDev) {
+    await generateRssFeed(articlesMetadata, serverConfig.paths.public);
+  }
 
   return {
     props: {
-      articles,
+      articles: articlesMetadata,
     },
   };
 };
@@ -32,9 +34,9 @@ const Home: NextPage<Props> = (props) => {
         <h2>Articles</h2>
         <ul>
           {props.articles.map((article) => (
-            <li key={article}>
-              <Link href={`/article/${article}`}>
-                <a>{article}</a>
+            <li key={article.articleDirectory}>
+              <Link href={routes.article(article.slug)}>
+                <a>{article.title}</a>
               </Link>
             </li>
           ))}

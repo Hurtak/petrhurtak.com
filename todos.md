@@ -1,9 +1,6 @@
 # TODO
 
-- RSS feed
-  - https://sreetamdas.com/blog/rss-for-nextjs
-  - https://ashleemboyer.com/how-i-added-an-rss-feed-to-my-nextjs-site
-  - https://phiilu.com/generate-rss-feeds-for-your-static-next-js-blog
+- google analytics into custom hook
 - main page articles feed
 - sections
   - about me

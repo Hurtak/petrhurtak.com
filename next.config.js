@@ -14,6 +14,7 @@ const config = {
     paths: {
       project: projectRoot,
       articles: path.join(projectRoot, "articles"),
+      public: path.join(projectRoot, "public"),
     },
   },
 };

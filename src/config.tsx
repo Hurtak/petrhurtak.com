@@ -7,22 +7,27 @@ export const config = {
   isProduction,
   isDev: !isProduction,
 
-  siteDomain: "petrhurtak.com",
-  siteDomainWithProtocol: "https://petrhurtak.com",
+  site: {
+    domain: "petrhurtak.com",
+    domainWithProtocol: "https://petrhurtak.com",
+    yearFounded: 2015,
+  },
   author: {
     fullName: "Petr Hurtak",
     email: "petr.hurtak@gmail.com",
     twitter: "https://twitter.com/PetrHurtak",
   },
-
-  generateRssInDev: false,
-
-  googleAnalyticsId: "UA-93333552-1",
+  app: {
+    generateRssInDev: false,
+  },
+  tokens: {
+    googleAnalytics: "UA-93333552-1",
+  },
 } as const;
 
 export const routes = {
   // Helpers
-  absolute: (relative: string) => `${config.siteDomainWithProtocol}${relative}`,
+  absolute: (relative: string) => `${config.site.domainWithProtocol}${relative}`,
 
   // App routes
   root: "/",

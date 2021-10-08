@@ -14,7 +14,7 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
   const serverConfig = getServerRuntimeConfig();
   const articlesMetadata = await getArticlesMetadata(serverConfig.paths.articles);
 
-  if (config.isProduction || config.generateRssInDev) {
+  if (config.isProduction || config.app.generateRssInDev) {
     await generateRssFeed(articlesMetadata, serverConfig.paths.public);
   }
 

@@ -15,7 +15,7 @@ export const generateRssFeed = async (articles: Array<ArticleMetadata>, targetFo
   const siteUrl = routes.absolute(routes.root);
 
   const feed = new Feed({
-    title: config.siteDomain,
+    title: config.site.domain,
     id: siteUrl,
     link: siteUrl,
     language: "en",

@@ -1,6 +1,7 @@
 # TODO
 
 - main page articles feed
+- rss link
 - sections
   - about me
   - foto

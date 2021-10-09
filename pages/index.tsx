@@ -28,23 +28,21 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
 
 const Home: NextPage<Props> = (props) => {
   return (
-    <div>
-      <main>
-        <h1>title</h1>
+    <>
+      <h1>title</h1>
 
-        <h2>Articles</h2>
-        <ul>
-          {props.articles.map((article) => (
-            <li key={article.articleDirectory}>
-              {dayjs(article.datePublication).format("YYYY-MM-DD")}{" "}
-              <Link href={routes.article(article.slug)}>
-                <a>{article.title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </main>
-    </div>
+      <h2>Articles</h2>
+      <ul>
+        {props.articles.map((article) => (
+          <li key={article.articleDirectory}>
+            {dayjs(article.datePublication).format("YYYY-MM-DD")}{" "}
+            <Link href={routes.article(article.slug)}>
+              <a>{article.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 

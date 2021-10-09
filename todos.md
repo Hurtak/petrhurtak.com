@@ -35,7 +35,6 @@
 - convert all articles?
 - seo.jsx convert
   - https://www.rarous.net/weblog/2019/01/28/generovani-twitter-card-obrazku.html
-- preload article when mousedown?
 - https://github.com/evenchange4/svgr.macro ?
 - Insecure link urls: http://hurtak.disqus.com
 - click on all links and determine if they do not return 404

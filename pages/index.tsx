@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import { NextPage } from "next";
+import { __, groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
 import { getArticlesMetadata } from "../src/articles";
 import { ArticleMetadata } from "../src/articles/types";
@@ -7,8 +8,13 @@ import { Link } from "../src/components";
 import { config, getServerRuntimeConfig, routes } from "../src/config";
 import { generateRssFeed } from "../src/domains/rss";
 
-type Props = {
+type ArticlesGroup = {
+  year: number;
   articles: ArticleMetadata[];
+};
+
+type Props = {
+  articles: ArticlesGroup[];
 };
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
@@ -19,11 +25,23 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
     await generateRssFeed(articlesMetadata, serverConfig.paths.public);
   }
 
-  const articles = articlesMetadata.sort((a1, a2) => (a1.datePublication < a2.datePublication ? 1 : -1));
+  const articles: (articles: ArticleMetadata[]) => ArticlesGroup[] = pipe(
+    groupBy((a: ArticleMetadata) => new Date(a.datePublication).getFullYear().toString()),
+    toPairs,
+    map(([year, articles]: [string, ArticleMetadata[]]) => ({
+      year: Number(year),
+      articles: pipe(
+        sortBy((a: ArticleMetadata) => a.datePublication),
+        (a: ArticleMetadata[]) => reverse<ArticleMetadata>(a)
+      )(articles),
+    })),
+    sortBy((g: ArticlesGroup) => g.year),
+    (g: ArticlesGroup[]) => reverse<ArticlesGroup>(g)
+  );
 
   return {
     props: {
-      articles,
+      articles: articles(articlesMetadata),
     },
   };
 };
@@ -64,12 +82,19 @@ const Home: NextPage<Props> = (props) => {
 
       <h2>Articles</h2>
       <ul>
-        {props.articles.map((article) => (
-          <li key={article.articleDirectory}>
-            {dayjs(article.datePublication).format("YYYY-MM-DD")}{" "}
-            <Link href={routes.article(article.slug)}>
-              <a>{article.title}</a>
-            </Link>
+        {props.articles.map(({ year, articles }) => (
+          <li key={year}>
+            <div>{year}</div>
+            <ul>
+              {articles.map((article) => (
+                <li key={article.articleDirectory}>
+                  {dayjs(article.datePublication).format("YYYY-MM-DD")}{" "}
+                  <Link href={routes.article(article.slug)}>
+                    <a>{article.title}</a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </li>
         ))}
       </ul>

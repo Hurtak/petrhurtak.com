@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { NextPage } from "next";
 
 import { getArticlesMetadata } from "../src/articles";
@@ -35,6 +36,7 @@ const Home: NextPage<Props> = (props) => {
         <ul>
           {props.articles.map((article) => (
             <li key={article.articleDirectory}>
+              {dayjs(article.datePublication).format("YYYY-MM-DD")}{" "}
               <Link href={routes.article(article.slug)}>
                 <a>{article.title}</a>
               </Link>

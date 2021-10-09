@@ -1,4 +1,4 @@
-import NextLink from "next/link";
+import NextLink from "next/link"; // eslint-disable-line no-restricted-imports
 import * as React from "react";
 
 export const P = ({ children }: { children: React.ReactNode }) => {

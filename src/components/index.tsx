@@ -30,19 +30,17 @@ export const H2 = ({ children }: { children: string }) => {
 
 export const Link = ({
   href,
-  rawLink = false,
   targetBlank = false,
   children,
 }: {
   href?: string;
-  rawLink?: boolean;
   targetBlank?: boolean;
   children: React.ReactNode;
 }) => {
   const hrefNormalized = href ?? (typeof children === "string" ? children : "");
   const isLinkExternal = /^\w+:/.test(hrefNormalized);
 
-  if (rawLink || isLinkExternal) {
+  if (isLinkExternal && !href) {
     return (
       <a
         href={hrefNormalized}

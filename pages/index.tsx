@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { NextPage } from "next";
-import { __, groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
+import { groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
 import { getArticlesMetadata } from "../src/articles";
 import { ArticleMetadata } from "../src/articles/types";
@@ -54,29 +54,22 @@ const Home: NextPage<Props> = (props) => {
       <h2>Links</h2>
       <ul>
         <li>
-          <Link href={`mailto:${config.author.email}`}>
-            <a>Email</a>
-          </Link>
+          <Link href={`mailto:${config.author.email}`}>Email</Link>
         </li>
         <li>
-          <Link href={config.author.twitter}>
-            <a>Twitter</a>
-          </Link>
+          <Link href={config.author.twitter}>Twitter</Link>
         </li>
         <li>
-          <Link href={config.author.github}>
-            <a>GitHub</a>
-          </Link>
+          <Link href={config.author.github}>GitHub</Link>
         </li>
         <li>
-          <Link href={config.author.linkedIn}>
-            <a>LinkedIn</a>
-          </Link>
+          <Link href={config.author.linkedIn}>LinkedIn</Link>
         </li>
         <li>
-          <Link href={config.author.linkedIn}>
-            <a>Instagram</a>
-          </Link>
+          <Link href={config.author.linkedIn}>Instagram</Link>
+        </li>
+        <li>
+          <Link href={routes.rss.rss2}>RSS</Link>
         </li>
       </ul>
 
@@ -89,9 +82,7 @@ const Home: NextPage<Props> = (props) => {
               {articles.map((article) => (
                 <li key={article.articleDirectory}>
                   {dayjs(article.datePublication).format("YYYY-MM-DD")}{" "}
-                  <Link href={routes.article(article.slug)}>
-                    <a>{article.title}</a>
-                  </Link>
+                  <Link href={routes.article(article.slug)}>{article.title}</Link>
                 </li>
               ))}
             </ul>

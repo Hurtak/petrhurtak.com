@@ -28,7 +28,31 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <Head>
         <title>{config.site.domain}</title>
+
+        {/* Icons */}
         <link rel="icon" type="image/svg" href={routes.favicon} />
+
+        {/* RSS Links */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={`RSS feed for ${config.site.domain}`}
+          href={routes.rss.rss2}
+        />
+        <link
+          rel="alternate"
+          type="application/atom+xml"
+          title={`Atom feed for ${config.site.domain}`}
+          href={routes.rss.atom}
+        />
+        <link
+          rel="alternate"
+          type="application/feed+json"
+          title={`JSON Feed for ${config.site.domain}`}
+          href={routes.rss.jsonFeed}
+        />
+
+        {/* Mobile viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       </Head>
 

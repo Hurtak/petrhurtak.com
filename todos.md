@@ -1,7 +1,6 @@
 # TODO
 
 - main page articles feed
-- rss link
 - sections
   - about me
   - foto
@@ -9,18 +8,22 @@
   - opensource, list of all opensource of what i did
   - apperances - talks, articles, etc
   - 404 page
+- http://www.vzhurudolu.cz/prirucka/checklist
+- deploy
+
 - inspiration
   - https://mxstbr.com/
   - http://paulgraham.com/
   - https://alexmeub.com/
   - https://tesarek.me/
+
+## TODOs after release
+
 - resolve todos in code
-- http://www.vzhurudolu.cz/prirucka/checklist
+- articles from twitter
 - drafts
   - make sure they are in robots txt exclude
   - add test
-- deploy
-- articles from twitter
 
 ## Old TODOs
 

@@ -3,15 +3,13 @@
 - main page articles feed
 - sections
   - about me
-  - link to twitter
-  - link to linkedin
-  - link to instagram
-  - link to github
+  - foto
   - projects, list of all projects of what i did
   - opensource, list of all opensource of what i did
   - apperances - talks, articles, etc
   - 404 page
 - inspiration
+  - https://mxstbr.com/
   - http://paulgraham.com/
   - https://alexmeub.com/
   - https://tesarek.me/

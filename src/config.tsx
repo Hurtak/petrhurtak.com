@@ -15,7 +15,11 @@ export const config = {
   author: {
     fullName: "Petr Hurtak",
     email: "petr.hurtak@gmail.com",
+
+    github: "https://github.com/hurtak",
     twitter: "https://twitter.com/PetrHurtak",
+    linkedIn: "https://www.linkedin.com/in/hurtak/",
+    instagram: "https://www.instagram.com/petr.hurtak/",
   },
   app: {
     generateRssInDev: false,

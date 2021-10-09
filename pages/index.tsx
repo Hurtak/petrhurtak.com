@@ -1,8 +1,8 @@
 import { NextPage } from "next";
-import Link from "next/link";
 
 import { getArticlesMetadata } from "../src/articles";
 import { ArticleMetadata } from "../src/articles/types";
+import { Link } from "../src/components";
 import { config, getServerRuntimeConfig, routes } from "../src/config";
 import { generateRssFeed } from "../src/domains/rss";
 

@@ -1,5 +1,6 @@
 import { config } from "../../config";
 import { gridCss, sizeCss } from "../../styles";
+import { Dash } from "..";
 
 export const Layout = ({ children }: { children: React.ReactNode }) => (
   <>
@@ -7,7 +8,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
       <main>{children}</main>
 
       <footer>
-        {config.site.yearFounded}–{new Date().getFullYear()}
+        {config.site.yearFounded}
+        <Dash />
+        {new Date().getFullYear()}
         <br />
         Written by {config.author.fullName}
       </footer>

@@ -69,7 +69,9 @@ const Home: NextPage<Props> = (props) => {
           <Link href={config.author.linkedIn}>Instagram</Link>
         </li>
         <li>
-          <Link href={routes.rss.rss2}>RSS</Link>
+          <Link href={routes.rss.rss2} rawLink>
+            RSS
+          </Link>
         </li>
       </ul>
 
@@ -89,6 +91,12 @@ const Home: NextPage<Props> = (props) => {
           </li>
         ))}
       </ul>
+
+      <style jsx>{`
+        ul {
+          padding-left: 24px;
+        }
+      `}</style>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import { config } from "../../config";
-import * as s from "../../styles";
+import { gridCss } from "../../styles";
 
 export const Layout = ({ children }: { children: React.ReactNode }) => (
   <>
@@ -23,7 +23,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
         max-width: 700px;
         min-height: 100vh; // (sticky)
         margin: 0 auto;
-        padding: ${s.gridCss(3)} ${s.gridCss(2)};
+        padding: ${gridCss(3)} ${gridCss(2)};
       }
 
       main {
@@ -31,7 +31,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
       }
 
       footer {
-        padding-top: ${s.gridCss(2)};
+        padding-top: ${gridCss(2)};
         text-align: center;
       }
     `}</style>

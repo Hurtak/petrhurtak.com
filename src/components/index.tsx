@@ -1,6 +1,8 @@
 import NextLink from "next/link"; // eslint-disable-line no-restricted-imports
 import * as React from "react";
 
+import { colors } from "../styles";
+
 export const P = ({ children }: { children: React.ReactNode }) => {
   return (
     <p>
@@ -28,6 +30,31 @@ export const H2 = ({ children }: { children: string }) => {
   );
 };
 
+const A = React.forwardRef<
+  HTMLAnchorElement,
+  {
+    href?: string;
+    onClick?: () => void;
+    children: React.ReactNode;
+  }
+>(({ href, onClick, children }, ref) => (
+  <>
+    <a href={href} onClick={onClick} ref={ref}>
+      {children}
+    </a>
+
+    <style jsx>{`
+      a {
+        text-decoration: none;
+      }
+      a:visited {
+        color: ${colors.blue};
+      }
+    `}</style>
+  </>
+));
+A.displayName = "A";
+
 export const Link = ({
   href,
   rawLink = false,
@@ -42,9 +69,9 @@ export const Link = ({
   const hrefNormalized = href ?? (typeof children === "string" ? children : "");
   const isLinkExternal = /^\w+:/.test(hrefNormalized);
 
-  if (rawLink || (isLinkExternal && !href)) {
+  if (rawLink || isLinkExternal) {
     return (
-      <a
+      <A
         href={hrefNormalized}
         {...(targetBlank && {
           rel: "noopener noreferrer",
@@ -52,12 +79,12 @@ export const Link = ({
         })}
       >
         {children}
-      </a>
+      </A>
     );
   } else {
     return (
-      <NextLink href={hrefNormalized}>
-        <a>{children}</a>
+      <NextLink href={hrefNormalized} passHref>
+        <A>{children}</A>
       </NextLink>
     );
   }

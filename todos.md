@@ -1,5 +1,10 @@
 # TODO
 
+- split
+  - general components
+  - article components
+- colors
+- go through components and replace usage of raw components with cstom components
 - main page articles feed
 - sections
   - about me

@@ -9,7 +9,7 @@ import { Link } from "../src/components";
 import { config, getServerRuntimeConfig, routes } from "../src/config";
 import { generateRssFeed } from "../src/domains/rss";
 import image from "../src/me.jpg";
-import { gridCss, sizeCss } from "../src/styles";
+import { gridCss, pxCss, sizeCss } from "../src/styles";
 
 type ArticlesGroup = {
   year: number;
@@ -55,36 +55,39 @@ const Home: NextPage<Props> = (props) => (
   <>
     <h1>Hey, I&apos;m Petr</h1>
 
-    <div className="profile-image">
-      <Image
-        src={image}
-        width={profileImageSize}
-        height={profileImageSize}
-        alt={`${config.author.fullName}'s profile picture`}
-      />
+    <div className="profile">
+      <div className="profile-image">
+        <Image
+          src={image}
+          width={profileImageSize}
+          height={profileImageSize}
+          alt={`${config.author.fullName}'s profile picture`}
+        />
+      </div>
+
+      <div className="profile-text">
+        <p>
+          I am software engineer working at{" "}
+          <Link href="https://www.alicetechnologies.com" newTab>
+            ALICE Technologies
+          </Link>{" "}
+          teacher at{" "}
+          <Link href="https://www.cvut.cz/en" newTab>
+            Czech Technical University
+          </Link>{" "}
+          and small investor. Previously I worked at{" "}
+          <Link href="https://www.seznam.cz/" newTab>
+            Seznam.cz
+          </Link>{" "}
+          and I also did bunch of{" "}
+          <Link href={config.author.github} newTab>
+            open source
+          </Link>{" "}
+          work.
+        </p>
+        <p>I like programming, economics, rock climbing and much more :)</p>
+      </div>
     </div>
-
-    <p>
-      I am software engineer working at{" "}
-      <Link href="https://www.alicetechnologies.com" newTab>
-        ALICE Technologies
-      </Link>{" "}
-      teacher at{" "}
-      <Link href="https://www.cvut.cz/en" newTab>
-        Czech Technical University
-      </Link>{" "}
-      and small investor. Previously I worked at{" "}
-      <Link href="https://www.seznam.cz/" newTab>
-        Seznam.cz
-      </Link>{" "}
-      and I also did bunch of{" "}
-      <Link href={config.author.github} newTab>
-        open source
-      </Link>{" "}
-      work.
-    </p>
-
-    <p>I like programming, economics, rock climbing and much more :)</p>
 
     <h2>Links</h2>
     <ul>
@@ -136,16 +139,39 @@ const Home: NextPage<Props> = (props) => (
     </ul>
 
     <style jsx>{`
+      h1,
+      h2,
+      p,
+      ul {
+        margin-top: 0;
+      }
+
+      .profile {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: ${gridCss(2)};
+      }
+
       .profile-image {
         display: inline-block;
-        border-radius: 5px;
+        border-radius: ${pxCss(5)};
         overflow: hidden;
         width: ${sizeCss(profileImageSize)};
         height: ${sizeCss(profileImageSize)};
+        flex-shrink: 0;
       }
 
-      p {
+      .profile-text {
+        flex-grow: 1;
+        padding-left: ${gridCss(1)};
+      }
+
+      .profile-text p {
         text-align: justify;
+      }
+
+      .profile-text p:last-of-type {
+        margin-bottom: 0;
       }
 
       ul {

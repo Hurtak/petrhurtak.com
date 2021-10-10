@@ -1,17 +1,13 @@
 # TODO
 
 - header
-- main page articles feed
-- sections
-  - about me
-  - foto
-  - projects, list of all projects of what i did
-  - opensource, list of all opensource of what i did
-  - apperances - talks, articles, etc
-  - 404 page
 - http://www.vzhurudolu.cz/prirucka/checklist
 - deploy
 
+- sections
+  - projects, list of all projects of what i did
+  - opensource, list of all opensource of what i did
+  - apperances - talks, articles, etc
 - convert remaining articles
 - go through components and replace usage of raw components with cstom components
 - split

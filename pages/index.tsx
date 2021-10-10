@@ -26,7 +26,7 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
     await generateRssFeed(articlesMetadata, serverConfig.paths.public);
   }
 
-  const articles: (articles: ArticleMetadata[]) => ArticlesGroup[] = pipe(
+  const articles: ArticlesGroup[] = pipe(
     groupBy((a: ArticleMetadata) => new Date(a.datePublication).getFullYear().toString()),
     toPairs,
     map(([year, articles]: [string, ArticleMetadata[]]) => ({
@@ -38,11 +38,11 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
     })),
     sortBy((g: ArticlesGroup) => g.year),
     (g: ArticlesGroup[]) => reverse<ArticlesGroup>(g)
-  );
+  )(articlesMetadata);
 
   return {
     props: {
-      articles: articles(articlesMetadata),
+      articles,
     },
   };
 };

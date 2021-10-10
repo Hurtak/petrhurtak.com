@@ -1,10 +1,16 @@
-import { config } from "../../config";
+import * as React from "react";
+
+import { config, routes } from "../../config";
 import { gridCss, sizeCss } from "../../styles";
-import { Dash } from "..";
+import { Dash, Link } from "..";
 
 export const Layout = ({ children }: { children: React.ReactNode }) => (
   <>
     <div className="layout">
+      <header>
+        <Link href={routes.root}>{config.site.domain}</Link>
+      </header>
+
       <main>{children}</main>
 
       <footer>
@@ -20,7 +26,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
       .layout {
         box-sizing: border-box;
         display: grid;
-        grid-template-rows: 1fr;
+        grid-template-areas:
+          "header"
+          "main"
+          "footer";
+        grid-template-rows: auto 1fr auto;
         grid-template-columns: 1fr;
         min-width: ${sizeCss(400)};
         max-width: ${sizeCss(600)};
@@ -29,7 +39,15 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
         padding: ${gridCss(3)} ${gridCss(2)};
       }
 
+      header {
+        grid-area: header;
+        display: flex;
+        flex-direction: row;
+        padding-bottom: ${gridCss(2)};
+      }
+
       main {
+        grid-area: main;
         flex-grow: 1; // (sticky) To make footer sticky, in case of content being smaller than screen height
         display: flex;
         flex-direction: column;
@@ -37,6 +55,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
       }
 
       footer {
+        grid-area: footer;
         padding-top: ${gridCss(2)};
         text-align: center;
       }

@@ -1,11 +1,11 @@
 # TODO
 
-- http://www.vzhurudolu.cz/prirucka/checklist
 - deploy
   - with github CI
 
 ## TODOs after release
 
+- nicer font
 - article titles
 - sections
   - projects, list of all projects of what i did
@@ -29,6 +29,7 @@
 - drafts
   - make sure they are in robots txt exclude
   - add test
+- http://www.vzhurudolu.cz/prirucka/checklist
 
 ## Old TODOs
 

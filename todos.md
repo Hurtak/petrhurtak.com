@@ -1,7 +1,5 @@
 # TODO
 
-- article responsiveness
-- go through components and replace usage of raw components with cstom components
 - main page articles feed
 - sections
   - about me
@@ -13,6 +11,7 @@
 - http://www.vzhurudolu.cz/prirucka/checklist
 - deploy
 
+- go through components and replace usage of raw components with cstom components
 - split
   - general components
   - article components

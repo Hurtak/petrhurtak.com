@@ -28,6 +28,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
 
       main {
         flex-grow: 1; // (sticky) To make footer sticky, in case of content being smaller than screen height
+        overflow: auto;
       }
 
       footer {

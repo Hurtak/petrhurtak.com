@@ -2,8 +2,7 @@ name: Main
 
 on:
   push:
-    branches:
-      - main
+  pull_request:
 
 jobs:
   validate:
@@ -51,6 +50,7 @@ jobs:
         uses: nwtgck/actions-netlify@v1.2
         with:
           publish-dir: dist
+          production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

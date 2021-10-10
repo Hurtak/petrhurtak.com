@@ -1,6 +1,5 @@
 import dayjs from "dayjs";
 import { NextPage } from "next";
-import Image from "next/image";
 import { groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
 import { getArticlesMetadata } from "../src/articles";
@@ -57,8 +56,8 @@ const Home: NextPage<Props> = (props) => (
 
     <div className="profile">
       <div className="profile-image">
-        <Image
-          src={image}
+        <img
+          src={image.src}
           width={profileImageSize}
           height={profileImageSize}
           alt={`${config.author.fullName}'s profile picture`}
@@ -154,7 +153,7 @@ const Home: NextPage<Props> = (props) => (
 
       .profile-image {
         display: inline-block;
-        border-radius: ${pxCss(5)};
+        border-radius: ${gridCss(1)};
         overflow: hidden;
         width: ${sizeCss(profileImageSize)};
         height: ${sizeCss(profileImageSize)};

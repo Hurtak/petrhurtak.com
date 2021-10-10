@@ -1,5 +1,6 @@
 # TODO
 
+- header
 - main page articles feed
 - sections
   - about me
@@ -11,6 +12,7 @@
 - http://www.vzhurudolu.cz/prirucka/checklist
 - deploy
 
+- convert remaining articles
 - go through components and replace usage of raw components with cstom components
 - split
   - general components

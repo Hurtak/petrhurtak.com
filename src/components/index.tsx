@@ -32,11 +32,11 @@ export const H2 = ({ children }: { children: string }) => {
 
 export const Link = ({
   href,
-  openToNewWindow = false,
+  newTab = false,
   children,
 }: {
   href?: string;
-  openToNewWindow?: boolean;
+  newTab?: boolean;
   children: React.ReactNode;
 }) => {
   const hrefNormalized = href ?? (typeof children === "string" ? children : "");
@@ -45,7 +45,7 @@ export const Link = ({
     <>
       <NextLink href={hrefNormalized} passHref>
         <a
-          {...(openToNewWindow && {
+          {...(newTab && {
             rel: "noopener noreferrer",
             target: "_blank",
           })}
@@ -158,7 +158,7 @@ export const Image = ({
   alt: string;
 }) => {
   return (
-    <Link href={src} openToNewWindow>
+    <Link href={src} newTab>
       <style jsx>{`
         img {
           display: block;

@@ -20,7 +20,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
         grid-template-rows: 1fr;
         grid-template-columns: 1fr;
         min-width: ${sizeCss(400)};
-        max-width: ${sizeCss(700)};
+        max-width: ${sizeCss(500)};
         min-height: 100vh; // (sticky)
         margin: 0 auto;
         padding: ${gridCss(3)} ${gridCss(2)};
@@ -28,6 +28,8 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
 
       main {
         flex-grow: 1; // (sticky) To make footer sticky, in case of content being smaller than screen height
+        display: flex;
+        flex-direction: column;
         overflow: auto;
       }
 

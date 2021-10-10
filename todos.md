@@ -2,6 +2,7 @@
 
 - deploy
   - with github CI
+    - Main job do not do deploy to production
 
 ## TODOs after release
 

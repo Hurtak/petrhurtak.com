@@ -1,9 +1,6 @@
 # TODO
 
-- split
-  - general components
-  - article components
-- colors
+- article responsiveness
 - go through components and replace usage of raw components with cstom components
 - main page articles feed
 - sections
@@ -16,11 +13,16 @@
 - http://www.vzhurudolu.cz/prirucka/checklist
 - deploy
 
+- split
+  - general components
+  - article components
 - inspiration
   - https://mxstbr.com/
   - http://paulgraham.com/
   - https://alexmeub.com/
   - https://tesarek.me/
+- colors
+  - make sure only colors from component library are used
 
 ## TODOs after release
 

@@ -1,7 +1,9 @@
 const gridSize = 8;
 
 export const gridNumber = (size: number) => size * gridSize;
-export const gridCss = (size: number) => `${gridNumber(size)}px`;
+export const gridCss = (grid: number) => sizeCss(gridNumber(grid));
+export const sizeCss = (px: number) => `${px}px`; // Size might have underlying unit changed (eg to rem) in the future
+export const pxCss = (px: number) => `${px}px`; // Force output px
 
 export const colors = {
   white: "white",

@@ -1,7 +1,7 @@
 import NextLink from "next/link"; // eslint-disable-line no-restricted-imports
 import * as React from "react";
 
-import { colors } from "../styles";
+import { colors, pxCss } from "../styles";
 
 export const P = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -30,64 +30,42 @@ export const H2 = ({ children }: { children: string }) => {
   );
 };
 
-const A = React.forwardRef<
-  HTMLAnchorElement,
-  {
-    href?: string;
-    onClick?: () => void;
-    children: React.ReactNode;
-  }
->(({ href, onClick, children }, ref) => (
-  <>
-    <a href={href} onClick={onClick} ref={ref}>
-      {children}
-    </a>
-
-    <style jsx>{`
-      a {
-        text-decoration: none;
-      }
-      a:visited {
-        color: ${colors.blue};
-      }
-    `}</style>
-  </>
-));
-A.displayName = "A";
-
 export const Link = ({
   href,
-  rawLink = false,
-  targetBlank = false,
+  openToNewWindow = false,
   children,
 }: {
   href?: string;
-  rawLink?: boolean;
-  targetBlank?: boolean;
+  openToNewWindow?: boolean;
   children: React.ReactNode;
 }) => {
   const hrefNormalized = href ?? (typeof children === "string" ? children : "");
-  const isLinkExternal = /^\w+:/.test(hrefNormalized);
 
-  if (rawLink || isLinkExternal) {
-    return (
-      <A
-        href={hrefNormalized}
-        {...(targetBlank && {
-          rel: "noopener noreferrer",
-          target: "_blank",
-        })}
-      >
-        {children}
-      </A>
-    );
-  } else {
-    return (
+  return (
+    <>
       <NextLink href={hrefNormalized} passHref>
-        <A>{children}</A>
+        <a
+          {...(openToNewWindow && {
+            rel: "noopener noreferrer",
+            target: "_blank",
+          })}
+        >
+          {children}
+        </a>
       </NextLink>
-    );
-  }
+
+      <style jsx>{`
+        a {
+          color: ${colors.blue};
+          text-decoration-thickness: ${pxCss(0.5)};
+          text-underline-offset: ${pxCss(1)};
+        }
+        a:visited {
+          color: ${colors.blue};
+        }
+      `}</style>
+    </>
+  );
 };
 
 export const Italic = ({ children }: { children: string }) => {
@@ -180,7 +158,7 @@ export const Image = ({
   alt: string;
 }) => {
   return (
-    <Link href={src} rawLink targetBlank>
+    <Link href={src} openToNewWindow>
       <style jsx>{`
         img {
           display: block;

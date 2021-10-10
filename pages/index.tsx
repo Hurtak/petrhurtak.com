@@ -7,6 +7,7 @@ import { ArticleMetadata } from "../src/articles/types";
 import { Link } from "../src/components";
 import { config, getServerRuntimeConfig, routes } from "../src/config";
 import { generateRssFeed } from "../src/domains/rss";
+import { gridCss } from "../src/styles";
 
 type ArticlesGroup = {
   year: number;
@@ -57,19 +58,27 @@ const Home: NextPage<Props> = (props) => {
           <Link href={`mailto:${config.author.email}`}>Email</Link>
         </li>
         <li>
-          <Link href={config.author.twitter}>Twitter</Link>
+          <Link href={config.author.twitter} openToNewWindow>
+            Twitter
+          </Link>
         </li>
         <li>
-          <Link href={config.author.github}>GitHub</Link>
+          <Link href={config.author.github} openToNewWindow>
+            GitHub
+          </Link>
         </li>
         <li>
-          <Link href={config.author.linkedIn}>LinkedIn</Link>
+          <Link href={config.author.linkedIn} openToNewWindow>
+            LinkedIn
+          </Link>
         </li>
         <li>
-          <Link href={config.author.linkedIn}>Instagram</Link>
+          <Link href={config.author.linkedIn} openToNewWindow>
+            Instagram
+          </Link>
         </li>
         <li>
-          <Link href={routes.rss.rss2} rawLink>
+          <Link href={routes.rss.rss2} openToNewWindow>
             RSS
           </Link>
         </li>
@@ -94,7 +103,7 @@ const Home: NextPage<Props> = (props) => {
 
       <style jsx>{`
         ul {
-          padding-left: 24px;
+          padding-left: ${gridCss(3)};
         }
       `}</style>
     </>

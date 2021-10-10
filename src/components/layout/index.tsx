@@ -1,5 +1,5 @@
 import { config } from "../../config";
-import { gridCss } from "../../styles";
+import { gridCss, sizeCss } from "../../styles";
 
 export const Layout = ({ children }: { children: React.ReactNode }) => (
   <>
@@ -19,8 +19,8 @@ export const Layout = ({ children }: { children: React.ReactNode }) => (
         display: grid;
         grid-template-rows: 1fr;
         grid-template-columns: 1fr;
-        min-width: 400px;
-        max-width: 700px;
+        min-width: ${sizeCss(400)};
+        max-width: ${sizeCss(700)};
         min-height: 100vh; // (sticky)
         margin: 0 auto;
         padding: ${gridCss(3)} ${gridCss(2)};

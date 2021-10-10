@@ -1,8 +1,7 @@
-name: Main
+name: Main workflow
 
 on:
   push:
-  pull_request:
 
 jobs:
   validate:
@@ -51,6 +50,8 @@ jobs:
         with:
           publish-dir: dist
           production-branch: main
+          enable-pull-request-comment: false
+          deploy-message: Deploy from GitHub Actions
           github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

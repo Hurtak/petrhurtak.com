@@ -1,13 +1,11 @@
 # TODO
 
-- deploy
-  - with github CI
-    - Main job do not do deploy to production
+- domains stuff
+- nicer font
+- article titles
 
 ## TODOs after release
 
-- nicer font
-- article titles
 - sections
   - projects, list of all projects of what i did
   - opensource, list of all opensource of what i did

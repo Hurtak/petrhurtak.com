@@ -1,4 +1,4 @@
-name: Validate
+name: Main
 
 on:
   push:
@@ -34,3 +34,33 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: artifact-dist
+          path: dist
+  deploy:
+    name: Build
+    needs: [validate, build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: artifact-dist
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: dist
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: dist
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1

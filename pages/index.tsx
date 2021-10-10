@@ -52,7 +52,7 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
 
 const Home: NextPage<Props> = (props) => (
   <>
-    <h1>Hey, I&apos;m Petr</h1>
+    <h1>Hey, I&apos;m Petr xxxx</h1>
 
     <div className="profile">
       <div className="profile-image">

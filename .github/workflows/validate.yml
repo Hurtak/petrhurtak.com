@@ -1,7 +1,9 @@
 name: Main
 
 on:
-  push: main
+  push:
+    branches:
+      - main
 
 jobs:
   validate:

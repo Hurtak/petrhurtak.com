@@ -1,9 +1,12 @@
 # TODO
 
-- header
 - http://www.vzhurudolu.cz/prirucka/checklist
 - deploy
+  - with github CI
 
+## TODOs after release
+
+- article titles
 - sections
   - projects, list of all projects of what i did
   - opensource, list of all opensource of what i did
@@ -13,6 +16,7 @@
 - split
   - general components
   - article components
+    - article link open link to new window
 - inspiration
   - https://mxstbr.com/
   - http://paulgraham.com/
@@ -20,9 +24,6 @@
   - https://tesarek.me/
 - colors
   - make sure only colors from component library are used
-
-## TODOs after release
-
 - resolve todos in code
 - articles from twitter
 - drafts

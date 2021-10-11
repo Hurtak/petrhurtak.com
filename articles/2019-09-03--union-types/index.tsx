@@ -26,7 +26,7 @@ export const article = () => (
 
     <H1>"Classic" approach</H1>
 
-    <Code multiline>{`
+    <Code language="jsx" multiline>{`
       // Initial state
       let apiData = null;
 

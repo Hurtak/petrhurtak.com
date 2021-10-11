@@ -1,7 +1,7 @@
 import NextLink from "next/link"; // eslint-disable-line no-restricted-imports
 import * as React from "react";
 
-import { colors, pxCss } from "../styles";
+import { colors, gridCss, pxCss } from "../styles";
 
 export const P = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -125,19 +125,33 @@ export const Tr = ({ heading = false, children }: { heading?: boolean; children:
 export const Tc = ({
   heading = false,
   noWrap = false,
+  rowSpan,
+  colSpan,
   children,
 }: {
   heading?: boolean;
   noWrap?: boolean;
+  rowSpan?: number;
+  colSpan?: number;
   children?: React.ReactNode;
 }) => {
   const Component = heading ? "th" : "td";
 
   return (
-    <Component className={`${noWrap ? "no-wrap" : ""}`}>
+    <Component className={`${noWrap ? "no-wrap" : ""}`} rowSpan={rowSpan} colSpan={colSpan}>
       <style jsx>{`
         .no-wrap {
           white-space: nowrap;
+        }
+        th,
+        td {
+          padding: ${gridCss(0.25)} ${gridCss(0.5)};
+        }
+        th {
+          background: ${colors.grayDark};
+        }
+        td {
+          background: ${colors.gray};
         }
       `}</style>
       {children}

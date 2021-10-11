@@ -180,5 +180,6 @@ export const Video = ({ width, height, src }: { width: number; height: number; s
 };
 
 export const Dash = ({ long = false }: { long?: boolean }) => (long === false ? <>&ndash;</> : <>&mdash;</>);
+export const Br = () => <br />;
 
 export { Code } from "./code";

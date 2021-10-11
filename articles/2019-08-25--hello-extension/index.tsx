@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { H1, Image, Li, Link, List, P, Strong } from "../../src/components";
 import screenshot1 from "./images/screenshot-1.png";

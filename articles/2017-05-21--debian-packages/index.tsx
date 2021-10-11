@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { Code, H1, H2, Italic, Li, Link, List, P, Strong, Table, Tc, Tr, Video } from "../../src/components";
 

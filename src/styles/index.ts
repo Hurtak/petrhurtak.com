@@ -8,5 +8,9 @@ export const pxCss = (px: number) => `${px}px`; // Force output px
 export const colors = {
   white: "white",
   black: "black",
+
+  grayDark: "#dadada",
+  gray: "#f3f3f3",
+
   blue: "blue",
 };

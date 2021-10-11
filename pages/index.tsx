@@ -8,7 +8,7 @@ import { Link } from "../src/components";
 import { config, getServerRuntimeConfig, routes } from "../src/config";
 import { generateRssFeed } from "../src/domains/rss";
 import image from "../src/me.jpg";
-import { gridCss, pxCss, sizeCss } from "../src/styles";
+import { gridCss, gridNumber, pxCss, sizeCss } from "../src/styles";
 
 type ArticlesGroup = {
   year: number;
@@ -19,7 +19,7 @@ type Props = {
   articles: ArticlesGroup[];
 };
 
-const profileImageSize = 100;
+const profileImageSize = gridNumber(11);
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
   const serverConfig = getServerRuntimeConfig();
@@ -163,10 +163,6 @@ const Home: NextPage<Props> = (props) => (
       .profile-text {
         flex-grow: 1;
         padding-left: ${gridCss(1)};
-      }
-
-      .profile-text p {
-        text-align: justify;
       }
 
       .profile-text p:last-of-type {

@@ -1,8 +1,14 @@
 # TODO
 
-- domains stuff
-- nicer font
+- use cx/classnames
 - article titles
+- responsive video
+- header
+  - add logo
+  - update text
+- hurtak.cc redirect works?
+- nicer font
+- responsive layout for mobile
 
 ## TODOs after release
 

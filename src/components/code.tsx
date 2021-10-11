@@ -9,6 +9,8 @@ import typescript from "refractor/lang/typescript";
 import yaml from "refractor/lang/yaml";
 import stripIndent from "strip-indent";
 
+import { colors, gridCss, sizeCss } from "../styles";
+
 Refractor.registerLanguage(bash);
 Refractor.registerLanguage(docker);
 Refractor.registerLanguage(javascript);
@@ -41,20 +43,44 @@ export const Code = ({
   const inline = multiline === false;
   const Tag = inline ? "span" : "div";
   return (
-    <Tag className={inline ? "inline-code" : ""}>
+    <Tag
+      className={[
+        //
+        inline ? "code-inline" : "code-block",
+        language == null ? "no-highlight" : "",
+      ].join(" ")}
+    >
       <style jsx>{`
-        .inline-code {
+        .code-inline {
           display: inline-flex;
           width: auto;
         }
-        .inline-code :global(.refractor) {
-          margin: 0;
-          padding: 0 0.2em;
+        .code-inline :global(.refractor) {
+          padding: ${sizeCss(1)} !important;
+          border: 1px solid ${colors.grayDark};
+          border-radius: 2px;
+          font-size: 14px !important;
+          background: ${colors.gray};
+        }
+
+        /*
+          (highlight) Refactor requires language, so there is always syntax highlight.
+          So this is workaround for around that.
+        */
+        .no-highlight :global(.token) {
+          color: black !important;
+        }
+
+        .code-block :global(.refractor) {
+          padding: ${gridCss(1)} !important;
+          background: ${colors.gray} !important;
         }
       `}</style>
 
-      {/* Refactor requires language, so we pass there the most general one */}
-      {/* https://github.com/wooorm/refractor/issues/49 */}
+      {/*
+        (highlight) Refactor requires language, so we pass there the most general one
+        Relevant ticket: https://github.com/wooorm/refractor/issues/49
+      */}
       <Refractor inline={inline} language={language ?? "bash"} value={stripIndent(children).trim()} />
     </Tag>
   );

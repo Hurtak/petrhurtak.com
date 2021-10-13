@@ -9,9 +9,17 @@ export const LayoutArticle = ({
   articleMetadata: ArticleMetadata;
   article: React.FC;
 }) => (
-  <article>
-    <h1>{articleMetadata.title}</h1>
+  <>
+    <article>
+      <h1>{articleMetadata.title}</h1>
 
-    <Article />
-  </article>
+      <Article />
+    </article>
+
+    <style jsx>{`
+      h1 {
+        margin-top: 0;
+      }
+    `}</style>
+  </>
 );

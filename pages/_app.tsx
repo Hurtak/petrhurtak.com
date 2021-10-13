@@ -6,11 +6,11 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import * as React from "react";
 
-import { Layout } from "../src/components/layout";
+import { Layout } from "../src/components/layout/layout-page";
 import { config, routes } from "../src/config";
 import { useGoogleAnalytics } from "../src/domains/google-analytics";
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
   useGoogleAnalytics({
     token: config.tokens.googleAnalytics,
@@ -61,4 +61,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </Layout>
     </>
   );
-}
+};
+
+export default App;

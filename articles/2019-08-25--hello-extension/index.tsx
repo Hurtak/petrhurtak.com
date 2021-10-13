@@ -5,7 +5,7 @@ import screenshot1 from "./images/screenshot-1.png";
 
 const storeLink = "https://chrome.google.com/webstore/detail/hello/olenfgbgcphkaipfeohfjpagibimmpke";
 
-export const article = () => (
+export const Article = () => (
   <>
     <P>
       I made a <Link href={storeLink}>Chrome extension</Link> that replaces your new tab with widgets and fresh image

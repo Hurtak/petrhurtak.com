@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { H1, P } from "../../../src/components";
 
-export const article = () => (
+export const Article = () => (
   <>
     <H1>Article Title</H1>
     <P>Article text</P>

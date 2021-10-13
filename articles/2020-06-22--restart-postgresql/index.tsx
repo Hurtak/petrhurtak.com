@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Code, H1, P } from "../../src/components";
 
-export const article = () => (
+export const Article = () => (
   <>
     <P>While connecting to PostgreSQL, you might get the following error.</P>
 

@@ -1,6 +1,6 @@
 import { Code, H1, H2, Italic, Li, Link, List, P } from "../../src/components";
 
-export const article = () => (
+export const Article = () => (
   <>
     <P>
       Discriminate union types (also called <Italic>tagged unions</Italic> or <Italic>algebraic data types</Italic>) are

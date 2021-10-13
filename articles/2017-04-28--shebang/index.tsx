@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Code, H1, H2, Li, List, P, Table, Tc, Tr, Video } from "../../src/components";
 
-export const article = () => (
+export const Article = () => (
   <>
     <P>
       Under Unix-like operating systems you can either run scripts by specifying the interpreter along with the path{" "}

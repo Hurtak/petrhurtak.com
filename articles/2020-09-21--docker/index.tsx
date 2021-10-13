@@ -1,6 +1,6 @@
 import { Code, H1, P } from "../../src/components";
 
-export const article = () => (
+export const Article = () => (
   <>
     <P>
       This article assumes basic Docker knowledge and is more of a shortlist of useful commands rather than beginners

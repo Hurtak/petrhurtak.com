@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Code, H1, Link, P } from "../../src/components";
 
-export const article = () => (
+export const Article = () => (
   <>
     <P>When you create merge request often you will want to squash all the commits into one.</P>
 

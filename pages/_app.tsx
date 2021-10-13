@@ -6,7 +6,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import * as React from "react";
 
-import { Layout } from "../src/components/layout/layout-page";
+import { LayoutPage } from "../src/components/layout/layout-page";
 import { config, routes } from "../src/config";
 import { useGoogleAnalytics } from "../src/domains/google-analytics";
 
@@ -56,9 +56,9 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       </Head>
 
-      <Layout>
+      <LayoutPage>
         <Component {...pageProps} />
-      </Layout>
+      </LayoutPage>
     </>
   );
 };

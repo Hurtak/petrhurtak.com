@@ -4,7 +4,7 @@ import { config, routes } from "../../config";
 import { gridCss, sizeCss } from "../../styles";
 import { Dash, Link } from "..";
 
-export const Layout = ({ children }: { children: React.ReactNode }) => (
+export const LayoutPage = ({ children }: { children: React.ReactNode }) => (
   <>
     <div className="layout">
       <header>

@@ -1,7 +1,6 @@
 # TODO
 
 - use cx/classnames
-- article titles
 - responsive video
 - header
   - add logo

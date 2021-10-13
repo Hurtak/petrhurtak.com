@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Code, H1, H2, Italic, Li, Link, List, P, Strong, Table, Tc, Tr, Video } from "../../src/components";
 
-export const article = () => (
+export const Article = () => (
   <>
     <P>
       At <Link href="https://www.seznam.cz/">Seznam.cz</Link> we use Debian packages for packaging and distribution of a

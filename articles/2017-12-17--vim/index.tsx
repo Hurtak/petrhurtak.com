@@ -41,7 +41,7 @@ const SharedCommands = () => (
   </>
 );
 
-export const article = () => (
+export const Article = () => (
   <>
     <P>
       Vim is a text editor. It is in the{" "}

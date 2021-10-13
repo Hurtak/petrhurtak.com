@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Code, H1, Li, Link, List, P } from "../../src/components";
 
-export const article = () => (
+export const Article = () => (
   <>
     <P>
       In JavaScript, most common way to get pseudo random values is from the <Code language="js">Math.random()</Code>{" "}

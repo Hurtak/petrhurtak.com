@@ -8,7 +8,7 @@ const Sep = () => (
   </>
 );
 
-export const article = () => (
+export const Article = () => (
   <>
     <P>
       I always got confused about what certain parts of an URL are called, so here is a simple diagram that should help.

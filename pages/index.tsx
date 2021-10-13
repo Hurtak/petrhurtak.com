@@ -2,8 +2,8 @@ import dayjs from "dayjs";
 import { NextPage } from "next";
 import { groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
-import { getArticlesMetadata } from "../src/articles";
-import { ArticleMetadata } from "../src/articles/types";
+import { getArticlesMetadataExtended } from "../src/articles";
+import { ArticleMetadataExtended } from "../src/articles/types";
 import { Link } from "../src/components";
 import { config, getServerRuntimeConfig, routes } from "../src/config";
 import { generateRssFeed } from "../src/domains/rss";
@@ -12,7 +12,7 @@ import { gridCss, gridNumber, pxCss, sizeCss } from "../src/styles";
 
 type ArticlesGroup = {
   year: number;
-  articles: ArticleMetadata[];
+  articles: ArticleMetadataExtended[];
 };
 
 type Props = {
@@ -23,20 +23,20 @@ const profileImageSize = gridNumber(11);
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
   const serverConfig = getServerRuntimeConfig();
-  const articlesMetadata = await getArticlesMetadata(serverConfig.paths.articles);
+  const articlesMetadata = await getArticlesMetadataExtended(serverConfig.paths.articles);
 
   if (config.isProduction || config.app.generateRssInDev) {
     await generateRssFeed(articlesMetadata, serverConfig.paths.public);
   }
 
   const articles: ArticlesGroup[] = pipe(
-    groupBy((a: ArticleMetadata) => new Date(a.datePublication).getFullYear().toString()),
+    groupBy((a: ArticleMetadataExtended) => new Date(a.datePublication).getFullYear().toString()),
     toPairs,
-    map(([year, articles]: [string, ArticleMetadata[]]) => ({
+    map(([year, articles]: [string, ArticleMetadataExtended[]]) => ({
       year: Number(year),
       articles: pipe(
-        sortBy((a: ArticleMetadata) => a.datePublication),
-        (a: ArticleMetadata[]) => reverse<ArticleMetadata>(a)
+        sortBy((a: ArticleMetadataExtended) => a.datePublication),
+        (a: ArticleMetadataExtended[]) => reverse<ArticleMetadataExtended>(a)
       )(articles),
     })),
     sortBy((g: ArticlesGroup) => g.year),

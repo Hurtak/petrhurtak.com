@@ -8,6 +8,7 @@
 - hurtak.cc redirect works?
 - nicer font
 - responsive layout for mobile
+- articles use ArticleMetadata (json) and the rest of the code uses ArticleMetadataExtended - unify - maybe have getStaticProps on each article? if yes, then rename ArticleMetadata -> ArticleMetadataRaw, and ArticleMetadataExtended -> ArticleMetadata
 
 ## TODOs after release
 

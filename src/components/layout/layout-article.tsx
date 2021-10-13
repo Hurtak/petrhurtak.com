@@ -1,12 +1,12 @@
 import * as React from "react";
 
-import { ArticleMetadataJson } from "../../articles/types";
+import { ArticleMetadata } from "../../articles/types";
 
 export const LayoutArticle = ({
   articleMetadata,
   article: Article,
 }: {
-  articleMetadata: ArticleMetadataJson;
+  articleMetadata: ArticleMetadata;
   article: React.FC;
 }) => (
   <article>

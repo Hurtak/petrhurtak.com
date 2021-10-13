@@ -1,9 +1,9 @@
 import * as fs from "fs/promises";
 import * as path from "path";
 
-import { ArticleMetadata, articleMetadataJsonValidator } from "./types";
+import { ArticleMetadataExtended, articleMetadataValidator } from "./types";
 
-export const getArticlesMetadata = async (articlesDir: string): Promise<Array<ArticleMetadata>> => {
+export const getArticlesMetadataExtended = async (articlesDir: string): Promise<Array<ArticleMetadataExtended>> => {
   const articlesDirItems = await fs.readdir(articlesDir);
 
   const articleDirs: Array<string> = [];
@@ -16,14 +16,14 @@ export const getArticlesMetadata = async (articlesDir: string): Promise<Array<Ar
     }
   }
 
-  const articlesData: Array<ArticleMetadata> = [];
+  const articlesData: Array<ArticleMetadataExtended> = [];
   for (const articleDir of articleDirs) {
     const articlePath = path.join(articlesDir, articleDir, "metadata.json");
     const metadataRaw = await fs.readFile(articlePath, "utf8");
     const metadataParsed = JSON.parse(metadataRaw);
-    const metadata = articleMetadataJsonValidator.parse(metadataParsed);
+    const metadata = articleMetadataValidator.parse(metadataParsed);
 
-    const articleData: ArticleMetadata = {
+    const articleData: ArticleMetadataExtended = {
       title: metadata.title,
       description: metadata.description,
       datePublication: new Date(metadata.datePublication).getTime(),

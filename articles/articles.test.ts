@@ -5,7 +5,7 @@ import { getArticlesMetadataExtended } from "../src/articles";
 describe("articles", () => {
   const folderRegex = /^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})--[\w-]+?$/;
 
-  test("getArticlesMetadataExtended", () => {
+  describe("getArticlesMetadataExtended", () => {
     test("folder name matches pattern", async () => {
       const articles = await getArticlesMetadataExtended(path.join(__dirname, "../articles"));
 

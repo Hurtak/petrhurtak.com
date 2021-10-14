@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Refractor from "react-refractor";
 import bash from "refractor/lang/bash";
 import docker from "refractor/lang/docker";
@@ -44,11 +45,11 @@ export const Code = ({
   const Tag = inline ? "span" : "div";
   return (
     <Tag
-      className={[
-        //
-        inline ? "code-inline" : "code-block",
-        language == null ? "no-highlight" : "",
-      ].join(" ")}
+      className={clsx({
+        ["code-inline"]: inline === true,
+        ["code-block"]: inline === false,
+        ["no-highlight"]: language == null,
+      })}
     >
       <style jsx>{`
         .code-inline {

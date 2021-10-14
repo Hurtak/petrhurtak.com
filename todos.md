@@ -1,7 +1,6 @@
 # TODO
 
 - responsive video
-- use cx/classnames
 - header
   - add logo
   - update text

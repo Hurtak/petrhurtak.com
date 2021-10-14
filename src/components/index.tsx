@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import NextLink from "next/link"; // eslint-disable-line no-restricted-imports
 import * as React from "react";
 
@@ -138,7 +139,7 @@ export const Tc = ({
   const Component = heading ? "th" : "td";
 
   return (
-    <Component className={`${noWrap ? "no-wrap" : ""}`} rowSpan={rowSpan} colSpan={colSpan}>
+    <Component className={clsx({ ["no-wrap"]: noWrap })} rowSpan={rowSpan} colSpan={colSpan}>
       <style jsx>{`
         .no-wrap {
           white-space: nowrap;

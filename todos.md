@@ -9,6 +9,10 @@
 - nicer font
 - responsive layout for mobile
 - articles use ArticleMetadata (json) and the rest of the code uses ArticleMetadataExtended - unify - maybe have getStaticProps on each article? if yes, then rename ArticleMetadata -> ArticleMetadataRaw, and ArticleMetadataExtended -> ArticleMetadata
+- inspiration
+  - https://evanjconrad.com/
+  - https://mxstbr.com/
+  - https://alexmeub.com/
 
 ## TODOs after release
 
@@ -22,11 +26,6 @@
   - general components
   - article components
     - article link open link to new window
-- inspiration
-  - https://mxstbr.com/
-  - http://paulgraham.com/
-  - https://alexmeub.com/
-  - https://tesarek.me/
 - colors
   - make sure only colors from component library are used
 - resolve todos in code

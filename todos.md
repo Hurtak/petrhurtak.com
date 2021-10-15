@@ -1,17 +1,19 @@
 # TODO
 
+- articles use ArticleMetadata (json) and the rest of the code uses ArticleMetadataExtended - unify - maybe have getStaticProps on each article? if yes, then rename ArticleMetadata -> ArticleMetadataRaw, and ArticleMetadataExtended -> ArticleMetadata
+  - finish
+  - convert all article
 - responsive video
 - header
   - add logo
   - update text
-- hurtak.cc redirect works?
-- nicer font
 - responsive layout for mobile
-- articles use ArticleMetadata (json) and the rest of the code uses ArticleMetadataExtended - unify - maybe have getStaticProps on each article? if yes, then rename ArticleMetadata -> ArticleMetadataRaw, and ArticleMetadataExtended -> ArticleMetadata
 - inspiration
   - https://evanjconrad.com/
   - https://mxstbr.com/
   - https://alexmeub.com/
+- nicer font
+- hurtak.cc redirect works?
 
 ## TODOs after release
 

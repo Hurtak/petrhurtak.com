@@ -1,13 +1,13 @@
 import * as path from "path";
 
-import { getArticlesMetadataExtended } from "../src/articles";
+import { getAllArticlesMetadata } from "../src/articles";
 
 describe("articles", () => {
   const folderRegex = /^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})--[\w-]+?$/;
 
-  describe("getArticlesMetadataExtended", () => {
+  describe("getAllArticlesMetadata", () => {
     test("folder name matches pattern", async () => {
-      const articles = await getArticlesMetadataExtended(path.join(__dirname, "../articles"));
+      const articles = await getAllArticlesMetadata(path.join(__dirname, "../articles"));
 
       for (const article of articles) {
         expect(article.articleDirectory).toMatch(folderRegex);
@@ -15,7 +15,7 @@ describe("articles", () => {
     });
 
     test("folder name date matches metadata date", async () => {
-      const articles = await getArticlesMetadataExtended(path.join(__dirname, "../articles"));
+      const articles = await getAllArticlesMetadata(path.join(__dirname, "../articles"));
 
       for (const article of articles) {
         const match = article.articleDirectory.match(folderRegex);

@@ -2,12 +2,12 @@ import dayjs from "dayjs";
 import { NextPage } from "next";
 import { groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
-import { getAllArticlesMetadata } from "../src/articles";
+import { getAllArticlesMetadata } from "../src/articles/articles-server";
 import { ArticleMetadata } from "../src/articles/types";
 import { Link } from "../src/components";
 import { config, getServerRuntimeConfig, routes } from "../src/config";
-import { generateRssFeed } from "../src/domains/rss";
 import image from "../src/me.jpg";
+import { generateRssFeed } from "../src/services/rss";
 import { gridCss, gridNumber, sizeCss } from "../src/styles";
 
 type ArticlesGroup = {

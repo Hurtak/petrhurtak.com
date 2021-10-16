@@ -1,6 +1,16 @@
 import * as fs from "fs/promises";
 import * as path from "path";
 
+import { getServerRuntimeConfig } from "../config";
+
+export const getStaticPropsArticle = async (fileName: string) => {
+  const slug = path.basename(fileName).replace(".js", "");
+  const serverConfig = getServerRuntimeConfig();
+  const articleMetadata = await getArticleMetadata(serverConfig.paths.articles, slug);
+
+  return { props: { articleMetadata } };
+};
+
 import { ArticleMetadata, articleMetadataJsonValidator } from "./types";
 
 const getArticlesDirs = async (articlesDir: string): Promise<Array<string>> => {

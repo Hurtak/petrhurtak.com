@@ -8,7 +8,7 @@ import * as React from "react";
 
 import { LayoutPage } from "../src/components/layout/layout-page";
 import { config, routes } from "../src/config";
-import { useGoogleAnalytics } from "../src/domains/google-analytics";
+import { useGoogleAnalytics } from "../src/services/google-analytics";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();

@@ -1,6 +1,6 @@
 import * as path from "path";
 
-import { getAllArticlesMetadata } from "../src/articles";
+import { getAllArticlesMetadata } from "../src/articles/articles-server";
 
 describe("articles", () => {
   const folderRegex = /^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})--[\w-]+?$/;

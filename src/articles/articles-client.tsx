@@ -1,7 +1,7 @@
 import React from "react";
 
-import { ArticleMetadata } from "../articles/types";
 import { LayoutArticle } from "../components/layout/layout-article";
+import { ArticleMetadata } from "./types";
 
 export const articlePage = (article: React.FC) => {
   const ArticlePage = (props: { articleMetadata: ArticleMetadata }) => (

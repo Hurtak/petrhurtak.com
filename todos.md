@@ -1,6 +1,7 @@
 # TODO
 
 - domain driven design
+  - https://dev.to/bespoyasov/clean-architecture-on-frontend-4311
 - responsive video
 - header
   - add logo

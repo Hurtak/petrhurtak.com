@@ -1,7 +1,7 @@
 import { Article } from "../../../../articles/_hidden/example";
-import articleMetadata from "../../../../articles/_hidden/example/metadata.json";
-import { LayoutArticle } from "../../../../src/components/layout/layout-article";
+import { articlePage } from "../../../../src/articles/articles-client";
+import { getStaticPropsArticle } from "../../../../src/articles/articles-server";
 
-const ArticlePage = () => <LayoutArticle articleMetadata={articleMetadata} article={Article} />;
+export const getStaticProps = () => getStaticPropsArticle(__filename);
 
-export default ArticlePage;
+export default articlePage(Article);

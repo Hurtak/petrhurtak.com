@@ -1,13 +1,13 @@
 import { z } from "zod";
 
-export const articleMetadataValidator = z.object({
+export const articleMetadataJsonValidator = z.object({
   title: z.string(),
   description: z.string(),
   datePublication: z.string(),
 });
-export type ArticleMetadata = z.infer<typeof articleMetadataValidator>;
+export type ArticleMetadataJson = z.infer<typeof articleMetadataJsonValidator>;
 
-export const articleMetadataExtendedValidator = z.object({
+export const articleMetadataValidator = z.object({
   title: z.string(),
   description: z.string(),
   datePublication: z.number(),
@@ -16,4 +16,4 @@ export const articleMetadataExtendedValidator = z.object({
   articlePath: z.string(),
   articleDirectory: z.string(),
 });
-export type ArticleMetadataExtended = z.infer<typeof articleMetadataExtendedValidator>;
+export type ArticleMetadata = z.infer<typeof articleMetadataValidator>;

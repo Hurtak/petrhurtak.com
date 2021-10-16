@@ -1,7 +1,7 @@
 import { Article } from "../../articles/2017-12-17--vim";
-import articleMetadata from "../../articles/2017-12-17--vim/metadata.json";
-import { LayoutArticle } from "../../src/components/layout/layout-article";
+import { articlePage } from "../../src/domains/article";
+import { getStaticPropsArticle } from "../../src/domains/article-server";
 
-const ArticlePage = () => <LayoutArticle articleMetadata={articleMetadata} article={Article} />;
+export const getStaticProps = () => getStaticPropsArticle(__filename);
 
-export default ArticlePage;
+export default articlePage(Article);

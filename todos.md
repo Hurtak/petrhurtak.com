@@ -1,8 +1,6 @@
 # TODO
 
-- articles use ArticleMetadata (json) and the rest of the code uses ArticleMetadataExtended - unify - maybe have getStaticProps on each article? if yes, then rename ArticleMetadata -> ArticleMetadataRaw, and ArticleMetadataExtended -> ArticleMetadata
-  - finish
-  - convert all article
+- domain driven design
 - responsive video
 - header
   - add logo

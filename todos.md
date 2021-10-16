@@ -9,6 +9,7 @@
   - update text
 - responsive layout for mobile
 - inspiration
+  - https://ruanmartinelli.com/
   - https://evanjconrad.com/
   - https://mxstbr.com/
   - https://alexmeub.com/

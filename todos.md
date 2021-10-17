@@ -1,5 +1,12 @@
 # TODO
 
+- \_hidden
+  - dev broken
+  - build broken
+- articles-server
+  - cleanup dirs/folders
+  - cleanup naming of whole path, or only final folder
+- 404 page
 - domain driven design
   - https://dev.to/bespoyasov/clean-architecture-on-frontend-4311
 - responsive video

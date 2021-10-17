@@ -7,13 +7,16 @@ export const articleMetadataJsonValidator = z.object({
 });
 export type ArticleMetadataJson = z.infer<typeof articleMetadataJsonValidator>;
 
-export const articleMetadataValidator = z.object({
-  title: z.string(),
-  description: z.string(),
-  datePublication: z.number(),
-  slug: z.string(),
+export type ArticleType = "ARTICLE" | "ARTICLE_HIDDEN";
 
-  articlePath: z.string(),
-  articleDirectory: z.string(),
-});
-export type ArticleMetadata = z.infer<typeof articleMetadataValidator>;
+export type ArticleMetadata = {
+  type: ArticleType;
+
+  title: string;
+  description: string;
+  datePublication: number;
+  slug: string;
+
+  articlePath: string;
+  articleDirectory: string;
+};

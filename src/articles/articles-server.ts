@@ -1,14 +1,21 @@
 import * as fs from "fs/promises";
+import { GetStaticPropsResult } from "next";
 import * as path from "path";
 
 import { getServerRuntimeConfig } from "../config";
 
-type ArticleFolder = { folder: string; slug: string };
+type ArticleFolder = { type: "ARTICLE" | "ARTICLE_HIDDEN"; folder: string; slug: string };
 
-export const getStaticPropsArticle = async (fileName: string) => {
+export const getStaticPropsArticle = async (
+  fileName: string
+): Promise<GetStaticPropsResult<{ articleMetadata: ArticleMetadata }>> => {
   const slug = path.basename(fileName).replace(".js", "");
   const serverConfig = getServerRuntimeConfig();
   const articleMetadata = await getArticleMetadata(serverConfig.paths.articles, slug);
+
+  if (!articleMetadata) {
+    throw new Error("Could not find article metadata");
+  }
 
   return { props: { articleMetadata } };
 };
@@ -35,11 +42,17 @@ const getArticlesDirs = async (articlesDir: string): Promise<Array<ArticleFolder
 };
 
 const parseArticleFolder = (articleFolder: string): ArticleFolder | null => {
-  const match = articleFolder.match(/^\d{4}-\d{2}-\d{2}--(?<slug>[\w-]+)$/);
-  const slug = match?.groups?.slug;
+  const matchArticle = articleFolder.match(/^\d{4}-\d{2}-\d{2}--(?<slug>[\w-]+?)$/);
+  const slugArticle = matchArticle?.groups?.slug;
 
-  if (match && slug) {
-    return { folder: articleFolder, slug };
+  if (matchArticle && slugArticle) {
+    return { type: "ARTICLE", folder: articleFolder, slug: slugArticle };
+  }
+
+  const matchArticleHidden = articleFolder.match(/^_(?<slug>[\w-]+?)$/);
+  const slugArticleHidden = matchArticleHidden?.groups?.slug;
+  if (matchArticleHidden && slugArticleHidden) {
+    return { type: "ARTICLE_HIDDEN", folder: articleFolder, slug: slugArticleHidden };
   }
 
   return null;
@@ -55,6 +68,7 @@ const articleDirToArticleMetadata = async (
   const metadata = articleMetadataJsonValidator.parse(metadataParsed);
 
   const articleData: ArticleMetadata = {
+    type: articleDir.type,
     title: metadata.title,
     description: metadata.description,
     datePublication: new Date(metadata.datePublication).getTime(),
@@ -65,7 +79,7 @@ const articleDirToArticleMetadata = async (
   return articleData;
 };
 
-export const getAllArticlesMetadata = async (articlesDir: string): Promise<Array<ArticleMetadata>> => {
+export const getArticlesMetadata = async (articlesDir: string): Promise<Array<ArticleMetadata>> => {
   const articleDirs = await getArticlesDirs(articlesDir);
 
   const articlesData: Array<ArticleMetadata> = [];
@@ -81,7 +95,8 @@ export const getArticleMetadata = async (articlesDir: string, articleSlug: strin
   const articleDirs = await getArticlesDirs(articlesDir);
 
   for (const articleDir of articleDirs) {
-    if (articleDir?.slug === articleSlug) {
+    const urlSlugNormalized = articleSlug.replace(/^_/, "");
+    if (articleDir?.slug === urlSlugNormalized) {
       const metadata = await articleDirToArticleMetadata(articlesDir, articleDir);
       return metadata;
     }

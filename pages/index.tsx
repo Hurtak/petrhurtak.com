@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { NextPage } from "next";
 import { groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
-import { getAllArticlesMetadata } from "../src/articles/articles-server";
+import { getArticlesMetadata } from "../src/articles/articles-server";
 import { ArticleMetadata } from "../src/articles/types";
 import { Link } from "../src/components";
 import { config, getServerRuntimeConfig, routes } from "../src/config";
@@ -23,22 +23,25 @@ const profileImageSize = gridNumber(11);
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
   const serverConfig = getServerRuntimeConfig();
-  const articlesMetadata = await getAllArticlesMetadata(serverConfig.paths.articles);
+  const articlesMetadata = await getArticlesMetadata(serverConfig.paths.articles);
 
   if (config.isProduction || config.app.generateRssInDev) {
-    await generateRssFeed(articlesMetadata, serverConfig.paths.public);
+    const articlesRss = articlesMetadata.filter((a) => a.type !== "ARTICLE_HIDDEN");
+    await generateRssFeed(articlesRss, serverConfig.paths.public);
   }
 
   const articles: ArticlesGroup[] = pipe(
     groupBy((a: ArticleMetadata) => new Date(a.datePublication).getFullYear().toString()),
     toPairs,
-    map(([year, articles]: [string, ArticleMetadata[]]) => ({
-      year: Number(year),
-      articles: pipe(
-        sortBy((a: ArticleMetadata) => a.datePublication),
-        (a: ArticleMetadata[]) => reverse<ArticleMetadata>(a)
-      )(articles),
-    })),
+    map(
+      ([year, articles]: [string, ArticleMetadata[]]): ArticlesGroup => ({
+        year: Number(year),
+        articles: pipe(
+          sortBy((a: ArticleMetadata) => a.datePublication),
+          (a: ArticleMetadata[]) => reverse<ArticleMetadata>(a)
+        )(articles),
+      })
+    ),
     sortBy((g: ArticlesGroup) => g.year),
     (g: ArticlesGroup[]) => reverse<ArticlesGroup>(g)
   )(articlesMetadata);

@@ -3,9 +3,11 @@
 - \_hidden
   - dev broken
   - build broken
+- route - article/articles?
 - articles-server
   - cleanup dirs/folders
   - cleanup naming of whole path, or only final folder
+- get rid of date publication in metadata? we have it in folder structure
 - 404 page
 - domain driven design
   - https://dev.to/bespoyasov/clean-architecture-on-frontend-4311

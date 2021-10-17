@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { NextPage } from "next";
-import { groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
+import { filter, groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
 import { getArticlesMetadata } from "../src/articles/articles-server";
 import { ArticleMetadata } from "../src/articles/types";
@@ -31,6 +31,7 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
   }
 
   const articles: ArticlesGroup[] = pipe(
+    (articles: ArticleMetadata[]) => filter((a) => a.type !== "ARTICLE_HIDDEN", articles),
     groupBy((a: ArticleMetadata) => new Date(a.datePublication).getFullYear().toString()),
     toPairs,
     map(

@@ -23,6 +23,12 @@ export const LayoutPage = ({ children }: { children: React.ReactNode }) => (
     </div>
 
     <style jsx>{`
+      :global(body) {
+        // Always show Y scrollbar on whole layout to prevent content jumping
+        // when switching between scrollbar and non scrollbar pages.
+        overflow-y: scroll;
+      }
+
       .layout {
         box-sizing: border-box;
         display: grid;
@@ -51,7 +57,7 @@ export const LayoutPage = ({ children }: { children: React.ReactNode }) => (
         flex-grow: 1; // (sticky) To make footer sticky, in case of content being smaller than screen height
         display: flex;
         flex-direction: column;
-        overflow: auto;
+        overflow-x: auto;
       }
 
       footer {

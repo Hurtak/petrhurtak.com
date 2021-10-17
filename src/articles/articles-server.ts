@@ -42,17 +42,15 @@ const getArticlesDirs = async (articlesDir: string): Promise<Array<ArticleFolder
 };
 
 const parseArticleFolder = (articleFolder: string): ArticleFolder | null => {
-  const matchArticle = articleFolder.match(/^\d{4}-\d{2}-\d{2}--(?<slug>[\w-]+?)$/);
+  const matchArticle = articleFolder.match(/^(?<hidden>_)?\d{4}-\d{2}-\d{2}--(?<slug>[\w-]+?)$/);
   const slugArticle = matchArticle?.groups?.slug;
 
   if (matchArticle && slugArticle) {
-    return { type: "ARTICLE", folder: articleFolder, slug: slugArticle };
-  }
-
-  const matchArticleHidden = articleFolder.match(/^_(?<slug>[\w-]+?)$/);
-  const slugArticleHidden = matchArticleHidden?.groups?.slug;
-  if (matchArticleHidden && slugArticleHidden) {
-    return { type: "ARTICLE_HIDDEN", folder: articleFolder, slug: slugArticleHidden };
+    return {
+      type: matchArticle.groups?.hidden == null ? "ARTICLE" : "ARTICLE_HIDDEN",
+      folder: articleFolder,
+      slug: slugArticle,
+    };
   }
 
   return null;

@@ -22,7 +22,7 @@ export const config = {
     instagram: "https://www.instagram.com/petr.hurtak/",
   },
   app: {
-    generateRssInDev: false,
+    generateRssInDev: true,
   },
   tokens: {
     googleAnalytics: "UA-93333552-1",
@@ -35,7 +35,7 @@ export const routes = {
 
   // App routes
   root: "/",
-  article: (slug: string) => `/article/${slug}`,
+  article: (slug: string) => `/articles/${slug}`,
 
   // Other
   favicon: `/favicon.svg`,

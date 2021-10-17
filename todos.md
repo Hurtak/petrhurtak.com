@@ -1,7 +1,5 @@
 # TODO
 
-- layout always show scrollbar
-- route - article/articles?
 - articles-server
   - cleanup dirs/folders
   - cleanup naming of whole path, or only final folder

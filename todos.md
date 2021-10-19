@@ -17,6 +17,10 @@
   - https://mxstbr.com/
   - https://alexmeub.com/
 - nicer font
+- source code of blog link?
+- articles add
+  - tweet link
+  - edit source code of the article link
 
 ## TODOs after release
 

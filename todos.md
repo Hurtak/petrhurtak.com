@@ -17,7 +17,6 @@
   - https://mxstbr.com/
   - https://alexmeub.com/
 - nicer font
-- hurtak.cc redirect works?
 
 ## TODOs after release
 

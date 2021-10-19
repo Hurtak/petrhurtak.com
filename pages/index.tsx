@@ -113,7 +113,7 @@ const Home: NextPage<Props> = (props) => (
         </Link>
       </li>
       <li>
-        <Link href={config.author.linkedIn} newTab>
+        <Link href={config.author.instagram} newTab>
           Instagram
         </Link>
       </li>

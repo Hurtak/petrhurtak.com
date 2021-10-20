@@ -1,6 +1,5 @@
 # TODO
 
-- get rid of date publication in metadata? we have it in folder structure
 - domain driven design
   - https://dev.to/bespoyasov/clean-architecture-on-frontend-4311
 - responsive video
@@ -8,6 +7,7 @@
   - add logo
   - update text
 - responsive layout for mobile
+  - maybe allow mobile autozoomout of website?
 - inspiration
   - https://ruanmartinelli.com/
   - https://evanjconrad.com/

@@ -1,5 +1,4 @@
 {
   "title": "Shebang",
-  "description": "Under Unix-like operating systems you can either run scripts by specifying the interpreter along with the path or you can run them as programs and have the interpreter specified in the shebang on the first line of the script.",
-  "datePublication": "2017-04-28 10:00:00"
+  "description": "Under Unix-like operating systems you can either run scripts by specifying the interpreter along with the path or you can run them as programs and have the interpreter specified in the shebang on the first line of the script."
 }

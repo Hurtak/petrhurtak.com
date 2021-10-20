@@ -1,11 +1,12 @@
 import * as fs from "fs/promises";
 import { GetStaticPropsResult } from "next";
 import * as path from "path";
+import { z } from "zod";
 
 import { getServerRuntimeConfig } from "../config";
 import { ArticleMetadata, articleMetadataJsonValidator } from "./types";
 
-type ArticleDirectory = { type: "ARTICLE" | "ARTICLE_HIDDEN"; directory: string; slug: string };
+type ArticleDirectory = { type: "ARTICLE" | "ARTICLE_HIDDEN"; directory: string; slug: string; date: number };
 
 export const getStaticPropsArticle = async (
   articleFileName: string
@@ -41,18 +42,29 @@ const getArticlesDirs = async (articlesDir: string): Promise<Array<ArticleDirect
 };
 
 const parseArticleFolder = (articleFolder: string): ArticleDirectory | null => {
-  const matchArticle = articleFolder.match(/^(?<hidden>_)?\d{4}-\d{2}-\d{2}--(?<slug>[\w-]+?)$/);
-  const slugArticle = matchArticle?.groups?.slug;
+  const matchArticle = articleFolder.match(
+    /^(?<hidden>_)?(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})--(?<slug>[\w-]+?)$/
+  );
 
-  if (matchArticle && slugArticle) {
-    return {
-      type: matchArticle.groups?.hidden == null ? "ARTICLE" : "ARTICLE_HIDDEN",
-      directory: articleFolder,
-      slug: slugArticle,
-    };
+  if (!matchArticle || !matchArticle.groups) {
+    return null;
   }
 
-  return null;
+  const validatorGroups = z.object({
+    hidden: z.string().optional(),
+    year: z.string(),
+    month: z.string(),
+    day: z.string(),
+    slug: z.string(),
+  });
+  const groups = validatorGroups.parse(matchArticle.groups);
+
+  return {
+    type: groups.hidden == null ? "ARTICLE" : "ARTICLE_HIDDEN",
+    directory: articleFolder,
+    slug: groups.slug,
+    date: Date.UTC(Number(groups.year), Number(groups.month) - 1, Number(groups.day)),
+  };
 };
 
 const articleDirToArticleMetadata = async (
@@ -68,7 +80,7 @@ const articleDirToArticleMetadata = async (
     type: articleDir.type,
     title: metadata.title,
     description: metadata.description,
-    datePublication: new Date(metadata.datePublication).getTime(),
+    datePublication: articleDir.date,
     articlePath: articlePath,
     articleDirectory: articleDir.directory,
     slug: articleDir.slug,

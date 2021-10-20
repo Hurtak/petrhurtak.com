@@ -3,7 +3,6 @@ import { z } from "zod";
 export const articleMetadataJsonValidator = z.object({
   title: z.string(),
   description: z.string(),
-  datePublication: z.string(),
 });
 export type ArticleMetadataJson = z.infer<typeof articleMetadataJsonValidator>;
 

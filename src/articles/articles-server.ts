@@ -8,9 +8,9 @@ import { ArticleMetadata, articleMetadataJsonValidator } from "./types";
 type ArticleDirectory = { type: "ARTICLE" | "ARTICLE_HIDDEN"; directory: string; slug: string };
 
 export const getStaticPropsArticle = async (
-  fileName: string
+  articleFileName: string
 ): Promise<GetStaticPropsResult<{ articleMetadata: ArticleMetadata }>> => {
-  const slug = path.basename(fileName).replace(".js", "");
+  const slug = path.parse(articleFileName).name;
   const serverConfig = getServerRuntimeConfig();
   const articleMetadata = await getArticleMetadata(serverConfig.paths.articles, slug);
 

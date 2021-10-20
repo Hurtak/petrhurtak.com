@@ -1,13 +1,22 @@
 import * as React from "react";
 
 import { config, routes } from "../../config";
-import { gridCss, sizeCss } from "../../styles";
+import { gridCss, gridNumber, sizeCss } from "../../styles";
 import { Dash, Link } from "..";
+import logo from "./logo.svg";
 
 export const LayoutPage = ({ children }: { children: React.ReactNode }) => (
   <>
     <div className="layout">
       <header>
+        <Link href={routes.root}>
+          <img
+            width={gridNumber(2.5)}
+            height={gridNumber(2.5)}
+            src={logo.src}
+            alt={`${config.site.domain} site logo`}
+          />
+        </Link>
         <Link href={routes.root}>{config.site.domain}</Link>
       </header>
 
@@ -49,7 +58,9 @@ export const LayoutPage = ({ children }: { children: React.ReactNode }) => (
         grid-area: header;
         display: flex;
         flex-direction: row;
-        padding-bottom: ${gridCss(2)};
+        align-items: center;
+        gap: ${gridCss(1)};
+        padding-bottom: ${gridCss(3)};
       }
 
       main {

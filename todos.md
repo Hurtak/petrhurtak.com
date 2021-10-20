@@ -3,9 +3,6 @@
 - domain driven design
   - https://dev.to/bespoyasov/clean-architecture-on-frontend-4311
 - responsive video
-- header
-  - add logo
-  - update text
 - responsive layout for mobile
   - maybe allow mobile autozoomout of website?
 - inspiration

@@ -3,8 +3,9 @@ import { GetStaticPropsResult } from "next";
 import * as path from "path";
 
 import { getServerRuntimeConfig } from "../config";
+import { ArticleMetadata, articleMetadataJsonValidator } from "./types";
 
-type ArticleFolder = { type: "ARTICLE" | "ARTICLE_HIDDEN"; folder: string; slug: string };
+type ArticleDirectory = { type: "ARTICLE" | "ARTICLE_HIDDEN"; directory: string; slug: string };
 
 export const getStaticPropsArticle = async (
   fileName: string
@@ -20,20 +21,18 @@ export const getStaticPropsArticle = async (
   return { props: { articleMetadata } };
 };
 
-import { ArticleMetadata, articleMetadataJsonValidator } from "./types";
-
-const getArticlesDirs = async (articlesDir: string): Promise<Array<ArticleFolder>> => {
+const getArticlesDirs = async (articlesDir: string): Promise<Array<ArticleDirectory>> => {
   const articlesDirItems = await fs.readdir(articlesDir);
 
-  const articleDirs: Array<ArticleFolder> = [];
+  const articleDirs: Array<ArticleDirectory> = [];
   for (const item of articlesDirItems) {
     const lstat = await fs.lstat(path.join(articlesDir, item));
     const isDir = lstat.isDirectory();
 
     if (isDir) {
-      const folder = parseArticleFolder(item);
-      if (folder) {
-        articleDirs.push(folder);
+      const dir = parseArticleFolder(item);
+      if (dir) {
+        articleDirs.push(dir);
       }
     }
   }
@@ -41,14 +40,14 @@ const getArticlesDirs = async (articlesDir: string): Promise<Array<ArticleFolder
   return articleDirs;
 };
 
-const parseArticleFolder = (articleFolder: string): ArticleFolder | null => {
+const parseArticleFolder = (articleFolder: string): ArticleDirectory | null => {
   const matchArticle = articleFolder.match(/^(?<hidden>_)?\d{4}-\d{2}-\d{2}--(?<slug>[\w-]+?)$/);
   const slugArticle = matchArticle?.groups?.slug;
 
   if (matchArticle && slugArticle) {
     return {
       type: matchArticle.groups?.hidden == null ? "ARTICLE" : "ARTICLE_HIDDEN",
-      folder: articleFolder,
+      directory: articleFolder,
       slug: slugArticle,
     };
   }
@@ -58,9 +57,9 @@ const parseArticleFolder = (articleFolder: string): ArticleFolder | null => {
 
 const articleDirToArticleMetadata = async (
   articlesDir: string,
-  articleDir: ArticleFolder
+  articleDir: ArticleDirectory
 ): Promise<ArticleMetadata> => {
-  const articlePath = path.join(articlesDir, articleDir.folder, "metadata.json");
+  const articlePath = path.join(articlesDir, articleDir.directory, "metadata.json");
   const metadataRaw = await fs.readFile(articlePath, "utf8");
   const metadataParsed = JSON.parse(metadataRaw);
   const metadata = articleMetadataJsonValidator.parse(metadataParsed);
@@ -71,7 +70,7 @@ const articleDirToArticleMetadata = async (
     description: metadata.description,
     datePublication: new Date(metadata.datePublication).getTime(),
     articlePath: articlePath,
-    articleDirectory: articleDir.folder,
+    articleDirectory: articleDir.directory,
     slug: articleDir.slug,
   };
   return articleData;

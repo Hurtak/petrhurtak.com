@@ -1,5 +1,5 @@
 {
   "editor.formatOnSave": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["TLDR", "unstaged"]
+  "cSpell.words": ["clsx", "TLDR", "unstaged"]
 }

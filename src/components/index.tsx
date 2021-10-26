@@ -84,7 +84,9 @@ export const Strong = ({ children }: { children: React.ReactNode }) => {
 export const Quote = ({ children }: { children: string }) => (
   <q>
     <style jsx>{`
-      quotes: "“" "”";
+      q {
+        quotes: "“" "”";
+      }
     `}</style>
 
     {children}

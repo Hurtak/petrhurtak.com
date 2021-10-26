@@ -33,8 +33,10 @@ export const LayoutPage = ({ children }: { children: React.ReactNode }) => (
 
     <style jsx>{`
       :global(body) {
-        // Always show Y scrollbar on whole layout to prevent content jumping
-        // when switching between scrollbar and non scrollbar pages.
+        /*
+        Always show Y scrollbar on whole layout to prevent content jumping
+        when switching between scrollbar and non scrollbar pages.
+        */
         overflow-y: scroll;
       }
 

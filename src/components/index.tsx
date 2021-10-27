@@ -5,30 +5,15 @@ import * as React from "react";
 import { colors, gridCss, pxCss } from "../styles";
 
 export const P = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <p>
-      <style jsx>{``}</style>
-      {children}
-    </p>
-  );
+  return <p>{children}</p>;
 };
 
 export const H1 = ({ children }: { children: string }) => {
-  return (
-    <h2>
-      <style jsx>{``}</style>
-      {children}
-    </h2>
-  );
+  return <h2>{children}</h2>;
 };
 
 export const H2 = ({ children }: { children: string }) => {
-  return (
-    <h3>
-      <style jsx>{``}</style>
-      {children}
-    </h3>
-  );
+  return <h3>{children}</h3>;
 };
 
 export const Link = ({

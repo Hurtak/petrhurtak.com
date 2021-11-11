@@ -32,19 +32,19 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
 
   const articles: ArticlesGroup[] = pipe(
     (articles: ArticleMetadata[]) => filter((a) => a.type !== "ARTICLE_HIDDEN", articles),
-    groupBy((a: ArticleMetadata) => new Date(a.datePublication).getFullYear().toString()),
+    groupBy((a) => new Date(a.datePublication).getFullYear().toString()),
     toPairs,
     map(
       ([year, articles]: [string, ArticleMetadata[]]): ArticlesGroup => ({
         year: Number(year),
         articles: pipe(
-          sortBy((a: ArticleMetadata) => a.datePublication),
-          (a: ArticleMetadata[]) => reverse<ArticleMetadata>(a)
+          sortBy((a) => a.datePublication),
+          (a: ArticleMetadata[]) => reverse(a)
         )(articles),
       })
     ),
-    sortBy((g: ArticlesGroup) => g.year),
-    (g: ArticlesGroup[]) => reverse<ArticlesGroup>(g)
+    sortBy((g) => g.year),
+    (g) => reverse(g)
   )(articlesMetadata);
 
   return {

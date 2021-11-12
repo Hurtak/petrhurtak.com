@@ -1,19 +1,19 @@
 import * as React from "react";
 
-import { ArticleMetadata } from "../../articles/types";
+import { ArticleBlog } from "../../articles/types";
 
 export const LayoutArticle = ({
-  articleMetadata,
-  article: Article,
+  articleBlog,
+  articleComponent: ArticleComponent,
 }: {
-  articleMetadata: ArticleMetadata;
-  article: React.FC;
+  articleBlog: ArticleBlog;
+  articleComponent: React.FC;
 }) => (
   <>
     <article>
-      <h1>{articleMetadata.title}</h1>
+      <h1>{articleBlog.title}</h1>
 
-      <Article />
+      <ArticleComponent />
     </article>
 
     <style jsx>{`

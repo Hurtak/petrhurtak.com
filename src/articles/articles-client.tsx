@@ -2,11 +2,11 @@ import { NextPage } from "next";
 import React from "react";
 
 import { LayoutArticle } from "../components/layout/layout-article";
-import { ArticleMetadata } from "./types";
+import { ArticleBlog } from "./types";
 
-export const articlePage = (article: React.FC) => {
-  const ArticlePage: NextPage<{ articleMetadata: ArticleMetadata }> = (props) => (
-    <LayoutArticle articleMetadata={props.articleMetadata} article={article} />
+export const articlePage = (articleComponent: React.FC) => {
+  const ArticlePage: NextPage<{ articleBlog: ArticleBlog }> = (props) => (
+    <LayoutArticle articleBlog={props.articleBlog} articleComponent={articleComponent} />
   );
 
   return ArticlePage;

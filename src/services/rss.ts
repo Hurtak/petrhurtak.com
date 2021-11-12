@@ -2,10 +2,10 @@ import { Feed } from "feed";
 import * as fs from "fs/promises";
 import * as path from "path";
 
-import { ArticleMetadata } from "../articles/types";
+import { ArticleBlogVisible } from "../articles/types";
 import { config, routes } from "../config";
 
-export const generateRssFeed = async (articles: Array<ArticleMetadata>, targetFolder: string) => {
+export const generateRssFeed = async (articles: Array<ArticleBlogVisible>, targetFolder: string) => {
   const now = new Date();
   const author = {
     name: config.author.fullName,

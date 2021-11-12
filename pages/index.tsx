@@ -1,9 +1,11 @@
 import dayjs from "dayjs";
 import { NextPage } from "next";
-import { filter, groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
+import { groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
-import { getArticlesMetadata } from "../src/articles/articles-server";
-import { ArticleMetadata } from "../src/articles/types";
+import { articlesTwitterRaw } from "../articles/twitter-threads";
+import { parseArticleTwitterRaw } from "../src/articles/articles";
+import { getArticlesBlog } from "../src/articles/articles-server";
+import { ArticleBlogVisible, ArticlePublished, ArticleTwitter } from "../src/articles/types";
 import { Link } from "../src/components";
 import { config, getServerRuntimeConfig, routes } from "../src/config";
 import image from "../src/me.jpg";
@@ -12,7 +14,7 @@ import { gridCss, gridNumber, sizeCss } from "../src/styles";
 
 type ArticlesGroup = {
   year: number;
-  articles: ArticleMetadata[];
+  articles: ArticlePublished[];
 };
 
 type Props = {
@@ -23,29 +25,34 @@ const profileImageSize = gridNumber(11);
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
   const serverConfig = getServerRuntimeConfig();
-  const articlesMetadata = await getArticlesMetadata(serverConfig.paths.articles);
-
-  if (config.isProduction || config.app.generateRssInDev) {
-    const articlesRss = articlesMetadata.filter((a) => a.type !== "ARTICLE_HIDDEN");
-    await generateRssFeed(articlesRss, serverConfig.paths.public);
+  const articlesBlog = await getArticlesBlog(serverConfig.paths.articles);
+  const articlesBlogVisible: ArticleBlogVisible[] = [];
+  for (const article of articlesBlog) {
+    if (article.type === "ARTICLE_BLOG_VISIBLE") articlesBlogVisible.push(article);
   }
 
+  if (config.isProduction || config.app.generateRssInDev) {
+    await generateRssFeed(articlesBlogVisible, serverConfig.paths.public);
+  }
+
+  const articlesTwitter = articlesTwitterRaw.map(parseArticleTwitterRaw);
+  const articlesList: ArticlePublished[] = [...articlesBlogVisible, ...articlesTwitter];
+
   const articles: ArticlesGroup[] = pipe(
-    (articles: ArticleMetadata[]) => filter((a) => a.type !== "ARTICLE_HIDDEN", articles),
-    groupBy((a) => new Date(a.datePublication).getFullYear().toString()),
+    groupBy((a: ArticlePublished) => new Date(a.datePublication).getFullYear().toString()),
     toPairs,
     map(
-      ([year, articles]: [string, ArticleMetadata[]]): ArticlesGroup => ({
+      ([year, articles]: [string, ArticlePublished[]]): ArticlesGroup => ({
         year: Number(year),
         articles: pipe(
           sortBy((a) => a.datePublication),
-          (a: ArticleMetadata[]) => reverse(a)
+          (a: ArticlePublished[]) => reverse(a)
         )(articles),
       })
     ),
     sortBy((g) => g.year),
     (g) => reverse(g)
-  )(articlesMetadata);
+  )(articlesList);
 
   return {
     props: {
@@ -128,14 +135,32 @@ const Home: NextPage<Props> = (props) => (
     <ul>
       {props.articles.map(({ year, articles }) => (
         <li key={year}>
-          <div>{year}</div>
+          <span className="monospace">{year}</span>
           <ul>
-            {articles.map((article) => (
-              <li key={article.articleDirectory}>
-                {dayjs(article.datePublication).format("YYYY-MM-DD")}{" "}
-                <Link href={routes.article(article.slug)}>{article.title}</Link>
-              </li>
-            ))}
+            {articles.map((article) => {
+              switch (article.type) {
+                case "ARTICLE_BLOG_VISIBLE":
+                  return (
+                    <li key={article.articleDirectory}>
+                      <span className="monospace">{dayjs.utc(article.datePublication).format("MMM DD")} </span>
+                      <Link href={routes.article(article.slug)}>{article.title}</Link>
+                    </li>
+                  );
+
+                case "ARTICLE_TWITTER":
+                  return (
+                    <li key={article.link}>
+                      <span className="monospace">{dayjs.utc(article.datePublication).format("MMM DD")} </span>
+                      <Link href={article.link} newTab>
+                        {article.title}
+                      </Link>
+                    </li>
+                  );
+
+                default:
+                  return null;
+              }
+            })}
           </ul>
         </li>
       ))}
@@ -171,6 +196,11 @@ const Home: NextPage<Props> = (props) => (
 
       .profile-text p:last-of-type {
         margin-bottom: 0;
+      }
+
+      .monospace {
+        font-family: monospace;
+        font-size: 14px;
       }
 
       ul {

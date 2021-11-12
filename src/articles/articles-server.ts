@@ -4,22 +4,23 @@ import * as path from "path";
 import { z } from "zod";
 
 import { getServerRuntimeConfig } from "../config";
-import { ArticleMetadata, articleMetadataJsonValidator } from "./types";
+import { ArticleBlog, articleMetadataJsonValidator } from "./types";
 
-type ArticleDirectory = { type: "ARTICLE" | "ARTICLE_HIDDEN"; directory: string; slug: string; date: number };
+type ArticleDirectory = { directory: string; slug: string; date: number; hidden: boolean };
 
 export const getStaticPropsArticle = async (
   articleFileName: string
-): Promise<GetStaticPropsResult<{ articleMetadata: ArticleMetadata }>> => {
+): Promise<GetStaticPropsResult<{ articleBlog: ArticleBlog }>> => {
   const slug = path.parse(articleFileName).name;
   const serverConfig = getServerRuntimeConfig();
-  const articleMetadata = await getArticleMetadata(serverConfig.paths.articles, slug);
+  const articleBlog = await getArticleBlog(serverConfig.paths.articles, slug);
+  console.log(articleBlog);
 
-  if (!articleMetadata) {
+  if (!articleBlog) {
     throw new Error("Could not find article metadata");
   }
 
-  return { props: { articleMetadata } };
+  return { props: { articleBlog } };
 };
 
 const getArticlesDirs = async (articlesDir: string): Promise<Array<ArticleDirectory>> => {
@@ -60,24 +61,21 @@ const parseArticleFolder = (articleFolder: string): ArticleDirectory | null => {
   const groups = validatorGroups.parse(matchArticle.groups);
 
   return {
-    type: groups.hidden == null ? "ARTICLE" : "ARTICLE_HIDDEN",
     directory: articleFolder,
     slug: groups.slug,
     date: Date.UTC(Number(groups.year), Number(groups.month) - 1, Number(groups.day)),
+    hidden: Boolean(groups.hidden),
   };
 };
 
-const articleDirToArticleMetadata = async (
-  articlesDir: string,
-  articleDir: ArticleDirectory
-): Promise<ArticleMetadata> => {
+const articleDirToArticleBlog = async (articlesDir: string, articleDir: ArticleDirectory): Promise<ArticleBlog> => {
   const articlePath = path.join(articlesDir, articleDir.directory, "metadata.json");
   const metadataRaw = await fs.readFile(articlePath, "utf8");
   const metadataParsed = JSON.parse(metadataRaw);
   const metadata = articleMetadataJsonValidator.parse(metadataParsed);
 
-  const articleData: ArticleMetadata = {
-    type: articleDir.type,
+  const articleData: ArticleBlog = {
+    type: articleDir.hidden === false ? "ARTICLE_BLOG_VISIBLE" : "ARTICLE_BLOG_HIDDEN",
     title: metadata.title,
     description: metadata.description,
     datePublication: articleDir.date,
@@ -88,25 +86,25 @@ const articleDirToArticleMetadata = async (
   return articleData;
 };
 
-export const getArticlesMetadata = async (articlesDir: string): Promise<Array<ArticleMetadata>> => {
+export const getArticlesBlog = async (articlesDir: string): Promise<Array<ArticleBlog>> => {
   const articleDirs = await getArticlesDirs(articlesDir);
 
-  const articlesData: Array<ArticleMetadata> = [];
+  const articlesData: Array<ArticleBlog> = [];
   for (const articleDir of articleDirs) {
-    const metadata = await articleDirToArticleMetadata(articlesDir, articleDir);
+    const metadata = await articleDirToArticleBlog(articlesDir, articleDir);
     articlesData.push(metadata);
   }
 
   return articlesData;
 };
 
-export const getArticleMetadata = async (articlesDir: string, articleSlug: string): Promise<ArticleMetadata | null> => {
+export const getArticleBlog = async (articlesDir: string, articleSlug: string): Promise<ArticleBlog | null> => {
   const articleDirs = await getArticlesDirs(articlesDir);
 
   for (const articleDir of articleDirs) {
     const urlSlugNormalized = articleSlug.replace(/^_/, "");
     if (articleDir?.slug === urlSlugNormalized) {
-      const metadata = await articleDirToArticleMetadata(articlesDir, articleDir);
+      const metadata = await articleDirToArticleBlog(articlesDir, articleDir);
       return metadata;
     }
   }

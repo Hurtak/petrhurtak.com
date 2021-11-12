@@ -142,7 +142,8 @@ const Home: NextPage<Props> = (props) => (
                 case "ARTICLE_BLOG_VISIBLE":
                   return (
                     <li key={article.articleDirectory}>
-                      <span className="monospace">{dayjs.utc(article.datePublication).format("MMM DD")} </span>
+                      <span className="monospace">{dayjs.utc(article.datePublication).format("MMM DD")}</span> /{" "}
+                      <abbr title="Blog article">A</abbr> /{" "}
                       <Link href={routes.article(article.slug)}>{article.title}</Link>
                     </li>
                   );
@@ -150,7 +151,8 @@ const Home: NextPage<Props> = (props) => (
                 case "ARTICLE_TWITTER":
                   return (
                     <li key={article.link}>
-                      <span className="monospace">{dayjs.utc(article.datePublication).format("MMM DD")} </span>
+                      <span className="monospace">{dayjs.utc(article.datePublication).format("MMM DD")}</span> /{" "}
+                      <abbr title="Twitter thread">T</abbr> /{" "}
                       <Link href={article.link} newTab>
                         {article.title}
                       </Link>
@@ -201,6 +203,12 @@ const Home: NextPage<Props> = (props) => (
       .monospace {
         font-family: monospace;
         font-size: 14px;
+      }
+
+      abbr {
+        text-decoration: none;
+        font-family: monospace;
+        font-weight: bold;
       }
 
       ul {

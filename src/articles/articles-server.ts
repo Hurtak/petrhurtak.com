@@ -14,7 +14,6 @@ export const getStaticPropsArticle = async (
   const slug = path.parse(articleFileName).name;
   const serverConfig = getServerRuntimeConfig();
   const articleBlog = await getArticleBlog(serverConfig.paths.articles, slug);
-  console.log(articleBlog);
 
   if (!articleBlog) {
     throw new Error("Could not find article metadata");

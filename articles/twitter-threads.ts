@@ -45,14 +45,9 @@ export const articlesTwitterRaw: ArticleTwitterRaw[] = [
     link: "https://twitter.com/PetrHurtak/status/1375033064267603977",
   },
   {
-    title: "Always demand a deadline",
-    datePublication: "2021-05-26",
-    link: "https://twitter.com/PetrHurtak/status/1265220414898417664",
-  },
-  {
     title: "Runtime TypeScript shape validation",
     datePublication: "2020-12-27",
-    link: "https://twitter.com/PetrHurtak/status/1343263762288160769",
+    link: "https://twitter.com/PetrHurtak/status/1343262127486889986",
   },
   {
     title: "Windows image editing programs rant",
@@ -68,6 +63,11 @@ export const articlesTwitterRaw: ArticleTwitterRaw[] = [
     title: "How learning economics changed my world view",
     datePublication: "2020-09-02",
     link: "https://twitter.com/PetrHurtak/status/1301105087977267200",
+  },
+  {
+    title: "Always demand a deadline",
+    datePublication: "2020-05-26",
+    link: "https://twitter.com/PetrHurtak/status/1265220414898417664",
   },
   {
     title: "Coming back to Gulp",

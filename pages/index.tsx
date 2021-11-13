@@ -10,7 +10,7 @@ import { Link } from "../src/components";
 import { config, getServerRuntimeConfig, routes } from "../src/config";
 import image from "../src/me.jpg";
 import { generateRssFeed } from "../src/services/rss";
-import { gridCss, gridNumber, sizeCss } from "../src/styles";
+import { gridCss, gridNumber, pxCss, sizeCss } from "../src/styles";
 
 type ArticlesGroup = {
   year: number;
@@ -21,7 +21,7 @@ type Props = {
   articles: ArticlesGroup[];
 };
 
-const profileImageSize = gridNumber(11);
+const profileImageSize = gridNumber(14);
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
   const serverConfig = getServerRuntimeConfig();
@@ -77,6 +77,29 @@ const Home: NextPage<Props> = (props) => (
 
       <div className="profile-text">
         <p>
+          I am an engineer with a focus on ReactNative/React app development and full-stack Node.js experience. I teach
+          students how to create web apps at{" "}
+          <Link href="https://www.cvut.cz/en" newTab>
+            Czech Technical University
+          </Link>
+          .
+        </p>
+
+        <p>
+          In my free time, I like to record podcasts about technology, contribute to open-source on{" "}
+          <Link href={config.author.github} newTab>
+            GitHub
+          </Link>
+          , write some articles on my here or{" "}
+          <Link href={config.author.twitter} newTab>
+            Twitter
+          </Link>
+          , do rock climbing, or read about economics and investing.
+        </p>
+
+        {/* Old description */}
+        {/*
+        <p>
           I am software engineer working at{" "}
           <Link href="https://www.alicetechnologies.com" newTab>
             ALICE Technologies
@@ -96,6 +119,7 @@ const Home: NextPage<Props> = (props) => (
           work.
         </p>
         <p>I like programming, economics, rock climbing and much more :)</p>
+        */}
       </div>
     </div>
 
@@ -185,10 +209,11 @@ const Home: NextPage<Props> = (props) => (
       .profile-image {
         display: inline-block;
         border-radius: ${gridCss(1)};
-        overflow: hidden;
+        flex-shrink: 0;
         width: ${sizeCss(profileImageSize)};
         height: ${sizeCss(profileImageSize)};
-        flex-shrink: 0;
+        margin-top: ${pxCss(3)}; // Precisely align with the profile text
+        overflow: hidden;
       }
 
       .profile-text {
@@ -196,8 +221,11 @@ const Home: NextPage<Props> = (props) => (
         padding-left: ${gridCss(1)};
       }
 
-      .profile-text p:last-of-type {
-        margin-bottom: 0;
+      .profile-text p {
+        margin: 0;
+      }
+      .profile-text p:not(:first-child) {
+        margin-top: 0.5em;
       }
 
       .monospace {

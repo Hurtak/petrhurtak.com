@@ -86,7 +86,7 @@ const Home: NextPage<Props> = (props) => (
         </p>
 
         <p>
-          In my free time, I like to record podcasts about technology, contribute to open-source on{" "}
+          In my free time, I like to contribute to open-source on{" "}
           <Link href={config.author.github} newTab>
             GitHub
           </Link>

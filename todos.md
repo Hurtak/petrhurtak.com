@@ -1,7 +1,11 @@
 # TODO
 
-- domain driven design
-  - https://dev.to/bespoyasov/clean-architecture-on-frontend-4311
+- tests
+  - TODO: test that they are sorted by datePublication
+  - TODO: no duplicate tweets and titles
+  - article dateUpdated after date created
+  - that all articles export Article component
+- domain driven design article
 - responsive video
 - responsive layout for mobile
   - maybe allow mobile autozoomout of website?

@@ -1,12 +1,15 @@
 import React from "react";
-import { P, H1, List, Li, Link, Italic, Table, Tr, Tc, Code } from "../../components";
 
-export default () => (
+import { Code, H1, Italic, Li, Link, List, P, Table, Tc, Tr } from "../../src/components";
+
+export const Article = () => (
   <>
     <P>
       The easiest way to install and switch between different versions of <Italic>Node.js</Italic> is with{" "}
       <Link href="https://brew.sh/">Homebrew</Link> package manager.
     </P>
+
+    <H1>Search and install versions</H1>
 
     <Table
       heading={
@@ -17,7 +20,7 @@ export default () => (
       }
     >
       <Tr>
-        <Tc>Current Node version</Tc>
+        <Tc>Currently active version</Tc>
         <Tc>
           <Code language="bash">node --version</Code>
         </Tc>
@@ -35,33 +38,45 @@ export default () => (
         </Tc>
       </Tr>
       <Tr>
-        <Tc>Install specific version</Tc>
+        <Tc>Install older version</Tc>
         <Tc>
-          <Code language="bash">brew install node@8</Code>
+          <Code language="bash">brew install node@12</Code>
         </Tc>
       </Tr>
+    </Table>
+
+    <H1>Change version</H1>
+
+    <Table
+      heading={
+        <Tr>
+          <Tc>Action</Tc>
+          <Tc>Command</Tc>
+        </Tr>
+      }
+    >
       <Tr>
-        <Tc>Unlink latest Node version</Tc>
+        <Tc>Unlink latest version</Tc>
         <Tc>
           <Code language="bash">brew unlink node</Code>
         </Tc>
       </Tr>
       <Tr>
-        <Tc>Unlink older Node version</Tc>
+        <Tc>Unlink older version</Tc>
         <Tc>
-          <Code language="bash">brew unlink node@8</Code>
-        </Tc>
-      </Tr>
-      <Tr>
-        <Tc>Link older version</Tc>
-        <Tc>
-          <Code language="bash">brew link node@8 --force --overwrite</Code>
+          <Code language="bash">brew unlink node@12</Code>
         </Tc>
       </Tr>
       <Tr>
         <Tc>Link latest version</Tc>
         <Tc>
           <Code language="bash">brew link node</Code>
+        </Tc>
+      </Tr>
+      <Tr>
+        <Tc>Link older version</Tc>
+        <Tc>
+          <Code language="bash">brew link --overwrite node@12</Code>
         </Tc>
       </Tr>
     </Table>

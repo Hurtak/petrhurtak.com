@@ -1,5 +1,9 @@
 # TODO
 
+- typography
+  - line-height of paragraphs is too small
+  - font-size of paragraphs is too small
+  - code examples have different font-size -> unify
 - tests
   - TODO: test that they are sorted by datePublication
   - TODO: no duplicate tweets and titles

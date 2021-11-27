@@ -11,12 +11,13 @@ export const config = {
     domain: "petrhurtak.com",
     domainWithProtocol: "https://petrhurtak.com",
     yearFounded: 2015,
+    gitHub: "https://github.com/hurtak/petrhurtak.com",
   },
   author: {
     fullName: "Petr Hurtak",
     email: "petr.hurtak@gmail.com",
 
-    github: "https://github.com/hurtak",
+    gitHub: "https://github.com/hurtak",
     twitter: "https://twitter.com/PetrHurtak",
     linkedIn: "https://www.linkedin.com/in/hurtak/",
     instagram: "https://www.instagram.com/petr.hurtak/",
@@ -37,7 +38,7 @@ export const routes = {
   root: "/",
   article: (slug: string) => `/articles/${slug}`,
 
-  // Other
+  // App static files
   favicon: `/favicon.svg`,
   rss: {
     root: "/rss",
@@ -45,6 +46,12 @@ export const routes = {
     atom: "/rss/atom.xml",
     jsonFeed: "/rss/feed.json",
   },
+
+  // Outside of the app
+  articleTwitterSearch: (slug: string) =>
+    `https://twitter.com/search?q=${encodeURIComponent(routes.absolute(routes.article(slug)))}`,
+  articleGitHubLink: (articleDirectory: string) =>
+    `${config.site.gitHub}/tree/main/articles/${encodeURIComponent(articleDirectory)}/index.tsx`,
 } as const;
 
 const validateServerRuntimeConfig = z.object({

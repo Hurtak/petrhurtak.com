@@ -87,7 +87,7 @@ const Home: NextPage<Props> = (props) => (
 
         <p>
           In my free time, I like to contribute to open-source on{" "}
-          <Link href={config.author.github} newTab>
+          <Link href={config.author.gitHub} newTab>
             GitHub
           </Link>
           , write some articles on my here or{" "}
@@ -113,7 +113,7 @@ const Home: NextPage<Props> = (props) => (
             Seznam.cz
           </Link>{" "}
           and I also did bunch of{" "}
-          <Link href={config.author.github} newTab>
+          <Link href={config.author.gitHub} newTab>
             open source
           </Link>{" "}
           work.
@@ -134,7 +134,7 @@ const Home: NextPage<Props> = (props) => (
         </Link>
       </li>
       <li>
-        <Link href={config.author.github} newTab>
+        <Link href={config.author.gitHub} newTab>
           GitHub
         </Link>
       </li>

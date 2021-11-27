@@ -1,6 +1,5 @@
 # TODO
 
-- source code of blog link?
 - tests
   - TODO: test that they are sorted by datePublication
   - TODO: no duplicate tweets and titles
@@ -16,9 +15,6 @@
   - https://mxstbr.com/
   - https://alexmeub.com/
 - nicer font
-- articles add
-  - tweet link
-  - edit source code of the article link
 
 ## TODOs after release
 
@@ -63,7 +59,6 @@
 - add sitemap
   - http://jecas.cz/sitemap
 - prev/next article links inside article
-- prettier xml?, once https://github.com/prettier/prettier/issues/5322 lands
 - humans.txt
 - inspiration
   - https://ryanclark.me/

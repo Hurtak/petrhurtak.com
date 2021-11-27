@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { H1, Image, Li, Link, List, P, Strong } from "../../src/components";
+import { H1, Image, Li, Link, List, P, Strong } from "../../src/components/article";
 import screenshot1 from "./images/screenshot-1.png";
 
 const storeLink = "https://chrome.google.com/webstore/detail/hello/olenfgbgcphkaipfeohfjpagibimmpke";

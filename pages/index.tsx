@@ -6,7 +6,7 @@ import { articlesTwitterRaw } from "../articles/twitter-threads";
 import { parseArticleTwitterRaw } from "../src/articles/articles";
 import { getArticlesBlog } from "../src/articles/articles-server";
 import { ArticleBlogVisible, ArticlePublished, ArticleTwitter } from "../src/articles/types";
-import { Link } from "../src/components";
+import { Link } from "../src/components/article";
 import { config, getServerRuntimeConfig, routes } from "../src/config";
 import image from "../src/me.jpg";
 import { generateRssFeed } from "../src/services/rss";

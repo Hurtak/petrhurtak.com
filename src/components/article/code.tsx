@@ -10,7 +10,7 @@ import typescript from "refractor/lang/typescript";
 import yaml from "refractor/lang/yaml";
 import stripIndent from "strip-indent";
 
-import { colors, gridCss, sizeCss } from "../styles";
+import { colors, gridCss, sizeCss } from "../../styles";
 
 Refractor.registerLanguage(bash);
 Refractor.registerLanguage(docker);

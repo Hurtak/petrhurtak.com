@@ -1,10 +1,12 @@
 # TODO
 
+- source code of blog link?
 - tests
   - TODO: test that they are sorted by datePublication
   - TODO: no duplicate tweets and titles
   - article dateUpdated after date created
   - that all articles export Article component
+- rewrite twitter threads into separate articles?
 - domain driven design article
 - responsive layout for mobile
   - maybe allow mobile autozoomout of website?
@@ -14,7 +16,6 @@
   - https://mxstbr.com/
   - https://alexmeub.com/
 - nicer font
-- source code of blog link?
 - articles add
   - tweet link
   - edit source code of the article link

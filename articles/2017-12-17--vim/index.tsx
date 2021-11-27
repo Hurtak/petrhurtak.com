@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Code, Dash, H1, H2, Li, Link, List, P, Strong, Table, Tc, Tr } from "../../src/components";
+import { Code, Dash, H1, H2, Li, Link, List, P, Strong, Table, Tc, Tr } from "../../src/components/article";
 
 const SharedCommands = () => (
   <>

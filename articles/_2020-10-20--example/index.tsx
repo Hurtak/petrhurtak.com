@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { H1, P } from "../../src/components";
+import { H1, P } from "../../src/components/article";
 
 export const Article = () => (
   <>

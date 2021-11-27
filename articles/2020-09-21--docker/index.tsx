@@ -1,4 +1,4 @@
-import { Code, H1, P } from "../../src/components";
+import { Code, H1, P } from "../../src/components/article";
 
 export const Article = () => (
   <>

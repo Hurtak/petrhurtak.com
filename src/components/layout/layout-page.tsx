@@ -2,7 +2,8 @@ import * as React from "react";
 
 import { config, routes } from "../../config";
 import { gridCss, gridNumber, sizeCss } from "../../styles";
-import { Dash, Link } from "..";
+import { Dash } from "../base/dash";
+import { Link } from "../base/link";
 import logo from "./logo.svg";
 
 export const LayoutPage = ({ children }: { children: React.ReactNode }) => (

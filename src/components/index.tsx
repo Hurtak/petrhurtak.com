@@ -4,6 +4,9 @@ import * as React from "react";
 
 import { colors, gridCss, pxCss } from "../styles";
 
+export { Code } from "./code";
+export { Video } from "./video";
+
 export const P = ({ children }: { children: React.ReactNode }) => {
   return <p>{children}</p>;
 };
@@ -177,15 +180,5 @@ export const Image = ({
   );
 };
 
-export const Video = ({ width, height, src }: { width: number; height: number; src: string }) => {
-  return (
-    <video width={width} height={height} controls autoPlay loop>
-      <source src={src} type="video/mp4" />
-    </video>
-  );
-};
-
 export const Dash = ({ long = false }: { long?: boolean }) => (long === false ? <>&ndash;</> : <>&mdash;</>);
 export const Br = () => <br />;
-
-export { Code } from "./code";

@@ -6,7 +6,6 @@
   - article dateUpdated after date created
   - that all articles export Article component
 - domain driven design article
-- responsive video
 - responsive layout for mobile
   - maybe allow mobile autozoomout of website?
 - inspiration

@@ -70,7 +70,7 @@ export const Article = () => (
       <Tr>
         <Tc>Link latest version</Tc>
         <Tc>
-          <Code language="bash">brew link node</Code>
+          <Code language="bash">brew link node && brew postinstall node</Code>
         </Tc>
       </Tr>
       <Tr>

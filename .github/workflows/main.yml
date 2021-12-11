@@ -49,15 +49,3 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 1
-  build-size:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "17"
-      - run: npm ci
-      - uses: preactjs/compressed-size-action@v2
-        with:
-          build-script: "build"
-          pattern: "./dist/**/*.{js,css,html,json}"

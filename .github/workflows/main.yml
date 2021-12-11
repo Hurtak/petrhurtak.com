@@ -60,3 +60,4 @@ jobs:
       - uses: preactjs/compressed-size-action@v2
         with:
           build-script: "build"
+          pattern: "./dist/**/*.{js,css,html,json}"

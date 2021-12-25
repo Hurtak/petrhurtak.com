@@ -5,6 +5,11 @@ import { ArticleTwitterRaw } from "../src/articles/types";
 
 export const articlesTwitterRaw: ArticleTwitterRaw[] = [
   {
+    title: "Brief look at the new Roc programming language",
+    datePublication: "2021-12-25",
+    link: "https://twitter.com/PetrHurtak/status/1474844248738574350",
+  },
+  {
     title: "Absolute path imports in JavaScript without custom tooling",
     datePublication: "2021-10-13",
     link: "https://twitter.com/PetrHurtak/status/1448199827607728128",

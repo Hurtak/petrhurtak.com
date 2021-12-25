@@ -77,8 +77,8 @@ const Home: NextPage<Props> = (props) => (
 
       <div className="profile-text">
         <p>
-          I am an engineer with a focus on ReactNative/React app development and full-stack Node.js experience. I teach
-          students how to create web apps at{" "}
+          I am an engineer with a focus on full-stack TypeScript web app development. I teach students how to create web
+          apps at{" "}
           <Link href="https://www.cvut.cz/en" newTab>
             Czech Technical University
           </Link>

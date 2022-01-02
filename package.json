@@ -30,7 +30,7 @@
     "zod": "3.11.6"
   },
   "devDependencies": {
-    "@types/jest": "27.0.3",
+    "@types/jest": "27.4.0",
     "@types/ramda": "0.27.62",
     "@types/react": "17.0.38",
     "eslint": "7.32.0",

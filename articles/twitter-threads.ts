@@ -65,6 +65,11 @@ export const articlesTwitterRaw: ArticleTwitterRaw[] = [
     link: "https://twitter.com/PetrHurtak/status/1314854634394185728",
   },
   {
+    title: "How to get better at rock climbing",
+    datePublication: "2020-10-04",
+    link: "https://twitter.com/PetrHurtak/status/1312852246649020416",
+  },
+  {
     title: "How learning economics changed my world view",
     datePublication: "2020-09-02",
     link: "https://twitter.com/PetrHurtak/status/1301105087977267200",

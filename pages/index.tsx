@@ -90,7 +90,7 @@ const Home: NextPage<Props> = (props) => (
           <Link href={config.author.gitHub} newTab>
             GitHub
           </Link>
-          , write some articles on my here or{" "}
+          , write articles on this blog, rant on{" "}
           <Link href={config.author.twitter} newTab>
             Twitter
           </Link>

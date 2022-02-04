@@ -12,7 +12,7 @@ export const Article = () => (
 
     <H1>Syntax</H1>
 
-    <Code multiline language="bash">{`
+    <Code language="bash">{`
       #! interpreter [optional-arg]
 
       the script content run by the specified interpreter
@@ -31,7 +31,7 @@ export const Article = () => (
 
     <H2>Example</H2>
 
-    <Code multiline language="bash">{`
+    <Code language="bash">{`
       #!/usr/bin/env bash
       echo "Hello"
     `}</Code>

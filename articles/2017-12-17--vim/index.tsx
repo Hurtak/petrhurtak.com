@@ -65,10 +65,14 @@ export const Article = () => (
     </P>
 
     <H1>Install</H1>
-    <Code language="bash" multiline>{`sudo apt-get install vim`}</Code>
+    <Code language="bash">{`
+      sudo apt-get install vim
+    `}</Code>
 
     <H1>Open file in Vim</H1>
-    <Code language="bash" multiline>{`vim filepath`}</Code>
+    <Code language="bash">{`
+      vim filepath
+    `}</Code>
 
     <H1>Basic usage</H1>
     <P>

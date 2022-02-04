@@ -26,7 +26,7 @@ export const Article = () => (
 
     <H1>"Classic" approach</H1>
 
-    <Code language="jsx" multiline>{`
+    <Code language="jsx">{`
       // Initial state
       let apiData = null;
 
@@ -101,7 +101,7 @@ export const Article = () => (
       language to take advantage of this approach.
     </P>
 
-    <Code multiline language="jsx">{`
+    <Code language="jsx">{`
       // Initial state
       let apiData = {
         type: "INITIAL"
@@ -157,7 +157,7 @@ export const Article = () => (
       rules. Here is how it would look like in TypeScript
     </P>
 
-    <Code multiline language="ts">{`
+    <Code language="ts">{`
       type HttpData<T> =
         | { type: "INITIAL" }
         | { type: "LOADING" }
@@ -171,7 +171,7 @@ export const Article = () => (
       you can have a type of exact values, like <Code>"INITIAL"</Code>, instead of super-set like <Code>string</Code>.
     </P>
 
-    <Code multiline language="tsx">{`
+    <Code language="tsx">{`
       type HttpData<T> =
         | { type: "INITIAL" }
         | { type: "LOADING" }
@@ -207,7 +207,7 @@ export const Article = () => (
       it will force you to update all pieces of code where given union type is used.
     </P>
 
-    <Code multiline language="tsx">{`
+    <Code language="tsx">{`
       type HttpData<T> =
         | { type: "INITIAL" }
         | { type: "LOADING" }

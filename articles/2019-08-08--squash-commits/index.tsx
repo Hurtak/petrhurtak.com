@@ -15,13 +15,13 @@ export const Article = () => (
     </P>
 
     <H1>One liner solution</H1>
-    <Code language="bash" multiline>{`
+    <Code language="bash">{`
       git reset $(git merge-base origin/master $(git rev-parse --abbrev-ref HEAD))
     `}</Code>
 
     <H1>What happens</H1>
 
-    <Code language="bash" multiline>{`
+    <Code language="bash">{`
       git rev-parse --abbrev-ref HEAD
     `}</Code>
 
@@ -29,7 +29,7 @@ export const Article = () => (
       Gets current name of the branch, eg.: <Code>branch-name</Code>
     </P>
 
-    <Code language="bash" multiline>{`
+    <Code language="bash">{`
       git merge-base origin/master my-branch
     `}</Code>
 
@@ -44,7 +44,7 @@ export const Article = () => (
       create squashed commit and force push to your branch.
     </P>
 
-    <Code language="bash" multiline>{`
+    <Code language="bash">{`
       git add .
       git commit -m "commit message"
       git push --force
@@ -58,7 +58,7 @@ export const Article = () => (
       Replace <Code>origin/master</Code> with the branch against you are merging.
     </P>
 
-    <Code language="bash" multiline>{`
+    <Code language="bash">{`
       git reset $(git merge-base origin/master $(git rev-parse --abbrev-ref HEAD))
       git add .
       git commit -m "commit message"

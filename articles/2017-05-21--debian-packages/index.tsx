@@ -32,7 +32,7 @@ export const Article = () => (
       </Li>
     </List>
 
-    <Code multiline language="bash">{`
+    <Code language="bash">{`
       export DEBFULLNAME="Forename Surname"
       export DEBEMAIL="name@email.com"
     `}</Code>
@@ -89,7 +89,7 @@ export const Article = () => (
       Create <Code>debian/changelog</Code> file, either by running <Code>dch --create</Code> or manually.
     </P>
 
-    <Code multiline>{`
+    <Code>{`
       package-name (0.0.1) UNRELEASED; urgency=medium
 
         * Initial release.
@@ -153,7 +153,7 @@ export const Article = () => (
       .
     </P>
 
-    <Code multiline language="bash">{`
+    <Code language="bash">{`
       echo 9 > debian/compat
     `}</Code>
 
@@ -183,7 +183,7 @@ export const Article = () => (
 
     <H2>Minimal control file</H2>
 
-    <Code multiline>{`
+    <Code>{`
       Source: package-name
       Maintainer: Forename Surname <name@email.com>
       Section: fulltext/Seznam
@@ -370,7 +370,7 @@ export const Article = () => (
       </Li>
     </List>
 
-    <Code multiline language="makefile">{`
+    <Code language="makefile">{`
       #!/usr/bin/make -f
 
       %:
@@ -385,7 +385,7 @@ export const Article = () => (
       </Li>
     </List>
 
-    <Code multiline language="makefile">{`
+    <Code language="makefile">{`
       #!/usr/bin/make -f
 
       %:
@@ -411,7 +411,7 @@ export const Article = () => (
       </Li>
     </List>
 
-    <Code multiline>{`
+    <Code>{`
       dist/* /www/package-name/
     `}</Code>
 
@@ -442,7 +442,7 @@ export const Article = () => (
       your build debugging, but if everything goes ok, you can safely remove them with something like:
     </P>
 
-    <Code multiline language="bash">{`
+    <Code language="bash">{`
       git clean -df debian
     `}</Code>
 
@@ -516,7 +516,7 @@ export const Article = () => (
       </Li>
     </List>
 
-    <Code multiline language="makefile">{`
+    <Code language="makefile">{`
       #!/usr/bin/make -f
 
       %:
@@ -538,7 +538,7 @@ export const Article = () => (
 
     <H2>Example of GitLab CI file</H2>
 
-    <Code multiline language="yaml">{`
+    <Code language="yaml">{`
       stages:
         - build
         - package

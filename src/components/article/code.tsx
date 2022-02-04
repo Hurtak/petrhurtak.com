@@ -32,16 +32,8 @@ type LanguageType =
   | "yaml"
   | "tsx";
 
-export const Code = ({
-  language,
-  multiline = false,
-  children,
-}: {
-  language?: LanguageType;
-  multiline?: boolean;
-  children: string;
-}) => {
-  const inline = multiline === false;
+export const Code = ({ language, children }: { language?: LanguageType; children: string }) => {
+  const inline = !children.includes("\n");
   const Tag = inline ? "span" : "div";
   return (
     <Tag
@@ -52,16 +44,24 @@ export const Code = ({
       })}
     >
       <style jsx>{`
+        :global(.refractor) {
+          background: ${colors.gray} !important;
+          border: 1px solid ${colors.grayDark};
+          border-radius: 2px;
+        }
+
         .code-inline {
           display: inline-flex;
           width: auto;
         }
         .code-inline :global(.refractor) {
           padding: ${sizeCss(1)} !important;
-          border: 1px solid ${colors.grayDark};
-          border-radius: 2px;
           font-size: 14px !important;
-          background: ${colors.gray};
+        }
+
+        .code-block :global(.refractor) {
+          padding: ${gridCss(1)} !important;
+          font-size: 12px !important;
         }
 
         /*
@@ -70,11 +70,6 @@ export const Code = ({
         */
         .no-highlight :global(.token) {
           color: black !important;
-        }
-
-        .code-block :global(.refractor) {
-          padding: ${gridCss(1)} !important;
-          background: ${colors.gray} !important;
         }
       `}</style>
 

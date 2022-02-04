@@ -14,7 +14,7 @@ export const Article = () => (
       <Li>Available both in the browser and in the server environment.</Li>
     </List>
 
-    <Code multiline language="js">{`
+    <Code language="js">{`
       > Math.random()
       0.5392704424754013
     `}</Code>
@@ -26,7 +26,7 @@ export const Article = () => (
 
     <H1>Random integer in range</H1>
 
-    <Code multiline language="js">{`
+    <Code language="js">{`
       /**
        * Get random integer in given rangee.
        * @param {int} min - Random number lower boundary (inclusive).
@@ -45,7 +45,7 @@ export const Article = () => (
 
     <H1>Random float in range</H1>
 
-    <Code multiline language="js">{`
+    <Code language="js">{`
       /**
        * Get random float in given range.
        * @param {number} min - Random number lower boundary (inclusive).

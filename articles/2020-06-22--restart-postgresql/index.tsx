@@ -6,7 +6,7 @@ export const Article = () => (
   <>
     <P>While connecting to PostgreSQL, you might get the following error.</P>
 
-    <Code multiline>{`
+    <Code>{`
       Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
     `}</Code>
     <P>
@@ -18,13 +18,13 @@ export const Article = () => (
 
     <P>Delete the following file.</P>
 
-    <Code multiline language="bash">{`
+    <Code language="bash">{`
       rm /usr/local/var/postgres/postmaster.pid
     `}</Code>
 
     <P>Then restart PostgreSQL, and it should work.</P>
 
-    <Code multiline language="bash">{`
+    <Code language="bash">{`
       # with postgres
       pg_ctl -D /usr/local/var/postgres restart
 

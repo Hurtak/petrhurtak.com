@@ -13,7 +13,7 @@ export const Article = () => (
       First, you will need a <Code>Dockerfile</Code> file in your repository. Here is how simple one might look like.
     </P>
 
-    <Code multiline language="docker">{`
+    <Code language="docker">{`
       # Base image
       FROM node:12
 
@@ -39,7 +39,7 @@ export const Article = () => (
 
     <H1>Create commands</H1>
 
-    <Code multiline language="bash">{`
+    <Code language="bash">{`
       # Build image
       #   -f/--file  Path to Dockerfile, default is 'CWD/Dockerfile'
       #   -t/--tag   Name and optionally a tag in the 'name:tag' format
@@ -65,7 +65,7 @@ export const Article = () => (
 
     <H1>Cleanup commands</H1>
 
-    <Code multiline language="bash">{`
+    <Code language="bash">{`
       # List containers
       #   --all  Shows also stopped ones
       docker ps --all
@@ -86,7 +86,7 @@ export const Article = () => (
 
     <H1>Example workflow</H1>
 
-    <Code multiline language="bash">{`
+    <Code language="bash">{`
       # Take Dockerfile and build an image
       $ docker build .
       Sending build context to Docker daemon  2.008MB

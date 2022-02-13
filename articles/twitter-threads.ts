@@ -30,14 +30,14 @@ export const articlesTwitterRaw: ArticleTwitterRaw[] = [
     link: "https://twitter.com/PetrHurtak/status/1406712506307985412",
   },
   {
-    title: "Real estate prices in gold",
-    datePublication: "2021-05-12",
-    link: "https://twitter.com/PetrHurtak/status/1392390035484430337",
-  },
-  {
     title: "Deno vs Node",
     datePublication: "2021-05-26",
     link: "https://twitter.com/PetrHurtak/status/1397592219503181829",
+  },
+  {
+    title: "Real estate prices in gold",
+    datePublication: "2021-05-12",
+    link: "https://twitter.com/PetrHurtak/status/1392390035484430337",
   },
   {
     title: "Walking treadmill with standing desk",

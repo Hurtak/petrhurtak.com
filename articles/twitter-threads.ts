@@ -1,9 +1,14 @@
 import { ArticleTwitterRaw } from "../src/articles/types";
 
-// TODO: test that they are sorted by datePublication
-// TODO: no duplicate tweets and titles
-
 export const articlesTwitterRaw: ArticleTwitterRaw[] = [
+  // 2022
+  {
+    title: "Is TypeScript really 5x less energy efficient compared to JavaScript?",
+    datePublication: "2022-02-13",
+    link: "https://twitter.com/PetrHurtak/status/1492641397920382976",
+  },
+
+  // 2021
   {
     title: "Brief look at the new Roc programming language",
     datePublication: "2021-12-25",
@@ -49,6 +54,8 @@ export const articlesTwitterRaw: ArticleTwitterRaw[] = [
     datePublication: "2021-03-25",
     link: "https://twitter.com/PetrHurtak/status/1375033064267603977",
   },
+
+  // 2020
   {
     title: "Runtime TypeScript shape validation",
     datePublication: "2020-12-27",
@@ -79,6 +86,8 @@ export const articlesTwitterRaw: ArticleTwitterRaw[] = [
     datePublication: "2020-05-26",
     link: "https://twitter.com/PetrHurtak/status/1265220414898417664",
   },
+
+  // 2019
   {
     title: "Coming back to Gulp",
     datePublication: "2019-11-18",

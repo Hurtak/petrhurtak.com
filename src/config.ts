@@ -23,7 +23,7 @@ export const config = {
     instagram: "https://www.instagram.com/petr.hurtak/",
   },
   app: {
-    generateRssInDev: true,
+    generateRssInDev: false,
   },
   tokens: {
     googleAnalytics: "UA-93333552-1",

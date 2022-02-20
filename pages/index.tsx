@@ -159,34 +159,13 @@ const Home: NextPage<Props> = (props) => (
     <ul>
       {props.articles.map(({ year, articles }) => (
         <li key={year}>
-          <span className="monospace">{year}</span>
+          <span className="year">{year}</span>
           <ul>
-            {articles.map((article) => {
-              switch (article.type) {
-                case "ARTICLE_BLOG_VISIBLE":
-                  return (
-                    <li key={article.articleDirectory}>
-                      <span className="monospace">{dayjs.utc(article.datePublication).format("MMM DD")}</span> /{" "}
-                      <abbr title="Blog article">A</abbr> /{" "}
-                      <Link href={routes.article(article.slug)}>{article.title}</Link>
-                    </li>
-                  );
-
-                case "ARTICLE_TWITTER":
-                  return (
-                    <li key={article.link}>
-                      <span className="monospace">{dayjs.utc(article.datePublication).format("MMM DD")}</span> /{" "}
-                      <abbr title="Twitter thread">T</abbr> /{" "}
-                      <Link href={article.link} newTab>
-                        {article.title}
-                      </Link>
-                    </li>
-                  );
-
-                default:
-                  return null;
-              }
-            })}
+            {articles.map((article) => (
+              <li key={article.id}>
+                <ArticleLi article={article} />
+              </li>
+            ))}
           </ul>
         </li>
       ))}
@@ -228,22 +207,85 @@ const Home: NextPage<Props> = (props) => (
         margin-top: 0.5em;
       }
 
-      .monospace {
-        font-family: monospace;
-        font-size: 14px;
-      }
-
-      abbr {
-        text-decoration: none;
-        font-family: monospace;
-        font-weight: bold;
-      }
-
       ul {
         padding-left: ${gridCss(3)};
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      ul .year {
+        display: inline-block;
+        font-family: monospace;
+        font-size: 14px;
+        margin-bottom: ${gridCss(1)};
+      }
+      ul li:not(:first-child) .year {
+        margin-top: ${gridCss(1)};
       }
     `}</style>
   </>
 );
+
+const ArticleLi = ({ article }: { article: ArticlePublished }) => {
+  const href = (() => {
+    switch (article.type) {
+      case "ARTICLE_BLOG_VISIBLE":
+        return routes.article(article.slug);
+      case "ARTICLE_TWITTER":
+        return article.link;
+    }
+  })();
+
+  const abbr = (() => {
+    switch (article.type) {
+      case "ARTICLE_BLOG_VISIBLE":
+        return { title: "Blog article", abbr: "A" };
+      case "ARTICLE_TWITTER":
+        return { title: "Twitter thread", abbr: "T" };
+    }
+  })();
+
+  return (
+    <span className="article">
+      <span className="article-meta">
+        {dayjs.utc(article.datePublication).format("MMM DD")}
+        <span className="sep"> / </span>
+        <abbr className="abbr" title={abbr.title}>
+          {abbr.abbr}
+        </abbr>
+        <span className="sep"> / </span>
+      </span>
+
+      <Link href={href} newTab={article.type === "ARTICLE_TWITTER"} className="article-link">
+        {article.title}
+      </Link>
+
+      <style jsx>{`
+        .article {
+          display: flex;
+          align-items: baseline;
+          font-size: 16px;
+        }
+        .article .article-meta {
+          flex-shrink: 0;
+          margin-right: 6px;
+          font-family: monospace;
+          font-size: 14px;
+        }
+        .article .article-meta .abbr {
+          font-weight: bold;
+        }
+        .article .article-meta .sep {
+          letter-spacing: -4px;
+          padding-right: 4px;
+        }
+        .article .article-link {
+          flex-shrink: 0;
+        }
+      `}</style>
+    </span>
+  );
+};
 
 export default Home;

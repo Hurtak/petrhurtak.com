@@ -16,11 +16,15 @@ dayjs.extend(dayjsUtc);
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
-  useGoogleAnalytics({
+
+  const { setCurrentPage } = useGoogleAnalytics({
     token: config.tokens.googleAnalytics,
-    onRouterChange: (cb) => router.events.on("routeChangeComplete", cb),
-    onRouterChangeUnsubscribe: (cb) => router.events.off("routeChangeComplete", cb),
   });
+
+  React.useEffect(() => {
+    router.events.on("routeChangeComplete", setCurrentPage);
+    return () => router.events.off("routeChangeComplete", setCurrentPage);
+  }, [router, setCurrentPage]);
 
   return (
     <>

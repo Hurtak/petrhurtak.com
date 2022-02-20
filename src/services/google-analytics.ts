@@ -1,27 +1,16 @@
 import * as React from "react";
-import reactGA from "react-ga";
+import reactGA from "react-ga4";
 
-export const useGoogleAnalytics = ({
-  token,
-  onRouterChange,
-  onRouterChangeUnsubscribe,
-}: {
-  token: string;
-  onRouterChange: (cb: (url: string) => void) => void;
-  onRouterChangeUnsubscribe: (cb: (url: string) => void) => void;
-}) => {
+export const useGoogleAnalytics = ({ token }: { token: string }): { setCurrentPage: (path: string) => void } => {
   React.useEffect(() => {
     reactGA.initialize(token);
   }, [token]);
 
-  React.useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      reactGA.pageview(url);
-    };
+  const setCurrentPage = React.useCallback((path: string) => {
+    reactGA.send({ hitType: "pageview", page: path });
+  }, []);
 
-    onRouterChange(handleRouteChange);
-    return () => {
-      onRouterChangeUnsubscribe(handleRouteChange);
-    };
-  }, [onRouterChange, onRouterChangeUnsubscribe]);
+  return {
+    setCurrentPage,
+  };
 };

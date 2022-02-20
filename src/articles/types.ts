@@ -6,10 +6,14 @@ export const articleMetadataJsonValidator = z.object({
 });
 export type ArticleMetadataJson = z.infer<typeof articleMetadataJsonValidator>;
 
-type ArticleBlogMetadata = {
+type ArticleBase = {
+  id: string;
   title: string;
-  description: string;
   datePublication: number;
+};
+
+type ArticleBlogMetadata = ArticleBase & {
+  description: string;
   slug: string;
 
   articlePath: string;
@@ -25,11 +29,8 @@ export type ArticleTwitterRaw = {
   datePublication: string;
   link: string;
 };
-export type ArticleTwitter = {
+export type ArticleTwitter = ArticleBase & {
   type: "ARTICLE_TWITTER";
-
-  title: string;
-  datePublication: number;
 
   link: string;
 };

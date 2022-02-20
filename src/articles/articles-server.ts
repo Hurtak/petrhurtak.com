@@ -74,6 +74,7 @@ const articleDirToArticleBlog = async (articlesDir: string, articleDir: ArticleD
   const metadata = articleMetadataJsonValidator.parse(metadataParsed);
 
   const articleData: ArticleBlog = {
+    id: articleDir.slug,
     type: articleDir.hidden === false ? "ARTICLE_BLOG_VISIBLE" : "ARTICLE_BLOG_HIDDEN",
     title: metadata.title,
     description: metadata.description,

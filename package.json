@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "clsx": "1.1.1",
-    "dayjs": "1.10.7",
+    "dayjs": "1.10.8",
     "feed": "4.2.2",
     "next": "12.1.0",
     "next-videos": "1.4.0",
@@ -24,18 +24,18 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-ga4": "1.4.1",
-    "react-refractor": "2.1.5",
+    "react-refractor": "2.1.6",
     "refractor": "4.5.0",
     "strip-indent": "4.0.0",
-    "zod": "3.11.6"
+    "zod": "3.13.4"
   },
   "devDependencies": {
-    "@types/jest": "27.4.0",
-    "@types/ramda": "0.27.64",
+    "@types/jest": "27.4.1",
+    "@types/ramda": "0.28.0",
     "@types/react": "17.0.39",
-    "eslint": "8.9.0",
+    "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
-    "eslint-config-prettier": "8.4.0",
+    "eslint-config-prettier": "8.5.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "jest": "27.5.1",
     "prettier": "2.5.1",

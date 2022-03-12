@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "@types/jest": "27.4.1",
-    "@types/ramda": "0.28.0",
-    "@types/react": "17.0.39",
-    "eslint": "8.10.0",
+    "@types/ramda": "0.28.1",
+    "@types/react": "17.0.40",
+    "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-simple-import-sort": "7.0.0",

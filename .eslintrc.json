@@ -5,13 +5,6 @@
     "@next/next/no-img-element": 0,
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
-
-    "no-restricted-imports": [
-      "error",
-      {
-        "name": "next/link",
-        "message": "Use our own Link component"
-      }
-    ]
+    "no-restricted-imports": ["error", { "name": "next/link", "message": "Use our own Link component" }]
   }
 }

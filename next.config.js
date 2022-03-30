@@ -7,8 +7,6 @@ const projectRoot = __dirname;
  * @type {import('next').NextConfig}
  */
 const config = {
-  reactStrictMode: true,
-
   // Workaround for https://github.com/vercel/next.js/issues/8251
   serverRuntimeConfig: {
     paths: {

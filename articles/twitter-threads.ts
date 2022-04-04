@@ -3,6 +3,11 @@ import { ArticleTwitterRaw } from "../src/articles/types";
 export const articlesTwitterRaw: ArticleTwitterRaw[] = [
   // 2022
   {
+    title: "Bitcoin and Ethereum code complexity analysis",
+    datePublication: "2022-04-04",
+    link: "https://twitter.com/PetrHurtak/status/1510968044331442182",
+  },
+  {
     title: "Is TypeScript really 5x less energy efficient compared to JavaScript?",
     datePublication: "2022-02-13",
     link: "https://twitter.com/PetrHurtak/status/1492641397920382976",

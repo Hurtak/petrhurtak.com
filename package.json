@@ -27,7 +27,7 @@
     "react-refractor": "2.1.6",
     "refractor": "4.5.0",
     "strip-indent": "4.0.0",
-    "zod": "3.14.3"
+    "zod": "3.14.4"
   },
   "devDependencies": {
     "@types/jest": "27.4.1",

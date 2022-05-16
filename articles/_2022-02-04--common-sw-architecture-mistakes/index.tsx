@@ -389,5 +389,15 @@ export const Article = () => (
             </Layout>
           }
     */}
+
+    {/*
+
+      Another one:
+
+      instead of fixed width on buttons, use min-width or padding.
+
+      I think in general we should not use fixed dimensions for these smaller components - So that when font size or the text itself changes, the component does not break. We can do the same design with more flexible min-width or paddings.
+      https://github.com/kaltura/kux-rn/pull/702#pullrequestreview-974083288
+    */}
   </>
 );

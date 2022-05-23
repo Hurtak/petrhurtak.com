@@ -1,3 +1,5 @@
+import * as React from "react";
+
 export const List = ({ numbered = false, children }: { numbered?: boolean; children: React.ReactNode }) => {
   const Tag = numbered ? "ol" : "ul";
   return <Tag>{children}</Tag>;

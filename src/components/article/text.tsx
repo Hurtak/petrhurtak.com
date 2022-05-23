@@ -1,3 +1,5 @@
+import * as React from "react";
+
 export const P = ({ children }: { children: React.ReactNode }) => {
   return <p>{children}</p>;
 };

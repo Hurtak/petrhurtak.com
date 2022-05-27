@@ -8,7 +8,7 @@ const testUniquePropertyValue = <T>(items: T[], property: keyof T) => {
   for (const item of items) {
     const value = item[property];
     if (seen.has(value)) {
-      throw new Error(`Duplicate value "${value}" for property "${property}"`);
+      throw new Error(`Duplicate value "${value}" for property "${String(property)}"`);
     }
     seen.add(value);
   }

@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import * as React from "react";
 
 import { ArticleBlog } from "../../articles/types";
@@ -12,32 +13,51 @@ export const LayoutArticle = ({
 }: {
   articleBlog: ArticleBlog;
   articleComponent: React.FC;
-}) => (
-  <>
-    <article>
-      <h1>{articleBlog.title}</h1>
+}) => {
+  const datePublication = dayjs.utc(articleBlog.datePublication);
 
-      <ArticleComponent />
-    </article>
+  return (
+    <>
+      <article>
+        <h1>{articleBlog.title}</h1>
+        <time title="Publication date" dateTime={datePublication.toISOString()}>
+          {datePublication.format("YYYY-MMM-DD")}
+        </time>
 
-    <p>
-      <Link href={routes.articleGitHubLink(articleBlog.articleDirectory)} newTab>
-        Edit on GitHub
-      </Link>{" "}
-      <Dot />{" "}
-      <Link href={routes.articleTwitterSearch(articleBlog.slug)} newTab>
-        Discuss on Twitter
-      </Link>{" "}
-    </p>
+        <div className="article">
+          <ArticleComponent />
+        </div>
+      </article>
 
-    <style jsx>{`
-      h1 {
-        margin-top: 0;
-      }
+      <p className="links">
+        <Link href={routes.articleGitHubLink(articleBlog.articleDirectory)} newTab>
+          Edit on GitHub
+        </Link>{" "}
+        <Dot />{" "}
+        <Link href={routes.articleTwitterSearch(articleBlog.slug)} newTab>
+          Discuss on Twitter
+        </Link>{" "}
+      </p>
 
-      p {
-        margin-top: ${gridCss(3)};
-      }
-    `}</style>
-  </>
-);
+      <style jsx>{`
+        h1 {
+          margin: 0;
+        }
+
+        time {
+          display: block;
+          padding-top: ${gridCss(0.5)};
+        }
+
+        .article {
+          padding-top: ${gridCss(1)};
+        }
+
+        .links {
+          margin: 0;
+          margin-top: ${gridCss(3)};
+        }
+      `}</style>
+    </>
+  );
+};

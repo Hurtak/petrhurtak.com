@@ -96,30 +96,6 @@ const Home: NextPage<Props> = (props) => (
           </Link>
           , do rock climbing, or read about economics and investing.
         </p>
-
-        {/* Old description */}
-        {/*
-        <p>
-          I am software engineer working at{" "}
-          <Link href="https://www.alicetechnologies.com" newTab>
-            ALICE Technologies
-          </Link>{" "}
-          teacher at{" "}
-          <Link href="https://www.cvut.cz/en" newTab>
-            Czech Technical University
-          </Link>{" "}
-          and small investor. Previously I worked at{" "}
-          <Link href="https://www.seznam.cz/" newTab>
-            Seznam.cz
-          </Link>{" "}
-          and I also did bunch of{" "}
-          <Link href={config.author.gitHub} newTab>
-            open source
-          </Link>{" "}
-          work.
-        </p>
-        <p>I like programming, economics, rock climbing and much more :)</p>
-        */}
       </div>
     </div>
 

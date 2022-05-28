@@ -53,6 +53,7 @@ export const routes = {
     `https://twitter.com/search?q=${encodeURIComponent(routes.absolute(routes.article(slug)))}`,
   articleGitHubLink: (articleDirectory: string) =>
     `${config.site.gitHub}/tree/main/articles/${encodeURIComponent(articleDirectory)}/index.tsx`,
+  articleGitHubCommitHash: (commitHash: string) => `${config.site.gitHub}/commit/${encodeURIComponent(commitHash)}`,
 } as const;
 
 const validateNextConfig = z.object({
@@ -62,11 +63,17 @@ const validateNextConfig = z.object({
       articles: z.string().min(1),
       public: z.string().min(1),
     }),
+    buildInfo: z.object({
+      time: z.number().positive(),
+      commitHash: z.string().min(1),
+    }),
   }),
 });
 type NextConfig = z.infer<typeof validateNextConfig>;
 
-export const getServerRuntimeConfig = (): NextConfig["serverRuntimeConfig"] => {
+export type ServerRuntimeConfig = NextConfig["serverRuntimeConfig"];
+
+export const getServerRuntimeConfig = (): ServerRuntimeConfig => {
   const config = getConfig() as unknown;
   const configValidated = validateNextConfig.parse(config);
 

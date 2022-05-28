@@ -1,5 +1,9 @@
 ## TODOs
 
+- import { Code, Diagram, H1, H2, Li, Link, List, P, Quote } from "../../src/components/article";
+  - this could be simplified with reexport
+- share design between Code and Diagram
+- convert 2017 articles
 - videos require + eslint disable
 
 ## Old TODOs

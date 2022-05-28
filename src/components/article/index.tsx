@@ -3,6 +3,7 @@ export { Hellip } from "../base/hellip";
 export { Link } from "../base/link";
 export { Br } from "./br";
 export { Code } from "./code";
+export { Diagram } from "./diagram";
 export { Image } from "./image";
 export { Li, List } from "./list";
 export { Quote } from "./quote";

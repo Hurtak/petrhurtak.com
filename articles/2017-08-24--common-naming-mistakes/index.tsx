@@ -1,7 +1,8 @@
 import React from "react";
-import { H1, H2, List, Li, Link, P, Quote, Diagram, Code } from "../../components";
 
-export default () => (
+import { Code, Diagram, H1, H2, Li, Link, List, P, Quote } from "../../src/components/article";
+
+export const Article = () => (
   <>
     <P>
       A Little collection of technical expressions that I either confuse often or that I see often confused by other
@@ -10,8 +11,8 @@ export default () => (
 
     <H1>Parameter vs. argument</H1>
 
-    <Code multiline language="javascript">{`
-      function log (parameter) {
+    <Code language="js">{`
+      function log(parameter) {
         console.log(parameter)
       }
 
@@ -26,17 +27,17 @@ export default () => (
 
     <H1>Function vs. method</H1>
 
-    <Code multiline language="javascript">{`
-      function functionName (state) {
+    <Code language="js">{`
+      function functionName(state) {
         return state + 1
       }
 
       class ClassName {
-        constructor () {
+        constructor() {
           this.state = 0
         }
 
-        methodName () {
+        methodName() {
           this.state += 1
         }
       }
@@ -85,8 +86,8 @@ export default () => (
     </P>
 
     <List>
-      <Li>URI: when you’re referring to a resource just by its name or some other fragment.</Li>
-      <Li>URL: When you’re giving both the name of a resource and the method of accessing it.</Li>
+      <Li>URI: when you're referring to a resource just by its name or some other fragment.</Li>
+      <Li>URL: When you're giving both the name of a resource and the method of accessing it.</Li>
     </List>
 
     <H2>Examples</H2>
@@ -107,7 +108,5 @@ export default () => (
         <Link>https://danielmiessler.com/study/url-uri/</Link>
       </Li>
     </List>
-
-    <P>If you know about any other expressions that are often confused, tell me about them in comments.</P>
   </>
 );

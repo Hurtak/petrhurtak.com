@@ -11,7 +11,6 @@ type ArticleBase = {
   id: string;
   title: string;
   datePublication: number;
-  dateLastUpdate: number | null;
 };
 
 type ArticleBlogMetadata = ArticleBase & {
@@ -20,6 +19,8 @@ type ArticleBlogMetadata = ArticleBase & {
 
   articlePath: string;
   articleDirectory: string;
+
+  dateLastUpdate: number | null;
 };
 export type ArticleBlogVisible = ArticleBlogMetadata & { type: "ARTICLE_BLOG_VISIBLE" };
 export type ArticleBlogHidden = ArticleBlogMetadata & { type: "ARTICLE_BLOG_HIDDEN" };

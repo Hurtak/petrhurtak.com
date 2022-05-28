@@ -11,26 +11,6 @@
 
 - robots.txt review - make article
 
-- how to write blogs
-  - everything own
-    - bad, hard to upgrade/extend, takes a long time
-  - next.js
-    - very bas support for static rendering
-    - get initial props are not cached so you would need api or walk your api and predownload it in some json files - that would be aanoying build step
-  - gatsby
-    - ridiculously complicated
-  - create react app + react-static
-    - reasonable compromise
-
-- react key attribute
-
-- alternative vay to write gulp
-  - how i did it in v1
-  - execa
-
-- visitelnost
-  - je element videt ve viewportu/jinem elementu, nastaveni na procenta viditelnosti?
-  - je element prekryvan jinym elementem?
 
 - less common form fiels https://www.w3schools.com/html/html_forms.asp
   - target blank na formu

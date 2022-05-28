@@ -16,6 +16,9 @@ export const LayoutArticle = ({
   articleComponent: FC;
 }) => {
   const datePublication = dayjs.utc(articleBlog.datePublication);
+  const dateLastUpdate = articleBlog.dateLastUpdate ? dayjs.utc(articleBlog.dateLastUpdate) : null;
+
+  const formatDate = (dayjs: dayjs.Dayjs): string => dayjs.format("YYYY-MMM-DD");
 
   return (
     <>
@@ -23,10 +26,26 @@ export const LayoutArticle = ({
 
       <article>
         <h1>{articleBlog.title}</h1>
-        <time title="Publication date" dateTime={datePublication.toISOString()}>
-          {datePublication.format("YYYY-MMM-DD")}
-        </time>
 
+        <p className="time-wrapper">
+          {dateLastUpdate ? (
+            <>
+              Published{" "}
+              <time title="Publication date" dateTime={datePublication.toISOString()}>
+                {formatDate(datePublication)}
+              </time>
+              <br />
+              Updated:{" "}
+              <time title="Last update date" dateTime={dateLastUpdate.toISOString()}>
+                {formatDate(dateLastUpdate)}
+              </time>
+            </>
+          ) : (
+            <time title="Publication date" dateTime={datePublication.toISOString()}>
+              {formatDate(datePublication)}
+            </time>
+          )}
+        </p>
         <div className="article-content">
           <ArticleComponent />
         </div>
@@ -47,8 +66,12 @@ export const LayoutArticle = ({
           margin: 0;
         }
 
+        .time-wrapper {
+          margin: 0;
+        }
+
         time {
-          display: block;
+          display: inline-block;
           padding-top: ${gridCss(0.5)};
         }
 

@@ -3,6 +3,7 @@ import { z } from "zod";
 export const articleMetadataJsonValidator = z.object({
   title: z.string().min(1),
   description: z.string().min(1),
+  lastUpdate: z.string().optional(),
 });
 export type ArticleMetadataJson = z.infer<typeof articleMetadataJsonValidator>;
 
@@ -10,6 +11,7 @@ type ArticleBase = {
   id: string;
   title: string;
   datePublication: number;
+  dateLastUpdate: number | null;
 };
 
 type ArticleBlogMetadata = ArticleBase & {

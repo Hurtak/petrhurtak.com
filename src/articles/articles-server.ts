@@ -67,11 +67,30 @@ const parseArticleFolder = (articleFolder: string): ArticleDirectory | null => {
   };
 };
 
+const parseArticleLastUpdate = (lastUpdate: string, slug: string): number => {
+  const matchDate = lastUpdate.match(/^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})$/);
+
+  if (!matchDate || !matchDate.groups) {
+    throw new Error(`Invalid lastUpdate "${lastUpdate}" for article ${slug}`);
+  }
+
+  const validatorGroups = z.object({
+    year: z.string(),
+    month: z.string(),
+    day: z.string(),
+  });
+  const groups = validatorGroups.parse(matchDate.groups);
+
+  return Date.UTC(Number(groups.year), Number(groups.month) - 1, Number(groups.day));
+};
+
 const articleDirToArticleBlog = async (articlesDir: string, articleDir: ArticleDirectory): Promise<ArticleBlog> => {
   const articlePath = path.join(articlesDir, articleDir.directory, "metadata.json");
   const metadataRaw = await fs.readFile(articlePath, "utf8");
   const metadataParsed = JSON.parse(metadataRaw) as unknown;
   const metadata = articleMetadataJsonValidator.parse(metadataParsed);
+
+  const dateLastUpdate = metadata.lastUpdate ? parseArticleLastUpdate(metadata.lastUpdate, articleDir.slug) : null;
 
   const articleData: ArticleBlog = {
     id: articleDir.slug,
@@ -79,6 +98,7 @@ const articleDirToArticleBlog = async (articlesDir: string, articleDir: ArticleD
     title: metadata.title,
     description: metadata.description,
     datePublication: articleDir.date,
+    dateLastUpdate,
     articlePath: articlePath,
     articleDirectory: articleDir.directory,
     slug: articleDir.slug,

@@ -1,8 +1,0 @@
-Non blocking spinners with css
-
-Seth Samuel: Arbitrary Computation on the GPU Using WebGL - JSConf Iceland 2016
-
-Někde po 14 min
-Nejdřív spustím spinner, to se začně vykonávat na dalším cpu + gpu, pak začnu dělat výpočty který úplně zapijou cpu - spinner se pořád bude plynule točit. Když to udělám naopak tak se ten spinner nebude vůbec moct roztočit protože je cpu zabitý
-
-

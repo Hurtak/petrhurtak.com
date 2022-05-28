@@ -71,7 +71,7 @@ const Home: NextPage<Props> = (props) => (
           src={image.src}
           width={profileImageSize}
           height={profileImageSize}
-          alt={`${config.author.fullName}'s profile picture`}
+          alt={`${config.author.fullName}'s portrait`}
         />
       </div>
 

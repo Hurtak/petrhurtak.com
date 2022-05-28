@@ -70,7 +70,7 @@ const parseArticleFolder = (articleFolder: string): ArticleDirectory | null => {
 const articleDirToArticleBlog = async (articlesDir: string, articleDir: ArticleDirectory): Promise<ArticleBlog> => {
   const articlePath = path.join(articlesDir, articleDir.directory, "metadata.json");
   const metadataRaw = await fs.readFile(articlePath, "utf8");
-  const metadataParsed = JSON.parse(metadataRaw);
+  const metadataParsed = JSON.parse(metadataRaw) as unknown;
   const metadata = articleMetadataJsonValidator.parse(metadataParsed);
 
   const articleData: ArticleBlog = {

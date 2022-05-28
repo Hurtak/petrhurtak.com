@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Br, Code, H1, H2, Hellip, Italic, Li, List, P, Quote, Strong } from "../../src/components/article";
+import { Code, H1, H2, Hellip, Italic, Li, List, P, Quote, Strong } from "../../src/components/article";
 
 export const Article = () => (
   <>

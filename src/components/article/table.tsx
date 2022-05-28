@@ -9,7 +9,7 @@ export const Table = ({ heading, children }: { heading?: React.ReactNode; childr
     if (!headingProp) return null;
 
     const headingRow = React.Children.map(heading, (child) =>
-      React.cloneElement(child as React.ReactElement<any>, { heading: true })
+      React.isValidElement(child) ? React.cloneElement(child, { heading: true }) : null
     );
 
     return headingRow;
@@ -25,7 +25,7 @@ export const Table = ({ heading, children }: { heading?: React.ReactNode; childr
 
 export const Tr = ({ heading = false, children }: { heading?: boolean; children: React.ReactNode }) => {
   const cells = React.Children.map(children, (child) =>
-    React.cloneElement(child as React.ReactElement<any>, { heading })
+    React.isValidElement(child) ? React.cloneElement(child, { heading }) : null
   );
 
   return <tr>{cells}</tr>;

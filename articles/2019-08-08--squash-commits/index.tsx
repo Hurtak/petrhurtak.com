@@ -8,9 +8,9 @@ export const Article = () => (
 
     <P>
       If you search Google about how to squash all commits, you will often find confusing tutorials that will either
-      recommend using <Code language="bash">git rebase</Code> (where you have to manually specify which commits you want
-      to squash), or tutorials recommending using <Code language="bash">git reset</Code> or{" "}
-      <Code language="bash">git rebase</Code> on latest <Code>n</Code> commits (where you need to know how many commits
+      recommend using <Code language="bash">git rebase</Code> (where you have to manually specify which commits you want
+      to squash), or tutorials recommending using <Code language="bash">git reset</Code> or{" "}
+      <Code language="bash">git rebase</Code> on latest <Code>n</Code> commits (where you need to know how many commits
       you made in your branch). But there is an easier way.
     </P>
 

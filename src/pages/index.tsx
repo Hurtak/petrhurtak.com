@@ -2,15 +2,15 @@ import dayjs from "dayjs";
 import { NextPage } from "next";
 import { groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
-import { articlesTwitterRaw } from "../articles/twitter-threads";
-import { parseArticleTwitterRaw } from "../src/articles/articles";
-import { getArticlesBlog } from "../src/articles/articles-server";
-import { ArticleBlogVisible, ArticlePublished } from "../src/articles/types";
-import { Link } from "../src/components/article";
-import { config, getServerRuntimeConfig, routes } from "../src/config";
-import image from "../src/me.jpg";
-import { generateRssFeed } from "../src/services/rss";
-import { gridCss, gridNumber, pxCss, sizeCss } from "../src/styles";
+import { articlesTwitterRaw } from "../../articles/twitter-threads";
+import { parseArticleTwitterRaw } from "../articles/articles";
+import { getArticlesBlog } from "../articles/articles-server";
+import { ArticleBlogVisible, ArticlePublished } from "../articles/types";
+import { Link } from "../components/article";
+import { config, getServerRuntimeConfig, routes } from "../config";
+import image from "../me.jpg";
+import { generateRssFeed } from "../services/rss";
+import { gridCss, gridNumber, pxCss, sizeCss } from "../styles";
 
 type ArticlesGroup = {
   year: number;

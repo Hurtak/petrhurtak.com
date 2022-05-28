@@ -1,4 +1,4 @@
-import { Dash } from "../src/components/article";
+import { Dash } from "../components/article";
 
 const Page404 = () => {
   return (

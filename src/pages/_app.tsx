@@ -8,10 +8,10 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-import { DocumentTitle } from "../src/components/base/document-title";
-import { LayoutPage } from "../src/components/layout/layout-page";
-import { config, routes } from "../src/config";
-import { useGoogleAnalytics } from "../src/services/google-analytics";
+import { DocumentTitle } from "../components/base/document-title";
+import { LayoutPage } from "../components/layout/layout-page";
+import { config, routes } from "../config";
+import { useGoogleAnalytics } from "../services/google-analytics";
 
 dayjs.extend(dayjsUtc);
 

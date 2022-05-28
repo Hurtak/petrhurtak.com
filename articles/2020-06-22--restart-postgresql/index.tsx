@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { Code, H1, P } from "../../src/components/article";
 
 export const Article = () => (

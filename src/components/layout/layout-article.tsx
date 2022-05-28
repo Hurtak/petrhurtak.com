@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import * as React from "react";
+import { FC } from "react";
 
 import { ArticleBlog } from "../../articles/types";
 import { routes } from "../../config";
@@ -12,7 +12,7 @@ export const LayoutArticle = ({
   articleComponent: ArticleComponent,
 }: {
   articleBlog: ArticleBlog;
-  articleComponent: React.FC;
+  articleComponent: FC;
 }) => {
   const datePublication = dayjs.utc(articleBlog.datePublication);
 

@@ -1,6 +1,19 @@
-import * as React from "react";
-
-import { Code, H1, H2, Italic, Li, Link, List, P, Strong, Table, Tc, Tr, Video } from "../../src/components/article";
+import {
+  Code,
+  getVideoSrc,
+  H1,
+  H2,
+  Italic,
+  Li,
+  Link,
+  List,
+  P,
+  Strong,
+  Table,
+  Tc,
+  Tr,
+  Video,
+} from "../../src/components/article";
 
 export const Article = () => (
   <>
@@ -479,7 +492,7 @@ export const Article = () => (
       </Li>
     </List>
 
-    <Video width={698} height={308} src={require("./videos/packaging.mp4")} />
+    <Video width={698} height={308} src={getVideoSrc("./videos/packaging.mp4")} />
 
     <H1>Static files build dependencies</H1>
 

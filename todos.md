@@ -1,4 +1,11 @@
-# TODO
+## TODOs
+
+- Critical dependency: the request of a dependency is an expression
+- remove jsx from tsconfig
+- remove ignore lib check from tsconfig
+- move pages into subdirectory
+
+## Old TODOs
 
 - typography
   - line-height of paragraphs is too small
@@ -20,7 +27,7 @@
   - https://alexmeub.com/
 - nicer font
 
-## TODOs after release
+## Old TODOs
 
 - sections
   - projects, list of all projects of what i did

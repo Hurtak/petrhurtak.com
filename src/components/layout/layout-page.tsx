@@ -1,12 +1,13 @@
-import * as React from "react";
+import { ReactNode } from "react";
 
 import { config, routes } from "../../config";
 import { gridCss, gridNumber, sizeCss } from "../../styles";
 import { Dash } from "../base/dash";
 import { Link } from "../base/link";
+import { parseSvgImage } from "../utils";
 import logo from "./logo.svg";
 
-export const LayoutPage = ({ children }: { children: React.ReactNode }) => (
+export const LayoutPage = ({ children }: { children: ReactNode }) => (
   <>
     <div className="layout">
       <header>
@@ -14,7 +15,7 @@ export const LayoutPage = ({ children }: { children: React.ReactNode }) => (
           <img
             width={gridNumber(2.5)}
             height={gridNumber(2.5)}
-            src={logo.src}
+            src={parseSvgImage(logo).src}
             alt={`${config.site.domain} site logo`}
           />
         </Link>

@@ -1,15 +1,15 @@
 import clsx from "clsx";
-import * as React from "react";
+import { Children, cloneElement, isValidElement, ReactNode } from "react";
 
 import { colors, gridCss } from "../../styles";
 
-export const Table = ({ heading, children }: { heading?: React.ReactNode; children: React.ReactNode }) => {
+export const Table = ({ heading, children }: { heading?: ReactNode; children: React.ReactNode }) => {
   const headingContent = (() => {
     const headingProp = heading;
     if (!headingProp) return null;
 
-    const headingRow = React.Children.map(heading, (child) =>
-      React.isValidElement(child) ? React.cloneElement(child, { heading: true }) : null
+    const headingRow = Children.map(heading, (child) =>
+      isValidElement(child) ? cloneElement(child, { heading: true }) : null
     );
 
     return headingRow;
@@ -24,9 +24,7 @@ export const Table = ({ heading, children }: { heading?: React.ReactNode; childr
 };
 
 export const Tr = ({ heading = false, children }: { heading?: boolean; children: React.ReactNode }) => {
-  const cells = React.Children.map(children, (child) =>
-    React.isValidElement(child) ? React.cloneElement(child, { heading }) : null
-  );
+  const cells = Children.map(children, (child) => (isValidElement(child) ? cloneElement(child, { heading }) : null));
 
   return <tr>{cells}</tr>;
 };

@@ -6,7 +6,7 @@ import dayjsUtc from "dayjs/plugin/utc";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import * as React from "react";
+import { useEffect } from "react";
 
 import { LayoutPage } from "../src/components/layout/layout-page";
 import { config, routes } from "../src/config";
@@ -21,7 +21,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     token: config.tokens.googleAnalytics,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     router.events.on("routeChangeComplete", setCurrentPage);
     return () => router.events.off("routeChangeComplete", setCurrentPage);
   }, [router, setCurrentPage]);

@@ -15,6 +15,10 @@ const config = {
       public: path.join(projectRoot, "public"),
     },
   },
+
+  typescript: {
+    tsconfigPath: "tsconfig.next.json",
+  },
 };
 
 module.exports = withVideos(config);

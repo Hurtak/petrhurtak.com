@@ -1,6 +1,6 @@
-import * as React from "react";
+import { ReactNode } from "react";
 
-export const P = ({ children }: { children: React.ReactNode }) => {
+export const P = ({ children }: { children: ReactNode }) => {
   return <p>{children}</p>;
 };
 
@@ -16,6 +16,6 @@ export const Italic = ({ children }: { children: string }) => {
   return <em>{children}</em>;
 };
 
-export const Strong = ({ children }: { children: React.ReactNode }) => {
+export const Strong = ({ children }: { children: ReactNode }) => {
   return <strong>{children}</strong>;
 };

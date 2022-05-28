@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { Br, Code, H1, P, Table, Tc, Tr } from "../../src/components/article";
 
 const Sep = () => (

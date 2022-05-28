@@ -1,4 +1,5 @@
 import * as path from "path";
+import { describe, expect, test } from "vitest";
 
 import { getArticlesBlog } from "../src/articles/articles-server";
 
@@ -21,7 +22,7 @@ describe("articles", () => {
         const match = article.articleDirectory.match(folderRegex);
 
         if (!match || !match.groups) {
-          throw new Error(`Invalid RegexMatch on ${article} with ${folderRegex.toString()}`);
+          throw new Error(`Invalid RegexMatch on ${article.articleDirectory} with ${folderRegex.toString()}`);
         }
 
         expect(match).toBeTruthy();

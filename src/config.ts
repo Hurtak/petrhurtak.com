@@ -54,16 +54,20 @@ export const routes = {
     `${config.site.gitHub}/tree/main/articles/${encodeURIComponent(articleDirectory)}/index.tsx`,
 } as const;
 
-const validateServerRuntimeConfig = z.object({
-  paths: z.object({
-    project: z.string().min(1),
-    articles: z.string().min(1),
-    public: z.string().min(1),
+const validateNextConfig = z.object({
+  serverRuntimeConfig: z.object({
+    paths: z.object({
+      project: z.string().min(1),
+      articles: z.string().min(1),
+      public: z.string().min(1),
+    }),
   }),
 });
-type ServerRuntimeConfig = z.infer<typeof validateServerRuntimeConfig>;
+type NextConfig = z.infer<typeof validateNextConfig>;
 
-export const getServerRuntimeConfig = (): ServerRuntimeConfig => {
-  const { serverRuntimeConfig } = getConfig();
-  return validateServerRuntimeConfig.parse(serverRuntimeConfig);
+export const getServerRuntimeConfig = (): NextConfig["serverRuntimeConfig"] => {
+  const config = getConfig() as unknown;
+  const configValidated = validateNextConfig.parse(config);
+
+  return configValidated.serverRuntimeConfig;
 };

@@ -1,9 +1,9 @@
 # dependencies
 /node_modules
-/tsconfig.tsbuildinfo
 
-# next.js
+# build/cache
 /.next
+/tsconfig.next.tsbuildinfo
 
 # build
 /dist

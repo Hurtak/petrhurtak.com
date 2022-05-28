@@ -24,7 +24,7 @@ export const LayoutArticle = ({
           {datePublication.format("YYYY-MMM-DD")}
         </time>
 
-        <div className="article">
+        <div className="article-content">
           <ArticleComponent />
         </div>
       </article>
@@ -49,8 +49,18 @@ export const LayoutArticle = ({
           padding-top: ${gridCss(0.5)};
         }
 
-        .article {
-          padding-top: ${gridCss(1)};
+        .article-content {
+          padding-top: ${gridCss(5)};
+        }
+
+        .article-content > :global(*) {
+          margin: ${gridCss(2)} 0;
+        }
+        .article-content > :global(*:first-child) {
+          margin-top: 0;
+        }
+        .article-content > :global(*:last-child) {
+          margin-bottom: 0;
         }
 
         .links {

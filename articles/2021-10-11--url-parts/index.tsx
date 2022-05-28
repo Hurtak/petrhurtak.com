@@ -1,4 +1,4 @@
-import { Br, Code, H1, P, Table, Tc, Tr } from "../../src/components/article";
+import { Br, Code, H1, P, Table, Tc, Tr } from "../components";
 
 const Sep = () => (
   <>

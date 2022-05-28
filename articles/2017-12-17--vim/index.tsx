@@ -1,4 +1,4 @@
-import { Code, Dash, H1, H2, Li, Link, List, P, Strong, Table, Tc, Tr } from "../../src/components/article";
+import { Code, Dash, H1, H2, Li, Link, List, P, Strong, Table, Tc, Tr } from "../components";
 
 const SharedCommands = () => (
   <>

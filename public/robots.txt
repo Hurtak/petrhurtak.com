@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /articles/_* # draft articles start with _

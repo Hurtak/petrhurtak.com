@@ -1,6 +1,5 @@
 ## TODOs
 
-- strict mode
 - videos require + eslint disable
 - parseSvgImage should throw in case of invalid parse, it is run anyway during build so it should be fine
 - Critical dependency: the request of a dependency is an expression
@@ -15,9 +14,6 @@
   - font-size of paragraphs is too small
   - code examples have different font-size -> unify
 - tests
-  - TODO: test that they are sorted by datePublication
-  - TODO: no duplicate tweets and titles
-  - article dateUpdated after date created
   - that all articles export Article component
 - rewrite twitter threads into separate articles?
 - domain driven design article
@@ -38,17 +34,9 @@
   - apperances - talks, articles, etc
 - convert remaining articles
 - go through components and replace usage of raw components with cstom components
-- split
-  - general components
-  - article components
-    - article link open link to new window
 - colors
   - make sure only colors from component library are used
 - resolve todos in code
-- articles from twitter
-- drafts
-  - make sure they are in robots txt exclude
-  - add test
 - http://www.vzhurudolu.cz/prirucka/checklist
 
 ## Old TODOs
@@ -67,26 +55,11 @@
 - Insecure link urls: http://hurtak.disqus.com
 - click on all links and determine if they do not return 404
 - frontend checklist
-- responsive images
-  - https://www.gatsbyjs.org/docs/working-with-images/
-- google analytics in some better place
 - add sitemap
   - http://jecas.cz/sitemap
 - prev/next article links inside article
-- humans.txt
-- inspiration
-  - https://ryanclark.me/
-- tell now to use scripts/production instead of npm scripts
-- jest silent when test passes
-- @zeit/next-bundle-analyzer
-- https://www.npmjs.com/package/@pwa/next-workbox-webpack-plugin
-- https://asciinema.org/ & https://github.com/marionebl/svg-term-cli
-- Rewmap description in RSS
-  - Switch to https://github.com/jpmonette/feed
-- Incorporate tests
-  - metadata validation
-  - https://github.com/wooorm/alex
-  - something that checks grammar (maybe Grammarly has some API?)
+- terminal recording
+  - https://github.com/marionebl/svg-term-cli
 - hover & active styles
   - test whole web only with keyboard
 - compile articles
@@ -122,22 +95,7 @@
     - have cron job which determines number of comments on giver articles
     - display number of comments under
   - add article footer with
-    - share on twitter and facebook
-    - edit this article on github
-      - or maybe what could be really cool would be if there was live edit and anyone could submit edit
     - similar articles and next article
-- Zjistit, jak přidat do gmailu tlačítko see article a případně jaký věci tam můžu přidávat (a napsat o tomhle článek)
-  - http://imgur.com/iz4wIcW
-- images
-  - responsive images
-    - Srcset, Image element
-    - https://developers.google.com/web/updates/2015/09/automating-resource-selection-with-client-hints?hl=en
-    - also write article about this
-  - use webp for iamges?
-- page transition animations
-  - http://codyhouse.co/demo/page-scroll-effects/parallax.html
-- https://uimovement.com/ui/2181/link-behavior/
-- https://webmasters.googleblog.com/2011/09/pagination-with-relnext-and-relprev.html?m=1
 - make projects section
   - TOMATOTIM
   - PHPAUTOCOLOR
@@ -145,9 +103,6 @@
     - obrazky.cz
     - videa.seznam.cz
     - admin proxy?
-- http://uimovement.com/ui/440/challenge-accepted/
-- when somebody doesent have adblock, show warning :D
-  - https://twitter.com/gcluley/status/704980787716866048
 - http://jecas.cz/toc
 - jecas.cz/seo-rychle
 - Prechod mezi strankama

@@ -26,11 +26,13 @@ const Debug = ({ buildInfo }: Props) => (
     <h1>Debug info</h1>
 
     <ul>
-      <li>build time: {dayjs(buildInfo.time).toISOString()}</li>
-      <li>build time: {dayjs(buildInfo.time).toString()}</li>
+      <li>build time: {dayjs.utc(buildInfo.time).toISOString()}</li>
+      <li>build time: {dayjs.utc(buildInfo.time).toDate().toLocaleString()}</li>
       <li>
         build commit hash:{" "}
-        <Link href={routes.articleGitHubCommitHash(buildInfo.commitHash)}>{buildInfo.commitHash}</Link>
+        <Link href={routes.articleGitHubCommitHash(buildInfo.commitHash)} newTab>
+          {buildInfo.commitHash}
+        </Link>
       </li>
     </ul>
   </>

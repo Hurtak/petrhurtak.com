@@ -7,6 +7,7 @@ const validateSvgImport = z.object({
 });
 type SvgImport = z.infer<typeof validateSvgImport>;
 
+// Needed because of https://duncanleung.com/next-js-typescript-svg-any-module-declaration/
 export const parseSvgImage = (svgImport: unknown): SvgImport => {
   const svgImportValidated = validateSvgImport.safeParse(svgImport);
 

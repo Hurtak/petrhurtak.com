@@ -7,6 +7,14 @@ const projectRoot = __dirname;
  * @type {import('next').NextConfig}
  */
 const config = {
+  reactStrictMode: true,
+
+  experimental: {
+    // TODO: remove these once they become stable
+    scrollRestoration: true,
+    legacyBrowsers: false,
+  },
+
   // Workaround for https://github.com/vercel/next.js/issues/8251
   serverRuntimeConfig: {
     paths: {

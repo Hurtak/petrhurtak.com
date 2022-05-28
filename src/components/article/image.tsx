@@ -1,4 +1,6 @@
+import { pxCss } from "../../styles";
 import { Link } from "../base/link";
+import { CenterContent } from "../internal/center-content";
 
 export const Image = ({
   //
@@ -13,15 +15,21 @@ export const Image = ({
   alt: string;
 }) => {
   return (
-    <Link href={src} newTab>
+    <>
+      <CenterContent>
+        <Link href={src} newTab>
+          <img src={src} alt={alt} />
+        </Link>
+      </CenterContent>
+
       <style jsx>{`
         img {
           display: block;
-          max-width: 100%;
-          height: auto;
+          width: 100%;
+          max-width: ${pxCss(width)};
+          aspect-ratio: ${width} / ${height};
         }
       `}</style>
-      <img src={src} width={width} height={height} alt={alt} />
-    </Link>
+    </>
   );
 };

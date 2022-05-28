@@ -13,9 +13,3 @@ export const Video = ({ width, height, src }: { width: number; height: number; s
     </>
   );
 };
-
-export const getVideoSrc = (path: string): string => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const src = require(path) as string;
-  return src;
-};

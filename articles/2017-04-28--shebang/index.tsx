@@ -1,4 +1,4 @@
-import { Code, getVideoSrc, H1, H2, Li, List, P, Table, Tc, Tr, Video } from "../../src/components/article";
+import { Code, H1, H2, Li, List, P, Table, Tc, Tr, Video } from "../../src/components/article";
 
 export const Article = () => (
   <>
@@ -34,7 +34,14 @@ export const Article = () => (
       echo "Hello"
     `}</Code>
 
-    <Video width={598} height={274} src={getVideoSrc("./videos/shebang.mp4")} />
+    <Video
+      width={598}
+      height={274}
+      src={
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
+        require("./videos/shebang.mp4")
+      }
+    />
 
     <H2>usr/bin/env</H2>
 

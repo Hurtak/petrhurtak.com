@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 export const articleMetadataJsonValidator = z.object({
-  title: z.string(),
-  description: z.string(),
+  title: z.string().min(1),
+  description: z.string().min(1),
 });
 export type ArticleMetadataJson = z.infer<typeof articleMetadataJsonValidator>;
 

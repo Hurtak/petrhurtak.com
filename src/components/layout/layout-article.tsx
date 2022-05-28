@@ -1,9 +1,10 @@
-import dayjs from "dayjs";
+import * as dayjs from "dayjs";
 import { FC } from "react";
 
 import { ArticleBlog } from "../../articles/types";
 import { routes } from "../../config";
 import { gridCss } from "../../styles";
+import { DocumentTitle } from "../base/document-title";
 import { Dot } from "../base/dot";
 import { Link } from "../base/link";
 
@@ -18,6 +19,8 @@ export const LayoutArticle = ({
 
   return (
     <>
+      <DocumentTitle title={articleBlog.title} />
+
       <article>
         <h1>{articleBlog.title}</h1>
         <time title="Publication date" dateTime={datePublication.toISOString()}>

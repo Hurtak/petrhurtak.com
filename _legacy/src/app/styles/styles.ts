@@ -154,9 +154,3 @@ export const fonts = {
     },
   },
 };
-
-// /*
-//  * z-indexes
-//  */
-// --z-index-snippet-content-visible: 20;
-// --z-index-snippet-content: 10;

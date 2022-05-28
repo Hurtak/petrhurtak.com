@@ -8,6 +8,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
+import { DocumentTitle } from "../src/components/base/document-title";
 import { LayoutPage } from "../src/components/layout/layout-page";
 import { config, routes } from "../src/config";
 import { useGoogleAnalytics } from "../src/services/google-analytics";
@@ -34,9 +35,9 @@ const App = ({ Component, pageProps }: AppProps) => {
         }
       `}</style>
 
-      <Head>
-        <title>{config.site.domain}</title>
+      <DocumentTitle />
 
+      <Head>
         {/* Icons */}
         <link rel="icon" type="image/svg" href={routes.favicon} />
 

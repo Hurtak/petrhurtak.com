@@ -1,5 +1,6 @@
 ## TODOs
 
+- is date.utc even needed?
 - videos require + eslint disable
 - parseSvgImage should throw in case of invalid parse, it is run anyway during build so it should be fine
 - Critical dependency: the request of a dependency is an expression

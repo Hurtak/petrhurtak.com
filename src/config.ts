@@ -10,6 +10,7 @@ export const config = {
   site: {
     domain: "petrhurtak.com",
     domainWithProtocol: "https://petrhurtak.com",
+    documentTitle: "petrhurtak.com",
     yearFounded: 2015,
     gitHub: "https://github.com/hurtak/petrhurtak.com",
   },

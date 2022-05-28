@@ -2,9 +2,7 @@
   "compilerOptions": {
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "jsx": "react-jsx"
+    "esModuleInterop": true
   },
   "exclude": ["node_modules", "_legacy"]
 }

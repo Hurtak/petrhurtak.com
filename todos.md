@@ -1,5 +1,6 @@
 ## TODOs
 
+- add error boundary to the app and articles
 - share design between Code and Diagram
 - convert 2017 articles
 - videos require + eslint disable

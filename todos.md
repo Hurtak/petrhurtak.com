@@ -11,8 +11,6 @@
   - line-height of paragraphs is too small
   - font-size of paragraphs is too small
   - code examples have different font-size -> unify
-- tests
-  - that all articles export Article component
 - rewrite twitter threads into separate articles?
 - domain driven design article
 - responsive layout for mobile

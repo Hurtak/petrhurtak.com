@@ -1,9 +1,9 @@
 {
   "extends": [
     "eslint:recommended",
+    // "plugin:react/recommended", // included in "next/core-web-vitals"
+    // "plugin:react-hooks/recommended", // included in "next/core-web-vitals"
     "next/core-web-vitals",
-    // `eslint-plugin-react` included in `next`
-    // `eslint-plugin-react-hooks` included in `next`
     "plugin:jsx-a11y/strict",
     "plugin:promise/recommended",
     "prettier"

@@ -5,12 +5,15 @@
     // `eslint-plugin-react` included in `next`
     // `eslint-plugin-react-hooks` included in `next`
     "plugin:jsx-a11y/strict",
+    "plugin:promise/recommended",
     "prettier"
   ],
   "plugins": ["simple-import-sort"],
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
+
+    // Custom project rules
     "@next/next/no-img-element": 0,
     "jsx-a11y/media-has-caption": 0,
     "react/no-unescaped-entities": 0,

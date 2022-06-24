@@ -9,3 +9,4 @@ jobs:
     steps:
       - name: Broken Link Check
         uses: technote-space/broken-link-checker-action@v2
+        TARGET: https://petrhurtak.com

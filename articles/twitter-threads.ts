@@ -3,6 +3,11 @@ import { ArticleTwitterRaw } from "../src/articles/types";
 export const articlesTwitterRaw: ArticleTwitterRaw[] = [
   // 2022
   {
+    title: "Periodically check broken URLs",
+    datePublication: "2022-06-24",
+    link: "https://twitter.com/PetrHurtak/status/1540243724680265728",
+  },
+  {
     title: "Bitcoin and Ethereum code complexity analysis",
     datePublication: "2022-04-04",
     link: "https://twitter.com/PetrHurtak/status/1510968044331442182",

@@ -16,4 +16,8 @@ jobs:
         uses: ruzickap/action-my-broken-link-checker@v2
         with:
           url: https://petrhurtak.com
-          cmd_params: '--verbose --buffer-size=12000 --exclude="https://www.linkedin.com" --color=always'
+          cmd_params: >
+            --verbose
+            --color=always
+            --buffer-size=10000
+            --exclude="https://www.linkedin.com"

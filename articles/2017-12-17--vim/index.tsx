@@ -43,7 +43,7 @@ export const Article = () => (
   <>
     <P>
       Vim is a text editor. It is in the{" "}
-      <Link href="https://insights.stackoverflow.com/survey/2017#technology-most-popular-developer-environments-by-occupation">
+      <Link href="https://insights.stackoverflow.com/survey/2017#technology-_-most-popular-developer-environments-by-occupation">
         top 5 of the most popular text editors
       </Link>
       . Some of its advantages are:

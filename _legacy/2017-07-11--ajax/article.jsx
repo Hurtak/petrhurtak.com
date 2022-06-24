@@ -477,8 +477,8 @@ export default () => (
 
     <P>
       A modern alternative to XMLHttpRequest is the{" "}
-      <Link href="https://developer.mozillorg/en/docs/Web/API/Fetch_API">Fetch</Link> API that uses promises but has
-      some downsides like worse browser support and not supporting request cancellation which is needed surprisingly
+      <Link href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</Link> API that uses promises but
+      has some downsides like worse browser support and not supporting request cancellation which is needed surprisingly
       often – Lately, I have found myself rewriting Fetch to XMLHttpRequest many times, just because I needed the
       cancellation feature.
     </P>

@@ -60,7 +60,7 @@ export const Article = () => (
     <List>
       <Li>
         In the browser world you have{" "}
-        <Link href="https://developer.mozillorg/en/docs/Web/API/RandomSource/getRandomValues">
+        <Link href="https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues">
           window.crypto.getRandomValues
         </Link>
         .

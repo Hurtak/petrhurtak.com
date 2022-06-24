@@ -159,8 +159,9 @@ export const Article = () => (
 
     <P>
       This uses another interesting feature of TypeScript that is{" "}
-      <Link href="https://basarat.gitbooks.io/typescript/docs/types/literal-types.html">literal types</Link>, meaning
-      you can have a type of exact values, like <Code>"INITIAL"</Code>, instead of super-set like <Code>string</Code>.
+      <Link href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types">literal types</Link>
+      , meaning you can have a type of exact values, like <Code>"INITIAL"</Code>, instead of super-set like{" "}
+      <Code>string</Code>.
     </P>
 
     <Code language="tsx">{`

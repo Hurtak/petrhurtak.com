@@ -210,7 +210,7 @@ export const Article = () => (
     >
       <Tr>
         <Tc>
-          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Source">Source</Link>
+          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-source">Source</Link>
         </Tc>
         <Tc>mandatory</Tc>
         <Tc>
@@ -222,7 +222,7 @@ export const Article = () => (
       </Tr>
       <Tr>
         <Tc>
-          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Maintainer">Mantainer</Link>
+          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-maintainer">Mantainer</Link>
         </Tc>
         <Tc>mandatory</Tc>
         <Tc>
@@ -233,7 +233,7 @@ export const Article = () => (
       </Tr>
       <Tr>
         <Tc>
-          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Section">Section</Link>
+          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-section">Section</Link>
         </Tc>
         <Tc>recommended</Tc>
         <Tc>
@@ -245,7 +245,7 @@ export const Article = () => (
       </Tr>
       <Tr>
         <Tc>
-          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Priority">Priority</Link>
+          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-priority">Priority</Link>
         </Tc>
         <Tc>recommended</Tc>
         <Tc>
@@ -266,7 +266,7 @@ export const Article = () => (
       </Tr>
       <Tr>
         <Tc noWrap>
-          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Standards-Version">
+          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-standards-version">
             Standards-Version
           </Link>
         </Tc>
@@ -302,7 +302,7 @@ export const Article = () => (
       </Tr>
       <Tr>
         <Tc>
-          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Architecture">
+          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-architecture">
             Architecture
           </Link>
         </Tc>
@@ -318,14 +318,14 @@ export const Article = () => (
       </Tr>
       <Tr>
         <Tc>
-          <Link href="https://www.debian.org/doc/debian-policy/#document-ch-controlfields">Section</Link>
+          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html">Section</Link>
         </Tc>
         <Tc>recommended</Tc>
         <Tc>Same as Section of source package.</Tc>
       </Tr>
       <Tr>
         <Tc>
-          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Priority">Priority</Link>
+          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-priority">Priority</Link>
         </Tc>
         <Tc>recommended</Tc>
         <Tc>Same as Priority of source package.</Tc>
@@ -343,7 +343,7 @@ export const Article = () => (
       </Tr>
       <Tr>
         <Tc>
-          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Description">Description</Link>
+          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-description">Description</Link>
         </Tc>
         <Tc>mandatory</Tc>
         <Tc>Description.</Tc>

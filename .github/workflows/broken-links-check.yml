@@ -19,5 +19,4 @@ jobs:
           cmd_params: >
             --verbose
             --color=always
-            --buffer-size=10000
             --exclude="https://www.linkedin.com"

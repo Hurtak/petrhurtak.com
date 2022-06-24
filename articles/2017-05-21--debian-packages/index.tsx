@@ -292,7 +292,7 @@ export const Article = () => (
     >
       <Tr>
         <Tc>
-          <Link href="https://www.debian.org/doc/debian-policy/#document-ch-controlfields">Package</Link>
+          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-package">Package</Link>
         </Tc>
         <Tc>mandatory</Tc>
         <Tc>

@@ -1,11 +1,8 @@
 name: Broken Links Check
 
 on:
-  - push
-
-# on:
-#   schedule:
-#     - cron: '0 0 * * 0'
+  schedule:
+    - cron: "0 0 * * 0" # Once a week
 
 jobs:
   my-broken-link-checker:
@@ -16,7 +13,10 @@ jobs:
         uses: ruzickap/action-my-broken-link-checker@v2
         with:
           url: https://petrhurtak.com
+          # buffer-size increased otherwise it fails with "error when reading response headers: small read buffer"
+          # exclude of linkedin because it returns 999 status code
           cmd_params: >
             --verbose
             --color=always
+            --buffer-size=10000
             --exclude="https://www.linkedin.com"

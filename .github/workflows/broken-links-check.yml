@@ -16,4 +16,7 @@ jobs:
         uses: ruzickap/action-my-broken-link-checker@v2
         with:
           url: https://petrhurtak.com
-          # cmd_params: "--one-page-only --max-connections=3 --color=always" # Check just one page
+          cmd_params: \
+            -j "user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36" \
+            -j "accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" \
+            -j "accept-encoding:gzip, deflate, sdch, br"

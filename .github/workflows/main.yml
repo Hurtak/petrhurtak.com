@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "17"
-      - run: npm ci
+      - run: npm ci --production
       - run: npm run build
       - uses: preactjs/compressed-size-action@v2
       - uses: actions/upload-artifact@v3
@@ -43,9 +43,9 @@ jobs:
       - uses: treosh/lighthouse-ci-action@v9
         with:
           uploadArtifacts: true
-          configPath: "./lighthouserc.json"
+          configPath: lighthouserc.js
   deploy:
-    needs: [validate, build, lighthouse]
+    needs: [validate, build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v3

@@ -1,4 +1,5 @@
 import * as dayjs from "dayjs";
+import Head from "next/head";
 import { FC } from "react";
 
 import { ArticleBlog } from "../../articles/types";
@@ -23,6 +24,9 @@ export const LayoutArticle = ({
   return (
     <>
       <DocumentTitle title={articleBlog.title} />
+      <Head>
+        <meta name="description" content={articleBlog.description}></meta>
+      </Head>
 
       <article>
         <h1>{articleBlog.title}</h1>

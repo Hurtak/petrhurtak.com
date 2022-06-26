@@ -38,8 +38,8 @@ jobs:
           path: dist
       # Remove hidden routes html files
       - run: |
-        rm dist/_*.html
-        rm dist/articles/_*.html
+          rm dist/_*.html
+          rm dist/articles/_*.html
       - uses: treosh/lighthouse-ci-action@v9
         with:
           uploadArtifacts: true

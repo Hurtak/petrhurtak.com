@@ -5,10 +5,8 @@
       "maxAutodiscoverUrls": 100
     },
     "assert": {
-      "preset": "lighthouse:recommended",
-      "assertions": {
-        "categories:pwa": "off"
-      }
+      "preset": "lighthouse:no-pwa",
+      "assertions": {}
     }
   }
 }

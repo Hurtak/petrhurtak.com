@@ -27,23 +27,6 @@ jobs:
         with:
           name: artifact-dist
           path: dist
-  lighthouse:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
-        with:
-          name: artifact-dist
-          path: dist
-      # Remove hidden routes html files
-      - run: |
-          rm dist/_*.html
-          rm dist/articles/_*.html
-      - uses: treosh/lighthouse-ci-action@v9
-        with:
-          uploadArtifacts: true
-          configPath: lighthouserc.js
   deploy:
     needs: [validate, build]
     runs-on: ubuntu-latest

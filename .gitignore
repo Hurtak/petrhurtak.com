@@ -3,7 +3,6 @@
 
 # cache
 /.next
-/.lighthouseci
 /tsconfig.next.tsbuildinfo
 
 # app build

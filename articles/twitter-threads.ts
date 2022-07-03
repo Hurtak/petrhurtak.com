@@ -3,6 +3,12 @@ import { ArticleTwitterRaw } from "../src/articles/types";
 export const articlesTwitterRaw: ArticleTwitterRaw[] = [
   // 2022
   {
+    title:
+      "Introducing eslint-config-start, slightly opinionated Eslint config that should be a good start for any project",
+    datePublication: "2022-07-03",
+    link: "https://twitter.com/PetrHurtak/status/1543650771287293952",
+  },
+  {
     title: "Periodically check broken URLs",
     datePublication: "2022-06-24",
     link: "https://twitter.com/PetrHurtak/status/1540243724680265728",

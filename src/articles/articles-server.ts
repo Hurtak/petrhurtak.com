@@ -98,6 +98,8 @@ const articleDirToArticleBlog = async (articlesDir: string, articleDir: ArticleD
     title: metadata.title,
     description: metadata.description,
     datePublication: articleDir.date,
+    // This data structure is used in next.js getInitialProps and it does not allow using undefined directly because it is
+    // not JSON compatible, so it requires us to omit this property or use null.
     ...(dateLastUpdate && { dateLastUpdate }),
     articlePath,
     articleDirectory: articleDir.directory,

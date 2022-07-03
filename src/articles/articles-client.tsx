@@ -5,8 +5,8 @@ import { LayoutArticle } from "../components/layout/layout-article";
 import { ArticleBlog } from "./types";
 
 export const articlePage = (articleComponent: React.FC) => {
-  const ArticlePage: NextPage<{ articleBlog: ArticleBlog }> = (props) => (
-    <LayoutArticle articleBlog={props.articleBlog} articleComponent={articleComponent} />
+  const ArticlePage: NextPage<{ articleBlog: ArticleBlog }> = ({ articleBlog }) => (
+    <LayoutArticle articleBlog={articleBlog} articleComponent={articleComponent} />
   );
 
   return ArticlePage;

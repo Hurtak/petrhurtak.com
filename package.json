@@ -40,10 +40,8 @@
     "@typescript-eslint/eslint-plugin": "5.30.0",
     "eslint": "8.18.0",
     "eslint-config-next": "12.2.0",
-    "eslint-config-prettier": "8.5.0",
+    "eslint-config-start": "0.0.4",
     "eslint-plugin-jsx-a11y": "6.6.0",
-    "eslint-plugin-promise": "6.0.0",
-    "eslint-plugin-simple-import-sort": "7.0.0",
     "prettier": "2.7.1",
     "react-test-renderer": "18.2.0",
     "vitest": "0.16.0"

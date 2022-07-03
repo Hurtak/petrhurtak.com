@@ -1,14 +1,15 @@
-import * as path from "path";
 import { describe, expect, test } from "vitest";
 
 import { getArticlesBlog } from "../src/articles/articles-server";
+
+const getArticles = () => getArticlesBlog(__dirname);
 
 describe("getArticlesBlog", () => {
   describe("folder name", () => {
     const regex = /^(?<hidden>_)?(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})--(?<slug>[\w-]+?)$/;
 
     test("folder name matches pattern", async () => {
-      const articles = await getArticlesBlog(path.join(__dirname, "../articles"));
+      const articles = await getArticles();
 
       for (const article of articles) {
         expect(article.articleDirectory).toMatch(regex);
@@ -16,7 +17,7 @@ describe("getArticlesBlog", () => {
     });
 
     test("folder name date matches metadata date", async () => {
-      const articles = await getArticlesBlog(path.join(__dirname, "../articles"));
+      const articles = await getArticles();
 
       for (const article of articles) {
         const match = article.articleDirectory.match(regex);
@@ -38,7 +39,7 @@ describe("getArticlesBlog", () => {
 
   describe("dateLastUpdate", () => {
     test("dateLastUpdate is after datePublication", async () => {
-      const articles = await getArticlesBlog(path.join(__dirname, "../articles"));
+      const articles = await getArticles();
 
       for (const article of articles) {
         if (!article.dateLastUpdate) continue;

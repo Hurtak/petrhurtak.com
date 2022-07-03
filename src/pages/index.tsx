@@ -35,7 +35,7 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
     await generateRssFeed(articlesBlogVisible, serverConfig.paths.public);
   }
 
-  const articlesTwitter = articlesTwitterRaw.map(parseArticleTwitterRaw);
+  const articlesTwitter = articlesTwitterRaw.map((a) => parseArticleTwitterRaw(a));
   const articlesList: ArticlePublished[] = [...articlesBlogVisible, ...articlesTwitter];
 
   const articles: ArticlesGroup[] = pipe(

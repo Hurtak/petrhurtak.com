@@ -17,7 +17,7 @@ export const LayoutArticle = ({
   articleComponent: FC;
 }) => {
   const datePublication = dayjs.utc(articleBlog.datePublication);
-  const dateLastUpdate = articleBlog.dateLastUpdate ? dayjs.utc(articleBlog.dateLastUpdate) : null;
+  const dateLastUpdate = articleBlog.dateLastUpdate ? dayjs.utc(articleBlog.dateLastUpdate) : undefined;
 
   const formatDate = (dayjs: dayjs.Dayjs): string => dayjs.format("YYYY-MMM-DD");
 

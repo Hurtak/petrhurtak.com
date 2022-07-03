@@ -1,6 +1,6 @@
 import { Feed } from "feed";
-import * as fs from "fs/promises";
-import * as path from "path";
+import * as fs from "node:fs/promises";
+import * as path from "node:path";
 
 import { ArticleBlogVisible } from "../articles/types";
 import { config, routes } from "../config";
@@ -30,7 +30,7 @@ export const generateRssFeed = async (articles: Array<ArticleBlogVisible>, targe
     author,
   });
 
-  articles.forEach((article) => {
+  for (const article of articles) {
     const url = routes.absolute(routes.article(article.slug));
     feed.addItem({
       title: article.title,
@@ -40,7 +40,7 @@ export const generateRssFeed = async (articles: Array<ArticleBlogVisible>, targe
       author: [author],
       date: new Date(article.datePublication),
     });
-  });
+  }
 
   await fs.mkdir(path.join(targetFolder, routes.rss.root), { recursive: true });
   await Promise.all([

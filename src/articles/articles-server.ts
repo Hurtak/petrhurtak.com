@@ -1,6 +1,6 @@
-import * as fs from "fs/promises";
 import { GetStaticPropsResult } from "next";
-import * as path from "path";
+import * as fs from "node:fs/promises";
+import * as path from "node:path";
 import { z } from "zod";
 
 import { getServerRuntimeConfig } from "../config";
@@ -41,13 +41,13 @@ const getArticlesDirs = async (articlesDir: string): Promise<Array<ArticleDirect
   return articleDirs;
 };
 
-const parseArticleFolder = (articleFolder: string): ArticleDirectory | null => {
+const parseArticleFolder = (articleFolder: string): ArticleDirectory | undefined => {
   const matchArticle = articleFolder.match(
     /^(?<hidden>_)?(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})--(?<slug>[\w-]+?)$/
   );
 
   if (!matchArticle || !matchArticle.groups) {
-    return null;
+    return;
   }
 
   const validatorGroups = z.object({
@@ -90,7 +90,7 @@ const articleDirToArticleBlog = async (articlesDir: string, articleDir: ArticleD
   const metadataParsed = JSON.parse(metadataRaw) as unknown;
   const metadata = articleMetadataJsonValidator.parse(metadataParsed);
 
-  const dateLastUpdate = metadata.lastUpdate ? parseArticleLastUpdate(metadata.lastUpdate, articleDir.slug) : null;
+  const dateLastUpdate = metadata.lastUpdate ? parseArticleLastUpdate(metadata.lastUpdate, articleDir.slug) : undefined;
 
   const articleData: ArticleBlog = {
     id: articleDir.slug,
@@ -99,7 +99,7 @@ const articleDirToArticleBlog = async (articlesDir: string, articleDir: ArticleD
     description: metadata.description,
     datePublication: articleDir.date,
     dateLastUpdate,
-    articlePath: articlePath,
+    articlePath,
     articleDirectory: articleDir.directory,
     slug: articleDir.slug,
   };
@@ -118,7 +118,7 @@ export const getArticlesBlog = async (articlesDir: string): Promise<Array<Articl
   return articlesData;
 };
 
-export const getArticleBlog = async (articlesDir: string, articleSlug: string): Promise<ArticleBlog | null> => {
+export const getArticleBlog = async (articlesDir: string, articleSlug: string): Promise<ArticleBlog | undefined> => {
   const articleDirs = await getArticlesDirs(articlesDir);
 
   for (const articleDir of articleDirs) {
@@ -128,6 +128,4 @@ export const getArticleBlog = async (articlesDir: string, articleSlug: string): 
       return metadata;
     }
   }
-
-  return null;
 };

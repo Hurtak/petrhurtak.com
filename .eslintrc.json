@@ -1,36 +1,23 @@
 {
   "extends": [
-    "eslint:recommended",
+    "start",
+    "plugin:jsx-a11y/strict",
     // "plugin:react/recommended", // included in "next/core-web-vitals"
     // "plugin:react-hooks/recommended", // included in "next/core-web-vitals"
-    "next/core-web-vitals",
-    "plugin:jsx-a11y/strict",
-    "plugin:promise/recommended",
-    "prettier"
+    "next/core-web-vitals"
   ],
-  "plugins": ["simple-import-sort"],
   "rules": {
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
-
     // Custom project rules
     "@next/next/no-img-element": 0,
     "jsx-a11y/media-has-caption": 0,
     "react/no-unescaped-entities": 0,
+
     "no-restricted-imports": ["error", { "name": "next/link", "message": "Use our own Link component" }]
   },
 
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": [
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "prettier"
-      ],
-      "rules": {},
-      "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "project": "./tsconfig.base.json"
       }

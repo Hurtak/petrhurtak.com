@@ -6,10 +6,10 @@ import { colors, gridCss } from "../../styles";
 export const Table = ({ heading, children }: { heading?: ReactNode; children: React.ReactNode }) => {
   const headingContent = (() => {
     const headingProp = heading;
-    if (!headingProp) return null;
+    if (!headingProp) return;
 
     const headingRow = Children.map(heading, (child) =>
-      isValidElement(child) ? cloneElement(child, { heading: true }) : null
+      isValidElement(child) ? cloneElement(child, { heading: true }) : undefined
     );
 
     return headingRow;
@@ -24,7 +24,9 @@ export const Table = ({ heading, children }: { heading?: ReactNode; children: Re
 };
 
 export const Tr = ({ heading = false, children }: { heading?: boolean; children: React.ReactNode }) => {
-  const cells = Children.map(children, (child) => (isValidElement(child) ? cloneElement(child, { heading }) : null));
+  const cells = Children.map(children, (child) =>
+    isValidElement(child) ? cloneElement(child, { heading }) : undefined
+  );
 
   return <tr>{cells}</tr>;
 };
@@ -45,7 +47,7 @@ export const Tc = ({
   const Component = heading ? "th" : "td";
 
   return (
-    <Component className={clsx({ ["no-wrap"]: noWrap })} rowSpan={rowSpan} colSpan={colSpan}>
+    <Component className={clsx({ "no-wrap": noWrap })} rowSpan={rowSpan} colSpan={colSpan}>
       <style jsx>{`
         .no-wrap {
           white-space: nowrap;

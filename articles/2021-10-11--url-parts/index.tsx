@@ -1,6 +1,6 @@
 import { Br, Code, H1, P, Table, Tc, Tr } from "../components";
 
-const Sep = () => (
+const Separator = () => (
   <>
     ,<Br />
   </>
@@ -34,7 +34,7 @@ export const Article = () => (
         <Tc rowSpan={4}>origin</Tc>
         <Tc colSpan={2}>
           protocol
-          <Sep />
+          <Separator />
           scheme
         </Tc>
       </Tr>
@@ -43,7 +43,7 @@ export const Article = () => (
 
         <Tc rowSpan={3}>
           domain
-          <Sep />
+          <Separator />
           hostname
         </Tc>
         <Tc>subdomain</Tc>
@@ -69,7 +69,7 @@ export const Article = () => (
 
         <Tc colSpan={2}>
           file
-          <Sep />
+          <Separator />
           page
         </Tc>
       </Tr>
@@ -78,9 +78,9 @@ export const Article = () => (
 
         <Tc colSpan={3}>
           query string
-          <Sep />
+          <Separator />
           parameters
-          <Sep />
+          <Separator />
           search
         </Tc>
       </Tr>
@@ -89,7 +89,7 @@ export const Article = () => (
 
         <Tc colSpan={3}>
           fragment
-          <Sep />
+          <Separator />
           hash
         </Tc>
       </Tr>

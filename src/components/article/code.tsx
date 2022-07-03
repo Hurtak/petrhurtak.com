@@ -38,9 +38,9 @@ export const Code = ({ language, children }: { language?: LanguageType; children
   return (
     <Tag
       className={clsx({
-        ["code-inline"]: inline === true,
-        ["code-block"]: inline === false,
-        ["no-highlight"]: language == null,
+        "code-inline": inline,
+        "code-block": !inline,
+        "no-highlight": !language,
       })}
     >
       <style jsx>{`

@@ -98,7 +98,7 @@ const articleDirToArticleBlog = async (articlesDir: string, articleDir: ArticleD
     title: metadata.title,
     description: metadata.description,
     datePublication: articleDir.date,
-    dateLastUpdate,
+    ...(dateLastUpdate && { dateLastUpdate }),
     articlePath,
     articleDirectory: articleDir.directory,
     slug: articleDir.slug,

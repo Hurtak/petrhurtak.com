@@ -1,17 +1,9 @@
 {
-  "extends": [
-    "start",
-    "plugin:jsx-a11y/strict",
-    // "plugin:react/recommended", // included in "next/core-web-vitals"
-    // "plugin:react-hooks/recommended", // included in "next/core-web-vitals"
-    "next/core-web-vitals"
-  ],
+  "extends": ["start", "start-react", "next/core-web-vitals"],
   "rules": {
-    // Custom project rules
     "@next/next/no-img-element": 0,
     "jsx-a11y/media-has-caption": 0,
     "react/no-unescaped-entities": 0,
-
     "no-restricted-imports": ["error", { "name": "next/link", "message": "Use our own Link component" }]
   },
 

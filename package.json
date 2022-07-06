@@ -16,10 +16,10 @@
     "validate": "npm run test && npm run type-check && npm run lint && npm run prettier"
   },
   "dependencies": {
-    "@types/node": "18.0.1",
+    "@types/node": "18.0.3",
     "@types/ramda": "0.28.14",
-    "@types/react": "18.0.14",
-    "clsx": "1.2.0",
+    "@types/react": "18.0.15",
+    "clsx": "1.2.1",
     "dayjs": "1.11.3",
     "feed": "4.2.2",
     "next": "12.2.0",
@@ -39,8 +39,8 @@
     "@types/react-test-renderer": "18.0.0",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.0",
-    "eslint-config-start": "1.0.1",
-    "eslint-config-start-react": "1.0.0",
+    "eslint-config-start": "1.1.0",
+    "eslint-config-start-react": "2.0.0",
     "prettier": "2.7.1",
     "react-test-renderer": "18.2.0",
     "vitest": "0.17.0"

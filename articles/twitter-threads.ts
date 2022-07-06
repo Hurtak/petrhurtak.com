@@ -3,6 +3,11 @@ import { ArticleTwitterRaw } from "../src/articles/types";
 export const articlesTwitterRaw: ArticleTwitterRaw[] = [
   // 2022
   {
+    title: "The easiest way to enforce architecture patterns",
+    datePublication: "2022-07-06",
+    link: "https://twitter.com/PetrHurtak/status/1544683890857676801",
+  },
+  {
     title:
       "Introducing eslint-config-start, slightly opinionated Eslint config that should be a good start for any project",
     datePublication: "2022-07-03",

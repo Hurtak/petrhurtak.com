@@ -17,12 +17,12 @@
   },
   "dependencies": {
     "@types/node": "18.0.3",
-    "@types/ramda": "0.28.14",
+    "@types/ramda": "0.28.15",
     "@types/react": "18.0.15",
     "clsx": "1.2.1",
     "dayjs": "1.11.3",
     "feed": "4.2.2",
-    "next": "12.2.0",
+    "next": "12.2.2",
     "next-videos": "1.4.0",
     "normalize.css": "8.0.1",
     "ramda": "0.28.0",
@@ -38,11 +38,11 @@
   "devDependencies": {
     "@types/react-test-renderer": "18.0.0",
     "eslint": "8.19.0",
-    "eslint-config-next": "12.2.0",
+    "eslint-config-next": "12.2.2",
     "eslint-config-start": "1.1.0",
     "eslint-config-start-react": "2.0.0",
     "prettier": "2.7.1",
     "react-test-renderer": "18.2.0",
-    "vitest": "0.17.1"
+    "vitest": "0.18.0"
   }
 }

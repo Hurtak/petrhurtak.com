@@ -13,10 +13,17 @@ jobs:
         uses: ruzickap/action-my-broken-link-checker@v2
         with:
           url: https://petrhurtak.com
-          # buffer-size increased otherwise it fails with "error when reading response headers: small read buffer"
-          # exclude of linkedin because it returns 999 status code
+          # Params docs https://github.com/raviqqe/muffet/blob/main/.snapshots/TestHelp
+          #   `timeout`
+          #     Increased because some links are on free Netlify or Heroku which can put the instances to sleep and it
+          #     can take a long time for them to start again.
+          #   `buffer-size`
+          #     Increased otherwise it fails with "error when reading response headers: small read buffer".
+          #   `exclude="https://www.linkedin.com"`
+          #     Because LinkedIn returns 999 status code for bots.
           cmd_params: >
-            --verbose
-            --color=always
+            --timeout=30
             --buffer-size=10000
             --exclude="https://www.linkedin.com"
+            --color=always
+            --verbose

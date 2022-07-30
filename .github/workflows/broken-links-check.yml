@@ -1,8 +1,9 @@
 name: Broken Links Check
 
 on:
-  schedule:
-    - cron: "0 12 * * 2,4,6" # At 12:00 on Tuesday, Thursday, and Saturday.
+  - push
+  # schedule:
+  #   - cron: "0 12 * * 2,4,6" # At 12:00 on Tuesday, Thursday, and Saturday.
 
 jobs:
   my-broken-link-checker:
@@ -24,7 +25,6 @@ jobs:
           cmd_params: >
             --timeout=30
             --buffer-size=10000
-            --exclude="https://www.linkedin.com"
             --header="user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
             --color=always
             --verbose

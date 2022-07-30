@@ -6,10 +6,10 @@ import { colors, gridCss } from "../../../styles";
 export const Diagram = ({ children }: { children: string }) => {
   return (
     <>
-      <div>{trimEmptyEdgeLines(stripIndent(children))}</div>
+      <pre>{trimEmptyEdgeLines(stripIndent(children))}</pre>
 
       <style jsx>{`
-        div {
+        pre {
           background: ${colors.gray};
           border: 1px solid ${colors.grayDark};
           border-radius: 2px;

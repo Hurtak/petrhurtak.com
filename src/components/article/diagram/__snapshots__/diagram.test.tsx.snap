@@ -2,18 +2,18 @@
 
 exports[`Diagram > Diagram component snapshot 1`] = `
 [
-  <div>
+  <pre>
     ┌─┬─┐
 │ │ │
 ├─┼─┤
 │ │ │
 └─┴─┘
-  </div>,
+  </pre>,
   <style
     jsx={true}
   >
     
-        div {
+        pre {
           background: #f3f3f3;
           border: 1px solid #dadada;
           border-radius: 2px;

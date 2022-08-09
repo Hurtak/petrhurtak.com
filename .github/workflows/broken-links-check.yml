@@ -35,5 +35,6 @@ jobs:
             --buffer-size=10000
             --exclude="https://www.linkedin.com"
             --exclude="https://stackoverflow.com"
+            --exclude="https://insights.stackoverflow.com"
             --color=always
             --verbose

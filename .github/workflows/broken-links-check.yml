@@ -22,9 +22,13 @@ jobs:
           #     Increased otherwise it fails with "error when reading response headers: small read buffer".
           #   `exclude="https://www.linkedin.com"`
           #     Because LinkedIn returns 999 status code for bots.
+
+          # TODO
+          # Add header parameter because some services will fail when it is missing
+          # --header="user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+          # But there is this issue https://github.com/ruzickap/action-my-broken-link-checker/issues/83
           cmd_params: >
             --timeout=30
             --buffer-size=10000
-            --header "user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
             --color=always
             --verbose

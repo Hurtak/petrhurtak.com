@@ -16,7 +16,7 @@
     "validate": "npm run test && npm run type-check && npm run lint && npm run prettier"
   },
   "dependencies": {
-    "@types/node": "18.7.2",
+    "@types/node": "18.7.8",
     "@types/ramda": "0.28.15",
     "@types/react": "18.0.17",
     "clsx": "1.2.1",
@@ -37,12 +37,12 @@
   },
   "devDependencies": {
     "@types/react-test-renderer": "18.0.0",
-    "eslint": "8.21.0",
+    "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
     "eslint-config-start": "1.1.2",
     "eslint-config-start-react": "2.0.1",
     "prettier": "2.7.1",
     "react-test-renderer": "18.2.0",
-    "vitest": "0.21.1"
+    "vitest": "0.22.1"
   }
 }

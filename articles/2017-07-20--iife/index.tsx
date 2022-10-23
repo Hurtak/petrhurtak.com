@@ -1,7 +1,8 @@
 import React from "react";
-import { H1, H2, Link, List, Li, P, Table, Tr, Tc, Code } from "../../components";
 
-export default () => (
+import { Code, H1, H2, Li, Link, List, P, Table, Tc, Tr } from "../components";
+
+export const Article = () => (
   <>
     <H1>What is IIFE</H1>
 
@@ -12,7 +13,7 @@ export default () => (
       <Li>What that means is that we define a new function and execute it immediately.</Li>
     </List>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
       console.log(1);
 
       // IIFE with arrow function
@@ -51,7 +52,7 @@ export default () => (
       <Li>You do not accidentally overwrite global variables of other scripts by using the same name.</Li>
     </List>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
       <DOCTYPE html>
       <html>
         <head><!-- code --></head>
@@ -61,7 +62,7 @@ export default () => (
             (() => {
               const config = { foo: 'bar' };
               // "config" is not leaked to the window object
-              App.init(config);
+              Analytics.init(config);
             })()
           </script>
         </body>
@@ -70,7 +71,7 @@ export default () => (
 
     <H2>Variable assignment with its own scope</H2>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
       // IIFE
       const res = (() => {
         const foo = 1;
@@ -92,8 +93,7 @@ export default () => (
     <P>
       It is more common to see this in functional languages where keywords like <Code>let</Code> are available.
     </P>
-
-    <Code multiline language="elm">{`
+    <Code language="elm">{`
       res =
         let
           foo = 1
@@ -101,18 +101,13 @@ export default () => (
         in
           foo + bar
     `}</Code>
-
     <P>
       At the moment there is a stage 1 <Code>do</Code> keyword{" "}
-      <Link href="https://gist.github.com/dherman/1c97dfb25179fa34a41b5fff040f9879">proposal</Link> for JavaScript that
-      introduces such functionality. It is also supported by{" "}
-      <Link href="https://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=es2015%2Cstage-0%2Cstage-1%2Cstage-2%2Cstage-3&targets=&browsers=&builtIns=false&debug=false&code_lz=MYewdgzgLgBATgUwjAvDAJiGBvAUDGUSWAMxCzQEZ9DxoYAjAQzlRgCYaysBqRl3AF8gA">
-        Babel
-      </Link>
-      .
+      <Link href="https://github.com/tc39/proposal-do-expressions">proposal</Link> for JavaScript that introduces such
+      functionality.
     </P>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
       const res = do {
         const foo = 1;
         const bar = 2;
@@ -123,18 +118,18 @@ export default () => (
     <H2>React</H2>
 
     <P>
-      In React <Code>if</Code> statements inside templates are usualy done either with logical operators{" "}
-      <Code language="javascript">{`
+      In React <Code>if</Code> statements inside templates are usually done either with logical operators{" "}
+      <Code language="js">{`
         condition && <b>true</b>
       `}</Code>{" "}
       or with ternary operators
-      <Code language="javascript">{`
+      <Code language="js">{`
         condition ? <b>true</b> : <b>false</b>
       `}</Code>
-      . IIFE might be used to create blocks with regular code flow.
+      IIFE might be used to create blocks with regular code flow.
     </P>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
       const html = (
         <section>
           {(() => {
@@ -154,7 +149,7 @@ export default () => (
 
     <P>Also might be useful when we want to do some computations right in the templates.</P>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
       const html = (
         <section>
           {(() => {
@@ -179,7 +174,7 @@ export default () => (
       <Li>True private variables/functions/methods (unlike with JavaScript classes).</Li>
     </List>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
       const Counter = (() => {
         // private variables/functions
         let state = 0;
@@ -218,7 +213,7 @@ export default () => (
       This will also lead to bigger memory requirements compared to classes.
     </P>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
       const Counter = initialState => (() => {
         // private variables/functions
         let state = initialState;
@@ -264,49 +259,49 @@ export default () => (
     >
       <Tr>
         <Tc>
-          <Code language="javascript">{`const x = (() => { return foo() })()`}</Code>
+          <Code language="js">{`const x = (() => { return foo() })()`}</Code>
         </Tc>
         <Tc>valid</Tc>
       </Tr>
       <Tr>
         <Tc>
-          <Code language="javascript">{`const x = () => { return foo() }()`}</Code>
+          <Code language="js">{`const x = () => { return foo() }()`}</Code>
         </Tc>
         <Tc>invalid</Tc>
       </Tr>
       <Tr>
         <Tc>
-          <Code language="javascript">{`const x = (function () { return foo() })()`}</Code>
+          <Code language="js">{`const x = (function () { return foo() })()`}</Code>
         </Tc>
         <Tc>valid</Tc>
       </Tr>
       <Tr>
         <Tc>
-          <Code language="javascript">{`const x = function () { return foo() }()`}</Code>
+          <Code language="js">{`const x = function () { return foo() }()`}</Code>
         </Tc>
         <Tc>valid</Tc>
       </Tr>
       <Tr>
         <Tc>
-          <Code language="javascript">{`(() => { return foo() })()`}</Code>
+          <Code language="js">{`(() => { return foo() })()`}</Code>
         </Tc>
         <Tc>valid</Tc>
       </Tr>
       <Tr>
         <Tc>
-          <Code language="javascript">{`() => { return foo() }()`}</Code>
+          <Code language="js">{`() => { return foo() }()`}</Code>
         </Tc>
         <Tc>invalid</Tc>
       </Tr>
       <Tr>
         <Tc>
-          <Code language="javascript">{`(function () { return foo() })()`}</Code>
+          <Code language="js">{`(function () { return foo() })()`}</Code>
         </Tc>
         <Tc>valid</Tc>
       </Tr>
       <Tr>
         <Tc>
-          <Code language="javascript">{`function () { return foo() }()`}</Code>
+          <Code language="js">{`function () { return foo() }()`}</Code>
         </Tc>
         <Tc>invalid</Tc>
       </Tr>
@@ -318,7 +313,7 @@ export default () => (
 
     <H2>If you are not using any module system and concatenate JavaScript files manually.</H2>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
       // File a.js
       console.log(1)
 
@@ -330,14 +325,14 @@ export default () => (
 
     <P>If you concatenate these files, the executed code is the equivalent to</P>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
       console.log(1)(() => {})()
       // Uncaught TypeError: console.log(...) is not a function
     `}</Code>
 
     <P>You can solve this problem by putting semicolon before the IIFE</P>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
     ;(() => {
       // ...
     })()
@@ -350,7 +345,7 @@ export default () => (
       semicolon at the beginning is required for the reasons described above.
     </P>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
       // ok
       const res1 = (() => { return 1 })()
       const res2 = (() => { return 1 })()
@@ -376,7 +371,7 @@ export default () => (
       parentheses).
     </P>
 
-    <Code multiline language="javascript">{`
+    <Code language="js">{`
       !function () { /* ... */ }()
       ~function () { /* ... */ }()
       -function () { /* ... */ }()

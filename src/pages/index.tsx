@@ -77,8 +77,11 @@ const Home: NextPage<Props> = (props) => (
 
       <div className="profile-text">
         <p>
-          I am an engineer with a focus on full-stack TypeScript web app development. I teach students how to create web
-          apps at{" "}
+          I am an software engineer with a focus on full-stack TypeScript web app development. I am working on{" "}
+          <Link href="https://stockstory.org/" newTab>
+            StockStory
+          </Link>{" "}
+          and I teach students how to create web apps at{" "}
           <Link href="https://www.cvut.cz/en" newTab>
             Czech Technical University
           </Link>

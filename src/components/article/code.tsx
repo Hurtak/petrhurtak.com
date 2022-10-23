@@ -2,7 +2,9 @@ import clsx from "clsx";
 import Refractor from "react-refractor";
 import bash from "refractor/lang/bash";
 import docker from "refractor/lang/docker";
+import elm from "refractor/lang/elm";
 import javascript from "refractor/lang/javascript";
+import json from "refractor/lang/json";
 import jsx from "refractor/lang/jsx";
 import makefile from "refractor/lang/makefile";
 import tsx from "refractor/lang/tsx";
@@ -14,7 +16,9 @@ import { colors, gridCss, sizeCss } from "../../styles";
 
 Refractor.registerLanguage(bash);
 Refractor.registerLanguage(docker);
+Refractor.registerLanguage(elm);
 Refractor.registerLanguage(javascript);
+Refractor.registerLanguage(json);
 Refractor.registerLanguage(jsx);
 Refractor.registerLanguage(makefile);
 Refractor.registerLanguage(tsx);
@@ -22,15 +26,19 @@ Refractor.registerLanguage(typescript);
 Refractor.registerLanguage(yaml);
 
 type LanguageType =
-  | "bash"
   //
-  | "docker"
   | "js"
   | "jsx"
-  | "makefile"
   | "ts"
+  | "tsx"
+  | "elm"
+  //
   | "yaml"
-  | "tsx";
+  | "json"
+  //
+  | "docker"
+  | "bash"
+  | "makefile";
 
 export const Code = ({ language, children }: { language?: LanguageType; children: string }) => {
   const inline = !children.includes("\n");

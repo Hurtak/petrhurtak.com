@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Code, H1, H2, Li, Link, List, P, Table, Tc, Tr } from "../components";
+import { Code, H1, H2, Li, Link, List, P } from "../components";
 
 export const Article = () => (
   <>

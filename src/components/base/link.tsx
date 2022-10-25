@@ -18,16 +18,15 @@ export const Link = ({
 
   return (
     <>
-      <NextLink href={hrefNormalized} passHref>
-        <a
-          className={className}
-          {...(newTab && {
-            rel: "noopener noreferrer",
-            target: "_blank",
-          })}
-        >
-          {children}
-        </a>
+      <NextLink
+        href={hrefNormalized}
+        className={className}
+        {...(newTab && {
+          rel: "noopener noreferrer",
+          target: "_blank",
+        })}
+      >
+        {children}
       </NextLink>
 
       <style jsx>{`

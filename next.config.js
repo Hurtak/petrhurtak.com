@@ -13,7 +13,6 @@ const config = {
   experimental: {
     // TODO: remove these once they become stable
     scrollRestoration: true,
-    legacyBrowsers: false,
   },
 
   serverRuntimeConfig: {

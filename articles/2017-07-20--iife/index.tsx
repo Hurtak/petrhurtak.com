@@ -229,18 +229,16 @@ export const Article = () => (
 
     <H1>Downsides</H1>
 
-    <P>
-      <List>
-        <Li>They are not commonly used pattern, so they might be confusing.</Li>
-        <Li>
-          They might not promote best practices, for example they might lead you to write more inlined code, while
-          refactoring into some nice testable function might be better option.
-        </Li>
-        <Li>
-          They are not best from performance point of view, you are creating function that is technically not needed
-          most of the time, and then you are executing it immediately.
-        </Li>
-      </List>
-    </P>
+    <List>
+      <Li>They are not commonly used pattern, so they might be confusing.</Li>
+      <Li>
+        They might not promote best practices, for example they might lead you to write more inlined code, while
+        refactoring into some nice testable function might be better option.
+      </Li>
+      <Li>
+        They are not best from performance point of view, you are creating function that is technically not needed most
+        of the time, and then you are executing it immediately.
+      </Li>
+    </List>
   </>
 );

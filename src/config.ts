@@ -27,7 +27,7 @@ export const config = {
     generateRssInDev: false,
   },
   tokens: {
-    googleAnalytics: "UA-93333552-1",
+    googleAnalytics: "G-G6MF6HM86N",
   },
 } as const;
 

@@ -3,6 +3,11 @@ import { ArticleTwitterRaw } from "../src/articles/types";
 export const articlesTwitterRaw: ArticleTwitterRaw[] = [
   // 2022
   {
+    title: "TypeScript asserts keyword and type narrowing in tests",
+    datePublication: "2022-12-13",
+    link: "https://twitter.com/PetrHurtak/status/1602682991314182145",
+  },
+  {
     title: "The easiest way to enforce architecture patterns",
     datePublication: "2022-07-06",
     link: "https://twitter.com/PetrHurtak/status/1544683890857676801",

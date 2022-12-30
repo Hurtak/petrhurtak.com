@@ -20,7 +20,12 @@ export const Article = () => (
       little.
     </P>
 
-    <Image src={screenshot1.src} alt="" width={1280} height={800} />
+    <Image
+      src={screenshot1.src}
+      alt="Hello extension with clock widget"
+      width={screenshot1.width}
+      height={screenshot1.height}
+    />
 
     <P>
       <Strong>

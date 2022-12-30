@@ -78,6 +78,7 @@ export const Code = ({ language, children }: { language?: LanguageType; children
         */
         .no-highlight :global(.token) {
           color: black !important;
+          background: none !important;
         }
       `}</style>
 

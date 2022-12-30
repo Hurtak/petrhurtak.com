@@ -1,3 +1,7 @@
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
+
 import { pxCss } from "../../styles";
 import { CenterContent } from "../internal/center-content";
 
@@ -20,3 +24,16 @@ export const Video = ({ width, height, src }: { width: number; height: number; s
     </>
   );
 };
+
+export const VideoYouTube = ({ id, title }: { id: string; title: string }) => (
+  <>
+    <LiteYouTubeEmbed id={id} title={title} adNetwork={false} />
+
+    <style jsx global>{`
+      .lty-playbtn {
+        border: none;
+        cursor: pointer;
+      }
+    `}</style>
+  </>
+);

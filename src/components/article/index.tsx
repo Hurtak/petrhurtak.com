@@ -9,4 +9,4 @@ export { Li, List } from "./list";
 export { Quote } from "./quote";
 export { Table, Tc, Tr } from "./table";
 export { H1, H2, Italic, P, Strong } from "./text";
-export { Video } from "./video";
+export { Video, VideoYouTube } from "./video";

@@ -56,13 +56,8 @@ export const LayoutArticle = ({
       </article>
 
       <p className="links">
-        <Link href={routes.articleGitHubLink(articleBlog.articleDirectory)} newTab>
-          Edit on GitHub
-        </Link>{" "}
-        <Dot />{" "}
-        <Link href={routes.articleTwitterSearch(articleBlog.slug)} newTab>
-          Discuss on Twitter
-        </Link>{" "}
+        <Link href={routes.articleGitHubLink(articleBlog.articleDirectory)}>Edit on GitHub</Link> <Dot />{" "}
+        <Link href={routes.articleTwitterSearch(articleBlog.slug)}>Discuss on Twitter</Link>{" "}
       </p>
 
       <style jsx>{`

@@ -30,9 +30,7 @@ const Debug = ({ buildInfo }: Props) => (
       <li>build time: {dayjs.utc(buildInfo.time).toDate().toLocaleString()}</li>
       <li>
         build commit hash:{" "}
-        <Link href={routes.articleGitHubCommitHash(buildInfo.commitHash)} newTab>
-          {buildInfo.commitHash}
-        </Link>
+        <Link href={routes.articleGitHubCommitHash(buildInfo.commitHash)}>{buildInfo.commitHash}</Link>
       </li>
     </ul>
   </>

@@ -6,7 +6,7 @@ import { colors, pxCss } from "../../styles";
 export const Link = ({
   href,
   className,
-  newTab = false,
+  newTab,
   children,
 }: {
   href?: string;
@@ -15,13 +15,19 @@ export const Link = ({
   children: React.ReactNode;
 }) => {
   const hrefNormalized = href ?? (typeof children === "string" ? children : "");
+  const openToNewTab =
+    newTab ??
+    // external links open to new tab by default
+    (hrefNormalized.startsWith("http://") ||
+      hrefNormalized.startsWith("https://") ||
+      hrefNormalized.startsWith("mailto:"));
 
   return (
     <>
       <NextLink
         href={hrefNormalized}
         className={className}
-        {...(newTab && {
+        {...(openToNewTab && {
           rel: "noopener noreferrer",
           target: "_blank",
         })}

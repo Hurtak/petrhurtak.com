@@ -78,26 +78,14 @@ const Home: NextPage<Props> = (props) => (
       <div className="profile-text">
         <p>
           I am an software engineer with a focus on full-stack TypeScript web app development. I am working on{" "}
-          <Link href="https://stockstory.org/" newTab>
-            StockStory
-          </Link>{" "}
-          and I teach students how to create web apps at{" "}
-          <Link href="https://www.cvut.cz/en" newTab>
-            Czech Technical University
-          </Link>
-          .
+          <Link href="https://stockstory.org/">StockStory</Link> and I teach students how to create web apps at{" "}
+          <Link href="https://www.cvut.cz/en">Czech Technical University</Link>.
         </p>
 
         <p>
-          In my free time, I like to contribute to open-source on{" "}
-          <Link href={config.author.gitHub} newTab>
-            GitHub
-          </Link>
-          , write articles on this blog, rant on{" "}
-          <Link href={config.author.twitter} newTab>
-            Twitter
-          </Link>
-          , do rock climbing, or read about economics and investing.
+          In my free time, I like to contribute to open-source on <Link href={config.author.gitHub}>GitHub</Link>, write
+          articles on this blog, rant on <Link href={config.author.twitter}>Twitter</Link>, do rock climbing, or read
+          about economics and investing.
         </p>
       </div>
     </div>
@@ -108,24 +96,16 @@ const Home: NextPage<Props> = (props) => (
         <Link href={`mailto:${config.author.email}`}>Email</Link>
       </li>
       <li>
-        <Link href={config.author.twitter} newTab>
-          Twitter
-        </Link>
+        <Link href={config.author.twitter}>Twitter</Link>
       </li>
       <li>
-        <Link href={config.author.gitHub} newTab>
-          GitHub
-        </Link>
+        <Link href={config.author.gitHub}>GitHub</Link>
       </li>
       <li>
-        <Link href={config.author.linkedIn} newTab>
-          LinkedIn
-        </Link>
+        <Link href={config.author.linkedIn}>LinkedIn</Link>
       </li>
       <li>
-        <Link href={config.author.instagram} newTab>
-          Instagram
-        </Link>
+        <Link href={config.author.instagram}>Instagram</Link>
       </li>
       <li>
         <Link href={routes.rss.rss2} newTab>
@@ -236,7 +216,7 @@ const ArticleLi = ({ article }: { article: ArticlePublished }) => {
         <span className="sep"> / </span>
       </span>
 
-      <Link href={href} newTab={article.type === "ARTICLE_TWITTER"} className="article-link">
+      <Link href={href} className="article-link">
         {article.title}
       </Link>
 

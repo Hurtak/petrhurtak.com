@@ -28,7 +28,7 @@
     "ramda": "0.28.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-ga4": "1.4.1",
+    "react-ga4": "2.0.0",
     "react-lite-youtube-embed": "2.3.52",
     "react-refractor": "2.1.7",
     "refractor": "4.8.0",

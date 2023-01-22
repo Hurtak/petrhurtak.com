@@ -1,4 +1,3 @@
-import React from "react";
 import { H1, H2, List, Li, Link, P, Table, Tr, Tc, Code } from "../../components";
 
 export default () => (

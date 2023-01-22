@@ -1,4 +1,4 @@
-import React from "react";
+import { Fragment } from "react";
 import { H1, H2, Link, List, Li, P, Dash, Table, Tr, Tc, Code } from "../../components";
 import colors from "./colors.ts";
 
@@ -140,7 +140,7 @@ export default () => (
     </P>
 
     {colors.map((category) => (
-      <React.Fragment key={category.title}>
+      <Fragment key={category.title}>
         <H2>{category.title}</H2>
         <Table>
           {category.colors.map(([name, hex, rgb, invert]) => (
@@ -151,7 +151,7 @@ export default () => (
             </Tr>
           ))}
         </Table>
-      </React.Fragment>
+      </Fragment>
     ))}
 
     <H2>Links</H2>

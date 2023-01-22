@@ -1,5 +1,5 @@
 import NextLink from "next/link"; // eslint-disable-line no-restricted-imports
-import React from "react";
+import { ReactNode } from "react";
 
 import { colors, pxCss } from "../../styles";
 
@@ -12,7 +12,7 @@ export const Link = ({
   href?: string;
   className?: string;
   newTab?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 }) => {
   const hrefNormalized = href ?? (typeof children === "string" ? children : "");
   const openToNewTab =

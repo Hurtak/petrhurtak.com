@@ -1,4 +1,3 @@
-import React from "react";
 import { H1, H2, Link, List, Li, Video, P, Dash, Table, Tr, Tc, Code } from "../../components";
 import screenMp4 from "./videos/screen.mp4";
 

@@ -1,9 +1,9 @@
-import React from "react";
+import { Children, ReactNode } from "react";
 import styled from "@emotion/styled/macro";
 import * as s from "../styles/styles";
 
-export const Spacer = (props: { spacing: number; children: React.ReactNode }) => {
-  const children = React.Children.toArray(props.children);
+export const Spacer = (props: { spacing: number; children: ReactNode }) => {
+  const children = Children.toArray(props.children);
 
   return (
     <>

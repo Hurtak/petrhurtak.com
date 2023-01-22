@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Code, H1, Italic, Li, Link, List, P, Table, Tc, Tr } from "../components";
 
 export const Article = () => (

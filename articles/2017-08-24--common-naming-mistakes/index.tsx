@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Code, Diagram, H1, H2, Li, List, P, Quote, Strong } from "../components";
 
 export const Article = () => (

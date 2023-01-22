@@ -1,9 +1,28 @@
 import clsx from "clsx";
-import { Children, cloneElement, isValidElement, ReactNode } from "react";
+import { Children, cloneElement, isValidElement, ReactElement, ReactNode } from "react";
 
 import { colors, gridCss } from "../../styles";
 
-export const Table = ({ heading, children }: { heading?: ReactNode; children: React.ReactNode }) => {
+type TcProps = {
+  heading?: boolean;
+  noWrap?: boolean;
+  rowSpan?: number;
+  colSpan?: number;
+  children?: ReactNode;
+};
+
+type TrProps = {
+  heading?: boolean;
+  children: ReactElement<TcProps> | ReactElement<TcProps>[];
+};
+
+export const Table = ({
+  heading,
+  children,
+}: {
+  heading?: ReactElement<TrProps> | ReactElement<TrProps>[];
+  children: ReactElement<TrProps> | ReactElement<TrProps>[];
+}) => {
   const headingContent = (() => {
     const headingProp = heading;
     if (!headingProp) return;
@@ -23,7 +42,7 @@ export const Table = ({ heading, children }: { heading?: ReactNode; children: Re
   );
 };
 
-export const Tr = ({ heading = false, children }: { heading?: boolean; children: React.ReactNode }) => {
+export const Tr = ({ heading = false, children }: TrProps) => {
   const cells = Children.map(children, (child) =>
     isValidElement(child) ? cloneElement(child, { heading }) : undefined
   );
@@ -31,19 +50,7 @@ export const Tr = ({ heading = false, children }: { heading?: boolean; children:
   return <tr>{cells}</tr>;
 };
 
-export const Tc = ({
-  heading = false,
-  noWrap = false,
-  rowSpan,
-  colSpan,
-  children,
-}: {
-  heading?: boolean;
-  noWrap?: boolean;
-  rowSpan?: number;
-  colSpan?: number;
-  children?: React.ReactNode;
-}) => {
+export const Tc = ({ heading = false, noWrap = false, rowSpan, colSpan, children }: TcProps) => {
   const Component = heading ? "th" : "td";
 
   return (

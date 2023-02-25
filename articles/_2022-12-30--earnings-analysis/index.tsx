@@ -1,4 +1,4 @@
-import { Code, H1, H2, Image, Li, Link, List, P, Quote, Table, Tc, Tr, VideoYouTube } from "../components";
+import { Code, H1, H2, Image, Li, Link, List, P, VideoYouTube } from "../components";
 import imgEdgar from "./images/edgar.png";
 import imgExcelMain from "./images/excel-main.png";
 import imgInvestorRelations from "./images/investor-relations.png";

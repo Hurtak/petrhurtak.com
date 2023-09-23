@@ -1,4 +1,0 @@
-Disablování formuláře pomocí fieldset disabled
-
-	- Nefunguje v IE (form má styly jako kdyby byl disablovaný ale jde odesílát a možná i editovat?)
-	-  napsat jednoduchou utility funkci na tohle která bere element, najde v něm všechny formulářový prvky co by chtěl člověk disablovat a dá jit attribut disabled

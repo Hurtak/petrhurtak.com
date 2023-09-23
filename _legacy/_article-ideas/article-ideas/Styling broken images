@@ -1,9 +1,0 @@
-https://bitsofco.de/styling-broken-images/
-
-
-http://stackoverflow.com/questions/22051573/how-to-hide-image-broken-icon-using-only-css-html-without-js
-
-Na mapách kde se vytvářej obrázek javascriptem, tak poslouchají na onload a onerror a podle toho zobrazí obrázek, zatím co se to loaduje, tak zobrazí loading kolečko
-
-Jak tohle všechno řešit u progresivních obrázků?
-

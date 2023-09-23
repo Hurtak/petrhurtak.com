@@ -1,6 +1,0 @@
-Podchycení všech mouse událostí při kliku na udkaz, tedy aby když klikni LMB tak preventDefault a děje se něco pomocí javascriptu, ale když člověk otevírá do nového okna či záložky tak nic nedělám a nechám prohlížeč aby se o to postaral
-
-
-    if (e.ctrlKey || e.shiftKey || e.altKey || e.which === 2) return
-
-

@@ -1,7 +1,0 @@
-Proměnné na z indexy
-
-Proměnné na barvy, dobrý místo @color-gray-modal-background dávat jenom barvy
-Třeba @color-gray-light je to víc univerzální a můžu to sdílet napříč komponentama
-
-
-

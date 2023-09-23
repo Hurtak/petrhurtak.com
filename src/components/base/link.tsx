@@ -1,3 +1,4 @@
+import cn from "clsx";
 import NextLink from "next/link"; // eslint-disable-line no-restricted-imports
 import { ReactNode } from "react";
 
@@ -26,7 +27,7 @@ export const Link = ({
     <>
       <NextLink
         href={hrefNormalized}
-        className={className}
+        className={cn("link", className)}
         {...(openToNewTab && {
           rel: "noopener noreferrer",
           target: "_blank",
@@ -35,15 +36,15 @@ export const Link = ({
         {children}
       </NextLink>
 
-      <style jsx>{`
-        a {
+      <style jsx global>{`
+        a.link {
           display: inline-flex;
           color: ${colors.blue};
           text-decoration-thickness: ${pxCss(0.5)};
           text-underline-offset: ${pxCss(1)};
         }
         a:visited {
-          color: ${colors.blue};
+          color: ${colors.purple};
         }
       `}</style>
     </>

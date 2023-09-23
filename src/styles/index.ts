@@ -13,4 +13,5 @@ export const colors = {
   gray: "#f3f3f3",
 
   blue: "blue",
+  purple: "purple",
 };

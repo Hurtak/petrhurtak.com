@@ -43,7 +43,7 @@ export const Link = ({
           text-decoration-thickness: ${pxCss(0.5)};
           text-underline-offset: ${pxCss(1)};
         }
-        a:visited {
+        a.link:visited {
           color: ${colors.purple};
         }
       `}</style>

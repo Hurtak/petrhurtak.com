@@ -1,6 +1,38 @@
 import { ArticleTwitterRaw } from "../src/articles/types";
 
 export const articlesTwitterRaw: ArticleTwitterRaw[] = [
+  // 2023
+  {
+    title: "Using Lottie animation format on the web",
+    datePublication: "2023-09-23",
+    link: "https://twitter.com/PetrHurtak/status/1705546449532915872",
+  },
+  {
+    title: "Problems with Tailwind CSS",
+    datePublication: "2023-09-01",
+    link: "https://twitter.com/PetrHurtak/status/1697577037651698109",
+  },
+  {
+    title: "Text and design systems",
+    datePublication: "2023-08-31",
+    link: "https://twitter.com/PetrHurtak/status/1697253971164037551",
+  },
+  {
+    title: "How to use make emojis consistent in web apps",
+    datePublication: "2023-06-07",
+    link: "https://twitter.com/PetrHurtak/status/1666466782826094592",
+  },
+  {
+    title: "PostgreSQL and transaction safe SELECT",
+    datePublication: "2023-05-18",
+    link: "https://twitter.com/PetrHurtak/status/1659152385292238848",
+  },
+  {
+    title: "The best ORM is no ORM",
+    datePublication: "2023-04-22",
+    link: "https://twitter.com/PetrHurtak/status/1649671559915745282",
+  },
+
   // 2022
   {
     title: "TypeScript asserts keyword and type narrowing in tests",
@@ -22,6 +54,16 @@ export const articlesTwitterRaw: ArticleTwitterRaw[] = [
     title: "Periodically check broken URLs",
     datePublication: "2022-06-24",
     link: "https://twitter.com/PetrHurtak/status/1540243724680265728",
+  },
+  {
+    title: "#BadUXChallenge (regularly updated thread)",
+    datePublication: "2022-04-10",
+    link: "https://twitter.com/PetrHurtak/status/1513043229045833733",
+  },
+  {
+    title: "Tracking workarounds in your codebase",
+    datePublication: "2022-04-09",
+    link: "https://twitter.com/PetrHurtak/status/1512686496259743746",
   },
   {
     title: "Bitcoin and Ethereum code complexity analysis",

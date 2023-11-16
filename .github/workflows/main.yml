@@ -22,7 +22,6 @@ jobs:
           node-version: "20"
       - run: npm ci --production
       - run: npm run build
-      - uses: preactjs/compressed-size-action@v2
       - uses: actions/upload-artifact@v3
         with:
           name: artifact-dist

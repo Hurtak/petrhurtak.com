@@ -13,7 +13,7 @@
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix .",
     "prettier": "prettier --ignore-path .gitignore --check .",
     "prettier:fix": "prettier --ignore-path .gitignore --write .",
-    "validate": "npm run test && npm run type-check && npm run lint && npm run prettier && npm run build"
+    "validate": "npm run test && npm run type-check && npm run lint && npm run prettier"
   },
   "dependencies": {
     "@types/node": "20.9.0",

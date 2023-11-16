@@ -18,7 +18,7 @@ export const articlesTwitterRaw: ArticleTwitterRaw[] = [
     link: "https://twitter.com/PetrHurtak/status/1697253971164037551",
   },
   {
-    title: "How to use make emojis consistent in web apps",
+    title: "How to make emojis consistent in web apps",
     datePublication: "2023-06-07",
     link: "https://twitter.com/PetrHurtak/status/1666466782826094592",
   },

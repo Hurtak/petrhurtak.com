@@ -38,7 +38,7 @@ export const Article = () => (
       <Tr>
         <Tc>Install older version</Tc>
         <Tc>
-          <Code language="bash">brew install node@12</Code>
+          <Code language="bash">brew install node@16</Code>
         </Tc>
       </Tr>
     </Table>
@@ -62,7 +62,7 @@ export const Article = () => (
       <Tr>
         <Tc>Unlink older version</Tc>
         <Tc>
-          <Code language="bash">brew unlink node@12</Code>
+          <Code language="bash">brew unlink node@16</Code>
         </Tc>
       </Tr>
       <Tr>
@@ -74,7 +74,7 @@ export const Article = () => (
       <Tr>
         <Tc>Link older version</Tc>
         <Tc>
-          <Code language="bash">brew link --overwrite node@12</Code>
+          <Code language="bash">brew link --overwrite node@16</Code>
         </Tc>
       </Tr>
     </Table>

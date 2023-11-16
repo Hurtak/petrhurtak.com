@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export -o dist",
+    "build": "next build",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "type-check": "tsc --noEmit -p tsconfig.next.json && tsc --noEmit -p tsconfig.test.json",
@@ -13,7 +13,7 @@
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix .",
     "prettier": "prettier --ignore-path .gitignore --check .",
     "prettier:fix": "prettier --ignore-path .gitignore --write .",
-    "validate": "npm run test && npm run type-check && npm run lint && npm run prettier"
+    "validate": "npm run test && npm run type-check && npm run lint && npm run prettier && npm run build"
   },
   "dependencies": {
     "@types/node": "20.9.0",

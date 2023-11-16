@@ -1,6 +1,7 @@
-import { GetStaticPropsResult } from "next";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
+
+import { GetStaticPropsResult } from "next";
 import { z } from "zod";
 
 import { getServerRuntimeConfig } from "../config";
@@ -9,7 +10,7 @@ import { ArticleBlog, articleMetadataJsonValidator } from "./types";
 type ArticleDirectory = { directory: string; slug: string; date: number; hidden: boolean };
 
 export const getStaticPropsArticle = async (
-  articleFileName: string
+  articleFileName: string,
 ): Promise<GetStaticPropsResult<{ articleBlog: ArticleBlog }>> => {
   const slug = path.parse(articleFileName).name;
   const serverConfig = getServerRuntimeConfig();
@@ -43,7 +44,7 @@ const getArticlesDirs = async (articlesDir: string): Promise<Array<ArticleDirect
 
 const parseArticleFolder = (articleFolder: string): ArticleDirectory | undefined => {
   const matchArticle = articleFolder.match(
-    /^(?<hidden>_)?(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})--(?<slug>[\w-]+?)$/
+    /^(?<hidden>_)?(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})--(?<slug>[\w-]+?)$/,
   );
 
   if (!matchArticle || !matchArticle.groups) {

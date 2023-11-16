@@ -25,7 +25,7 @@ describe("trimEmptyEdgeLines", () => {
     expect(
       trimEmptyEdgeLines(`
         x
-      `)
+      `),
     ).toMatchInlineSnapshot('"        x"');
   });
 
@@ -35,7 +35,7 @@ describe("trimEmptyEdgeLines", () => {
 
         x
 
-      `)
+      `),
     ).toMatchInlineSnapshot(`
       "
               x
@@ -49,8 +49,8 @@ describe("trimEmptyEdgeLines", () => {
       trimEmptyEdgeLines(
         `x
 x
-x`
-      )
+x`,
+      ),
     ).toMatchInlineSnapshot(`
       "x
       x

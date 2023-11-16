@@ -27,7 +27,7 @@ describe("twitter-threads.ts", () => {
   test("sorted by date", () => {
     const sorted = pipe(
       sortBy((x: ArticleTwitterRaw) => x.datePublication),
-      (x) => reverse(x)
+      (x) => reverse(x),
     )(articlesTwitterRaw);
 
     expect(sorted).toEqual(articlesTwitterRaw);

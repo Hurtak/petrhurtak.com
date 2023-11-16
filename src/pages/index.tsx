@@ -40,18 +40,19 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
 
   const articles: ArticlesGroup[] = pipe(
     groupBy((a: ArticlePublished) => new Date(a.datePublication).getFullYear().toString()),
+    (_) => _ as Record<string, ArticlePublished[]>, // TODO: why is this needed?
     toPairs,
     map(
       ([year, articles]: [string, ArticlePublished[]]): ArticlesGroup => ({
         year: Number(year),
         articles: pipe(
           sortBy((a) => a.datePublication),
-          (a: ArticlePublished[]) => reverse(a)
+          (a: ArticlePublished[]) => reverse(a),
         )(articles),
-      })
+      }),
     ),
     sortBy((g) => g.year),
-    (g) => reverse(g)
+    (g) => reverse(g),
   )(articlesList);
 
   return {
@@ -189,19 +190,23 @@ const Home: NextPage<Props> = (props) => (
 const ArticleLi = ({ article }: { article: ArticlePublished }) => {
   const href = (() => {
     switch (article.type) {
-      case "ARTICLE_BLOG_VISIBLE":
+      case "ARTICLE_BLOG_VISIBLE": {
         return routes.article(article.slug);
-      case "ARTICLE_TWITTER":
+      }
+      case "ARTICLE_TWITTER": {
         return article.link;
+      }
     }
   })();
 
   const abbr = (() => {
     switch (article.type) {
-      case "ARTICLE_BLOG_VISIBLE":
+      case "ARTICLE_BLOG_VISIBLE": {
         return { title: "Blog article", abbr: "A" };
-      case "ARTICLE_TWITTER":
+      }
+      case "ARTICLE_TWITTER": {
         return { title: "Twitter thread", abbr: "T" };
+      }
     }
   })();
 

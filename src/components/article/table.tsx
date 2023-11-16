@@ -28,7 +28,7 @@ export const Table = ({
     if (!headingProp) return;
 
     const headingRow = Children.map(heading, (child) =>
-      isValidElement(child) ? cloneElement(child, { heading: true }) : undefined
+      isValidElement(child) ? cloneElement(child, { heading: true }) : undefined,
     );
 
     return headingRow;
@@ -44,7 +44,7 @@ export const Table = ({
 
 export const Tr = ({ heading = false, children }: TrProps) => {
   const cells = Children.map(children, (child) =>
-    isValidElement(child) ? cloneElement(child, { heading }) : undefined
+    isValidElement(child) ? cloneElement(child, { heading }) : undefined,
   );
 
   return <tr>{cells}</tr>;

@@ -56,6 +56,11 @@ export const articlesTwitterRaw: ArticleTwitterRaw[] = [
     link: "https://twitter.com/PetrHurtak/status/1540243724680265728",
   },
   {
+    title: "50/50 SP500 & Gold portfolio",
+    datePublication: "2022-04-19",
+    link: "https://twitter.com/PetrHurtak/status/1516417596479918081",
+  },
+  {
     title: "#BadUXChallenge (regularly updated thread)",
     datePublication: "2022-04-10",
     link: "https://twitter.com/PetrHurtak/status/1513043229045833733",

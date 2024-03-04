@@ -1,6 +1,13 @@
 import { ArticleTwitterRaw } from "../src/articles/types";
 
 export const articlesTwitterRaw: ArticleTwitterRaw[] = [
+  // 2024
+  {
+    title: 'CSS box-sizing reset is probably not worth it',
+    datePublication: '2024-03-04',
+    link: 'https://twitter.com/PetrHurtak/status/1764665347238449508'
+  },
+
   // 2023
   {
     title: "Using Lottie animation format on the web",

@@ -19,7 +19,7 @@ export const config = {
     email: "petr.hurtak@gmail.com",
 
     gitHub: "https://github.com/hurtak",
-    twitter: "https://x.com/PetrHurtak",
+    x: "https://x.com/PetrHurtak",
     linkedIn: "https://www.linkedin.com/in/hurtak/",
     instagram: "https://www.instagram.com/petr.hurtak/",
   },
@@ -49,7 +49,7 @@ export const routes = {
   },
 
   // Outside of the app
-  articleTwitterSearch: (slug: string) =>
+  articleXSearch: (slug: string) =>
     `https://x.com/search?q=${encodeURIComponent(routes.absolute(routes.article(slug)))}`,
   articleGitHubLink: (articleDirectory: string) =>
     `${config.site.gitHub}/tree/main/articles/${encodeURIComponent(articleDirectory)}/index.tsx`,

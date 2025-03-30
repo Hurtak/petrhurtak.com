@@ -2,8 +2,8 @@ import dayjs from "dayjs";
 import { NextPage } from "next";
 import { groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
-import { articlesTwitterRaw } from "../../articles/twitter-threads";
-import { parseArticleTwitterRaw } from "../articles/articles";
+import { articlesXRaw } from "../../articles/x-threads";
+import { parseArticleXRaw } from "../articles/articles";
 import { getArticlesBlog } from "../articles/articles-server";
 import { ArticleBlogVisible, ArticlePublished } from "../articles/types";
 import { Link } from "../components/article";
@@ -35,8 +35,8 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
     await generateRssFeed(articlesBlogVisible, serverConfig.paths.public);
   }
 
-  const articlesTwitter = articlesTwitterRaw.map((a) => parseArticleTwitterRaw(a));
-  const articlesList: ArticlePublished[] = [...articlesBlogVisible, ...articlesTwitter];
+  const articlesX = articlesXRaw.map((a) => parseArticleXRaw(a));
+  const articlesList: ArticlePublished[] = [...articlesBlogVisible, ...articlesX];
 
   const articles: ArticlesGroup[] = pipe(
     groupBy((a: ArticlePublished) => new Date(a.datePublication).getFullYear().toString()),
@@ -85,7 +85,7 @@ const Home: NextPage<Props> = (props) => (
 
         <p>
           In my free time, I like to contribute to open-source on <Link href={config.author.gitHub}>GitHub</Link>, write
-          articles on this blog, rant on <Link href={config.author.twitter}>Twitter</Link>, do rock climbing, or read
+          about interesting stuff on this blog or on <Link href={config.author.x}>X</Link>, do rock climbing, or read
           about economics and investing.
         </p>
       </div>
@@ -97,7 +97,7 @@ const Home: NextPage<Props> = (props) => (
         <Link href={`mailto:${config.author.email}`}>Email</Link>
       </li>
       <li>
-        <Link href={config.author.twitter}>Twitter</Link>
+        <Link href={config.author.x}>X</Link>
       </li>
       <li>
         <Link href={config.author.gitHub}>GitHub</Link>
@@ -193,7 +193,7 @@ const ArticleLi = ({ article }: { article: ArticlePublished }) => {
       case "ARTICLE_BLOG_VISIBLE": {
         return routes.article(article.slug);
       }
-      case "ARTICLE_TWITTER": {
+      case "ARTICLE_X": {
         return article.link;
       }
     }
@@ -202,10 +202,10 @@ const ArticleLi = ({ article }: { article: ArticlePublished }) => {
   const abbr = (() => {
     switch (article.type) {
       case "ARTICLE_BLOG_VISIBLE": {
-        return { title: "Blog article", abbr: "A" };
+        return { title: "Blog Article", abbr: "A" };
       }
-      case "ARTICLE_TWITTER": {
-        return { title: "Twitter thread", abbr: "T" };
+      case "ARTICLE_X": {
+        return { title: "X Thread", abbr: "X" };
       }
     }
   })();

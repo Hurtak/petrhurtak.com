@@ -11,7 +11,7 @@ export const generateRssFeed = async (articles: Array<ArticleBlogVisible>, targe
   const author = {
     name: config.author.fullName,
     email: config.author.email,
-    link: config.author.twitter,
+    link: config.author.x,
   } as const;
   const siteUrl = routes.absolute(routes.root);
 

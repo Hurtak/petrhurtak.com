@@ -1,8 +1,8 @@
 import { pipe, reverse, sortBy } from "ramda";
 import { describe, expect, test } from "vitest";
 
-import { ArticleTwitterRaw } from "../src/articles/types";
-import { articlesTwitterRaw } from "./twitter-threads";
+import { ArticleXRaw } from "../src/articles/types";
+import { articlesXRaw } from "./x-threads";
 
 const testUniquePropertyValue = <T extends Record<string, unknown>>(items: T[], property: keyof T) => {
   const seen = new Set();
@@ -15,21 +15,21 @@ const testUniquePropertyValue = <T extends Record<string, unknown>>(items: T[], 
   }
 };
 
-describe("twitter-threads.ts", () => {
+describe("x-threads.ts", () => {
   test("titles are unique", () => {
-    testUniquePropertyValue(articlesTwitterRaw, "title");
+    testUniquePropertyValue(articlesXRaw, "title");
   });
 
   test("links are unique", () => {
-    testUniquePropertyValue(articlesTwitterRaw, "link");
+    testUniquePropertyValue(articlesXRaw, "link");
   });
 
   test("sorted by date", () => {
     const sorted = pipe(
-      sortBy((x: ArticleTwitterRaw) => x.datePublication),
+      sortBy((x: ArticleXRaw) => x.datePublication),
       (x) => reverse(x),
-    )(articlesTwitterRaw);
+    )(articlesXRaw);
 
-    expect(sorted).toEqual(articlesTwitterRaw);
+    expect(sorted).toEqual(articlesXRaw);
   });
 });

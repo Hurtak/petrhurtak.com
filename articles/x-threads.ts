@@ -1,6 +1,6 @@
-import { ArticleTwitterRaw } from "../src/articles/types";
+import { ArticleXRaw } from "../src/articles/types";
 
-export const articlesTwitterRaw: ArticleTwitterRaw[] = [
+export const articlesXRaw: ArticleXRaw[] = [
   // 2024
   {
     title: "CSS box-sizing reset is probably not worth it",

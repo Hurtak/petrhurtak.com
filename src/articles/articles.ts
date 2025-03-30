@@ -1,13 +1,13 @@
 import dayjs from "dayjs";
 
-import { ArticleTwitter, ArticleTwitterRaw } from "./types";
+import { ArticleX, ArticleXRaw } from "./types";
 
-export const parseArticleTwitterRaw = (articleTwitterRaw: ArticleTwitterRaw): ArticleTwitter => {
+export const parseArticleXRaw = (articleXRaw: ArticleXRaw): ArticleX => {
   return {
-    id: articleTwitterRaw.link,
-    type: "ARTICLE_TWITTER",
-    title: articleTwitterRaw.title,
-    datePublication: dayjs.utc(articleTwitterRaw.datePublication).valueOf(),
-    link: articleTwitterRaw.link,
+    id: articleXRaw.link,
+    type: "ARTICLE_X",
+    title: articleXRaw.title,
+    datePublication: dayjs.utc(articleXRaw.datePublication).valueOf(),
+    link: articleXRaw.link,
   };
 };

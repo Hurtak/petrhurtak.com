@@ -27,16 +27,16 @@ export type ArticleBlogHidden = ArticleBlogMetadata & { type: "ARTICLE_BLOG_HIDD
 
 export type ArticleBlog = ArticleBlogVisible | ArticleBlogHidden;
 
-export type ArticleTwitterRaw = {
+export type ArticleXRaw = {
   title: string;
   datePublication: string;
   link: string;
 };
-export type ArticleTwitter = ArticleBase & {
-  type: "ARTICLE_TWITTER";
+export type ArticleX = ArticleBase & {
+  type: "ARTICLE_X";
 
   link: string;
 };
 
-export type Article = ArticleBlog | ArticleTwitter;
-export type ArticlePublished = ArticleBlogVisible | ArticleTwitter;
+export type Article = ArticleBlog | ArticleX;
+export type ArticlePublished = ArticleBlogVisible | ArticleX;

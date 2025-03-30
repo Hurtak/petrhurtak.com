@@ -35,8 +35,8 @@ export const Article = () => (
     <H1>Duplicate colors</H1>
 
     <P>
-      There are four duplicates between the named colors, and all of them are related to gray (English) <Dash /> grey
-      (UK) spelling differences.
+      There are duplicates between the named colors, and all of them are related to gray (English) <Dash /> grey (UK)
+      spelling differences.
     </P>
 
     <P>

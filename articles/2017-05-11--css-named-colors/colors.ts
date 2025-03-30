@@ -1,7 +1,7 @@
-interface IColorGroup {
+type IColorGroup = {
   title: string;
   colors: [string, string, string, boolean][];
-}
+};
 
 const colors: IColorGroup[] = [
   {

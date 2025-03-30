@@ -1,8 +1,9 @@
 import { Fragment } from "react";
-import { H1, H2, Link, List, Li, P, Dash, Table, Tr, Tc, Code } from "../../components";
-import colors from "./colors.ts";
 
-export default () => (
+import { Code, Dash, H1, H2, Li, Link, List, P, Table, Tc, Tr } from "../components";
+import colors from "./colors";
+
+export const Article = () => (
   <>
     <P>
       In CSS there are multiple ways to specify colors, you can do it with hex definition{" "}
@@ -170,10 +171,10 @@ export default () => (
   </>
 );
 
-const Color = (props) => <ColoredComponent Component={"span"} {...props} />;
+const Color = ({ children, invert = false }: { children: string; invert?: boolean }) => (
+  <span style={{ backgroundColor: children, color: invert ? "white" : undefined }}>{children}</span>
+);
 
-const TcColored = (props) => <ColoredComponent Component={Tc} {...props} />;
-
-const ColoredComponent = ({ children, Component, invert = false }) => (
-  <Component style={{ backgroundColor: children, color: invert ? "white" : null }}>{children}</Component>
+const TcColored = ({ children, invert = false }: { children: string; invert?: boolean }) => (
+  <Tc style={{ backgroundColor: children, color: invert ? "white" : undefined }}>{children}</Tc>
 );

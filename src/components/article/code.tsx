@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Refractor from "react-refractor";
 import bash from "refractor/lang/bash";
+import css from "refractor/lang/css";
 import docker from "refractor/lang/docker";
 import elm from "refractor/lang/elm";
 import javascript from "refractor/lang/javascript";
@@ -24,6 +25,7 @@ Refractor.registerLanguage(makefile);
 Refractor.registerLanguage(tsx);
 Refractor.registerLanguage(typescript);
 Refractor.registerLanguage(yaml);
+Refractor.registerLanguage(css);
 
 type LanguageType =
   //
@@ -32,6 +34,7 @@ type LanguageType =
   | "ts"
   | "tsx"
   | "elm"
+  | "css"
   //
   | "yaml"
   | "json"

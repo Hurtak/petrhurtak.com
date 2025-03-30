@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Children, cloneElement, isValidElement, ReactElement, ReactNode } from "react";
+import { Children, cloneElement, CSSProperties, isValidElement, ReactElement, ReactNode } from "react";
 
 import { colors, gridCss } from "../../styles";
 
@@ -8,6 +8,8 @@ type TcProps = {
   noWrap?: boolean;
   rowSpan?: number;
   colSpan?: number;
+  center?: boolean;
+  style?: CSSProperties;
   children?: ReactNode;
 };
 
@@ -50,14 +52,17 @@ export const Tr = ({ heading = false, children }: TrProps) => {
   return <tr>{cells}</tr>;
 };
 
-export const Tc = ({ heading = false, noWrap = false, rowSpan, colSpan, children }: TcProps) => {
+export const Tc = ({ heading = false, noWrap = false, rowSpan, colSpan, center = false, style, children }: TcProps) => {
   const Component = heading ? "th" : "td";
 
   return (
-    <Component className={clsx({ "no-wrap": noWrap })} rowSpan={rowSpan} colSpan={colSpan}>
+    <Component className={clsx({ "no-wrap": noWrap, center })} rowSpan={rowSpan} colSpan={colSpan} style={style}>
       <style jsx>{`
         .no-wrap {
           white-space: nowrap;
+        }
+        .center {
+          text-align: center;
         }
         th,
         td {

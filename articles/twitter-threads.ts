@@ -134,6 +134,11 @@ export const articlesTwitterRaw: ArticleTwitterRaw[] = [
     datePublication: "2021-03-25",
     link: "https://x.com/PetrHurtak/status/1375033064267603977",
   },
+  {
+    title: "Stubbing blocked/missing modules with JavaScript proxies",
+    datePublication: "2021-01-24",
+    link: "https://x.com/petrhurtak/status/1353346471559651330",
+  },
 
   // 2020
   {

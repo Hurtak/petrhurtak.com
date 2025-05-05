@@ -40,7 +40,7 @@ export const Article = () => (
         <Link href={storeLink}>Chrome web store</Link> where you can install it.
       </Li>
       <Li>
-        <Link href="https://hello-extension.netlify.com">Live preview</Link> that you can run in your browser without
+        <Link href="https://hello-extension.netlify.app">Live preview</Link> that you can run in your browser without
         installing the extension.
       </Li>
       <Li>

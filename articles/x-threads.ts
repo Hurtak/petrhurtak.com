@@ -1,6 +1,12 @@
 import { ArticleXRaw } from "../src/articles/types";
 
 export const articlesXRaw: ArticleXRaw[] = [
+  // 2025
+  {
+    title: "Responsive SVGs",
+    datePublication: "2025-05-09",
+    link: "https://x.com/PetrHurtak/status/1920758812681687363",
+  },
   // 2024
   {
     title: "CSS box-sizing reset is probably not worth it",

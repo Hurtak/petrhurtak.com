@@ -16,34 +16,34 @@
     "validate": "npm run test && npm run type-check && npm run lint && npm run prettier"
   },
   "dependencies": {
-    "@types/node": "20.12.4",
+    "@types/node": "20.19.29",
     "@types/ramda": "0.29.12",
-    "@types/react": "18.2.74",
-    "clsx": "2.1.0",
-    "dayjs": "1.11.10",
+    "@types/react": "18.3.27",
+    "clsx": "2.1.1",
+    "dayjs": "1.11.19",
     "feed": "4.2.2",
-    "next": "14.1.4",
+    "next": "14.2.35",
     "next-videos": "1.5.0",
     "normalize.css": "8.0.1",
     "ramda": "0.29.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-ga4": "2.1.0",
-    "react-lite-youtube-embed": "2.4.0",
-    "react-refractor": "2.1.7",
-    "refractor": "4.8.1",
-    "strip-indent": "4.0.0",
-    "typescript": "5.4.3",
-    "zod": "3.22.4"
+    "react-lite-youtube-embed": "2.6.0",
+    "react-refractor": "2.2.0",
+    "refractor": "4.9.0",
+    "strip-indent": "4.1.1",
+    "typescript": "5.9.3",
+    "zod": "3.25.76"
   },
   "devDependencies": {
-    "@types/react-test-renderer": "18.0.7",
-    "eslint": "8.57.0",
-    "eslint-config-next": "14.1.4",
+    "@types/react-test-renderer": "18.3.1",
+    "eslint": "8.57.1",
+    "eslint-config-next": "14.2.35",
     "eslint-config-start": "2.0.0",
     "eslint-config-start-react": "2.1.0",
-    "prettier": "3.2.5",
-    "react-test-renderer": "18.2.0",
-    "vitest": "1.4.0"
+    "prettier": "3.7.4",
+    "react-test-renderer": "18.3.1",
+    "vitest": "1.6.1"
   }
 }

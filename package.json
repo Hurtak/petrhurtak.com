@@ -33,7 +33,7 @@
     "react-refractor": "2.2.0",
     "refractor": "4.9.0",
     "strip-indent": "4.1.1",
-    "typescript": "5.9.3",
+    "typescript": "5.4.5",
     "zod": "3.25.76"
   },
   "devDependencies": {

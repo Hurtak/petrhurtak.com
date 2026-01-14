@@ -53,7 +53,7 @@ export const Article = () => (
     <H1>TLDR</H1>
 
     <P>
-      Replace <Code>origin/master</Code> with the branch against you are merging.
+      Replace <Code>origin/master</Code> with the branch against which you are merging.
     </P>
 
     <Code language="bash">{`

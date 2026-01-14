@@ -43,7 +43,7 @@ export const Article = () => (
       }
     />
 
-    <H2>usr/bin/env</H2>
+    <H2>/usr/bin/env</H2>
 
     <P>
       Env is an executable in Unix-like operating systems that, among other things, is often used by shell scripts to

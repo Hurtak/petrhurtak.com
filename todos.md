@@ -27,9 +27,9 @@
 - sections
   - projects, list of all projects of what i did
   - opensource, list of all opensource of what i did
-  - apperances - talks, articles, etc
+- appearances - talks, articles, etc
 - convert remaining articles
-- go through components and replace usage of raw components with cstom components
+- go through components and replace usage of raw components with custom components
 - colors
   - make sure only colors from component library are used
 - resolve todos in code
@@ -38,12 +38,12 @@
 ## Old TODOs
 
 - make favicon black and white
-- tests in VSCode are evalueated as non strict mode for tests
+- tests in VSCode are evaluated as non strict mode for tests
 - remove \_legacy folders
 - test
   - article metadata match the article folder name
   - article metadata date is not in the future
-  - article metadata data is in correct format
+- article metadata date is in correct format
 - convert all articles?
 - seo.jsx convert
   - https://www.rarous.net/weblog/2019/01/28/generovani-twitter-card-obrazku.html

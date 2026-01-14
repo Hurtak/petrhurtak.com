@@ -222,7 +222,7 @@ export const Article = () => (
       </Tr>
       <Tr>
         <Tc>
-          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-maintainer">Mantainer</Link>
+          <Link href="https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-maintainer">Maintainer</Link>
         </Tc>
         <Tc>mandatory</Tc>
         <Tc>
@@ -274,7 +274,7 @@ export const Article = () => (
         <Tc>
           The most recent version of the{" "}
           <Link href="https://www.debian.org/doc/debian-policy/">Debian Policy Manual</Link> with which the package
-          complies. You can find the lates version at the bottom of every Debian policy page.
+          complies. You can find the latest version at the bottom of every Debian policy page.
         </Tc>
       </Tr>
     </Table>

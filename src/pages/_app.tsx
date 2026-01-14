@@ -32,6 +32,23 @@ const App = ({ Component, pageProps }: AppProps) => {
       <style jsx global>{`
         body {
           margin: 0;
+          font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI",
+            "Roboto", "Ubuntu", "Cantarell", "Noto Sans", "Helvetica Neue", Arial, sans-serif,
+            "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+          font-size: 16px;
+          line-height: 1.6;
+          color: #111;
+          text-rendering: optimizeLegibility;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+          line-height: 1.25;
+          letter-spacing: -0.01em;
         }
       `}</style>
 

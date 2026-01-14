@@ -37,7 +37,6 @@ const App = ({ Component, pageProps }: AppProps) => {
           font-size: 16px;
           line-height: 1.6;
           color: #111;
-          text-rendering: auto;
         }
 
         h1,

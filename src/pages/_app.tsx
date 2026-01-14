@@ -48,7 +48,6 @@ const App = ({ Component, pageProps }: AppProps) => {
         h3,
         h4 {
           line-height: 1.25;
-          letter-spacing: -0.01em;
         }
       `}</style>
 

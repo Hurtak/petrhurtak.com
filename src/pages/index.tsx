@@ -1,15 +1,14 @@
 import dayjs from "dayjs";
-import { NextPage } from "next";
 import { groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
 import { articlesXRaw } from "../../articles/x-threads";
 import { parseArticleXRaw } from "../articles/articles";
-import { getArticlesBlog } from "../articles/articles-server";
-import { ArticleBlogVisible, ArticlePublished } from "../articles/types";
+import { articlesBlogVisible } from "../articles/articles-data";
+import { ArticlePublished } from "../articles/types";
 import { Link } from "../components/article";
-import { config, getServerRuntimeConfig, routes } from "../config";
+import { DocumentTitle } from "../components/base/document-title";
+import { config, routes } from "../config";
 import image from "../me.jpg";
-import { generateRssFeed } from "../services/rss";
 import { gridCss, gridNumber, pxCss, sizeCss } from "../styles";
 
 type ArticlesGroup = {
@@ -17,59 +16,37 @@ type ArticlesGroup = {
   articles: ArticlePublished[];
 };
 
-type Props = {
-  articles: ArticlesGroup[];
-};
-
 const profileImageSize = gridNumber(14);
+const articlesX = articlesXRaw.map((a) => parseArticleXRaw(a));
+const articlesList: ArticlePublished[] = [...articlesBlogVisible, ...articlesX];
 
-export const getStaticProps = async (): Promise<{ props: Props }> => {
-  const serverConfig = getServerRuntimeConfig();
-  const articlesBlog = await getArticlesBlog(serverConfig.paths.articles);
-  const articlesBlogVisible: ArticleBlogVisible[] = [];
-  for (const article of articlesBlog) {
-    if (article.type === "ARTICLE_BLOG_VISIBLE") articlesBlogVisible.push(article);
-  }
+const articles: ArticlesGroup[] = pipe(
+  groupBy((a: ArticlePublished) => new Date(a.datePublication).getFullYear().toString()),
+  (_) => _ as Record<string, ArticlePublished[]>, // TODO: why is this needed?
+  toPairs,
+  map(
+    ([year, articles]: [string, ArticlePublished[]]): ArticlesGroup => ({
+      year: Number(year),
+      articles: pipe(
+        sortBy((a) => a.datePublication),
+        (a: ArticlePublished[]) => reverse(a),
+      )(articles),
+    }),
+  ),
+  sortBy((g) => g.year),
+  (g) => reverse(g),
+)(articlesList);
 
-  if (config.isProduction || config.app.generateRssInDev) {
-    await generateRssFeed(articlesBlogVisible, serverConfig.paths.public);
-  }
-
-  const articlesX = articlesXRaw.map((a) => parseArticleXRaw(a));
-  const articlesList: ArticlePublished[] = [...articlesBlogVisible, ...articlesX];
-
-  const articles: ArticlesGroup[] = pipe(
-    groupBy((a: ArticlePublished) => new Date(a.datePublication).getFullYear().toString()),
-    (_) => _ as Record<string, ArticlePublished[]>, // TODO: why is this needed?
-    toPairs,
-    map(
-      ([year, articles]: [string, ArticlePublished[]]): ArticlesGroup => ({
-        year: Number(year),
-        articles: pipe(
-          sortBy((a) => a.datePublication),
-          (a: ArticlePublished[]) => reverse(a),
-        )(articles),
-      }),
-    ),
-    sortBy((g) => g.year),
-    (g) => reverse(g),
-  )(articlesList);
-
-  return {
-    props: {
-      articles,
-    },
-  };
-};
-
-const Home: NextPage<Props> = (props) => (
+const Home = () => (
   <>
+    <DocumentTitle description="Petr Hurtak's personal website and blog" />
+
     <h1>Hey, I&apos;m Petr</h1>
 
     <div className="profile">
       <div className="profile-image">
         <img
-          src={image.src}
+          src={image}
           width={profileImageSize}
           height={profileImageSize}
           alt={`${config.author.fullName}'s portrait`}
@@ -117,7 +94,7 @@ const Home: NextPage<Props> = (props) => (
 
     <h2>Articles</h2>
     <ul>
-      {props.articles.map(({ year, articles }) => (
+      {articles.map(({ year, articles }) => (
         <li key={year}>
           <span className="year">{year}</span>
           <ul>

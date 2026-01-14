@@ -2,6 +2,8 @@ import { H1, Image, Li, Link, List, P, Strong } from "../components";
 import screenshot1 from "./images/screenshot-1.png";
 
 const storeLink = "https://chrome.google.com/webstore/detail/hello/olenfgbgcphkaipfeohfjpagibimmpke";
+const screenshot1Width = 1280;
+const screenshot1Height = 800;
 
 export const Article = () => (
   <>
@@ -21,10 +23,10 @@ export const Article = () => (
     </P>
 
     <Image
-      src={screenshot1.src}
+      src={screenshot1}
       alt="Hello extension with clock widget"
-      width={screenshot1.width}
-      height={screenshot1.height}
+      width={screenshot1Width}
+      height={screenshot1Height}
     />
 
     <P>

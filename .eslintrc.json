@@ -1,10 +1,9 @@
 {
-  "extends": ["start", "start-react", "next/core-web-vitals"],
+  "extends": ["start", "start-react"],
   "rules": {
-    "@next/next/no-img-element": 0,
     "jsx-a11y/media-has-caption": 0,
     "react/no-unescaped-entities": 0,
-    "no-restricted-imports": ["error", { "name": "next/link", "message": "Use our own Link component" }]
+    "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }]
   },
 
   "overrides": [

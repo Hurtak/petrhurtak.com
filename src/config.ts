@@ -1,7 +1,4 @@
-import getConfig from "next/config";
-import { z } from "zod";
-
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = import.meta.env?.PROD ?? process.env.NODE_ENV === "production";
 
 export const config = {
   isProduction,
@@ -55,27 +52,3 @@ export const routes = {
     `${config.site.gitHub}/tree/main/articles/${encodeURIComponent(articleDirectory)}/index.tsx`,
   articleGitHubCommitHash: (commitHash: string) => `${config.site.gitHub}/commit/${encodeURIComponent(commitHash)}`,
 } as const;
-
-const validateNextConfig = z.object({
-  serverRuntimeConfig: z.object({
-    paths: z.object({
-      project: z.string().min(1),
-      articles: z.string().min(1),
-      public: z.string().min(1),
-    }),
-    buildInfo: z.object({
-      time: z.number().positive(),
-      commitHash: z.string().min(1),
-    }),
-  }),
-});
-type NextConfig = z.infer<typeof validateNextConfig>;
-
-export type ServerRuntimeConfig = NextConfig["serverRuntimeConfig"];
-
-export const getServerRuntimeConfig = (): ServerRuntimeConfig => {
-  const config = getConfig() as unknown;
-  const configValidated = validateNextConfig.parse(config);
-
-  return configValidated.serverRuntimeConfig;
-};

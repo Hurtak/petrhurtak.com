@@ -1,6 +1,6 @@
 import cn from "clsx";
-import NextLink from "next/link"; // eslint-disable-line no-restricted-imports
 import { ReactNode } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 import { colors, pxCss } from "../../styles";
 
@@ -23,18 +23,26 @@ export const Link = ({
       hrefNormalized.startsWith("https://") ||
       hrefNormalized.startsWith("mailto:"));
 
+  const isInternalLink = hrefNormalized.startsWith("/");
+
   return (
     <>
-      <NextLink
-        href={hrefNormalized}
-        className={cn("link", className)}
-        {...(openToNewTab && {
-          rel: "noopener noreferrer",
-          target: "_blank",
-        })}
-      >
-        {children}
-      </NextLink>
+      {openToNewTab || !isInternalLink ? (
+        <a
+          href={hrefNormalized}
+          className={cn("link", className)}
+          {...(openToNewTab && {
+            rel: "noopener noreferrer",
+            target: "_blank",
+          })}
+        >
+          {children}
+        </a>
+      ) : (
+        <RouterLink to={hrefNormalized} className={cn("link", className)}>
+          {children}
+        </RouterLink>
+      )}
 
       <style jsx global>{`
         a.link {

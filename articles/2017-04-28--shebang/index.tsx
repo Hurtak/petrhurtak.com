@@ -1,4 +1,5 @@
 import { Code, H1, H2, Li, List, P, Table, Tc, Tr, Video } from "../components";
+import shebangVideo from "./videos/shebang.mp4";
 
 export const Article = () => (
   <>
@@ -34,14 +35,7 @@ export const Article = () => (
       echo "Hello"
     `}</Code>
 
-    <Video
-      width={598}
-      height={274}
-      src={
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
-        require("./videos/shebang.mp4")
-      }
-    />
+    <Video width={598} height={274} src={shebangVideo} />
 
     <H2>usr/bin/env</H2>
 

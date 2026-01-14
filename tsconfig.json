@@ -1,4 +1,4 @@
 // Config for VSCode
 {
-  "extends": "./tsconfig.next.json"
+  "extends": "./tsconfig.app.json"
 }

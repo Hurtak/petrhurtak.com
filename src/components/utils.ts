@@ -1,14 +1,24 @@
 import { z } from "zod";
 
-const validateSvgImport = z.object({
-  src: z.string().min(1),
-  width: z.number(),
-  height: z.number(),
-});
-type SvgImport = z.infer<typeof validateSvgImport>;
+const validateSvgImport = z.union([
+  z.object({
+    src: z.string().min(1),
+    width: z.number().optional(),
+    height: z.number().optional(),
+  }),
+  z.string().min(1),
+]);
+type SvgImport = {
+  src: string;
+};
 
-// Needed because of https://duncanleung.com/next-js-typescript-svg-any-module-declaration/
+// SVG import normalizer for bundlers that return different asset shapes.
 export const parseSvgImage = (svgImport: unknown): SvgImport => {
   const svgImportValidated = validateSvgImport.parse(svgImport);
-  return svgImportValidated;
+
+  if (typeof svgImportValidated === "string") {
+    return { src: svgImportValidated };
+  }
+
+  return { src: svgImportValidated.src };
 };

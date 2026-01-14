@@ -3,6 +3,10 @@ import imgEdgar from "./images/edgar.png";
 import imgExcelMain from "./images/excel-main.png";
 import imgInvestorRelations from "./images/investor-relations.png";
 
+const investorRelationsSize = { width: 1288, height: 925 };
+const edgarSize = { width: 1415, height: 754 };
+const excelMainSize = { width: 674, height: 274 };
+
 export const Article = () => (
   <>
     <P>
@@ -20,9 +24,9 @@ export const Article = () => (
     <H2>Company investor relations</H2>
 
     <Image
-      src={imgInvestorRelations.src}
-      width={imgInvestorRelations.width / 5}
-      height={imgInvestorRelations.height / 5}
+      src={imgInvestorRelations}
+      width={investorRelationsSize.width / 5}
+      height={investorRelationsSize.height / 5}
       alt="Alphabet company investor relations page"
     />
 
@@ -48,9 +52,9 @@ export const Article = () => (
     <H2>SEC EDGAR</H2>
 
     <Image
-      src={imgEdgar.src}
-      width={imgEdgar.width / 5}
-      height={imgEdgar.height / 5}
+      src={imgEdgar}
+      width={edgarSize.width / 5}
+      height={edgarSize.height / 5}
       alt="SEC EDGAR Alphabet company page"
     />
 
@@ -195,9 +199,9 @@ export const Article = () => (
     <P>Now fill these numbers for the Alphabet stock. For the 2022 Q1 you should have these values</P>
 
     <Image
-      src={imgExcelMain.src}
-      width={imgExcelMain.width / 2}
-      height={imgExcelMain.height / 2}
+      src={imgExcelMain}
+      width={excelMainSize.width / 2}
+      height={excelMainSize.height / 2}
       alt="6 questions for the Alphabet stock"
     />
 

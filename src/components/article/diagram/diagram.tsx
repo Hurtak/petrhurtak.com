@@ -1,4 +1,3 @@
-import * as React from "react";
 import stripIndent from "strip-indent";
 
 import { colors, gridCss } from "../../../styles";

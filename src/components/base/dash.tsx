@@ -1,5 +1,3 @@
-import * as React from "react";
-
 export const nDashString = "\u2013";
 export const mDashString = "\u2014";
 

@@ -1,27 +1,11 @@
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 
-import { GetStaticPropsResult } from "next";
 import { z } from "zod";
 
-import { getServerRuntimeConfig } from "../config";
 import { ArticleBlog, articleMetadataJsonValidator } from "./types";
 
 type ArticleDirectory = { directory: string; slug: string; date: number; hidden: boolean };
-
-export const getStaticPropsArticle = async (
-  articleFileName: string,
-): Promise<GetStaticPropsResult<{ articleBlog: ArticleBlog }>> => {
-  const slug = path.parse(articleFileName).name;
-  const serverConfig = getServerRuntimeConfig();
-  const articleBlog = await getArticleBlog(serverConfig.paths.articles, slug);
-
-  if (!articleBlog) {
-    throw new Error("Could not find article metadata");
-  }
-
-  return { props: { articleBlog } };
-};
 
 const getArticlesDirs = async (articlesDir: string): Promise<Array<ArticleDirectory>> => {
   const articlesDirItems = await fs.readdir(articlesDir);
@@ -99,7 +83,7 @@ const articleDirToArticleBlog = async (articlesDir: string, articleDir: ArticleD
     title: metadata.title,
     description: metadata.description,
     datePublication: articleDir.date,
-    // This data structure is used in next.js getInitialProps and it does not allow using undefined directly because it is
+    // This data structure is serialized for build scripts and it does not allow using undefined directly because it is
     // not JSON compatible, so it requires us to omit this property or use null.
     ...(dateLastUpdate && { dateLastUpdate }),
     articlePath,

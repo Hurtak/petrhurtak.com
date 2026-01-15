@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { NextPage } from "next";
 import { groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
@@ -8,6 +7,7 @@ import { getArticlesBlog } from "../articles/articles-server";
 import { ArticleBlogVisible, ArticlePublished } from "../articles/types";
 import { Link } from "../components/article";
 import { config, getServerRuntimeConfig, routes } from "../config";
+import dayjs from "../lib/date";
 import image from "../me.jpg";
 import { generateRssFeed } from "../services/rss";
 import { gridCss, gridNumber, pxCss, sizeCss } from "../styles";

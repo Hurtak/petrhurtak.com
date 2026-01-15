@@ -1,9 +1,9 @@
-import * as dayjs from "dayjs";
 import Head from "next/head";
 import { FC } from "react";
 
 import { ArticleBlog } from "../../articles/types";
 import { routes } from "../../config";
+import dayjs from "../../lib/date";
 import { gridCss } from "../../styles";
 import { DocumentTitle } from "../base/document-title";
 import { Dot } from "../base/dot";

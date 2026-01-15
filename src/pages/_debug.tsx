@@ -1,9 +1,9 @@
-import dayjs from "dayjs";
 import { GetStaticPropsResult } from "next";
 
 import { Link } from "../components/article";
 import { DocumentTitle } from "../components/base/document-title";
 import { getServerRuntimeConfig, routes, ServerRuntimeConfig } from "../config";
+import dayjs from "../lib/date";
 
 type Props = {
   buildInfo: ServerRuntimeConfig["buildInfo"];

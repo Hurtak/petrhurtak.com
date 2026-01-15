@@ -27,7 +27,7 @@
 - sections
   - projects, list of all projects of what i did
   - opensource, list of all opensource of what i did
-- appearances - talks, articles, etc
+  - appearances - talks, articles, etc
 - convert remaining articles
 - go through components and replace usage of raw components with custom components
 - colors

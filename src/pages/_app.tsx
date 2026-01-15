@@ -1,8 +1,6 @@
 import "normalize.css";
 import "prismjs/themes/prism.css";
 
-import dayjs from "dayjs";
-import dayjsUtc from "dayjs/plugin/utc";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -12,8 +10,6 @@ import { DocumentTitle } from "../components/base/document-title";
 import { LayoutPage } from "../components/layout/layout-page";
 import { config, routes } from "../config";
 import { useGoogleAnalytics } from "../services/google-analytics";
-
-dayjs.extend(dayjsUtc);
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();

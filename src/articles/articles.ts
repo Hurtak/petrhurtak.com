@@ -1,5 +1,4 @@
-import dayjs from "dayjs";
-
+import dayjs from "../lib/date";
 import { ArticleX, ArticleXRaw } from "./types";
 
 export const parseArticleXRaw = (articleXRaw: ArticleXRaw): ArticleX => {

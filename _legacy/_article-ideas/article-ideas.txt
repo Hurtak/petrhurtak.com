@@ -78,7 +78,7 @@
     - https://github.com/csstools/sanitize.css
     - css resets
 
-- https://css-tricks.com/useful-nth-child-recipes/
+- https://css-tricks.com/useful-nth-child-recipies/
 
 - tabindex-1 for whole element trees
   - https://stackoverflow.com/questions/38059140/when-to-use-the-disabled-attribute-vs-the-aria-disabled-attribute-for-html-eleme

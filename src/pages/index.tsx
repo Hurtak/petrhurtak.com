@@ -7,7 +7,7 @@ import { getArticlesBlog } from "../articles/articles-server";
 import { ArticleBlogVisible, ArticlePublished } from "../articles/types";
 import { Link } from "../components/article";
 import { config, getServerRuntimeConfig, routes } from "../config";
-import dayjs from "../lib/date";
+import { date } from "../lib/date";
 import image from "../me.jpg";
 import { generateRssFeed } from "../services/rss";
 import { gridCss, gridNumber, pxCss, sizeCss } from "../styles";
@@ -213,7 +213,7 @@ const ArticleLi = ({ article }: { article: ArticlePublished }) => {
   return (
     <span className="article">
       <span className="article-meta">
-        {dayjs.utc(article.datePublication).format("MMM DD")}
+        {date.utc(article.datePublication).format("MMM DD")}
         <span className="sep"> / </span>
         <abbr className="abbr" title={abbr.title}>
           {abbr.abbr}

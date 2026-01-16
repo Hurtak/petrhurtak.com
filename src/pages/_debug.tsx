@@ -3,7 +3,7 @@ import { GetStaticPropsResult } from "next";
 import { Link } from "../components/article";
 import { DocumentTitle } from "../components/base/document-title";
 import { getServerRuntimeConfig, routes, ServerRuntimeConfig } from "../config";
-import dayjs from "../lib/date";
+import { date } from "../lib/date";
 
 type Props = {
   buildInfo: ServerRuntimeConfig["buildInfo"];
@@ -26,8 +26,8 @@ const Debug = ({ buildInfo }: Props) => (
     <h1>Debug info</h1>
 
     <ul>
-      <li>build time: {dayjs.utc(buildInfo.time).toISOString()}</li>
-      <li>build time: {dayjs.utc(buildInfo.time).toDate().toLocaleString()}</li>
+      <li>build time: {date.utc(buildInfo.time).toISOString()}</li>
+      <li>build time: {date.utc(buildInfo.time).toDate().toLocaleString()}</li>
       <li>
         build commit hash:{" "}
         <Link href={routes.articleGitHubCommitHash(buildInfo.commitHash)}>{buildInfo.commitHash}</Link>

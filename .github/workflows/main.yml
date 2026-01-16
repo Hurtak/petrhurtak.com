@@ -28,23 +28,17 @@ jobs:
           path: dist
   deploy:
     needs: [validate, build]
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: artifact-dist
           path: dist
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v2.1
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          publish-dir: dist
-          production-branch: main
-          enable-pull-request-comment: false
-          enable-commit-comment: false
-          overwrites-pull-request-comment: false
-          deploy-message: Deploy from GitHub Actions
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist

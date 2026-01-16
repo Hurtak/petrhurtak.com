@@ -1,13 +1,16 @@
+import { Dayjs } from "dayjs";
 import Head from "next/head";
 import { FC } from "react";
 
 import { ArticleBlog } from "../../articles/types";
 import { routes } from "../../config";
-import dayjs from "../../lib/date";
+import { date } from "../../lib/date";
 import { gridCss } from "../../styles";
 import { DocumentTitle } from "../base/document-title";
 import { Dot } from "../base/dot";
 import { Link } from "../base/link";
+
+const formatDate = (d: Dayjs): string => d.format("YYYY-MMM-DD");
 
 export const LayoutArticle = ({
   articleBlog,
@@ -16,10 +19,8 @@ export const LayoutArticle = ({
   articleBlog: ArticleBlog;
   articleComponent: FC;
 }) => {
-  const datePublication = dayjs.utc(articleBlog.datePublication);
-  const dateLastUpdate = articleBlog.dateLastUpdate ? dayjs.utc(articleBlog.dateLastUpdate) : undefined;
-
-  const formatDate = (dayjs: dayjs.Dayjs): string => dayjs.format("YYYY-MMM-DD");
+  const datePublication = date.utc(articleBlog.datePublication);
+  const dateLastUpdate = articleBlog.dateLastUpdate ? date.utc(articleBlog.dateLastUpdate) : undefined;
 
   return (
     <>

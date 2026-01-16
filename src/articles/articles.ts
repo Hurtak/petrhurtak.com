@@ -1,4 +1,4 @@
-import dayjs from "../lib/date";
+import { date } from "../lib/date";
 import { ArticleX, ArticleXRaw } from "./types";
 
 export const parseArticleXRaw = (articleXRaw: ArticleXRaw): ArticleX => {
@@ -6,7 +6,7 @@ export const parseArticleXRaw = (articleXRaw: ArticleXRaw): ArticleX => {
     id: articleXRaw.link,
     type: "ARTICLE_X",
     title: articleXRaw.title,
-    datePublication: dayjs.utc(articleXRaw.datePublication).valueOf(),
+    datePublication: date.utc(articleXRaw.datePublication).valueOf(),
     link: articleXRaw.link,
   };
 };

@@ -14,18 +14,10 @@ export const Article = () => (
 
     <H1>One liner solution</H1>
     <Code language="bash">{`
-      git reset $(git merge-base origin/master $(git rev-parse --abbrev-ref HEAD))
+      git reset $(git merge-base origin/master HEAD)
     `}</Code>
 
     <H1>What happens</H1>
-
-    <Code language="bash">{`
-      git rev-parse --abbrev-ref HEAD
-    `}</Code>
-
-    <P>
-      Gets current name of the branch, eg.: <Code>branch-name</Code>
-    </P>
 
     <Code language="bash">{`
       git merge-base origin/master my-branch
@@ -57,7 +49,7 @@ export const Article = () => (
     </P>
 
     <Code language="bash">{`
-      git reset $(git merge-base origin/master $(git rev-parse --abbrev-ref HEAD))
+      git reset $(git merge-base origin/master HEAD)
       git add .
       git commit -m "commit message"
       git push --force

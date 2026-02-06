@@ -22,7 +22,7 @@ export const Article = () => (
         not work because <Code>python</Code> is not a path name. Use full path like <Code>#!/usr/bin/env python</Code>.
       </Li>
       <Li>
-        The interpreted usually takes only one argument, so you cannot do something like{" "}
+        The interpreter usually takes only one argument, so you cannot do something like{" "}
         <Code>#!/usr/bin/env node --harmony</Code>.
       </Li>
     </List>

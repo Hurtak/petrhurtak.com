@@ -285,13 +285,13 @@ Add company/sector specific data
     We can add interesting growth/decline/percentage numbers that are Alphabet specific
         Search % of Rev
 
-    TODO: optimalize images
+    TODO: optimize images
     TODO: what he does about doing some PE ratio
 
-    TODO: image of income and stuff that is currently in downloads forlder
+    TODO: image of income and stuff that is currently in downloads folder
     TODO: link xlsx model
     TODO: better title and description for the whole article
-      Maybe add there somthing like
+      Maybe add there something like
         How to analyze Alphabet from scratch?
 
     */}

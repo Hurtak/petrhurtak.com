@@ -26,7 +26,7 @@ export const Article = () => (
 
     <Code language="js">{`
       /**
-       * Get random integer in given rangee.
+       * Get random integer in given range.
        * @param {int} min - Random number lower boundary (inclusive).
        * @param {int} max - Random number upper boundary (inclusive).
        * @return {int} Random integer.

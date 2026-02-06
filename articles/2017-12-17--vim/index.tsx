@@ -26,7 +26,7 @@ const SharedCommands = () => (
         <Code>g</Code> and <Code>g</Code>
       </Tc>
       <Tc>
-        be<Strong>g</Strong>inning
+        be<Strong>gg</Strong>inning
       </Tc>
     </Tr>
     <Tr>

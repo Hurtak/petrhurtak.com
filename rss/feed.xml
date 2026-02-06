@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>petrhurtak.com</title>
+        <link>https://petrhurtak.com/</link>
+        <description>undefined</description>
+        <lastBuildDate>Fri, 06 Feb 2026 21:21:28 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <copyright>All rights reserved 2026, Petr Hurtak</copyright>
+        <item>
+            <title><![CDATA[Shebang]]></title>
+            <link>https://petrhurtak.com/articles/shebang</link>
+            <guid>https://petrhurtak.com/articles/shebang</guid>
+            <pubDate>Fri, 28 Apr 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[Under Unix-like operating systems you can either run scripts by specifying the interpreter along with the path or you can run them as programs and have the interpreter specified in the shebang on the first line of the script.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[CSS named colors]]></title>
+            <link>https://petrhurtak.com/articles/css-named-colors</link>
+            <guid>https://petrhurtak.com/articles/css-named-colors</guid>
+            <pubDate>Thu, 11 May 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[CSS colors can be specified as keywords like “red” or “black”. This article talks about named colors, their history, recent additions and where they might be useful.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[Debian packages and front-end apps at Seznam.cz]]></title>
+            <link>https://petrhurtak.com/articles/debian-packages</link>
+            <guid>https://petrhurtak.com/articles/debian-packages</guid>
+            <pubDate>Sun, 21 May 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[How to make a simple Debian package with a static website – from a frontend developer point of view.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[Random numbers in JavaScript]]></title>
+            <link>https://petrhurtak.com/articles/random-numbers</link>
+            <guid>https://petrhurtak.com/articles/random-numbers</guid>
+            <pubDate>Mon, 17 Jul 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[How to generate random numbers in JavaScript.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[IIFE]]></title>
+            <link>https://petrhurtak.com/articles/iife</link>
+            <guid>https://petrhurtak.com/articles/iife</guid>
+            <pubDate>Thu, 20 Jul 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[What is immediately-invoked function expression and where they might be useful.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[Common naming mistakes]]></title>
+            <link>https://petrhurtak.com/articles/common-naming-mistakes</link>
+            <guid>https://petrhurtak.com/articles/common-naming-mistakes</guid>
+            <pubDate>Thu, 24 Aug 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[A Little collection of technical expressions that I either confuse often or that I see often confused by other people.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[Vim basics]]></title>
+            <link>https://petrhurtak.com/articles/vim</link>
+            <guid>https://petrhurtak.com/articles/vim</guid>
+            <pubDate>Sun, 17 Dec 2017 00:00:00 GMT</pubDate>
+            <description><![CDATA[This article focuses on Vim basics and the use case where you are in a terminal in the ssh session and want to quickly edit/explore files within the terminal.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[How to switch Node version on macOS]]></title>
+            <link>https://petrhurtak.com/articles/switch-node-version</link>
+            <guid>https://petrhurtak.com/articles/switch-node-version</guid>
+            <pubDate>Mon, 13 May 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[How to install Node.js on MacOS and switch between different versions.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[Squash commits]]></title>
+            <link>https://petrhurtak.com/articles/squash-commits</link>
+            <guid>https://petrhurtak.com/articles/squash-commits</guid>
+            <pubDate>Thu, 08 Aug 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Easiest way to squash commits when creating merge request.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[Hello extension]]></title>
+            <link>https://petrhurtak.com/articles/hello-extension</link>
+            <guid>https://petrhurtak.com/articles/hello-extension</guid>
+            <pubDate>Sun, 25 Aug 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[I made a cool Chrome extension that replaces your new tab with widgets and fresh image every day.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[Union types]]></title>
+            <link>https://petrhurtak.com/articles/union-types</link>
+            <guid>https://petrhurtak.com/articles/union-types</guid>
+            <pubDate>Tue, 03 Sep 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[One of the most useful features of typed languages are union types. They bring interesting patterns on how to model state transitions that could be used even in dynamic languages.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[Restart stuck PostgreSQL on macOS]]></title>
+            <link>https://petrhurtak.com/articles/restart-postgresql</link>
+            <guid>https://petrhurtak.com/articles/restart-postgresql</guid>
+            <pubDate>Mon, 22 Jun 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[Sometimes PostgreSQL will get stuck, here is how to solve this.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[Docker]]></title>
+            <link>https://petrhurtak.com/articles/docker</link>
+            <guid>https://petrhurtak.com/articles/docker</guid>
+            <pubDate>Mon, 21 Sep 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[Short notes about the most useful Docker commands and examples of a common workflow.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+        <item>
+            <title><![CDATA[URL parts]]></title>
+            <link>https://petrhurtak.com/articles/url-parts</link>
+            <guid>https://petrhurtak.com/articles/url-parts</guid>
+            <pubDate>Mon, 11 Oct 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[I always got confused about what certain parts of an URL are called, so here is a simple diagram that should help.]]></description>
+            <author>petr.hurtak@gmail.com (Petr Hurtak)</author>
+        </item>
+    </channel>
+</rss>

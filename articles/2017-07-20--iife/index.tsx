@@ -47,7 +47,7 @@ export const Article = () => (
     </List>
 
     <Code language="js">{`
-      <DOCTYPE html>
+      <!DOCTYPE html>
       <html>
         <head><!-- code --></head>
         <body>

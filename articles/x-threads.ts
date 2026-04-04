@@ -3,21 +3,121 @@ import { ArticleXRaw } from "../src/articles/types";
 export const articlesXRaw: ArticleXRaw[] = [
   // 2026
   {
+    title: "Our ex-analyst described what it was like building StockStory",
+    datePublication: "2026-04-03",
+    link: "https://x.com/PetrHurtak/status/2040015658650415504",
+  },
+  {
+    title: "We at StockStory got acquired by Versant",
+    datePublication: "2026-04-02",
+    link: "https://x.com/PetrHurtak/status/2039737413484814440",
+  },
+  {
+    title: "Prague",
+    datePublication: "2026-04-01",
+    link: "https://x.com/PetrHurtak/status/2039365673755803878",
+  },
+  {
+    title: "People often criticise Tim Cook, but he delivered",
+    datePublication: "2026-04-01",
+    link: "https://x.com/PetrHurtak/status/2039257946094211518",
+  },
+  {
     title: "Pnpm setting to prevent supply-chain attacks",
     datePublication: "2026-03-31",
     link: "https://x.com/PetrHurtak/status/2038876125300924530",
   },
   {
-    title: "Pnpm monorepo CI only for changed packages",
+    title: "Box slop architecture",
+    datePublication: "2026-03-22",
+    link: "https://x.com/PetrHurtak/status/2035699825845383623",
+  },
+  {
+    title: "Gold outperforming SP500 in 20 of the last 25 years",
+    datePublication: "2026-03-21",
+    link: "https://x.com/PetrHurtak/status/2032052418427367660",
+  },
+  {
+    title: "Architecture decision cascading through multiple rooms",
+    datePublication: "2026-02-16",
+    link: "https://x.com/PetrHurtak/status/2023389457919950918",
+  },
+  {
+    title: "How to make eggs on stainless steel pan",
+    datePublication: "2026-02-01",
+    link: "https://x.com/PetrHurtak/status/2018019240847061430",
+  },
+  {
+    title: "Dumb lightbulb with brightness settings",
+    datePublication: "2026-01-31",
+    link: "https://x.com/PetrHurtak/status/2017701021615579505",
+  },
+  {
+    title: "Alternative web authentication methods",
+    datePublication: "2026-01-21",
+    link: "https://x.com/PetrHurtak/status/2013959748836638899",
+  },
+  {
+    title: "Pnpm monorepo CI that runs only for package where code changed",
     datePublication: "2026-01-14",
     link: "https://x.com/PetrHurtak/status/2011494939926966553",
   },
 
   // 2025
   {
+    title: "Customer feedback on my wife's instagram",
+    datePublication: "2025-11-25",
+    link: "https://x.com/PetrHurtak/status/1993422508507177427",
+  },
+  {
     title: "My wife beating SP500 with 50/50 Gold/SP500",
     datePublication: "2025-10-08",
     link: "https://x.com/PetrHurtak/status/1975999797338222673",
+  },
+  {
+    title: "Professional deformation: creating Excel models for apartment hunting",
+    datePublication: "2025-09-20",
+    link: "https://x.com/PetrHurtak/status/1969390486012969283",
+  },
+  {
+    title: "Home office at Croatia",
+    datePublication: "2025-09-01",
+    link: "https://x.com/PetrHurtak/status/1962608597965164601",
+  },
+  {
+    title: "Never measure your net worth in BTC",
+    datePublication: "2025-08-23",
+    link: "https://x.com/PetrHurtak/status/1959286268925243744",
+  },
+  {
+    title: "Using Deno for new projects",
+    datePublication: "2025-08-15",
+    link: "https://x.com/PetrHurtak/status/1956269094774165875",
+  },
+  {
+    title: "Bachelor's degree thesis of my student about comparison of multi-platform React based solutions",
+    datePublication: "2025-07-30",
+    link: "https://x.com/PetrHurtak/status/1950508313776357397",
+  },
+  {
+    title: "Cybercab wheels",
+    datePublication: "2025-07-23",
+    link: "https://x.com/PetrHurtak/status/1948040015910490472",
+  },
+  {
+    title: "Few cheap interior changes completely transforming ugly bathroom",
+    datePublication: "2025-07-18",
+    link: "https://x.com/PetrHurtak/status/1946187665017037015",
+  },
+  {
+    title: "Back in the game 2025 edition",
+    datePublication: "2025-07-12",
+    link: "https://x.com/PetrHurtak/status/1944125196572488025",
+  },
+  {
+    title: "Bachelor's degree thesis of my student about detection of used/unused React props",
+    datePublication: "2025-06-14",
+    link: "https://x.com/PetrHurtak/status/1933831533523014003",
   },
   {
     title: "Responsive SVGs",
@@ -30,6 +130,11 @@ export const articlesXRaw: ArticleXRaw[] = [
     title: "TypeScript ts-expect-error for type tests",
     datePublication: "2024-08-29",
     link: "https://x.com/PetrHurtak/status/1829075027490177223",
+  },
+  {
+    title: "Back in the game 2024 edition",
+    datePublication: "2024-06-29",
+    link: "https://x.com/PetrHurtak/status/1807069280317419803",
   },
   {
     title: "CSS box-sizing reset is probably not worth it",
@@ -52,6 +157,11 @@ export const articlesXRaw: ArticleXRaw[] = [
     title: "Text and design systems",
     datePublication: "2023-08-31",
     link: "https://x.com/PetrHurtak/status/1697253971164037551",
+  },
+  {
+    title: "Back in the game 2023 edition",
+    datePublication: "2023-06-17",
+    link: "https://x.com/PetrHurtak/status/1670145180475748353",
   },
   {
     title: "How to make emojis consistent in web apps",

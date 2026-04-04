@@ -26,7 +26,7 @@ describe("x-threads.ts", () => {
 
   test("sorted by date", () => {
     const sorted = pipe(
-      sortBy((x: ArticleXRaw) => x.datePublication),
+      sortBy((x: ArticleXRaw) => x.datePublication + x.link),
       (x) => reverse(x),
     )(articlesXRaw);
 

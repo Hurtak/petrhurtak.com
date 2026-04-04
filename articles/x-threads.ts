@@ -1,13 +1,36 @@
 import { ArticleXRaw } from "../src/articles/types";
 
 export const articlesXRaw: ArticleXRaw[] = [
+  // 2026
+  {
+    title: "Pnpm setting to prevent supply-chain attacks",
+    datePublication: "2026-03-31",
+    link: "https://x.com/PetrHurtak/status/2038876125300924530",
+  },
+  {
+    title: "Pnpm monorepo CI only for changed packages",
+    datePublication: "2026-01-14",
+    link: "https://x.com/PetrHurtak/status/2011494939926966553",
+  },
+
   // 2025
+  {
+    title: "My wife beating SP500 with 50/50 Gold/SP500",
+    datePublication: "2025-10-08",
+    link: "https://x.com/PetrHurtak/status/1975999797338222673",
+  },
   {
     title: "Responsive SVGs",
     datePublication: "2025-05-09",
     link: "https://x.com/PetrHurtak/status/1920758812681687363",
   },
+
   // 2024
+  {
+    title: "TypeScript ts-expect-error for type tests",
+    datePublication: "2024-08-29",
+    link: "https://x.com/PetrHurtak/status/1829075027490177223",
+  },
   {
     title: "CSS box-sizing reset is probably not worth it",
     datePublication: "2024-03-04",

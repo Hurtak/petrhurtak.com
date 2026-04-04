@@ -3,12 +3,12 @@ import { ArticleXRaw } from "../src/articles/types";
 export const articlesXRaw: ArticleXRaw[] = [
   // 2026
   {
-    title: "Our ex-analyst described what it was like building StockStory",
+    title: "Our ex-analyst described what it was like to build StockStory",
     datePublication: "2026-04-03",
     link: "https://x.com/PetrHurtak/status/2040015658650415504",
   },
   {
-    title: "We at StockStory got acquired by Versant",
+    title: "We at StockStory were acquired by Versant",
     datePublication: "2026-04-02",
     link: "https://x.com/PetrHurtak/status/2039737413484814440",
   },
@@ -23,7 +23,7 @@ export const articlesXRaw: ArticleXRaw[] = [
     link: "https://x.com/PetrHurtak/status/2039257946094211518",
   },
   {
-    title: "Pnpm setting to prevent supply-chain attacks",
+    title: "A pnpm setting to prevent supply-chain attacks",
     datePublication: "2026-03-31",
     link: "https://x.com/PetrHurtak/status/2038876125300924530",
   },
@@ -33,7 +33,7 @@ export const articlesXRaw: ArticleXRaw[] = [
     link: "https://x.com/PetrHurtak/status/2035699825845383623",
   },
   {
-    title: "Gold outperforming SP500 in 20 of the last 25 years",
+    title: "Gold outperforming the S&P 500 in 20 of the last 25 years",
     datePublication: "2026-03-21",
     link: "https://x.com/PetrHurtak/status/2032052418427367660",
   },
@@ -43,7 +43,7 @@ export const articlesXRaw: ArticleXRaw[] = [
     link: "https://x.com/PetrHurtak/status/2023389457919950918",
   },
   {
-    title: "How to make eggs on stainless steel pan",
+    title: "How to make eggs on a stainless steel pan",
     datePublication: "2026-02-01",
     link: "https://x.com/PetrHurtak/status/2018019240847061430",
   },
@@ -58,19 +58,19 @@ export const articlesXRaw: ArticleXRaw[] = [
     link: "https://x.com/PetrHurtak/status/2013959748836638899",
   },
   {
-    title: "Pnpm monorepo CI that runs only for package where code changed",
+    title: "pnpm monorepo CI that runs only for packages with code changes",
     datePublication: "2026-01-14",
     link: "https://x.com/PetrHurtak/status/2011494939926966553",
   },
 
   // 2025
   {
-    title: "Customer feedback on my wife's instagram",
+    title: "Customer feedback on my wife's Instagram",
     datePublication: "2025-11-25",
     link: "https://x.com/PetrHurtak/status/1993422508507177427",
   },
   {
-    title: "My wife beating SP500 with 50/50 Gold/SP500",
+    title: "My wife beating the S&P 500 with a 50/50 gold/S&P 500 mix",
     datePublication: "2025-10-08",
     link: "https://x.com/PetrHurtak/status/1975999797338222673",
   },
@@ -80,7 +80,7 @@ export const articlesXRaw: ArticleXRaw[] = [
     link: "https://x.com/PetrHurtak/status/1969390486012969283",
   },
   {
-    title: "Home office at Croatia",
+    title: "Home office in Croatia",
     datePublication: "2025-09-01",
     link: "https://x.com/PetrHurtak/status/1962608597965164601",
   },
@@ -95,7 +95,7 @@ export const articlesXRaw: ArticleXRaw[] = [
     link: "https://x.com/PetrHurtak/status/1956269094774165875",
   },
   {
-    title: "Bachelor's degree thesis of my student about comparison of multi-platform React based solutions",
+    title: "Bachelor's degree thesis by my student comparing multi-platform React-based solutions",
     datePublication: "2025-07-30",
     link: "https://x.com/PetrHurtak/status/1950508313776357397",
   },
@@ -105,7 +105,7 @@ export const articlesXRaw: ArticleXRaw[] = [
     link: "https://x.com/PetrHurtak/status/1948040015910490472",
   },
   {
-    title: "Few cheap interior changes completely transforming ugly bathroom",
+    title: "A few cheap interior changes that completely transformed an ugly bathroom",
     datePublication: "2025-07-18",
     link: "https://x.com/PetrHurtak/status/1946187665017037015",
   },
@@ -115,7 +115,7 @@ export const articlesXRaw: ArticleXRaw[] = [
     link: "https://x.com/PetrHurtak/status/1944125196572488025",
   },
   {
-    title: "Bachelor's degree thesis of my student about detection of used/unused React props",
+    title: "Bachelor's degree thesis by my student on detecting used and unused React props",
     datePublication: "2025-06-14",
     link: "https://x.com/PetrHurtak/status/1933831533523014003",
   },
@@ -127,7 +127,7 @@ export const articlesXRaw: ArticleXRaw[] = [
 
   // 2024
   {
-    title: "TypeScript ts-expect-error for type tests",
+    title: "Using ts-expect-error for TypeScript type tests",
     datePublication: "2024-08-29",
     link: "https://x.com/PetrHurtak/status/1829075027490177223",
   },
@@ -169,7 +169,7 @@ export const articlesXRaw: ArticleXRaw[] = [
     link: "https://x.com/PetrHurtak/status/1666466782826094592",
   },
   {
-    title: "PostgreSQL and transaction safe SELECT",
+    title: "PostgreSQL and transaction-safe SELECT",
     datePublication: "2023-05-18",
     link: "https://x.com/PetrHurtak/status/1659152385292238848",
   },
@@ -181,7 +181,7 @@ export const articlesXRaw: ArticleXRaw[] = [
 
   // 2022
   {
-    title: "TypeScript asserts keyword and type narrowing in tests",
+    title: "TypeScript's asserts keyword and type narrowing in tests",
     datePublication: "2022-12-13",
     link: "https://x.com/PetrHurtak/status/1602682991314182145",
   },
@@ -191,18 +191,12 @@ export const articlesXRaw: ArticleXRaw[] = [
     link: "https://x.com/PetrHurtak/status/1544683890857676801",
   },
   {
-    title:
-      "Introducing eslint-config-start, slightly opinionated Eslint config that should be a good start for any project",
-    datePublication: "2022-07-03",
-    link: "https://x.com/PetrHurtak/status/1543650771287293952",
-  },
-  {
     title: "Periodically check broken URLs",
     datePublication: "2022-06-24",
     link: "https://x.com/PetrHurtak/status/1540243724680265728",
   },
   {
-    title: "50/50 SP500 & Gold portfolio",
+    title: "50/50 S&P 500 and gold portfolio",
     datePublication: "2022-04-19",
     link: "https://x.com/PetrHurtak/status/1516417596479918081",
   },
@@ -229,7 +223,7 @@ export const articlesXRaw: ArticleXRaw[] = [
 
   // 2021
   {
-    title: "Brief look at the new Roc programming language",
+    title: "A brief look at the new Roc programming language",
     datePublication: "2021-12-25",
     link: "https://x.com/PetrHurtak/status/1474844248738574350",
   },
@@ -259,7 +253,7 @@ export const articlesXRaw: ArticleXRaw[] = [
     link: "https://x.com/PetrHurtak/status/1392390035484430337",
   },
   {
-    title: "Walking treadmill with standing desk",
+    title: "Walking treadmill with a standing desk",
     datePublication: "2021-05-09",
     link: "https://x.com/PetrHurtak/status/1391465409799409664",
   },
@@ -301,7 +295,7 @@ export const articlesXRaw: ArticleXRaw[] = [
     link: "https://x.com/PetrHurtak/status/1312852246649020416",
   },
   {
-    title: "How learning economics changed my world view",
+    title: "How learning economics changed my worldview",
     datePublication: "2020-09-02",
     link: "https://x.com/PetrHurtak/status/1301105087977267200",
   },

@@ -1,0 +1,22 @@
+name: Site Status Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 20 * * *" # Daily at 20:00 UTC.
+
+jobs:
+  site-status-check:
+    name: Check petrhurtak.com status
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assert website returns HTTP 200
+        run: |
+          set -euo pipefail
+
+          status_code="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' https://petrhurtak.com)"
+
+          if [ "$status_code" != "200" ]; then
+            echo "Expected HTTP 200 from https://petrhurtak.com but got $status_code"
+            exit 1
+          fi

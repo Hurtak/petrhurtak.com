@@ -78,15 +78,15 @@ const Home: NextPage<Props> = (props) => (
 
       <div className="profile-text">
         <p>
-          I am an software engineer with a focus on full-stack TypeScript web app development. I am working on{" "}
-          <Link href="https://stockstory.org/">StockStory</Link> and I teach students how to create web apps at{" "}
-          <Link href="https://www.cvut.cz/en">Czech Technical University</Link>.
+          I am an software engineer with a focus on full-stack TypeScript web app development. I am founding software
+          engineer at <Link href="https://stockstory.org/">StockStory</Link> (acquired by Versant/CNBC) and I teach
+          students how to create web apps at <Link href="https://www.cvut.cz/en">Czech Technical University</Link>.
         </p>
 
         <p>
           In my free time, I like to contribute to open-source on <Link href={config.author.gitHub}>GitHub</Link>, write
           about interesting stuff on this blog or on <Link href={config.author.x}>X</Link>, do rock climbing, or read
-          about economics and investing.
+          about economics, architecture and investing.
         </p>
       </div>
     </div>

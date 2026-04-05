@@ -3,6 +3,11 @@ import { ArticleXRaw } from "../src/articles/types";
 export const articlesXRaw: ArticleXRaw[] = [
   // 2026
   {
+    title: "Simple website monitoring with just a CI job",
+    datePublication: "2026-04-05",
+    link: "https://x.com/PetrHurtak/status/2040822642509271547",
+  },
+  {
     title: "Our ex-analyst described what it was like to build StockStory",
     datePublication: "2026-04-03",
     link: "https://x.com/PetrHurtak/status/2040015658650415504",

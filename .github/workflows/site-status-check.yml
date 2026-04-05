@@ -14,9 +14,9 @@ jobs:
         run: |
           set -euo pipefail
 
-          status_code="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' https://petrhurtak.com)"
+          status_code="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' https://example.com/404)"
 
           if [ "$status_code" != "200" ]; then
-            echo "Expected HTTP 200 from https://petrhurtak.com but got $status_code"
+            echo "Expected HTTP 200 from https://example.com/404 but got $status_code"
             exit 1
           fi

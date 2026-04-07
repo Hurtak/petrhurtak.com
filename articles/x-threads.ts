@@ -129,8 +129,18 @@ export const articlesXRaw: ArticleXRaw[] = [
     datePublication: "2025-05-09",
     link: "https://x.com/PetrHurtak/status/1920758812681687363",
   },
+  {
+    title: "Using real app components on marketing pages",
+    datePublication: "2025-05-07",
+    link: "https://x.com/PetrHurtak/status/1920195218718011484",
+  },
 
   // 2024
+  {
+    title: "Product screenshots work really well with conversions, compared to abstract diagrams",
+    datePublication: "2024-10-01",
+    link: "https://x.com/PetrHurtak/status/1829075027490177223",
+  },
   {
     title: "Using ts-expect-error for TypeScript type tests",
     datePublication: "2024-08-29",

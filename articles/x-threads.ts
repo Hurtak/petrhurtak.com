@@ -139,7 +139,7 @@ export const articlesXRaw: ArticleXRaw[] = [
   {
     title: "Product screenshots work really well with conversions, compared to abstract diagrams",
     datePublication: "2024-10-01",
-    link: "https://x.com/PetrHurtak/status/1829075027490177223",
+    link: "https://x.com/PetrHurtak/status/1841193132333154807",
   },
   {
     title: "Using ts-expect-error for TypeScript type tests",

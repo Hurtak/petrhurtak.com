@@ -10,7 +10,7 @@ import { config, getServerRuntimeConfig, routes } from "../config";
 import { date } from "../lib/date";
 import image from "../me.jpg";
 import { generateRssFeed } from "../services/rss";
-import { gridCss, gridNumber, pxCss, sizeCss } from "../styles";
+import { gridCss, sizeCss } from "../styles";
 
 type ArticlesGroup = {
   year: number;
@@ -21,7 +21,7 @@ type Props = {
   articles: ArticlesGroup[];
 };
 
-const profileImageSize = gridNumber(14);
+const profileImageSize = 88;
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
   const serverConfig = getServerRuntimeConfig();
@@ -140,31 +140,19 @@ const Home: NextPage<Props> = (props) => (
       }
 
       .profile {
-        display: flex;
-        flex-direction: row;
         margin-bottom: ${gridCss(2)};
       }
 
       .profile-image {
+        float: left;
+        position: relative;
+        top: ${sizeCss(4)}; // to align with the text
         display: inline-block;
         border-radius: ${gridCss(1)};
-        flex-shrink: 0;
         width: ${sizeCss(profileImageSize)};
         height: ${sizeCss(profileImageSize)};
-        margin-top: ${pxCss(3)}; // Precisely align with the profile text
+        margin-right: ${gridCss(1.5)};
         overflow: hidden;
-      }
-
-      .profile-text {
-        flex-grow: 1;
-        padding-left: ${gridCss(1)};
-      }
-
-      .profile-text p {
-        margin: 0;
-      }
-      .profile-text p:not(:first-child) {
-        margin-top: 0.5em;
       }
 
       ul {

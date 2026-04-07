@@ -1,5 +1,6 @@
 import "normalize.css";
 import "prismjs/themes/prism.css";
+import "../styles/global.css";
 
 import { AppProps } from "next/app";
 import Head from "next/head";
@@ -25,12 +26,6 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <style jsx global>{`
-        body {
-          margin: 0;
-        }
-      `}</style>
-
       <DocumentTitle />
 
       <Head>

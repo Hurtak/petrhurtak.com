@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check
-        uses: ruzickap/action-my-broken-link-checker@v2
+        uses: ruzickap/action-my-broken-link-checker@v3
         with:
           url: https://petrhurtak.com
           # Params docs https://github.com/raviqqe/muffet/blob/main/.snapshots/TestHelp

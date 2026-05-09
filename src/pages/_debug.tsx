@@ -2,15 +2,16 @@ import { GetStaticPropsResult } from "next";
 
 import { Link } from "../components/article";
 import { DocumentTitle } from "../components/base/document-title";
-import { getServerRuntimeConfig, routes, ServerRuntimeConfig } from "../config";
+import { routes } from "../config";
 import { date } from "../lib/date";
+import { getServerConfig, ServerConfig } from "../server-config";
 
 type Props = {
-  buildInfo: ServerRuntimeConfig["buildInfo"];
+  buildInfo: ServerConfig["buildInfo"];
 };
 
 export const getStaticProps = (): GetStaticPropsResult<Props> => {
-  const serverConfig = getServerRuntimeConfig();
+  const serverConfig = getServerConfig();
 
   return {
     props: {
@@ -27,7 +28,6 @@ const Debug = ({ buildInfo }: Props) => (
 
     <ul>
       <li>build time: {date.utc(buildInfo.time).toISOString()}</li>
-      <li>build time: {date.utc(buildInfo.time).toDate().toLocaleString()}</li>
       <li>
         build commit hash:{" "}
         <Link href={routes.articleGitHubCommitHash(buildInfo.commitHash)}>{buildInfo.commitHash}</Link>

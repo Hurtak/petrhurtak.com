@@ -477,14 +477,7 @@ export const Article = () => (
       </Li>
     </List>
 
-    <Video
-      width={698}
-      height={308}
-      src={
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
-        require("./videos/packaging.mp4")
-      }
-    />
+    <Video width={698} height={308} src={require("./videos/packaging.mp4") as string} />
 
     <H1>Static files build dependencies</H1>
 

@@ -153,7 +153,7 @@ export const Article = () => (
       type HttpData<T> =
         | { type: "INITIAL" }
         | { type: "LOADING" }
-        | { type: "ERROR"; error: any }
+        | { type: "ERROR"; error: unknown }
         | { type: "FINISHED"; data: T };
     `}</Code>
 
@@ -168,7 +168,7 @@ export const Article = () => (
       type HttpData<T> =
         | { type: "INITIAL" }
         | { type: "LOADING" }
-        | { type: "ERROR"; error: any }
+        | { type: "ERROR"; error: unknown }
         | { type: "FINISHED"; data: T };
 
       const apiData: HttpData<string> = {

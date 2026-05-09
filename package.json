@@ -8,42 +8,43 @@
     "build": "next build",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "type-check": "tsc --noEmit -p tsconfig.next.json && tsc --noEmit -p tsconfig.test.json",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix .",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prettier": "prettier --ignore-path .gitignore --check .",
     "prettier:fix": "prettier --ignore-path .gitignore --write .",
     "validate": "npm run test && npm run type-check && npm run lint && npm run prettier"
   },
   "dependencies": {
-    "@types/node": "25.5.2",
-    "@types/ramda": "0.31.1",
-    "@types/react": "18.3.27",
-    "clsx": "2.1.1",
-    "dayjs": "1.11.20",
-    "feed": "5.2.0",
-    "next": "14.2.35",
-    "next-videos": "1.5.0",
-    "normalize.css": "8.0.1",
-    "ramda": "0.32.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-ga4": "3.0.1",
-    "react-lite-youtube-embed": "3.5.1",
-    "react-refractor": "2.2.0",
-    "refractor": "4.9.0",
-    "strip-indent": "4.1.1",
-    "typescript": "6.0.2",
-    "zod": "4.3.6"
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.20",
+    "feed": "^5.2.1",
+    "next": "^16.2.4",
+    "normalize.css": "^8.0.1",
+    "prismjs": "^1.30.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-ga4": "^3.0.1",
+    "react-lite-youtube-embed": "^3.5.1",
+    "react-refractor": "^4.0.0",
+    "refractor": "^5.0.0",
+    "strip-indent": "^4.1.1",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@types/react-test-renderer": "18.3.1",
-    "eslint": "8.57.1",
-    "eslint-config-next": "14.2.35",
-    "eslint-config-start": "2.0.0",
-    "eslint-config-start-react": "2.1.0",
-    "prettier": "3.8.1",
-    "react-test-renderer": "18.3.1",
-    "vitest": "1.6.1"
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.6",
+    "prettier": "^3.8.3",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.2",
+    "vitest": "^4.1.5"
+  },
+  "overrides": {
+    "next": {
+      "postcss": "8.5.14"
+    }
   }
 }

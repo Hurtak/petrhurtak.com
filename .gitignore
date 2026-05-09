@@ -3,6 +3,7 @@
 
 # cache
 /.next
+/tsconfig.tsbuildinfo
 /tsconfig.next.tsbuildinfo
 
 # app build

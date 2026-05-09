@@ -1,31 +1,31 @@
 import clsx from "clsx";
-import Refractor from "react-refractor";
-import bash from "refractor/lang/bash";
-import css from "refractor/lang/css";
-import docker from "refractor/lang/docker";
-import elm from "refractor/lang/elm";
-import javascript from "refractor/lang/javascript";
-import json from "refractor/lang/json";
-import jsx from "refractor/lang/jsx";
-import makefile from "refractor/lang/makefile";
-import tsx from "refractor/lang/tsx";
-import typescript from "refractor/lang/typescript";
-import yaml from "refractor/lang/yaml";
+import { Refractor, registerLanguage } from "react-refractor";
+import bash from "refractor/bash";
+import css from "refractor/css";
+import docker from "refractor/docker";
+import elm from "refractor/elm";
+import javascript from "refractor/javascript";
+import json from "refractor/json";
+import jsx from "refractor/jsx";
+import makefile from "refractor/makefile";
+import tsx from "refractor/tsx";
+import typescript from "refractor/typescript";
+import yaml from "refractor/yaml";
 import stripIndent from "strip-indent";
 
 import { colors, gridCss, sizeCss } from "../../styles";
 
-Refractor.registerLanguage(bash);
-Refractor.registerLanguage(docker);
-Refractor.registerLanguage(elm);
-Refractor.registerLanguage(javascript);
-Refractor.registerLanguage(json);
-Refractor.registerLanguage(jsx);
-Refractor.registerLanguage(makefile);
-Refractor.registerLanguage(tsx);
-Refractor.registerLanguage(typescript);
-Refractor.registerLanguage(yaml);
-Refractor.registerLanguage(css);
+registerLanguage(bash);
+registerLanguage(docker);
+registerLanguage(elm);
+registerLanguage(javascript);
+registerLanguage(json);
+registerLanguage(jsx);
+registerLanguage(makefile);
+registerLanguage(tsx);
+registerLanguage(typescript);
+registerLanguage(yaml);
+registerLanguage(css);
 
 type LanguageType =
   //

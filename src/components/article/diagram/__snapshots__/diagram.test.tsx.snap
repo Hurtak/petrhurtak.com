@@ -1,18 +1,11 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Diagram > Diagram component snapshot 1`] = `
-[
-  <pre>
-    ┌─┬─┐
+"<pre>┌─┬─┐
 │ │ │
 ├─┼─┤
 │ │ │
-└─┴─┘
-  </pre>,
-  <style
-    jsx={true}
-  >
-    
+└─┴─┘</pre><style>
         pre {
           background: #f3f3f3;
           border: 1px solid #dadada;
@@ -23,7 +16,5 @@ exports[`Diagram > Diagram component snapshot 1`] = `
           font-family: monospace;
           white-space: pre;
         }
-      
-  </style>,
-]
+      </style>"
 `;

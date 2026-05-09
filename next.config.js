@@ -1,16 +1,9 @@
-const path = require("node:path");
-const { execSync } = require("node:child_process");
-const withVideos = require("next-videos");
-
-const projectRoot = __dirname;
-
 /**
  * @type {import('next').NextConfig}
  */
-const config = {
+module.exports = {
   output: "export",
   distDir: "dist",
-
   reactStrictMode: true,
 
   experimental: {
@@ -18,22 +11,12 @@ const config = {
     scrollRestoration: true,
   },
 
-  serverRuntimeConfig: {
-    // Workaround for https://github.com/vercel/next.js/issues/8251
-    paths: {
-      project: projectRoot,
-      articles: path.join(projectRoot, "articles"),
-      public: path.join(projectRoot, "public"),
+  turbopack: {
+    root: __dirname,
+    rules: {
+      "*.mp4": {
+        type: "asset",
+      },
     },
-    buildInfo: {
-      time: Date.now(),
-      commitHash: execSync("git rev-parse HEAD").toString().trim(),
-    },
-  },
-
-  typescript: {
-    tsconfigPath: "tsconfig.next.json",
   },
 };
-
-module.exports = withVideos(config);

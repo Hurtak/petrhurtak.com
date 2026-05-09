@@ -1,5 +1,4 @@
-import * as React from "react";
-import renderer from "react-test-renderer";
+import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, test } from "vitest";
 
 import { Dash, mDashString, nDashString } from "./dash";
@@ -11,7 +10,7 @@ describe("dash", () => {
   });
 
   test("dash component snapshot", () => {
-    expect(renderer.create(<Dash />).toJSON()).toMatchInlineSnapshot('"–"');
-    expect(renderer.create(<Dash long />).toJSON()).toMatchInlineSnapshot('"—"');
+    expect(renderToStaticMarkup(<Dash />)).toMatchInlineSnapshot('"–"');
+    expect(renderToStaticMarkup(<Dash long />)).toMatchInlineSnapshot('"—"');
   });
 });

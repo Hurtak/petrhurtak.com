@@ -1,5 +1,4 @@
-import * as React from "react";
-import renderer from "react-test-renderer";
+import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, test } from "vitest";
 
 import { Diagram, trimEmptyEdgeLines } from "./diagram";
@@ -16,7 +15,7 @@ describe("Diagram", () => {
       `}</Diagram>
     );
 
-    expect(renderer.create(c).toJSON()).toMatchSnapshot();
+    expect(renderToStaticMarkup(c)).toMatchSnapshot();
   });
 });
 

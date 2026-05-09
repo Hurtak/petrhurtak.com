@@ -4,7 +4,7 @@ import * as path from "node:path";
 import { GetStaticPropsResult } from "next";
 import { z } from "zod";
 
-import { getServerRuntimeConfig } from "../config";
+import { getServerConfig } from "../server-config";
 import { ArticleBlog, articleMetadataJsonValidator } from "./types";
 
 type ArticleDirectory = { directory: string; slug: string; date: number; hidden: boolean };
@@ -13,7 +13,7 @@ export const getStaticPropsArticle = async (
   articleFileName: string,
 ): Promise<GetStaticPropsResult<{ articleBlog: ArticleBlog }>> => {
   const slug = path.parse(articleFileName).name;
-  const serverConfig = getServerRuntimeConfig();
+  const serverConfig = getServerConfig();
   const articleBlog = await getArticleBlog(serverConfig.paths.articles, slug);
 
   if (!articleBlog) {

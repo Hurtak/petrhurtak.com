@@ -1,4 +1,20 @@
-// Config for VSCode
 {
-  "extends": "./tsconfig.next.json"
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "allowJs": true
+  },
+  "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx", "articles/**/*.ts", "articles/**/*.tsx"],
+  "exclude": ["node_modules", "dist", "_legacy"]
 }

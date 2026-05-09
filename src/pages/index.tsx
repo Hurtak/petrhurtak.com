@@ -1,13 +1,13 @@
 import { NextPage } from "next";
-import { groupBy, map, pipe, reverse, sortBy, toPairs } from "ramda";
 
 import { articlesXRaw } from "../../articles/x-threads";
 import { parseArticleXRaw } from "../articles/articles";
 import { getArticlesBlog } from "../articles/articles-server";
 import { ArticleBlogVisible, ArticlePublished } from "../articles/types";
 import { Link } from "../components/article";
-import { config, getServerRuntimeConfig, routes } from "../config";
+import { config, routes } from "../config";
 import { date } from "../lib/date";
+import { getServerConfig } from "../server-config";
 import image from "../me.jpg";
 import { generateRssFeed } from "../services/rss";
 import { gridCss, sizeCss } from "../styles";
@@ -24,7 +24,7 @@ type Props = {
 const profileImageSize = 88;
 
 export const getStaticProps = async (): Promise<{ props: Props }> => {
-  const serverConfig = getServerRuntimeConfig();
+  const serverConfig = getServerConfig();
   const articlesBlog = await getArticlesBlog(serverConfig.paths.articles);
   const articlesBlogVisible: ArticleBlogVisible[] = [];
   for (const article of articlesBlog) {
@@ -38,22 +38,14 @@ export const getStaticProps = async (): Promise<{ props: Props }> => {
   const articlesX = articlesXRaw.map((a) => parseArticleXRaw(a));
   const articlesList: ArticlePublished[] = [...articlesBlogVisible, ...articlesX];
 
-  const articles: ArticlesGroup[] = pipe(
-    groupBy((a: ArticlePublished) => new Date(a.datePublication).getFullYear().toString()),
-    (_) => _ as Record<string, ArticlePublished[]>, // TODO: why is this needed?
-    toPairs,
-    map(
-      ([year, articles]: [string, ArticlePublished[]]): ArticlesGroup => ({
-        year: Number(year),
-        articles: pipe(
-          sortBy((a) => a.datePublication),
-          (a: ArticlePublished[]) => reverse(a),
-        )(articles),
-      }),
-    ),
-    sortBy((g) => g.year),
-    (g) => reverse(g),
-  )(articlesList);
+  const articles: ArticlesGroup[] = Object.entries(
+    Object.groupBy(articlesList, (article) => new Date(article.datePublication).getFullYear()),
+  )
+    .map(([year, groupedArticles]) => ({
+      year: Number(year),
+      articles: (groupedArticles ?? []).toSorted((a, b) => b.datePublication - a.datePublication),
+    }))
+    .toSorted((a, b) => b.year - a.year);
 
   return {
     props: {

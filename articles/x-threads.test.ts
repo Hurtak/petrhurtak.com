@@ -1,4 +1,3 @@
-import { pipe, reverse, sortBy } from "ramda";
 import { describe, expect, test } from "vitest";
 
 import { ArticleXRaw } from "../src/articles/types";
@@ -25,10 +24,9 @@ describe("x-threads.ts", () => {
   });
 
   test("sorted by date", () => {
-    const sorted = pipe(
-      sortBy((x: ArticleXRaw) => x.datePublication + x.link),
-      (x) => reverse(x),
-    )(articlesXRaw);
+    const sorted = articlesXRaw.toSorted((a: ArticleXRaw, b: ArticleXRaw) =>
+      (b.datePublication + b.link).localeCompare(a.datePublication + a.link),
+    );
 
     expect(sorted).toEqual(articlesXRaw);
   });

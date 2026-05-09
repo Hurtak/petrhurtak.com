@@ -34,14 +34,7 @@ export const Article = () => (
       echo "Hello"
     `}</Code>
 
-    <Video
-      width={598}
-      height={274}
-      src={
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
-        require("./videos/shebang.mp4")
-      }
-    />
+    <Video width={598} height={274} src={require("./videos/shebang.mp4") as string} />
 
     <H2>/usr/bin/env</H2>
 

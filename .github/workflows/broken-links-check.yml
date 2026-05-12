@@ -1,6 +1,7 @@
 name: Broken Links Check
 
 on:
+  workflow_dispatch:
   push:
   schedule:
     - cron: "0 12 * * 2,4,6" # At 12:00 on Tuesday, Thursday, and Saturday.

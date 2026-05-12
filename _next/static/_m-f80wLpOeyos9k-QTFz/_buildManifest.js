@@ -30,7 +30,7 @@ self.__BUILD_MANIFEST = {
     "static/chunks/0~uk9pwv0ok.0.js"
   ],
   "/articles/css-named-colors": [
-    "static/chunks/0w08zeo7wey4s.js"
+    "static/chunks/0sclelsrepk8k.js"
   ],
   "/articles/debian-packages": [
     "static/chunks/14enmryeaz8t1.js"

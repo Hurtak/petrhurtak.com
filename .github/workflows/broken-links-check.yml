@@ -31,6 +31,8 @@ jobs:
           #     Because X returns very large bot-response headers.
           #   `exclude="https://en.wikipedia.org"`
           #     Because Wikipedia returns 403 to the checker from GitHub Actions.
+          #   `exclude="https://alienryderflex.com"`
+          #     Because alienryderflex.com intermittently returns 465 from GitHub Actions.
 
           # Keep the `-`: the action passes this through `eval`, so the trailing newline must be stripped before it appends the URL.
           cmd_params: >-
@@ -42,5 +44,6 @@ jobs:
             --exclude="https://insights.stackoverflow.com"
             --exclude="https://x.com"
             --exclude="https://en.wikipedia.org"
+            --exclude="https://alienryderflex.com"
             --color=always
             --verbose

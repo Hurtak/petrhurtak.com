@@ -21,21 +21,26 @@ jobs:
           #     can take a long time for them to start again.
           #   `buffer-size`
           #     Increased otherwise it fails with "error when reading response headers: small read buffer".
+          #   `max-connections-per-host`
+          #     Keeps the crawler from hammering one domain and triggering rate limits.
           #   `exclude="https://www.linkedin.com"`
           #     Because LinkedIn returns 999 status code for bots.
           #   `exclude="https://stackoverflow.com"`
           #     Because StackOverflow returns 403 status code for bots.
+          #   `exclude="https://x.com"`
+          #     Because X returns very large bot-response headers.
+          #   `exclude="https://en.wikipedia.org"`
+          #     Because Wikipedia returns 403 to the checker from GitHub Actions.
 
-          # TODO
-          # Add header parameter because some services will fail when it is missing
-          # --header="user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
-          # But there is this issue https://github.com/ruzickap/action-my-broken-link-checker/issues/83
-          # After it is resolved maybe we can remove the exclude?
-          cmd_params: >
+          # Keep the `-`: the action passes this through `eval`, so the trailing newline must be stripped before it appends the URL.
+          cmd_params: >-
             --timeout=30
-            --buffer-size=10000
+            --buffer-size=65536
+            --max-connections-per-host=4
             --exclude="https://www.linkedin.com"
             --exclude="https://stackoverflow.com"
             --exclude="https://insights.stackoverflow.com"
+            --exclude="https://x.com"
+            --exclude="https://en.wikipedia.org"
             --color=always
             --verbose

@@ -137,7 +137,7 @@ export const Article = () => (
 
     <P>
       Here is a list of all CSS named color grouped by basic color and then sorted by their lightness with the{" "}
-      <Link href="http://alienryderflex.com/hsp.html">HSP Color Model</Link>. Currently, there are 147 named colors.
+      <Link href="https://alienryderflex.com/hsp.html">HSP Color Model</Link>. Currently, there are 147 named colors.
     </P>
 
     {colors.map((category) => (

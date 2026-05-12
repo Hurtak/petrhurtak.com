@@ -24,15 +24,12 @@ export const getStaticPropsArticle = async (
 };
 
 const getArticlesDirs = async (articlesDir: string): Promise<Array<ArticleDirectory>> => {
-  const articlesDirItems = await fs.readdir(articlesDir);
+  const articlesDirItems = await fs.readdir(articlesDir, { withFileTypes: true });
 
   const articleDirs: Array<ArticleDirectory> = [];
   for (const item of articlesDirItems) {
-    const lstat = await fs.lstat(path.join(articlesDir, item));
-    const isDir = lstat.isDirectory();
-
-    if (isDir) {
-      const dir = parseArticleFolder(item);
+    if (item.isDirectory()) {
+      const dir = parseArticleFolder(item.name);
       if (dir) {
         articleDirs.push(dir);
       }
